@@ -101,7 +101,6 @@
                             <li><a class="dropdown-item" href="/natyazhka_holsta/">Натяжка холста</a></li>
                             <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij/">печать постеров, фотографий и репродукций</a></li>
                             <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
-                            <li><a class="dropdown-item" href="/modulnye_kartiny/">Модульные картины</a></li>
                             <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
                             <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
                         </ul>

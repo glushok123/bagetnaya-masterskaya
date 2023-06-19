@@ -19,12 +19,7 @@ if ($gallery == "all" || $gallery == "bagety_dlya_kartin") {
     array_push($files, "/bagety_dlya_kartin/" . $k_files[$i]);
   }
 }
-if ($gallery == "all" || $gallery == "modulnye_kartiny") {
-  $m_files = scandir("gallemax/modulnye_kartiny");
-  for ($i = 2; $i < count($m_files); $i++) {
-    array_push($files, "/modulnye_kartiny/" . $m_files[$i]);
-  }
-}
+
 if ($gallery == "all" || $gallery == "ramki_dlya_ikon") {
   $k_files = scandir("gallemax/ramki_dlya_ikon");
   for ($i = 2; $i < count($k_files); $i++) {

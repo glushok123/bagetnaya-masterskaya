@@ -6,7 +6,6 @@ Disallow: /baget_zakaz
 Disallow: /baget_accept
 Disallow: /base
 Disallow: /doc
-Disallow: /modulnye_kartiny/*?id=
 Disallow: /*?
 Disallow: /oplata_uslug.php*?
 Disallow: /pay_success.php*?

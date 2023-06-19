@@ -439,39 +439,6 @@ RewriteRule ^nakatka_na_penokarton/kupit_penokarton.html$ kupit_penokarton.php
 RewriteRule ^pechat_na_penokartone$ pechat_na_penokartone/ [R=301,L]
 RewriteRule ^pechat_na_penokartone/$ pechat_na_penokartone.php
 
-RewriteRule ^modulnye_kartiny$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/$ modulnye_kartiny.php
-
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_primery_rabot.html$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/katalog_modulnyh_kartin$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/katalog_modulnyh_kartin/$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/katalog_modulnyh_kartin/kartina/$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/katalog_modulnyh_kartin/kartina$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/kartina$ modulnye_kartiny/ [R=301,L]
-RewriteRule ^modulnye_kartiny/kartina/$ modulnye_kartiny/ [R=301,L]
-
-RewriteRule ^modulnye_kartiny/sostavnye_kartiny.html$ sostavnye_kartiny.php
-RewriteRule ^modulnye_kartiny/pechat_modulnyh_kartin.html$ modulnye_kartiny/kartiny_iz_chastey.html [R=301,L]
-RewriteRule ^modulnye_kartiny/kartiny_iz_chastey.html$ kartiny_iz_chastey.php
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_na_holste.html$ modulnye_kartiny_na_holste.php
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_na_zakaz.html$ modulnye_kartiny/modulnye_kartiny_nedorogo.html [R=301,L]
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_nedorogo.html$ modulnye_kartiny_nedorogo.php
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_kupit.html$ modulnye_kartiny/modulnye_kartiny_v_moskve.html [R=301,L]
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_v_moskve.html$ modulnye_kartiny_v_moskve.php
-RewriteRule ^modulnye_kartiny/triptih_kartiny.html$ triptih_kartiny.php
-RewriteRule ^modulnye_kartiny/zakazat_triptih_na_holste.html$ modulnye_kartiny/triptih_kartiny.html [R=301,L]
-RewriteRule ^modulnye_kartiny/diptih_kartiny.html$ diptih_kartiny.php
-RewriteRule ^modulnye_kartiny/zakazat_diptih_na_holste.html$ modulnye_kartiny/diptih_kartiny.html [R=301,L]
-RewriteRule ^modulnye_kartiny/poliptih_kartiny.html$ poliptih_kartiny.php
-RewriteRule ^modulnye_kartiny/zakazat_poliptih_na_holste.html$ modulnye_kartiny/poliptih_kartiny.html [R=301,L]
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_abstrakciya.html$ modulnye_kartiny_abstrakciya.php
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_goroda.html$ modulnye_kartiny_goroda.php
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_dlya_kuhni.html$ modulnye_kartiny_dlya_kuhni.php
-RewriteRule ^modulnye_kartiny/modulnye_kartiny_cvety.html$ modulnye_kartiny_cvety.php
-RewriteRule ^modulnye_kartiny/kupit_kartiny_dlya_interyera.html$ kupit_kartiny_dlya_interyera.php
-RewriteRule ^modulnye_kartiny/modulnoe_panno_na_stenu.html$ modulnoe_panno_na_stenu.php
-
-
 RewriteRule ^ramki_dlya_ikon$ ramki_dlya_ikon/ [R=301,L]
 RewriteRule ^ramki_dlya_ikon/$ ramki_dlya_ikon.php
 RewriteRule ^ramki_dlya_ikon/ramki_dlya_vyshityh_ikon.html$ ramki_dlya_vyshityh_ikon.php

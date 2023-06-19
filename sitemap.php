@@ -81,25 +81,6 @@ include "header.php"
 						<li><a href="/natyazhka_holsta/kartina_na_podramnike.html">Картина на подрамнике</a></li>
 					</ul>
 				</li>
-				<li><a href="/modulnye_kartiny/">Модульные картины</a>
-					<ul>
-						<li><a href="/modulnye_kartiny/katalog_modulnyh_kartin/">Каталог модульных картин</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_nedorogo.html">Модульные картины недорого</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_v_moskve.html">Модульные картины в Москве</a></li>
-						<li><a href="/modulnye_kartiny/triptih_kartiny.html">Триптих картины купить</a></li>
-						<li><a href="/modulnye_kartiny/diptih_kartiny.html">Диптих картины купить</a></li>
-						<li><a href="/modulnye_kartiny/poliptih_kartiny.html">Полиптих картины купить</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_na_holste.html">Модульные картины на холсте</a></li>
-						<li><a href="/modulnye_kartiny/kartiny_iz_chastey.html">Картины из частей</a></li>
-						<li><a href="/modulnye_kartiny/sostavnye_kartiny.html">Составные картины</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_abstrakciya.html">Модульные картины абстракция</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_goroda.html">Модульные картины города</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_dlya_kuhni.html">Модульные картины для кухни</a></li>
-						<li><a href="/modulnye_kartiny/kupit_kartiny_dlya_interyera.html">Купить картины для интерьера</a></li>
-						<li><a href="/modulnye_kartiny/modulnye_kartiny_cvety.html">Модульные картины цветы</a></li>
-						<li><a href="/modulnye_kartiny/modulnoe_panno_na_stenu.html">Модульное панно на стену</a></li>
-					</ul>
-				</li>
 
 				<li><a href="/ramki_dlya_ikon/">Рамки для икон</a>
 					<ul>

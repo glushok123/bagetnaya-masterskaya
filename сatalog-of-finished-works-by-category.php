@@ -208,7 +208,6 @@ $works = $stm->fetchAll();
 	<a href="/natyazhka_holsta/" class="lm unmark"> Натяжка холста</a>
 	<a href="/nakatka_na_penokarton/" class="lm unmark"> Накатка на пенокартон</a>
 	<a href="/pechat_na_penokartone/" class="lm unmark"> Печать на пенокартоне</a>
-	<a href="/modulnye_kartiny/" class="lm unmark"> Модульные картины</a><br>
 	<a href="/ramki_dlya_ikon/" class="lm unmark"> Рамки для икон</a>
 	<a href="/ramki_dlya_kartin/" class="lm unmark"> Рамки для картин</a>
 	<a href="/bagetnye_ramki/" class="lm unmark"> Багетные рамки</a>

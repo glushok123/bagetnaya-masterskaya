@@ -2,7 +2,6 @@
 $keyw = "пустые рамки в интерьере";
 $titl = "Пустые рамки - новая тенденция в украшении интерьеров";
 $desc = "В нашей Багетной мастерской можно заказать серию пустых рамок именно под ваш интерьер с индивидуальным подходом профессионалов!";
-$gallery = "modulnye_kartiny";
 include "header.php";
 ?>
 
@@ -35,11 +34,6 @@ include "header.php";
 
 </div>
 <div id="side">
-    <h3>Смотрите также</h3>
-    <a href="/modulnye_kartiny/" class="fast1" style="background:#a21213;">Посмотреть каталог</a>
-    <a href="/modulnye_kartiny/diptih_kartiny.html" class="fast1">Диптих картины</a>
-    <a href="/modulnye_kartiny/triptih_kartiny.html" class="fast1">Триптих картины</a>
-    <a href="/modulnye_kartiny/poliptih_kartiny.html" class="fast1">Полиптих картины</a>
 
     <?
     include "b3.php";

@@ -6,7 +6,6 @@
 	$komm=$_GET["komm"];
 	$ipaddr=$_SERVER["REMOTE_ADDR"];
 	$n=rand(1000,9999);
-	$zakaz="<a href='http://bagetnaya-masterskaya.com/modulnye_kartiny/katalog_modulnyh_kartin/kartina?id=".$img."'>ссылка</a><br>";
 	if ($size==0) {$zakaz.='маленький размер';}
 	if ($size==1) {$zakaz.='средний размер';}
 	if ($size==2) {$zakaz.='большой размер';}
