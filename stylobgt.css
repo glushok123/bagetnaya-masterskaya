@@ -1,0 +1,954 @@
+BODY {
+    font: normal 14px/18px Arial, Helvetica, sans-serif;
+    color: #000000;
+    overflow-y: scroll;
+}
+
+a {
+    border: none;
+    cursor: pointer;
+}
+
+label div {
+    text-decoration: none;
+    cursor: pointer;
+    color: #339;
+    font-weight: 700;
+}
+
+label div span {
+    text-decoration: underline;
+    color: #00c;
+    font-weight: 400;
+}
+
+label:hover div span {
+    text-decoration: none;
+}
+
+input {
+    resize: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100px;
+    height: 20px;
+    font: normal 14px/18px Verdana;
+    overflow: hidden;
+}
+
+.paspmid {
+    width: 45px;
+    margin: 2px 40px 2px 40px;
+}
+
+.paspleft {
+    width: 45px;
+    margin: 0px 25px 0px 0px;
+}
+
+.paspright {
+    width: 45px;
+}
+
+table {
+    font: normal 15px/18px Calibri;
+}
+
+hr {
+    clear: both;
+}
+
+a.t2 {
+    color: #0000cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a.t2:hover {
+    text-decoration: none;
+}
+
+
+a.t3 {
+    color: #cc0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.t3:hover {
+    text-decoration: underline;
+}
+
+#site {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    min-height: 640px;
+    min-width: 1000px;
+}
+
+#logobaget {
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 120px;
+    height: 50px;
+    font: normal 18px/50px Arial;
+    text-align: center;
+    color: #ffffff;
+    background: url("/img/back.png") no-repeat left;
+    font-weight: 700;
+    text-decoration: none;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
+#logobaget:hover {
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+
+#resizec {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    cursor: move;
+    background: url("/img/null.gif");
+}
+
+#resizerb {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 20%;
+    height: 20%;
+    cursor: nw-resize;
+}
+
+#resizelt {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20%;
+    height: 20%;
+    cursor: nw-resize;
+}
+
+#resizelb {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 20%;
+    height: 20%;
+    cursor: ne-resize;
+}
+
+#resizert {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 20%;
+    height: 20%;
+    cursor: ne-resize;
+}
+
+.baganim {
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+#sizex {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background: url("/img/sizexl.gif") left top no-repeat, url("/img/sizexr.gif") right top no-repeat, url("/img/pix.gif") left center repeat-x;
+
+}
+
+#sizey {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    height: 100%;
+    width: 50px;
+    text-align: center;
+    background: url("/img/sizeyt.gif") top right no-repeat, url("/img/sizeyb.gif") bottom right no-repeat, url("/img/pix.gif") top center repeat-y;
+}
+
+#sizey span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -13px;
+    margin-left: -25px;
+    width: 100px;
+    height: 25px;
+    -webkit-transform: rotate(270deg); // разворот элемента для разных бразуеров
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+    font: normal 25px/25px Calibri;
+    color: #666;
+    background: #fff;
+}
+
+#sizex span {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 12px;
+    width: 100px;
+    height: 25px;
+    font: normal 25px/25px Calibri;
+    color: #666;
+    background: #fff;
+}
+
+
+.baginst {}
+
+#bagcont {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 40%;
+}
+
+#bgtop,
+#bgbot,
+#bgleft,
+#bgright,
+#bglwrap,
+#bgrwrap {
+    background-size: auto 100% !important;
+    position: absolute;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    overflow: hidden;
+}
+
+#bgtop {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#bgbot {
+    top: 100%;
+    left: 100%;
+    width: 100%;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+
+#bglwrap {
+    top: 100%;
+    left: 0%;
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+}
+
+#bgrwrap {
+    top: 0;
+    left: 100%;
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+#bgright,
+#bgleft {
+    width: 142%;
+    top: 0;
+    left: 0;
+    background-size: auto 100%;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+#bgcenter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-size: 100% 100% !important;
+}
+
+#bgpass {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+.bmbg {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: #444444;
+    z-index: 10;
+}
+
+#bmenu-sort {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -21px;
+    width: 300px;
+    height: 20px;
+    background: #fff;
+    z-index: 16;
+    font: normal 15px/20px Tahoma;
+    border-bottom: solid 1px #000000;
+    text-align: center;
+}
+
+#bmenu-sort a {
+    color: #444444;
+    display: block;
+    position: relative;
+    float: left;
+    width: 80px;
+    height: 20px;
+    margin: 0px 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#bmenu-sort a:hover {
+    text-decoration: underline;
+}
+
+#bmenu-sort .sort1 {
+    color: #000000;
+    background: url("/img/sort1.gif");
+}
+
+#bmenu-sort .sort2 {
+    color: #000000;
+    background: url("/img/sort2.gif");
+}
+
+#paspartu-anounce {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    margin-left: -350px;
+    margin-top: -41px;
+    width: 700px;
+    height: 40px;
+    background: url("/img/paspartu-anounce-bg.gif");
+    z-index: 16;
+    font: normal 15px/20px Tahoma;
+    border-bottom: solid 1px #000000;
+    text-align: center;
+}
+
+#baget-type-menu {
+    float: left;
+    margin-right: 25px;
+}
+
+.sorter-menu {
+    padding: 25px 15px 15px;
+    box-shadow: 0 0 3px rgb(0 0 0 / 50%);
+    position: relative;
+}
+
+#baget-type-menu .btm0,
+#baget-type-menu .btm1 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 150px;
+    margin: 0 5px 0 5px;
+    height: 40px;
+    text-align: center;
+    font: normal 18px/36px Tahoma;
+    -webkit-box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, 0.4);
+}
+
+#baget-type-menu .btm0 {
+    background: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0000cc;
+}
+
+#baget-type-menu .btm1 {
+    background: #cfc;
+    color: #636;
+}
+
+#baget-type-menu .btm0:hover {
+    text-decoration: none;
+}
+
+.pasp-block {
+    display: none;
+}
+
+#bmenu {
+    position: fixed;
+    top: 4%;
+    left: 4%;
+    width: 92%;
+    height: 88vh;
+    background: #fff;
+    z-index: 15;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-bottom: 30px;
+}
+
+.closeme {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    opacity: 1;
+    cursor: pointer;
+    background: url(/base/close.png) left top no-repeat;
+    background-size: contain;
+}
+
+.closeme:hover {
+    opacity: .7;
+}
+
+#sorter-catalog {
+    padding: 7px 9px;
+    margin-top: -8px;
+}
+
+select[data-type="pasp"] .display-none {
+    display: none;
+}
+
+.baget-conteiner {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100% - 70px);
+    padding-top: 15px;
+}
+
+.bmenu-open {
+    cursor: pointer;
+    border: 1px solid #c5c5c5;
+    padding: 7px 18px;
+    background: #eaeaea;
+    border-radius: 3px;
+    margin-right: 5px;
+
+}
+
+.bmenu-open:hover {
+    background: #dcdcdc;
+}
+
+#bmenu a {
+    position: relative;
+    float: left;
+    display: block;
+    padding: 10px;
+    width: 150px;
+    height: 240px;
+    text-align: center;
+    margin: 0px 5px;
+    text-decoration: none;
+    color: #000000;
+    font: normal 15px/20px Tahoma;
+}
+
+#bmenu a:hover {
+    background: #f0f0f0;
+}
+
+.nalich0,
+.nalich1,
+.nalich2 {
+    width: 100%;
+    line-height: 30px;
+    margin-top: 5px;
+}
+
+.nalich0 {
+    background: #f99;
+    border-top: solid 1px #933;
+    border-bottom: solid 1px #933;
+}
+
+.nalich1 {
+    background: #ff9;
+    border-top: solid 1px #993;
+    border-bottom: solid 1px #993;
+}
+
+.nalich2 {
+    background: #9f9;
+    border-top: solid 1px #393;
+    border-bottom: solid 1px #393;
+}
+
+.bmenuimg {
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    border: 0;
+    width: 150px;
+    height: 100px;
+}
+
+.bmenuclose {
+    background: url('/img/bagmenuclose.png') no-repeat;
+    position: absolute;
+    display: block;
+    top: 10%;
+    left: 95%;
+    margin-top: -42px;
+    width: 42px;
+    height: 42px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+
+#bagsidemenu {
+    width: 290px;
+    text-align: center;
+    font: normal 14px/20px Tahoma;
+    /*box-shadow: 0 0 6px 2px #0a3551;*/
+    background: #f1f7fd;
+    border: 1px solid;
+}
+
+#bagchekbody {
+    text-align: center;
+    width: 320px;
+    height: 600px;
+    box-shadow: 0 0 6px 2px #0a3551;
+    background: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.30;
+    -khtml-opacity: 0.3;
+    opacity: 0.30;
+}
+
+#bagchekbody:hover {
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+#bagcheklist {
+    width: 320px;
+    height: 565px;
+    font: normal 14px/20px Tahoma;
+    overflow-y: scroll;
+}
+
+.bagzak {
+    display: block;
+    background: #12a216;
+    color: #fff;
+    width: 100%;
+    padding: 5px 0px;
+    font: normal 20px/25px Tahoma;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.bagzak:hover {
+    background: #076b0a;
+}
+
+.bagzakchek {
+    display: block;
+    float: left;
+    background: #74ff76;
+    color: #000;
+    width: 250px;
+    padding: 5px 0px;
+    font: normal 20px/25px Tahoma;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.bagzakchek:hover {
+    background: #12a213;
+}
+
+.bagzakchekout {
+    display: block;
+    float: left;
+    background: #74ff76;
+    color: #000;
+    width: 160px;
+    padding: 5px 0px;
+    font: normal 20px/25px Tahoma;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.bagzakchekout:hover {
+    background: #12a213;
+}
+
+.bagzakchekclear {
+    display: block;
+    float: left;
+    background: #ff7476;
+    color: #000;
+    width: 160px;
+    padding: 5px 0px;
+    font: normal 20px/25px Tahoma;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.bagzakchekclear:hover {
+    background: #a21213;
+}
+
+.baget-zakaz-main {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+    background: #f4faff;
+    font: normal 14px/20px Tahoma;
+    box-shadow: 0 0 6px 2px #0a3551;
+}
+
+.baget-zakaz-left {
+    position: relative;
+    float: left;
+    margin: 5px;
+    width: 240px;
+    height: 540px;
+    text-align: left;
+    font: normal 14px/20px Tahoma;
+}
+
+.baget-zakaz-right {
+    position: relative;
+    float: left;
+    margin: 5px;
+    width: 540px;
+    height: 540px;
+    text-align: left;
+    font: normal 14px/20px Tahoma;
+}
+
+.baget-zakaz-buttons {
+    position: relative;
+    float: left;
+    width: 800px;
+    height: 50px;
+}
+
+.baget-zakaz-back {
+    position: relative;
+    float: left;
+    margin: 5px;
+    width: 390px;
+    height: 40px;
+    background: #ff9090;
+    font: normal 20px/40px Tahoma;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 0 6px 2px #903030;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.baget-zakaz-send {
+    position: relative;
+    float: left;
+    margin: 5px;
+    padding: 0px;
+    width: 390px;
+    height: 40px;
+    background: #90ff90;
+    font: normal 20px/40px Tahoma;
+    cursor: pointer;
+    text-align: center;
+    border: 0px;
+    color: #000;
+    box-shadow: 0 0 6px 2px #309030;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.baget-zakaz-back:hover {
+    background: #ee7070;
+}
+
+.baget-zakaz-send:hover {
+    background: #70ee70;
+}
+
+.baget-zakaz-accept {
+    position: absolute;
+    top: 200px;
+    width: 800px;
+    height: 80px;
+    background: #b0ffb0;
+    text-align: center;
+    font: normal 20px/40px Tahoma;
+    cursor: hand;
+    text-align: center;
+    color: #000;
+}
+
+.baget-zakaz-accept-button1 {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    margin-left: -150px;
+    width: 300px;
+    height: 40px;
+    background: #90ff90;
+    font: normal 20px/40px Tahoma;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 0 6px 2px #309030;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.baget-zakaz-accept-button1:hover {
+    background: #70ee70;
+}
+
+.baget-zakaz-accept-button2 {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    margin-left: -150px;
+    width: 300px;
+    height: 40px;
+    background: #90ff90;
+    font: normal 20px/40px Tahoma;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 0 6px 2px #309030;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.baget-zakaz-accept-button2:hover {
+    background: #70ee70;
+}
+
+.baget-zakaz-error {
+    position: absolute;
+    top: 160px;
+    width: 800px;
+    height: 120px;
+    background: #ffb0b0;
+    text-align: center;
+    font: normal 20px/40px Tahoma;
+    cursor: hand;
+    text-align: center;
+    color: #000;
+}
+
+.baget-chek-mod {
+    width: 20px;
+    height: 20px;
+    float: left;
+    display: block;
+    background: url("/img/bag-chek-mod.gif");
+    margin: 2px;
+}
+
+.baget-chek-del {
+    width: 20px;
+    height: 20px;
+    float: left;
+    display: block;
+    background: url("/img/bag-chek-del.gif");
+    margin: 2px;
+}
+
+/******/
+.form {
+    text-align: left;
+    padding: 0px 15px 10px;
+}
+
+input[name="catalogfile"],
+input[name="calcfile"] {
+    width: 100%;
+    height: auto;
+}
+
+.upload_files {
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: calc(33% - 10px);
+    background: #d9e42a;
+    padding: 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.addnewbaget {
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: calc(33% - 10px);
+    background: #12a216;
+    padding: 5px;
+    display: inline-block;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.reset {
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: calc(24% - 10px);
+    background: #dc4338;
+    padding: 5px;
+    display: inline-block;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.delete-baget {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    opacity: 1;
+    cursor: pointer;
+    background: #ffffff url(/base/close.png) center center no-repeat;
+    background-size: 10px;
+    padding: 2px;
+}
+
+.form select {
+    width: 96%;
+}
+
+.form .formsection {
+    margin: 8px 0;
+}
+
+input[name="width"] {
+    width: 100%;
+}
+
+input[name="widthwithout"] {
+    width: 100%;
+}
+
+input[name="widthwithout"] {
+    width: 100%;
+}
+
+input[name="pricenew"] {
+    width: 100%;
+}
+
+input[name="vendor"] {
+    width: 95%;
+}
+
+.newbgt {
+    width: 150px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -165px;
+    background: #fff;
+}

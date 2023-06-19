@@ -1,0 +1,57 @@
+.card-img-top {
+    max-width: 150px;
+    align: center;
+}
+
+.card {
+    margin: 15px 15px 15px 15px;
+}
+
+.add {
+    max-width: 150px;
+    margin: 15px 15px 15px 15px;
+}
+
+.card-title {
+    text-align: center !important;
+}
+
+.search {
+    max-width: 300px;
+    max-height: 38px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.input-change-sm {
+    max-width: 80px;
+}
+
+.castom-image {
+    min-width: 100%;
+    min-width: 80%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.carousel-item {
+    text-align: center !important;
+}
+
+.d-block {
+    display: inline-block !important;
+}
+
+.price {
+    font-weight: bold;
+}
