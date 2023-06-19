@@ -84,25 +84,26 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
-                            <li><a class="dropdown-item" href="/designation_references.php">оформление живописи</a></li>
-                            <li><a class="dropdown-item" href="/ramki_dlya_ikon/">рамки для икон</a></li>
-                            <li><a class="dropdown-item" href="/ramki_dlya_vyshivki/">рамки для вышивки</a></li>
-                            <li><a class="dropdown-item" href="/zerkala_v_bagete/">зеркала в багете</a></li>
-                            <li><a class="dropdown-item" href="/ordena_i_medali/">панно для наград и орденов</a></li>
-                            <li><a class="dropdown-item" href="/formation_football.php">оформление футболок</a></li>
-                            <li><a class="dropdown-item" href="/object_forming.php">объектное оформление</a></li>
-                            <li><a class="dropdown-item" href="/pechat_na_holste/">печать на холсте</a></li>
-                            <li><a class="dropdown-item" href="/natyazhka_holsta/">натяжка холста</a></li>
-                            <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij/">печать постеров, фотографий и репродукций</a></li>
-                            <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
-                            <li><a class="dropdown-item" href="/pechat_na_penokartone/">Печать на пенокартоне</a></li>
-                            <li><a class="dropdown-item" href="/modulnye_kartiny/">Модульные картины</a></li>
-                            <li><a class="dropdown-item" href="/ramki_dlya_kartin/">Рамки для картин</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
                             <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
                             <li><a class="dropdown-item" href="/bagety_dlya_kartin/">Багеты для картин</a></li>
                             <li><a class="dropdown-item" href="/home_designer.php">Выездной подбор багета</a></li>
+                            <li><a class="dropdown-item" href="/ordena_i_medali/">Панно для наград и орденов</a></li>
+                            <li><a class="dropdown-item" href="/pechat_na_holste/">Печать на холсте</a></li>
+                            <li><a class="dropdown-item" href="/pechat_na_penokartone/">Печать на пенокартоне</a></li>
+                            <li><a class="dropdown-item" href="/ramki_dlya_kartin/">Рамки для картин</a></li>
+                            <li><a class="dropdown-item" href="/ramki_dlya_ikon/">Рамки для икон</a></li>
+                            <li><a class="dropdown-item" href="/ramki_dlya_vyshivki/">Рамки для вышивки</a></li>
+                            <li><a class="dropdown-item" href="/designation_references.php">Оформление живописи</a></li>
+                            <li><a class="dropdown-item" href="/zerkala_v_bagete/">Зеркала в багете</a></li>
+                            <li><a class="dropdown-item" href="/formation_football.php">Оформление футболок</a></li>
+                            <li><a class="dropdown-item" href="/object_forming.php">Объектное оформление</a></li>
+                            <li><a class="dropdown-item" href="/natyazhka_holsta/">Натяжка холста</a></li>
+                            <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij/">печать постеров, фотографий и репродукций</a></li>
+                            <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
+                            <li><a class="dropdown-item" href="/modulnye_kartiny/">Модульные картины</a></li>
                             <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
+                            <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
                         </ul>
                     </span>
                     <button type="button" class="btn resize-font"> <a href="/contacts.php" style="text-decoration: none;color:black;">КОНТАКТЫ</a> </button>
