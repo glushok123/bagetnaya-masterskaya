@@ -1111,7 +1111,9 @@ $(document).ready(function () {
             url: '/admin/request/galleryWorks/getJsonListGalleryWorks.php',
             method: 'post',
             dataType: "json",
-            data: {},
+            data: {
+                categoryId : $('#selectCategoryGalleryWorks').val()
+            },
             async: true,
             success: function (data) {
                 tableGalleryWorks.fnClearTable();
@@ -1283,6 +1285,9 @@ $(document).ready(function () {
     }); // Сортировка
     $(document).on('change', '#type_catalog', function () {
         changeTypeCatalog()
+    }); // Сортировка
+    $(document).on('change', '#selectCategoryGalleryWorks', function () {
+        getGalleryWorksRequest()()
     }); // Сортировка
     $(document).on('click', '#add-painting-save', function () {
         addPaintingCatalogRequest()

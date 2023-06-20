@@ -1,6 +1,7 @@
 <?
 require_once '../../../base/connect.php';
 
+
 $stm = $dbh->prepare("SELECT * FROM gallery_work_images");
 $stm->execute();
 $galleryWorkImages = $stm->fetchAll();
@@ -17,6 +18,9 @@ foreach ($categoryGalleryWorkImages as $item) {
 }
 
 foreach ($galleryWorkImages as $item) {
+    if (!empty($_POST['categoryId']) && $item['category'] != $_POST['categoryId']) {
+        continue;
+    }
     $data[] = [
         '<img src=".' . $item['url_image'] . '" class="rounded mx-auto d-block castom-image " width="70px"  height="70px"alt="...">',
         $category[$item['category']],

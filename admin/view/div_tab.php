@@ -1,3 +1,15 @@
+
+<?
+    $stm = $dbh->prepare("SELECT * FROM category_gallery_works");
+    $stm->execute();
+    $categoryGalleryWorkImages = $stm->fetchAll();
+
+    $categoryGalleryWorks = [];
+
+    foreach ($categoryGalleryWorkImages as $item) {
+        $categoryGalleryWorks[$item['id']] = $item['name'];
+    }
+?>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade row " id="plast" role="tabpanel" aria-labelledby="home-tab">
 
@@ -32,7 +44,19 @@
         <div class='container'>
             <div class='container'>
                 <div class="row">
-                    <button type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#ModalAddGalleryWorks">Добавить</button>
+                    <br>
+                    <div class='col'>
+                        <button type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#ModalAddGalleryWorks">Добавить</button>
+                    </div>
+                    <div class='col'>
+                        <select class="form-select" aria-label="Default select example" style="margin:10px;" id='selectCategoryGalleryWorks'>
+                            <?
+                                foreach ($categoryGalleryWorks as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="" style="width:100%">
                     <table id="gallery-works-tables" class="table table-striped" style="width:100%">

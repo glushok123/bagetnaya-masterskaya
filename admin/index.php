@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/config/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 
 if (!isset($_SESSION['user_logged_in'])) {
     header('Location:authentication-login.php');
