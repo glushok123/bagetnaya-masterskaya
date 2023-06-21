@@ -976,8 +976,6 @@ if ($z[12] > 0) {
 	<? } ?>
 	<?
 
-
-
 	echo '	<form id="form" name="form" onsubmit="return false;">
 			<hr>
 			<span style="color:#339; font-weight:700;">Укажите размеры изображения:</span><br>
@@ -1037,7 +1035,6 @@ if ($z[12] > 0) {
 				<input type="submit" value="Применить">
 			</form>
 		</div>
-
 
 
 		<?
@@ -1118,19 +1115,15 @@ if ($z[12] > 0) {
 		?>
 
 		<style>
-			@media (min-width: 992px) and (max-width: 1920px) {}
-
 			.img-custom {
 				position: absolute;
 				left: 32%;
-
 			}
 
 			.test-custom {
 				position: relative;
 				/* добавили */
 				background: black;
-
 			}
 		</style>
 

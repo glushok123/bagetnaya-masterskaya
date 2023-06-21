@@ -5,49 +5,41 @@
 		height: 250px;
 		object-fit: cover;
 	}
-
 	.carousel-item {
 		text-align: center !important;
 	}
-
 	.d-block {
 		display: inline-block !important;
 	}
-
 	html,
 	body {
 		max-width: 100%;
-
 	}
-
 	body {
 		max-width: 100%;
-
 		overflow-x: hidden;
 	}
-
 	.price {
 		font-weight: bold;
 	}
-
 	form {
 		box-sizing: border-box !important;
 	}
-
 	form input {
 		width: 90% !important;
 	}
-
 	form select {
 		width: 85% !important;
 	}
-
 	form textarea {
 		width: 90% !important;
 	}
-
 	.hidden {
 		display: none;
+	}
+	p {
+		text-indent: 20px;
+		/* Отступ первой строки в пикселах */
 	}
 </style>
 
@@ -71,12 +63,7 @@ require_once 'base/connect.php';
 </div>
 
 <hr>
-<style>
-	p {
-		text-indent: 20px;
-		/* Отступ первой строки в пикселах */
-	}
-</style>
+
 <div class='container'>
 	<p>
 		<b>Ищете место, где можно купить картину художника?</b> Багетная мастерская №1

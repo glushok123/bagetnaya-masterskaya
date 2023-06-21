@@ -210,11 +210,6 @@ hr {
 	padding-top: 18px;
 }
 
-.ball {
-        	/*background: url(/ball.png) top left no-repeat; width: 99px; height: 200px; position: absolute; top:0; left: -10%;*/
-	;
-}
-
 #ocomp {
 	position: relative;
 	float: left;
