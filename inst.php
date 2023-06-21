@@ -1,21 +1,12 @@
 <?
 
-// $client_id    = '';
 $access_token = 'IGQVJYS01xVDh5TTNxbXdUUWFwM0g5blZAJWkpYcFZAaNVFMNHhsMkcxVW9IS2lCLWZA2RHRla3hUX1d4VnQwckRyZAktJR1FJLWJoTHRlMkNhY0x2emtnWWJIbkI5S2ZAOdU5yY25mTk1ucXRPeXlPOHdQZAwZDZD';
 $user_id = '';
-//$res = file_get_contents('https://graph.instagram.com/me?fields=id&access_token='.$access_token);
-// var_dump($res);
-
-
-//$res = json_decode($res, true);
 $user_id = $res['id'];
 if (isset($user_id)) {
-  // var_dump($user_id);
-  //$res = file_get_contents('https://graph.instagram.com/me/media?fields=id,media_type&access_token='.$access_token);
   $posts = json_decode($res, true);
-
-  // var_dump($posts);
   $finalarr = [];
+
   foreach ($posts['data'] as $post) {
     if ($post["media_type"] == 'IMAGE') {
       array_push($finalarr, $post['id']);
@@ -24,7 +15,6 @@ if (isset($user_id)) {
     }
   }
   $finalarr = array_slice($finalarr, 0, 5);
-  // var_dump($finalarr);
 
 ?>
   <div class="insta-photo">
@@ -40,8 +30,6 @@ if (isset($user_id)) {
     $post = file_get_contents('https://graph.instagram.com/' . $el . '?fields=id,media_url,timestamp,caption&access_token=' . $access_token);
     $post = json_decode($post, true);
     $str = mb_strimwidth($post["caption"], 0, 55, "..");
-    // var_dump($str);
-
   ?>
     <div class="insta-photo">
       <div class="img-wrapper"><img alt="<?= $str; ?>" src="<?= $post['media_url'] ?>"></div>
@@ -243,17 +231,6 @@ if (isset($user_id)) {
       margin: 0 auto;
     }
   </style>
-
-  <!--div class="insta-photo">
-  <h3>Мы в VK: <a target="_blank" href="https://vk.com/bagetnaya1">bagetnaya1</a></h3>
-  <b class="post-text">Багетная мастерская №1 Москва</b>
-  <p class="post-text">⚜️Оформление объектов искусства</p>
-  <p class="post-text">⚜️Скидка 10% на первый заказ через группу ВК</p>
-  <p class="post-text">⚜️м. Арбатская, м. Новокузнецкая</p>
-  <p class="post-text">⚜️Создать дизайн в <a href="https://bagetnaya-masterskaya.com/baget_online">конструкторе</a></p>
-</div-->
-
-
 
   <h2 class='container-knopka'>МЫ В ВКОНТАКТЕ</h2>
   <div class='container' id='pk-knopka'>

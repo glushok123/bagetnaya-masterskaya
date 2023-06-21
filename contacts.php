@@ -32,7 +32,6 @@ include "header.php";
                         <p><strong itemprop="name">Багетная мастерская №1 - м. Арбатская</strong></p>
                         <p><strong>Предоплата услуг: <a href="/oplata_uslug.php" class="t2">онлайн платеж</a></strong></p>
                         <p><strong>Электронная почта: </strong> <a href="mailto:manager@bagetnaya-masterskaya.com" itemprop="email" class="t3"> manager@bagetnaya-masterskaya.com</a></p>
-                        <!-- <p><strong>Телефоны:</strong><a href="tel:+74955047304" itemprop="telephone" class="t3">+7 495 504-73-04</a>, <a href="tel:+74959517751" itemprop="telephone" class="t3">+7 495 951-77-51</a></p> -->
                         <p>
                             <strong>Телефоны: </strong><a href="tel:>+74956652561" itemprop="telephone" class="t3">8 (495) 665-25-61, </a><a href="tel:>+79268659295" itemprop="telephone" class="t3">8 (926) 865-92-95 (WhatsApp)</a>
                             <a title="Whatsapp" href="https://wa.me/79268659295"><img src="img/Whatsapp_37229.png" alt="Написать в Whatsapp" style="width:50px; height:50px;" /></a>

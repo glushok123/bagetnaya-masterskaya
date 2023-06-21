@@ -49,7 +49,6 @@ if ($sort != '') {
 }
 
 $stm = $dbh->prepare("SELECT * FROM catalog_baget where type = '" . $typeCatalog . "' " . $conditionSort);
-$stm->bindParam(1, $z[0]);
 $stm->execute();
 $data = $stm->fetchAll();
 

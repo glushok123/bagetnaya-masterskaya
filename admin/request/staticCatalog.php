@@ -2,7 +2,6 @@
 require_once '../../base/connect.php';
 
 $stm = $dbh->prepare("SELECT * FROM catalog_baget");
-$stm->bindParam(1, $z[0]);
 $stm->execute();
 $data = $stm->fetchAll();
 

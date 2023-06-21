@@ -1,14 +1,5 @@
 <? 
 	if ($_GET["id"]) {
-		// $ipaddr=$_SERVER["REMOTE_ADDR"];
-		// $id=$_GET["id"];
-		// $f = fopen('base/quest.txt', 'a');
-		// if ($ipaddr=='5.39.162.100') {$ipaddr='Копифаст';}
-		// if ($ipaddr=='5.39.162.49') {$ipaddr='Копимастер';}
-		// $towrite=$ipaddr.'|'.$id."\r\n";
-		// fwrite($f, $towrite);
-		// fclose($f);
-		// $a=explode('l',$id);
 		if ($a[0]=='1') {$s='1. Откуда Вы узнали о нашей компании: <b> Яндекс</b><br>';}
 		if ($a[0]=='2') {$s='1. Откуда Вы узнали о нашей компании: <b> Google</b><br>';}
 		if ($a[0]=='3') {$s='1. Откуда Вы узнали о нашей компании: <b> Реклама на сайтах</b><br>';}

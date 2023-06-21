@@ -300,7 +300,4 @@ $not_mobile = !(isMobile());
         <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
         <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
 
-        <?
-
-        include "bot.php";
-        ?>
+        <? include "bot.php"; ?>

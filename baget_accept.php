@@ -1,7 +1,5 @@
 <?
-// ini_set('error_reporting', E_ALL);
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
+
 if ($_GET['id']) {
 	$ident = $_GET['id'];
 	if (preg_match("/^[\dl]+$/", $ident)) {
