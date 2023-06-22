@@ -273,7 +273,7 @@ class SimpleXLSX
 				}
 		*/
 		// Explode to each part
-		$aE = explode("\x50\x4b\x03\x04", $vZ);
+		$aE = explode("\x50\x4b\x03\x04", (string) $vZ);
 		array_shift($aE);
 
 		$aEL = count($aE);
@@ -316,7 +316,7 @@ class SimpleXLSX
 
 			// Special case : value block after the compressed data
 			if ($aP['GPF'] & 0x0008) {
-				$aP1 = unpack('V1CRC/V1CS/V1UCS', $this->_substr($vZ, -12));
+				$aP1 = unpack('V1CRC/V1CS/V1UCS', (string) $this->_substr($vZ, -12));
 
 				$aP['CRC'] = $aP1['CRC'];
 				$aP['CS']  = $aP1['CS'];
@@ -330,7 +330,7 @@ class SimpleXLSX
 
 			// Getting stored filename
 			$aI['N'] = $this->_substr($vZ, 26, $nF);
-			$aI['N'] = str_replace('\\', '/', $aI['N']);
+			$aI['N'] = str_replace('\\', '/', (string) $aI['N']);
 
 			if ($this->_substr($aI['N'], -1) === '/') {
 				// is a directory entry - will be skipped
@@ -378,7 +378,7 @@ class SimpleXLSX
 					} elseif ($this->_strlen($vZ) !== (int) $aP['UCS']) {
 						$aI['E']  = 3;
 						$aI['EM'] = 'Uncompressed size is not equal with the value in header information.';
-					} elseif (crc32($vZ) !== $aP['CRC']) {
+					} elseif (crc32((string) $vZ) !== $aP['CRC']) {
 						$aI['E']  = 4;
 						$aI['EM'] = 'CRC32 checksum is not equal with the value in header information.';
 					}
@@ -418,7 +418,7 @@ class SimpleXLSX
 			$this->errno = $num;
 			$this->error = $str;
 			if ($this->debug) {
-				trigger_error(__CLASS__ . ': ' . $this->error, E_USER_WARNING);
+				trigger_error(self::class . ': ' . $this->error, E_USER_WARNING);
 			}
 		}
 
@@ -460,13 +460,13 @@ class SimpleXLSX
 					}
 
 
-					if ($workbookRelations = $this->getEntryXML(dirname($rel_target) . '/_rels/workbook.xml.rels')) {
+					if ($workbookRelations = $this->getEntryXML(dirname((string) $rel_target) . '/_rels/workbook.xml.rels')) {
 
 						// Loop relations for workbook and extract sheets...
 						foreach ($workbookRelations->Relationship as $workbookRelation) {
 
 							$wrel_type = basename(trim((string) $workbookRelation['Type']));
-							$wrel_path = $this->_getTarget(dirname($rel_target), (string) $workbookRelation['Target']);
+							$wrel_path = $this->_getTarget(dirname((string) $rel_target), (string) $workbookRelation['Target']);
 							if (!$this->entryExists($wrel_path)) {
 								continue;
 							}
@@ -544,7 +544,7 @@ class SimpleXLSX
 	public function getEntryXML($name)
 	{
 		if ($entry_xml = $this->getEntryData($name)) {
-			$entry_xml = trim($entry_xml);
+			$entry_xml = trim((string) $entry_xml);
 			// dirty remove namespace prefixes and empty rows
 			$entry_xml = preg_replace('/xmlns[^=]*="[^"]*"/i', '', $entry_xml); // remove namespaces
 			$entry_xml = preg_replace('/[a-zA-Z0-9]+:([a-zA-Z0-9]+="[^"]+")/', '$1$2', $entry_xml); // remove namespaced attrs
@@ -552,7 +552,7 @@ class SimpleXLSX
 			$entry_xml = preg_replace('/<\/[a-zA-Z0-9]+:([^>]+)>/', '</$1>', $entry_xml); // fix namespaced closed tags
 
 			//			if ( $this->skipEmptyRows && strpos($name, '/sheet') ) {
-			if (strpos($name, '/sheet')) { // dirty skip empty rows
+			if (strpos((string) $name, '/sheet')) { // dirty skip empty rows
 				$entry_xml = preg_replace('/<row[^>]+>\s*(<c[^\/]+\/>\s*)+<\/row>/', '', $entry_xml, -1, $cnt); // remove empty rows
 				$entry_xml = preg_replace('/<row[^\/>]*\/>/', '', $entry_xml, -1, $cnt2);
 				$entry_xml = preg_replace('/<row[^>]*><\/row>/', '', $entry_xml, -1, $cnt3);
@@ -587,7 +587,7 @@ class SimpleXLSX
 
 	public function getEntryData($name)
 	{
-		$name = ltrim(str_replace('\\', '/', $name), '/');
+		$name = ltrim(str_replace('\\', '/', (string) $name), '/');
 		$dir  = $this->_strtoupper(dirname($name));
 		$name = $this->_strtoupper(basename($name));
 		foreach ($this->package['entries'] as $entry) {
@@ -602,8 +602,8 @@ class SimpleXLSX
 
 	public function entryExists($name)
 	{ // 0.6.6
-		$dir  = $this->_strtoupper(dirname($name));
-		$name = $this->_strtoupper(basename($name));
+		$dir  = $this->_strtoupper(dirname((string) $name));
+		$name = $this->_strtoupper(basename((string) $name));
 		foreach ($this->package['entries'] as $entry) {
 			if ($this->_strtoupper($entry['path']) === $dir && $this->_strtoupper($entry['name']) === $name) {
 				return true;
@@ -745,7 +745,7 @@ class SimpleXLSX
 		foreach ($this->rows($worksheetIndex) as $r) {
 			$s .= '<tr>';
 			foreach ($r as $c) {
-				$s .= '<td nowrap>' . ($c === '' ? '&nbsp' : htmlspecialchars($c, ENT_QUOTES)) . '</td>';
+				$s .= '<td nowrap>' . ($c === '' ? '&nbsp' : htmlspecialchars((string) $c, ENT_QUOTES)) . '</td>';
 			}
 			$s .= "</tr>\r\n";
 		}
@@ -763,7 +763,7 @@ class SimpleXLSX
 
 			if (!isset($this->hyperlinks[$worksheetIndex]) && isset($ws->hyperlinks)) {
 				$this->hyperlinks[$worksheetIndex] = [];
-				$sheet_rels = str_replace('worksheets', 'worksheets/_rels', $this->sheetFiles[$worksheetIndex]) . '.rels';
+				$sheet_rels = str_replace('worksheets', 'worksheets/_rels', (string) $this->sheetFiles[$worksheetIndex]) . '.rels';
 				$link_ids = [];
 
 				if ($rels = $this->getEntryXML($sheet_rels)) {
@@ -858,7 +858,7 @@ class SimpleXLSX
 	public function getIndex($cell = 'A1')
 	{
 
-		if (preg_match('/([A-Z]+)(\d+)/', $cell, $m)) {
+		if (preg_match('/([A-Z]+)(\d+)/', (string) $cell, $m)) {
 			$col = $m[1];
 			$row = $m[2];
 
@@ -867,7 +867,7 @@ class SimpleXLSX
 
 			for ($i = $colLen - 1; $i >= 0; $i--) {
 				/** @noinspection PowerOperatorCanBeUsedInspection */
-				$index += (ord($col[$i]) - 64) * pow(26, $colLen - $i - 1);
+				$index += (ord($col[$i]) - 64) * 26 ** ($colLen - $i - 1);
 			}
 
 			return [$index - 1, $row - 1];
@@ -888,7 +888,7 @@ class SimpleXLSX
 			if ($s > 0 && isset($this->cellFormats[$s])) {
 				if (array_key_exists('format', $this->cellFormats[$s])) {
 					$format = $this->cellFormats[$s]['format'];
-					if (preg_match('/[mM]/', $format)) { // [m]onth
+					if (preg_match('/[mM]/', (string) $format)) { // [m]onth
 						$dataType = 'd';
 					}
 				} else {
@@ -997,7 +997,7 @@ class SimpleXLSX
 		}
 		if (is_string($cell)) {
 			$result = $ws->sheetData->xpath("row/c[@r='" . $cell . "']");
-			if (count($result)) {
+			if (is_countable($result) ? count($result) : 0) {
 				return $this->value($result[0]);
 			}
 		}
@@ -1008,7 +1008,7 @@ class SimpleXLSX
 	public function href($worksheetIndex, $cell)
 	{
 		$ref = (string) $cell['r'];
-		return isset($this->hyperlinks[$worksheetIndex][$ref]) ? $this->hyperlinks[$worksheetIndex][$ref] : '';
+		return $this->hyperlinks[$worksheetIndex][$ref] ?? '';
 	}
 
 	public function sheets()
@@ -1018,16 +1018,12 @@ class SimpleXLSX
 
 	public function sheetsCount()
 	{
-		return count($this->sheets);
+		return is_countable($this->sheets) ? count($this->sheets) : 0;
 	}
 
 	public function sheetName($worksheetIndex)
 	{
-		if (isset($this->sheetNames[$worksheetIndex])) {
-			return $this->sheetNames[$worksheetIndex];
-		}
-
-		return false;
+		return $this->sheetNames[$worksheetIndex] ?? false;
 	}
 
 	public function sheetNames()
@@ -1069,12 +1065,12 @@ class SimpleXLSX
 
 	protected function _strlen($str)
 	{
-		return (ini_get('mbstring.func_overload') & 2) ? mb_strlen($str, '8bit') : strlen($str);
+		return (ini_get('mbstring.func_overload') & 2) ? mb_strlen((string) $str, '8bit') : strlen((string) $str);
 	}
 
 	protected function _strpos($haystack, $needle, $offset = 0)
 	{
-		return (ini_get('mbstring.func_overload') & 2) ? mb_strpos($haystack, $needle, $offset, '8bit') : strpos($haystack, $needle, $offset);
+		return (ini_get('mbstring.func_overload') & 2) ? mb_strpos((string) $haystack, (string) $needle, $offset, '8bit') : strpos((string) $haystack, (string) $needle, $offset);
 	}
 
 	/*
@@ -1083,18 +1079,18 @@ class SimpleXLSX
 		}*/
 	protected function _strtoupper($str)
 	{
-		return (ini_get('mbstring.func_overload') & 2) ? mb_strtoupper($str, '8bit') : strtoupper($str);
+		return (ini_get('mbstring.func_overload') & 2) ? mb_strtoupper((string) $str, '8bit') : strtoupper((string) $str);
 	}
 
 	protected function _substr($str, $start, $length = null)
 	{
-		return (ini_get('mbstring.func_overload') & 2) ? mb_substr($str, $start, ($length === null) ? mb_strlen($str, '8bit') : $length, '8bit') : substr($str, $start, ($length === null) ? strlen($str) : $length);
+		return (ini_get('mbstring.func_overload') & 2) ? mb_substr((string) $str, $start, $length ?? mb_strlen((string) $str, '8bit'), '8bit') : substr((string) $str, $start, $length ?? strlen((string) $str));
 	}
 
 	protected function _getTarget($base, $target)
 	{
-		$target = trim($target);
-		if (strpos($target, '/') === 0) {
+		$target = trim((string) $target);
+		if (str_starts_with($target, '/')) {
 			return $this->_substr($target, 1);
 		}
 		$target = ($base ? $base . '/' : '') . $target;

@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 require_once '../../base/connect.php';
 
 $info = $_POST;
-$allow = array('jpg', 'jpeg');
+$allow = ['jpg', 'jpeg'];
 
 if (!isset($_FILES)) {
     exit;
@@ -26,7 +26,7 @@ $nameImage = [];
 
 foreach ($_FILES as $file) {
     $error = '';
-    $ext = mb_strtolower(mb_substr(mb_strrchr(@$file['name'], '.'), 1));
+    $ext = mb_strtolower(mb_substr(mb_strrchr((string) @$file['name'], '.'), 1));
 
     if (!empty($file['error']) || empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
         $error = 'Не удалось загрузить файл.';
@@ -36,11 +36,11 @@ foreach ($_FILES as $file) {
         $error = 'Недопустимый тип файла';
     } else {
         $img = @getimagesize($file['tmp_name']);
-        if (empty($img[0]) || empty($img[1]) || !in_array($img[2], array(1, 2, 3))) {
+        if (empty($img[0]) || empty($img[1]) || !in_array($img[2], [1, 2, 3])) {
             $error = 'Недопустимый тип файла';
         } else {
             // Перемещаем файл в директорию с новым именем.
-            $name  = time() . '-' . mt_rand(1, 9999999999);
+            $name  = time() . '-' . random_int(1, 9_999_999_999);
             $src   = $tmp_path . $name . '.' . $ext;
             $thumb = $tmp_path . $name . '-thumb.' . $ext;
 

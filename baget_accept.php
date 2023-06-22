@@ -2,8 +2,8 @@
 
 if ($_GET['id']) {
 	$ident = $_GET['id'];
-	if (preg_match("/^[\dl]+$/", $ident)) {
-		$z = explode('l', $ident);
+	if (preg_match("/^[\dl]+$/", (string) $ident)) {
+		$z = explode('l', (string) $ident);
 	} else {
 		$fp = fopen('lo/g.txt', 'a');
 		$towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! ' . $ident . ' ! accept bad id';
@@ -35,11 +35,11 @@ if ($_GET['id']) {
 	<?
 
 	$f_zak_hist = fopen('base/zakazend-history.txt', 'a');
-	$symbols = array(";", ":", "(", ")", "{", "}", "[", "]", "'", "\'", "\\", "\"", "<", ">", ",", "/");
-	$name = str_replace($symbols, " ", $_POST['name']);
-	$phone = str_replace($symbols, " ", $_POST['phone']);
-	$mail = str_replace($symbols, " ", $_POST['mail']);
-	$reviu = str_replace($symbols, " ", $_POST['reviu']);
+	$symbols = [";", ":", "(", ")", "{", "}", "[", "]", "'", "\'", "\\", "\"", "<", ">", ",", "/"];
+	$name = str_replace($symbols, " ", (string) $_POST['name']);
+	$phone = str_replace($symbols, " ", (string) $_POST['phone']);
+	$mail = str_replace($symbols, " ", (string) $_POST['mail']);
+	$reviu = str_replace($symbols, " ", (string) $_POST['reviu']);
 	$bart = '';
 	$pomokod = "не определен";
 

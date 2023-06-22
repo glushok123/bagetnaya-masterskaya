@@ -36,7 +36,7 @@ class MysqliDb
      *
      * @var mysqli[]
      */
-    protected $_mysqli = array();
+    protected $_mysqli = [];
 
     /**
      * The SQL query to be prepared and executed
@@ -57,56 +57,56 @@ class MysqliDb
      *
      * @var array
      */
-    protected $_queryOptions = array();
+    protected $_queryOptions = [];
 
     /**
      * An array that holds where joins
      *
      * @var array
      */
-    protected $_join = array();
+    protected $_join = [];
 
     /**
      * An array that holds where conditions
      *
      * @var array
      */
-    protected $_where = array();
+    protected $_where = [];
 
     /**
      * An array that holds where join ands
      *
      * @var array
      */
-    protected $_joinAnd = array();
+    protected $_joinAnd = [];
 
     /**
      * An array that holds having conditions
      *
      * @var array
      */
-    protected $_having = array();
+    protected $_having = [];
 
     /**
      * Dynamic type list for order by condition value
      *
      * @var array
      */
-    protected $_orderBy = array();
+    protected $_orderBy = [];
 
     /**
      * Dynamic type list for group by condition value
      *
      * @var array
      */
-    protected $_groupBy = array();
+    protected $_groupBy = [];
 
     /**
      * Dynamic type list for temporary locking tables.
      *
      * @var array
      */
-    protected $_tableLocks = array();
+    protected $_tableLocks = [];
 
     /**
      * Variable which holds the current table lock method.
@@ -120,7 +120,7 @@ class MysqliDb
      *
      * @var array
      */
-    protected $_bindParams = array(''); // Create the empty 0 index
+    protected $_bindParams = ['']; // Create the empty 0 index
 
     /**
      * Variable which holds an amount of returned rows during get/getOne/select queries
@@ -188,10 +188,8 @@ class MysqliDb
 
     /**
      * Table name (with prefix, if used)
-     *
-     * @var string
      */
-    private $_tableName = '';
+    private string $_tableName = '';
 
     /**
      * FOR UPDATE flag
@@ -220,7 +218,7 @@ class MysqliDb
     protected $traceStartQ;
     protected $traceEnabled;
     protected $traceStripPrefix;
-    public $trace = array();
+    public $trace = [];
 
     /**
      * Per page limit for pagination
@@ -239,7 +237,7 @@ class MysqliDb
     /**
      * @var array connections settings [profile_name=>[same_as_contruct_args]]
      */
-    protected $connectionsSettings = array();
+    protected $connectionsSettings = [];
     /**
      * @var string the name of a default (main) mysqli connection
      */
@@ -269,19 +267,11 @@ class MysqliDb
         // if params were passed as array
         if (is_array($host)) {
             foreach ($host as $key => $val) {
-                $$key = $val;
+                ${$key} = $val;
             }
         }
 
-        $this->addConnection('default', array(
-            'host' => $host,
-            'username' => $username,
-            'password' => $password,
-            'db' => $db,
-            'port' => $port,
-            'socket' => $socket,
-            'charset' => $charset
-        ));
+        $this->addConnection('default', ['host' => $host, 'username' => $username, 'password' => $password, 'db' => $db, 'port' => $port, 'socket' => $socket, 'charset' => $charset]);
 
         if ($isSubQuery) {
             $this->isSubQuery = true;
@@ -382,15 +372,14 @@ class MysqliDb
      * Create & store at _mysqli new mysqli instance
      *
      * @param string $name
-     * @param array  $params
      *
      * @return $this
      */
     public function addConnection($name, array $params)
     {
-        $this->connectionsSettings[$name] = array();
-        foreach (array('host', 'username', 'password', 'db', 'port', 'socket', 'charset') as $k) {
-            $prm = isset($params[$k]) ? $params[$k] : null;
+        $this->connectionsSettings[$name] = [];
+        foreach (['host', 'username', 'password', 'db', 'port', 'socket', 'charset'] as $k) {
+            $prm = $params[$k] ?? null;
 
             if ($k == 'host') {
                 if (is_object($prm))
@@ -444,18 +433,18 @@ class MysqliDb
     protected function reset()
     {
         if ($this->traceEnabled) {
-            $this->trace[] = array($this->_lastQuery, (microtime(true) - $this->traceStartQ), $this->_traceGetCaller());
+            $this->trace[] = [$this->_lastQuery, (microtime(true) - $this->traceStartQ), $this->_traceGetCaller()];
         }
 
-        $this->_where = array();
-        $this->_having = array();
-        $this->_join = array();
-        $this->_joinAnd = array();
-        $this->_orderBy = array();
-        $this->_groupBy = array();
-        $this->_bindParams = array(''); // Create the empty 0 index
+        $this->_where = [];
+        $this->_having = [];
+        $this->_join = [];
+        $this->_joinAnd = [];
+        $this->_orderBy = [];
+        $this->_groupBy = [];
+        $this->_bindParams = ['']; // Create the empty 0 index
         $this->_query = null;
-        $this->_queryOptions = array();
+        $this->_queryOptions = [];
         $this->returnType = 'array';
         $this->_nestJoin = false;
         $this->_forUpdate = false;
@@ -559,7 +548,7 @@ class MysqliDb
      */
     public function rawQuery($query, $bindParams = null)
     {
-        $params = array(''); // Create the empty 0 index
+        $params = ['']; // Create the empty 0 index
         $this->_query = $query;
         $stmt = $this->_prepareQuery();
 
@@ -569,7 +558,7 @@ class MysqliDb
                 array_push($params, $bindParams[$prop]);
             }
 
-            call_user_func_array(array($stmt, 'bind_param'), $this->refValues($params));
+            call_user_func_array($stmt->bind_param(...), $this->refValues($params));
         }
 
         $stmt->execute();
@@ -628,7 +617,7 @@ class MysqliDb
             return $res[0][$key];
         }
 
-        $newRes = array();
+        $newRes = [];
         for ($i = 0; $i < $this->count; $i++) {
             $newRes[] = $res[$i][$key];
         }
@@ -669,18 +658,14 @@ class MysqliDb
      */
     public function setQueryOption($options)
     {
-        $allowedOptions = array(
-            'ALL', 'DISTINCT', 'DISTINCTROW', 'HIGH_PRIORITY', 'STRAIGHT_JOIN', 'SQL_SMALL_RESULT',
-            'SQL_BIG_RESULT', 'SQL_BUFFER_RESULT', 'SQL_CACHE', 'SQL_NO_CACHE', 'SQL_CALC_FOUND_ROWS',
-            'LOW_PRIORITY', 'IGNORE', 'QUICK', 'MYSQLI_NESTJOIN', 'FOR UPDATE', 'LOCK IN SHARE MODE'
-        );
+        $allowedOptions = ['ALL', 'DISTINCT', 'DISTINCTROW', 'HIGH_PRIORITY', 'STRAIGHT_JOIN', 'SQL_SMALL_RESULT', 'SQL_BIG_RESULT', 'SQL_BUFFER_RESULT', 'SQL_CACHE', 'SQL_NO_CACHE', 'SQL_CALC_FOUND_ROWS', 'LOW_PRIORITY', 'IGNORE', 'QUICK', 'MYSQLI_NESTJOIN', 'FOR UPDATE', 'LOCK IN SHARE MODE'];
 
         if (!is_array($options)) {
-            $options = array($options);
+            $options = [$options];
         }
 
         foreach ($options as $option) {
-            $option = strtoupper($option);
+            $option = strtoupper((string) $option);
             if (!in_array($option, $allowedOptions)) {
                 throw new Exception('Wrong query option: ' . $option);
             }
@@ -730,7 +715,7 @@ class MysqliDb
 
         $column = is_array($columns) ? implode(', ', $columns) : $columns;
 
-        if (strpos($tableName, '.') === false) {
+        if (!str_contains($tableName, '.')) {
             $this->_tableName = self::$prefix . $tableName;
         } else {
             $this->_tableName = $tableName;
@@ -796,13 +781,10 @@ class MysqliDb
         }
 
         if ($limit == 1) {
-            if (isset($res[0]["retval"])) {
-                return $res[0]["retval"];
-            }
-            return null;
+            return $res[0]["retval"] ?? null;
         }
 
-        $newRes = array();
+        $newRes = [];
         for ($i = 0; $i < $this->count; $i++) {
             $newRes[] = $res[$i]['retval'];
         }
@@ -837,7 +819,7 @@ class MysqliDb
     {
         // only auto-commit our inserts, if no transaction is currently running
         $autoCommit = (isset($this->_transaction_in_progress) ? !$this->_transaction_in_progress : true);
-        $ids = array();
+        $ids = [];
 
         if ($autoCommit) {
             $this->startTransaction();
@@ -969,7 +951,7 @@ class MysqliDb
      *
      * @return MysqliDb
      */
-    public function where($whereProp, $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
+    public function where($whereProp, mixed $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
     {
         // forkaround for an old operation api
         if (is_array($whereValue) && ($key = key($whereValue)) != "0") {
@@ -981,7 +963,7 @@ class MysqliDb
             $cond = '';
         }
 
-        $this->_where[] = array($cond, $whereProp, $operator, $whereValue);
+        $this->_where[] = [$cond, $whereProp, $operator, $whereValue];
         return $this;
     }
 
@@ -1012,7 +994,7 @@ class MysqliDb
      *
      * @return MysqliDb
      */
-    public function orWhere($whereProp, $whereValue = 'DBNULL', $operator = '=')
+    public function orWhere($whereProp, mixed $whereValue = 'DBNULL', $operator = '=')
     {
         return $this->where($whereProp, $whereValue, $operator, 'OR');
     }
@@ -1031,7 +1013,7 @@ class MysqliDb
      * @return MysqliDb
      */
 
-    public function having($havingProp, $havingValue = 'DBNULL', $operator = '=', $cond = 'AND')
+    public function having($havingProp, mixed $havingValue = 'DBNULL', $operator = '=', $cond = 'AND')
     {
         // forkaround for an old operation api
         if (is_array($havingValue) && ($key = key($havingValue)) != "0") {
@@ -1043,7 +1025,7 @@ class MysqliDb
             $cond = '';
         }
 
-        $this->_having[] = array($cond, $havingProp, $operator, $havingValue);
+        $this->_having[] = [$cond, $havingProp, $operator, $havingValue];
         return $this;
     }
 
@@ -1058,7 +1040,7 @@ class MysqliDb
      *
      * @return MysqliDb
      */
-    public function orHaving($havingProp, $havingValue = null, $operator = null)
+    public function orHaving($havingProp, mixed $havingValue = null, $operator = null)
     {
         return $this->having($havingProp, $havingValue, $operator, 'OR');
     }
@@ -1077,7 +1059,7 @@ class MysqliDb
      */
     public function join($joinTable, $joinCondition, $joinType = '')
     {
-        $allowedTypes = array('LEFT', 'RIGHT', 'OUTER', 'INNER', 'LEFT OUTER', 'RIGHT OUTER', 'NATURAL');
+        $allowedTypes = ['LEFT', 'RIGHT', 'OUTER', 'INNER', 'LEFT OUTER', 'RIGHT OUTER', 'NATURAL'];
         $joinType = strtoupper(trim($joinType));
 
         if ($joinType && !in_array($joinType, $allowedTypes)) {
@@ -1088,7 +1070,7 @@ class MysqliDb
             $joinTable = self::$prefix . $joinTable;
         }
 
-        $this->_join[] = array($joinType, $joinTable, $joinCondition);
+        $this->_join[] = [$joinType, $joinTable, $joinCondition];
 
         return $this;
     }
@@ -1117,7 +1099,7 @@ class MysqliDb
 
         // Define the default values
         // We will merge it later
-        $settings = array("fieldChar" => ';', "lineChar" => PHP_EOL, "linesToIgnore" => 1);
+        $settings = ["fieldChar" => ';', "lineChar" => PHP_EOL, "linesToIgnore" => 1];
 
         // Check the import settings
         if (gettype($importSettings) == "array") {
@@ -1188,7 +1170,7 @@ class MysqliDb
         }
 
         // Create default values
-        $settings             = array("linesToIgnore" => 0);
+        $settings             = ["linesToIgnore" => 0];
 
         // Check the import settings
         if (gettype($importSettings) == "array") {
@@ -1236,9 +1218,9 @@ class MysqliDb
      * @return MysqliDb
      * @throws Exception
      */
-    public function orderBy($orderByField, $orderbyDirection = "DESC", $customFieldsOrRegExp = null)
+    public function orderBy($orderByField, $orderbyDirection = "DESC", mixed $customFieldsOrRegExp = null)
     {
-        $allowedDirection = array("ASC", "DESC");
+        $allowedDirection = ["ASC", "DESC"];
         $orderbyDirection = strtoupper(trim($orderbyDirection));
         $orderByField = preg_replace("/[^ -a-z0-9\.\(\),_`\*\'\"]+/i", '', $orderByField);
 
@@ -1254,7 +1236,7 @@ class MysqliDb
 
         if (is_array($customFieldsOrRegExp)) {
             foreach ($customFieldsOrRegExp as $key => $value) {
-                $customFieldsOrRegExp[$key] = preg_replace("/[^\x80-\xff-a-z0-9\.\(\),_` ]+/i", '', $value);
+                $customFieldsOrRegExp[$key] = preg_replace("/[^\x80-\xff-a-z0-9\.\(\),_` ]+/i", '', (string) $value);
             }
             $orderByField = 'FIELD (' . $orderByField . ', "' . implode('","', $customFieldsOrRegExp) . '")';
         } elseif (is_string($customFieldsOrRegExp)) {
@@ -1297,18 +1279,10 @@ class MysqliDb
      */
     public function setLockMethod($method)
     {
-        // Switch the uppercase string
-        switch (strtoupper($method)) {
-                // Is it READ or WRITE?
-            case "READ" || "WRITE":
-                // Succeed
-                $this->_tableLockMethod = $method;
-                break;
-            default:
-                // Else throw an exception
-                throw new Exception("Bad lock type: Can be either READ or WRITE");
-                break;
-        }
+        $this->_tableLockMethod = match (strtoupper($method)) {
+            "READ" || "WRITE" => $method,
+            default => throw new Exception("Bad lock type: Can be either READ or WRITE"),
+        };
         return $this;
     }
 
@@ -1452,28 +1426,15 @@ class MysqliDb
      *
      * @return string The joined parameter types.
      */
-    protected function _determineType($item)
+    protected function _determineType(mixed $item)
     {
-        switch (gettype($item)) {
-            case 'NULL':
-            case 'string':
-                return 's';
-                break;
-
-            case 'boolean':
-            case 'integer':
-                return 'i';
-                break;
-
-            case 'blob':
-                return 'b';
-                break;
-
-            case 'double':
-                return 'd';
-                break;
-        }
-        return '';
+        return match (gettype($item)) {
+            'NULL', 'string' => 's',
+            'boolean', 'integer' => 'i',
+            'blob' => 'b',
+            'double' => 'd',
+            default => '',
+        };
     }
 
     /**
@@ -1509,7 +1470,7 @@ class MysqliDb
      *
      * @return string
      */
-    protected function _buildPair($operator, $value)
+    protected function _buildPair($operator, mixed $value)
     {
         if (!is_object($value)) {
             $this->_bindParam($value);
@@ -1604,7 +1565,7 @@ class MysqliDb
 
         // Bind parameters to statement if any
         if (count($this->_bindParams) > 1) {
-            call_user_func_array(array($stmt, 'bind_param'), $this->refValues($this->_bindParams));
+            call_user_func_array($stmt->bind_param(...), $this->refValues($this->_bindParams));
         }
 
         return $stmt;
@@ -1621,8 +1582,8 @@ class MysqliDb
      */
     protected function _dynamicBindResults(mysqli_stmt $stmt)
     {
-        $parameters = array();
-        $results = array();
+        $parameters = [];
+        $results = [];
         /**
          * @see http://php.net/manual/en/mysqli-result.fetch-fields.php
          */
@@ -1634,16 +1595,16 @@ class MysqliDb
         // if $meta is false yet sqlstate is true, there's no sql error but the query is
         // most likely an update/insert/delete which doesn't produce any results
         if (!$meta && $stmt->sqlstate)
-            return array();
+            return [];
 
-        $row = array();
+        $row = [];
         while ($field = $meta->fetch_field()) {
             if ($field->type == $mysqlLongType) {
                 $shouldStoreResult = true;
             }
 
             if ($this->_nestJoin && $field->table != $this->_tableName) {
-                $field->table = substr($field->table, strlen(self::$prefix));
+                $field->table = substr((string) $field->table, strlen(self::$prefix));
                 $row[$field->table][$field->name] = null;
                 $parameters[] = &$row[$field->table][$field->name];
             } else {
@@ -1659,7 +1620,7 @@ class MysqliDb
             $stmt->store_result();
         }
 
-        call_user_func_array(array($stmt, 'bind_result'), $parameters);
+        call_user_func_array($stmt->bind_result(...), $parameters);
 
         $this->totalCount = 0;
         $this->count = 0;
@@ -1678,7 +1639,7 @@ class MysqliDb
                     }
                 }
             } else {
-                $result = array();
+                $result = [];
                 foreach ($row as $key => $val) {
                     if (is_array($val)) {
                         foreach ($val as $k => $v) {
@@ -1715,7 +1676,7 @@ class MysqliDb
         }
 
         if ($this->returnType == 'json') {
-            return json_encode($results);
+            return json_encode($results, JSON_THROW_ON_ERROR);
         }
 
         return $results;
@@ -1733,7 +1694,7 @@ class MysqliDb
         }
 
         foreach ($this->_join as $data) {
-            list($joinType, $joinTable, $joinCondition) = $data;
+            [$joinType, $joinTable, $joinCondition] = $data;
 
             if (is_object($joinTable)) {
                 $joinStr = $this->_buildPair("", $joinTable);
@@ -1742,7 +1703,7 @@ class MysqliDb
             }
 
             $this->_query .= " " . $joinType . " JOIN " . $joinStr .
-                (false !== stripos($joinCondition, 'using') ? " " : " on ")
+                (false !== stripos((string) $joinCondition, 'using') ? " " : " on ")
                 . $joinCondition;
         }
     }
@@ -1762,10 +1723,10 @@ class MysqliDb
             $value = $tableData[$column];
 
             if (!$isInsert) {
-                if (strpos($column, '.') === false) {
+                if (!str_contains((string) $column, '.')) {
                     $this->_query .= "`" . $column . "` = ";
                 } else {
-                    $this->_query .= str_replace('.', '.`', $column) . "` = ";
+                    $this->_query .= str_replace('.', '.`', (string) $column) . "` = ";
                 }
             }
 
@@ -1883,10 +1844,10 @@ class MysqliDb
         $this->_query .= ' ' . $operator;
 
         foreach ($conditions as $cond) {
-            list($concat, $varName, $operator, $val) = $cond;
+            [$concat, $varName, $operator, $val] = $cond;
             $this->_query .= " " . $concat . " " . $varName;
 
-            switch (strtolower($operator)) {
+            switch (strtolower((string) $operator)) {
                 case 'not in':
                 case 'in':
                     $comparison = ' ' . $operator . ' (';
@@ -2018,7 +1979,6 @@ class MysqliDb
     /**
      * Referenced data array is required by mysqli since PHP 5.3+
      *
-     * @param array $arr
      *
      * @return array
      */
@@ -2028,7 +1988,7 @@ class MysqliDb
         //https://github.com/facebook/hhvm/issues/5155
         //Referenced data array is required by mysqli since PHP 5.3+
         if (strnatcmp(phpversion(), '5.3') >= 0) {
-            $refs = array();
+            $refs = [];
             foreach ($arr as $key => $value) {
                 $refs[$key] = &$arr[$key];
             }
@@ -2116,11 +2076,7 @@ class MysqliDb
         }
 
         array_shift($this->_bindParams);
-        $val = array(
-            'query' => $this->_query,
-            'params' => $this->_bindParams,
-            'alias' => isset($this->connectionsSettings[$this->defConnectionName]) ? $this->connectionsSettings[$this->defConnectionName]['host'] : null
-        );
+        $val = ['query' => $this->_query, 'params' => $this->_bindParams, 'alias' => isset($this->connectionsSettings[$this->defConnectionName]) ? $this->connectionsSettings[$this->defConnectionName]['host'] : null];
         $this->reset();
         return $val;
     }
@@ -2141,7 +2097,7 @@ class MysqliDb
      */
     public function interval($diff, $func = "NOW()")
     {
-        $types = array("s" => "second", "m" => "minute", "h" => "hour", "d" => "day", "M" => "month", "Y" => "year");
+        $types = ["s" => "second", "m" => "minute", "h" => "hour", "d" => "day", "M" => "month", "Y" => "year"];
         $incr = '+';
         $items = '';
         $type = 'd';
@@ -2182,7 +2138,7 @@ class MysqliDb
      */
     public function now($diff = null, $func = "NOW()")
     {
-        return array("[F]" => array($this->interval($diff, $func)));
+        return ["[F]" => [$this->interval($diff, $func)]];
     }
 
     /**
@@ -2198,7 +2154,7 @@ class MysqliDb
         if (!is_numeric($num)) {
             throw new Exception('Argument supplied to inc must be a number');
         }
-        return array("[I]" => "+" . $num);
+        return ["[I]" => "+" . $num];
     }
 
     /**
@@ -2214,7 +2170,7 @@ class MysqliDb
         if (!is_numeric($num)) {
             throw new Exception('Argument supplied to dec must be a number');
         }
-        return array("[I]" => "-" . $num);
+        return ["[I]" => "-" . $num];
     }
 
     /**
@@ -2226,7 +2182,7 @@ class MysqliDb
      */
     public function not($col = null)
     {
-        return array("[N]" => (string)$col);
+        return ["[N]" => (string)$col];
     }
 
     /**
@@ -2239,7 +2195,7 @@ class MysqliDb
      */
     public function func($expr, $bindParams = null)
     {
-        return array("[F]" => array($expr, $bindParams));
+        return ["[F]" => [$expr, $bindParams]];
     }
 
     /**
@@ -2251,7 +2207,7 @@ class MysqliDb
      */
     public static function subQuery($subQueryAlias = "")
     {
-        return new self(array('host' => $subQueryAlias, 'isSubQuery' => true));
+        return new self(['host' => $subQueryAlias, 'isSubQuery' => true]);
     }
 
     /**
@@ -2262,7 +2218,7 @@ class MysqliDb
     public function copy()
     {
         $copy = unserialize(serialize($this));
-        $copy->_mysqli = array();
+        $copy->_mysqli = [];
         return $copy;
     }
 
@@ -2277,7 +2233,7 @@ class MysqliDb
     {
         $this->mysqli()->autocommit(false);
         $this->_transaction_in_progress = true;
-        register_shutdown_function(array($this, "_transaction_status_check"));
+        register_shutdown_function([$this, "_transaction_status_check"]);
     }
 
     /**
@@ -2353,7 +2309,7 @@ class MysqliDb
             $caller = next($dd);
         }
 
-        return __CLASS__ . "->" . $caller["function"] . "() >>  file \"" .
+        return self::class . "->" . $caller["function"] . "() >>  file \"" .
             str_replace($this->traceStripPrefix, '', $caller["file"]) . "\" line #" . $caller["line"] . " ";
     }
 
@@ -2367,7 +2323,7 @@ class MysqliDb
      */
     public function tableExists($tables)
     {
-        $tables = !is_array($tables) ? array($tables) : $tables;
+        $tables = !is_array($tables) ? [$tables] : $tables;
         $count = count($tables);
         if ($count == 0) {
             return false;
@@ -2412,7 +2368,7 @@ class MysqliDb
     public function paginate($table, $page, $fields = null)
     {
         $offset = $this->pageLimit * ($page - 1);
-        $res = $this->withTotalCount()->get($table, array($offset, $this->pageLimit), $fields);
+        $res = $this->withTotalCount()->get($table, [$offset, $this->pageLimit], $fields);
         $this->totalPages = ceil($this->totalCount / $this->pageLimit);
         return $res;
     }
@@ -2431,9 +2387,9 @@ class MysqliDb
      *
      * @return $this
      */
-    public function joinWhere($whereJoin, $whereProp, $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
+    public function joinWhere($whereJoin, $whereProp, mixed $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
     {
-        $this->_joinAnd[$whereJoin][] = array($cond, $whereProp, $operator, $whereValue);
+        $this->_joinAnd[$whereJoin][] = [$cond, $whereProp, $operator, $whereValue];
         return $this;
     }
 
@@ -2449,7 +2405,7 @@ class MysqliDb
      *
      * @return $this
      */
-    public function joinOrWhere($whereJoin, $whereProp, $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
+    public function joinOrWhere($whereJoin, $whereProp, mixed $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
     {
         return $this->joinWhere($whereJoin, $whereProp, $whereValue, $operator, 'OR');
     }
@@ -2463,7 +2419,7 @@ class MysqliDb
             return;
 
         foreach ($this->_join as $data) {
-            list($joinType,  $joinTable, $joinCondition) = $data;
+            [$joinType, $joinTable, $joinCondition] = $data;
 
             if (is_object($joinTable))
                 $joinStr = $this->_buildPair("", $joinTable);
@@ -2471,13 +2427,13 @@ class MysqliDb
                 $joinStr = $joinTable;
 
             $this->_query .= " " . $joinType . " JOIN " . $joinStr .
-                (false !== stripos($joinCondition, 'using') ? " " : " on ")
+                (false !== stripos((string) $joinCondition, 'using') ? " " : " on ")
                 . $joinCondition;
 
             // Add join and query
             if (!empty($this->_joinAnd) && isset($this->_joinAnd[$joinStr])) {
                 foreach ($this->_joinAnd[$joinStr] as $join_and_cond) {
-                    list($concat, $varName, $operator, $val) = $join_and_cond;
+                    [$concat, $varName, $operator, $val] = $join_and_cond;
                     $this->_query .= " " . $concat . " " . $varName;
                     $this->conditionToSql($operator, $val);
                 }

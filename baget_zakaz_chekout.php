@@ -3,7 +3,7 @@ if ( $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REM
  	if (isset($_COOKIE['Skid'])) {$skidka=$_COOKIE['Skid'];}
  	else {$skidka=0;}
 	$ident=$_GET['id'];
-	if (preg_match("/^[\dl]+$/",$ident)) {	$z=explode('l',$ident);}
+	if (preg_match("/^[\dl]+$/",(string) $ident)) {	$z=explode('l',(string) $ident);}
 	else {
 		$fp = fopen('lo/g.txt', 'a');
 		$towrite=date("j.m.Y G:i").' ! '.$_SERVER["REMOTE_ADDR"].' ! '.$ident.' ! zakaz_chekout bad id';
@@ -13,7 +13,7 @@ if ( $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REM
 		exit ('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online">');
 	}
 
-	$chekoutnum=count(scandir('bgchkout'))+100;
+	$chekoutnum=(is_countable(scandir('bgchkout')) ? count(scandir('bgchkout')) : 0)+100;
 	copy('bagechek/'.$z[16], 'bgchkout/'.time());
 
 
@@ -43,14 +43,14 @@ if ( $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REM
 
 		$finalprice=0;
 		$chekcont=file('bagechek/'.$z[16]);
-		for ($jj = 0; $jj < count($chekcont); $jj++)  {
+		for ($jj = 0; $jj < (is_countable($chekcont) ? count($chekcont) : 0); $jj++)  {
 			$ident=rtrim($chekcont[$jj]);
 			$z=explode('l',$ident);
 			$price1=$price2=$price3=$price4=$price6=0;
 			if ($z[17]==0)
 				{
 
-				$s=($z[9]+$z[5]+$z[5])*($z[10]+$z[5]+$z[5])/1000000;
+				$s=($z[9]+$z[5]+$z[5])*($z[10]+$z[5]+$z[5])/1_000_000;
 				$p=($z[9]+$z[10])/500;
 				$pout=($z[9]+$z[2]+$z[2]+$z[5]+$z[5]+$z[10]+$z[2]+$z[2]+$z[5]+$z[5])/500;
 				$price1=floor($pout*$z[1]);
@@ -80,7 +80,7 @@ if ( $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REM
 				}
 			else
 				{
-				$s=($z[9])*($z[10])/1000000;
+				$s=($z[9])*($z[10])/1_000_000;
                 $peri=($z[9]+$z[10])/500;
                 if ($z[9]>=1000 || $z[10]>=1000)
                 {
@@ -160,30 +160,28 @@ else {
 
 	function num2str($num) {
 		$nul='ноль';
-		$ten=array(
-			array('','один','два','три','четыре','пять','шесть','семь', 'восемь','девять'),
-			array('','одна','две','три','четыре','пять','шесть','семь', 'восемь','девять'),
-		);
-		$a20=array('десять','одиннадцать','двенадцать','тринадцать','четырнадцать' ,'пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать');
-		$tens=array(2=>'двадцать','тридцать','сорок','пятьдесят','шестьдесят','семьдесят' ,'восемьдесят','девяносто');
-		$hundred=array('','сто','двести','триста','четыреста','пятьсот','шестьсот', 'семьсот','восемьсот','девятьсот');
-		$unit=array( // Units
-			array('копейка' ,'копейки' ,'копеек',	 1),
-			array('рубль'   ,'рубля'   ,'рублей'    ,0),
-			array('тысяча'  ,'тысячи'  ,'тысяч'     ,1),
-			array('миллион' ,'миллиона','миллионов' ,0),
-			array('миллиард','милиарда','миллиардов',0),
-		);
+		$ten=[['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'], ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять']];
+		$a20=['десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'];
+		$tens=[2=>'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'];
+		$hundred=['', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'];
+		$unit=[
+      // Units
+      ['копейка', 'копейки', 'копеек', 1],
+      ['рубль', 'рубля', 'рублей', 0],
+      ['тысяча', 'тысячи', 'тысяч', 1],
+      ['миллион', 'миллиона', 'миллионов', 0],
+      ['миллиард', 'милиарда', 'миллиардов', 0],
+  ];
 		//
-		list($rub,$kop) = explode('.',sprintf("%015.2f", floatval($num)));
+		[$rub, $kop] = explode('.',sprintf("%015.2f", floatval($num)));
 		$kop='ноль';
-		$out = array();
+		$out = [];
 		if (intval($rub)>0) {
 			foreach(str_split($rub,3) as $uk=>$v) { // by 3 symbols
 				if (!intval($v)) continue;
 				$uk = sizeof($unit)-$uk-1; // unit key
 				$gender = $unit[$uk][3];
-				list($i1,$i2,$i3) = array_map('intval',str_split($v,1));
+				[$i1, $i2, $i3] = array_map('intval',str_split($v,1));
 				// mega-logic
 				$out[] = $hundred[$i1]; # 1xx-9xx
 				if ($i2>1) $out[]= $tens[$i2].' '.$ten[$gender][$i3]; # 20-99

@@ -1,9 +1,12 @@
 <?
+ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
 /*
     Здесь только обновление с lion
 */
 
-require_once("Classes/PHPExcel/IOFactory.php");
+
+require_once("SimpleXLS.php");
+
 require_once '../../base/connect.php';
 
 $url = "https://frame.ru/upload/medialibrary/2f3/LionArtService.xls"; //общий
@@ -13,8 +16,8 @@ class UpdateCatalog
     public $ch; //инициализация
     public $host = 'localhost'; // адрес сервера 
     public $database = 'a0458868_bagetnaya'; // имя базы данных
-    public $user = 'a0458868_bagetnaya'; // имя пользователя
-    public $password = '1226591Qwer'; // пароль
+    public $user = 'root'; // имя пользователя
+    public $password = ''; // пароль
     public $dbh; //название подключения к БД
     public $textUpdateRows = '';
     public $countUpdateRows = 0;
@@ -36,7 +39,7 @@ class UpdateCatalog
      */
     public function getCatalog($url, $typeDesc)
     {
-        $nameFile = $typeDesc . '-' . time() . '-' . mt_rand(1, 9999999999) . ".xls";
+        $nameFile = $typeDesc . '-' . time() . '-' . random_int(1, 9_999_999_999) . ".xls";
 
         file_put_contents('updateFileXlsx/' . $nameFile, file_get_contents($url));
 
@@ -49,7 +52,7 @@ class UpdateCatalog
      */
     public function update($file)
     {
-        $xls = PHPExcel_IOFactory::load('updateFileXlsx/' . $file);
+        $xls = SimpleXLS::parseFile('updateFileXlsx/' . $file);
 
         $count = 0;
         $countInDb = 0;
@@ -57,13 +60,23 @@ class UpdateCatalog
         $tables = [];
         $data = [];
 
-        foreach ($xls->getWorksheetIterator() as $worksheet) {
-            $tables[] = $worksheet->toArray();
+        $countList = 0;
+        $countListTest = 0;
+
+
+        foreach ($xls->sheets as $worksheet) {
+            $tables[] = $worksheet;
+            $countList = $countList + 1;
         }
 
         // Цикл по листам Excel-файла
-        foreach ($tables as $table) {
-            foreach ($table as $row) {
+        while ($countListTest != $countList) {
+            if ($countListTest == 0) {
+                $dataArray = $xls->rows();
+            }else{
+                $dataArray = $xls->rows($countListTest);
+            }
+            foreach ($dataArray as $row) {
                 if (
                     $row[0] == null ||
                     $row[2] == null ||
@@ -79,17 +92,18 @@ class UpdateCatalog
                     'count' => $row[4],
                 ];
             }
+            $countListTest = $countListTest + 1;
         }
 
         foreach ($data as $item) {
-            if (round($item['count']) == 0) {
+            if (round( (int) $item['count']) == 0) {
                 $countWitheStorageIsNull = $countWitheStorageIsNull + 1;
             }
 
             $count = $count + 1;
             $vendor = $item['article'];
-            $price = round(str_replace(',', '', $item['price']));
-            $countBaget = round(str_replace('>', '', $item['count']));
+            $price = round(str_replace(',', '', (string) $item['price']));
+            $countBaget = round(str_replace('>', '', (string) $item['count']));
 
             $multiplier = 5;
 
@@ -140,14 +154,12 @@ class UpdateCatalog
 
     /**
      * Красивый вывод массива
-     * 
-     * @param mixed $array
+     *
      * @param string $var
      * @param null $_livel
-     * 
      * @return string
      */
-    public function outArray($array, $var = 'array', $_livel = null): string
+    public function outArray(mixed $array, $var = 'array', $_livel = null): string
     {
         $out = $margin = '';
         $nr  = "<br>";
@@ -184,7 +196,7 @@ class UpdateCatalog
                     } elseif (is_numeric($row)) {
                         $out .= $row;
                     } else {
-                        $out .= "'" . addslashes($row) . "'";
+                        $out .= "'" . addslashes((string) $row) . "'";
                     }
 
                     if ($count > $i) {
@@ -197,7 +209,7 @@ class UpdateCatalog
 
                 $out .= $margin . ')';
             } else {
-                $out .= "'" .  addslashes($array) . "'";
+                $out .= "'" .  addslashes((string) $array) . "'";
             }
         }
 

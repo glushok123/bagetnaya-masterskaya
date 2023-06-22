@@ -1,59 +1,11 @@
-<?
-
-$access_token = 'IGQVJYS01xVDh5TTNxbXdUUWFwM0g5blZAJWkpYcFZAaNVFMNHhsMkcxVW9IS2lCLWZA2RHRla3hUX1d4VnQwckRyZAktJR1FJLWJoTHRlMkNhY0x2emtnWWJIbkI5S2ZAOdU5yY25mTk1ucXRPeXlPOHdQZAwZDZD';
-$user_id = '';
-$user_id = $res['id'];
-if (isset($user_id)) {
-  $posts = json_decode($res, true);
-  $finalarr = [];
-
-  foreach ($posts['data'] as $post) {
-    if ($post["media_type"] == 'IMAGE') {
-      array_push($finalarr, $post['id']);
-    } else {
-      continue;
-    }
-  }
-  $finalarr = array_slice($finalarr, 0, 5);
-
-?>
-  <div class="insta-photo">
-    <h3>Мы в VK: <a target="_blank" href="https://vk.com/bagetnaya1">bagetnaya1</a></h3>
-    <b class="post-text">Багетная мастерская №1 Москва</b>
-    <p class="post-text">⚜️Оформление объектов искусства</p>
-    <p class="post-text">⚜️Скидка 10% на первый заказ через группу ВК</p>
-    <p class="post-text">⚜️Арбатская / Новокузнецкая с 9.00 до 21.00</p>
-    <p class="post-text">⚜️<a href="https://bagetnaya-masterskaya.com/baget_online">Онлайн-конструктор</a> багета на сайте👇</p>
-  </div>
-
-  <? foreach ($finalarr as $el) {
-    $post = file_get_contents('https://graph.instagram.com/' . $el . '?fields=id,media_url,timestamp,caption&access_token=' . $access_token);
-    $post = json_decode($post, true);
-    $str = mb_strimwidth($post["caption"], 0, 55, "..");
-  ?>
-    <div class="insta-photo">
-      <div class="img-wrapper"><img alt="<?= $str; ?>" src="<?= $post['media_url'] ?>"></div>
-      <p class="post-text" style="min-height: 40px;"><?= $str; ?></p>
-    </div>
-  <?
-  }
-} else { ?>
-
   <?
 
-  $params = array(
-    'owner_id' => '-210965475',
-    'album_id' => '283484773',
-    'v' => '5.131',
-    'access_token' => 'bea612cebea612cebea612ce66befdd80fbbea6bea612cee4ba2830bf89a26a4e2d4958',
-    'count' => 100
+  $params = ['owner_id' => '-210965475', 'album_id' => '283484773', 'v' => '5.131', 'access_token' => 'bea612cebea612cebea612ce66befdd80fbbea6bea612cee4ba2830bf89a26a4e2d4958', 'count' => 100];
 
-  );
+  $response = json_decode(file_get_contents('https://api.vk.com/method/photos.get?' . http_build_query($params)), true, 512, JSON_THROW_ON_ERROR);
 
-  $response = json_decode(file_get_contents('https://api.vk.com/method/photos.get?' . http_build_query($params)), true);
-
-  $urls = array();
-  for ($i = 0; $i < count($response['response']['items']); $i++) {
+  $urls = [];
+  for ($i = 0; $i < (is_countable($response['response']['items']) ? count($response['response']['items']) : 0); $i++) {
     array_push($urls, $response['response']['items'][$i]['sizes'][2]['url'] . PHP_EOL);
   }
   $kol = count($urls);
@@ -366,6 +318,4 @@ if (isset($user_id)) {
       setTimeout(showSlides, 3000); // Change image every 2 seconds
     }
   </script>
-<?
 
-}

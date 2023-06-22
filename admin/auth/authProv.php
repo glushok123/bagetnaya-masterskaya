@@ -16,8 +16,8 @@ if (isset($_COOKIE['series_id']) && isset($_COOKIE['remember_token'])) {
 		$db->where('id', $row['id_user']);
 		$rowNew = $db->getOne('user_accaunt');
 
-		if (password_verify($remember_token, $row['remember_token'])) {
-			$expires = strtotime($rowNew['expires']);
+		if (password_verify($remember_token, (string) $row['remember_token'])) {
+			$expires = strtotime((string) $rowNew['expires']);
 			$_SESSION['user_logged_in'] = TRUE;
 			$_SESSION['type_user'] = $rowNew['type_user'];
 			$_SESSION['login'] = $rowNew['login'];

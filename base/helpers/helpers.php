@@ -15,7 +15,7 @@ function randomString($n)
 	// Loop to create random string
 	for ($i = 0; $i < $n; $i++) {
 		// Generate a random index to pick characters
-		$index = rand(0, $len - 1);
+		$index = random_int(0, $len - 1);
 
 		// Concatenating the character
 		// in resultant string
@@ -42,15 +42,15 @@ function clearAuthCookie()
 
 	unset($_COOKIE['series_id']);
 	unset($_COOKIE['remember_token']);
-	setcookie('series_id', null, -1, '/');
-	setcookie('remember_token', null, -1, '/');
+	setcookie('series_id', '', ['expires' => -1, 'path' => '/']);
+	setcookie('remember_token', '', ['expires' => -1, 'path' => '/']);
 }
 /**
  *
  */
 function clean_input($data)
 {
-	$data = trim($data);
+	$data = trim((string) $data);
 	$data = stripslashes($data);
 	$data = htmlspecialchars($data);
 	return $data;
@@ -123,5 +123,5 @@ function paginationLinks($current_page, $total_pages, $base_url)
  */
 function xss_clean($string)
 {
-	return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+	return htmlspecialchars((string) $string, ENT_QUOTES, 'UTF-8');
 }

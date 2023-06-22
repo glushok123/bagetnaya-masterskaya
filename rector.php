@@ -12,6 +12,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/base',
         __DIR__ . '/default',
         __DIR__ . '/modules_php',
+        __DIR__ . '/',
     ]);
 
     // register a single rule

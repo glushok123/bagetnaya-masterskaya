@@ -10,11 +10,11 @@ if (isset($_COOKIE['Skid'])) {
 } else {
 	$skidka = 0;
 }
-$z = array("7233", "840", "38", "0", "0", "0", "0", "0", "0", "300", "200", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "32");
+$z = ["7233", "840", "38", "0", "0", "0", "0", "0", "0", "300", "200", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "32"];
 
-if ($_GET['id']) {
+if (!empty($_GET['id'])) {
 	$ident = $_GET['id'];
-	$ident = str_replace(",", "", $ident);
+	$ident = str_replace(",", "", (string) $ident);
 	$ident = str_replace(".", "", $ident);
 	$ident = str_replace(" ", "", $ident);
 	if (preg_match("/^[\dl]+$/", $ident)) {
@@ -32,8 +32,8 @@ $stmt->bindParam(1, $z[0]);
 $stmt->execute();
 $data = $stmt->fetchAll();
 
-if ($z[1] != $data["price"]) {
-	$z[1] = $data[0]["price"];
+if ($z[1] != $data[0]['price']) {
+	$z[1] = $data[0]['price'];
 }
 
 
@@ -317,7 +317,7 @@ if (!$minimaster) {
 
 		function changesize(flag) {
 			<? if ($z[8] != 0) {
-				list($width, $height) = getimagesize($picname); ?>
+				[$width, $height] = getimagesize($picname); ?>
 				imgkof = <?= $height / $width ?>;
 				if (flag == 9) {
 					z[9] = Number(document.forms["form"]["fwid"].value);
@@ -858,7 +858,7 @@ if ($z[12] > 0) {
 
 
 	$fa = file($fname);
-	$cou = count($fa);
+	$cou = is_countable($fa) ? count($fa) : 0;
 	for ($i = 0; $i < $cou; $i++) {
 		$str = explode("\t", $fa[$i]);
 		if ($paspmenu) {
@@ -991,7 +991,7 @@ if ($z[12] > 0) {
 			</div>
 		</form>';
 	if ($z[8] != 0) {
-		list($width, $height) = getimagesize($picname);
+		[$width, $height] = getimagesize($picname);
 		echo '	<strong>Обратите внимание</strong><br>Размер изображения ' . $width . ' на ' . $height . ' точек, соотношение сторон картины зафиксировано соответственно. <br>Печать изображения не входит в стоимость заказа<br><a onclick="z[8]=0; rePage ();" class="t2">Убрать изображение картины</a>';
 	} else {
 		echo '	<form id="fileform" action="/upload.php?id=' . implode("l", $z) . '" method="post" enctype="multipart/form-data">
@@ -1223,7 +1223,15 @@ if ($z[12] > 0) {
 
 			(function($) {
 
-				$('#bagettype').val('<?= $_COOKIE["bagettype"] ?>');
+				$('#bagettype').val(
+					<? 
+						if (!empty($_COOKIE["bagettype"])){ 
+							echo $_COOKIE["bagettype"]; 
+						} else{
+							echo '';
+						}
+					?>
+				);
 
 				$('.addbaget').click(function() {
 					$('.form').toggle(300);
@@ -1478,8 +1486,20 @@ if ($z[12] > 0) {
 						price: pricenew,
 						widthwithout: widthwithout,
 						width: width,
-						imgconst: "<?= $_COOKIE['catalogfile']; ?>",
-						listimg: "<?= $_COOKIE['calcfile']; ?>",
+						imgconst: "<? 
+						if (!empty($_COOKIE["catalogfile"])){ 
+							echo $_COOKIE["catalogfile"]; 
+						} else{
+							echo '';
+						}
+					?>",
+						listimg: "<? 
+						if (!empty($_COOKIE["calcfile"])){ 
+							echo $_COOKIE["calcfile"]; 
+						} else{
+							echo '';
+						}
+					?>",
 					},
 					dataType: "text",
 					success: function(data) {

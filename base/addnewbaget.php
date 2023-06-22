@@ -1,30 +1,10 @@
 <?php
-// session_start();
+
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-// function dirDel ($dir) 
-// {  
-//     $d=opendir($dir);  
-//     while(($entry=readdir($d))!==false) 
-//     { 
-//         if ($entry != "." && $entry != "..") 
-//         { 
-//             if (is_dir($dir."/".$entry)) 
-//             {  
-//                 dirDel($dir."/".$entry);  
-//             } 
-//             else 
-//             {  
-//                 unlink ($dir."/".$entry);  
-//             } 
-//         } 
-//     } 
-//     closedir($d);  
-//     rmdir ($dir);  
-//  }
-// $info = json_decode($_POST); 
+
 $info = $_POST;
 
 require_once 'connect.php';
@@ -45,11 +25,11 @@ if ($type == 'wood' || $type == 'alum') {
 
 $storage = 30;
 
-$listimg = explode('/', $info["listimg"]);
+$listimg = explode('/', (string) $info["listimg"]);
 $listimg = end($listimg);
 $resultlistimg = $publicvendor.$listimg;
 
-$imgconst = explode('/', $info["imgconst"]);
+$imgconst = explode('/', (string) $info["imgconst"]);
 $imgconst = end($imgconst);
 $resultimgconst = $publicvendor."t".$imgconst;
 
@@ -82,13 +62,13 @@ rename($oldimgconst, $newimgconst);
 
 // dirDel('uploads');
 
-setcookie("bagettype", "", time()-3600);
-setcookie("vendor", "", time()-3600);
-setcookie("price", "", time()-3600);
-setcookie("widthwithout", "", time()-3600);
-setcookie("width", "", time()-3600);
-setcookie("imgconst", "", time()-3600);
-setcookie("listimg", "", time()-3600);
+setcookie("bagettype", "", ['expires' => time()-3600]);
+setcookie("vendor", "", ['expires' => time()-3600]);
+setcookie("price", "", ['expires' => time()-3600]);
+setcookie("widthwithout", "", ['expires' => time()-3600]);
+setcookie("width", "", ['expires' => time()-3600]);
+setcookie("imgconst", "", ['expires' => time()-3600]);
+setcookie("listimg", "", ['expires' => time()-3600]);
 
 }catch(PDOExecption $e) {
         $dbh->rollback();

@@ -36,7 +36,7 @@ try {
         'success' => true,
         'message' => 'Ваша заявка зарегистрирована под № ' . $orderId . '. В течении 10 минут с вами свяжется наш менеджер.',
         'order_id' => $orderId
-    ]);
+    ], JSON_THROW_ON_ERROR);
 } catch (PDOExecption $e) {
     $dbh->rollback();
     print "Error!: " . $e->getMessage() . "</br>";

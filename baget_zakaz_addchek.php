@@ -1,9 +1,9 @@
 <?
 if ( $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' ) {
     $ident=$_GET['id'];
-    if (preg_match("/^[\dl]+$/",$ident))
+    if (preg_match("/^[\dl]+$/",(string) $ident))
 	{
-		$z=explode('l',$ident);
+		$z=explode('l',(string) $ident);
 	}
     else
 	{
@@ -20,7 +20,7 @@ if ( $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REMOTE_ADDR"]=='' || $_SERVER["REM
         $ident=implode("l",$z);
     }
     $fp = fopen('bagechek/'.$z[16], 'a');
-    fwrite($fp, $ident);
+    fwrite($fp, (string) $ident);
     fwrite($fp, "\r\n");
     fclose($fp);
     exit ('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online?id='.$ident.'">');

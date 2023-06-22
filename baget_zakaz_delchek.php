@@ -1,9 +1,9 @@
 <?
 if ($_SERVER["REMOTE_ADDR"]=='') {
         $ident=$_GET['id'];
-        if (preg_match("/^[\dl]+$/",$ident))
+        if (preg_match("/^[\dl]+$/",(string) $ident))
         {
-            $z=explode('l',$ident);
+            $z=explode('l',(string) $ident);
         }
         else
         {
@@ -16,9 +16,9 @@ if ($_SERVER["REMOTE_ADDR"]=='') {
         }
         $fp = fopen('bagechek/'.$z[16].'.tmp', 'w');
         $chekcont=file('bagechek/'.$z[16]);
-        if (count($chekcont)>0)
+        if ((is_countable($chekcont) ? count($chekcont) : 0)>0)
         {
-            for ($i = 0; $i < count($chekcont); $i++)
+            for ($i = 0; $i < (is_countable($chekcont) ? count($chekcont) : 0); $i++)
             {
                 $towrite=rtrim($chekcont[$i]);
                 if ($towrite!=$ident)
@@ -30,7 +30,7 @@ if ($_SERVER["REMOTE_ADDR"]=='') {
         fclose($fp);
         unlink('bagechek/'.$z[16]);
         rename('bagechek/'.$z[16].'.tmp', 'bagechek/'.$z[16]);
-        if (count($chekcont)<=1)
+        if ((is_countable($chekcont) ? count($chekcont) : 0)<=1)
 		{
             $z[16]=0;
             $ident=implode("l",$z);

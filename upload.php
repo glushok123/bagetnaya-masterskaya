@@ -7,8 +7,8 @@
 <body>
 	<?php
 	if ($_GET['id']) {
-		$z = explode('l', $_GET['id']);
-		if ($_FILES["filename"]["size"] > 26214400) {
+		$z = explode('l', (string) $_GET['id']);
+		if ($_FILES["filename"]["size"] > 26_214_400) {
 			echo ("Размер файла превышает двадцать пять мегабайт");
 			exit;
 		}
@@ -18,9 +18,9 @@
 			exit;
 		}
 		if (is_uploaded_file($_FILES["filename"]["tmp_name"])) {
-			$z[8] = '1' . date("ymdHis") . rand(10, 99);
+			$z[8] = '1' . date("ymdHis") . random_int(10, 99);
 			move_uploaded_file($_FILES["filename"]["tmp_name"], "pics/" . $z[8] . ".jpg");
-			list($width,  $height) = getimagesize('pics/' . $z[8] . ".jpg");
+			[$width, $height] = getimagesize('pics/' . $z[8] . ".jpg");
 			$info   = getimagesize('pics/' . $z[8] . ".jpg");
 			$width  = $info[0];
 			$height = $info[1];

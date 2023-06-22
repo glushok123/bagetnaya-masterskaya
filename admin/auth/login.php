@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $db = getDbInstance();
     $error_login = $db->query("SELECT COUNT(*) FROM user_accaunt WHERE (login = '$login' OR email = '$login') AND  passwd = '$passwd' GROUP BY (login) ");
-    if (count($error_login) != 1) {
+    if ((is_countable($error_login) ? count($error_login) : 0) != 1) {
         $json = '{
             "status":"error",
             "mes":"Не верный логин или пароль !"
@@ -54,16 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $info_user[0]['id'];
 
         $agent = $_SERVER['HTTP_USER_AGENT'];
-        preg_match("/(MSIE|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", $agent, $bInfo);
-        $browserInfo = array();
+        preg_match("/(MSIE|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", (string) $agent, $bInfo);
+        $browserInfo = [];
         $browserInfo['name'] = ($bInfo[1] == "Version") ? "Safari" : $bInfo[1];
         $browserInfo['version'] = $bInfo[2];
         $datat = date('Y-m-d H:i:s');
         $ip = client_ip();
 
         $series_id = randomString(16);
-        $remember_token = getSecureRandomToken(20);
-        $encryted_remember_token = password_hash($remember_token, PASSWORD_DEFAULT);
+        $remember_token = getSecureRandomToken();
+        $encryted_remember_token = password_hash((string) $remember_token, PASSWORD_DEFAULT);
         $expiry_time = date('Y-m-d H:i:s', strtotime(' + 60 days'));
         $expires = strtotime($expiry_time);
 
@@ -80,14 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 '" . $expiry_time . "'
             )");
 
-        setcookie('series_id', $series_id, $expires, "/");
-        setcookie('remember_token', $remember_token, $expires, "/");
+        setcookie('series_id', (string) $series_id, ['expires' => $expires, 'path' => "/"]);
+        setcookie('remember_token', (string) $remember_token, ['expires' => $expires, 'path' => "/"]);
 
-        $update_remember = array(
-            'series_id' => $series_id,
-            'remember_token' => $encryted_remember_token,
-            'expires' => $expiry_time
-        );
+        $update_remember = ['series_id' => $series_id, 'remember_token' => $encryted_remember_token, 'expires' => $expiry_time];
 
         $db->where('id', $id);
         $db->update("user_accaunt", $update_remember);

@@ -1,4 +1,4 @@
-    	<h3>Опрос</h3>
+<h3>Опрос</h3>
     	<div class='actio'>
     		<div class='quest'>
     			<p>1/8. Откуда Вы узнали о нашей компании?</p>
@@ -86,70 +86,70 @@
 		$menu2 = '';
 		$menu22 = '';
 
-		if (strripos($file, 'pechat_na_holste/')) {
+		if (strripos((string) $file, 'pechat_na_holste/')) {
 			$menu1 .= '<a href="/pechat_na_holste/" class="lm mark"> Печать на холсте</a> ';
 
-			if (strripos($file, 'pechat_na_holste_cena')) {
+			if (strripos((string) $file, 'pechat_na_holste_cena')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_na_holste_cena.html" class="sublm mark" > Цена печати на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_na_holste_cena.html" class="sublm unmark" > Цена печати на холсте</a> ';
 			}
 
-			if (strripos($file, 'pechat_foto_na_holste')) {
+			if (strripos((string) $file, 'pechat_foto_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_foto_na_holste.html" class="sublm mark" > Печать фото на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_foto_na_holste.html" class="sublm unmark" > Печать фото на холсте</a> ';
 			}
 
-			if (strripos($file, 'pechat_kartin_na_holste')) {
+			if (strripos((string) $file, 'pechat_kartin_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_kartin_na_holste.html" class="sublm mark" > Печать картин на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_kartin_na_holste.html" class="sublm unmark" > Печать картин на холсте</a> ';
 			}
 
-			if (strripos($file, 'shirokoformatnaya_pechat_na_holste')) {
+			if (strripos((string) $file, 'shirokoformatnaya_pechat_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/shirokoformatnaya_pechat_na_holste.html" class="sublm mark" > Широкоформатная печать на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/shirokoformatnaya_pechat_na_holste.html" class="sublm unmark" > Широкоформатная печать на холсте</a> ';
 			}
 
-			if (strripos($file, 'pechat_reprodukciy_na_holste')) {
+			if (strripos((string) $file, 'pechat_reprodukciy_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_reprodukciy_na_holste.html" class="sublm mark" > Печать репродукций на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_reprodukciy_na_holste.html" class="sublm unmark" > Печать репродукций на холсте</a> ';
 			}
 
-			if (strripos($file, 'interyernaya_pechat_na_holste')) {
+			if (strripos((string) $file, 'interyernaya_pechat_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/interyernaya_pechat_na_holste.html" class="sublm mark" > Интерьерная печать на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/interyernaya_pechat_na_holste.html" class="sublm unmark" > Интерьерная печать на холсте</a> ';
 			}
 
-			if (strripos($file, 'fotopechat_posterov_na_holste')) {
+			if (strripos((string) $file, 'fotopechat_posterov_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/fotopechat_posterov_na_holste.html" class="sublm mark" > Фотопечать постеров на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/fotopechat_posterov_na_holste.html" class="sublm unmark" > Фотопечать постеров на холсте</a> ';
 			}
 
-			if (strripos($file, 'pechat_ikon_na_holste')) {
+			if (strripos((string) $file, 'pechat_ikon_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_ikon_na_holste.html" class="sublm mark" > Печать икон на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_ikon_na_holste.html" class="sublm unmark" > Печать икон на холсте</a> ';
 			}
 
-			if (strripos($file, 'pechat_portreta_na_holste')) {
+			if (strripos((string) $file, 'pechat_portreta_na_holste')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_portreta_na_holste.html" class="sublm mark" > Печать портрета на холсте</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_portreta_na_holste.html" class="sublm unmark" > Печать портрета на холсте</a> ';
 			}
 
-			if (strripos($file, 'pechat_na_holste_s_imitatsiey_zhivopisi')) {
+			if (strripos((string) $file, 'pechat_na_holste_s_imitatsiey_zhivopisi')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_na_holste_s_imitatsiey_zhivopisi.html" class="sublm mark" > Печать на холсте с имитацией живописи</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_na_holste_s_imitatsiey_zhivopisi.html" class="sublm unmark" > Печать на холсте с имитацией живописи</a> ';
 			}
 
-			if (strripos($file, 'pechat_na_holste_s_podramnikom')) {
+			if (strripos((string) $file, 'pechat_na_holste_s_podramnikom')) {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_na_holste_s_podramnikom.html" class="sublm mark" > Печать на холсте с подрамником</a> ';
 			} else {
 				$menu11 .= '<a href="/pechat_na_holste/pechat_na_holste_s_podramnikom.html" class="sublm unmark" > Печать на холсте с подрамником</a> ';
@@ -159,25 +159,25 @@
 		}
 
 
-		if (strripos($file, 'bagetnye_raboty/')) {
+		if (strripos((string) $file, 'bagetnye_raboty/')) {
 			$menu1 .= '<a href="/bagetnye_raboty/" class="lm mark"> Багетные работы</a> ';
 
-			if (strripos($file, 'izgotovlenie_bageta/')) {
+			if (strripos((string) $file, 'izgotovlenie_bageta/')) {
 				$menu11 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/" class="sublm mark" > Изготовление багета</a> ';
 
-				if (strripos($file, 'izgotovlenie_bagetov_dlya_kartin')) {
+				if (strripos((string) $file, 'izgotovlenie_bagetov_dlya_kartin')) {
 					$menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_bagetov_dlya_kartin.html" class="ssublm mark" > Изготовление багетов для картин</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_bagetov_dlya_kartin.html" class="ssublm unmark" > Изготовление багетов для картин</a> ';
 				}
 
-				if (strripos($file, 'izgotovlenie_zerkal_v_bagete')) {
+				if (strripos((string) $file, 'izgotovlenie_zerkal_v_bagete')) {
 					$menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_zerkal_v_bagete.html" class="ssublm mark" > Изготовление зеркал в багете</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_zerkal_v_bagete.html" class="ssublm unmark" > Изготовление зеркал в багете</a> ';
 				}
 
-				if (strripos($file, 'izgotovlenie_ramki_iz_bageta')) {
+				if (strripos((string) $file, 'izgotovlenie_ramki_iz_bageta')) {
 					$menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_ramki_iz_bageta.html" class="ssublm mark" > Изготовление рамки из багета</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_ramki_iz_bageta.html" class="ssublm unmark" > Изготовление рамки из багета</a> ';
@@ -186,34 +186,34 @@
 				$menu11 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/" class="sublm unmark" > Изготовление багета</a> ';
 			}
 
-			if (strripos($file, 'oformlenie_v_baget/')) {
+			if (strripos((string) $file, 'oformlenie_v_baget/')) {
 				$menu11 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/" class="sublm mark" > Оформление в багет</a> ';
 
-				if (strripos($file, 'oformlenie_vyshivki_v_baget')) {
+				if (strripos((string) $file, 'oformlenie_vyshivki_v_baget')) {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_vyshivki_v_baget.html" class="ssublm mark" > Оформление вышивки в багет</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_vyshivki_v_baget.html" class="ssublm unmark" > Оформление вышивки в багет</a> ';
 				}
 
-				if (strripos($file, 'oformlenie_kartin_v_baget')) {
+				if (strripos((string) $file, 'oformlenie_kartin_v_baget')) {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_kartin_v_baget.html" class="ssublm mark" > Оформление картин в багет</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_kartin_v_baget.html" class="ssublm unmark" > Оформление картин в багет</a> ';
 				}
 
-				if (strripos($file, 'oformlenie_fotografiy_v_baget')) {
+				if (strripos((string) $file, 'oformlenie_fotografiy_v_baget')) {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_fotografiy_v_baget.html" class="ssublm mark" > Оформление фотографий в багет</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_fotografiy_v_baget.html" class="ssublm unmark" > Оформление фотографий в багет</a> ';
 				}
 
-				if (strripos($file, 'oformlenie_ikon_v_baget')) {
+				if (strripos((string) $file, 'oformlenie_ikon_v_baget')) {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_ikon_v_baget.html" class="ssublm mark" > Оформление икон в багет</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_ikon_v_baget.html" class="ssublm unmark" > Оформление икон в багет</a> ';
 				}
 
-				if (strripos($file, 'oformlenie_papirusa_v_baget')) {
+				if (strripos((string) $file, 'oformlenie_papirusa_v_baget')) {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_papirusa_v_baget.html" class="ssublm mark" > Оформление папируса в багет</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_papirusa_v_baget.html" class="ssublm unmark" > Оформление папируса в багет</a> ';
@@ -222,34 +222,34 @@
 				$menu11 .= '<a href="/bagetnye_raboty/oformlenie_v_baget/" class="sublm unmark" > Оформление в багет</a> ';
 			}
 
-			if (strripos($file, 'obramlenie/')) {
+			if (strripos((string) $file, 'obramlenie/')) {
 				$menu11 .= '<a href="/bagetnye_raboty/obramlenie/" class="sublm mark" > Обрамление</a> ';
 
-				if (strripos($file, 'obramlenie_dlya_foto')) {
+				if (strripos((string) $file, 'obramlenie_dlya_foto')) {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_dlya_foto.html" class="ssublm mark" > Обрамление для фото</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_dlya_foto.html" class="ssublm unmark" > Обрамление для фото</a> ';
 				}
 
-				if (strripos($file, 'obramlenie_kartiny')) {
+				if (strripos((string) $file, 'obramlenie_kartiny')) {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_kartiny.html" class="ssublm mark" > Обрамление картины</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_kartiny.html" class="ssublm unmark" > Обрамление картины</a> ';
 				}
 
-				if (strripos($file, 'obramlenie_fotografiy')) {
+				if (strripos((string) $file, 'obramlenie_fotografiy')) {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_fotografiy.html" class="ssublm mark" > Обрамление фотографий</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_fotografiy.html" class="ssublm unmark" > Обрамление фотографий</a> ';
 				}
 
-				if (strripos($file, 'obramlenie_risunka')) {
+				if (strripos((string) $file, 'obramlenie_risunka')) {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_risunka.html" class="ssublm mark" > Обрамление рисунка</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_risunka.html" class="ssublm unmark" > Обрамление рисунка</a> ';
 				}
 
-				if (strripos($file, 'obramlenie_kartinki')) {
+				if (strripos((string) $file, 'obramlenie_kartinki')) {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_kartinki.html" class="ssublm mark" > Обрамление картинки</a> ';
 				} else {
 					$menu111 .= '<a href="/bagetnye_raboty/obramlenie/obramlenie_kartinki.html" class="ssublm unmark" > Обрамление картинки</a> ';
@@ -258,37 +258,37 @@
 				$menu11 .= '<a href="/bagetnye_raboty/obramlenie/" class="sublm unmark" > Обрамление</a> ';
 			}
 
-			if (strripos($file, 'oformlenie_detskih_risunkov_v_baget')) {
+			if (strripos((string) $file, 'oformlenie_detskih_risunkov_v_baget')) {
 				$menu11 .= '<a href="/bagetnye_raboty/oformlenie_detskih_risunkov_v_baget.html" class="sublm mark" > Оформление детских рисунков</a> ';
 			} else {
 				$menu11 .= '<a href="/bagetnye_raboty/oformlenie_detskih_risunkov_v_baget.html" class="sublm unmark" > Оформление детских рисунков</a> ';
 			}
 
-			if (strripos($file, 'televizor_v_bagete')) {
+			if (strripos((string) $file, 'televizor_v_bagete')) {
 				$menu11 .= '<a href="/bagetnye_raboty/televizor_v_bagete.html" class="sublm mark" > Телевизор в багете</a> ';
 			} else {
 				$menu11 .= '<a href="/bagetnye_raboty/televizor_v_bagete.html" class="sublm unmark" > Телевизор в багете</a> ';
 			}
 
-			if (strripos($file, 'pechat_plakatov_A0_A1_A2')) {
+			if (strripos((string) $file, 'pechat_plakatov_A0_A1_A2')) {
 				$menu11 .= '<a href="/bagetnye_raboty/pechat_plakatov_A0_A1_A2.html" class="sublm mark" > Печать больших плакатов</a> ';
 			} else {
 				$menu11 .= '<a href="/bagetnye_raboty/pechat_plakatov_A0_A1_A2.html" class="sublm unmark" > Печать больших плакатов</a> ';
 			}
 
-			if (strripos($file, 'pechat_plakatov_A4_A3')) {
+			if (strripos((string) $file, 'pechat_plakatov_A4_A3')) {
 				$menu11 .= '<a href="/bagetnye_raboty/pechat_plakatov_A4_A3.html" class="sublm mark" > Печать плакатов А4 А3</a> ';
 			} else {
 				$menu11 .= '<a href="/bagetnye_raboty/pechat_plakatov_A4_A3.html" class="sublm unmark" > Печать плакатов А4 А3</a> ';
 			}
 
-			if (strripos($file, 'pechat_posterov')) {
+			if (strripos((string) $file, 'pechat_posterov')) {
 				$menu11 .= '<a href="/bagetnye_raboty/pechat_posterov.html" class="sublm mark" > Печать постеров</a> ';
 			} else {
 				$menu11 .= '<a href="/bagetnye_raboty/pechat_posterov.html" class="sublm unmark" > Печать постеров</a> ';
 			}
 
-			if (strripos($file, 'stilizacija_pod_zhivopis')) {
+			if (strripos((string) $file, 'stilizacija_pod_zhivopis')) {
 				$menu11 .= '<a href="/bagetnye_raboty/stilizacija_pod_zhivopis.html" class="sublm mark" > Стилизация под живопись</a> ';
 			} else {
 				$menu11 .= '<a href="/bagetnye_raboty/stilizacija_pod_zhivopis.html" class="sublm unmark" > Стилизация под живопись</a> ';
@@ -298,22 +298,22 @@
 		}
 
 
-		if (strripos($file, 'natyazhka_holsta/')) {
+		if (strripos((string) $file, 'natyazhka_holsta/')) {
 			$menu1 .= '<a href="/natyazhka_holsta/" class="lm mark"> Натяжка холста</a> ';
 
-			if (strripos($file, 'natyazhka_na_podramnik')) {
+			if (strripos((string) $file, 'natyazhka_na_podramnik')) {
 				$menu11 .= '<a href="/natyazhka_holsta/natyazhka_na_podramnik.html" class="sublm mark"> Натяжка на подрамник</a> ';
 			} else {
 				$menu11 .= '<a href="/natyazhka_holsta/natyazhka_na_podramnik.html" class="sublm unmark"> Натяжка на подрамник</a> ';
 			}
 
-			if (strripos($file, 'holst_na_podramnike')) {
+			if (strripos((string) $file, 'holst_na_podramnike')) {
 				$menu11 .= '<a href="/natyazhka_holsta/holst_na_podramnike.html" class="sublm mark"> Холст на подрамнике</a> ';
 			} else {
 				$menu11 .= '<a href="/natyazhka_holsta/holst_na_podramnike.html" class="sublm unmark"> Холст на подрамнике</a> ';
 			}
 
-			if (strripos($file, 'kartina_na_podramnike')) {
+			if (strripos((string) $file, 'kartina_na_podramnike')) {
 				$menu11 .= '<a href="/natyazhka_holsta/kartina_na_podramnike.html" class="sublm mark"> Картина на подрамнике</a> ';
 			} else {
 				$menu11 .= '<a href="/natyazhka_holsta/kartina_na_podramnike.html" class="sublm unmark"> Картина на подрамнике</a> ';
@@ -323,16 +323,16 @@
 		}
 
 
-		if (strripos($file, 'nakatka_na_penokarton/')) {
+		if (strripos((string) $file, 'nakatka_na_penokarton/')) {
 			$menu1 .= '<a href="/nakatka_na_penokarton/" class="lm mark"> Накатка на пенокартон</a> ';
 
-			if (strripos($file, 'penokarton_5_10')) {
+			if (strripos((string) $file, 'penokarton_5_10')) {
 				$menu11 .= '<a href="/nakatka_na_penokarton/penokarton_5_10.html" class="sublm mark" > Пенокартон 5мм и 10мм</a> ';
 			} else {
 				$menu11 .= '<a href="/nakatka_na_penokarton/penokarton_5_10.html" class="sublm unmark" > Пенокартон 5мм и 10мм</a> ';
 			}
 
-			if (strripos($file, 'kupit_penokarton')) {
+			if (strripos((string) $file, 'kupit_penokarton')) {
 				$menu11 .= '<a href="/nakatka_na_penokarton/kupit_penokarton.html" class="sublm mark" > Купить пенокартон</a> ';
 			} else {
 				$menu11 .= '<a href="/nakatka_na_penokarton/kupit_penokarton.html" class="sublm unmark" > Купить пенокартон</a> ';
@@ -341,41 +341,41 @@
 			$menu1 .= '<a href="/nakatka_na_penokarton/" class="lm unmark"> Накатка на пенокартон</a> ';
 		}
 
-		if (strripos($file, 'pechat_na_penokartone/')) {
+		if (strripos((string) $file, 'pechat_na_penokartone/')) {
 			$menu1 .= '<a href="/pechat_na_penokartone/" class="lm mark"> Печать на пенокартоне</a> ';
 		} else {
 			$menu1 .= '<a href="/pechat_na_penokartone/" class="lm unmark"> Печать на пенокартоне</a> ';
 		}
 
 
-		if (strripos($file, 'ramki_dlya_ikon/')) {
+		if (strripos((string) $file, 'ramki_dlya_ikon/')) {
 			$menu2 .= '<a href="/ramki_dlya_ikon/" class="lm mark"> Рамки для икон</a> ';
 
-			if (strripos($file, 'ramki_dlya_vyshityh_ikon')) {
+			if (strripos((string) $file, 'ramki_dlya_vyshityh_ikon')) {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramki_dlya_vyshityh_ikon.html" class="sublm mark" > Рамки для вышитых икон</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramki_dlya_vyshityh_ikon.html" class="sublm unmark" > Рамки для вышитых икон</a> ';
 			}
 
-			if (strripos($file, 'derevyannye_ramki_dlya_ikon')) {
+			if (strripos((string) $file, 'derevyannye_ramki_dlya_ikon')) {
 				$menu22 .= '<a href="/ramki_dlya_ikon/derevyannye_ramki_dlya_ikon.html" class="sublm mark" > Деревянные рамки для икон</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_ikon/derevyannye_ramki_dlya_ikon.html" class="sublm unmark" > Деревянные рамки для икон</a> ';
 			}
 
-			if (strripos($file, 'ramka_dlya_ikony_iz_bisera')) {
+			if (strripos((string) $file, 'ramka_dlya_ikony_iz_bisera')) {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramka_dlya_ikony_iz_bisera.html" class="sublm mark" > Рамка для иконы из бисера</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramka_dlya_ikony_iz_bisera.html" class="sublm unmark" > Рамка для иконы из бисера</a> ';
 			}
 
-			if (strripos($file, 'ramka_pod_ikonu')) {
+			if (strripos((string) $file, 'ramka_pod_ikonu')) {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramka_pod_ikonu.html" class="sublm mark" > Рамка под икону</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramka_pod_ikonu.html" class="sublm unmark" > Рамка под икону</a> ';
 			}
 
-			if (strripos($file, 'ramki_dlya_ikon_vyshityh_biserom')) {
+			if (strripos((string) $file, 'ramki_dlya_ikon_vyshityh_biserom')) {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramki_dlya_ikon_vyshityh_biserom.html" class="sublm mark" > Рамки для икон вышитых бисером</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_ikon/ramki_dlya_ikon_vyshityh_biserom.html" class="sublm unmark" > Рамки для икон вышитых бисером</a> ';
@@ -384,46 +384,46 @@
 			$menu2 .= '<a href="/ramki_dlya_ikon/" class="lm unmark"> Рамки для икон</a> ';
 		}
 
-		if (strripos($file, 'ramki_dlya_kartin/')) {
+		if (strripos((string) $file, 'ramki_dlya_kartin/')) {
 			$menu2 .= '<a href="/ramki_dlya_kartin/" class="lm mark"> Рамки для картин</a> ';
 
-			if (strripos($file, 'ramki_dlya_vyshityh_kartin')) {
+			if (strripos((string) $file, 'ramki_dlya_vyshityh_kartin')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/ramki_dlya_vyshityh_kartin.html" class="sublm mark" > Рамки для вышитых картин</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/ramki_dlya_vyshityh_kartin.html" class="sublm unmark" > Рамки для вышитых картин</a> ';
 			}
 
-			if (strripos($file, 'bolshie_aluminievye_ramki_dlya_kartin')) {
+			if (strripos((string) $file, 'bolshie_aluminievye_ramki_dlya_kartin')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/bolshie_aluminievye_ramki_dlya_kartin.html" class="sublm mark" > Алюминиевые рамки для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/bolshie_aluminievye_ramki_dlya_kartin.html" class="sublm unmark" > Алюминиевые рамки для картин</a> ';
 			}
 
-			if (strripos($file, 'krasivye_derevyannye_ramki_dlya_kartin')) {
+			if (strripos((string) $file, 'krasivye_derevyannye_ramki_dlya_kartin')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/krasivye_derevyannye_ramki_dlya_kartin.html" class="sublm mark" > Деревянные рамки для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/krasivye_derevyannye_ramki_dlya_kartin.html" class="sublm unmark" > Деревянные рамки для картин</a> ';
 			}
 
-			if (strripos($file, 'deshevye_plastikovye_ramki_dlya_kartin')) {
+			if (strripos((string) $file, 'deshevye_plastikovye_ramki_dlya_kartin')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/deshevye_plastikovye_ramki_dlya_kartin.html" class="sublm mark" > Пластиковые рамки для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/deshevye_plastikovye_ramki_dlya_kartin.html" class="sublm unmark" > Пластиковые рамки для картин</a> ';
 			}
 
-			if (strripos($file, 'gotovye_ramki_dlya_kartin')) {
+			if (strripos((string) $file, 'gotovye_ramki_dlya_kartin')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/gotovye_ramki_dlya_kartin.html" class="sublm mark" > Готовые рамки для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/gotovye_ramki_dlya_kartin.html" class="sublm unmark" > Готовые рамки для картин</a> ';
 			}
 
-			if (strripos($file, 'podbor_ramki_pod_kartinu')) {
+			if (strripos((string) $file, 'podbor_ramki_pod_kartinu')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/podbor_ramki_pod_kartinu.html" class="sublm mark" > Подбор рамки под картину</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/podbor_ramki_pod_kartinu.html" class="sublm unmark" > Подбор рамки под картину</a> ';
 			}
 
-			if (strripos($file, 'izgotovlenie_ramok_dlya_kartin_na_zakaz')) {
+			if (strripos((string) $file, 'izgotovlenie_ramok_dlya_kartin_na_zakaz')) {
 				$menu22 .= '<a href="/ramki_dlya_kartin/izgotovlenie_ramok_dlya_kartin_na_zakaz.html" class="sublm mark" > Рамки для картин на заказ</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_kartin/izgotovlenie_ramok_dlya_kartin_na_zakaz.html" class="sublm unmark" > Рамки для картин на заказ</a> ';
@@ -432,29 +432,29 @@
 			$menu2 .= '<a href="/ramki_dlya_kartin/" class="lm unmark"> Рамки для картин</a> ';
 		}
 
-		if (strripos($file, 'bagetnye_ramki/')) {
+		if (strripos((string) $file, 'bagetnye_ramki/')) {
 			$menu2 .= '<a href="/bagetnye_ramki/" class="lm mark"> Багетные рамки</a> ';
 
-			if (strripos($file, 'izgotovlenie_bagetnyh_ramok')) {
+			if (strripos((string) $file, 'izgotovlenie_bagetnyh_ramok')) {
 				$menu22 .= '<a href="/bagetnye_ramki/izgotovlenie_bagetnyh_ramok.html" class="sublm mark" > Изготовление багетных рамок</a> ';
 			} else {
 				$menu22 .= '<a href="/bagetnye_ramki/izgotovlenie_bagetnyh_ramok.html" class="sublm unmark" > Изготовление багетных рамок</a> ';
 			}
 
-			if (strripos($file, 'bagetnye_ramki_dlya_ikon')) {
+			if (strripos((string) $file, 'bagetnye_ramki_dlya_ikon')) {
 				$imgcat = 'none';
 				$menu22 .= '<a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="sublm mark" > Багетные рамки для икон</a> ';
 			} else {
 				$menu22 .= '<a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="sublm unmark" > Багетные рамки для икон</a> ';
 			}
 
-			if (strripos($file, 'bagetnye_ramki_dlya_kartin')) {
+			if (strripos((string) $file, 'bagetnye_ramki_dlya_kartin')) {
 				$menu22 .= '<a href="/bagetnye_ramki/bagetnye_ramki_dlya_kartin.html" class="sublm mark" > Багетные рамки для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/bagetnye_ramki/bagetnye_ramki_dlya_kartin.html" class="sublm unmark" > Багетные рамки для картин</a> ';
 			}
 
-			if (strripos($file, 'bagetnye_ramki_dlya_foto')) {
+			if (strripos((string) $file, 'bagetnye_ramki_dlya_foto')) {
 				$menu22 .= '<a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="sublm mark" > Багетные рамки для фото</a> ';
 			} else {
 				$menu22 .= '<a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="sublm unmark" > Багетные рамки для фото</a> ';
@@ -463,22 +463,22 @@
 			$menu2 .= '<a href="/bagetnye_ramki/" class="lm unmark"> Багетные рамки</a> ';
 		}
 
-		if (strripos($file, 'ramki_dlya_vyshivki/')) {
+		if (strripos((string) $file, 'ramki_dlya_vyshivki/')) {
 			$menu2 .= '<a href="/ramki_dlya_vyshivki/" class="lm mark"> Рамки для вышивки</a> ';
 
-			if (strripos($file, 'kak_oformit_vyshivku')) {
+			if (strripos((string) $file, 'kak_oformit_vyshivku')) {
 				$menu22 .= '<a href="/ramki_dlya_vyshivki/kak_oformit_vyshivku.html" class="sublm mark" > Как оформить вышивку</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_vyshivki/kak_oformit_vyshivku.html" class="sublm unmark" > Как оформить вышивку</a> ';
 			}
 
-			if (strripos($file, 'ramy_i_baget_dlya_vyshivki')) {
+			if (strripos((string) $file, 'ramy_i_baget_dlya_vyshivki')) {
 				$menu22 .= '<a href="/ramki_dlya_vyshivki/ramy_i_baget_dlya_vyshivki.html" class="sublm mark" > Рамы и багет для вышивки</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_vyshivki/ramy_i_baget_dlya_vyshivki.html" class="sublm unmark" > Рамы и багет для вышивки</a> ';
 			}
 
-			if (strripos($file, 'oformlenie_vyshivki')) {
+			if (strripos((string) $file, 'oformlenie_vyshivki')) {
 				$menu22 .= '<a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="sublm mark" > Оформление вышивки</a> ';
 			} else {
 				$menu22 .= '<a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="sublm unmark" > Оформление вышивки</a> ';
@@ -487,46 +487,46 @@
 			$menu2 .= '<a href="/ramki_dlya_vyshivki/" class="lm unmark"> Рамки для вышивки</a> ';
 		}
 
-		if (strripos($file, 'baget_dlya_ikony/')) {
+		if (strripos((string) $file, 'baget_dlya_ikony/')) {
 			$menu2 .= '<a href="/baget_dlya_ikony/" class="lm mark"> Багет для иконы</a> ';
 		} else {
 			$menu2 .= '<a href="/baget_dlya_ikony/" class="lm unmark"> Багет для иконы</a> ';
 		}
 
-		if (strripos($file, 'bagety_dlya_kartin/')) {
+		if (strripos((string) $file, 'bagety_dlya_kartin/')) {
 			$menu2 .= '<a href="/bagety_dlya_kartin/" class="lm mark"> Багеты для картин</a> ';
 
-			if (strripos($file, 'bagety_dlya_kartin_cena')) {
+			if (strripos((string) $file, 'bagety_dlya_kartin_cena')) {
 				$menu22 .= '<a href="/bagety_dlya_kartin/bagety_dlya_kartin_cena.html" class="sublm mark" > Стоимость багета для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/bagety_dlya_kartin/bagety_dlya_kartin_cena.html" class="sublm unmark" > Стоимость багета для картин</a> ';
 			}
 
-			if (strripos($file, 'zakazat_baget')) {
+			if (strripos((string) $file, 'zakazat_baget')) {
 				$menu22 .= '<a href="/bagety_dlya_kartin/zakazat_baget.html" class="sublm mark" > Заказать багет для картины</a> ';
 			} else {
 				$menu22 .= '<a href="/bagety_dlya_kartin/zakazat_baget.html" class="sublm unmark" > Заказать багет для картины</a> ';
 			}
 
-			if (strripos($file, 'kak_podobrat_baget_k_kartine')) {
+			if (strripos((string) $file, 'kak_podobrat_baget_k_kartine')) {
 				$menu22 .= '<a href="/bagety_dlya_kartin/kak_podobrat_baget_k_kartine.html" class="sublm mark" > Как подобрать багет к картине</a> ';
 			} else {
 				$menu22 .= '<a href="/bagety_dlya_kartin/kak_podobrat_baget_k_kartine.html" class="sublm unmark" > Как подобрать багет к картине</a> ';
 			}
 
-			if (strripos($file, 'derevyannye_bagety_dlya_kartin')) {
+			if (strripos((string) $file, 'derevyannye_bagety_dlya_kartin')) {
 				$menu22 .= '<a href="/bagety_dlya_kartin/derevyannye_bagety_dlya_kartin.html" class="sublm mark" > Деревянные багеты для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/bagety_dlya_kartin/derevyannye_bagety_dlya_kartin.html" class="sublm unmark" > Деревянные багеты для картин</a> ';
 			}
 
-			if (strripos($file, 'plastikovyi_baget_dlya_kartin')) {
+			if (strripos((string) $file, 'plastikovyi_baget_dlya_kartin')) {
 				$menu22 .= '<a href="/bagety_dlya_kartin/plastikovyi_baget_dlya_kartin.html" class="sublm mark" > Пластиковый багет для картин</a> ';
 			} else {
 				$menu22 .= '<a href="/bagety_dlya_kartin/plastikovyi_baget_dlya_kartin.html" class="sublm unmark" > Пластиковый багет для картин</a> ';
 			}
 
-			if (strripos($file, 'oformit_kartinu_v_baget')) {
+			if (strripos((string) $file, 'oformit_kartinu_v_baget')) {
 				$menu22 .= '<a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="sublm mark" > Оформить картину в багет</a> ';
 			} else {
 				$menu22 .= '<a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="sublm unmark" > Оформить картину в багет</a> ';
@@ -537,16 +537,16 @@
 
 
 
-		if (strripos($file, 'zerkala_v_bagete/')) {
+		if (strripos((string) $file, 'zerkala_v_bagete/')) {
 			$menu2 .= '<a href="/zerkala_v_bagete/" class="lm mark"> Зеркала в багете</a> ';
 
-			if (strripos($file, 'zerkalo_v_rame')) {
+			if (strripos((string) $file, 'zerkalo_v_rame')) {
 				$menu22 .= '<a href="/zerkala_v_bagete/zerkalo_v_rame.html" class="sublm mark" > Зеркало в раме</a> ';
 			} else {
 				$menu22 .= '<a href="/zerkala_v_bagete/zerkalo_v_rame.html" class="sublm unmark" > Зеркало в раме</a> ';
 			}
 
-			if (strripos($file, 'oformlenie_zerkal_v_baget')) {
+			if (strripos((string) $file, 'oformlenie_zerkal_v_baget')) {
 				$menu22 .= '<a href="/zerkala_v_bagete/oformlenie_zerkal_v_baget.html" class="ssublm mark" > Оформление зеркал в багет</a> ';
 			} else {
 				$menu22 .= '<a href="/zerkala_v_bagete/oformlenie_zerkal_v_baget.html" class="ssublm unmark" > Оформление зеркал в багет</a> ';
@@ -600,7 +600,7 @@
 		?>
     	</div>
 
-    	<? if ($disco) {
+    	<? if (!empty($disco)) {
 			echo "<a href='/#game15' id='discount' class='discou1' onclick='this.className=\"discou1\";'></a>";
 		} ?>
 

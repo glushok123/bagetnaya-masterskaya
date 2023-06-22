@@ -1,4 +1,5 @@
 <?
+ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
 /*
     Здесь только обновление с interquadrum
 */
@@ -45,14 +46,7 @@ class UpdateCatalog
         curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 30); // таймаут4
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false); // просто отключаем проверку сертификата
         curl_setopt($this->ch, CURLOPT_POST, 1); // использовать данные в post
-        curl_setopt($this->ch, CURLOPT_POSTFIELDS, array(
-            'AUTH_FORM' => 'Y',
-            'TYPE' => 'AUTH',
-            'backurl' => '/personal/',
-            'USER_LOGIN' => 'manager@bagetnaya-masterskaya.com',
-            'USER_PASSWORD' => 'fuckyourapax2202',
-            'Login' => 'Войти',
-        ));
+        curl_setopt($this->ch, CURLOPT_POSTFIELDS, ['AUTH_FORM' => 'Y', 'TYPE' => 'AUTH', 'backurl' => '/personal/', 'USER_LOGIN' => 'manager@bagetnaya-masterskaya.com', 'USER_PASSWORD' => 'fuckyourapax2202', 'Login' => 'Войти']);
         $data = curl_exec($this->ch);
 
         return $this->isAuth($data);
@@ -61,22 +55,22 @@ class UpdateCatalog
     //О том, что мы авторизовались будем судить по наличию формы logout
     public function isAuth($data)
     {
-        return strpos($data, 'Выход') ? true : false;
+        return strpos((string) $data, 'Выход') ? true : false;
     }
 
     /**
      * Получение каталога
      */
-    public function getCatalog($url, $typeName, $typeDesc)
+    public function getCatalog($url, $typeName)
     {
-        $nameFile = $typeName . '-' . time() . '-' . mt_rand(1, 9999999999) . ".xlsx";
+        $nameFile = $typeName . '-' . time() . '-' . random_int(1, 9_999_999_999) . ".xlsx";
         curl_setopt($this->ch, CURLOPT_URL, $url); // отправляем на
         $out = curl_exec($this->ch);
         $bite = fopen('updateFileXlsx/' . $nameFile, 'wb');
         fwrite($bite, $out);
         fclose($bite);
 
-        echo ('<b>Загружен ' . $typeDesc . '</b><br>');
+        echo ('<b>Загружен ' . $typeName . '</b><br>');
         $this->update($nameFile);
     }
 
@@ -92,7 +86,7 @@ class UpdateCatalog
         $countWitheStorageIsNull = 0;
 
         foreach ($xlsx->rows() as $item) {
-            if (round($item[6]) == 0) {
+            if (round( (int) $item[6]) == 0) {
                 $countWitheStorageIsNull = $countWitheStorageIsNull + 1;
             }
 
@@ -101,7 +95,7 @@ class UpdateCatalog
             $vendor = $item[0];
             $price = (int) $item[2];
             $price = round($price * 5);
-            $countBaget = round($item[6]);
+            $countBaget = round( (int) $item[6]);
 
             $stm = $this->dbh->prepare("SELECT * FROM catalog_baget where vendor=?");
             $stm->bindParam(1, $vendor);
@@ -110,7 +104,7 @@ class UpdateCatalog
             $date_update = $date = date('Y-m-d H:i:s');
             $company = 'interquadrum';
 
-            if (count($data) > 0) {
+            if ((is_countable($data) ? count($data) : 0) > 0) {
                 $countInDb = $countInDb + 1;
                 $stmt = $this->dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
                 $stmt->bindParam(1, $price);
@@ -153,9 +147,9 @@ if ($instance->auth() == true) {
 }
 
 $instance->db_connect();
-$instance->getCatalog($wood_url, 'wood', 'каталог деревянного багета');
-$instance->getCatalog($plastic_url, 'plastic', 'каталог пластикового багета');
-$instance->getCatalog($paspartu_url, 'pasp', 'каталог паспарту');
+$instance->getCatalog($wood_url, 'wood');
+$instance->getCatalog($plastic_url, 'plastic');
+$instance->getCatalog($paspartu_url, 'pasp');
 
 echo ('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
 echo ('<hr>');

@@ -48,7 +48,7 @@ height:900px;
 ">' . "$text" . '</te' . 'xtarea></form>';
         if ($_POST['save'] == true) {
             $fa = fopen($fi, 'w');
-            $c = stripslashes($_POST['comm']);
+            $c = stripslashes((string) $_POST['comm']);
             fwrite($fa, $c);
             fclose($fa);
             exit('<META HTTP-EQUIV=Refresh Content="0;

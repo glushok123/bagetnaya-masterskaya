@@ -82,10 +82,7 @@ ini_set('max_execution_time', '3000'); //300 seconds = 5 minutes
     // will be skipped too.
     // Example: "https://www.example.com/print" will also skip
     //   https://www.example.com/print/bootmanager.html
-    $skip_url = array (
-                       SITE . "/print",
-                       SITE . "/slide",
-                      );
+    $skip_url = [SITE . "/print", SITE . "/slide"];
     
 
     // General information for search engines how often they should crawl the page.
@@ -124,17 +121,17 @@ function GetPage ($url)
 
 function GetQuotedUrl ($str)
 {
-    $quote = substr ($str, 0, 1);
+    $quote = substr ((string) $str, 0, 1);
     if (($quote != "\"") && ($quote != "'")) // Only process a string 
     {                                        // starting with singe or
         return $str;                         // double quotes
     }                                                 
 
     $ret = "";
-    $len = strlen ($str);    
+    $len = strlen ((string) $str);    
     for ($i = 1; $i < $len; $i++) // Start with 1 to skip first quote
     {
-        $ch = substr ($str, $i, 1);
+        $ch = substr ((string) $str, $i, 1);
         
         if ($ch == $quote) break; // End quote reached
 
@@ -146,7 +143,7 @@ function GetQuotedUrl ($str)
 
 function GetHREFValue ($anchor)
 {
-    $split1  = explode ("href=", $anchor);
+    $split1  = explode ("href=", (string) $anchor);
     $split2 = explode (">", $split1[1]);
     $href_string = $split2[0];
 
@@ -192,7 +189,7 @@ function ValidateURL ($url_base, $url)
 {
     global $scanned;
         
-    $parsed_url = parse_url ($url);
+    $parsed_url = parse_url ((string) $url);
         
     $scheme = $parsed_url["scheme"];
         
@@ -205,23 +202,23 @@ function ValidateURL ($url_base, $url)
     if (($host != SITE_HOST) && ($host != "")) return false;
     
     // Check for page anchor in url
-    if ($page_anchor_pos = strpos ($url, "#"))
+    if ($page_anchor_pos = strpos ((string) $url, "#"))
     {
         // Cut off page anchor
-    	$url = substr ($url, 0, $page_anchor_pos);
+    	$url = substr ((string) $url, 0, $page_anchor_pos);
     }
         
     if ($host == "")    // Handle URLs without host value
     {
-        if (substr ($url, 0, 1) == '/') // Handle absolute URL
+        if (str_starts_with((string) $url, '/')) // Handle absolute URL
         {
             $url = SITE_SCHEME . "://" . SITE_HOST . $url;
         }
         else // Handle relative URL
         {
-            $path = parse_url ($url_base, PHP_URL_PATH);
+            $path = parse_url ((string) $url_base, PHP_URL_PATH);
             
-            if (substr ($path, -1) == '/') // URL is a directory
+            if (str_ends_with($path, '/')) // URL is a directory
             {
                 // Construct full URL
                 $url = SITE_SCHEME . "://" . SITE_HOST . $path . $url;
@@ -236,7 +233,7 @@ function ValidateURL ($url_base, $url)
                     $dirname = "/$dirname";
                 }
     
-                if (substr ($dirname, -1) != '/')
+                if (!str_ends_with($dirname, '/'))
                 {
                     $dirname = "$dirname/";
                 }
@@ -265,7 +262,7 @@ function SkipURL ($url)
     {
         foreach ($skip_url as $v)
         {           
-            if (substr ($url, 0, strlen ($v)) == $v) return true; // Skip this URL
+            if (str_starts_with((string) $url, (string) $v)) return true; // Skip this URL
         }
     }
 
@@ -285,13 +282,13 @@ function Scan ($url)
     }
     
     // Remove unneeded slashes
-    if (substr ($url, -2) == "//") 
+    if (str_ends_with((string) $url, "//")) 
     {
-        $url = substr ($url, 0, -2);
+        $url = substr ((string) $url, 0, -2);
     }
-    if (substr ($url, -1) == "/") 
+    if (str_ends_with((string) $url, "/")) 
     {
-        $url = substr ($url, 0, -1);
+        $url = substr ((string) $url, 0, -1);
     }
 
 
@@ -300,20 +297,20 @@ function Scan ($url)
     $headers = get_headers ($url, 1);
 
     // Handle pages not found
-    if (strpos ($headers[0], "404") !== false)
+    if (str_contains ((string) $headers[0], "404"))
     {
         echo "Not found: $url" . NL;
         return false;
     }
 
     // Handle redirected pages
-    if (strpos ($headers[0], "301") !== false)
+    if (str_contains ((string) $headers[0], "301"))
     {   
         $url = $headers["Location"];     // Continue with new URL
         echo "Redirected to: $url" . NL;
     }
     // Handle other codes than 200
-    else if (strpos ($headers[0], "200") == false)
+    else if (!str_contains ((string) $headers[0], "200"))
     {
         $url = $headers["Location"];
         echo "Skip HTTP code $headers[0]: $url" . NL;
@@ -323,11 +320,11 @@ function Scan ($url)
     // Get content type
     if (is_array ($headers["Content-Type"]))
     {
-        $content = explode (";", $headers["Content-Type"][0]);
+        $content = explode (";", (string) $headers["Content-Type"][0]);
     }
     else
     {
-        $content = explode (";", $headers["Content-Type"]);
+        $content = explode (";", (string) $headers["Content-Type"]);
     }
     
     $content_type = trim (strtolower ($content[0]));
@@ -356,7 +353,7 @@ function Scan ($url)
     }
 
     $html = GetPage ($url);
-    $html = trim ($html);
+    $html = trim ((string) $html);
     if ($html == "") return true;  // Return on empty page
     
     $html = preg_replace("/(\<\!\-\-.*\-\-\>)/sU", "", $html); // Remove commented text
@@ -392,7 +389,7 @@ function Scan ($url)
         {
             // Add URL to sitemap
             fwrite ($pf, "  <url>\n" .
-                         "    <loc>" . htmlentities ($next_url) ."</loc>\n" .
+                         "    <loc>" . htmlentities ((string) $next_url) ."</loc>\n" .
                          "    <changefreq>" . FREQUENCY . "</changefreq>\n" .
                          "    <priority>" . PRIORITY . "</priority>\n" .
                          "  </url>\n"); 
@@ -449,7 +446,7 @@ function Scan ($url)
                  "  </url>\n");
 
     echo "Scanning..." . NL;
-    $scanned = array();
+    $scanned = [];
     Scan (GetEffectiveURL (SITE));
     
     fwrite ($pf, "</urlset>\n");

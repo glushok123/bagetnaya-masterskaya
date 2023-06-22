@@ -15,7 +15,7 @@ if (
 $type = $_POST['type'];
 $sorter = $_POST['sorter'];
 if (isset($sorter)) {
-	$sorter = explode('-', $sorter);
+	$sorter = explode('-', (string) $sorter);
 	$orderby = $sorter[0];
 	$ordertype = $sorter[1];
 } else {

@@ -1,8 +1,8 @@
 <?
 if ($_GET['id']) {
 	$ident = $_GET['id'];
-	if (preg_match("/^[\dl]+$/", $ident)) {
-		$z = explode('l', $ident);
+	if (preg_match("/^[\dl]+$/", (string) $ident)) {
+		$z = explode('l', (string) $ident);
 	} else {
 		$fp = fopen('lo/g.txt', 'a');
 		$towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! ' . $ident . ' ! zakaz bad id';
@@ -39,7 +39,7 @@ if ($_GET['id']) {
 
 	<?
 	$zak_hist = file('base/zakaz-history.txt');
-	$z[15] = 500 + count($zak_hist);
+	$z[15] = 500 + (is_countable($zak_hist) ? count($zak_hist) : 0);
 	$ident = implode("l", $z);
 	$f_zak_hist = fopen('base/zakaz-history.txt', 'a');
 	$towrite = date("j.m.Y G:i") . '-!-' . $_SERVER["REMOTE_ADDR"] . '-!-' . $ident . "\r\n";

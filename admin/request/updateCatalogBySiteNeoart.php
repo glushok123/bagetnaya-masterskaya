@@ -24,7 +24,7 @@ foreach ($xmlwood->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = $item->quantity->countse;
+    $countW[$s] = (int) $item->quantity->countse;
     $price = round($priceW[$s] * 3.5);
     $count = round($countW[$s]);
 
@@ -35,7 +35,7 @@ foreach ($xmlwood->category->item as $item) {
     $date_update = $date = date('Y-m-d H:i:s');
     $company = 'neoart';
 
-    if (count($data) > 0) {
+    if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbWood += 1;
         $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
         $stmt->bindParam(1, $price);
@@ -59,7 +59,7 @@ foreach ($xmlplast->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = $item->quantity->countse;
+    $countW[$s] = (int) $item->quantity->countse;
     $price = round($priceW[$s] * 5);
     $count = round($countW[$s]);
 
@@ -70,7 +70,7 @@ foreach ($xmlplast->category->item as $item) {
     $date_update = $date = date('Y-m-d H:i:s');
     $company = 'neoart';
 
-    if (count($data) > 0) {
+    if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbPlast += 1;
         $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
         $stmt->bindParam(1, $price);
@@ -94,7 +94,7 @@ foreach ($xmlalum->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = $item->quantity->countse;
+    $countW[$s] = (int) $item->quantity->countse;
     $price = round($priceW[$s] * 3.5);
     $count = round($countW[$s]);
 
@@ -105,7 +105,7 @@ foreach ($xmlalum->category->item as $item) {
     $date_update = $date = date('Y-m-d H:i:s');
     $company = 'neoart';
 
-    if (count($data) > 0) {
+    if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbAlum += 1;
         $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
         $stmt->bindParam(1, $price);
@@ -129,7 +129,7 @@ foreach ($xmlpasp->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = $item->quantity->countse;
+    $countW[$s] = (int) $item->quantity->countse;
     $price = round($priceW[$s] * 3.5);
     $count = round($countW[$s]);
 
@@ -141,7 +141,7 @@ foreach ($xmlpasp->category->item as $item) {
     $date_update = $date = date('Y-m-d H:i:s');
     $company = 'neoart';
 
-    if (count($data) > 0) {
+    if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbPasp = $countInDbPasp + 1;
         $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
         $stmt->bindParam(1, $price);

@@ -45,9 +45,9 @@
 </style>
 
 <?
-$b = array();
+$b = [];
 $f = file('base/quest.txt');
-$cf = count($f);
+$cf = is_countable($f) ? count($f) : 0;
 for ($i = 0; $i < $cf; $i++) {
 	$a = explode('|', $f[$i]);
 	$b = explode('l', $a[1]);
