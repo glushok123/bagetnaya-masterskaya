@@ -16,8 +16,8 @@ class UpdateCatalog
     public $ch; //инициализация
     public $host = 'localhost'; // адрес сервера 
     public $database = 'a0458868_bagetnaya'; // имя базы данных
-    public $user = 'root'; // имя пользователя
-    public $password = ''; // пароль
+    public $user = 'a0458868_bagetnaya'; // имя пользователя
+    public $password = '1226591Qwer'; // пароль
     public $dbh; //название подключения к БД
     public $textUpdateRows = '';
     public $countUpdateRows = 0;
