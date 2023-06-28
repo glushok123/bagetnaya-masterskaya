@@ -522,7 +522,7 @@ if (($_SERVER["REMOTE_ADDR"] == '127.0.0.1')) {
 ?>
 </div>
 
-<? if ($disco) {
+<? if (!empty($disco)) {
 	echo "<a href='/#game15' id='discount' class='discou1' onclick='this.className=\"discou1\";'></a>";
 } ?>
 
