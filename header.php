@@ -120,6 +120,7 @@
                             <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
                             <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
                             <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
+                            <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
                         </ul>
                     </span>
                     <button type="button" class="btn resize-font"> <a href="/contacts.php" style="text-decoration: none;color:black;">КОНТАКТЫ</a> </button>

@@ -157,3 +157,4 @@ RewriteRule ^pechat_kartin_posterov_reprodukcij/$ pechat_kartin_posterov_reprodu
 
 
 RewriteRule ^ordena_i_medali/$ ordena_i_medali.php
+RewriteRule ^derevyannie_ramki/$ derevyannie_ramki.php
