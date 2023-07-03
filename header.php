@@ -121,6 +121,7 @@
                             <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
                             <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
                             <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
+                            <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
                         </ul>
                     </span>
                     <button type="button" class="btn resize-font"> <a href="/contacts.php" style="text-decoration: none;color:black;">КОНТАКТЫ</a> </button>
