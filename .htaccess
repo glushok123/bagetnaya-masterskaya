@@ -1,3 +1,8 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 Order Allow,Deny
 Allow from all
 
@@ -10,9 +15,18 @@ Allow from all
 
 ErrorDocument 404 https://bagetnaya-masterskaya.com/404.php
 
+<RequireAll>
+    Require all granted
+    Require not ip 2a09:0000:0000:0000:0000:0000:0000:0000/32
+    Require not ip fe80:0000:0000:0000:0000:0000:0000:0000/32
+    Require not ip 2a09:0400::/32
+    Require not ip 2a12:7c02::/32
+    Require not ip 2a09:4e06::/32
+</RequireAll>
+
 Options +FollowSymLinks -MultiViews
 # Turn mod_rewrite on
-RewriteEngine On
+
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^directory/(.*)$ directory/index.php?id=$1 [L,QSA,NC]

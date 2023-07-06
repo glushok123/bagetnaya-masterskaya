@@ -1,3 +1,105 @@
+<?php
+$blockPageAccess = 1;
+$checked = 0;
+ 
+// Функция отправки запроса на сервер Google reCAPTCHA
+function sendRequestToCaptchaServer($captcha) {
+    global $checked;
+ 
+    // Здесь секретный ключ
+    $secretKey = "6Ld7Of4mAAAAAMfRzRRshUqByG8TZ9ijEO7Wb-BB";
+    // Формируем запрос и отправляем полученый токен на сервер проверки
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = array('secret' => $secretKey, 'response' => $captcha);
+ 
+    $options = array(
+        'http' => array(
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context = stream_context_create($options);
+ 
+    // Запрос к серверу google.com/recaptcha и отлов ошибок
+    set_error_handler(
+            function ($severity, $message, $file, $line) {
+                throw new ErrorException($message, $severity, $severity, $file, $line);
+            }
+    );
+ 
+    try {
+        $response = file_get_contents($url, false, $context);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+ 
+    restore_error_handler();
+ 
+//    $response = file_get_contents($url, false, $context);
+    $responseKeys = json_decode($response, true);
+    // От сервера мы получаем ответ о набранных "очках" - от 0 до 1.
+    // 1 - значит это точно человек, а 0 - это точно бот
+    // Вы можете установить любой порог "прохождения". Я использую 0.5
+    if ($responseKeys["success"] AND $responseKeys["score"] > 0.5 AND $responseKeys["action"] == 'homepage') {
+        $checked = 1;
+        // Если это человек, то просто ничего не делаем
+    } else {
+        // А если это бот, то завершаем работу. Перед завершением можно показать боту какое-нибудь сообщение.
+        exit;
+    }
+}
+ 
+// Инициализируем переменную
+$captcha = '';
+// Проверяем, имеется ли токен и присваеваем его значение переменной
+if (isset($_GET["token"])) {
+    $captcha = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
+} elseif (isset($_POST["token"])) {
+    $captcha = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+}
+ 
+// Этот раздел срабатывает только если включена блокировка ботов к страницам
+if ($blockPageAccess) {
+    // Проверяем, является ли значение пустым
+    if (!$captcha) {
+        // Если токен отсутствует, значит нужно показать страницу получения токена
+        // У первоначального запроса могут быть GET параметры - собираем их, чтобы передать конечной странице
+        $get = '';
+        foreach ($_GET as $key => $value) {
+            $get = $get . "&$key=$value";
+        }
+        // Выводим код получения токена
+        echo '
+            <!DOCTYPE html>
+            
+            <html>
+                <head>
+                    <title>Are you a human being?</title>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <script src="https://www.google.com/recaptcha/api.js?render=6Ld7Of4mAAAAAAt9yg0iPn9pFXyZ3O5vbgrNTY10"></script>
+                </head>
+                <body>
+                    <script>
+                        grecaptcha.ready(function () {
+                            grecaptcha.execute(\'6Ld7Of4mAAAAAAt9yg0iPn9pFXyZ3O5vbgrNTY10\', {action: \'homepage\'}).then(function (token) {
+                                //alert(token)
+                                window.location.replace("?token=" + token + "' . $get . '");
+                            });
+                        });
+                    </script>
+                </body>
+            </html>
+            ';
+        // Больше никаких дел нет - отключаемся. Теперь пользователь придёт снова, но уже с токеном
+        exit;
+    }
+    // Если же токен всё-таки прислан, то инициируем запрос к серверу.
+    sendRequestToCaptchaServer($captcha);
+}
+?>
+
 <!DOCTYPE HTML>
 <HTML lang="ru-RU">
 
