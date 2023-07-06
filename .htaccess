@@ -20,8 +20,11 @@ ErrorDocument 404 https://bagetnaya-masterskaya.com/404.php
     Require not ip 2a09:0000:0000:0000:0000:0000:0000:0000/32
     Require not ip fe80:0000:0000:0000:0000:0000:0000:0000/32
     Require not ip 2a09:0400::/32
+    Require not ip 2a09:6905::/32
+    Require not ip 2a09:d005::/32
     Require not ip 2a12:7c02::/32
     Require not ip 2a09:4e06::/32
+    Require not ip 2a09::/32
 </RequireAll>
 
 Options +FollowSymLinks -MultiViews

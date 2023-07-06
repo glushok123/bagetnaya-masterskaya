@@ -560,28 +560,7 @@
   		© 2013 Багетная мастерская №1
   		<a href="/kontakty.html" class="botmhref">Контакты</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a><br><a href="/privacy.pdf" class="botmhref">Политика конфиденциальности</a><br><a href="/terms.pdf" class="botmhref">Пользовательское соглашение</a>
   	</div>
-  	<!-- Yandex.Metrika counter -->
-  	<script type="text/javascript">
-  		(function(m, e, t, r, i, k, a) {
-  			m[i] = m[i] || function() {
-  				(m[i].a = m[i].a || []).push(arguments)
-  			};
-  			m[i].l = 1 * new Date();
-  			k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-  		})
-  		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-  		ym(60934651, "init", {
-  			clickmap: true,
-  			trackLinks: true,
-  			accurateTrackBounce: true,
-  			webvisor: true
-  		});
-  	</script>
-  	<noscript>
-  		<div><img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt="" /></div>
-  	</noscript>
-  	<!-- /Yandex.Metrika counter -->
 
 
 
