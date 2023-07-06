@@ -54,9 +54,9 @@ function sendRequestToCaptchaServer($captcha) {
 $captcha = '';
 // Проверяем, имеется ли токен и присваеваем его значение переменной
 if (isset($_GET["token"])) {
-    $captcha = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
+    $captcha = filter_input(INPUT_GET, 'token', FILTER_UNSAFE_RAW);
 } elseif (isset($_POST["token"])) {
-    $captcha = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+    $captcha = filter_input(INPUT_POST, 'token', FILTER_UNSAFE_RAW);
 }
  
 // Этот раздел срабатывает только если включена блокировка ботов к страницам
