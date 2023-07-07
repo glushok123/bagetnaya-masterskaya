@@ -19,9 +19,8 @@ function sendRequestToCaptchaServer($captcha) {
             'content' => http_build_query($data)
         )
     );
-
     $context = stream_context_create($options);
-
+ 
     // Запрос к серверу google.com/recaptcha и отлов ошибок
     set_error_handler(
             function ($severity, $message, $file, $line) {
@@ -55,8 +54,10 @@ function sendRequestToCaptchaServer($captcha) {
 // Инициализируем переменную
 $captcha = '';
 // Проверяем, имеется ли токен и присваеваем его значение переменной
-if (isset($_COOKIE['token'])) {
-    $captcha = $_COOKIE['token'];
+if (isset($_GET["token"])) {
+    $captcha = filter_input(INPUT_GET, 'token', FILTER_UNSAFE_RAW);
+} elseif (isset($_POST["token"])) {
+    $captcha = filter_input(INPUT_POST, 'token', FILTER_UNSAFE_RAW);
 }
  
 // Этот раздел срабатывает только если включена блокировка ботов к страницам
@@ -85,9 +86,7 @@ if ($blockPageAccess) {
                         grecaptcha.ready(function () {
                             grecaptcha.execute(\'6Ld7Of4mAAAAAAt9yg0iPn9pFXyZ3O5vbgrNTY10\', {action: \'homepage\'}).then(function (token) {
                                 //alert(token)
-                                //window.location.replace("?token=" + token + "' . $get . '");
-                                document.cookie = "token=" + token;
-                                location.reload();
+                                window.location.replace("?token=" + token + "' . $get . '");
                             });
                         });
                     </script>
@@ -161,7 +160,7 @@ if ($country_code != 'RU') {
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169398394-2"></script>
-    <script>
+    <!--script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -173,7 +172,7 @@ if ($country_code != 'RU') {
     </script>
 
 
-    <script type="text/javascript" >
+    <!--script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -185,11 +184,11 @@ if ($country_code != 'RU') {
                 trackLinks:true,
                 accurateTrackBounce:true
         });
-    </script>
+    </!--script>
     <noscript><div><img src="https://mc.yandex.ru/watch/94108947" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
 
-  	<script type="text/javascript">
+  	<script-- type="text/javascript">
   		(function(m, e, t, r, i, k, a) {
   			m[i] = m[i] || function() {
   				(m[i].a = m[i].a || []).push(arguments)
@@ -205,7 +204,7 @@ if ($country_code != 'RU') {
   			accurateTrackBounce: true,
   			webvisor: true
   		});
-  	</script>
+  	</script-->
   	<noscript>
   		<div><img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt="" /></div>
   	</noscript>
