@@ -160,7 +160,7 @@ if ($country_code != 'RU') {
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169398394-2"></script>
-    <!--script>
+    <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -171,8 +171,7 @@ if ($country_code != 'RU') {
         gtag('config', 'UA-169398394-2');
     </script>
 
-
-    <!--script type="text/javascript" >
+    <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -184,11 +183,10 @@ if ($country_code != 'RU') {
                 trackLinks:true,
                 accurateTrackBounce:true
         });
-    </!--script>
+    </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/94108947" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-
-  	<script-- type="text/javascript">
+  	<script type="text/javascript">
   		(function(m, e, t, r, i, k, a) {
   			m[i] = m[i] || function() {
   				(m[i].a = m[i].a || []).push(arguments)
@@ -204,7 +202,7 @@ if ($country_code != 'RU') {
   			accurateTrackBounce: true,
   			webvisor: true
   		});
-  	</script-->
+  	</script>
   	<noscript>
   		<div><img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt="" /></div>
   	</noscript>
@@ -262,6 +260,7 @@ if ($country_code != 'RU') {
                             <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
                             <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
                             <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
+                            <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
                         </ul>
                     </span>
                     <button type="button" class="btn resize-font"> <a href="/contacts.php" style="text-decoration: none;color:black;">КОНТАКТЫ</a> </button>
