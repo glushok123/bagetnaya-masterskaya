@@ -1,5 +1,5 @@
 <?php
-$blockPageAccess = 1;
+$blockPageAccess = 0;
 $checked = 0;
  
 // Функция отправки запроса на сервер Google reCAPTCHA
@@ -109,7 +109,7 @@ $SxGeo = new SxGeo('SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY);
 // получаем двухзначный ISO-код страны (RU, UA и др.)
 $country_code = $SxGeo->getCountry($ip);
 
-if ($country_code != 'RU') {
+if (!empty($country_code) && $country_code != 'RU') {
     echo('<h1>Доступ запрещен! Вы можете попасть на сайт из РФ!</h1>');
     exit;
 } 
