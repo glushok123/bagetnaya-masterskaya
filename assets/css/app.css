@@ -203,11 +203,19 @@ hr {
 
 #site {
 	position: absolute;
-	top: 120px;
+	top: 170px;
 	left: 50%;
 	margin-left: -550px;
 	width: 1100px;
 	padding-top: 18px;
+}
+
+@media (max-width: 1900px) {
+	#site {top: 200px;}
+}
+
+@media (max-width: 650px) {
+	#site {top: 250px;}
 }
 
 #ocomp {

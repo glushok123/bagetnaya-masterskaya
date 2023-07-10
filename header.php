@@ -150,7 +150,7 @@ if (!empty($country_code) && $country_code != 'RU') {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
-    <link href="/assets/css/app.css" rel="stylesheet" />
+    <link href="/assets/css/app.css?v1" rel="stylesheet" />
     <script src="/assets/js/gallery.js"></script>
 
     <script src="https://kit.fontawesome.com/5fc8cb6b98.js" crossorigin="anonymous"></script>
@@ -278,12 +278,21 @@ if (!empty($country_code) && $country_code != 'RU') {
                 </div>
             </div>
         </div>
-    </div>
-    <div id="site">
-        <div class="ball"></div>
+    
+        <div class='row text-center justify-content-center'>
+            <div class='col-auto text-end align-self-center'>
+                <span style='font-size:20px; font-weight: 500;'>-20% на все!</span>
+            </div>
+            <div class='col-auto text-center align-self-center'>
+                <span style='color: #a21213; font-size:40px; font-weight: 500;' class="text-nowrap">Нам 10 лет!</span>
+            </div>
+            <div class='col-auto text-start align-self-center'>
+                <span style='font-size:20px; font-weight: 500;'>10.07.2023-12.07.2023</span>
+            </div>
+        </div>
 
-        <div class='container' id='activeTime'>
-            <div class='row' style='text-align:center'>
+        <div id='activeTime'>
+            <div class='row text-center justify-content-center' style='text-align:center'>
                 <div class='col'>
                     <svg viewBox="0 0 50 60" width="40" height="40">
                         <circle class="circle st_OF6 blink_me" cx="15" cy="30" r="10" />
@@ -297,6 +306,9 @@ if (!empty($country_code) && $country_code != 'RU') {
                 </div>
             </div>
         </div>
+    </div>
+    <div id="site">
+        <div class="ball"></div>
 
         <div class='container' id='Time' style='display: none'>
             <div class='row2' style='
