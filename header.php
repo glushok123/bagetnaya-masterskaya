@@ -287,7 +287,7 @@ if (!empty($country_code) && $country_code != 'RU') {
                 <span style='color: #a21213; font-size:40px; font-weight: 500;' class="text-nowrap">Нам 10 лет!</span>
             </div>
             <div class='col-auto text-start align-self-center'>
-                <span style='font-size:20px; font-weight: 500;'>10.07.2023-12.07.2023</span>
+                <span style='font-size:20px; font-weight: 500;'>10-12.07.2023</span>
             </div>
         </div>
 
