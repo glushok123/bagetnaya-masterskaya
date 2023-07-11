@@ -1,4 +1,5 @@
 <?php
+/*
 $blockPageAccess = 0;
 $checked = 0;
  
@@ -113,7 +114,7 @@ if (!empty($country_code) && $country_code != 'RU') {
     echo('<h1>Доступ запрещен! Вы можете попасть на сайт из РФ!</h1>');
     exit;
 } 
-
+*/
 ?>
 
 <!DOCTYPE HTML>
