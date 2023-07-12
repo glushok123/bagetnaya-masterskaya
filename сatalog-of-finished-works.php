@@ -23,17 +23,12 @@
 	html,
 	body {
 		max-width: 100%;
-		overflow-y: visible !important;
-
 	}
 
 	body {
 		max-width: 100%;
 		overflow-y: visible !important;
-		overflow-x: hidden !important;
-	}
-	html{
-		overflow-x: hidden !important;
+		overflow-x: hidden;
 	}
 
 	.price {
@@ -62,8 +57,8 @@
 
 	@media screen and (max-width: 1200px) {
 		.castom-image {
-			width: 200px !important;
-			height: 200px !important;
+			width: 180px !important;
+			height: 180px !important;
 		}
 	}
 
@@ -144,27 +139,27 @@ $category = [
 
 <hr>
 
-<div class='container'>
+<div class=''>
 	<div class='row text-center'>
 		<h3>Наши работы </h3>
 		<hr>
 	</div>
 
-	<div class='row g-0'>
+	<div class='row g-0 justify-content-center' style="margin-right:10px;">
 		<?
-		foreach ($category as $item) {
-			echo '
-						<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-							<div class="card text-center justify-content-center h-100" style="width:100%" href="/">
-								<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><img src="' . $item['imgMain'] . '" class="rounded mx-auto d-block castom-image " alt="..."></a>
-								
-								<div class="card-body">
-									<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><h5 class="card-title">' . $item['name'] . '</h5></a>
+			foreach ($category as $item) {
+				echo '
+							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+								<div class="card text-center justify-content-center h-100" style="width:100%" href="/">
+									<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><img src="' . $item['imgMain'] . '" class="rounded mx-auto d-block castom-image " alt="..."></a>
+									
+									<div class="card-body">
+										<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><h5 class="card-title">' . $item['name'] . '</h5></a>
+									</div>
 								</div>
 							</div>
-						</div>
-					';
-		}
+						';
+			}
 		?>
 	</div>
 	<br>
@@ -188,8 +183,5 @@ $category = [
 </script>
 
 <style>
-	html, body {
-		max-width: 100%;
-		overflow-x: hidden;
-	}
+
 </style>

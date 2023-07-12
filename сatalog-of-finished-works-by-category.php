@@ -186,18 +186,18 @@ $works = $stm->fetchAll();
 	</div>
 	<div class='row g-0'>
 		<?
-		foreach ($works as $item) {
-			echo '
-						<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-							<div class="card text-center justify-content-center h-100" style="width:100%" href="/">
-								<a data-fancybox="images"  data-caption="' . $item['description'] . '" href="' . $item['url_image'] . '"  style="text-decoration: none;" class="tekst_sverhu_kartinki" onmouseover="show($(this))" onmouseout="hide($(this))">
-									<img src="' . $item['url_image'] . '" class="rounded mx-auto d-block castom-image " alt="..." >
-									<h5 style="color:black;" display:none" class="tekst_sverhu_kartinki_tekst">' . $item['description'] . '</h5>
-								</a>
+			foreach ($works as $item) {
+				echo '
+							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+								<div class="card text-center justify-content-center h-100" style="width:100%" href="/">
+									<a data-fancybox="images"  data-caption="' . $item['description'] . '" href="' . $item['url_image'] . '"  style="text-decoration: none;" class="tekst_sverhu_kartinki" onmouseover="show($(this))" onmouseout="hide($(this))">
+										<img src="' . $item['url_image'] . '" class="rounded mx-auto d-block castom-image " alt="..." >
+										<h5 style="color:black;" display:none" class="tekst_sverhu_kartinki_tekst">' . $item['description'] . '</h5>
+									</a>
+								</div>
 							</div>
-						</div>
-					';
-		}
+						';
+			}
 		?>
 	</div>
 </div>
