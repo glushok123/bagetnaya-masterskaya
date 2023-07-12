@@ -30,7 +30,10 @@
 	body {
 		max-width: 100%;
 		overflow-y: visible !important;
-		overflow-x: visible !important;
+		overflow-x: hidden !important;
+	}
+	html{
+		overflow-x: hidden !important;
 	}
 
 	.price {
@@ -183,3 +186,10 @@ $category = [
 <script>
 
 </script>
+
+<style>
+	html, body {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+</style>
