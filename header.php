@@ -162,7 +162,7 @@
             </div>
         </div>
     
-        <div class='row text-center justify-content-center'>
+        <!--div class='row text-center justify-content-center'>
             <div class='col-auto text-end align-self-center'>
                 <span style='font-size:20px; font-weight: 500;'>-20% на все!</span>
             </div>
@@ -172,8 +172,9 @@
             <div class='col-auto text-start align-self-center'>
                 <span style='font-size:20px; font-weight: 500;'>10-12.07.2023</span>
             </div>
-        </div>
-
+        </!div-->
+        <br>
+        
         <div id='activeTime'>
             <div class='row text-center justify-content-center' style='text-align:center'>
                 <div class='col'>
