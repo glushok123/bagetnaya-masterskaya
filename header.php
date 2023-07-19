@@ -32,7 +32,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
-    <link href="/assets/css/app.css?v1" rel="stylesheet" />
+    <link href="/assets/css/app.css?v3" rel="stylesheet" />
     <script src="/assets/js/gallery.js"></script>
 
     <script src="https://kit.fontawesome.com/5fc8cb6b98.js" crossorigin="anonymous"></script>
@@ -97,12 +97,15 @@
 
         <div class='row text-center'>
             <div class='col mob-header-hide'>
+                <div class='row'>
+                    <span class="span-contact resize-font">8 (926) 865-92-95 салон на Арбатской </span>
+                </div>
                 <div class="border-top-red margin-top ">
 
                     <span class="dropdown" style='z-index:999999999999999999999999999999;'>
-                        <button class="btn resize-font " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            ГАЛЕРЕЯ РАБОТ
-                        </button>
+                        
+                            <a href="/сatalog-of-finished-works.php"><button class="btn resize-font gallery-works" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">ГАЛЕРЕЯ РАБОТ</button></a>
+                        
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="/сatalog-of-finished-works-by-category.php?category=Акварели,%20пастели%20и%20гравюры">Акварели, пастели и гравюры</a></li>
                             <li><a class="dropdown-item" href="/сatalog-of-finished-works-by-category.php?category=Зеркала%20и%20тв-панели">Зеркала и тв-панели</a></li>
@@ -155,6 +158,9 @@
                 </a>
             </div>
             <div class='col mob-header-hide'>
+                <div class='row'>
+                    <span class="span-contact resize-font">8 (977) 824-42-12 салон на Новокузнецкой</span>
+                </div>
                 <div class="border-top-red margin-top margin-right">
                     <button type="button" class="btn resize-font"><a href="/oplata_uslug.php" style="text-decoration: none;color:black;">ОПЛАТА И ДОСТАВКА</a></button>
                     <button type="button" class="btn resize-font"><a href="/картины%20багетной%20мастерской.php" style="text-decoration: none;color:black;">КУПИТЬ КАРТИНУ</a></button>
@@ -245,3 +251,9 @@
             <?
             include 'modules_php/feedBack.php';
             ?>
+
+            <script>
+                $(document).on('click', '.gallery-works', function () {
+                    location.href = '/сatalog-of-finished-works.php'
+                }); 
+            </script>
