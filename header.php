@@ -147,6 +147,7 @@
                             <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
                             <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
                             <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для картины</a></li>
+                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Оформление художественных выставок</a></li>
                         </ul>
                     </span>
                     <button type="button" class="btn resize-font"> <a href="/contacts.php" style="text-decoration: none;color:black;">КОНТАКТЫ</a> </button>

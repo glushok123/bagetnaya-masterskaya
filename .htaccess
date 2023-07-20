@@ -177,3 +177,4 @@ RewriteRule ^ordena_i_medali/$ ordena_i_medali.php
 RewriteRule ^derevyannie_ramki/$ derevyannie_ramki.php
 RewriteRule ^plastikovye_ramki/$ plastikovye_ramki.php
 RewriteRule ^metallicheskie_ramki/$ metallicheskie_ramki.php
+RewriteRule ^prices_for_print_and_canvas/$ prices_for_print_and_canvas.php
