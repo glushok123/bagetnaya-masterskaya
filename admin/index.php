@@ -44,6 +44,6 @@ if (!isset($_SESSION['user_logged_in'])) {
 </body>
 
 <link rel="stylesheet" href="assets/css/app.css">
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app.js?v2"></script>
 
 </html>
