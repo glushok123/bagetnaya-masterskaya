@@ -538,8 +538,7 @@ $(document).ready(function () {
             method: 'post',
             data: info,
             success: function (data) {
-                console.log(data)
-                alert('Изменено');
+                toastr.success('Изменено');
             },
             error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
