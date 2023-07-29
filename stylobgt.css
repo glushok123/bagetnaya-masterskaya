@@ -197,7 +197,7 @@ a.t3:hover {
     margin-left: -25px;
     width: 100px;
     height: 25px;
-    -webkit-transform: rotate(270deg); // разворот элемента для разных бразуеров
+    -webkit-transform: rotate(270deg); 
     -moz-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     -o-transform: rotate(270deg);
@@ -219,18 +219,13 @@ a.t3:hover {
     color: #666;
     background: #fff;
 }
-
-
-.baginst {}
-
 #bagcont {
     position: absolute;
-    width: 0;
-    height: 0;
+    width: 100%;
+    height: 100%;
     top: 50%;
-    left: 40%;
+    left: 0%;
 }
-
 #bgtop,
 #bgbot,
 #bgleft,
@@ -951,4 +946,337 @@ input[name="vendor"] {
     top: 0;
     left: -165px;
     background: #fff;
+}
+.bmenu-type {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000cc;
+}
+
+.bmenu-type:hover {
+    text-decoration: none;
+}
+
+#bmenu {
+    z-index: 100;
+}
+
+.layer {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    background: #000;
+    opacity: .7;
+}
+
+.fixwindow {
+    overflow: hidden;
+}
+
+.form {
+    display: none;
+}
+
+.bmenuimg {
+    width: auto !important;
+}
+
+div.maskimg {
+    width: 150px;
+    overflow: hidden;
+}
+.img-custom {
+    position: absolute;
+    left: 32%;
+}
+
+.test-custom {
+    position: relative;
+    /* добавили */
+    background: black;
+}
+.name-header{
+    color: var(--red, #AD1F2D);
+    font-family: Cormorant Garamond;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.position-relative{
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.position-absolute{
+    position: absolute;
+
+}
+.c1{
+    color: var(--graphit, #474A51);
+    font-family: Manrope;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.bg-custom-gold{
+    border-radius: 3px;
+    background: #DACAB1;
+    height: 44px;
+    width: 321px;
+    vertical-align:middle !important;
+}
+.s1{
+    color: var(--black, #262626);
+    font-family: Manrope;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.w1{
+    width: 407px !important;
+}
+.h1{
+    height: 44px;
+}
+.s2{
+    color: var(--black, #262626);
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.i1{
+    width: 137px;
+    height: 29px;
+    flex-shrink: 0;
+}
+.b1{
+    font-family: Manrope;
+    width: 150px;
+    height: 29px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: var(--graphit, #474A51) !important;
+    padding: 0px !important;
+}
+.b2{
+    width: 120px;
+    height: 29px;
+    color: var(--black, #262626) !important;
+    text-align: center;
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid var(--beige, #E0D2BB) !important;
+    background: white !important;
+    padding: 0px !important;
+}
+.w120{
+    width: 120px !important;
+}
+.w176{
+    width: 176px !important;
+}
+#bgpass{
+
+}
+@media (max-width: 768px)  {
+    .custom-height-block-1{
+        height: 300px;
+    }
+    .c1{
+        color: var(--graphit, #474A51);
+        font-family: Manrope;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .b1{
+        width: 133px;
+        height: 29px;
+        flex-shrink: 0;
+        color: var(--white, #FBFAF8);
+        text-align: center;
+        font-family: Manrope;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+@media (max-width:500px) {
+    .custom-height-block-1{
+        height: 250px;
+    }
+}
+
+@media (max-width:1600px) {
+    .i1{
+        width: 95px;
+    }
+    .b1{
+        width: 90px;
+    }
+}
+
+@media (max-width:993px) {
+    .sizey span, .sizex span{
+        color: var(--gray-4, #BDBDBD);
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .s1{
+        color: var(--graphit, #474A51);
+        font-family: Manrope;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .c1{
+        color: var(--graphit, #474A51);
+        font-family: Manrope;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .s-itogo{
+        color: var(--graphit, #474A51);
+        font-family: Manrope;
+        font-size: 20px !important;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .s-itogo-price{
+        color: var(--red, #AD1F2D);
+        font-family: Manrope;
+        font-size: 20px !important;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    .b1 {
+        color: var(--white, #FBFAF8);
+        text-align: center;
+        font-family: Manrope;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .custom-margin-top{
+        padding-top: 250px;
+    }
+    .w1 {
+        width: 316px !important;
+    }
+    .b3{
+        width: 281px !important;
+        height: 66px !important;
+        color: var(--white, #FBFAF8);
+        text-align: center;
+        font-family: Manrope;
+        font-size: 20px !important;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        max-width: 281px !important;
+    }
+    .screen{
+        margin-left:20px;
+    }
+    .itogo{
+
+        margin-left: 8px !important;
+    }
+}
+
+@media (max-width:800px) {
+    .custom-margin-top{
+        padding-top: 200px;
+    }
+}
+
+.screen{
+    z-index: 9999999999999999999999999999999 !important;
+}
+.s-itogo{
+    color: var(--graphit, #474A51);
+    font-family: Manrope;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.block-itogo{
+    width: 100%;
+}
+.bg-custom-gold-itogo{
+    border-radius: 11px;
+    border: 1px solid var(--beige, #E0D2BB);
+    background: var(--beige, #E0D2BB);
+    padding-top: 42px;
+    padding-bottom: 42px;
+    max-width: 625px;
+    margin-left: -0.75rem;
+}
+.s-itogo-price{
+    color: var(--red, #AD1F2D);
+    font-family: Manrope;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.i-promo{
+    width: 137px;
+    height: 29px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 1px solid var(--graphit, #474A51);
+    color: black;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.b3{
+    border-radius: 8px;
+    background: var(--red, #AD1F2D);
+    max-width: 281px !important;
+    height: 66px;
+    flex-shrink: 0;
+    color: var(--white, #FBFAF8);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+}
+
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
 }

@@ -36,6 +36,10 @@ RewriteRule ^directory/(.*)$ directory/index.php?id=$1 [L,QSA,NC]
 
 RewriteRule ^baget_online/$ baget_online [R=301,L]
 RewriteRule ^baget_online$ baget_online.php
+
+RewriteRule ^baget_online_new/$ baget_online_new [R=301,L]
+RewriteRule ^baget_online_new$ baget_online_new.php
+
 RewriteRule ^baget_zakaz_clearchek$ baget_zakaz_clearchek.php
 RewriteRule ^baget_zakaz_delchek$ baget_zakaz_delchek.php
 RewriteRule ^baget_zakaz_addchek$ baget_zakaz_addchek.php
