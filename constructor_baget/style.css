@@ -1,3 +1,5 @@
+
+
 BODY {
     font: normal 14px/18px Arial, Helvetica, sans-serif;
     color: #000000;
@@ -476,21 +478,16 @@ select[data-type="pasp"] .display-none {
 }
 
 #bmenu a {
-    position: relative;
+
     float: left;
     display: block;
     padding: 10px;
-    width: 150px;
-    height: 240px;
-    text-align: center;
-    margin: 0px 5px;
     text-decoration: none;
     color: #000000;
-    font: normal 15px/20px Tahoma;
 }
 
 #bmenu a:hover {
-    background: #f0f0f0;
+    /*background: #f0f0f0;*/
 }
 
 .nalich0,
@@ -982,7 +979,7 @@ input[name="vendor"] {
 }
 
 .bmenuimg {
-    width: auto !important;
+    /*width: auto !important;*/
 }
 
 div.maskimg {
@@ -1090,8 +1087,9 @@ div.maskimg {
 .w176{
     width: 176px !important;
 }
-#bgpass{
-
+.itogo{
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
 }
 @media (max-width: 768px)  {
     .custom-height-block-1{
@@ -1209,11 +1207,7 @@ div.maskimg {
     }
 }
 
-@media (max-width:800px) {
-    .custom-margin-top{
-        padding-top: 200px;
-    }
-}
+
 
 .screen{
     z-index: 9999999999999999999999999999999 !important;
@@ -1279,7 +1273,142 @@ html, body {
     width: 100% !important;
     max-width: 100% !important;
     overflow-x: hidden !important;
+    font-family: Manrope !important;
 }
 body{
     overflow-y: hidden !important;
+}
+.s3{
+    color: #AD1F2D;
+    /* heading text */
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.s-price-baget{
+
+}
+.nalich2{
+    border-radius: 5px;
+    background: #A9A875;
+    color: var(--black, #262626);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 160px;
+    height: 37px;
+    flex-shrink: 0;
+    padding-top: 8px;
+}
+.nalich1{
+    border-radius: 5px;
+    background: #CBBAA0;
+    color: var(--black, #262626);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-top: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 160px;
+    height: 37px;
+    flex-shrink: 0;
+}
+.bg-nal2{
+    display: inline-flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #E9E9E2 !important;
+}
+.bg-nal1{
+    display: inline-flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F7EDE5 !important;
+}
+.catalog-art{
+    color: var(--black, #262626);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: normal;
+}
+.catalog-info{
+    color: var(--graphit, #474A51);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#bmenu a {
+    height:auto; 
+}
+.catalog-price{
+    color: var(--black, #262626);
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.sort-b{
+    width: 137px;
+    height: 37px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: var(--graphit, #474A51);
+    color: var(--white, #FBFAF8);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.sort-b:hover{
+    border-radius: 5px;
+    background: var(--beige, #E0D2BB);
+    color: var(--black, #262626);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.sort-select{
+    border-radius: 5px;
+    border: 1px solid var(--graphit, #474A51);
+}
+@media (max-width:800px) {
+    .custom-margin-top{
+        padding-top: 200px;
+    }
+    .sorter-menu{
+        height: 165px;
+    }
+    .baget-type-menu .col{
+        margin-top:15px;
+    }
+    .sort-b{
+        min-width: 117px !important;
+    }
+    .bmenu-open {
+        min-width: 117px !important;
+    }
+    .sort-margin-y{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
 }

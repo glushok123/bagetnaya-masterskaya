@@ -285,13 +285,14 @@
 
 				width = $('#block-orient-width').width();
 				height = $('#block-orient-width').height();
+
 				console.log(width, height)
 				if(height == 0){
 					height = 250
 				}
 
 				maxmainw = width * 0.8;
-				maxmainh = height * 0.8;
+				maxmainh = width * 0.6;
 
 
 
@@ -422,9 +423,9 @@
 				pageid += Math.floor(z[i]);
 			}
 			if (hsh) {
-				document.location.href = "/baget_online_new?id=" + pageid + "#" + hsh;
+				document.location.href = "/baget_online?id=" + pageid + "#" + hsh;
 			} else {
-				document.location.href = "/baget_online_new?id=" + pageid;
+				document.location.href = "/baget_online?id=" + pageid;
 			}
 		}
 
@@ -448,7 +449,7 @@
 				pageid += 'l';
 				pageid += Math.floor(z[i]);
 			}
-			history.pushState(null, null, "/baget_online_new?id=" + pageid);
+			history.pushState(null, null, "/baget_online?id=" + pageid);
 			<? if ($z[11] == 0) {
 				echo "document.getElementById('fileform2').action = '/upload2.php?id='+pageid;";
 			} ?>

@@ -71,13 +71,13 @@ class UpdateCatalog
         fclose($bite);
 
         echo ('<b>Загружен ' . $typeName . '</b><br>');
-        $this->update($nameFile);
+        $this->update($nameFile, $typeName);
     }
 
     /**
      * обновление каталога
      */
-    public function update($file)
+    public function update($file, $typeName)
     {
         $xlsx = SimpleXLSX::parse('updateFileXlsx/' . $file);
 
@@ -94,7 +94,13 @@ class UpdateCatalog
 
             $vendor = $item[0];
             $price = (int) $item[2];
-            $price = round($price * 5);
+            if ($typeName == 'wood') {
+                $price = round($price * 3.5);
+            }
+            else{
+                $price = round($price * 5);
+            }
+
             $countBaget = round( (int) $item[6]);
 
             $stm = $this->dbh->prepare("SELECT * FROM catalog_baget where vendor=?");
