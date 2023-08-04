@@ -8,7 +8,9 @@ if (
 	$_SERVER["REMOTE_ADDR"] == '176.108.160.115' ||
 	$_SERVER["REMOTE_ADDR"] == '95.25.90.151' ||
 	$_SERVER["REMOTE_ADDR"] == '195.91.191.75' ||
-	$_SERVER["REMOTE_ADDR"] == '31.173.10.9'
+	$_SERVER["REMOTE_ADDR"] == '31.173.10.9' 
+	//||	$_SERVER["REMOTE_ADDR"] == '127.0.0.1'
+
 ) {
 	$minimaster = true;
 }
@@ -66,7 +68,7 @@ foreach ($data as $baget) { ?>
 			<div class='catalog-block-info my-2'>
 				<h5 class='text-nowrap text-start catalog-art'>Арт. <?= $baget['publicvendor'] ?></h5>
 				<? if ($minimaster) { ?>
-				<br>Арт. <?= $baget['vendor'] ?>
+					<h5 class='text-nowrap text-start catalog-art'>Арт. <?= $baget['vendor'] ?></h5>
 				<? } ?>
 				<? if ($type !== "pasp") { ?>
 					<h5 class='text-nowrap text-start catalog-info'>Ширина: <?= $baget['width'] ?> мм</h5>

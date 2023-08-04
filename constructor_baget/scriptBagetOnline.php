@@ -930,6 +930,20 @@
 				$('body').removeClass('fixwindow');
 			}
 
+			function choiseCatalog(type){
+				$('#catalog-plast').removeClass('active-button-catalog')
+				$('#catalog-wood').removeClass('active-button-catalog')
+				$('#catalog-alum').removeClass('active-button-catalog')
+				$('#catalog-pasp').removeClass('active-button-catalog')
+
+				$('#get-catalog-plast').removeClass('active-button-get-catalog')
+				$('#get-catalog-wood').removeClass('active-button-get-catalog')
+				$('#get-catalog-alum').removeClass('active-button-get-catalog')
+				$('#get-catalog-pasp').removeClass('active-button-get-catalog')
+
+				$('#catalog-'+ type).addClass('active-button-catalog')
+				$('#get-catalog-'+ type).addClass('active-button-get-catalog')
+			}
 			let getcatalog = function(type) {
 				selectedType = $('#sorter-catalog').attr("data-type");
 
@@ -940,6 +954,8 @@
 					$('.layer').fadeIn(500);
 					$('#bmenu').fadeIn(500);
 				}
+
+				choiseCatalog(type)
 			}
 
 			function downloadCatalog(type) {
