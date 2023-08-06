@@ -125,3 +125,57 @@ function xss_clean($string)
 {
 	return htmlspecialchars((string) $string, ENT_QUOTES, 'UTF-8');
 }
+
+/**
+ * Сортировка ассоциативного массива по ключу
+ * 
+ * array_sort
+ *
+ * @param  mixed $array
+ * @param  mixed $on
+ * @param  mixed $order
+ * @return void
+ */
+function array_sort($array, $on, $order=SORT_ASC)
+{
+    $new_array = array();
+    $sortable_array = array();
+
+    if (count($array) > 0) {
+        foreach ($array as $k => $v) {
+            if (is_array($v)) {
+                foreach ($v as $k2 => $v2) {
+                    if ($k2 == $on) {
+                        $sortable_array[$k] = $v2;
+                    }
+                }
+            } else {
+                $sortable_array[$k] = $v;
+            }
+        }
+
+        switch ($order) {
+            case SORT_ASC:
+                asort($sortable_array);
+            break;
+            case SORT_DESC:
+                arsort($sortable_array);
+            break;
+        }
+
+        foreach ($sortable_array as $k => $v) {
+            $new_array[$k] = $array[$k];
+        }
+    }
+
+    return $new_array;
+}
+
+// возвращает расстояние между двумя цветами
+function getDistanceFromColor($a, $b) 
+{
+	list($r1, $g1, $b1) = $a;
+	list($r2, $g2, $b2) = $b;
+
+	return sqrt(pow($r2-$r1, 2)+pow($g2-$g1, 2)+pow($b2-$b1, 2));
+}
