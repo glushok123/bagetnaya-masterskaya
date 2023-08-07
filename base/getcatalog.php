@@ -8,7 +8,7 @@ if (
 	//$_SERVER["REMOTE_ADDR"] == '176.108.160.115' ||
 	//$_SERVER["REMOTE_ADDR"] == '95.25.90.151' ||
 	//$_SERVER["REMOTE_ADDR"] == '195.91.191.75' ||
-	$_SERVER["REMOTE_ADDR"] == '77.91.72.208'
+	$_SERVER["REMOTE_ADDR"] == '195.91.191.75'
 ) {
 	$minimaster = true;
 }
