@@ -1211,7 +1211,7 @@ if ($z[12] > 0) {
 				$('#bagettype').val(
 					<? 
 						if (!empty($_COOKIE["bagettype"])){ 
-							echo $_COOKIE["bagettype"]; 
+							echo '"' . $_COOKIE["bagettype"] . '"'; 
 						} else{
 							echo '';
 						}
