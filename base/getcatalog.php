@@ -1,10 +1,8 @@
 <?
-
-require_once ('../auth/authCheck.php');
+require_once $_SERVER['DOCUMENT_ROOT'] . '/auth/authCheck.php';
 
 $type = $_POST['type'];
 $sorter = $_POST['sorter'];
-
 if (isset($sorter)) {
 	$sorter = explode('-', (string) $sorter);
 	$orderby = $sorter[0];
@@ -19,97 +17,39 @@ $stmt = $dbh->prepare($query);
 $stmt->bindParam(1, $type);
 $stmt->execute();
 $data = $stmt->fetchAll();
-
-?> 
-<div class='row'> 
-
-<?
-
-
 foreach ($data as $baget) { ?>
 
-	<? 
-		$class = '';
-		if ($baget['storage'] > 30) {
-			$class = 'bg-nal2';
-		} else{
-			$class = 'bg-nal1';
-		}
-	?>
-
-	<div class='my-2 mx-2 col-5 col-xl-2 text-start <?= $class ?>'>
-
-		<a class=" catalog-item  del<?= $baget['id'] ?>" 
-			onclick="
-				<? if ($type == 'pasp') { ?>
-					z[12]=0; 
-					z[3]=<?= $baget['publicvendor'] ?>; 
-					z[4]=<?= $baget['price'] ?>;
-				<? } else { ?>
-					z[12]=0; 
-					z[0]=<?= $baget['publicvendor'] ?>; 
-					z[1]=<?= $baget['price'] ?>; 
-					z[2]=<?= $baget['width'] ?>; 
-					z[22]=<?= $baget['widthwithout'] ?>; 
-				<? } ?>
-				changePage (); 
-				getitem(<?= $baget['publicvendor'] ?>); 
-				countprice ();" 
-				name="<?= $baget['publicvendor'] ?>
-			">
-
-			<? 
-				if (
-					$_SERVER["REMOTE_ADDR"] == "31.173.10.9" || 
-					$_SERVER["REMOTE_ADDR"] == "185.228.112.85" || 
-					$_SERVER["REMOTE_ADDR"] == "5.39.162.100" || 
-					$_SERVER["REMOTE_ADDR"] == '176.108.160.115'
-				) { 
-			?>
-				<div class="delete-baget" onclick="deleteBaget(<?= $baget['id'] ?>);"></div>
-			<? } ?>
-
-			<div class="maskimg">
-				<img src="/img/loading.gif" 
-				realsrc="
-					<? if ($type == "pasp") { ?>
-						/pi/
-					<? } else { ?>
-						/bi/
-					<? } ?>
-					<?= $baget['listimg'] ?>
-				" 
-				align="center" 
-				class="bmenuimg">
-			</div>
-			
-			<div class='catalog-block-info my-2'>
-				<h5 class='text-nowrap text-start catalog-art'>Арт. <?= $baget['publicvendor'] ?></h5>
-				<? if ($minimaster) { ?>
-					<h5 class='text-nowrap text-start catalog-art'>Арт. <?= $baget['vendor'] ?></h5>
-				<? } ?>
-				<? if ($type !== "pasp") { ?>
-					<h5 class='text-nowrap text-start catalog-info'>Ширина: <?= $baget['width'] ?> мм</h5>
-					<h5 class='text-nowrap text-start catalog-info'>Без четверти: <?= $baget['widthwithout'] ?> мм</h5>
-				<? } ?>
-				<? if ($type == "pasp") { ?>
-					<br>Цвет: <?= $baget['color'] ?>
-				<? } ?>
-			</div>
-			
-			<div class='row text-center my-2'>
-				<span class='catalog-price text-nowrap'><?= $baget['price'] ?> ₽</span> 
-			</div>
-			<? if ($type !== "pasp") { ?>
-				<? if ($baget['storage'] > 30) { ?>
-					
-					<div class="nalich2">В наличии</div>
-				<? } else { ?>
-					<div class="nalich1">Огранич. кол-во</div>
-			<? }
-			} ?>
-		</a>
-	</div>
-
+	<a class="catalog-item del<?= $baget['id'] ?>" onclick="
+	<? if ($type == "pasp") { ?>
+	z[12]=0; z[3]=<?= $baget['publicvendor'] ?>; z[4]=<?= $baget['price'] ?>;
+	<? } else { ?>
+		z[12]=0; z[0]=<?= $baget['publicvendor'] ?>; z[1]=<?= $baget['price'] ?>; z[2]=<?= $baget['width'] ?>; z[22]=<?= $baget['widthwithout'] ?>; 
+	<? } ?>
+	changePage (); getitem(<?= $baget['publicvendor'] ?>); countprice ();" name="<?= $baget['publicvendor'] ?>">
+		<? if ($_SERVER["REMOTE_ADDR"] == "31.173.10.9" || $_SERVER["REMOTE_ADDR"] == "185.228.112.85" || $_SERVER["REMOTE_ADDR"] == "5.39.162.100" || $_SERVER["REMOTE_ADDR"] == '176.108.160.115') { ?>
+			<div class="delete-baget" onclick="deleteBaget(<?= $baget['id'] ?>);"></div>
+		<? } ?>
+		<div class="maskimg"><img src="/img/loading.gif" realsrc="<? if ($type == "pasp") { ?>/pi/<? } else { ?>/bi/<? } ?><?= $baget['listimg'] ?>" align="left" class="bmenuimg"></div>
+		<b>Арт. <?= $baget['publicvendor'] ?></b>
+		<? if ($minimaster) { ?>
+			<br>Арт. <?= $baget['vendor'] ?>
+		<? } ?>
+		<? if ($type !== "pasp") { ?>
+			<br>Ширина: <?= $baget['width'] ?> мм
+			<br>Без четверти: <?= $baget['widthwithout'] ?> мм
+		<? } ?>
+		<? if ($type == "pasp") { ?>
+			<br>Цвет: <?= $baget['color'] ?>
+		<? } ?>
+		<br><span style="font-size:125%;"><?= $baget['price'] ?></span>р.
+		<? if ($type !== "pasp") { ?>
+			<? if ($baget['storage'] > 30) { ?>
+				<br>
+				<div class="nalich2">есть в наличии</div>
+			<? } else { ?>
+				<br>
+				<div class="nalich1">огранич. кол-во</div>
+		<? }
+		} ?>
+	</a>
 <? } ?>
-</div>

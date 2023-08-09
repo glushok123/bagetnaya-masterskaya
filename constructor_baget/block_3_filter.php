@@ -42,8 +42,6 @@
                 
             ?>
 
-
-
         <div class="form mb-50" <? if(!empty($_COOKIE['vendor'])) {echo "style='display:block;'" ;} ?>>
             <div class="formsection">
                 Тип багета:<br>
