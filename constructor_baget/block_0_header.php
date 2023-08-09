@@ -69,20 +69,8 @@ if ($z[8] == '0') {
 if ($z[11] != '0' && !(file_exists('pics/' . $z[11] . '.jpg'))) {
     $z[11] = '0';
 }
-$master = false;
-$minimaster = false;
 
-if (
-    $_SERVER["REMOTE_ADDR"] == '5.39.162.100' ||
-    $_SERVER["REMOTE_ADDR"] == '31.173.10.9' ||
-    $_SERVER["REMOTE_ADDR"] == '91.79.60.32' ||
-    $_SERVER["REMOTE_ADDR"] == '176.108.160.115' ||
-    $_SERVER["REMOTE_ADDR"] == '93.80.171.13' ||
-    $_SERVER["REMOTE_ADDR"] == '195.91.191.75' ||
-    $_SERVER["REMOTE_ADDR"] == '95.25.90.151'
-) {
-    $minimaster = true;
-}
+require_once $_SERVER['DOCUMENT_ROOT'] . '/auth/authCheck.php';
 
 $mainw = round(($z[9] + $z[5] + $z[2] + $z[5] + $z[2]) * $z[21] / 1000);
 $mainh = round(($z[10] + $z[5] + $z[2] + $z[5] + $z[2]) * $z[21] / 1000);

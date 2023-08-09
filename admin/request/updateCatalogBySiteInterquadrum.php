@@ -93,7 +93,13 @@ class UpdateCatalog
             $count = $count + 1;
 
             $vendor = $item[0];
-            $price = (int) $item[2];
+
+            if (!empty($item[4])){
+                $price = (int) $item[4];
+            }else{
+                $price = (int) $item[2];
+            }
+
             if ($typeName == 'wood') {
                 $price = round($price * 3.5);
             }

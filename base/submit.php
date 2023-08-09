@@ -17,24 +17,27 @@ if (isset($_POST['my_file_upload'])) {
         $file_name = cyrillic_translit($file['name']);
 
         if (move_uploaded_file($file['tmp_name'], "$uploaddir/$file_name")) {
-            $done_files[] = realpath("$uploaddir/$file_name");
+            $done_files[] = 'base/uploads/' . $file_name;//realpath("$uploaddir/$file_name");
         }
     }
+   
 
-    $catalogfile = explode("/", $done_files[0]);
-    $path = array_slice($catalogfile, 6);
-    $catalogfile = implode("/", $path);
-    $calcfile = explode("/", $done_files[1]);
-    $path = array_slice($calcfile, 6);
-    $calcfile = implode("/", $path);
+    $catalogfile = $done_files[0];//explode("/", $done_files[0]);
+    
+    //$path = array_slice($catalogfile, 6);
+    //echo(json_encode($catalogfile));
+    //$catalogfile = implode("/", $path);
+    $calcfile = $done_files[1];//explode("/", $done_files[1]);
+    //$path = array_slice($calcfile, 6);
+    //$calcfile = implode("/", $path);
     $path = ['catalogfile' =>  $catalogfile, 'calcfile' => $calcfile];
     // $data = $done_files ? $done_files : array('error' => 'Ошибка загрузки файлов.');
     // setcookie("catalogfile", $catalogfile);
     // exit( json_encode( $data ) );
 
     $data = $done_files ? ['files' => $done_files] : ['error' => 'Ошибка загрузки файлов.'];
-
-    exit(json_encode($path, JSON_THROW_ON_ERROR));
+    echo (json_encode($path, JSON_THROW_ON_ERROR));
+    exit();
 }
 
 

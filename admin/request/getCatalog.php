@@ -64,21 +64,35 @@ foreach ($data as $item) {
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top rounded mx-auto d-block" src="/' . $src . '/' . $item['listimg'] . '" alt="Card image cap">
                         <div class="card-body">
-                        <h5 class="card-title">Артикул: <span class="vendor">' . $item['publicvendor'] . '</span></h5>
-                        <p>Арт. поставщика: <span class="blue">' . $item['vendor'] . '</span></p>
-                        (<span class="blue">' . $item['company'] . '</span> - 
-                        <span class="blue">' . $item['date_update'] . '</span>)
-                        <hr>
-                        <p class="card-title blue">Цена: <span class="price">' . $item['price'] . '</span></p>
-                        <p class="card-title">Ширина: <span class="width">' . $item['width'] . '</span></p>
-                        <p class="card-title">Без четверти: <span class="widthwithout">' . $item['widthwithout'] . '</span></p>
-                        
-                        <p class="card-title ' . $color . '">Количество: <span class="storage">' . $item['storage'] . '</span></p>
-                        
-                        <p class="card-title">Цвет: <span class="color">' . $item['color'] . '</span></p>
-                        <p class="card-text"></p>
-                        <a class="btn btn-primary change" data-id="' . $item['id'] . '">Изменить</a>
-                        <a class="btn btn-danger delete" data-id="' . $item['id'] . '">Удалить</a>
+                            <h5 class="card-title">Артикул: <span class="vendor">' . $item['publicvendor'] . '</span></h5>
+                            <p>Арт. поставщика: <span class="blue">' . $item['vendor'] . '</span></p>
+                            (<span class="blue">' . $item['company'] . '</span> - 
+                            <span class="blue">' . $item['date_update'] . '</span>)
+                            <hr>
+                            <p class="card-title blue">Цена: <span class="price">' . $item['price'] . '</span></p>
+                            <p class="card-title">Ширина: <span class="width">' . $item['width'] . '</span></p>
+                            <p class="card-title">Без четверти: <span class="widthwithout">' . $item['widthwithout'] . '</span></p>
+                            
+                            <p class="card-title ' . $color . '">Количество: <span class="storage">' . $item['storage'] . '</span></p>
+                            
+                            <p class="card-title">Цвет: <span class="color">' . $item['color'] . '</span></p>
+                            <p class="card-text"></p>
+                            <hr>
+                            <p>Основные цвета багета (определенные автоматически):</p>
+                            <hr>
+                            <div class="row my-3 text-center justify-content-center">
+                                <div class="col-3">
+                                    <div style="width:50px; height:50px; border-radius:100px; background-color: ' . $item['color_m1'] . '"></div>
+                                </div>
+                                <div class="col-3">
+                                    <div style="width:50px; height:50px; border-radius:100px; background-color: ' . $item['color_m2'] . '"></div>
+                                </div>
+                                <div class="col-3">
+                                    <div style="width:50px; height:50px; border-radius:100px; background-color: ' . $item['color_m3_1'] . '"></div>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary change" data-id="' . $item['id'] . '">Изменить</a>
+                            <a class="btn btn-danger delete" data-id="' . $item['id'] . '">Удалить</a>
                         </div>
                     </div>
                 </div>
