@@ -24,6 +24,16 @@
                 ?>
         </div>
         <div class="col-6 mx-auto">
+            <button class="animated-button1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Подбор багета с помощью ИИ
+            </button>
+
+        </div>
+        <div class="col-6 mx-auto hidden">
             <h2 class='c1'>Просмотр в интерьере</h2>
             <?
                     if ($z[11] != 0) {
