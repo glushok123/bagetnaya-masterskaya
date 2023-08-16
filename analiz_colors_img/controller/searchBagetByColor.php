@@ -55,7 +55,7 @@ foreach($distance as $item) {
     $count = $count + 1;
     $bagetIds[] = $item['id'];
 
-    if ($count == 10) {
+    if ($count == 20) {
         break;
     }
 }

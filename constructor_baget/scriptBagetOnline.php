@@ -288,7 +288,7 @@
 				width = $('#block-orient-width').width();
 				height = $('#block-orient-width').height();
 
-				console.log(width, height)
+				//console.log(width, height)
 				if(height == 0){
 					height = 250
 				}
@@ -342,15 +342,18 @@
 
             z[20] = 20
 
-            if (window.innerWidth < 800) {
-                z[20] = -10
-            }
-            
 			if (z[19] < 40) {
 				z[19] = 50
 			}
 
-			console.log('left:' + z[19] )
+            if (window.innerWidth < 800) {
+                z[20] = -10
+				z[19] = (window.innerWidth - mainw)/2
+            }
+            
+
+
+			//console.log('left:' + z[19] )
 			myModal.hide();
 			bagcont.style.width = mainw + 'px';
 			bagcont.style.height = mainh + 'px';
@@ -901,7 +904,7 @@
 					dataType: "text",
 					success: function(data) {
 						item = JSON.parse(data);
-						console.log(item);
+						//console.log(item);
 						if (item[0].type == "pasp") {
 							$('#bgpass').css('background-image', 'url(/pi/' + item[0].imgconst + ')');
 							$('#articul2').text(idgetitem);
@@ -925,7 +928,7 @@
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(textStatus);
+						//console.log(textStatus);
 
 						alert('ошибка загрузки багета');
 
@@ -999,7 +1002,7 @@
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(textStatus);
+						//console.log(textStatus);
 
 						alert('ошибка добавления =(');
 
@@ -1046,7 +1049,7 @@
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(textStatus);
+						//console.log(textStatus);
 
 						alert('ошибка добавления =(');
 
@@ -1072,7 +1075,7 @@
 
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(textStatus);
+						//console.log(textStatus);
 
 						alert('ошибка удаления =(');
 
@@ -1132,7 +1135,7 @@
 				});
 
 			})
-            console.log(z[12])
+            //console.log(z[12])
 
 
 
