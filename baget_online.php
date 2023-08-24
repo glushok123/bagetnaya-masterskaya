@@ -95,7 +95,7 @@ if (!$minimaster) {
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-144-precomposed.png " />
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png" />
-	<link rel="stylesheet" type="text/css" href="/stylobgt.css">
+	<link rel="stylesheet" type="text/css" href="/stylobgt.css?v2">
 
 	<script>
 		<? echo 'var z=[' . $z[0] . ',' . $z[1] . ',' . $z[2] . ',' . $z[3] . ',' . $z[4] . ',' . $z[5] . ',' . $z[6] . ',' . $z[7] . ',' . $z[8] . ',' . $z[9] . ',' . $z[10] . ',' . $z[11] . ',' . $z[12] . ',' . $z[13] . ',' . $z[14] . ',' . $z[15] . ',' . $z[16] . ',' . $z[17] . ',' . $z[18] . ',' . $z[19] . ',' . $z[20] . ',' . $z[21] . ',' . $z[22] . '], mainw=' . $mainw . ', mainh=' . $mainh; ?>
