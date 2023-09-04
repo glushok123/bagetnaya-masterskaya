@@ -1003,8 +1003,8 @@ div.maskimg {
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .position-relative {
   position: relative !important;
@@ -1086,8 +1086,8 @@ div.maskimg {
   width: 176px !important;
 }
 .itogo {
-  margin-top: 50px !important;
-  margin-bottom: 50px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
 }
 @media (max-width: 768px) {
   .custom-height-block-1 {
@@ -1223,9 +1223,9 @@ div.maskimg {
   border-radius: 11px;
   border: 1px solid var(--beige, #e0d2bb);
   background: var(--beige, #e0d2bb);
-  padding-top: 42px;
-  padding-bottom: 42px;
-  max-width: 625px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  max-width: 500px;
   margin-left: -0.75rem;
 }
 .s-itogo-price {
@@ -1603,7 +1603,7 @@ body {
           transform: translate(0%, 0%);
   overflow: hidden;
   color: #f7d4d4;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 2.5px;
   text-align: center;
   text-transform: uppercase;
@@ -3346,4 +3346,11 @@ body {
   .name-header{
     font-size: 28px;
   }
+}
+.screen .container {
+  padding: 0px;
+}
+.my-2{
+  margin-top: 0.1rem!important;
+  margin-bottom: 0.1rem!important;
 }
