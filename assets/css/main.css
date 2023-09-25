@@ -375,6 +375,7 @@ footer{
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    font-display: swap;
 }
 .open-block-name:hover{
     cursor: pointer;
