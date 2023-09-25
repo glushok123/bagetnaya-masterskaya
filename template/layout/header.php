@@ -4,6 +4,7 @@
     $title = empty($title) ? "Багетная мастерская №1 в Москве - качественно и недорого!" : $title;
     $description = empty($description) ? "Понадобились услуги недорогой багетной мастерской в Москве? Наша Багетная Мастерская №1 порадует Вас доступными ценами. Мы - лучшие в качественном оформлении багетными рамками." : $description;;
     $keywords = empty($keywords) ? "багетная мастерская, багетная мастерская в Москве, багетная мастерская недорого" : $keywords;;
+    header("Cache-Control: max-age=2592000");
 ?>
 
 <!doctype html>
@@ -15,6 +16,7 @@
     <link rel="SHORTCUT ICON" href="/favicon.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="content-language" content="ru">
+    
 
     <title>
         <? echo $title; ?>
