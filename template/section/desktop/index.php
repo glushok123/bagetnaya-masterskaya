@@ -82,7 +82,7 @@
         </div>
         <div class='row my-5'>
             <div class='col-4'>
-                <video src="/video/video.mp4" width="250px" height="430px" autoplay loop muted controls></video>
+                <video src="/video/output(compress-video-online.com).mp4" width="250px" height="430px" autoplay loop muted controls></video>
             </div>
             <div class='col-4' style="padding-left: 0px;">
                 <div class='style-text font-16'>

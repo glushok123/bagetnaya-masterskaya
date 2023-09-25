@@ -96,7 +96,7 @@
         </a>
 
         <div class='row mt-5'>
-            <video src="/video/video.mp4" width="240px" height="400px" autoplay loop muted controls></video>
+            <video src="/video/output(compress-video-online.com).mp4" width="240px" height="400px" autoplay loop muted controls ></video>
         </div>
     </div>
 </section>
