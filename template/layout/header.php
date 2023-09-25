@@ -26,8 +26,7 @@
     <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
 
     <script src="/assets/layout/jquery.min.js"></script>
     <script src="/assets/layout/jquery.mask.min.js"></script>
@@ -36,10 +35,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css">
+    <script type="text/javascript" src="/assets/layout/toastify-js"></script>
+
+    <link href="/assets/layout/toastr.css" rel="stylesheet" />
+    <script src="/assets/layout/toastr.js"></script>
 
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/custom-768.css">
