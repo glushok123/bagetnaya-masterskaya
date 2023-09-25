@@ -194,3 +194,6 @@ DirectoryIndex /template/index.php
 RewriteRule ^search$  /template/search.php [R=301,L]
 RewriteRule ^search/$ /template/search.php
 
+<ifModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
