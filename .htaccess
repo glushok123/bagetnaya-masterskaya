@@ -31,11 +31,15 @@ Options +FollowSymLinks -MultiViews
 # Turn mod_rewrite on
 
 
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^directory/(.*)$ directory/index.php?id=$1 [L,QSA,NC]
 
 RewriteRule ^baget_online/$ baget_online [R=301,L]
 RewriteRule ^baget_online$ baget_online.php
+
+RewriteRule ^/$ index [R=301,L]
+RewriteRule ^index$ template/index.php
 
 RewriteRule ^baget_online_new/$ baget_online_new [R=301,L]
 RewriteRule ^baget_online_new$ baget_online_new.php
@@ -182,3 +186,10 @@ RewriteRule ^derevyannie_ramki/$ derevyannie_ramki.php
 RewriteRule ^plastikovye_ramki/$ plastikovye_ramki.php
 RewriteRule ^metallicheskie_ramki/$ metallicheskie_ramki.php
 RewriteRule ^prices_for_print_and_canvas/$ prices_for_print_and_canvas.php
+
+#НОВАЯ АРХИТЕКТУРА
+#Redirect /index.php /template/index.php
+DirectoryIndex /template/index.php
+
+RewriteRule ^search$  /template/search.php [R=301,L]
+RewriteRule ^search/$ /template/search.php

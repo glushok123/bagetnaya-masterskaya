@@ -1,7 +1,8 @@
 <?
 	require_once './base/connect.php';
 	require_once './constructor_baget/block_0_header.php';
-	require_once './constructor_baget/new_header.php';
+	//require_once './constructor_baget/new_header.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 	echo "<body onresize=\"changesize ();\" onload=\"bgswitch();";
 	if ($z[21] == "0") {
@@ -14,6 +15,23 @@
 	}
 ?>
 
+<div class='block-sk-circle hidden'>
+    <div class="sk-circle">
+    <div class="sk-circle1 sk-child"></div>
+    <div class="sk-circle2 sk-child"></div>
+    <div class="sk-circle3 sk-child"></div>
+    <div class="sk-circle4 sk-child"></div>
+    <div class="sk-circle5 sk-child"></div>
+    <div class="sk-circle6 sk-child"></div>
+    <div class="sk-circle7 sk-child"></div>
+    <div class="sk-circle8 sk-child"></div>
+    <div class="sk-circle9 sk-child"></div>
+    <div class="sk-circle10 sk-child"></div>
+    <div class="sk-circle11 sk-child"></div>
+    <div class="sk-circle12 sk-child"></div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row text-center">
         <h1 class="name-header">Рассчитайте стоимость багета</h1>
@@ -22,7 +40,7 @@
 
 <div class="container-fluid ">
     <div class='row'>
-        <div class='col-12 col-lg-8 relative'>
+        <div class='col-12 col-lg-8 '>
             <?
 				if (!isMobile()) {
 					include('./constructor_baget/block_1.php');
@@ -104,11 +122,37 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/js/jquery.cookie.js"></script>
-    <? include('./constructor_baget/scriptBagetOnline.php')?>
+
+	<link rel="stylesheet" type="text/css" href="/constructor_baget/style.css?v4">
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-xl">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Багет подобранный искусственным интеллектом на основании спектрального анализа изображения</h5>
+			<button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body" id ='custom-baget-me'>
+				<div class='row baget-conteiner' id='test-r'>
+
+				</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Закрыть</button>
+		</div>
+		</div>
+	</div>
+	</div>
+	<style>
+		.my-2{
+			margin-top: 0.1rem!important;
+			margin-bottom: 0.1rem!important;
+		}
+	</style>
+	<? 
+	include('./constructor_baget/scriptBagetOnline.php');
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
+	?>
 </HTML>
-<style>
-	.my-2{
-  margin-top: 0.1rem!important;
-  margin-bottom: 0.1rem!important;
-}
-</style>
+

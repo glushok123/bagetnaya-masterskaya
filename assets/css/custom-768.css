@@ -1,0 +1,88 @@
+@media (max-width: 768px) {
+    .navbar-brand{
+        font-size: 14px;
+    }
+    .img-brand{
+        width: 10.137px;
+        height: 16.684px;
+        flex-shrink: 0;
+    }
+    .img-brand-footer{
+        height: 30px !important;
+        flex-shrink: 0;
+    }
+    .nav-item{
+        margin-left: 0px;
+    }
+    .navbar{
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 10px;
+    }
+    .navbar-toggler{
+        width: 41px;
+        height: 41px;
+        background-color: beige;
+        border-radius: 400px;
+        padding: 0px;
+    }
+    .navbar-toggler:focus{
+        box-shadow: none;
+    }
+    footer{
+        padding: 0.75rem;
+        padding-top: 2rem;
+    }
+    .footer-phone{
+        font-size: 14px;
+    }
+    .mob-pt-15{
+        padding-top: 15px;
+    }
+    .footer-name-razdel{
+        font-size: 16px;
+    }
+    .nav-link-footer{
+        font-size: 14px;
+    }
+    .footer-a a {
+        font-size: 10px;
+    }
+    .mob-fix-width-340{
+        width: 340px;
+    }
+    .index-img-top{
+        max-width: 337px;
+        text-align: center;
+    }
+    .style-text{
+        padding-top: 5px;
+        font-size: 16px;
+    }
+    .block-button-fedback{
+        top: 70%;
+        right: 10px;
+    }
+    .children-button svg{
+        width: 50px;
+        height: 50px;
+    }
+    .navbar{
+        z-index: 1040;
+    }
+    .mob-fix-width-100-p{
+        width: 100%;
+    }
+    .b3-name{
+        font-size: 25px;
+    }
+    .b3-desc{
+        font-size: 18px;
+    }
+    .open-block-name{
+        font-size: 18px;
+    }
+    .footer-see-also .url{
+        font-size: 18px;
+    }
+}

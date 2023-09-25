@@ -240,7 +240,7 @@
             </div>
             <div class='col-9 col-md-10'>
                 <button type="button" class="bmenu-type choice-pasp btn btn-secondary b1 w120" id='get-catalog-pasp'
-                    onclick="getcatalog('pasp');">Выбрать</button>
+                    onclick="getcatalog('pasp');" style='color:white;'>Выбрать</button>
                 <button type="button" class="t2 close-pasp-block btn btn-secondary b1 w120"
                     onclick="z[3]=0; z[4]=0; z[5]=0; changesize(); countprice ();">Удалить</button>
             </div>

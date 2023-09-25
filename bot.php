@@ -566,7 +566,7 @@
 
   	</div>
 
-  	<? if ($disco) {
+  	<? if (!empty($disco)) {
 			echo "<a href='/#game15' id='discount' class='discou1' onclick='this.className=\"discou1\";'></a>";
 		} ?>
 
@@ -766,7 +766,7 @@
   			};
   		}
 
-  		<? if ($disco) {
+  		<? if (!empty($disco)) {
 				echo "var date = new Date(new Date().getTime() + 86400000); setTimeout(\"discount.className='discou2';document.cookie='disco=1;path=/;expires='+ date.toUTCString();\",5000);setTimeout(\"discount.className='discou3';\",6000);";
 			} ?>
 
