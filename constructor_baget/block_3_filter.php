@@ -8,7 +8,7 @@
 
 
 <? if ($master || $minimaster) { ?>
-<section class='screen'>
+<section class='screen '>
     <div class='row justify-contant-center'>
         <div class='bg-custom-gold w1 h1 d-flex'>
             <span class='addbaget s1 align-self-center container relative razdel ' 
@@ -124,7 +124,7 @@
     <form id="form" name="form" onsubmit="return false;">
         <div class='row justify-contant-center'>
             <div class='bg-custom-gold w1 h1 d-flex'>
-                <span class='s1 align-self-center container relative razdel'>1. Укажите размеры изображения
+                <span class='s1 align-self-center container relative razdel element-animation'>1. Укажите размеры изображения
                     <span class='img-active-block-mobile close-block <? if (!isMobile()) { echo ' hidden'; } ?>'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
                             <path
@@ -179,7 +179,7 @@
 <section class='screen baget-and-paspartu'>
     <div class='row justify-contant-center'>
         <div class='bg-custom-gold w1 h1 d-flex'>
-            <span class='s1 align-self-center container relative razdel'>2. Выберете багет и паспарту
+            <span class='s1 align-self-center container relative razdel element-animation'>2. Выберете багет и паспарту
                 <span class='text-end img-active-block-mobile close-block <? if (!isMobile()) { echo ' hidden'; } ?>'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
                         <path
@@ -278,7 +278,7 @@
 <section class='screen steclo-and-zad'>
     <div class='row justify-contant-center'>
         <div class='bg-custom-gold w1 h1 d-flex'>
-            <span class='s1 align-self-center container relative razdel'>3. Выберите стекло и задник
+            <span class='s1 align-self-center container relative razdel element-animation'>3. Выберите стекло и задник
                 <span class='img-active-block-mobile close-block <? if (!isMobile()) { echo ' hidden'; } ?>'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
                         <path
@@ -400,7 +400,7 @@
 
         <br>
 
-        <div class='row justify-contant-center text-center mx-auto'>
+        <div class='row justify-contant-center text-center mx-auto element-animation'>
             <button class='butn b3 mx-auto' onclick="goPage(1)">Оформить заказ</button>
         </div>
     </div>

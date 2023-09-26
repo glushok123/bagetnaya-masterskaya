@@ -17,7 +17,7 @@
 
                             <div class="form-floating mb-3">
                                 <input  id="phone" type="text" class="form-control text-center phone-valid" placeholder="+7 (999) 999-99-99" style="max-width:500px;" required>
-                                <label for="floatingInput" style='left:20px;'>Телефон в формате +7 (999) 999-99-99</label>
+                                <label for="floatingInput" style='left:20px;'>Телефон +7 (999) 999-99-99</label>
                             </div>
 
                             <!--input id="email" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="example@user.com" required/-->

@@ -15,8 +15,8 @@
                     } else {
                         echo '
                         <form id="fileform" action="/upload.php?id=' . implode("l", $z) . '" method="post" enctype="multipart/form-data">
-                            <label class="btn btn-secondary b1">
-                                <input type="file" name="filename"  onchange="javascript:this.form.submit();" style="display:none;">
+                            <label class="btn btn-secondary b1" style="height:auto !important;">
+                                <input type="file" name="filename"  onchange="javascript:this.form.submit();" style="display:none; height:auto !important;">
                                 Выберите файл
                             </label>
                         </form>';

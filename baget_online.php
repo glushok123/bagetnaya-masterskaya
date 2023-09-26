@@ -34,7 +34,7 @@
 
 <div class="container">
     <div class="row text-center">
-        <h1 class="name-header">Рассчитайте стоимость багета</h1>
+        <h1 class="name-header element-animation">Рассчитайте стоимость багета</h1>
     </div>
 </div>
 

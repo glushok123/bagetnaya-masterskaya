@@ -1,18 +1,23 @@
 <div class='box-shadow-custom'>
+
+
+
+
+
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid ">
 
             <?
                 if (!isMobile()) {
                     ?>
-            <a class="navbar-brand " href="/">Багетная мастерская </a>
+            <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
             <img src="/img/logo 2.png" alt="" class='img-brand'>
             <?
                 }else{
                     ?>
             <div class='row'>
                 <div class='col-9'>
-                    <a class="navbar-brand " href="/">Багетная мастерская </a>
+                    <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
                 </div>
                 <div class='col-3'>
                     <img src="/img/logo 2.png" alt="" class='img-brand'>
@@ -129,26 +134,25 @@
                     ?>
 
                     <li class="nav-item">
-                        <div class="search-form" id="searchform" itemscope itemtype="https://schema.org/WebSite">
-                            <meta itemprop="url" content="https://bagetnaya-masterskaya.com/">
 
-                            <form class="search-form custom-search" id="searchform" itemprop="potentialAction" itemscope
-                                itemtype="https://schema.org/SearchAction">
+                        <form action="https://yandex.ru/search/site/" method="get" target="_blank"
+                            accept-charset="utf-8" class="search-form custom-search" id="searchform"
+                            itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
 
-                                <meta itemprop="target" content="https://bagetnaya-masterskaya.com/search/?s={s}">
-                                <input type="hidden" name="searchid">
-                                <div class="form-group has-search max-weight-183">
-                                    <span class="fa fa-search form-control-feedback" id="searchsubmit" data-search="body" type='submit'></span></span>
-                                    <input type="text" name="text" class="search-form__input form-control"
-                                        placeholder="Поиск по сайту.." autocomplete="off" itemprop="query-input">
-                                </div>
-                                <input type="hidden" name="web" value="0">
-                                <button id="searchsubmit" data-search="body" class="headerSubmit hidden"></button>
+                            <meta itemprop="target" content="https://virtual-baget-curent/search/?s={s}">
+                            <input type="hidden" name="searchid">
 
-                            </form>
-
-                            <div class="ajax-search" data-search="header"></div>
-                        </div>
+                            <div class="form-group has-search max-weight-183">
+                                <input type="hidden" name="searchid" value="3468587" />
+                                <input type="hidden" name="l10n" value="ru" />
+                                <input type="hidden" name="reqenc" value="" />
+                                <span class="fa fa-search form-control-feedback" id="searchsubmit" data-search="body"
+                                    type='submit'></span>
+                                <input type="text" name="text" class="search-form__input form-control"
+                                    placeholder="Поиск по сайту.." autocomplete="off" itemprop="query-input">
+                            </div>
+                            <input type="hidden" name="web" value="0">
+                        </form>
                     </li>
                 </ul>
             </div>

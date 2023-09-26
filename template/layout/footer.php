@@ -82,20 +82,37 @@
 </footer>
 
 <script>
-
 // <!-- Отправка GET-запроса для "ЯНДЕКС.ПОИСК", через FORM -->
 jQuery(document).ready(function($) {
 
     // Получаем ссылку для атрибута 'action'
-    const link = 'http://' + window.location.hostname + '/search';
+    const link = 'https://' + window.location.hostname + '/search';
     $('.custom-search').attr('action', link);
 
     // Получаем ключ Яндекс для того чтобы работал поиск
     let idSearch = $('.ya-site-form').attr('data-bem');
     let arr = JSON.parse(idSearch);
     $('[name="searchid"]').val(arr['searchid']);
-});
 
+
+    function onEntry(entry) {
+        entry.forEach(change => {
+            if (change.isIntersecting) {
+                change.target.classList.add('element-show');
+            }
+        });
+    }
+
+    let options = {
+        threshold: [0.5]
+    };
+    let observer = new IntersectionObserver(onEntry, options);
+    let elements = document.querySelectorAll('.element-animation');
+
+    for (let elm of elements) {
+        observer.observe(elm);
+    }
+});
 </script>
 </body>
 

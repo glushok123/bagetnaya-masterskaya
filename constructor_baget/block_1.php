@@ -1,7 +1,7 @@
 <div class="container">
     <div class='row text-center justify-content-center'>
-        <div class="col-6 ms-auto">
-            <h2 class='c1'>Примерить картину к багету</h2>
+        <div class="col-6 ms-auto ">
+            <h2 class='c1 element-animation'>Примерить картину к багету</h2>
             <?
                 if ($z[8] != 0) {
                     [$width, $height] = getimagesize($picname);

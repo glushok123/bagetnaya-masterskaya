@@ -1,6 +1,6 @@
 <section>
     <div class="container">
-        <div class="block-h1 text-center my-4">
+        <div class="block-h1 text-center my-4 fade-in">
             <h1 class='color-main'>БАГЕТНАЯ МАСТЕРСКАЯ №1</h1>
             <h1>В МОСКВЕ</h1>
         </div>
@@ -75,8 +75,8 @@
     <div class='container my-5'>
         <div class='row  relative'>
 
-            <div class='b3-name text-center'>БАГЕТНАЯ МАСТЕРСКАЯ №1</div>
-            <div class='absolute b3-desc'>
+            <div class='b3-name text-center element-animation'>БАГЕТНАЯ МАСТЕРСКАЯ №1</div>
+            <div class='absolute b3-desc element-animation'>
                 О компании
             </div>
         </div>
@@ -116,17 +116,17 @@
 <br><br>
 
 <section>
-    <div class='container my-5'>
+    <div class='container my-5 '>
         <div class='row  relative'>
 
-            <div class='b3-name-black text-center'>Понадобились услуги недорогой</div>
-            <div class='b3-name text-center'>багетной мастерской в Москве? </div>
-            <div class='absolute b3-desc'>
+            <div class='b3-name-black text-center element-animation'>Понадобились услуги недорогой</div>
+            <div class='b3-name text-center element-animation'>багетной мастерской в Москве? </div>
+            <div class='absolute b3-desc element-animation'>
                 Наши услуги
             </div>
         </div>
 
-        <div class='row my-5'>
+        <div class='row my-5 element-animation'>
             <div class='col-3'>
                 <div class='t1-bold'>У вас персональная выставка?</div>
                 <div class='my-5 color-main'>Посмотрите наше предложение по обрамлению работ багетными рамками на
@@ -148,12 +148,12 @@
                 </div>
             </div>
         </div>
-        <div class='mx-5 px-150'>
+        <div class='mx-5 px-150 element-animation'>
             <div class='row my-20'>
                 <div class='col'>
                     <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4'>
                 </div>
-                <div class='col'>
+                <div class='col element-animation'>
                     <div class='b4-name'>Багетные работы</div>
                     <ul class='style-text font-16'>
                         <li class='my-1'>Обрамление вышивок, плазменных панелей, картин и репродукций, фотографий и
@@ -171,8 +171,8 @@
                     </div>
                 </div>
             </div>
-            <div class='row my-20'>
-                <div class='col'>
+            <div class='row my-20 element-animation'>
+                <div class='col element-animation'>
                     <div class='b4-name'>Широкоформатная печать на холсте </div>
                     <div class='style-text font-16 my-3'>
                         Это лучшая идея для подарка. Можно создать портрет на холсте с фотографии. А если Вы хотите
@@ -187,11 +187,11 @@
                     <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4'>
                 </div>
             </div>
-            <div class='row my-20'>
+            <div class='row my-20 element-animation'>
                 <div class='col'>
                     <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4'>
                 </div>
-                <div class='col'>
+                <div class='col element-animation'>
                     <div class='b4-name'>Накатка на пенокартон</div>
                     <div class='style-text font-16 my-3'>
                         Востребованная услуга, под которой подразумевается прикрепление полотна на твердую поверхность.
@@ -216,8 +216,8 @@
 <section>
     <div class='container my-5'>
         <div class='row relative'>
-            <div class='b3-name-black text-center'>НАШИ ПРЕИМУЩЕСТВА</div>
-            <div class='absolute b3-desc'>Работа с нами</div>
+            <div class='b3-name-black text-center element-animation'>НАШИ ПРЕИМУЩЕСТВА</div>
+            <div class='absolute b3-desc element-animation'>Работа с нами</div>
         </div>
 
         <div class='row my-5'>
@@ -232,7 +232,7 @@
             <div class='col-12 col-md-6'>
                 <div class='mb-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>01.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>01.
                             Приемлемая стоимость
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -259,7 +259,7 @@
                 </div>
                 <div class='my-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>02.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>02.
                             Гарантия
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -284,7 +284,7 @@
                 </div>
                 <div class='my-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>03.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>03.
                             Онлайн-калькулятор багета
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -309,7 +309,7 @@
                 </div>
                 <div class='my-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>04.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>04.
                             Соблюдение сроков и услуга срочного заказа
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -332,7 +332,7 @@
                 </div>
                 <div class='my-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>05.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>05.
                             Удобное расположение мастерских и график работы
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -355,7 +355,7 @@
                 </div>
                 <div class='my-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>06.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>06.
                             Выездной подбор багета дизайнером и монтаж
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -379,7 +379,7 @@
                 </div>
                 <div class='my-5'>
                     <div class='bg-custom-gold w1 h1 d-flex'>
-                        <span class='s1 align-self-center container relative razdel open-block-name relative'>07.
+                        <span class='s1 align-self-center container relative razdel open-block-name relative element-animation'>07.
                             Доставка крупногабаритных работ
                             <span class='absolute r-0'>
                                 <span class='img-active-block-mobile close-block'>
@@ -411,25 +411,25 @@
 <section>
     <div class='container my-5'>
         <div class='row'>
-            <div class='b3-name-black text-center'>МЫ В ВКОНТАКТЕ</div>
+            <div class='b3-name-black text-center element-animation'>МЫ В ВКОНТАКТЕ</div>
         </div>
         <br>
         <br>
         <div class='row text-center '>
             <div class='col'>
                 <a href="https://vk.com/market-210965475?section=album_1"><button
-                        class='button button-custom-index button-color-company-grafit fix-width-285 '>Купить
+                        class='button button-custom-index button-color-company-grafit fix-width-285 element-animation'>Купить
                         картину</button></a>
             </div>
             <div class='col'>
                 <a href="https://vk.com/@bagetnaya1"><button
-                        class='button button-custom-index button-color-company-grafit fix-width-285 '>Читать
+                        class='button button-custom-index button-color-company-grafit fix-width-285 element-animation'>Читать
                         статьи</button></a>
 
             </div>
             <div class='col'>
                 <a href="https://vk.com/bagetnaya1"><button
-                        class='button button-custom-index button-color-company-grafit fix-width-285'>Смотреть
+                        class='button button-custom-index button-color-company-grafit fix-width-285 element-animation'>Смотреть
                         ленту</button></a>
 
             </div>
