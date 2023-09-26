@@ -11,7 +11,7 @@
                 if (!isMobile()) {
                     ?>
             <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
-            <img src="/img/logo 2.png" alt="" class='img-brand'>
+            <img src="/img/logo 2.svg" alt="" class='img-brand'>
             <?
                 }else{
                     ?>
@@ -20,7 +20,7 @@
                     <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
                 </div>
                 <div class='col-3'>
-                    <img src="/img/logo 2.png" alt="" class='img-brand'>
+                    <img src="/img/logo 2.svg" alt="" class='img-brand'>
                 </div>
             </div>
             <?
