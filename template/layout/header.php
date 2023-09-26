@@ -17,7 +17,6 @@
     <link rel="SHORTCUT ICON" href="/favicon.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="content-language" content="ru">
-    
 
     <title>
         <? echo $title; ?>
@@ -28,7 +27,7 @@
 
     <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?display=swap'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
 
     <script src="/assets/layout/jquery.min.js"></script>
