@@ -123,7 +123,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/js/jquery.cookie.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="/constructor_baget/style.css?v4">
+	<link rel="stylesheet" type="text/css" href="/constructor_baget/style.css?v<?=$v?>">
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

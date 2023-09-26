@@ -5,6 +5,7 @@
     $description = empty($description) ? "Понадобились услуги недорогой багетной мастерской в Москве? Наша Багетная Мастерская №1 порадует Вас доступными ценами. Мы - лучшие в качественном оформлении багетными рамками." : $description;;
     $keywords = empty($keywords) ? "багетная мастерская, багетная мастерская в Москве, багетная мастерская недорого" : $keywords;;
     header("Cache-Control: max-age=2592000");
+    $v = 2;
 ?>
 
 <!doctype html>
@@ -43,8 +44,8 @@
     <link href="/assets/layout/toastr.css" rel="stylesheet" />
     <script src="/assets/layout/toastr.js"></script>
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/custom-768.css">
+    <link rel="stylesheet" href="/assets/css/main.css?v<?=$v?>">
+    <link rel="stylesheet" href="/assets/css/custom-768.css?v<?=$v?>">
 </head>
 
 <body>
