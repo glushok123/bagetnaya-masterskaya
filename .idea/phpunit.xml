@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PHPUnit">
+    <option name="directories">
+      <list>
+        <option value="$PROJECT_DIR$/analiz_colors_img/model/color-extractor/tests" />
+      </list>
+    </option>
+  </component>
+</project>

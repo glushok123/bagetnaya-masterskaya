@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/analiz_colors_img/model/color-extractor/src" isTestSource="false" packagePrefix="League\ColorExtractor\" />
+      <sourceFolder url="file://$MODULE_DIR$/analiz_colors_img/model/color-extractor/tests" isTestSource="true" packagePrefix="League\ColorExtractor\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/analiz_colors_img/model/color-extractor/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpstan/phpstan" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/rector/rector" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/shuchkin/simplexls" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
