@@ -1,119 +1,3 @@
-<!DOCTYPE HTML>
-<HTML lang="ru-RU">
-
-<HEAD>
-    <meta charset="utf-8">
-    <TITLE><? echo $titl; ?></TITLE>
-    <META NAME="Description" CONTENT="<? echo $desc; ?>">
-    <META NAME="Keywords" CONTENT="<? echo $keyw; ?>">
-    <link rel="SHORTCUT ICON" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <link rel="canonical" href="<? echo $url; ?>"/>
-
-    <link rel="image_src" href="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Багетная мастерская № 1"/>
-    <meta property="og:description"
-          content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера."/>
-    <meta property="og:url" content="http://bagetnaya-masterskaya.com"/>
-    <meta property="og:image" content="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
-    <meta name="geo.placename" content="Климентовский пер., 6, Москва, Россия, 115184"/>
-    <meta name="geo.position" content="55.7411820;37.6301270"/>
-    <meta name="geo.region" content="RU-"/>
-    <meta name="yandex-verification" content="495a973ffa1b3033"/>
-    <meta name="yandex-verification" content="1e115d792752091b"/>
-
-    <meta name="ICBM" content="55.7411820, 37.6301270"/>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
-          integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-            integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-            crossorigin="anonymous"></script>
-
-    <link href="/assets/css/app.css?v3" rel="stylesheet"/>
-    <script src="/assets/js/gallery.js"></script>
-
-    <script src="https://kit.fontawesome.com/5fc8cb6b98.js" crossorigin="anonymous"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png"/>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169398394-2"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.css"
-          integrity="sha512-UiKdzM5DL+I+2YFxK+7TDedVyVm7HMp/bN85NeWMJNYortoll+Nd6PU9ZDrZiaOsdarOyk9egQm6LOJZi36L2g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.js"
-            integrity="sha512-79j1YQOJuI8mLseq9icSQKT6bLlLtWknKwj1OpJZMdPt2pFBry3vQTt+NZuJw7NSd1pHhZlu0s12Ngqfa371EA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-169398394-2');
-    </script>
-
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(94108947, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/94108947" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(60934651, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true
-        });
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-
-</HEAD>
-
-<BODY>
 <div class="container-fluid">
     <br>
 
@@ -125,12 +9,12 @@
             <div class="border-top-red margin-top ">
 
                     <span class="dropdown" style='z-index:999999999999999999999999999999;'>
-                        
+
                             <a href="/сatalog-of-finished-works.php"><button class="btn resize-font gallery-works"
                                                                              type="button" id="dropdownMenuButton1"
                                                                              data-bs-toggle="dropdown"
                                                                              aria-expanded="false">ГАЛЕРЕЯ РАБОТ</button></a>
-                        
+
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item"
                                    href="/сatalog-of-finished-works-by-category.php?category=Акварели,%20пастели%20и%20гравюры">Акварели, пастели и гравюры</a></li>
@@ -242,63 +126,170 @@
     </div>
 
 </div>
-<div id="site">
-    <div class="ball"></div>
+<script>
+    var dt = new Date();
+    var time = dt.getHours();
+    if (time >= 21 || time < 9) {
+        $('#activeTime').hide()
+    }
+</script>
+<script>
+    $(document).on('click', '.gallery-works', function () {
+        location.href = '/сatalog-of-finished-works.php'
+    });
+</script>
+<style>
+    .resize-font {
+        font-size: 1.5rem !important;
+    }
 
-    <div class='container' id='Time' style='display: none'>
-        <div class='row2' style='
-                text-align: center;
-                border: 2px solid red;
-                border-radius: 10px;
-                padding: 10px;
-                background: #eddbd1;
-                font-family: Helvetica, Arial, sans-serif !important;
-                '>
-            <span>21.12.2022 работаем до 17:00</span>
-        </div>
-        <style>
-            .circle {
-                stroke: #1A1A1A;
-            }
-        </style>
-    </div>
-
-    <script>
-        var dt = new Date();
-        var time = dt.getHours();
-        if (time >= 21 || time < 9) {
-            $('#activeTime').hide()
+    @media only screen and (max-width: 1650px) {
+        .resize-font {
+            font-size: 1.3rem !important;
         }
-    </script>
+    }
 
-    <div class="head_buttons_block">
-        <div class="head_center_button_wrapper"></div>
-        <a href="/baget_online" class="head_center_button">РАССЧИТАТЬ<BR>СТОИМОСТЬ<BR>БАГЕТА</a>
-        <div class="head_side_buttons head_side_buttons_left">
-            <a href="/сatalog-of-finished-works.php">Каталог готовых работ</a>
-            <div>Посмотрите примеры рам для картин,<br> выполненных нашей командой!</div>
-        </div>
-        <div class="head_side_buttons head_side_buttons_right">
-            <a href="/картины багетной мастерской.php">Купить картину</a>
-            <div>Купить готовую интерьерную картину<br>в интерьер или в подарок</div>
-        </div>
-        <div class="head_side_buttons head_side_buttons_left">
-            <a href="https://bagetnaya-masterskaya.com/oplata_uslug.php">Оплата и доставка</a>
-            <div>Cпособы внесения оплаты и условия <br>доставки Заказов</div>
-        </div>
-        <div class="head_side_buttons head_side_buttons_right">
-            <a href="https://bagetnaya-masterskaya.com/contacts.php">Контакты</a>
-            <div>Наши салоны в Москве, способы связи,<br> время работы и карты</div>
-        </div>
-    </div>
-    <div id="mid">
+    @media only screen and (max-width: 1500px) {
+        .resize-font {
+            font-size: 1.2rem !important;
+        }
+    }
 
-        <?
-        include 'modules_php/feedBack.php';
-        ?>
+    @media only screen and (max-width: 1450px) {
+        .resize-font {
+            font-size: 1.1rem !important;
+        }
+    }
 
-        <script>
-            $(document).on('click', '.gallery-works', function () {
-                location.href = '/сatalog-of-finished-works.php'
-            });
-        </script>
+    @media only screen and (max-width: 1400px) {
+        .resize-font {
+            font-size: 1.0rem !important;
+        }
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .resize-font {
+            font-size: 0.9rem !important;
+        }
+    }
+
+    @media only screen and (max-width: 1250px) {
+        .resize-font {
+            font-size: 0.8rem !important;
+        }
+    }
+
+    @media only screen and (max-width: 1200px) {
+        .resize-font {
+            font-size: 0.7rem !important;
+        }
+    }
+
+    @media only screen and (max-width: 1100px) {
+        .resize-font {
+            font-size: 0.6rem !important;
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+
+        .dropdown .dropdown-menu {
+            display: none;
+        }
+
+        .dropdown:hover .dropdown-toggle::after {
+            border-top: 0;
+            border-bottom: 0.3em solid;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .dropdown-toggle.show::after {
+            border-top: 0;
+            border-bottom: 0.3em solid;
+        }
+    }
+
+    .resize-font:hover {
+        color: #a21213 !important;
+    }
+
+    .resize-font a:hover {
+        color: #a21213 !important;
+    }
+    .gallery{width:100%;height:300px;position:relative;float:left;}
+    .gal-left{width:1.5%;height:100%;position:absolute;top:0;left:0;background:url("/img/gal-left.png") no-repeat center;background-size:contain;opacity:0.5;cursor:pointer;}
+    .gal-right{width:1.5%;height:100%;position:absolute;top:0;left:98.5%;background:url("/img/gal-right.png") no-repeat center;background-size:contain;opacity:0.5;cursor:pointer;}
+    .gal-right:hover, .gal-left:hover{opacity:1;}
+    .ge{top:-50%;left:0%;width:100%;height:200%;opacity:1;cursor:pointer;position:absolute;z-index:10;}
+    .ge0{top:50%;left:1.5%;width:1px;height:1px;opacity:0;position:absolute;cursor:pointer;}
+    .ge1{top:50%;left:1.5%;width:1px;height:1px;opacity:0;position:absolute;cursor:pointer;}
+    .ge2{top:30%;left:2%;width:25%;height:40%;opacity:0.7;position:absolute;cursor:pointer;}
+    .ge3{top:5%;left:30%;width:40%;height:90%;opacity:1;position:absolute;cursor:pointer;}
+    .ge4{top:30%;left:73%;width:25%;height:40%;opacity:0.7;position:absolute;cursor:pointer;}
+    .ge5{top:50%;left:98.5%;width:1px;height:1px;opacity:0;position:absolute;cursor:pointer;}
+    .ge6{top:50%;left:98.5%;width:1px;height:1px;opacity:0;position:absolute;cursor:pointer;}
+    .ge2:hover{top:27%;left:1.5%;width:26%;height:46%;opacity:1;}
+    .ge3:hover{top:0%;left:27.5%;width:45%;height:100%;opacity:1;}
+    .ge4:hover{top:27%;left:72.5%;width:26%;height:46%;opacity:1;}
+
+    .ge, .ge0, .ge1, .ge2, .ge3, .ge4, .ge5, .ge6, .gal-left, .gal-right{-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease;}
+
+    .border-top-red{
+        border-top: 2px solid #a21213;
+    }
+    .margin-top{
+        margin-top:20px;
+    }
+    .margin-right{
+        margin-right:30px;
+    }
+    .margin-left{
+        margin-left:30px;
+    }
+    #activeTime {
+        width: 100%;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+        margin-bottom: 10px;
+    }
+    .blink_me {
+        fill: #32cd32;
+        animation: blinker 1s linear infinite;
+    }
+    #activeTime {
+        width: 100%;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+        margin-bottom: 10px;
+    }
+
+    .row2 {
+        display: inline-block;
+    }
+
+    .blink_me {
+        fill: #32cd32;
+        animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    #Time {
+        width: 100%;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+        margin-bottom: 10px;
+    }
+</style>

@@ -1,8 +1,18 @@
 <div class='box-shadow-custom'>
 
-
-
-
+    <div class='row pt-2 px-1'>
+        <div class='col'>
+            <a href="tel:+79268659295"><button
+                        class='button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap' style="font-size: 14px; padding: 5px; background: white; border: 3px solid #E0D2BB">8 (926) 865-92-95
+                <br>
+                    на Арбатской</button></a>
+        </div>
+        <div class='col'>
+            <a href="tel:+79778244212"><button
+                        class='button button-custom-index button-color-company-golden mob-fix-width-100-p ' style="font-size: 14px;padding: 5px; background: white; border: 3px solid #E0D2BB">8 (977) 824-42-12<br>
+                    на Новокузнецкой</button></a>
+        </div>
+    </div>
 
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid ">
