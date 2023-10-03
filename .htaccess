@@ -189,7 +189,7 @@ RewriteRule ^prices_for_print_and_canvas/$ prices_for_print_and_canvas.php
 
 #НОВАЯ АРХИТЕКТУРА
 #Redirect /index.php /template/index.php
-DirectoryIndex /template/index.php
+#DirectoryIndex /template/index.php
 
 RewriteRule ^search$  /template/search.php [R=301,L]
 RewriteRule ^search/$ /template/search.php
