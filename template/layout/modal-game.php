@@ -26,7 +26,7 @@
                         <div onmousedown='game15start(this);'>Сыграйте в \"пятнашки\"
                         <div>чтобы получить сегодня скидку 10%</div>на любой ваш заказ.
                         
-                        <div><button class='button button-custom-index button-color-company-golden fix-width-185 ml-55'>Нажмите чтобы начать</button></div>
+                        <div><button class='button button-custom-index button-color-company-golden '>Нажмите чтобы начать</button></div>
                         </div></div>
                         ";
                     }
