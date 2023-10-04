@@ -24,7 +24,7 @@
                 </a>
                 <div class='row'>
                     <div class='col'>
-                        <a href=""><button
+                        <a href="/сatalog-of-finished-works.php"><button
                                 class='button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap'>Наши
                                 работы</button></a>
                     </div>
@@ -196,7 +196,7 @@
                 </div>
                 <div class='col-12'>
                 <br><br>
-                    <a href=""><button class='button button-custom-index button-color-company-golden '
+                    <a href="/сatalog-of-finished-works.php"><button class='button button-custom-index button-color-company-golden '
                             style='width:100%;'>Узнать подробнее об услугах мастерской</button></a>
                 </div>
             </div>

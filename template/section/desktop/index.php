@@ -41,7 +41,7 @@
                             стоимость багета</button>
                     </a>
                     <br>
-                    <a href=""><button class='button button-custom-index button-color-company-golden fix-width-185'>Наши
+                    <a href="/сatalog-of-finished-works.php"><button class='button button-custom-index button-color-company-golden fix-width-185'>Наши
                             работы</button></a>
                     <a href="/actions.html"><button
                             class='button button-custom-index button-color-company-golden fix-width-185 ml-55'>Акции</button></a>
@@ -203,7 +203,7 @@
                         легким весом, высоким уровнем прочности и стойкостью к негативным факторам окружающей среды.
                     </div>
                     <br><br>
-                    <a href=""><button class='button button-custom-index button-color-company-golden '
+                    <a href="/сatalog-of-finished-works.php"><button class='button button-custom-index button-color-company-golden '
                             style='width:100%;'>Узнать подробнее об услугах мастерской</button></a>
                 </div>
             </div>

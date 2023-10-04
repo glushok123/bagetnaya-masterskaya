@@ -299,8 +299,8 @@
 
 
                 if (window.innerWidth < 800) {
-                    maxmainw = width * 0.7;
-				    maxmainh = height * 0.7;
+                    maxmainw = width * 0.8;
+				    maxmainh = height * 0.9;
                 }
                 
 				z[19] = Math.floor(width * 0.1);
