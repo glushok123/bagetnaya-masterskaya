@@ -146,4 +146,4 @@ if (isMobile()) {
 }
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/button-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-feedback.php';
-?>
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-game.php';

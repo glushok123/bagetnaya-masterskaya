@@ -20,6 +20,7 @@ $not_mobile = !(isMobile());
 
     <? include "gallery.php"; ?>
 
+    <div
     <?
     if ($not_mobile == true) {
         if ($skidkod) {
@@ -30,7 +31,7 @@ $not_mobile = !(isMobile());
                     ";
         } else {
             echo "
-                        <div id='game15' class='game15start' onselectstart='return false;'>
+                        <div id='game15' class='game15start row text-center' onselectstart='return false;'>
                         <div onmousedown='game15start(this);'>Сыграйте в \"пятнашки\"
                         <br>чтобы получить сегодня скидку 10%<br>на любой ваш заказ.
                         <br>Нажмите чтобы начать</div></div>

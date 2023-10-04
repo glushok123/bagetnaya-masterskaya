@@ -21,7 +21,7 @@ function move(target) {
 		blank.className = 'p' + i1;
 		target.className = 'p' + i2;
 	}
-	if (check()) {
+	if (!check()) {
 		winwin();
 	}
 }
