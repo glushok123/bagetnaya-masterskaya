@@ -408,3 +408,42 @@ html, body {
     transition: all 1.2s;
     transform: translateY(0%);
   }
+
+.btn-up {
+    position: fixed; /* фиксированная позиция */
+    right: 20px; /* расстояние от правого края */
+    bottom: 100px; /* расстояние от нижнего края */
+    border-top-left-radius: 8px; /* скругление верхнего левого угла */
+    border-top-right-radius: 8px; /* скругление верхнего правого угла */
+    cursor: pointer; /* форма курсора */
+    display: flex; /* не отображать элемент */
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+    width: 70px;
+    height: 70px;
+    opacity: 1;
+}
+
+.btn-up::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.btn-up_hide {
+    display: none;
+}
+
+.btn-up_hiding {
+    opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-up:hover svg {
+        fill: #E0D2BB; /* цвет заднего фона при наведении */
+
+    }
+}

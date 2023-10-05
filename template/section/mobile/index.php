@@ -475,6 +475,10 @@
     width: 100%;
     height: 500px;
 }
+.open-block-name{
+    margin-right: 0px;
+    padding-left: 10px;
+}
 </style>
 
 <script>

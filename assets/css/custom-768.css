@@ -85,4 +85,12 @@
     .footer-see-also .url{
         font-size: 18px;
     }
+    .btn-up {
+        right: 15px; /* расстояние от правого края */
+        bottom: 5px; /* расстояние от нижнего края */
+
+        width: 60px;
+        height: 60px;
+        opacity: 1;
+    }
 }
