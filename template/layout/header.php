@@ -138,6 +138,7 @@ $v = 6;
             })
         })(window, document, 'yandex_site_callbacks');
     </script>
+
 <?
 if (isMobile()) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar.php';
@@ -147,3 +148,21 @@ if (isMobile()) {
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/button-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-game.php';
+
+$u_agent = $_SERVER['HTTP_USER_AGENT'];
+$issafari=false;
+
+if (preg_match('/Safari/i',$u_agent)){
+    $issafari=(!preg_match('/Chrome/i',$u_agent));
+}
+
+if ($issafari == true) {
+    echo '
+   <style>
+   .callback-bt{
+   animation:none;
+   }
+</style>
+   ';
+}
+
