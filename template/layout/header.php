@@ -49,6 +49,8 @@ $v = 6;
         <link rel="stylesheet" href="/assets/css/main.css?v<?= $v ?>">
         <link rel="stylesheet" href="/assets/css/custom-768.css?v<?= $v ?>">
 
+        <meta name="yandex-verification" content="1e115d792752091b" />
+
         <script>
             window.dataLayer = window.dataLayer || [];
 
