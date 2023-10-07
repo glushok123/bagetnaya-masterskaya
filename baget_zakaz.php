@@ -1,16 +1,16 @@
 <?
 if ($_GET['id']) {
 	$ident = $_GET['id'];
-	if (preg_match("/^[\dl]+$/", (string) $ident)) {
+	//if (preg_match("/^[\dl]+$/", (string) $ident)) {
 		$z = explode('l', (string) $ident);
-	} else {
+	/*} else {
 		$fp = fopen('lo/g.txt', 'a');
 		$towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! ' . $ident . ' ! zakaz bad id';
 		fwrite($fp, $towrite);
 		fwrite($fp, "\r\n");
 		fclose($fp);
 		exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online">');
-	}
+	}*/
 } else {
 	$fp = fopen('lo/g.txt', 'a');
 	$towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! ' . $ident . ' ! zakaz without id';
@@ -38,6 +38,8 @@ if ($_GET['id']) {
 <BODY>
 
 	<?
+    //https://virtual-baget-curent/baget_zakaz?id=7233l935l38l0l0l0l0l0l0l300l200l0l0l1969l1l0l0l0l0l40l-10l845l32&pomokod=
+    //https://virtual-baget-curent/baget_zakaz?id=7233l935l38l0l0l0l0l0l0l300l200l0l0l1969l1l0l0l0l0l281l20l1889l32&pomokod=
 	$zak_hist = file('base/zakaz-history.txt');
 	$z[15] = 500 + (is_countable($zak_hist) ? count($zak_hist) : 0);
 	$ident = implode("l", $z);
