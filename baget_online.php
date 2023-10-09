@@ -1,7 +1,6 @@
 <?
 	require_once './base/connect.php';
 	require_once './constructor_baget/block_0_header.php';
-	//require_once './constructor_baget/new_header.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 	echo "<body onresize=\"changesize ();\" onload=\"bgswitch();";
@@ -37,6 +36,8 @@
         <h1 class="name-header element-animation">Рассчитайте стоимость багета</h1>
     </div>
 </div>
+
+<link rel="stylesheet" type="text/css" href="/constructor_baget/style.css?v<?=$v?>">
 
 <div class="container-fluid ">
     <div class='row'>
@@ -123,7 +124,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/js/jquery.cookie.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="/constructor_baget/style.css?v<?=$v?>">
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
