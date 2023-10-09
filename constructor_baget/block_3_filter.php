@@ -280,7 +280,7 @@
             <div class="pasp-block my-2" <? if ($z[3] != 0) { ?> style="display:block;"
             <? } ?>>
                 <form id="form2" name="form2" onsubmit="return false;">
-                    <span class="s2">Размер (мм): </span>
+                    <span class="s2">Ширина поля (мм): </span>
 
                     <input type="number" id="fpasp" name="fpasp" onchange="changesize(); countprice ();"
                            value="<?= $z[5] ?>" autocomplete="off">
@@ -330,10 +330,10 @@
                 </div>
             </div>
             <div class='col-9 col-md-8 custom-selected'>
-                <button type="button" class="btn b2 my-2" onclick="z[6]=1; bgswitch();">Обычное</button>
-                <button type="button" class="btn b2 my-2" onclick="z[6]=2; bgswitch();">Матовое</button>
-                <button type="button" class="btn b2 my-2" onclick="z[6]=3; bgswitch();">Антиблик</button>
-                <button type="button" class="btn b2 my-2" onclick="z[6]=4; bgswitch();">Пластиковое</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 1) { echo 'custom-selected-border'; }?>" onclick="z[6]=1; bgswitch();">Обычное</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 2) { echo 'custom-selected-border'; }?>" onclick="z[6]=2; bgswitch();">Матовое</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 3) { echo 'custom-selected-border'; }?>" onclick="z[6]=3; bgswitch();">Антиблик</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 4) { echo 'custom-selected-border'; }?>" onclick="z[6]=4; bgswitch();">Пластиковое</button>
                 <button type="button" class="btn btn-secondary b1 w120  custom-selected-clear" onclick="z[6]=0; bgswitch();">Удалить</button>
             </div>
         </div>
@@ -349,10 +349,10 @@
                 </div>
             </div>
             <div class='col-9 col-md-8 custom-selected'>
-                <button type="button" class="btn b2 my-2" onclick="z[7]=1; bgswitch();">Картон</button>
-                <button type="button" class="btn b2 my-2 w176" onclick="z[7]=2; bgswitch();">Пенокартон 5 мм</button>
-                <button type="button" class="btn b2 my-2 w176" onclick="z[7]=3; bgswitch();">Натяжка вышивки</button>
-                <button type="button" class="btn b2 my-2" onclick="z[7]=4; bgswitch();">Подрамник</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[7] == 1) { echo 'custom-selected-border'; }?>" onclick="z[7]=1; bgswitch();">Картон</button>
+                <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 2) { echo 'custom-selected-border'; }?>" onclick="z[7]=2; bgswitch();">Пенокартон 5 мм</button>
+                <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 3) { echo 'custom-selected-border'; }?>" onclick="z[7]=3; bgswitch();">Натяжка вышивки</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[7] == 4) { echo 'custom-selected-border'; }?>" onclick="z[7]=4; bgswitch();">Подрамник</button>
                 <button type="button" class="btn btn-secondary b1 w120 custom-selected-clear" onclick="z[7]=0; bgswitch();">Удалить</button>
             </div>
         </div>
