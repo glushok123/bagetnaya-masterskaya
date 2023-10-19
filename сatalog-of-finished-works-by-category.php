@@ -95,9 +95,9 @@
 </style>
 
 <?php
-$keyw = "Наши работы";
-$titl = "Наши работы";
-$desc = "Наши работы";
+$keyw = empty($_GET['category']) ? "работы, багет, паспарту" : $_GET['category'] . ", работы, багет, паспарту";
+$titl = empty($_GET['category']) ? "Акварели, пастели и гравюры" : $_GET['category'];
+$desc = empty($_GET['category']) ? "Наши работы" : $_GET['category'];
 
 include "header.php";
 require_once 'base/connect.php';
@@ -145,22 +145,6 @@ $category = [
 	],
 ];
 
-/*
-	$path = $category[$_GET['category']]['urlFromImages']; // путь к директории с изображениями
-	$extensions = array('png', 'jpg', 'JPG', 'jpeg', 'gif'); // показывать расширения
-
-	$directoryIterator = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
-	$iteratorIterator  = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::LEAVES_ONLY);
-
-	$images = [];
-	foreach ($iteratorIterator as $file) {
-		if (in_array($file->getExtension(), $extensions)) {
-		    
-
-			$images[] = $file->getPathname();
-		}
-	}
-	*/
 $stm = $dbh->prepare("SELECT * FROM gallery_work_images where category = " . $category[$_GET['category']]['id']);
 $stm->execute();
 $works = $stm->fetchAll();

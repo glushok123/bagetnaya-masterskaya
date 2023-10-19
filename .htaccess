@@ -176,8 +176,6 @@ RewriteRule ^bagetnye_raboty/obramlenie/obramlenie_zerkal.html$ zerkala_v_bagete
 RewriteRule ^zerkala_v_bagete/zerkalo_v_rame.html$ zerkalo_v_rame.php
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_zerkal_v_baget.html$ zerkala_v_bagete/oformlenie_zerkal_v_baget.html [R=301,L]
 RewriteRule ^zerkala_v_bagete/oformlenie_zerkal_v_baget.html$ oformlenie_zerkal_v_baget.php
-Redirect 301 /pechat_na_holste/pechat_na_holste_cena.html /pechat_na_holste/
-Redirect 301 /ramki_dlya_kartin/izgotovlenie_ramok_dlya_kartin_na_zakaz.html /ramki_dlya_kartin/
 RewriteRule ^pechat_kartin_posterov_reprodukcij/$ pechat_kartin_posterov_reprodukcij.php
 
 
@@ -188,11 +186,15 @@ RewriteRule ^metallicheskie_ramki/$ metallicheskie_ramki.php
 RewriteRule ^prices_for_print_and_canvas/$ prices_for_print_and_canvas.php
 
 #НОВАЯ АРХИТЕКТУРА
-#Redirect /index.php /template/index.php
-#DirectoryIndex /template/index.php
-
 RewriteRule ^search$  /template/search.php [R=301,L]
 RewriteRule ^search/$ /template/search.php
+
+Redirect 301 /oformit_kartinu_v_baget.php https://bagetnaya-masterskaya.com/bagety_dlya_kartin/oformit_kartinu_v_baget.html
+Redirect 301 /baget_for_karini.php https://bagetnaya-masterskaya.com/bagety_dlya_kartin/kak_podobrat_baget_k_kartine.html
+Redirect 301 /bagetnye_raboty.php https://bagetnaya-masterskaya.com/bagetnye_raboty/
+Redirect 301 /obramlenie_kartiny.php https://bagetnaya-masterskaya.com/bagetnye_raboty/obramlenie/obramlenie_kartiny.html
+Redirect 301 /pechat_na_holste/pechat_na_holste_cena.html /pechat_na_holste/
+Redirect 301 /ramki_dlya_kartin/izgotovlenie_ramok_dlya_kartin_na_zakaz.html /ramki_dlya_kartin/
 
 <ifModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript

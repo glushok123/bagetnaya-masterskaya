@@ -3,12 +3,11 @@
 
 <?php
 
-$keywords = "Наши работы";
-$title = "Наши работы";
-$description = "Наши работы";
+$keywords = "багетные работы, работы, багет, паспарту";
+$title = "Багетная мастерская №1 - Наши работы";
+$description = "Работы Багетной мастерской №1";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
-
 
 
 $category = [
