@@ -24,6 +24,18 @@ $v = 7;
 
         <meta NAME="Description" CONTENT="<? echo $description; ?>">
         <meta NAME="Keywords" CONTENT="<? echo $keywords; ?>">
+        <meta name="geo.placename" content="Климентовский пер., 6, Москва, Россия, 115184" />
+        <meta name="geo.position" content="55.7411820;37.6301270" />
+        <meta name="geo.region" content="RU-" />
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Багетная мастерская № 1" />
+        <meta property="og:description" content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера." />
+        <meta property="og:url" content="http://bagetnaya-masterskaya.com" />
+        <meta property="og:image" content="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114-precomposed.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114-precomposed.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144-precomposed.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png" />
 
         <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">

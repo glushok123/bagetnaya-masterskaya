@@ -1,7 +1,6 @@
 User-agent: *
 Disallow: /upload.php
 Disallow: /upload2.php
-Disallow: /baget_online
 Disallow: /baget_zakaz
 Disallow: /baget_accept
 Disallow: /base
