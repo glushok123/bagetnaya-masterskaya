@@ -1,4 +1,8 @@
 <?
+    $keywords = "багетные работы, работы, багет, паспарту";
+    $title = "Багет онлайн, конструктор багета онлайн";
+    $description = "Конструктор багета онлайн";
+
 	require_once './base/connect.php';
 	require_once './constructor_baget/block_0_header.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
@@ -13,6 +17,7 @@
 		echo "changesize ();\" onmousemove =\"mousemove(event)\" onmousedown=\"mousemove(event)\" onmouseup=\"mousemove(event)\" onselectstart=\"return false;\">";
 	}
 ?>
+
 
 <div class='block-sk-circle hidden'>
     <div class="sk-circle">
