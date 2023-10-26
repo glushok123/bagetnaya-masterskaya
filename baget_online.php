@@ -74,7 +74,7 @@
 	</div>
 </div>
 
-<div id="bmenu" style="display: none;">
+<div id="bmenu" style="display: none; z-index: 9999999999999">
 	<div class="sorter-menu">
 		<div id="baget-type-menu">
 			<div class='row'>
@@ -116,7 +116,17 @@
 		<div class="closeme" onclick="closeme()"></div>
 	</div>
 
-	<div class="baget-conteiner container" onscroll="scrollingBmenu()"></div>
+
+        <div class="baget-conteiner container" onscroll="scrollingBmenu()">
+            <div class='row' id="addBagetBlock">
+
+            </div>
+            <div id="showmore-triger" data-page="1" data-max="100" style="display: none">
+                <img src="/assets/img/ajax-loader.gif" alt="">
+            </div>
+        </div>
+
+
 </div>
 
 </body>
@@ -127,32 +137,82 @@
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-xl">
-		<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Багет подобранный искусственным интеллектом на основании спектрального анализа изображения</h5>
-			<button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<div class="modal-body" id ='custom-baget-me'>
-				<div class='row baget-conteiner' id='test-r'>
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Багет подобранный искусственным интеллектом на основании спектрального анализа изображения</h5>
+                <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id ='custom-baget-me'>
+                    <div class='row baget-conteiner' id='test-r'>
 
-				</div>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Закрыть</button>
-		</div>
-		</div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+            </div>
+        </div>
 	</div>
-	</div>
+
 	<style>
 		.my-2{
 			margin-top: 0.1rem!important;
 			margin-bottom: 0.1rem!important;
 		}
+        #showmore-triger {
+            text-align: center;
+            padding: 10px;
+            background: #ffdfdf;
+        }
+
+        /* Вывод товаров */
+        .prod-list {
+            overflow: hidden;
+            margin: 0 0 20px 0;
+        }
+        .prod-item {
+            width: 174px;
+            height: 230px;
+            float: left;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 0 20px 20px 0;
+            text-align: center;
+            border-radius: 6px;
+        }
+        .prod-item-img {
+            width: 100%;
+        }
+        .prod-item-name {
+            font-size: 13px;
+            line-height: 16px;
+        }
+
+        .prod-list .prod-item:nth-child(3n) {
+            margin-right: 0
+        }
 	</style>
+
 	<? 
-	include('./constructor_baget/scriptBagetOnline.php');
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
+        include('./constructor_baget/scriptBagetOnline.php');
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 	?>
+
+<script>
+    var processDownload = false;
+    var curentPage = 1;
+
+    $('.baget-conteiner').scroll(function() {
+        if (processDownload === false){
+            buffer = 40 // # of pixels from bottom of scroll to fire your function. Can be 0
+            if ($(".baget-conteiner").prop('scrollHeight') - $(".baget-conteiner").scrollTop() <= $(".baget-conteiner").height() + buffer )   {
+                processDownload = true;
+                curentPage = curentPage + 1;
+                getcatalog($('#sorter-catalog').attr("data-type"), curentPage)
+            }
+        }
+    });
+</script>
 </HTML>
 

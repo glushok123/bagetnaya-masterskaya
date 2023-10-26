@@ -961,13 +961,16 @@
 				$('#catalog-'+ type).addClass('active-button-catalog')
 				$('#get-catalog-'+ type).addClass('active-button-get-catalog')
 			}
-			let getcatalog = function(type) {
+
+			let getcatalog = function(type, page = 1) {
 				selectedType = $('#sorter-catalog').attr("data-type");
 
 				if (type != selectedType) {
-					$('.baget-conteiner').html("")
-					downloadCatalog(type);
+					$('.baget-conteiner .row').html("")
+                    curentPage = 1;
+					downloadCatalog(type, page);
 				} else {
+                    downloadCatalog(type, page);
 					$('.layer').fadeIn(500);
 					$('#bmenu').fadeIn(500);
 				}
@@ -975,7 +978,7 @@
 				choiseCatalog(type)
 			}
 
-			function downloadCatalog(type) {
+			function downloadCatalog(type, page = 1) {
 				if (typeof(type) != "undefined" && type !== null) {
 					var type = type;
 				} else {
@@ -992,14 +995,14 @@
 					data: {
 						type: type,
 						sorter: sorter,
+						page: page,
 					},
 					dataType: "text",
 					success: function(data) {
-
-						$('.baget-conteiner').html(data);
-
+                        document.getElementById('addBagetBlock').innerHTML +=data
 						$('body').addClass('fixwindow');
 						makeImgMas();
+                        processDownload = false;
 
 
 					},
@@ -1010,6 +1013,7 @@
 
 					}
 				});
+
 			}
 
 			let addnewbaget = function() {

@@ -1,9 +1,20 @@
 <?
 
+
 require_once ('../auth/authCheck.php');
+require_once 'connect.php';
+
+global $dbh;
+// Кол-во элементов
+$limit = 20;
 
 $type = $_POST['type'];
 $sorter = $_POST['sorter'];
+
+$page = empty($_POST['page'])? 1: intval($_POST['page']);
+$page = (empty($page)) ? 1 : $page;
+$start = ($page != 1) ? $page * $limit - $limit : 0;
+
 
 if (isset($sorter)) {
 	$sorter = explode('-', (string) $sorter);
@@ -13,15 +24,15 @@ if (isset($sorter)) {
 	$orderby = 'publicvendor';
 }
 
-$query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype;
-require_once 'connect.php';
+$query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype . " LIMIT {$start}, {$limit}";
+
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(1, $type);
 $stmt->execute();
 $data = $stmt->fetchAll();
 
 ?> 
-<div class='row'> 
+
 
 <?
 
@@ -70,7 +81,14 @@ foreach ($data as $baget) { ?>
 			<? } ?>
 
 			<div class="maskimg">
-				<img src="/img/loading.gif" 
+				<img src="
+					<? if ($type == "pasp") { ?>
+						/pi/
+					<? } else { ?>
+						/bi/
+					<? } ?>
+					<?= $baget['listimg'] ?>
+				"
 				realsrc="
 					<? if ($type == "pasp") { ?>
 						/pi/
@@ -112,4 +130,3 @@ foreach ($data as $baget) { ?>
 	</div>
 
 <? } ?>
-</div>
