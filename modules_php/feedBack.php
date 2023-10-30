@@ -282,7 +282,8 @@
                 comment: $("#comment").val(),
             };
 
-            //console.log(data)
+            $('#exampleModal').modal('hide');
+            $('#order-status-model').modal('show');
 
             $.ajax({
                 url: '/admin/request/saveFeedBackRequest.php',
@@ -291,9 +292,7 @@
                 data: data,
                 success: function(data) {
                     if (data.success == true) {
-                        $('#exampleModal').modal('hide');
                         $('#order-id').text(data.order_id)
-                        $('#order-status-model').modal('show');
                     }
                 },
                 error: function(jqXHR, exception) {
