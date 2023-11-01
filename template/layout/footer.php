@@ -30,6 +30,10 @@
         </div>
     </div>
 
+    <div class="row my-5">
+        <? echo($_SERVER['HTTP_REFERER']); ?>
+    </div>
+
     <div class="row">
         <div class="col-12 col-md-7 align-middle">
             <div class='row mt-5 mb-3'>
