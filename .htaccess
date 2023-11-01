@@ -196,6 +196,5 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml appl
 RewriteCond %{HTTP_REFERER} gay-andrey.online [NC]
 RewriteRule .* – [F]
 
-RewriteCond %{HTTP_REFERER} yandex.ru [NC]
-RewriteRule .* – [F]
+
 
