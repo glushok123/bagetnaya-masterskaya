@@ -2,6 +2,7 @@
 
 $accessReferer = [
     'yandex',
+    'ya',
     'google',
     'telegram',
     'youtube',
