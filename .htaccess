@@ -193,6 +193,8 @@ RewriteRule ^directory/(.*)$ directory/index.php?id=$1 [L,QSA,NC]
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
 </ifModule>
 
+
+#БЛОКИРОВКА
 RewriteCond %{HTTP_REFERER} gay-andrey.online [NC]
 RewriteRule .* – [F]
 

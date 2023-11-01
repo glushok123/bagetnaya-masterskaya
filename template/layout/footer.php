@@ -31,7 +31,14 @@
     </div>
 
     <div class="row my-5">
-        <? echo($_SERVER['HTTP_REFERER']); ?>
+
+        <?
+
+        echo('<pre>');
+        print_r($_SERVER);
+        echo('<pre>');
+
+        ?>
     </div>
 
     <div class="row">
