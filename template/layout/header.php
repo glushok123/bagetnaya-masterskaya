@@ -1,13 +1,21 @@
 <?
+
+
+ini_set('session.referer_check', 'TRUE');
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 
 $title = empty($title) ? "Багетная мастерская №1 в Москве - качественно и недорого!" : $title;
 $description = empty($description) ? "Понадобились услуги недорогой багетной мастерской в Москве? Наша Багетная Мастерская №1 порадует Вас доступными ценами. Мы - лучшие в качественном оформлении багетными рамками." : $description;;
 $keywords = empty($keywords) ? "багетная мастерская, багетная мастерская в Москве, багетная мастерская недорого" : $keywords;;
 header("Cache-Control: max-age=2592000");
+
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/block-bots.php';
+$showMetrika = blockBot();
+
 $v = 7;
 ?>
-
     <!doctype html>
     <html lang="ru">
 
@@ -75,51 +83,11 @@ $v = 7;
             gtag('config', 'UA-169398394-2');
         </script>
 
-        <script type="text/javascript">
-            (function (m, e, t, r, i, k, a) {
-                m[i] = m[i] || function () {
-                    (m[i].a = m[i].a || []).push(arguments)
-                };
-                m[i].l = 1 * new Date();
-                for (var j = 0; j < document.scripts.length; j++) {
-                    if (document.scripts[j].src === r) {
-                        return;
-                    }
-                }
-                k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-            })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(94108947, "init", {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true
-            });
-        </script>
-        <noscript>
-            <div><img src="https://mc.yandex.ru/watch/94108947" style="position:absolute; left:-9999px;" alt=""/></div>
-        </noscript>
-
-        <script type="text/javascript">
-            (function (m, e, t, r, i, k, a) {
-                m[i] = m[i] || function () {
-                    (m[i].a = m[i].a || []).push(arguments)
-                };
-                m[i].l = 1 * new Date();
-                k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-            })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(60934651, "init", {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true,
-                webvisor: true
-            });
-        </script>
-        <noscript>
-            <div><img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt=""/></div>
-        </noscript>
+        <?
+            if ($showMetrika == true){
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/assets/metrika.php';
+            }
+        ?>
 
     </head>
 
