@@ -14,7 +14,7 @@ header("Cache-Control: max-age=2592000");
 require_once $_SERVER['DOCUMENT_ROOT'] . '/block-bots.php';
 $showMetrika = blockBot();
 
-$v = 7;
+$v = 8;
 ?>
     <!doctype html>
     <html lang="ru">
