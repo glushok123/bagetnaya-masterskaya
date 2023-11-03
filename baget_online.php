@@ -103,6 +103,7 @@
 						<button class="bmenu-open sort-b" id='catalog-pasp' onclick="getcatalog('pasp');">Паспарту</button>
 					</div>
 				</div>
+
 			</div>
 		</div>
 		
@@ -118,7 +119,15 @@
 			<option class="display-none" value="width-desc">Размер по убыванию</option>
 		</select>
 
+
+
+
 		<div class="closeme" onclick="closeme()"></div>
+
+        <br>
+        <div class="mt-4">
+            <input type="number" class="form-control sort-margin-y" id="search-article" aria-describedby="" style="max-width: 250px;" placeholder="Артикул..." oninput="getcatalog('pasp', 1, true);">
+        </div>
 	</div>
 
 

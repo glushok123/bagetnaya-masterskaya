@@ -962,23 +962,33 @@
 				$('#get-catalog-'+ type).addClass('active-button-get-catalog')
 			}
 
-			let getcatalog = function(type, page = 1) {
+			let getcatalog = function(type, page = 1, search = false) {
+                console.log($('#search-article').val())
 				selectedType = $('#sorter-catalog').attr("data-type");
 
-				if (type != selectedType) {
-					$('.baget-conteiner .row').html("")
-                    curentPage = 1;
-					downloadCatalog(type, page);
-				} else {
-                    downloadCatalog(type, page);
-					$('.layer').fadeIn(500);
-					$('#bmenu').fadeIn(500);
-				}
 
-				choiseCatalog(type)
+
+                if (search == false){
+                    if (type != selectedType) {
+                        $('.baget-conteiner .row').html("")
+                        curentPage = 1;
+                        downloadCatalog(type, page, search);
+                    } else {
+                        downloadCatalog(type, page, search);
+                        $('.layer').fadeIn(500);
+                        $('#bmenu').fadeIn(500);
+                    }
+                    choiseCatalog(type)
+                }
+
+                if (search == true){
+                    $('.baget-conteiner .row').html("")
+                    curentPage = 1;
+                    downloadCatalog(type, page, search);
+                }
 			}
 
-			function downloadCatalog(type, page = 1) {
+			function downloadCatalog(type, page = 1, search) {
 				if (typeof(type) != "undefined" && type !== null) {
 					var type = type;
 				} else {
@@ -996,6 +1006,8 @@
 						type: type,
 						sorter: sorter,
 						page: page,
+                        search: search,
+                        query: $('#search-article').val(),
 					},
 					dataType: "text",
 					success: function(data) {

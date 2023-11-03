@@ -24,12 +24,21 @@ if (isset($sorter)) {
 	$orderby = 'publicvendor';
 }
 
-$query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype . " LIMIT {$start}, {$limit}";
+if ($_POST['search'] == 'true'){
+    $query = "SELECT * FROM catalog_baget WHERE publicvendor LIKE '%%" . $_POST['query'] . "%%' AND price > 0 AND storage > 9 ";
+    $stmt = $dbh->prepare($query);
+    $stmt->execute();
+    $data = $stmt->fetchAll();
 
-$stmt = $dbh->prepare($query);
-$stmt->bindParam(1, $type);
-$stmt->execute();
-$data = $stmt->fetchAll();
+}else{
+    $query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype . " LIMIT {$start}, {$limit}";
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(1, $type);
+    $stmt->execute();
+    $data = $stmt->fetchAll();
+}
+
+
 
 ?> 
 
@@ -52,7 +61,7 @@ foreach ($data as $baget) { ?>
 
 		<a class=" catalog-item  del<?= $baget['id'] ?>" 
 			onclick="
-				<? if ($type == 'pasp') { ?>
+				<? if ($baget['type'] == 'pasp') { ?>
 					z[12]=0; 
 					z[3]=<?= $baget['publicvendor'] ?>; 
 					z[4]=<?= $baget['price'] ?>;
@@ -82,7 +91,7 @@ foreach ($data as $baget) { ?>
 
 			<div class="maskimg">
 				<img src="
-					<? if ($type == "pasp") { ?>
+					<? if ($baget['type'] == "pasp") { ?>
 						/pi/
 					<? } else { ?>
 						/bi/
@@ -90,7 +99,7 @@ foreach ($data as $baget) { ?>
 					<?= $baget['listimg'] ?>
 				"
 				realsrc="
-					<? if ($type == "pasp") { ?>
+					<? if ($baget['type'] == "pasp") { ?>
 						/pi/
 					<? } else { ?>
 						/bi/
@@ -98,7 +107,8 @@ foreach ($data as $baget) { ?>
 					<?= $baget['listimg'] ?>
 				" 
 				align="center" 
-				class="bmenuimg">
+				class="bmenuimg"
+                     loading="lazy">
 			</div>
 			
 			<div class='catalog-block-info my-2'>
