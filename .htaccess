@@ -3,10 +3,31 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+RewriteEngine On
 RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} /(.*)/$
+RewriteRule ^ /%1 [R=301,L] <-- added slash here too, don't forget it
+#RewriteCond %{HTTP_HOST} (.*)
+#RewriteCond %{REQUEST_URI} /$ [NC]
+#RewriteRule ^(.*)(/)$ $1 [L,R=301]
 
-Order Allow,Deny
-Allow from all
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+RewriteCond %{THE_REQUEST} ^(?:GET)\ /.*\.php\ HTTP.*$ [NC]
+RewriteRule ^(.*)\.php$ $1 [R=301,L]
+
+
+
+<ifModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
+
+
+
 
 <IfModule mod_expires.c>
     <Filesmatch "\.(jpg|jpeg|png|gif)$">
@@ -40,10 +61,12 @@ RewriteRule ^kontakty.html$ / [R=301,L]
 RewriteRule ^actions.html$ actions.php
 RewriteRule ^ourteam.html$ ourteam.php
 
-RewriteRule ^pechat_na_holste$ pechat_na_holste/ [R=301,L]
-RewriteRule ^pechat_na_holste/$ pechat_na_holste.php
-RewriteRule ^pechat_na_holste/pechat_na_holste_cena.html$ pechat_na_holste_cena.php
-RewriteRule ^pechat_na_holste/pechat_foto_na_holste.html$ pechat_foto_na_holste.php
+#RewriteRule ^bagetnye_raboty$ /bagetnye_raboty/index.php [R=301,L]
+#RewriteRule ^pechat_na_holste$ /pechat_na_holste/index.php [R=301,L]
+#RewriteRule ^bagetnye_ramki$ /bagetnye_ramki/index.php [R=301,L]
+
+
+RewriteRule ^pechat_na_holste/pechat_foto_na_holste$ pechat_foto_na_holste.php
 RewriteRule ^pechat_na_holste/pechat_kartin_na_holste.html$ pechat_kartin_na_holste.php
 RewriteRule ^pechat_na_holste/shirokoformatnaya_pechat_na_holste.html$ shirokoformatnaya_pechat_na_holste.php
 RewriteRule ^pechat_na_holste/pechat_reprodukciy_na_holste.html$ pechat_reprodukciy_na_holste.php
@@ -58,12 +81,7 @@ RewriteRule ^pechat_na_holste/pechat_na_holste_s_imitatsiey_zhivopisi.html$ pech
 RewriteRule ^pechat_na_holste/pechat_na_holste_s_podramnikom.html$ pechat_na_holste_s_podramnikom.php
 
 
-RewriteRule ^bagetnye_raboty$ bagetnye_raboty/ [R=301,L]
-RewriteRule ^bagetnye_raboty/$ bagetnye_raboty.php
-
-RewriteRule ^bagetnye_raboty/izgotovlenie_bageta$ bagetnye_raboty/izgotovlenie_bageta/ [R=301,L]
-RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/$ izgotovlenie_bageta.php
-
+RewriteRule ^bagetnye_raboty/izgotovlenie_bageta$ izgotovlenie_bageta.php
 RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_bagetov_dlya_kartin.html$ izgotovlenie_bagetov_dlya_kartin.php
 RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_zerkal_v_bagete.html$ izgotovlenie_zerkal_v_bagete.php
 RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_ramki_iz_bageta.html$ izgotovlenie_ramki_iz_bageta.php
@@ -121,8 +139,7 @@ RewriteRule ^ramki_dlya_kartin/deshevye_plastikovye_ramki_dlya_kartin.html$ desh
 RewriteRule ^ramki_dlya_kartin/gotovye_ramki_dlya_kartin.html$ gotovye_ramki_dlya_kartin.php
 RewriteRule ^ramki_dlya_kartin/podbor_ramki_pod_kartinu.html$ podbor_ramki_pod_kartinu.php
 
-RewriteRule ^bagetnye_ramki$ bagetnye_ramki/ [R=301,L]
-RewriteRule ^bagetnye_ramki/$ bagetnye_ramki.php
+
 RewriteRule ^bagetnye_ramki/izgotovlenie_bagetnyh_ramok.html$ izgotovlenie_bagetnyh_ramok.php
 RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_ikon.html$ bagetnye_ramki_dlya_ikon.php
 RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_kartin.html$ bagetnye_ramki_dlya_kartin.php
@@ -138,8 +155,8 @@ RewriteRule ^ramki_dlya_vyshivki/oformlenie_vyshivki.html$ oformlenie_vyshivki.p
 RewriteRule ^baget_dlya_ikony$ baget_dlya_ikony/ [R=301,L]
 RewriteRule ^baget_dlya_ikony/$ baget_dlya_ikony.php
 
-RewriteRule ^bagety_dlya_kartin$ bagety_dlya_kartin/ [R=301,L]
-RewriteRule ^bagety_dlya_kartin/$ bagety_dlya_kartin.php
+RewriteRule ^bagety_dlya_kartin$ bagety_dlya_kartin/index.php [R=301,L]
+
 RewriteRule ^bagety_dlya_kartin/bagety_dlya_kartin_cena.html$ bagety_dlya_kartin_cena.php
 RewriteRule ^bagety_dlya_kartin/zakazat_baget.html$ zakazat_baget.php
 RewriteRule ^bagety_dlya_kartin/derevyannye_bagety_dlya_kartin.html$ derevyannye_bagety_dlya_kartin.php
@@ -163,35 +180,6 @@ RewriteRule ^prices_for_print_and_canvas/$ prices_for_print_and_canvas.php
 #НОВАЯ АРХИТЕКТУРА
 RewriteRule ^search$  /template/search.php [R=301,L]
 RewriteRule ^search/$ /template/search.php
-#RewriteRule ^bagetnye_raboty/obramlenie/obramlenie_kartiny.html obramlenie_kartiny.php$  [R=301,L,NC]
-
-
-#Redirect 301 /oformit_kartinu_v_baget.php https://bagetnaya-masterskaya.com/bagety_dlya_kartin/oformit_kartinu_v_baget.html
-#Redirect 301 /baget_for_karini.php /bagety_dlya_kartin/kak_podobrat_baget_k_kartine.html
-#Redirect 301 /obramlenie_kartiny.php /bagetnye_raboty/obramlenie/obramlenie_kartiny.html
-#Redirect 301 /bagetnye_raboty.php /bagetnye_raboty/
-
-##Redirect 301 /pechat_na_holste/pechat_na_holste_cena.html /pechat_na_holste/
-#Redirect 301 /ramki_dlya_kartin/izgotovlenie_ramok_dlya_kartin_na_zakaz.html /ramki_dlya_kartin/
-
-RewriteRule ^bagetnye_raboty$  /bagetnye_raboty.php
-RewriteRule ^bagetnye_raboty/$ /bagetnye_raboty.php
-
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [L]
-
-RewriteCond %{THE_REQUEST} ^(?:GET)\ /.*\.php\ HTTP.*$ [NC]
-RewriteRule ^(.*)\.php$ $1 [R=301,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^directory/(.*)$ directory/index.php?id=$1 [L,QSA,NC]
-
-<ifModule mod_deflate.c>
-AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
-</ifModule>
 
 
 #БЛОКИРОВКА

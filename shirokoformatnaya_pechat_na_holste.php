@@ -6,7 +6,7 @@ $gallery = "pechat_na_holste";
 include "header.php";
 ?>
 
-<div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste/">Печать на холсте</a> » Широкоформатная печать на холсте</div>
+<div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste">Печать на холсте</a> » Широкоформатная печать на холсте</div>
 <h1>Широкоформатная печать на холсте</h1>
 <div id="main">
 	<? include "gallery.php" ?>

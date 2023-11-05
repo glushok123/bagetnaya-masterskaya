@@ -3,7 +3,7 @@
 	$titl = "Багет для картин и фотографий в Багетной мастерской №1";
 	$desc = "Индивидуальные рамки для фото и багеты для картин на заказ: собирают профессионалы!";
 	$gallery = "bagety_dlya_kartin";
-	include "header.php";
+	include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
 
 <div id="crops"><a href="/">Главная</a> » Багеты для картин</div>
@@ -74,5 +74,5 @@
 	<a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
 
 	<?
-		include "b3.php";
+		include $_SERVER['DOCUMENT_ROOT'] . "/b3.php";
 	?>

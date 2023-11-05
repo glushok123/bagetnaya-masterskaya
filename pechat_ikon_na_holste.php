@@ -6,7 +6,7 @@ $gallery = "ramki_dlya_ikon";
 include "header.php";
 ?>
 
-<div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste/">Печать на холсте</a> » Печать икон на холсте</div>
+<div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste">Печать на холсте</a> » Печать икон на холсте</div>
 <h1>Печать икон на холсте</h1>
 <div id="main">
 	<? include "gallery.php" ?>

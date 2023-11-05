@@ -3,7 +3,7 @@ $keyw = "Багетная рама, рамка для картины, купит
 $titl = "Рамки для картин в Багетной мастерской №1";
 $desc = "Багетные рамы из дерева, пластика и металла для самых разных предметов искусства! Как выбрать и купить рамку в Багетной мастерской №1 – читайте в статье!";
 $gallery = "ramki_dlya_kartin";
-include "header.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
 <div id="crops"><a href="/">Главная</a> » Багетные рамки</div>
 <h1>БАГЕТНАЯ РАМА – НАЗНАЧЕНИЕ, ИСТОРИЯ, МАТЕРИАЛЫ</h1>
@@ -73,6 +73,6 @@ include "header.php";
 	<a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
 
 	<?
-	include "b3.php";
+	include $_SERVER['DOCUMENT_ROOT'] .  "/b3.php";
 
 	?>

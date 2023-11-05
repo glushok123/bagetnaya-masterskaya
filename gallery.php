@@ -2,74 +2,74 @@
 
 $files = [];
 if ($gallery == "all" || $gallery == "bagetnaya_masterskaya") {
-  $k_files = scandir("gallemax/bagetnaya_masterskaya");
+  $k_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/bagetnaya_masterskaya");
   for ($i = 2; $i < (is_countable($k_files) ? count($k_files) : 0); $i++) {
     array_push($files, "/bagetnaya_masterskaya/" . $k_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "bagetnye_ramki" || $gallery == "ramki_dlya_kartin") {
-  $k_files = scandir("gallemax/bagetnye_ramki");
+  $k_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/bagetnye_ramki");
   for ($i = 2; $i < (is_countable($k_files) ? count($k_files) : 0); $i++) {
     array_push($files, "/bagetnye_ramki/" . $k_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "bagety_dlya_kartin") {
-  $k_files = scandir("gallemax/bagety_dlya_kartin");
+  $k_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/bagety_dlya_kartin");
   for ($i = 2; $i < (is_countable($k_files) ? count($k_files) : 0); $i++) {
     array_push($files, "/bagety_dlya_kartin/" . $k_files[$i]);
   }
 }
 
 if ($gallery == "all" || $gallery == "ramki_dlya_ikon") {
-  $k_files = scandir("gallemax/ramki_dlya_ikon");
+  $k_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/ramki_dlya_ikon");
   for ($i = 2; $i < (is_countable($k_files) ? count($k_files) : 0); $i++) {
     array_push($files, "/ramki_dlya_ikon/" . $k_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "ramki_dlya_kartin" || $gallery == "bagetnye_ramki") {
-  $k_files = scandir("gallemax/ramki_dlya_kartin");
+  $k_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/ramki_dlya_kartin");
   for ($i = 2; $i < (is_countable($k_files) ? count($k_files) : 0); $i++) {
     array_push($files, "/ramki_dlya_kartin/" . $k_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "ramki_dlya_vyshivki" || $gallery == "bagetnye_ramki") {
-  $v_files = scandir("gallemax/bagetnye_ramki");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/bagetnye_ramki");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/bagetnye_ramki/" . $v_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "pechat_na_holste") {
-  $v_files = scandir("gallemax/pechat_na_holste");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/pechat_na_holste");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/pechat_na_holste/" . $v_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "na_penokarton") {
-  $v_files = scandir("gallemax/na_penokarton");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/na_penokarton");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/na_penokarton/" . $v_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "holst_na_podramnike") {
-  $v_files = scandir("gallemax/holst_na_podramnike");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/holst_na_podramnike");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/holst_na_podramnike/" . $v_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "zerkala_v_bagete") {
-  $v_files = scandir("gallemax/zerkala_v_bagete");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/zerkala_v_bagete");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/zerkala_v_bagete/" . $v_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "oformlenie_detskih_risunkov") {
-  $v_files = scandir("gallemax/oformlenie_detskih_risunkov");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/oformlenie_detskih_risunkov");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/oformlenie_detskih_risunkov/" . $v_files[$i]);
   }
 }
 if ($gallery == "all" || $gallery == "televizor_v_bagete") {
-  $v_files = scandir("gallemax/televizor_v_bagete");
+  $v_files = scandir($_SERVER['DOCUMENT_ROOT'] . "/gallemax/televizor_v_bagete");
   for ($i = 2; $i < (is_countable($v_files) ? count($v_files) : 0); $i++) {
     array_push($files, "/televizor_v_bagete/" . $v_files[$i]);
   }

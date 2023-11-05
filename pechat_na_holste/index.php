@@ -3,14 +3,14 @@ $keyw = "Широкоформатная печать, Печать на холс
 $titl = "Нужно заказать картину на холсте? Широкоформатная печать в Багетной мастерской №1";
 $desc = "Description	Простой расчет стоимости печати на холсте в калькуляторе позволит Вам сразу ознакомиться с ценами";
 $gallery = "pechat_na_holste";
-include "header.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
 
 <div id="crops"><a href="/">Главная</a> » Печать на холсте</div>
 
 <div id="main">
     <h1>Печать на холсте (холстография)</h1>
-    <? include "gallery.php" ?>
+    <? include $_SERVER['DOCUMENT_ROOT'] . "/gallery.php" ?>
 
     <p>
         <b>Печать на холсте</b> - это процесс печати цифровых изображений
@@ -66,6 +66,6 @@ include "header.php";
     <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
 
     <?
-    include "b2.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/b2.php";
 
     ?>
