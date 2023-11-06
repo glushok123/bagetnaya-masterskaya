@@ -120,12 +120,10 @@
 		</select>
 
 
-
-
 		<div class="closeme" onclick="closeme()"></div>
 
         <br>
-        <div class="mt-4">
+        <div class="mt-4 search-article-block">
             <input type="number" class="form-control sort-margin-y" id="search-article" aria-describedby="" style="max-width: 250px;" placeholder="Артикул..." oninput="getcatalog('pasp', 1, true);">
         </div>
 	</div>
@@ -170,6 +168,15 @@
 	</div>
 
 	<style>
+        @media (min-width: 1400px ){
+            .search-article-block{
+                position: absolute;
+                left: 1000px;
+                top:0px;
+                margin-top: 15px !important;
+            }
+        }
+
 		.my-2{
 			margin-top: 0.1rem!important;
 			margin-bottom: 0.1rem!important;
