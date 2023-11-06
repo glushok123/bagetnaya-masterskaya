@@ -165,8 +165,9 @@ RewriteRule ^bagety_dlya_kartin/plastikovyi_baget_dlya_kartin.html$ plastikovyi_
 
 RewriteRule ^zerkala_v_bagete$ zerkala_v_bagete/ [R=301,L]
 RewriteRule ^zerkala_v_bagete/$ zerkala_v_bagete.php
-RewriteRule ^bagetnye_raboty/obramlenie/obramlenie_zerkal.html$ zerkala_v_bagete/zerkalo_v_rame.html [R=301,L]
+
 RewriteRule ^zerkala_v_bagete/zerkalo_v_rame.html$ zerkalo_v_rame.php
+
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_zerkal_v_baget.html$ zerkala_v_bagete/oformlenie_zerkal_v_baget.html [R=301,L]
 RewriteRule ^zerkala_v_bagete/oformlenie_zerkal_v_baget.html$ oformlenie_zerkal_v_baget.php
 RewriteRule ^pechat_kartin_posterov_reprodukcij/$ pechat_kartin_posterov_reprodukcij.php

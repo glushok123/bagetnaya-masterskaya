@@ -81,20 +81,21 @@ $max = count($files);
 ?>
 
 
-
 <div id="gc" class="gallery" onmouseover="prt=false;" onmouseout="prt=true;">
   <div class="gal-left" onclick="ttr=false; rt(true);" title="используйте кнопки влево/вправо на клавиатуре"></div>
   <div class="gal-right" onclick="ttr=true; rt(true);" title="используйте кнопки влево/вправо на клавиатуре"></div>
   <?
 
-  echo "
-      <div id='gid0' class='ge1' onclick='sp(0);' attr2='background:url(\"/gallemax" . $files[0] . "\") no-repeat center, url(\"/gallemin" . $files[0] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[0] . "\") no-repeat center; background-size: contain;'></div>
-      <div id='gid1' class='ge2' onclick='sp(1);' attr2='background:url(\"/gallemax" . $files[1] . "\") no-repeat center, url(\"/gallemin" . $files[1] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[1] . "\") no-repeat center; background-size: contain;'></div>
-      <div id='gid2' class='ge3' onclick='sp(2);' attr2='background:url(\"/gallemax" . $files[2] . "\") no-repeat center, url(\"/gallemin" . $files[2] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[2] . "\") no-repeat center; background-size: contain;'></div>
-      <div id='gid3' class='ge4' onclick='sp(3);' attr2='background:url(\"/gallemax" . $files[3] . "\") no-repeat center, url(\"/gallemin" . $files[3] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[3] . "\") no-repeat center; background-size: contain;'></div>
-      <div id='gid4' class='ge5' onclick='sp(4);' attr2='background:url(\"/gallemax" . $files[4] . "\") no-repeat center, url(\"/gallemin" . $files[4] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[4] . "\") no-repeat center; background-size: contain;'></div>
-      ";
+  if (isset($files) && isset($files[0]) && isset($files[1]) && isset($files[2]) && isset($files[3])) {
 
+      echo "
+          <div id='gid0' class='ge1' onclick='sp(0);' attr2='background:url(\"/gallemax" . $files[0] . "\") no-repeat center, url(\"/gallemin" . $files[0] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[0] . "\") no-repeat center; background-size: contain;'></div>
+          <div id='gid1' class='ge2' onclick='sp(1);' attr2='background:url(\"/gallemax" . $files[1] . "\") no-repeat center, url(\"/gallemin" . $files[1] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[1] . "\") no-repeat center; background-size: contain;'></div>
+          <div id='gid2' class='ge3' onclick='sp(2);' attr2='background:url(\"/gallemax" . $files[2] . "\") no-repeat center, url(\"/gallemin" . $files[2] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[2] . "\") no-repeat center; background-size: contain;'></div>
+          <div id='gid3' class='ge4' onclick='sp(3);' attr2='background:url(\"/gallemax" . $files[3] . "\") no-repeat center, url(\"/gallemin" . $files[3] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[3] . "\") no-repeat center; background-size: contain;'></div>
+          <div id='gid4' class='ge5' onclick='sp(4);' attr2='background:url(\"/gallemax" . $files[4] . "\") no-repeat center, url(\"/gallemin" . $files[4] . "\") no-repeat center; background-size: contain;' attr='' style='background:url(\"/gallemin" . $files[4] . "\") no-repeat center; background-size: contain;'></div>
+          ";
+  }
 
 
   /*echo "
