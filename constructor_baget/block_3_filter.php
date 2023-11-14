@@ -258,7 +258,7 @@
                         onclick="getcatalog('pasp');" style='color:white;'>Выбрать
                 </button>
                 <button type="button" class="t2 close-pasp-block btn btn-secondary b1 w120"
-                        onclick="z[3]=0; z[4]=0; z[5]=0; changesize(); countprice ();">Удалить
+                        onclick="z[3]=0; z[4]=0; z[5]=0; changesize(); countprice ();">убрать
                 </button>
             </div>
         </div>
@@ -334,7 +334,7 @@
                 <button type="button" class="btn b2 my-2 <? if ($z[6] == 2) { echo 'custom-selected-border'; }?>" onclick="z[6]=2; bgswitch();">Матовое</button>
                 <button type="button" class="btn b2 my-2 <? if ($z[6] == 3) { echo 'custom-selected-border'; }?>" onclick="z[6]=3; bgswitch();">Антиблик</button>
                 <button type="button" class="btn b2 my-2 <? if ($z[6] == 4) { echo 'custom-selected-border'; }?>" onclick="z[6]=4; bgswitch();">Пластиковое</button>
-                <button type="button" class="btn btn-secondary b1 w120  custom-selected-clear" onclick="z[6]=0; bgswitch();">Удалить</button>
+                <button type="button" class="btn btn-secondary b1 w120  custom-selected-clear" onclick="z[6]=0; bgswitch();">убрать</button>
             </div>
         </div>
 
@@ -353,7 +353,7 @@
                 <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 2) { echo 'custom-selected-border'; }?>" onclick="z[7]=2; bgswitch();">Пенокартон 5 мм</button>
                 <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 3) { echo 'custom-selected-border'; }?>" onclick="z[7]=3; bgswitch();">Натяжка вышивки</button>
                 <button type="button" class="btn b2 my-2 <? if ($z[7] == 4) { echo 'custom-selected-border'; }?>" onclick="z[7]=4; bgswitch();">Подрамник</button>
-                <button type="button" class="btn btn-secondary b1 w120 custom-selected-clear" onclick="z[7]=0; bgswitch();">Удалить</button>
+                <button type="button" class="btn btn-secondary b1 w120 custom-selected-clear" onclick="z[7]=0; bgswitch();">убрать</button>
             </div>
         </div>
 

@@ -37,8 +37,7 @@
                 <div class="mt-3">
                     <a href="/baget_online">
                         <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>Рассчитать
-                            стоимость багета</button>
+                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>Конструктор багета <b>online</b></button>
                     </a>
                     <br>
                     <a href="/сatalog-of-finished-works.php"><button class='button button-custom-index button-color-company-golden fix-width-185'>Наши

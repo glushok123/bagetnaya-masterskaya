@@ -3,6 +3,8 @@
     $title = "Багет онлайн, конструктор багета онлайн";
     $description = "Конструктор багета онлайн";
 
+    $hideTop = true;
+
 	require_once './base/connect.php';
 	require_once './constructor_baget/block_0_header.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
@@ -18,6 +20,13 @@
 	}
 ?>
 
+
+<div class="arrow-back">
+    <a href="/" style="text-decoration: none; color:black;"><div class="signpost1-left">
+        <p>На главную</p>
+    </div>
+    </a>
+</div>
 
 <div class='block-sk-circle hidden'>
     <div class="sk-circle">
@@ -36,7 +45,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container"  <?	if (isMobile()) { ?>  style="margin-top: 60px;" <? } ?>>
     <div class="row text-center">
         <h1 class="name-header element-animation">Рассчитайте стоимость багета</h1>
     </div>
@@ -212,6 +221,88 @@
 
         .prod-list .prod-item:nth-child(3n) {
             margin-right: 0
+        }
+.arrow-back{
+    position: absolute;
+    top:15px;
+    left:15px;
+
+}
+
+        .arrow-6 {
+            margin-right:0px;
+        }
+
+        .arrow-6 svg {
+            width: 100px;
+            height: auto;
+            margin: 0 2rem;
+            cursor: pointer;
+            overflow: visible;
+        }
+        .arrow-6 svg {
+            margin-right:0px;
+        }
+        .arrow-6 svg polygon,
+        .arrow-6 svg path {
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            fill: #6a1a21;
+        }
+        .arrow-6 svg:hover polygon,
+        .arrow-6 svg:hover path {
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+            fill: #000;
+        }
+        .arrow-6 svg:hover .arrow-6-pl {
+            animation: arrow-6-anim 1s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+        }
+        .arrow-6 svg:hover .arrow-6-pl-fixed {
+            animation: arrow-6-fixed-anim 1s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+        }
+
+        @keyframes arrow-6-anim {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            5% {
+                transform: translateX(-0.1rem);
+            }
+            100% {
+                transform: translateX(1rem);
+                opacity: 0;
+            }
+        }
+        @keyframes arrow-6-fixed-anim {
+            5% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.4;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .signpost1-left{
+            background-color: #dacab1; /* определяем цвет */
+            width: 150px; /* устанавливаем размеры */
+            height: 50px;
+            clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 50%); /* создаем полигон */
+            shape-outside: polygon(12% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 50%);
+        }
+        .signpost1-left p{
+            font-size: 19px;
+            margin: 0 auto;
+            padding-top: 15px;
+            text-align: center;
+        }
+        .signpost1-left{
+            1px solid var(--beige, #e0d2bb) !important;
+        }
+        .signpost1-left:hover{
+            background-color: #6a1a21;
+            color: white;
         }
 	</style>
 

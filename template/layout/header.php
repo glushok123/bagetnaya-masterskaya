@@ -1,7 +1,6 @@
 <?
 
 
-ini_set('session.referer_check', 'TRUE');
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 
@@ -122,11 +121,14 @@ $v = 8;
     </script>
 
 <?
-if (isMobile()) {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar.php';
-} else {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar-desctop.php';
+if (!isset($hideTop)){
+    if (isMobile()) {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar.php';
+    } else {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar-desctop.php';
+    }
 }
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/button-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-game.php';

@@ -169,6 +169,7 @@
 		function transformain() {
 			width = document.body.clientWidth;
 			height = document.body.clientHeight;
+
 			if (z[11] == "0") {
 				mainw = width * 0.6;
 				mainh = height * 0.8;
