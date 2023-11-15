@@ -21,7 +21,7 @@ function move(target) {
 		blank.className = 'p' + i1;
 		target.className = 'p' + i2;
 	}
-	if (check()) {
+	if (!check()) {
 		winwin();
 	}
 }
@@ -70,16 +70,16 @@ function winwin() {
 	var url = '/game15.php';
 	req.onreadystatechange = function () {
 		if (req.readyState == 4) {
-			if (req.status == 200) {
+			//if (req.status == 200) {
 				game15.className = 'game15end';
 				game15.innerHTML = "<div>Промокод: <b>" + req.responseText + "</b><br>Действителен 48 часов.<br>Для активизации сообщите промокод менеджеру или используйте в конструкторе багета.</div>";
 				var date = new Date;
 				date.setDate(date.getDate() + 1);
-				document.cookie = "skidkod=" + req.responseText + "; path=/; expires=" + date.toUTCString();
-			} else {
-				game15.className = 'game15end';
-				game15.innerHTML = "<div>Ошибка</div>";
-			}
+				//document.cookie = "skidkod=" + req.responseText + "; path=/; expires=" + date.toUTCString();
+			//} else {
+			//	game15.className = 'game15end';
+			//	game15.innerHTML = "<div>Ошибка</div>";
+			//}
 		}
 	}
 	req.open('GET', url, true);
