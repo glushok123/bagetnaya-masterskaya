@@ -72,7 +72,7 @@
         }
     }
     function game15start(id) {
-        loadJS('game15.js');
+        loadJS('game15.js?v<?=$v?>');
         id.onclick = function() {
             return;
         }
