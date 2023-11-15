@@ -1025,14 +1025,14 @@ div.maskimg {
 .bg-custom-gold {
   border-radius: 3px;
   background: #dacab1;
-  height: 44px;
+  height: 35px;
   width: 321px;
   vertical-align: middle !important;
 }
 .s1 {
   color: var(--black, #262626);
   font-family: Manrope;
-  font-size: 21px;
+  font-size: 19px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -1041,7 +1041,7 @@ div.maskimg {
   width: 407px !important;
 }
 .h1 {
-  height: 44px;
+  height: 35px;
 }
 .s2 {
   color: var(--black, #262626);
@@ -1222,8 +1222,8 @@ div.maskimg {
   border-radius: 11px;
   border: 1px solid var(--beige, #e0d2bb);
   background: var(--beige, #e0d2bb);
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   max-width: 500px;
   margin-left: -0.75rem;
 }

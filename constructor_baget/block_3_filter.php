@@ -152,34 +152,32 @@
             echo ' hidden';
         } ?>'>
             <div class='row  justify-contant-center'>
-                <div class='col-4 col-lg-3 col-xxl-2'>
+                <!--div class='col-4 col-lg-3 col-xxl-2'>
                     <div class="p2">
                         <span class='s2 text-nowrap'>Ширина (мм)</span>
                     </div>
+                </div-->
+                <div class='col-4 col-md-4 col-xxl-3'>
+                    <div class="mb-3">
+                        <input type="number" class="i1 form-control" id="fwid" name="fwid" aria-describedby="emailHelp" value="<?= $z[9] ?>" onchange="changesize(9);countprice ();">
+                        <div id="emailHelp" class="form-text">Ширина (мм)</div>
+                    </div>
                 </div>
-                <div class='col-4 col-lg-3 col-xxl-3'>
-                    <input type="number" class='i1' id="fwid" name="fwid" onchange="changesize(9);countprice ();"
-                           value="<?= $z[9] ?>" autocomplete="off">
+                <div class='col-4 col-md-4 col-xxl-3'>
+                    <div class="mb-3">
+                        <input type="number" class="i1 form-control" id="fhig" name="fhig" aria-describedby="emailHelp" value="<?= $z[10] ?>" onchange="changesize(10);countprice ();">
+                        <div id="emailHelp" class="form-text">Высота (мм)</div>
+                    </div>
                 </div>
-                <div class='col-4 col-lg-3 col-xxl-3'>
-                    <button type="submit" class="btn btn-secondary b1">Применить</button>
+                <div class='col-4 col-md-4 col-xxl-3'>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-secondary b1">Применить</button>
+
+                    </div>
                 </div>
             </div>
 
-            <div class='row justify-contant-center my-3'>
-                <div class='col-4 col-lg-3 col-xxl-2'>
-                    <div class="p2">
-                        <span class='s2 text-nowrap'>Высота (мм)</span>
-                    </div>
-                </div>
-                <div class='col-4 col-lg-3 col-xxl-3'>
-                    <input type="number" class='i1' id="fhig" name="fhig" onchange="changesize(10);countprice ();"
-                           value="<?= $z[10] ?>" autocomplete="off">
-                </div>
-                <div class='col-4 col-lg-3 col-xxl-3'>
-                    <button type="submit" class="btn btn-secondary b1">Применить</button>
-                </div>
-            </div>
+
         </div>
     </form>
 </section>
@@ -235,7 +233,7 @@
             <div class="" id="blockarticul" <? if ($z[0] <> 0 && $z[0] <> 7233) { ?> style="display:block;"
             <? } else { ?> style="display: none"
             <? } ?>>
-                <div class='row'>
+                <div class='row py-2'>
                     <div class='col-6 col-md-4'>
                         <span class="s2">Выбранный артикул: </span><span id="articul" class="s3"><?= $z[0] ?></span>
                     </div>
@@ -342,7 +340,7 @@
             <span class="s2">Стоимость: <span id="price3" class="s3">0</span></span>
         </div>
 
-        <div class='row justify-contant-center my-2'>
+        <div class='row justify-contant-center my-2 pt-4'>
             <div class=' col-3 col-md-2'>
                 <div class="p2 my-2">
                     <span class='s2'>Задник</span>
