@@ -1,5 +1,5 @@
-<? 
-	require_once 'base/connect.php';
+<?
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 
 	$kod = strtoupper(base_convert(random_int(4369,65535), 10, 16));
 	$NewDate = Date('Y-m-d H:i:s', strtotime('+2 days'));

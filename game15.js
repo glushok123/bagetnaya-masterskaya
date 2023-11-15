@@ -69,7 +69,7 @@ function winwin() {
 	var req = getXmlHttp();
 	var url = '/game15.php';
 	req.onreadystatechange = function () {
-		if (req.readyState == 4) {
+		//if (req.readyState == 4) {
 			//if (req.status == 200) {
 				game15.className = 'game15end';
 				game15.innerHTML = "<div>Промокод: <b>" + req.responseText + "</b><br>Действителен 48 часов.<br>Для активизации сообщите промокод менеджеру или используйте в конструкторе багета.</div>";
@@ -80,7 +80,7 @@ function winwin() {
 			//	game15.className = 'game15end';
 			//	game15.innerHTML = "<div>Ошибка</div>";
 			//}
-		}
+		//}
 	}
 	req.open('GET', url, true);
 	req.send(null);
