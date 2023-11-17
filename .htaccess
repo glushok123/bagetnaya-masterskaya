@@ -26,9 +26,6 @@ RewriteRule ^(.*)\.php$ $1 [R=301,L]
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
 </ifModule>
 
-
-
-
 <IfModule mod_expires.c>
     <Filesmatch "\.(jpg|jpeg|png|gif)$">
         ExpiresActive On
@@ -36,7 +33,7 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml appl
     </Filesmatch>
 </IfModule>
 
-ErrorDocument 404 https://bagetnaya-masterskaya.com/404
+ErrorDocument 404 /404
 
 Options +FollowSymLinks -MultiViews
 
