@@ -10,6 +10,8 @@ Disallow: /oplata_uslug.php*?
 Disallow: /pay_success.php*?
 Disallow: /oplata_uslug.php
 Disallow: /pay_success.php
+Disallow: /404
+Disallow: /404.php
 Host: bagetnaya-masterskaya.com
 Sitemap: https://bagetnaya-masterskaya.com/sitemap.xml
 Clean-param: id *

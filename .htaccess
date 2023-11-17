@@ -36,7 +36,7 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml appl
     </Filesmatch>
 </IfModule>
 
-ErrorDocument 404 https://bagetnaya-masterskaya.com/404.php
+ErrorDocument 404 https://bagetnaya-masterskaya.com/404
 
 Options +FollowSymLinks -MultiViews
 
