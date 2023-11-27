@@ -964,7 +964,8 @@
 			}
 
 			let getcatalog = function(type, page = 1, search = false) {
-                console.log($('#search-article').val())
+                console.log($('#search-article').val());
+
 				selectedType = $('#sorter-catalog').attr("data-type");
 
 
@@ -1012,13 +1013,13 @@
 					},
 					dataType: "text",
 					success: function(data) {
-                        document.getElementById('addBagetBlock').innerHTML +=data
-						$('body').addClass('fixwindow');
-						makeImgMas();
-                        processDownload = false;
-
-
-					},
+                        if(data !== ''){
+                            document.getElementById('addBagetBlock').innerHTML +=data
+                            $('body').addClass('fixwindow');
+                            makeImgMas();
+                            processDownload = false;
+                        }
+                        					},
 					error: function(jqXHR, textStatus, errorThrown) {
 						//console.log(textStatus);
 

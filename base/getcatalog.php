@@ -38,7 +38,9 @@ if ($_POST['search'] == 'true'){
     $data = $stmt->fetchAll();
 }
 
-
+if (empty($data)){
+    return;
+}
 
 ?> 
 
@@ -57,9 +59,9 @@ foreach ($data as $baget) { ?>
 		}
 	?>
 
-	<div class='my-2 mx-2 col-5 col-xl-2 text-start <?= $class ?>'>
+	<div class='my-2 col-6 col-xl-2   justify-content-center mx-auto'>
 
-		<a class=" catalog-item  del<?= $baget['id'] ?>" 
+		<a class="my-2 mx-2  justify-content-center catalog-item mx-auto <?= $class ?> del<?= $baget['id'] ?>"
 			onclick="
 				<? if ($baget['type'] == 'pasp') { ?>
 					z[12]=0; 
@@ -89,7 +91,7 @@ foreach ($data as $baget) { ?>
 				<div class="delete-baget" onclick="deleteBaget(<?= $baget['id'] ?>);"></div>
 			<? } ?>
 
-			<div class="maskimg">
+			<div class="maskimg mx-auto">
 				<img src="
 					<? if ($baget['type'] == "pasp") { ?>
 						/pi/
@@ -108,17 +110,17 @@ foreach ($data as $baget) { ?>
 				" 
 				align="center" 
 				class="bmenuimg"
-                     loading="lazy">
+                     >
 			</div>
 			
-			<div class='catalog-block-info my-2'>
-				<h5 class='text-nowrap text-start catalog-art'>Арт. <?= $baget['publicvendor'] ?></h5>
+			<div class='catalog-block-info my-2 mx-auto text-center'>
+				<h5 class='text-nowrap  catalog-art'>Арт. <?= $baget['publicvendor'] ?></h5>
 				<? if ($minimaster) { ?>
-					<h5 class='text-nowrap text-start catalog-art'>Арт. <?= $baget['vendor'] ?></h5>
+					<h5 class='text-nowrap  catalog-art'>Арт. <?= $baget['vendor'] ?></h5>
 				<? } ?>
 				<? if ($type !== "pasp") { ?>
-					<h5 class='text-nowrap text-start catalog-info'>Ширина: <?= $baget['width'] ?> мм</h5>
-					<h5 class='text-nowrap text-start catalog-info'>Без четверти: <?= $baget['widthwithout'] ?> мм</h5>
+					<h5 class='text-nowrap  catalog-info'>Ширина: <?= $baget['width'] ?> мм</h5>
+					<h5 class='text-nowrap  catalog-info'>Без четверти: <?= $baget['widthwithout'] ?> мм</h5>
 				<? } ?>
 				<? if ($type == "pasp") { ?>
 					<br>Цвет: <?= $baget['color'] ?>
@@ -131,12 +133,14 @@ foreach ($data as $baget) { ?>
 			<? if ($type !== "pasp") { ?>
 				<? if ($baget['storage'] > 30) { ?>
 					
-					<div class="nalich2">В наличии</div>
+					<div class="nalich2 text-center mx-auto">В наличии</div>
 				<? } else { ?>
-					<div class="nalich1">Огранич. кол-во</div>
+					<div class="nalich1 text-center mx-auto">Огр. кол-во</div>
 			<? }
 			} ?>
 		</a>
 	</div>
 
-<? } ?>
+<?
+//loading="lazy"
+} ?>

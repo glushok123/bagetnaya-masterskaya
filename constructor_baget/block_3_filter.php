@@ -217,13 +217,13 @@
                 </div>
             </div>
             <div class='col-9 col-md-8'>
-                <button type="button" class="bmenu-type btn b2 my-2" id='get-catalog-plast'
+                <button type="button" class="bmenu-type btn b2 my-2 clear-baget-conteiner" id='get-catalog-plast'
                         onclick="getcatalog('plast');">Пластик
                 </button>
-                <button type="button" class="bmenu-type btn b2 my-2" id='get-catalog-wood'
+                <button type="button" class="bmenu-type btn b2 my-2 clear-baget-conteiner" id='get-catalog-wood'
                         onclick="getcatalog('wood');">Дерево
                 </button>
-                <button type="button" class="bmenu-type btn b2 my-2" id='get-catalog-alum'
+                <button type="button" class="bmenu-type btn b2 my-2 clear-baget-conteiner" id='get-catalog-alum'
                         onclick="getcatalog('alum');">Аллюминий
                 </button>
             </div>
