@@ -9,14 +9,16 @@ require_once("SimpleXLS.php");
 
 require_once '../../base/connect.php';
 
-$url = "https://frame.ru/upload/medialibrary/2f3/LionArtService.xls"; //общий
+$url = "http://frame.ru/upload/medialibrary/2f3/LionArtService.xls"; //общий
 
 class UpdateCatalog
 {
     public $ch; //инициализация
     public $host = 'localhost'; // адрес сервера 
     public $database = 'a0458868_bagetnaya'; // имя базы данных
+    //public $user = 'root'; // имя пользователя
     public $user = 'a0458868_bagetnaya'; // имя пользователя
+    //public $password = ''; // пароль
     public $password = '1226591Qwer'; // пароль
     public $dbh; //название подключения к БД
     public $textUpdateRows = '';
@@ -41,7 +43,15 @@ class UpdateCatalog
     {
         $nameFile = $typeDesc . '-' . time() . '-' . random_int(1, 9_999_999_999) . ".xls";
 
-        file_put_contents('updateFileXlsx/' . $nameFile, file_get_contents($url));
+        $context = stream_context_create(array(
+            'https' => array(
+                'method' => 'POST',
+                'header' => 'Content-Type: application/json',
+            )
+        ));
+
+        $data = file_get_contents($url, false, $context);
+        file_put_contents('updateFileXlsx/' . $nameFile, $data);
 
         echo ('<b>Загружен ' . $typeDesc . '</b><br>');
         $this->update($nameFile);
