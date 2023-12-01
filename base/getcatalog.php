@@ -25,12 +25,12 @@ if (isset($sorter)) {
 }
 
 if ($_POST['search'] == 'true'){
-    $query = "SELECT * FROM catalog_baget WHERE publicvendor LIKE '%%" . $_POST['query'] . "%%' AND price > 0 AND storage > 9 ";
+    $query = "SELECT * FROM catalog_baget WHERE (`publicvendor` LIKE '%%{$_POST['query']}%%' OR  `vendor` LIKE '%%{$_POST['query']}%%') AND `price` > 0 AND `storage` > 9 AND `type`=?";
     $stmt = $dbh->prepare($query);
+    $stmt->bindParam(1, $type);
     $stmt->execute();
     $data = $stmt->fetchAll();
-
-}else{
+ }else{
     $query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype . " LIMIT {$start}, {$limit}";
     $stmt = $dbh->prepare($query);
     $stmt->bindParam(1, $type);
