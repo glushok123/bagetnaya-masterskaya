@@ -23,7 +23,7 @@ include "header.php";
             <h4>ОПЛАТА УСЛУГ БАГЕТНОЙ МАСТЕРСКОЙ №1</h4>
         </div>
         <div class="row text-center">
-            <div class='col-12 justify-content-center'>
+            <!--div class='col-12 justify-content-center'>
                 <div class="col-md-8 mx-auto" style="width:300px;    margin: 0 auto;">
                     <br>
                     <br>
@@ -33,11 +33,11 @@ include "header.php";
 
 
                 </div>
-            </div>
+            </div-->
 
             <div>
                 <hr>
-                <h5>Перевод по номеру карты: <br><b>4100 1181 3693 6273</b></h5>
+                <h5>Перевод по номеру карты: <br><b>2204 4502 4204 6818</b></h5>
                 <hr>
             </div>
 
