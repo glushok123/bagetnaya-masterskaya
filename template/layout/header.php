@@ -120,11 +120,12 @@ $v = 12;
         })(window, document, 'yandex_site_callbacks');
     </script>
 
-    <div class="container pt-1">
+    <!--div class="container pt-1">
         <div class="row text-center p-3" style="background: #AD1F2D; color: white; border-radius: 25px;">
             <h2>21.12.2023 Багетная мастерская №1 работает до 16.00</h2>
         </div>
-    </div>
+    </div-->
+
 <?
 if (!isset($hideTop)){
     if (isMobile()) {
