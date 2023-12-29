@@ -6,6 +6,7 @@
         </div>
 
         <div class='row pt-2 text-center'>
+
             <div class='style-text element-animation'>
                 Багетная мастерская – это место, где можно заказать изготовление рамок для фотографий, картин,
                 плакатов
@@ -36,6 +37,41 @@
 
             </div>
         </div>
+        <div class="row">
+            <div class="grafik-test">
+                <div data-day="1">Вс (31.12)<span>9.00-16.00</span></div>
+                <div data-day="2">Пн-Ср (1-3.01)<span>Выходной</span></div>
+                <div data-day="3">Чт-Пн (4-8.01)<span>10.00-20.00</span></div>
+            </div>
+        </div>
+
+        <style>
+            .grafik-test{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .grafik-test div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 120px;
+                background: #AD1F2D;
+                color: white;
+                border-radius: 5px;
+                margin: 5px !important;
+                padding: 5px !important;
+                box-shadow: 0px 0px 5px #bebebe;
+            }
+            .grafik-test div span{
+                border-top: 2px solid white;
+            }
+            .grafik-test div.today{
+                background: #ef7f11;
+                color: #fff;
+            }
+
+        </style>
         <div class='row pt-3'>
             <div class='block-image '>
                 <!-- Slider main container -->
