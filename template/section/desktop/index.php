@@ -5,13 +5,13 @@
             <h1>В МОСКВЕ</h1>
         </div>
 
-        <div class="row">
+        <!--div class="row">
             <div class="grafik-test">
                 <div data-day="1">Вс (31.12)<span>9.00-16.00</span></div>
                 <div data-day="2">Пн-Ср (1-3.01)<span>Выходной</span></div>
                 <div data-day="3">Чт-Пн (4-8.01)<span>10.00-20.00</span></div>
             </div>
-        </div>
+        </div-->
 
         <style>
             .grafik-test{
