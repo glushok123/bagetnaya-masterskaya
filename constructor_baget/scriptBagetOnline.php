@@ -968,14 +968,15 @@
 
 				selectedType = $('#sorter-catalog').attr("data-type");
 
-
-
                 if (search == false){
                     if (type != selectedType) {
                         $('.baget-conteiner .row').html("")
                         curentPage = 1;
                         downloadCatalog(type, page, search);
                     } else {
+                        if(page == 1){
+                            $('.baget-conteiner .row').html("");
+                        }
                         downloadCatalog(type, page, search);
                         $('.layer').fadeIn(500);
                         $('#bmenu').fadeIn(500);
