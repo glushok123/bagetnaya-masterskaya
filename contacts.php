@@ -6,8 +6,9 @@ $description = "Контакты багетной мастерской в Мос
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
 
-<h1 class="text-center" id="contacts">Контакты</h1>
-
+    <div class="block-h1 text-center my-4 fade-in">
+        <h1 class='color-main'>КОНТАКТЫ</h1>
+    </div>
 
         <div class="container">
             <hr>

@@ -15,10 +15,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 <div class="custom-margin">
     <div class='container'>
 
-        <div class='row text-center'>
-            <br>
-            <h1 style="color: #6a1a21">ОПЛАТА УСЛУГ БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
+        <div class="block-h1 text-center my-4 fade-in">
+            <h1 class='color-main'>ОПЛАТА УСЛУГ БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
         </div>
+
         <div class="row text-center">
             <!--div class='col-12 justify-content-center'>
                 <div class="col-md-8 mx-auto" style="width:300px;    margin: 0 auto;">

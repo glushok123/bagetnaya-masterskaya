@@ -58,8 +58,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 <div class='container'>
+    <div class="block-h1 text-center my-4 fade-in">
+        <h1 class='color-main'>Ищете место, где можно купить картину художника?</h1>
+    </div>
 	<p>
-		<h5 style="color: #6a1a21" class="text-center">Ищете место, где можно купить картину художника?</h5> Багетная мастерская №1
+ Багетная мастерская №1
 		сотрудничает с молодыми и талантливыми художниками и предлагает
 		Вам ознакомиться с их оригинальными интерьерными картинами!
 	</p>
