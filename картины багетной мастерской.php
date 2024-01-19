@@ -44,12 +44,11 @@
 </style>
 
 <?php
-$keyw = "Купить картину, картина для дома, интерьерная картина";
-$titl = "Купить картину художника в Багетной мастерской №1 для дома или офиса";
-$desc = "Ищете место, где можно купить картину? Багетная мастерская №1 предлагает Вам ознакомиться с оригинальными картинами современных художников!";
+$keywords = "Купить картину, картина для дома, интерьерная картина";
+$title = "Купить картину художника в Багетной мастерской №1 для дома или офиса";
+$description = "Ищете место, где можно купить картину? Багетная мастерская №1 предлагает Вам ознакомиться с оригинальными картинами современных художников!";
 
-include "header.php";
-require_once 'base/connect.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -58,27 +57,29 @@ require_once 'base/connect.php';
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-<div id='crops'>
-	<a href='/'>Главная</a> » <a href='/modulnye_kartiny_new.php'>Готовые картины</a>
-</div>
-
-<hr>
-
 <div class='container'>
 	<p>
-		<b>Ищете место, где можно купить картину художника?</b> Багетная мастерская №1
+		<h5 style="color: #6a1a21" class="text-center">Ищете место, где можно купить картину художника?</h5> Багетная мастерская №1
 		сотрудничает с молодыми и талантливыми художниками и предлагает
 		Вам ознакомиться с их оригинальными интерьерными картинами!
 	</p>
+
+    <div class="row text-center justify-content-center">
+        <a href="/baget_online">
+            <button
+                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>Рассчитать
+                стоимость багета</button>
+        </a>
+    </div>
 	<p>
-		<b>Что такое интерьерная картина?</b> Это изображение, которое дополняет Вашу домашнюю или рабочую среду.
+		<h5 style="color: #6a1a21" class="text-center">Что такое интерьерная картина?</h5> Это изображение, которое дополняет Вашу домашнюю или рабочую среду.
 		Она может помочь создать нужное настроение и атмосферу в комнате, подчеркнуть цветовую гамму, стиль
 		и концепцию дизайна интерьера. Картина для дома или офиса – это простой и недорогой вариант разнообразить интерьер.
 		Также купить картину можно в подарок для близких или использоваться в качестве элементов декора на
 		рабочих местах, в кафе, салонах красоты и других местах.
 	</p>
 	<p>
-		<b>Купить картину очень легко:</b> просто оформите заказ через сайт,
+		<h5 style="color: #6a1a21" class="text-center">Купить картину очень легко:</h5> просто оформите заказ через сайт,
 		после чего с Вами свяжется менеджер Багетной мастерской №1 и
 		уточнит подробности заказа, адрес доставки и другие детали.
 	</p>
@@ -108,15 +109,15 @@ require_once 'base/connect.php';
 				if ($countImage == 0) {
 					$textImageHeader = $textImageHeader . '<button type="button" data-bs-target="#carousel' . $item['id'] . '" data-bs-slide-to="' . $countImage . '" class="active" aria-current="true" aria-label="Slide ' . $countImage . '"></button>';
 					$textImageBody = $textImageBody . '
-						<div class="carousel-item active">
-							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block w-95 castom-image rounded" alt="..." ></a>
+						<div class="carousel-item active justify-content-center">
+							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block w-95 castom-image rounded justify-content-center mx-auto " alt="..." ></a>
 						</div>
 					';
 				} else {
 					$textImageHeader = $textImageHeader . '<button type="button" data-bs-target="#carousel' . $item['id'] . '" data-bs-slide-to="' . $countImage . '" aria-label="Slide ' . $countImage . '"></button>';
 					$textImageBody = $textImageBody . '
 						<div class="carousel-item">
-							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block w-95 castom-image rounded" alt="..." ></a>
+							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block w-95 castom-image rounded mx-auto" alt="..." ></a>
 							
 						</div>
 					';
@@ -130,7 +131,7 @@ require_once 'base/connect.php';
 						<div class="carousel-indicators">
 							' . $textImageHeader . '
 						</div>
-						<div class="carousel-inner ">
+						<div class="carousel-inner justify-content-center pt-1">
 							' . $textImageBody . '
 						</div>
 						<button class="carousel-control-prev" type="button" data-bs-target="#carousel' . $item['id'] . '"  data-bs-slide="prev">
@@ -145,8 +146,8 @@ require_once 'base/connect.php';
 				';
 
 			echo ('
-					<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex align-items-stretch">
-						<div class="card text-center h-100" style="width:100%" href="/">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex align-items-stretch pt-1" >
+						<div class="m-1 card text-center justify-content-center h-100" style="width:100%; border-color: #6a1a21" href="/">
 							' . $textImage . '
 							<div class="card-body">
 								<h5 class="card-title name">' . $item['name'] . '</h5>
@@ -154,12 +155,13 @@ require_once 'base/connect.php';
 								<h5 class="card-text avtor">Автор: ' . $item['avtor'] . '</h5>
 								<h5 class="card-text size">' . $item['sizes'] . ' мм</h5>
 								<h5 class="card-text price">' . $textPrice . ' ₽</h5>
-								<button class="btn btn-primary add-in-cart"
+								<button class="btn  add-in-cart"
 									data-painting-id="' . $item['id'] . '"
 									data-painting-name="' . $item['name'] . '"
 									data-painting-avtor="' . $item['avtor'] . '"
 									data-painting-size="' . $item['sizes'] . '"
 									data-painting-price="' . $item['price_one'] . '"
+									style="background: #a21213; color: white"
 								>Купить</button>
 							</div>
 						</div>
@@ -224,7 +226,7 @@ require_once 'base/connect.php';
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-				<button type="button" class="btn btn-primary" id='send-order'>Отправить заявку</button>
+				<button type="button" class="btn " id='send-order' style="background: #a21213; color: white">Отправить заявку</button>
 			</div>
 		</div>
 	</div>
@@ -359,3 +361,9 @@ require_once 'base/connect.php';
 		sendOrderRequest()
 	});
 </script>
+
+<?
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
+?>

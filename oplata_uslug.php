@@ -1,10 +1,10 @@
 <?php
 
-$keyw = "багетная мастерская, багетная мастерская в Москве, доставка картин";
-$titl = "Оплата услуг Багетной мастерской №1";
-$desc = "Здесь можно внести предоплату за работу, или оплатить её полностью";
+$keywords = "багетная мастерская, багетная мастерская в Москве, доставка картин";
+$title = "Оплата услуг Багетной мастерской №1";
+$description = "Здесь можно внести предоплату за работу, или оплатить её полностью";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
 <style>
     .custom-margin {
@@ -13,14 +13,11 @@ include "header.php";
     }
 </style>
 <div class="custom-margin">
-    <div id="crops"><a href="/">Главная</a> » ОПЛАТА И ДОСТАВКА</div>
-    <h1>ОПЛАТА И ДОСТАВКА</h1>
-
     <div class='container'>
 
         <div class='row text-center'>
             <br>
-            <h4>ОПЛАТА УСЛУГ БАГЕТНОЙ МАСТЕРСКОЙ №1</h4>
+            <h1 style="color: #6a1a21">ОПЛАТА УСЛУГ БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
         </div>
         <div class="row text-center">
             <!--div class='col-12 justify-content-center'>
@@ -37,7 +34,9 @@ include "header.php";
 
             <div>
                 <hr>
-                <h5>Перевод по номеру карты: <br><b>2204 4502 4204 6818</b></h5>
+                <h5>Перевод по номеру карты: </h5>
+                <h5 id="number-copy">2204 4502 4204 6818</h5>
+                <span>(Нажмите на номер для копирования)</span>
                 <hr>
             </div>
 
@@ -47,7 +46,7 @@ include "header.php";
         </div>
 
         <p>
-            <b>Здесь можно внести предоплату за работу, или оплатить ее полностью! </b><br>
+            <h4 class="text-center" style="color: #6a1a21">Здесь можно внести предоплату за работу, или оплатить ее полностью! </h4>
             Пожалуйста, согласуйте с Вашим менеджером детали заказа перед внесением предоплаты 50% или
             полной оплаты работ багетной мастерской. Выше Вы можете выбрать удобный способ оплаты: перевод
             на ЮMoney или перевод по QR-коду. Если Ваша вносимая сумма превышает 15000 рублей,
@@ -57,7 +56,13 @@ include "header.php";
             Очно в Багетной мастерской №1 Вы можете внести средства за заказ наличными или картой!
         </p>
     </div>
-
+    <div class="row text-center justify-content-center">
+        <a href="/baget_online">
+            <button
+                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>Рассчитать
+                стоимость багета</button>
+        </a>
+    </div>
     <div class='container'>
 
         <div class='row text-center'>
@@ -79,7 +84,29 @@ include "header.php";
     </div>
 
 
+<script>
+
+        /* сохраняем текстовое поле в переменную text */
+
+
+
+
+    $(document).on('click', '#number-copy', function () {
+        navigator.clipboard.writeText('2204 4502 4204 6818');
+
+        Toastify({
+            text: "Номер скопирован в буфер обмена",
+            close: true,
+            className: "error",
+            backgroundColor: "#6a1a21"
+        }).showToast();
+    });
+</script>
 </div>
 
 
-<? include "b1.php"; ?>
+<?
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
+?>

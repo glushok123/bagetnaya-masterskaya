@@ -1,18 +1,21 @@
 <?php
-$keyw = "контакты багетной мастерской, адрес багетной мастерской, багетная мастерская на карте";
-$titl = "Контакты багетной мастерской в Москве";
-$desc = "Контакты багетной мастерской в Москве, телефоны и схема проезда.";
+$keywords = "контакты багетной мастерской, адрес багетной мастерской, багетная мастерская на карте";
+$title = "Контакты багетной мастерской в Москве";
+$description = "Контакты багетной мастерской в Москве, телефоны и схема проезда.";
 // $gallery="bagety_dlya_kartin";
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-<div id="crops"><a href="/">Главная</a> » Контакты </div>
-<h1 id="contacts">Контакты</h2>
-    <div id="">
+
+<h1 class="text-center" id="contacts">Контакты</h1>
+
+
         <div class="container">
+            <hr>
             <div class="row">
                 <div class="col">
                     <div style="text-align:left;" itemscope itemtype="http://schema.org/LocalBusiness">
-                        <p><strong itemprop="name">Багетная мастерская №1 - м. Новокузнецкая</strong></p>
+                        <h4 style="color: #6a1a21;" class="text-center"><strong itemprop="name" >Багетная мастерская №1 - м. Новокузнецкая</strong></h4>
+                        <hr>
                         <p><strong>Предоплата услуг: <a href="/oplata_uslug.php" class="t2">онлайн платеж</a></strong></p>
                         <p><strong>Электронная почта:</strong> <a href="mailto:manager@bagetnaya-masterskaya.com" itemprop="email" class="t3"> manager@bagetnaya-masterskaya.com</a></p>
                         <p>
@@ -25,11 +28,11 @@ include "header.php";
                     <div class="yamap">
                         <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=XD1WoHwePr9BAYkPBJ0XKFzAScY0NCvr&height=300"></script>
                     </div>
-                    <hr>
                 </div>
                 <div class="col">
                     <div id="arbat" style="text-align:left;" itemscope itemtype="http://schema.org/LocalBusiness">
-                        <p><strong itemprop="name">Багетная мастерская №1 - м. Арбатская</strong></p>
+                        <h4 style="color: #6a1a21;" class="text-center"><strong itemprop="name">Багетная мастерская №1 - м. Арбатская</strong></h4>
+                        <hr>
                         <p><strong>Предоплата услуг: <a href="/oplata_uslug.php" class="t2">онлайн платеж</a></strong></p>
                         <p><strong>Электронная почта: </strong> <a href="mailto:manager@bagetnaya-masterskaya.com" itemprop="email" class="t3"> manager@bagetnaya-masterskaya.com</a></p>
                         <p>
@@ -49,14 +52,9 @@ include "header.php";
         </div>
 
 
-    </div>
 
-
-
-    <div id="side">
-
-
-        <?
-
-
-        ?>
+<?
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
+?>
