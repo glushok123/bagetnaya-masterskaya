@@ -31,7 +31,8 @@ if ($_POST['search'] == 'true'){
     $stmt->execute();
     $data = $stmt->fetchAll();
  }else{
-    $query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype . " LIMIT {$start}, {$limit}";
+    //$query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype . " LIMIT {$start}, {$limit}";
+    $query = "SELECT * FROM catalog_baget WHERE type=? AND price > 0 AND storage > 9 ORDER BY " . $orderby . " " . $ordertype;
     $stmt = $dbh->prepare($query);
     $stmt->bindParam(1, $type);
     $stmt->execute();

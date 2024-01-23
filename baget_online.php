@@ -336,7 +336,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>
 
 <script>
-    var processDownload = false;
+   /* var processDownload = false;
     var curentPage = 1;
     var totalPage = 3;
 
@@ -349,7 +349,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
                 getcatalog($('#sorter-catalog').attr("data-type"), curentPage)
             }
         }
-    });
+    });*/
     $(document).on('click', '.clear-baget-conteiner', function (){
         $('.baget-conteiner').html();
     })
