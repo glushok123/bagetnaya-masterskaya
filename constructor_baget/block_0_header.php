@@ -40,10 +40,10 @@ if (!empty($_GET['id'])) {
     if (preg_match("/^[\dl]+$/", $ident)) {
         $z = explode('l', $ident);
         if (count($z) != 23) {
-            exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online_new">');
+            exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online?">');
         }
     } else {
-        exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online_new">');
+        exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online?">');
     }
 }
 

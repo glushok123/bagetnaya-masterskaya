@@ -82,15 +82,15 @@ foreach ($data as $baget) { ?>
 			">
 
 			<? 
-				if (
+				/*if (
 					$_SERVER["REMOTE_ADDR"] == "31.173.10.9" || 
 					$_SERVER["REMOTE_ADDR"] == "185.228.112.85" || 
-					$_SERVER["REMOTE_ADDR"] == "5.39.162.100" || 
+					$_SERVER["REMOTE_ADDR"] == "5.39.162.100" ||
 					$_SERVER["REMOTE_ADDR"] == '176.108.160.115'
-				) { 
+				) { */
 			?>
-				<div class="delete-baget" onclick="deleteBaget(<?= $baget['id'] ?>);"></div>
-			<? } ?>
+				<!--div class="delete-baget" onclick="deleteBaget(<?= $baget['id'] ?>);"></div-->
+			<? //} ?>
 
 			<div class="maskimg mx-auto">
 				<img src="
