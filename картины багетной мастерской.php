@@ -1,8 +1,9 @@
 <style>
 	.castom-image {
-		min-width: 100%;
-		min-width: 80%;
+		/*min-width: 100%;
+        min-width: 80%;*/
 		height: 250px;
+		width: 250px;
 		object-fit: cover;
 	}
 	.carousel-item {
@@ -113,14 +114,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 					$textImageHeader = $textImageHeader . '<button type="button" data-bs-target="#carousel' . $item['id'] . '" data-bs-slide-to="' . $countImage . '" class="active" aria-current="true" aria-label="Slide ' . $countImage . '"></button>';
 					$textImageBody = $textImageBody . '
 						<div class="carousel-item active justify-content-center">
-							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block w-95 castom-image rounded justify-content-center mx-auto " alt="..." ></a>
+							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block  castom-image rounded justify-content-center mx-auto " width="250px" height="250px" alt="..." ></a>
 						</div>
 					';
 				} else {
 					$textImageHeader = $textImageHeader . '<button type="button" data-bs-target="#carousel' . $item['id'] . '" data-bs-slide-to="' . $countImage . '" aria-label="Slide ' . $countImage . '"></button>';
 					$textImageBody = $textImageBody . '
 						<div class="carousel-item">
-							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block w-95 castom-image rounded mx-auto" alt="..." ></a>
+							<a data-fancybox="images" href="фото_картин/' . $image['image'] . '"><img src="фото_картин/' . $image['image'] . '" class="d-block  castom-image rounded mx-auto" alt="..." ></a>
 							
 						</div>
 					';
