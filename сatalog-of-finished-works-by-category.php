@@ -203,7 +203,7 @@ $works = $stm->fetchAll();
     .card{
         padding-bottom: 10px;
         border-radius: 6px;
-        border: 3px solid var(--beige, #E0D2BB);
+        border: 1px solid var(--beige, #6a1a21);
     }
     .card:hover{
         background: #E0D2BB;
