@@ -293,7 +293,7 @@
         }
 
         maxmainw = width * 0.95;
-        maxmainh = height * 0.95;
+        maxmainh = height * 0.88;
 
         if (window.innerWidth < 800) {
             maxmainw = width * 0.9;
