@@ -167,7 +167,7 @@
 
     function transformain() {
         width = document.body.clientWidth;
-        height = document.body.clientHeight;
+        height = document.body.clientHeight * 0.8;
 
         if (z[11] == "0") {
             mainw = width * 0.6;
@@ -280,14 +280,14 @@
         }
 
         <? if ($z[11] == "0") { ?>
-        //width = document.body.clientWidth;
-        //height = document.body.clientHeight;
+        width = document.body.clientWidth * 0.65;
+        height = document.body.clientHeight * 0.55;
 
 
-        width = $('#block-orient-width').width();
-        height = $('#block-orient-width').height();
+       // width = $('#block-orient-width').width();
+        //height = $('#block-orient-width').height();
 
-        //console.log(width, height)
+       // console.log(width, height)
         if (height == 0) {
             height = 250
         }
