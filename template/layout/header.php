@@ -59,6 +59,8 @@ $v = 12;
         <script src="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.css" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/navbars/navbar-1/assets/css/navbar-1.css">
+
         <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css">
         <script type="text/javascript" src="/assets/layout/toastify-js"></script>
 
@@ -125,6 +127,7 @@ $v = 12;
             <h2>21.12.2023 Багетная мастерская №1 работает до 16.00</h2>
         </div>
     </div-->
+
 
 <?
 if (!isset($hideTop)){
