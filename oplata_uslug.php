@@ -41,7 +41,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             </div>
 
             <div class='col-12'>
-                <img src="/img/photo_2023-05-05_10-53-13.jpg" alt="">
+                <img src="/assets/qrCode.jpg" alt="" height="400px">
             </div>
         </div>
 
