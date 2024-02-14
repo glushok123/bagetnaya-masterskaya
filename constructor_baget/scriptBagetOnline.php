@@ -280,8 +280,11 @@
         }
 
         <? if ($z[11] == "0") { ?>
-        width = document.body.clientWidth * 0.65;
-        height = document.body.clientHeight * 0.55;
+        width = document.body.clientWidth;
+       // height = document.body.clientHeight;
+
+        width = document.body.clientWidth * 0.9
+        height = window.screen.availHeight - 300
 
 
        // width = $('#block-orient-width').width();
@@ -297,7 +300,7 @@
 
         if (window.innerWidth < 800) {
             maxmainw = width * 0.9;
-            maxmainh = height * 1;
+            maxmainh = height * 0.5;
         }
 
         z[19] = Math.floor(width * 0.1);
