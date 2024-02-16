@@ -167,7 +167,9 @@
                 comment: $("#comment").val(),
             };
 
-            //console.log(data)
+
+            $('#feedbackModal').modal('hide');
+            $('#order-status-model').modal('show');
 
             $.ajax({
                 url: '/admin/request/saveFeedBackRequest.php',
