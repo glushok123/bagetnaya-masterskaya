@@ -8,10 +8,10 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-$xmlwood = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=NeoVasukov777&action=xml&catalog=91");
-$xmlplast = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=NeoVasukov777&action=xml&catalog=92");
-$xmlalum = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=NeoVasukov777&action=xml&catalog=93");
-$xmlpasp = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=NeoVasukov777&action=xml&catalog=104");
+$xmlwood = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=Bagetnaya20130713!!&action=xml&catalog=91");
+$xmlplast = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=Bagetnaya20130713!!&action=xml&catalog=92");
+$xmlalum = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=Bagetnaya20130713!!&action=xml&catalog=93");
+$xmlpasp = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&pass=Bagetnaya20130713!!&action=xml&catalog=104");
 
 echo "######################################### <br>";
 $countInDbWood = 0;
