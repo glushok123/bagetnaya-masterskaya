@@ -283,7 +283,8 @@
         width = document.body.clientWidth;
        // height = document.body.clientHeight;
 
-        width = document.body.clientWidth * 0.9
+
+        width = document.body.clientWidth - document.getElementById("block2").clientWidth
         height = window.screen.availHeight - 300
 
 
@@ -299,7 +300,7 @@
         maxmainh = height * 0.88;
 
         if (window.innerWidth < 800) {
-            maxmainw = width * 0.9;
+            maxmainw = document.body.clientWidth * 0.9;
             maxmainh = height * 0.5;
         }
 
