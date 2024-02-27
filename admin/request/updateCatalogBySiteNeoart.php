@@ -52,12 +52,15 @@ echo "######################################### <br>";
 $countInDbPlast = 0;
 // новое обновление цен пластик
 foreach ($xmlplast->category->item as $item) {
+
     $s = strval($item->article);
-    if (!isset($item->price->chop)) {
+    $priceW[$s] = $item->price->base;
+
+    /*if (!isset($item->price->chop)) {
         $priceW[$s] = $item->price->base;
     } else {
         $priceW[$s] = $item->price->chop;
-    }
+    }*/
 
     $countW[$s] = (int) $item->quantity->countse;
     $price = round($priceW[$s] * 5);

@@ -14,9 +14,10 @@ class UpdateCatalog
     public $url = 'https://interquadrum.ru/personal/?login=yes'; //ссылка на авторизацию
     public $ch; //инициализация
     public $host = 'localhost'; // адрес сервера 
-    public $database = 'a0458868_bagetnaya'; // имя базы данных
     public $user = 'a0458868_bagetnaya'; // имя пользователя
+    //public $password = ''; // пароль
     public $password = '1226591Qwer'; // пароль
+   // public $password = ''; // пароль
     public $dbh; //название подключения к БД
     public $textUpdateRows = '';
     public $countUpdateRows = 0;
@@ -97,6 +98,10 @@ class UpdateCatalog
             if (!empty($item[4])){
                 $price = (int) $item[4];
             }else{
+                $price = (int) $item[2];
+            }
+
+            if ($typeName == 'plastic'){
                 $price = (int) $item[2];
             }
 
