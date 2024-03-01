@@ -125,8 +125,12 @@ class UpdateCatalog
             $company = 'lion';
 
             if (count($data) > 0) {
-                if ($data[0]['type'] == 'plast' || $data[0]['type'] == 'alum' || $data[0]['type'] == 'pasp') {
+                if ($data[0]['type'] == 'alum' || $data[0]['type'] == 'pasp' || $data[0]['type'] == 'wood') {
                     $multiplier = 3.5;
+                }
+
+                if ($data[0]['type'] == 'plast') {
+                    $multiplier = 5;
                 }
 
                 $price = round($price * $multiplier);
