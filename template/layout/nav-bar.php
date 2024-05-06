@@ -1,45 +1,33 @@
 <div class='box-shadow-custom'>
 
-    <div class='row pt-2 px-1'>
-        <div class='col'>
-            <a href="tel:+79268659295"><button
-                        class='button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap' style="font-size: 14px; padding: 5px; background: white; border: 3px solid #E0D2BB">8 (926) 865-92-95
-                <br>
-                    на Арбатской</button></a>
-        </div>
-        <div class='col'>
-            <a href="tel:+79778244212"><button
-                        class='button button-custom-index button-color-company-golden mob-fix-width-100-p ' style="font-size: 14px;padding: 5px; background: white; border: 3px solid #E0D2BB">8 (977) 824-42-12<br>
-                    на Новокузнецкой</button></a>
-        </div>
-    </div>
 
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid ">
 
             <?
-                if (!isMobile()) {
-                    ?>
-            <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
-            <img src="/img/logo 2.svg" alt="" class='img-brand'>
-            <?
-                }else{
-                    ?>
-            <div class='row'>
-                <div class='col-9'>
-                    <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
+            if (!isMobile()) {
+                ?>
+                <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
+                <img src="/img/logo 2.svg" alt="" class='img-brand'>
+                <?
+            } else {
+                ?>
+                <div class='row'>
+                    <div class='col-9'>
+                        <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
+                    </div>
+                    <div class='col-3'>
+                        <img src="/img/logo 2.svg" alt="" class='img-brand'>
+                    </div>
                 </div>
-                <div class='col-3'>
-                    <img src="/img/logo 2.svg" alt="" class='img-brand'>
-                </div>
-            </div>
-            <?
-                }
+                <?
+            }
             ?>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -47,45 +35,45 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="navbarDropdown2"
-                            href="/сatalog-of-finished-works.php" aria-expanded="false">
+                           href="/сatalog-of-finished-works.php" aria-expanded="false">
                             Галерея работ
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Акварели,%20пастели%20и%20гравюры">Акварели,
+                                   href="/сatalog-of-finished-works-by-category.php?category=Акварели,%20пастели%20и%20гравюры">Акварели,
                                     пастели и гравюры</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Зеркала%20и%20тв-панели">Зеркала
+                                   href="/сatalog-of-finished-works-by-category.php?category=Зеркала%20и%20тв-панели">Зеркала
                                     и
                                     тв-панели</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Иконы%20и%20вышивки">Иконы
+                                   href="/сatalog-of-finished-works-by-category.php?category=Иконы%20и%20вышивки">Иконы
                                     и
                                     вышивки</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Ордена%20и%20медали,%20купюры%20и%20монеты">Ордена
+                                   href="/сatalog-of-finished-works-by-category.php?category=Ордена%20и%20медали,%20купюры%20и%20монеты">Ордена
                                     и медали, купюры и монеты</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Оформление%20живописи">Оформление
+                                   href="/сatalog-of-finished-works-by-category.php?category=Оформление%20живописи">Оформление
                                     живописи</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Постеры,%20плакаты%20и%20репродукции">Постеры,
+                                   href="/сatalog-of-finished-works-by-category.php?category=Постеры,%20плакаты%20и%20репродукции">Постеры,
                                     плакаты и репродукции</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Сложные%20работы">Сложные
+                                   href="/сatalog-of-finished-works-by-category.php?category=Сложные%20работы">Сложные
                                     работы</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Фотографии%20и%20графика">Фотографии
+                                   href="/сatalog-of-finished-works-by-category.php?category=Фотографии%20и%20графика">Фотографии
                                     и графика</a></li>
                             <li><a class="dropdown-item"
-                                    href="/сatalog-of-finished-works-by-category.php?category=Футболки%20и%20спортивные%20атрибуты">Футболки
+                                   href="/сatalog-of-finished-works-by-category.php?category=Футболки%20и%20спортивные%20атрибуты">Футболки
                                     и спортивные атрибуты</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                           aria-expanded="false">
                             Услуги
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -129,37 +117,38 @@
                     </li>
 
                     <?
-                        if (isMobile()) {
-                    ?>
+                    if (isMobile()) {
+                        ?>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить картину</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
+                                картину</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>
+                        </li>
 
-                    <?
-                        }
+                        <?
+                    }
                     ?>
 
                     <li class="nav-item">
 
                         <form action="https://yandex.ru/search/site/" method="get" target="_blank"
-                            accept-charset="utf-8" class="search-form custom-search" id="searchform"
-                            itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+                              accept-charset="utf-8" class="search-form custom-search" id="searchform"
+                              itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
 
                             <meta itemprop="target" content="https://virtual-baget-curent/search/?s={s}">
                             <input type="hidden" name="searchid">
 
                             <div class="form-group has-search max-weight-183">
-                                <input type="hidden" name="searchid" value="3468587" />
-                                <input type="hidden" name="l10n" value="ru" />
-                                <input type="hidden" name="reqenc" value="" />
+                                <input type="hidden" name="searchid" value="3468587"/>
+                                <input type="hidden" name="l10n" value="ru"/>
+                                <input type="hidden" name="reqenc" value=""/>
                                 <span class="fa fa-search form-control-feedback" id="searchsubmit" data-search="body"
-                                    type='submit'></span>
+                                      type='submit'></span>
                                 <input type="text" name="text" class="search-form__input form-control"
-                                    placeholder="Поиск по сайту.." autocomplete="off" itemprop="query-input">
+                                       placeholder="Поиск по сайту.." autocomplete="off" itemprop="query-input">
                             </div>
                             <input type="hidden" name="web" value="0">
                         </form>
@@ -171,69 +160,99 @@
     </nav>
 
     <?
-        if (!isMobile()) {
-    ?>
+    if (!isMobile()) {
+        ?>
 
-    <div class='text-end custom-margin-navbar-2-row'>
-        <div class="d-inline">
-            <div class="nav-item d-inline">
-                <a class="nav-link d-inline" aria-current="page" href="/oplata_uslug.php">Купить картину</a>
+        <div class='text-end custom-margin-navbar-2-row'>
+            <div class="d-inline">
+                <div class="nav-item d-inline">
+                    <a class="nav-link d-inline" aria-current="page" href="/oplata_uslug.php">Купить картину</a>
+                </div>
+            </div>
+            <div class="d-inline ">
+                <div class="nav-item d-inline">
+                    <a class="nav-link d-inline" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown">
+                        Адреса багетных мастерских
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                        <div class='my-2 px-3'>
+                            <div class='nav-name-metro'>м. Арбат</div>
+                            <div class='nav-address my-2'>Москва, м. Арбатская, ул. Арбат д. 1</div>
+                            <div class='nav-phone'>8 (495) 665-25-61</div>
+                            <div class='nav-phone'>8 (926) 865-92-95 (WhatsApp)</div>
+                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
+                        </div>
+                        <div class='px-3'>
+                            <hr>
+                        </div>
+                        <div class='my-2 px-3'>
+                            <div class='nav-name-metro'>м. Новокузнецкая</div>
+                            <div class='nav-address my-2'>Москва, м. Новокузнецкая, Климентовский переулок, 6</div>
+                            <div class='nav-phone'>8 (499) 714-80-62</div>
+                            <div class='nav-phone'>8 (977) 824-42-12 (WhatsApp)</div>
+                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
+                        </div>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="d-inline ">
-            <div class="nav-item d-inline">
-                <a class="nav-link d-inline" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown">
-                    Адреса багетных мастерских
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                    <div class='my-2 px-3'>
-                        <div class='nav-name-metro'>м. Арбат</div>
-                        <div class='nav-address my-2'>Москва, м. Арбатская, ул. Арбат д. 1</div>
-                        <div class='nav-phone'>8 (495) 665-25-61</div>
-                        <div class='nav-phone'>8 (926) 865-92-95 (WhatsApp)</div>
-                        <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                    </div>
-                    <div class='px-3'>
-                        <hr>
-                    </div>
-                    <div class='my-2 px-3'>
-                        <div class='nav-name-metro'>м. Новокузнецкая</div>
-                        <div class='nav-address my-2'>Москва, м. Новокузнецкая, Климентовский переулок, 6</div>
-                        <div class='nav-phone'>8 (499) 714-80-62</div>
-                        <div class='nav-phone'>8 (977) 824-42-12 (WhatsApp)</div>
-                        <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <?
-        }
-    ?>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // make it as accordion for smaller screens
-    if (window.innerWidth > 768) {
-        document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem) {
-            everyitem.addEventListener('mouseover', function(e) {
-                let el_link = this.querySelector('a[data-mdb-toggle]');
-                if (el_link != null) {
-                    let nextEl = el_link.nextElementSibling;
-                    el_link.classList.add('show');
-                    nextEl.classList.add('show');
-                }
-            });
-            everyitem.addEventListener('mouseleave', function(e) {
-                let el_link = this.querySelector('a[data-mdb-toggle]');
-                if (el_link != null) {
-                    let nextEl = el_link.nextElementSibling;
-                    el_link.classList.remove('show');
-                    nextEl.classList.remove('show');
-                }
-            });
-        });
+        <?
     }
-});
+    ?>
+
+
+</div>
+<div class='row pt-2 px-1 text-center justify-content-center box-shadow-custom' style="
+                    color: #0f0f0f;
+                    font-family: Cormorant Garamond;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    font-size: 14px;
+                    margin-top: 9px;
+                    padding-bottom: 9px;
+                    ">
+    <div class='col-4 text-center'>
+        <span>НОВОКУЗНЕЦКАЯ</span>
+        <a href="tel:+79778244212" style="color: black;text-decoration: none;" class="text-center">
+            <span style="color: #0f0f0f;text-decoration: none;" class="text-center">8(977) 824-42-12</span>
+        </a>
+    </div>
+    <div class='col-4'>
+        <span>АРБАТСКАЯ</span>
+        <a href="tel:+79268659295" style="color: black;text-decoration: none;">
+            <span style="color: black;text-decoration: none;">8(926) 865-92-95</span>
+        </a>
+    </div>
+    <div class='col-4'>
+        <span>БАРРИКАДНАЯ</span>
+        <a href="tel:+79779647429" style="color: black;text-decoration: none;">
+            <span style="color: red;text-decoration: none;">Cкоро открытие!</span>
+        </a>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // make it as accordion for smaller screens
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
+                everyitem.addEventListener('mouseover', function (e) {
+                    let el_link = this.querySelector('a[data-mdb-toggle]');
+                    if (el_link != null) {
+                        let nextEl = el_link.nextElementSibling;
+                        el_link.classList.add('show');
+                        nextEl.classList.add('show');
+                    }
+                });
+                everyitem.addEventListener('mouseleave', function (e) {
+                    let el_link = this.querySelector('a[data-mdb-toggle]');
+                    if (el_link != null) {
+                        let nextEl = el_link.nextElementSibling;
+                        el_link.classList.remove('show');
+                        nextEl.classList.remove('show');
+                    }
+                });
+            });
+        }
+    });
 </script>

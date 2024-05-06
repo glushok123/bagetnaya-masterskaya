@@ -541,7 +541,7 @@
         price1 = Math.floor(price1);
         price2 = s * z[4];
         if (price2 < 680) {
-            price2 = 780;
+            price2 = 870;
         }
         if (z[5] < 1) {
             price2 = 0;

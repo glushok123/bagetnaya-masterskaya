@@ -133,7 +133,7 @@ foreach ($xmlpasp->category->item as $item) {
     }
 
     $countW[$s] = (int) $item->quantity->countse;
-    $price = round($priceW[$s] * 3.5);
+    $price = round($priceW[$s] * 5);
     $count = round($countW[$s]);
 
 
