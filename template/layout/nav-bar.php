@@ -208,7 +208,7 @@
                     font-style: normal;
                     font-weight: 500;
                     line-height: normal;
-                    font-size: 14px;
+                    font-size: 12px;
                     margin-top: 9px;
                     padding-bottom: 9px;
                     ">
