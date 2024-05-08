@@ -13,11 +13,8 @@
             } else {
                 ?>
                 <div class='row'>
-                    <div class='col-9'>
-                        <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
-                    </div>
-                    <div class='col-3'>
-                        <img src="/img/logo 2.svg" alt="" class='img-brand'>
+                    <div class='col-10'>
+                        <img src="/assets/img/logo.png" alt="" class='img-brand' style="width: 186px; height: auto;">
                     </div>
                 </div>
                 <?
@@ -214,19 +211,19 @@
                     ">
     <div class='col-4 text-center'>
         <span>НОВОКУЗНЕЦКАЯ</span>
-        <a href="tel:+79778244212" style="color: black;text-decoration: none;" class="text-center">
+        <a href="tel:+79778244212" style="color: black;text-decoration: none;" class="text-center"><br>
             <span style="color: #0f0f0f;text-decoration: none;" class="text-center">8(977) 824-42-12</span>
         </a>
     </div>
     <div class='col-4'>
         <span>АРБАТСКАЯ</span>
-        <a href="tel:+79268659295" style="color: black;text-decoration: none;">
+        <a href="tel:+79268659295" style="color: black;text-decoration: none;"><br>
             <span style="color: black;text-decoration: none;">8(926) 865-92-95</span>
         </a>
     </div>
     <div class='col-4'>
         <span>БАРРИКАДНАЯ</span>
-        <a href="tel:+79779647429" style="color: black;text-decoration: none;">
+        <a href="tel:+79779647429" style="color: black;text-decoration: none;"><br>
             <span style="color: red;text-decoration: none;">Cкоро открытие!</span>
         </a>
     </div>

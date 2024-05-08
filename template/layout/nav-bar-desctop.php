@@ -7,8 +7,8 @@
             <?
             if (!isMobile()) {
                 ?>
-                <a class="navbar-brand element-animation" href="/">Багетная <br>мастерская </a>
-                <img src="/img/logo 2.svg" alt="" class='img-brand' style="height: 60px;">
+                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.png" alt="" class='img-brand' style="width: auto; height: 80px;"> </a>
+
                 <?
             } else {
                 ?>
