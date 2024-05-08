@@ -40,7 +40,7 @@
                     left: 0;
                     right: 0;
                     text-align: center; top:0px;
-                    color: #0f0f0f;
+                    color: #808080;
                     font-family: Cormorant Garamond;
                     font-style: normal;
                     font-weight: 500;
@@ -48,21 +48,17 @@
 
                     ">
 
-                    <div class='col'>
 
-                    </div>                    <div class='col'>
-
-                    </div>
                     <div class='col'>
                         <h3 style="margin-bottom: 0px;">НОВОКУЗНЕЦКАЯ</h3>
                         <a href="tel:+79778244212" style="color: black;text-decoration: none;">
-                            <h5 style="color: #0f0f0f;text-decoration: none;">8(977) 824-42-12</h5>
+                            <h5 style="color: #808080;text-decoration: none;">8(977) 824-42-12</h5>
                         </a>
                     </div>
                     <div class='col'>
                         <h3 style="margin-bottom: 0px;">АРБАТСКАЯ</h3>
                         <a href="tel:+79268659295" style="color: black;text-decoration: none;">
-                            <h5 style="color: black;text-decoration: none;">8(926) 865-92-95</h5>
+                            <h5 style="color: #808080;text-decoration: none;">8(926) 865-92-95</h5>
                         </a>
 
                     </div>
@@ -72,11 +68,7 @@
                             <h5 style="color: red;text-decoration: none;">Cкоро открытие!</h5>
                         </a>
                     </div>
-                    <div class='col'>
 
-                    </div>                    <div class='col'>
-
-                    </div>
                 </div>
 
                 <ul class="navbar-nav ms-auto" style="margin-top: 70px;">
