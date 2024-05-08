@@ -7,7 +7,7 @@
             <?
             if (!isMobile()) {
                 ?>
-                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.png" alt="" class='img-brand' style="width: auto; height: 80px;"> </a>
+                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt="" class='img-brand' style="width: auto; height: 80px;"> </a>
 
                 <?
             } else {

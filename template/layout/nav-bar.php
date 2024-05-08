@@ -14,7 +14,7 @@
                 ?>
                 <div class='row'>
                     <div class='col-10'>
-                        <img src="/assets/img/logo.png" alt="" class='img-brand' style="width: 186px; height: auto;">
+                        <img src="/assets/img/logo.PNG" alt="" class='img-brand' style="width: 186px; height: auto;">
                     </div>
                 </div>
                 <?
