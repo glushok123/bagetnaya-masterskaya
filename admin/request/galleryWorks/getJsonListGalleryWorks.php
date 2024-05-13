@@ -33,4 +33,4 @@ foreach ($galleryWorkImages as $item) {
 }
 
 
-echo (json_encode($data, JSON_THROW_ON_ERROR));
+echo(json_encode($data, JSON_THROW_ON_ERROR));

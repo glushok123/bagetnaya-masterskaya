@@ -1,192 +1,192 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "124ba36f68644a2b174fc44533af46cb",
-    "packages": [
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "124ba36f68644a2b174fc44533af46cb",
+  "packages": [
+    {
+      "name": "shuchkin/simplexls",
+      "version": "0.10.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/shuchkin/simplexls.git",
+        "reference": "1f41c2b71c17d06f239d803af9070c80d54a41a7"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/shuchkin/simplexls/zipball/1f41c2b71c17d06f239d803af9070c80d54a41a7",
+        "reference": "1f41c2b71c17d06f239d803af9070c80d54a41a7",
+        "shasum": ""
+      },
+      "require": {
+        "ext-mbstring": "*"
+      },
+      "type": "library",
+      "autoload": {
+        "classmap": [
+          "src/SimpleXLS.php"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
         {
-            "name": "shuchkin/simplexls",
-            "version": "0.10.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shuchkin/simplexls.git",
-                "reference": "1f41c2b71c17d06f239d803af9070c80d54a41a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shuchkin/simplexls/zipball/1f41c2b71c17d06f239d803af9070c80d54a41a7",
-                "reference": "1f41c2b71c17d06f239d803af9070c80d54a41a7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/SimpleXLS.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sergey Shuchkin (SMSPILOT)",
-                    "email": "sergey.shuchkin@gmail.com",
-                    "homepage": "http://www.shuchkin.ru/"
-                }
-            ],
-            "description": "Parse and retrieve data from old format Excel XLS files. MS Excel 97 workbooks PHP reader.",
-            "homepage": "https://github.com/shuchkin/simplexls",
-            "keywords": [
-                "backend",
-                "excel",
-                "parser",
-                "php",
-                "xls"
-            ],
-            "support": {
-                "issues": "https://github.com/shuchkin/simplexls/issues",
-                "source": "https://github.com/shuchkin/simplexls/tree/0.10.3"
-            },
-            "time": "2022-10-04T16:53:17+00:00"
+          "name": "Sergey Shuchkin (SMSPILOT)",
+          "email": "sergey.shuchkin@gmail.com",
+          "homepage": "http://www.shuchkin.ru/"
         }
-    ],
-    "packages-dev": [
+      ],
+      "description": "Parse and retrieve data from old format Excel XLS files. MS Excel 97 workbooks PHP reader.",
+      "homepage": "https://github.com/shuchkin/simplexls",
+      "keywords": [
+        "backend",
+        "excel",
+        "parser",
+        "php",
+        "xls"
+      ],
+      "support": {
+        "issues": "https://github.com/shuchkin/simplexls/issues",
+        "source": "https://github.com/shuchkin/simplexls/tree/0.10.3"
+      },
+      "time": "2022-10-04T16:53:17+00:00"
+    }
+  ],
+  "packages-dev": [
+    {
+      "name": "phpstan/phpstan",
+      "version": "1.10.20",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/phpstan/phpstan.git",
+        "reference": "c4c8adb56313fbd59ff5a5f4a496bbed1a6b8803"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c4c8adb56313fbd59ff5a5f4a496bbed1a6b8803",
+        "reference": "c4c8adb56313fbd59ff5a5f4a496bbed1a6b8803",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2|^8.0"
+      },
+      "conflict": {
+        "phpstan/phpstan-shim": "*"
+      },
+      "bin": [
+        "phpstan",
+        "phpstan.phar"
+      ],
+      "type": "library",
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "description": "PHPStan - PHP Static Analysis Tool",
+      "keywords": [
+        "dev",
+        "static analysis"
+      ],
+      "support": {
+        "docs": "https://phpstan.org/user-guide/getting-started",
+        "forum": "https://github.com/phpstan/phpstan/discussions",
+        "issues": "https://github.com/phpstan/phpstan/issues",
+        "security": "https://github.com/phpstan/phpstan/security/policy",
+        "source": "https://github.com/phpstan/phpstan-src"
+      },
+      "funding": [
         {
-            "name": "phpstan/phpstan",
-            "version": "1.10.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c4c8adb56313fbd59ff5a5f4a496bbed1a6b8803"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c4c8adb56313fbd59ff5a5f4a496bbed1a6b8803",
-                "reference": "c4c8adb56313fbd59ff5a5f4a496bbed1a6b8803",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0"
-            },
-            "conflict": {
-                "phpstan/phpstan-shim": "*"
-            },
-            "bin": [
-                "phpstan",
-                "phpstan.phar"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "keywords": [
-                "dev",
-                "static analysis"
-            ],
-            "support": {
-                "docs": "https://phpstan.org/user-guide/getting-started",
-                "forum": "https://github.com/phpstan/phpstan/discussions",
-                "issues": "https://github.com/phpstan/phpstan/issues",
-                "security": "https://github.com/phpstan/phpstan/security/policy",
-                "source": "https://github.com/phpstan/phpstan-src"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ondrejmirtes",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/phpstan",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-06-20T12:07:40+00:00"
+          "url": "https://github.com/ondrejmirtes",
+          "type": "github"
         },
         {
-            "name": "rector/rector",
-            "version": "0.17.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rectorphp/rector.git",
-                "reference": "11401dc1abba0a359fabbf98f1057f4e65129f86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/11401dc1abba0a359fabbf98f1057f4e65129f86",
-                "reference": "11401dc1abba0a359fabbf98f1057f4e65129f86",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.15"
-            },
-            "conflict": {
-                "rector/rector-doctrine": "*",
-                "rector/rector-downgrade-php": "*",
-                "rector/rector-phpunit": "*",
-                "rector/rector-symfony": "*"
-            },
-            "bin": [
-                "bin/rector"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "0.15-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Instant Upgrade and Automated Refactoring of any PHP code",
-            "keywords": [
-                "automation",
-                "dev",
-                "migration",
-                "refactoring"
-            ],
-            "support": {
-                "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.17.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/tomasvotruba",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-06-14T09:05:33+00:00"
+          "url": "https://github.com/phpstan",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+          "type": "tidelift"
         }
-    ],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+      ],
+      "time": "2023-06-20T12:07:40+00:00"
+    },
+    {
+      "name": "rector/rector",
+      "version": "0.17.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/rectorphp/rector.git",
+        "reference": "11401dc1abba0a359fabbf98f1057f4e65129f86"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/rectorphp/rector/zipball/11401dc1abba0a359fabbf98f1057f4e65129f86",
+        "reference": "11401dc1abba0a359fabbf98f1057f4e65129f86",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2|^8.0",
+        "phpstan/phpstan": "^1.10.15"
+      },
+      "conflict": {
+        "rector/rector-doctrine": "*",
+        "rector/rector-downgrade-php": "*",
+        "rector/rector-phpunit": "*",
+        "rector/rector-symfony": "*"
+      },
+      "bin": [
+        "bin/rector"
+      ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "0.15-dev"
+        }
+      },
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+      "keywords": [
+        "automation",
+        "dev",
+        "migration",
+        "refactoring"
+      ],
+      "support": {
+        "issues": "https://github.com/rectorphp/rector/issues",
+        "source": "https://github.com/rectorphp/rector/tree/0.17.1"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/tomasvotruba",
+          "type": "github"
+        }
+      ],
+      "time": "2023-06-14T09:05:33+00:00"
+    }
+  ],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": false,
+  "prefer-lowest": false,
+  "platform": [],
+  "platform-dev": [],
+  "plugin-api-version": "2.3.0"
 }

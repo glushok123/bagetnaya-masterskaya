@@ -26,7 +26,7 @@ $nameImage = [];
 
 foreach ($_FILES as $file) {
     $error = '';
-    $ext = mb_strtolower(mb_substr(mb_strrchr((string) @$file['name'], '.'), 1));
+    $ext = mb_strtolower(mb_substr(mb_strrchr((string)@$file['name'], '.'), 1));
 
     if (!empty($file['error']) || empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
         $error = 'Не удалось загрузить файл.';
@@ -40,8 +40,8 @@ foreach ($_FILES as $file) {
             $error = 'Недопустимый тип файла';
         } else {
             // Перемещаем файл в директорию с новым именем.
-            $name  = time() . '-' . random_int(1, 9_999_999_999);
-            $src   = $tmp_path . $name . '.' . $ext;
+            $name = time() . '-' . random_int(1, 9_999_999_999);
+            $src = $tmp_path . $name . '.' . $ext;
             $thumb = $tmp_path . $name . '-thumb.' . $ext;
 
             move_uploaded_file($file['tmp_name'], $src);

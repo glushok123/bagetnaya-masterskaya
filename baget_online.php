@@ -95,25 +95,29 @@ if ($z[11] == "0") {
             <div class='row'>
                 <div class='col-6 col-md-3 sort-margin-y'>
                     <div>
-                        <button class="bmenu-open sort-b" id='catalog-plast' onclick="getcatalog('plast');"  data-type="plast">Пластик
+                        <button class="bmenu-open sort-b" id='catalog-plast' onclick="getcatalog('plast');"
+                                data-type="plast">Пластик
                         </button>
                     </div>
                 </div>
                 <div class='col-6 col-md-3 sort-margin-y'>
                     <div>
-                        <button class="bmenu-open sort-b" id='catalog-wood' onclick="getcatalog('wood');" data-type="wood">Дерево
+                        <button class="bmenu-open sort-b" id='catalog-wood' onclick="getcatalog('wood');"
+                                data-type="wood">Дерево
                         </button>
                     </div>
                 </div>
                 <div class='col-6 col-md-3 sort-margin-y'>
                     <div>
-                        <button class="bmenu-open sort-b" id='catalog-alum' onclick="getcatalog('alum');" data-type="alum">Алюминий
+                        <button class="bmenu-open sort-b" id='catalog-alum' onclick="getcatalog('alum');"
+                                data-type="alum">Алюминий
                         </button>
                     </div>
                 </div>
                 <div class='col-6 col-md-3 sort-margin-y'>
                     <div>
-                        <button class="bmenu-open sort-b" id='catalog-pasp' onclick="getcatalog('pasp');" data-type="pasp">Паспарту
+                        <button class="bmenu-open sort-b" id='catalog-pasp' onclick="getcatalog('pasp');"
+                                data-type="pasp">Паспарту
                         </button>
                     </div>
                 </div>
@@ -139,7 +143,8 @@ if ($z[11] == "0") {
         <br>
         <div class="mt-3 search-article-block">
             <input type="text" class="form-control sort-margin-y" id="search-article" aria-describedby=""
-                   style="max-width: 250px;" placeholder="Артикул..." oninput="getcatalog($('.active-button-catalog').data('type'), 1, true);">
+                   style="max-width: 250px;" placeholder="Артикул..."
+                   oninput="getcatalog($('.active-button-catalog').data('type'), 1, true);">
         </div>
     </div>
 
@@ -336,21 +341,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>
 
 <script>
-   /* var processDownload = false;
-    var curentPage = 1;
-    var totalPage = 3;
+    /* var processDownload = false;
+     var curentPage = 1;
+     var totalPage = 3;
 
-    $('.baget-conteiner').scroll(function () {
-        if (processDownload === false) {
-            buffer = 50; // # of pixels from bottom of scroll to fire your function. Can be 0
-            if ($(".baget-conteiner").prop('scrollHeight') - $(".baget-conteiner").scrollTop() <= $(".baget-conteiner").height() + buffer) {
-                processDownload = true;
-                curentPage = curentPage + 1;
-                getcatalog($('#sorter-catalog').attr("data-type"), curentPage)
-            }
-        }
-    });*/
-    $(document).on('click', '.clear-baget-conteiner', function (){
+     $('.baget-conteiner').scroll(function () {
+         if (processDownload === false) {
+             buffer = 50; // # of pixels from bottom of scroll to fire your function. Can be 0
+             if ($(".baget-conteiner").prop('scrollHeight') - $(".baget-conteiner").scrollTop() <= $(".baget-conteiner").height() + buffer) {
+                 processDownload = true;
+                 curentPage = curentPage + 1;
+                 getcatalog($('#sorter-catalog').attr("data-type"), curentPage)
+             }
+         }
+     });*/
+    $(document).on('click', '.clear-baget-conteiner', function () {
         $('.baget-conteiner').html();
     })
 </script>

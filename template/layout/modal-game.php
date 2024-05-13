@@ -14,14 +14,14 @@
                     $skidkod = false;
                 }
 
-                    if ($skidkod) {
-                        echo "
+                if ($skidkod) {
+                    echo "
                         <div id='game15' class='game15end row text-center'><div>Ваш код: <b>" . $skidkod . "</b>
                         <br>Сообщите его менеджеру при оформлении заказа и получите скидку.
                         <br>Код действителен в течение суток.</div></div>
                     ";
-                    } else {
-                        echo "
+                } else {
+                    echo "
                         <div id='game15' class='game15start row text-center' onselectstart='return false;'>
                         <div onmousedown='game15start(this);'>Сыграйте в \"пятнашки\"
                         <div>чтобы получить сегодня скидку 10%</div>на любой ваш заказ.
@@ -29,7 +29,7 @@
                         <div><button class='button button-custom-index button-color-company-golden '>Нажмите чтобы начать</button></div>
                         </div></div>
                         ";
-                    }
+                }
 
                 if (!empty($disco)) {
                     echo "<a href='/#game15' id='discount' class='discou1' onclick='this.className=\"discou1\";'></a>";
@@ -58,22 +58,24 @@
         }
         return xmlhttp;
     }
+
     function loadJS(whatFile, whereToPut) {
         var link = document.createElement("script");
         link.setAttribute("type", "text/javascript");
         link.setAttribute("src", whatFile);
         if (whereToPut) {
             whereToPut.appendChild(link);
-            whereToPut.onclick = function() {
+            whereToPut.onclick = function () {
                 return;
             }
         } else {
             document.getElementsByTagName("head")[0].appendChild(link);
         }
     }
+
     function game15start(id) {
         loadJS('game15.js?v<?=$v?>');
-        id.onclick = function() {
+        id.onclick = function () {
             return;
         }
     }

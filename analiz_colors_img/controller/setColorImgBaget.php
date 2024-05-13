@@ -14,9 +14,9 @@ foreach ($data as $item) {
     if (!file_exists($_SERVER['DOCUMENT_ROOT'] . $imgPatch)) continue;
 
     $colorImg = new ColorImg($_SERVER['DOCUMENT_ROOT'] . $imgPatch);
-    $color_m1 = (string) $colorImg->getMainColorMetod1x1px();
-    $color_m2 = (string) $colorImg->getMainColorMetodMedium();
-    $color_m3 = (array) $colorImg->getMainColorMetodColorExtractor();
+    $color_m1 = (string)$colorImg->getMainColorMetod1x1px();
+    $color_m2 = (string)$colorImg->getMainColorMetodMedium();
+    $color_m3 = (array)$colorImg->getMainColorMetodColorExtractor();
 
     $stm = $dbh->prepare("
         UPDATE catalog_baget 
@@ -34,26 +34,26 @@ foreach ($data as $item) {
 
     echo(
         '<div style="margin:30px; border:3px solid red;">
-            Метод #1 – 1x1px (основной цвет) -> ' . 
-            $color_m1 . 
-            '<div style="height:100px; width:100px; background: ' . $color_m1 . '"></div>
+            Метод #1 – 1x1px (основной цвет) -> ' .
+        $color_m1 .
+        '<div style="height:100px; width:100px; background: ' . $color_m1 . '"></div>
         </div>
     ');
 
     echo(
         '<div style="margin:30px; border:3px solid red;">
-            Метод #2 – вычисление среднего цвета (основной цвет) -> ' . 
-            $color_m2 . 
-            '<div style="height:100px; width:100px; background: ' . $color_m2 . '"></div>
+            Метод #2 – вычисление среднего цвета (основной цвет) -> ' .
+        $color_m2 .
+        '<div style="height:100px; width:100px; background: ' . $color_m2 . '"></div>
         </div>
     ');
 
-    foreach($color_m3 as $color) {
+    foreach ($color_m3 as $color) {
         echo(
             '<div style="margin:30px; border:3px solid red;">
-                Метод #3 –> ' . 
-                $color . 
-                '<div style="height:100px; width:100px; background: ' . $color . '"></div>
+                Метод #3 –> ' .
+            $color .
+            '<div style="height:100px; width:100px; background: ' . $color . '"></div>
             </div>
         ');
     }

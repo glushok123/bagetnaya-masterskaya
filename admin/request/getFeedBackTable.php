@@ -26,7 +26,6 @@ $text = $text . '
         </thead><tbody>';
 
 
-
 foreach ($data as $item) {
     //$active = $item['active'] == '1' ? 'активный' : 'не активный';
 
@@ -34,7 +33,7 @@ foreach ($data as $item) {
         '
             <tr>
                 <td><span class="promokod">' . $item['id'] . '</span></td>
-                <td><span class="procent">' . $item['name']  . '</span></td>
+                <td><span class="procent">' . $item['name'] . '</span></td>
                 <td><span class="count">' . $item['email'] . '</span></td>
                 <td><span class="active">' . $item['phone'] . '</span></td>
                 <td><span class="active">' . $item['comment'] . '</span></td>

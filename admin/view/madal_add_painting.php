@@ -28,23 +28,28 @@
 
                         <div class="mb-3">
                             <label for="painting_img_1" class="form-label">Фото 1: </label>
-                            <input class="form-control" type="file" id="painting_img_1" name="painting_img_1" accept=".jpg,.jpeg">
+                            <input class="form-control" type="file" id="painting_img_1" name="painting_img_1"
+                                   accept=".jpg,.jpeg">
                         </div>
                         <div class="mb-3">
                             <label for="painting_img_2" class="form-label">Фото 2: </label>
-                            <input class="form-control" type="file" id="painting_img_2" name="painting_img_2" accept=".jpg,.jpeg">
+                            <input class="form-control" type="file" id="painting_img_2" name="painting_img_2"
+                                   accept=".jpg,.jpeg">
                         </div>
                         <div class="mb-3">
                             <label for="painting_img_3" class="form-label">Фото 3: </label>
-                            <input class="form-control" type="file" id="painting_img_3" name="painting_img_3" accept=".jpg,.jpeg">
+                            <input class="form-control" type="file" id="painting_img_3" name="painting_img_3"
+                                   accept=".jpg,.jpeg">
                         </div>
                         <div class="mb-3">
                             <label for="painting_img_4" class="form-label">Фото 4: </label>
-                            <input class="form-control" type="file" id="painting_img_4" name="painting_img_4" accept=".jpg,.jpeg">
+                            <input class="form-control" type="file" id="painting_img_4" name="painting_img_4"
+                                   accept=".jpg,.jpeg">
                         </div>
                         <div class="mb-3">
                             <label for="painting_img_5" class="form-label">Фото 5: </label>
-                            <input class="form-control" type="file" id="painting_img_5" name="painting_img_5" accept=".jpg,.jpeg">
+                            <input class="form-control" type="file" id="painting_img_5" name="painting_img_5"
+                                   accept=".jpg,.jpeg">
                         </div>
                     </form>
                 </div>

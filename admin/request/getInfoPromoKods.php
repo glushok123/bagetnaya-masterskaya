@@ -34,7 +34,7 @@ foreach ($data as $item) {
         '
             <tr>
                 <td><span class="promokod">' . $item['series_id'] . '</span></td>
-                <td><span class="procent">' . $saleProcent  . '</span>%</td>
+                <td><span class="procent">' . $saleProcent . '</span>%</td>
                 <td><span class="count">' . $saleCount . '</span> р.</td>
                 <td><span class="active">' . $active . '</span></td>
                 <td>

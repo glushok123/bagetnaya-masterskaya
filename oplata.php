@@ -4,11 +4,11 @@ $titl = "Предоплата в Багетной мастерской №1";
 $desc = "Здесь вы можете внести предоплату за работу";
 include "header.php";
 ?>
-<div id="crops"><a href="/">Главная</a> » Предоплата</div>
-<h1>Внесение предоплаты за работу</h1>
-<div style="height:100px;"></div>
-<p style="text-align:center;">Спасибо, в ближайшее время менеджер свяжется с вами.</p>
-<div style="height:200px;"></div>
+    <div id="crops"><a href="/">Главная</a> » Предоплата</div>
+    <h1>Внесение предоплаты за работу</h1>
+    <div style="height:100px;"></div>
+    <p style="text-align:center;">Спасибо, в ближайшее время менеджер свяжется с вами.</p>
+    <div style="height:200px;"></div>
 <?
 include "bot.php"
 ?>

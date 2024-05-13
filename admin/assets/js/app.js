@@ -384,6 +384,7 @@ $(document).ready(function () {
             }
         });
     }
+
     // Удаление элемента из конструктора
     function deleteItemRequest(idItem, el) {
         $.ajax({
@@ -877,7 +878,6 @@ $(document).ready(function () {
         activeItem.replaceWith('<span class="active">' + active + '</span>');
 
 
-
         if (active == 'не выбрано' || active == 'не активный') {
             active = '0';
         }
@@ -1111,7 +1111,7 @@ $(document).ready(function () {
             method: 'post',
             dataType: "json",
             data: {
-                categoryId : $('#selectCategoryGalleryWorks').val()
+                categoryId: $('#selectCategoryGalleryWorks').val()
             },
             async: true,
             success: function (data) {

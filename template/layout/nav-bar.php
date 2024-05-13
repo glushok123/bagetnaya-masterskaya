@@ -1,25 +1,18 @@
-<div class='box-shadow-custom'>
+<div class='box-shadow-custom mobali-nav'>
 
 
-    <nav class="navbar navbar-expand-sm navbar-light">
+    <nav class="navbar navbar-expand-xl navbar-light">
         <div class="container-fluid ">
 
-            <?
-            if (!isMobile()) {
-                ?>
-                <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
-                <img src="/img/logo 2.svg" alt="" class='img-brand'>
-                <?
-            } else {
-                ?>
-                <div class='row'>
-                    <div class='col-10'>
-                        <img src="/assets/img/logo.PNG" alt="" class='img-brand' style="width: 186px; height: auto;">
-                    </div>
+
+            <div class='row'>
+                <div class='col-10'>
+                    <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt=""
+                                                                            class='img-brand'
+                                                                            style="width: 186px; height: auto;"></a>
                 </div>
-                <?
-            }
-            ?>
+            </div>
+
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -31,8 +24,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="navbarDropdown2"
-                           href="/сatalog-of-finished-works.php" aria-expanded="false">
+                        <a class="nav-link " id="navbarDropdown" role="button" data-bs-toggle="navbarDropdown2"
+                           href="/сatalog-of-finished-works" aria-expanded="false">
                             Галерея работ
                         </a>
 
@@ -113,21 +106,15 @@
                         <a class="nav-link" aria-current="page" href="/oplata_uslug.php">Оплата и доставка</a>
                     </li>
 
-                    <?
-                    if (isMobile()) {
-                        ?>
 
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
-                                картину</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
+                            картину</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>
+                    </li>
 
-                        <?
-                    }
-                    ?>
 
                     <li class="nav-item">
 
@@ -156,50 +143,10 @@
         </div>
     </nav>
 
-    <?
-    if (!isMobile()) {
-        ?>
-
-        <div class='text-end custom-margin-navbar-2-row'>
-            <div class="d-inline">
-                <div class="nav-item d-inline">
-                    <a class="nav-link d-inline" aria-current="page" href="/oplata_uslug.php">Купить картину</a>
-                </div>
-            </div>
-            <div class="d-inline ">
-                <div class="nav-item d-inline">
-                    <a class="nav-link d-inline" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown">
-                        Адреса багетных мастерских
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                        <div class='my-2 px-3'>
-                            <div class='nav-name-metro'>м. Арбат</div>
-                            <div class='nav-address my-2'>Москва, м. Арбатская, ул. Арбат д. 1</div>
-                            <div class='nav-phone'>8 (495) 665-25-61</div>
-                            <div class='nav-phone'>8 (926) 865-92-95 (WhatsApp)</div>
-                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                        </div>
-                        <div class='px-3'>
-                            <hr>
-                        </div>
-                        <div class='my-2 px-3'>
-                            <div class='nav-name-metro'>м. Новокузнецкая</div>
-                            <div class='nav-address my-2'>Москва, м. Новокузнецкая, Климентовский переулок, 6</div>
-                            <div class='nav-phone'>8 (499) 714-80-62</div>
-                            <div class='nav-phone'>8 (977) 824-42-12 (WhatsApp)</div>
-                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <?
-    }
-    ?>
-
 
 </div>
-<div class='row pt-2 px-1 text-center justify-content-center box-shadow-custom' style="
+<div class="mobali-nav">
+    <div class='row pt-2 px-1 text-center justify-content-center box-shadow-custom ' style="
                     color: #0f0f0f;
                     font-family: Cormorant Garamond;
                     font-style: normal;
@@ -209,47 +156,24 @@
                     margin-top: 9px;
                     padding-bottom: 9px;
                     ">
-    <div class='col-4 text-center'>
-        <span>НОВОКУЗНЕЦКАЯ</span>
-        <a href="tel:+79778244212" style="color: black;text-decoration: none;" class="text-center"><br>
-            <span style="color: #0f0f0f;text-decoration: none;" class="text-center">8(977) 824-42-12</span>
-        </a>
-    </div>
-    <div class='col-4'>
-        <span>АРБАТСКАЯ</span>
-        <a href="tel:+79268659295" style="color: black;text-decoration: none;"><br>
-            <span style="color: black;text-decoration: none;">8(926) 865-92-95</span>
-        </a>
-    </div>
-    <div class='col-4'>
-        <span>БАРРИКАДНАЯ</span>
-        <a href="tel:+79779647429" style="color: black;text-decoration: none;"><br>
-            <span style="color: red;text-decoration: none;">Cкоро открытие!</span>
-        </a>
+        <div class='col-4 text-center'>
+            <span>НОВОКУЗНЕЦКАЯ</span>
+            <a href="tel:+79778244212" style="color: black;text-decoration: none;" class="text-center"><br>
+                <span style="color: #0f0f0f;text-decoration: none;" class="text-center">8(977) 824-42-12</span>
+            </a>
+        </div>
+        <div class='col-4'>
+            <span>АРБАТСКАЯ</span>
+            <a href="tel:+79268659295" style="color: black;text-decoration: none;"><br>
+                <span style="color: black;text-decoration: none;">8(926) 865-92-95</span>
+            </a>
+        </div>
+        <div class='col-4'>
+            <span>БАРРИКАДНАЯ</span>
+            <a href="tel:+79779647429" style="color: black;text-decoration: none;"><br>
+                <span style="color: red;text-decoration: none;">Cкоро открытие!</span>
+            </a>
+        </div>
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // make it as accordion for smaller screens
-        if (window.innerWidth > 768) {
-            document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
-                everyitem.addEventListener('mouseover', function (e) {
-                    let el_link = this.querySelector('a[data-mdb-toggle]');
-                    if (el_link != null) {
-                        let nextEl = el_link.nextElementSibling;
-                        el_link.classList.add('show');
-                        nextEl.classList.add('show');
-                    }
-                });
-                everyitem.addEventListener('mouseleave', function (e) {
-                    let el_link = this.querySelector('a[data-mdb-toggle]');
-                    if (el_link != null) {
-                        let nextEl = el_link.nextElementSibling;
-                        el_link.classList.remove('show');
-                        nextEl.classList.remove('show');
-                    }
-                });
-            });
-        }
-    });
-</script>
+

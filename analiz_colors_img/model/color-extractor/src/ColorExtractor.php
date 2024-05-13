@@ -71,8 +71,8 @@ class ColorExtractor
 
     /**
      * @param \SplFixedArray $colors
-     * @param int            $limit
-     * @param int            $maxDelta
+     * @param int $limit
+     * @param int $maxDelta
      *
      * @return array
      */

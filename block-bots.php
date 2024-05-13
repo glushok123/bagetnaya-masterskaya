@@ -43,22 +43,23 @@ $accessReferer = [
     'ВКонтакте',
 ];
 
-function blockBot(){
+function blockBot()
+{
     global $accessReferer;
 
-    if (isset($_SERVER['SERVER_NAME']) && str_contains(strtolower($_SERVER['SERVER_NAME']), 'virtual-baget-curent', )){
+    if (isset($_SERVER['SERVER_NAME']) && str_contains(strtolower($_SERVER['SERVER_NAME']), 'virtual-baget-curent',)) {
         return false;
     }
 
-    if (isset($_SERVER['DOCUMENT_ROOT']) && str_contains(strtolower($_SERVER['DOCUMENT_ROOT']), 'virtual-baget-curent')){
+    if (isset($_SERVER['DOCUMENT_ROOT']) && str_contains(strtolower($_SERVER['DOCUMENT_ROOT']), 'virtual-baget-curent')) {
         return false;
     }
 
-    if (isset($_SERVER['SERVER_NAME']) && str_contains($_SERVER['SERVER_NAME'], 'bagetnaya-masterskaya', )){
+    if (isset($_SERVER['SERVER_NAME']) && str_contains($_SERVER['SERVER_NAME'], 'bagetnaya-masterskaya',)) {
         return true;
     }
 
-    if (isset($_SERVER['DOCUMENT_ROOT']) && str_contains($_SERVER['DOCUMENT_ROOT'], 'bagetnaya-masterskaya')){
+    if (isset($_SERVER['DOCUMENT_ROOT']) && str_contains($_SERVER['DOCUMENT_ROOT'], 'bagetnaya-masterskaya')) {
         return true;
     }
 
@@ -72,9 +73,9 @@ function blockBot(){
         return true;
     }
 
-    if (isset($_SERVER['HTTP_REFERER'])){
+    if (isset($_SERVER['HTTP_REFERER'])) {
         foreach ($accessReferer as $item) {
-            if (str_contains(strtolower($_SERVER['HTTP_REFERER']), strtolower($item))){
+            if (str_contains(strtolower($_SERVER['HTTP_REFERER']), strtolower($item))) {
                 return true;
             }
         }

@@ -17,7 +17,7 @@ class UpdateCatalog
     public $user = 'a0458868_bagetnaya'; // имя пользователя
     //public $password = ''; // пароль
     public $password = '1226591Qwer'; // пароль
-   // public $password = ''; // пароль
+    // public $password = ''; // пароль
     public $dbh; //название подключения к БД
     public $textUpdateRows = '';
     public $countUpdateRows = 0;
@@ -56,7 +56,7 @@ class UpdateCatalog
     //О том, что мы авторизовались будем судить по наличию формы logout
     public function isAuth($data)
     {
-        return strpos((string) $data, 'Выход') ? true : false;
+        return strpos((string)$data, 'Выход') ? true : false;
     }
 
     /**
@@ -71,7 +71,7 @@ class UpdateCatalog
         fwrite($bite, $out);
         fclose($bite);
 
-        echo ('<b>Загружен ' . $typeName . '</b><br>');
+        echo('<b>Загружен ' . $typeName . '</b><br>');
         $this->update($nameFile, $typeName);
     }
 
@@ -87,7 +87,7 @@ class UpdateCatalog
         $countWitheStorageIsNull = 0;
 
         foreach ($xlsx->rows() as $item) {
-            if (round( (int) $item[6]) == 0) {
+            if (round((int)$item[6]) == 0) {
                 $countWitheStorageIsNull = $countWitheStorageIsNull + 1;
             }
 
@@ -95,24 +95,23 @@ class UpdateCatalog
 
             $vendor = $item[0];
 
-            if (!empty($item[4])){
-                $price = (int) $item[4];
-            }else{
-                $price = (int) $item[2];
+            if (!empty($item[4])) {
+                $price = (int)$item[4];
+            } else {
+                $price = (int)$item[2];
             }
 
-            if ($typeName == 'plastic'){
-                $price = (int) $item[2];
+            if ($typeName == 'plastic') {
+                $price = (int)$item[2];
             }
 
             if ($typeName == 'wood') {
                 $price = round($price * 3.5);
-            }
-            else{
+            } else {
                 $price = round($price * 5);
             }
 
-            $countBaget = round( (int) $item[6]);
+            $countBaget = round((int)$item[6]);
 
             $stm = $this->dbh->prepare("SELECT * FROM catalog_baget where vendor=?");
             $stm->bindParam(1, $vendor);
@@ -137,10 +136,10 @@ class UpdateCatalog
 
         $countWitheStorageIsNotNull = $count - $countWitheStorageIsNull;
 
-        echo ('Колличество строк в файле: <b>' . $count . '</b><br>');
-        echo ('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
-        echo ('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
-        echo ('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
+        echo('Колличество строк в файле: <b>' . $count . '</b><br>');
+        echo('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
+        echo('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
+        echo('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
     }
 
     public function printTextUpdateRows()
@@ -168,6 +167,6 @@ $instance->getCatalog($wood_url, 'wood');
 $instance->getCatalog($plastic_url, 'plastic');
 $instance->getCatalog($paspartu_url, 'pasp');
 
-echo ('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
-echo ('<hr>');
-echo ($instance->printTextUpdateRows());
+echo('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
+echo('<hr>');
+echo($instance->printTextUpdateRows());

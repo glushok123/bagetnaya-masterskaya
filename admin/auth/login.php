@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $info_user[0]['id'];
 
         $agent = $_SERVER['HTTP_USER_AGENT'];
-        preg_match("/(MSIE|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", (string) $agent, $bInfo);
+        preg_match("/(MSIE|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", (string)$agent, $bInfo);
         $browserInfo = [];
         $browserInfo['name'] = ($bInfo[1] == "Version") ? "Safari" : $bInfo[1];
         $browserInfo['version'] = $bInfo[2];
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $series_id = randomString(16);
         $remember_token = getSecureRandomToken();
-        $encryted_remember_token = password_hash((string) $remember_token, PASSWORD_DEFAULT);
+        $encryted_remember_token = password_hash((string)$remember_token, PASSWORD_DEFAULT);
         $expiry_time = date('Y-m-d H:i:s', strtotime(' + 60 days'));
         $expires = strtotime($expiry_time);
 
@@ -80,8 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 '" . $expiry_time . "'
             )");
 
-        setcookie('series_id', (string) $series_id, ['expires' => $expires, 'path' => "/"]);
-        setcookie('remember_token', (string) $remember_token, ['expires' => $expires, 'path' => "/"]);
+        setcookie('series_id', (string)$series_id, ['expires' => $expires, 'path' => "/"]);
+        setcookie('remember_token', (string)$remember_token, ['expires' => $expires, 'path' => "/"]);
 
         $update_remember = ['series_id' => $series_id, 'remember_token' => $encryted_remember_token, 'expires' => $expiry_time];
 

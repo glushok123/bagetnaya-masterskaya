@@ -4,7 +4,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 require $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
-require $_SERVER['DOCUMENT_ROOT'] .'/analiz_colors_img/model/ColorImg.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/analiz_colors_img/model/ColorImg.php';
 
 $colors = [];
 $distance = [];
@@ -17,9 +17,9 @@ $bagetIds = [];
 $imgPatch = '/pics/' . $_POST['image'] . '.jpg';//'/analiz_colors_img/test_img/photo_2023-08-02_14-57-36.jpg';
 $colorImg = new ColorImg($_SERVER['DOCUMENT_ROOT'] . $imgPatch);
 
-$color_m1 = (string) $colorImg->getMainColorMetod1x1px();
-$color_m2 = (string) $colorImg->getMainColorMetodMedium();
-$color_m3 = (array) $colorImg->getMainColorMetodColorExtractor();
+$color_m1 = (string)$colorImg->getMainColorMetod1x1px();
+$color_m2 = (string)$colorImg->getMainColorMetodMedium();
+$color_m3 = (array)$colorImg->getMainColorMetodColorExtractor();
 
 $stm = $dbh->prepare('
 SELECT `id`, `color_m1` 
@@ -34,12 +34,12 @@ $data = $stm->fetchAll();
 
 $color_m1_rgb = sscanf($color_m1, "#%02x%02x%02x");
 
-foreach($data as $item) {
+foreach ($data as $item) {
     $distance[] = [
         'id' => $item['id'],
         'distance' => getDistanceFromColor(
             $color_m1_rgb, sscanf(
-                (string) $item['color_m1'], 
+                (string)$item['color_m1'],
                 "#%02x%02x%02x"
             )
         ),
@@ -47,11 +47,11 @@ foreach($data as $item) {
     ];
 }
 
-$distance = (array) array_sort($distance, 'distance', SORT_ASC);
+$distance = (array)array_sort($distance, 'distance', SORT_ASC);
 
 $count = 0;
 
-foreach($distance as $item) {
+foreach ($distance as $item) {
     $count = $count + 1;
     $bagetIds[] = $item['id'];
 
@@ -69,7 +69,6 @@ $data = [
 ];
 
 
-
 $query = "SELECT * FROM catalog_baget WHERE `id` IN (" . implode(',', $bagetIds) . ")";
 $stmt = $dbh->prepare($query);
 $stmt->execute();
@@ -77,53 +76,53 @@ $dataQ = $stmt->fetchAll();
 
 $text = '';
 
-foreach($dataQ as $baget) { 
-        $type = $baget['type'];
-		$class = '';
-		if ($baget['storage'] > 30) {
-			$class = 'bg-nal2';
-		} else{
-			$class = 'bg-nal1';
-		}
+foreach ($dataQ as $baget) {
+    $type = $baget['type'];
+    $class = '';
+    if ($baget['storage'] > 30) {
+        $class = 'bg-nal2';
+    } else {
+        $class = 'bg-nal1';
+    }
 
-        if ($type == 'pasp') { 
-            $t1 = "
+    if ($type == 'pasp') {
+        $t1 = "
                 z[12]=0; 
-                z[3]=" .$baget['publicvendor'] . "; 
-                z[4]=" .$baget['price'] . ";
+                z[3]=" . $baget['publicvendor'] . "; 
+                z[4]=" . $baget['price'] . ";
             ";
-            $t2 = "/pi/";
-            $t3 = "<br>Цвет: " . $baget['color'];
-        } else { 
-            $t1 = "
+        $t2 = "/pi/";
+        $t3 = "<br>Цвет: " . $baget['color'];
+    } else {
+        $t1 = "
                 z[12]=0; 
-                z[0]=" .$baget['publicvendor'] . "; 
-                z[1]=" .$baget['price'] . "; 
-                z[2]=" .$baget['width'] . "; 
-                z[22]=" .$baget['widthwithout'] . "; 
+                z[0]=" . $baget['publicvendor'] . "; 
+                z[1]=" . $baget['price'] . "; 
+                z[2]=" . $baget['width'] . "; 
+                z[22]=" . $baget['widthwithout'] . "; 
             ";
-            $t2 = "/bi/";
-            $t3 = "
-                <h5 class='text-nowrap text-start catalog-info'>Ширина: ". $baget['width'] . " мм</h5>
-				<h5 class='text-nowrap text-start catalog-info'>Без четверти: ". $baget['widthwithout'] . " мм</h5>
+        $t2 = "/bi/";
+        $t3 = "
+                <h5 class='text-nowrap text-start catalog-info'>Ширина: " . $baget['width'] . " мм</h5>
+				<h5 class='text-nowrap text-start catalog-info'>Без четверти: " . $baget['widthwithout'] . " мм</h5>
             ";
-        }
+    }
 
     $text = $text . "
         <div class='my-2 mx-2 col-5 col-xl-2 text-start " . $class . "'>
-            <a class=' catalog-item  del" .$baget['id'] ."'
+            <a class=' catalog-item  del" . $baget['id'] . "'
                 onclick='
                     " . $t1 . "
                     changePage (); 
-                    getitem(" .$baget['publicvendor'] . "); 
+                    getitem(" . $baget['publicvendor'] . "); 
                     countprice ();
                 '
                 name=" . $baget['publicvendor'] . "
             >
             <div class='maskimg'>
                 <img src="
-                    . $t2 . 
-                    $baget['listimg'] . "
+        . $t2 .
+        $baget['listimg'] . "
                     align='center' 
                     class='bmenuimg'
                 >
@@ -140,15 +139,14 @@ foreach($dataQ as $baget) {
     ";
 
 
-
-    if ($type !== "pasp") { 
-        if ($baget['storage'] > 30) { 
+    if ($type !== "pasp") {
+        if ($baget['storage'] > 30) {
             $text = $text . '<div class="nalich2">В наличии</div>';
-        } else { 
+        } else {
             $text = $text . '<div class="nalich1">Огранич. кол-во</div>';
         }
     }
-    
+
     $text = $text . '</a></div>';
 
 }

@@ -29,22 +29,22 @@ class ColorImg
     {
         $info = getimagesize($this->filePatch);
 
-        switch ($info[2]) { 
-            case 1: 
+        switch ($info[2]) {
+            case 1:
                 $img = imageCreateFromGif($this->filePatch);
-                break;					
-            case 2: 
-                $img = imageCreateFromJpeg($this->filePatch); 
-                break;	
-            case 3: 
-                $img = imageCreateFromPng($this->filePatch); 
+                break;
+            case 2:
+                $img = imageCreateFromJpeg($this->filePatch);
+                break;
+            case 3:
+                $img = imageCreateFromPng($this->filePatch);
                 break;
         }
-         
+
         $width = ImageSX($img);
         $height = ImageSY($img);
-         
-        $thumb = imagecreatetruecolor(1, 1); 
+
+        $thumb = imagecreatetruecolor(1, 1);
         imagecopyresampled($thumb, $img, 0, 0, 0, 0, 1, 1, $width, $height);
         $color = '#' . dechex(imagecolorat($thumb, 0, 0));
 
@@ -55,8 +55,8 @@ class ColorImg
     }
 
     /**
-     * Метод #2 – вычисление среднего цвета	
-     * Перебор пикселей и вычисление среднего цвета, 
+     * Метод #2 – вычисление среднего цвета
+     * Перебор пикселей и вычисление среднего цвета,
      * данный метод даёт более светлые тона
      *
      * @return string
@@ -65,53 +65,53 @@ class ColorImg
     {
         $info = getimagesize($this->filePatch);
 
-        switch ($info[2]) { 
-            case 1: 
+        switch ($info[2]) {
+            case 1:
                 $img = imageCreateFromGif($this->filePatch);
-                break;					
-            case 2: 
-                $img = imageCreateFromJpeg($this->filePatch); 
-                break;	
-            case 3: 
-                $img = imageCreateFromPng($this->filePatch); 
+                break;
+            case 2:
+                $img = imageCreateFromJpeg($this->filePatch);
+                break;
+            case 3:
+                $img = imageCreateFromPng($this->filePatch);
                 break;
         }
-         
+
         $width = ImageSX($img);
         $height = ImageSY($img);
-             
+
         $total_r = $total_g = $total_b = 0;
         for ($x = 0; $x < $width; $x++) {
-            for ($y=0; $y<$height; $y++) {
+            for ($y = 0; $y < $height; $y++) {
                 $c = ImageColorAt($img, $x, $y);
-                $total_r += ($c>>16) & 0xFF;
-                $total_g += ($c>>8) & 0xFF;
+                $total_r += ($c >> 16) & 0xFF;
+                $total_g += ($c >> 8) & 0xFF;
                 $total_b += $c & 0xFF;
             }
         }
-         
+
         $rgb = array(
             round($total_r / $width / $height),
             round($total_g / $width / $height),
             round($total_b / $width / $height)
         );
-         
+
         $color = '#';
         foreach ($rgb as $row) {
             $color .= str_pad(dechex($row), 2, '0', STR_PAD_LEFT);
         }
-         
+
         imageDestroy($img);
-        
+
         return $color;
     }
 
     /**
      * Метод #3 - ColorExtractor
-     * ColorExtractor – «извлекает цвета из изображения, 
-     * как это сделал бы человек». Имеет возможность 
+     * ColorExtractor – «извлекает цвета из изображения,
+     * как это сделал бы человек». Имеет возможность
      * получить несколько основных цветов.
-     * 
+     *
      * @return array
      */
     public function getMainColorMetodColorExtractor(): array

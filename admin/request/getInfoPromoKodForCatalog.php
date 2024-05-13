@@ -8,7 +8,7 @@ if (isset($_POST["kod"])) {
 }
 
 $NewDate = Date('Y-m-d H:i:s');
-$stm = $dbh->prepare("SELECT * FROM promo_kods where series_id = '" . $kod  . "' and active=1 and date_end >= '" . $NewDate . "'");
+$stm = $dbh->prepare("SELECT * FROM promo_kods where series_id = '" . $kod . "' and active=1 and date_end >= '" . $NewDate . "'");
 $stm->execute();
 $data = $stm->fetch();
 

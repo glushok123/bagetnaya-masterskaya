@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 define('BASE_PATH', dirname(__FILE__, 2));
 define('APP_FOLDER', 'simpleadmin');
-define('CURRENT_PAGE', basename((string) $_SERVER['REQUEST_URI']));
+define('CURRENT_PAGE', basename((string)$_SERVER['REQUEST_URI']));
 
 require_once BASE_PATH . '/MysqliDb/MysqliDb.php';
 require_once BASE_PATH . '/helpers/helpers.php';
@@ -26,5 +26,5 @@ define('DB_NAME', "a0458868_bagetnaya"); #
  */
 function getDbInstance()
 {
-	return new MysqliDb(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    return new MysqliDb(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 }

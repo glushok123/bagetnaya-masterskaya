@@ -159,13 +159,15 @@
                 </div-->
                 <div class='col-4 col-md-4 col-xxl-3'>
                     <div class="mb-3">
-                        <input type="number" class="i1 form-control" id="fwid" name="fwid" aria-describedby="emailHelp" value="<?= $z[9] ?>" onchange="changesize(9);countprice ();">
+                        <input type="number" class="i1 form-control" id="fwid" name="fwid" aria-describedby="emailHelp"
+                               value="<?= $z[9] ?>" onchange="changesize(9);countprice ();">
                         <div id="emailHelp" class="form-text">Ширина (мм)</div>
                     </div>
                 </div>
                 <div class='col-4 col-md-4 col-xxl-3'>
                     <div class="mb-3">
-                        <input type="number" class="i1 form-control" id="fhig" name="fhig" aria-describedby="emailHelp" value="<?= $z[10] ?>" onchange="changesize(10);countprice ();">
+                        <input type="number" class="i1 form-control" id="fhig" name="fhig" aria-describedby="emailHelp"
+                               value="<?= $z[10] ?>" onchange="changesize(10);countprice ();">
                         <div id="emailHelp" class="form-text">Высота (мм)</div>
                     </div>
                 </div>
@@ -328,11 +330,25 @@
                 </div>
             </div>
             <div class='col-9 col-md-8 custom-selected'>
-                <button type="button" class="btn b2 my-2 <? if ($z[6] == 1) { echo 'custom-selected-border'; }?>" onclick="z[6]=1; bgswitch();">Обычное</button>
-                <button type="button" class="btn b2 my-2 <? if ($z[6] == 2) { echo 'custom-selected-border'; }?>" onclick="z[6]=2; bgswitch();">Матовое</button>
-                <button type="button" class="btn b2 my-2 <? if ($z[6] == 3) { echo 'custom-selected-border'; }?>" onclick="z[6]=3; bgswitch();">Антиблик</button>
-                <button type="button" class="btn b2 my-2 <? if ($z[6] == 4) { echo 'custom-selected-border'; }?>" onclick="z[6]=4; bgswitch();">Пластиковое</button>
-                <button type="button" class="btn btn-secondary b1 w120  custom-selected-clear" onclick="z[6]=0; bgswitch();">убрать</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 1) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[6]=1; bgswitch();">Обычное
+                </button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 2) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[6]=2; bgswitch();">Матовое
+                </button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 3) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[6]=3; bgswitch();">Антиблик
+                </button>
+                <button type="button" class="btn b2 my-2 <? if ($z[6] == 4) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[6]=4; bgswitch();">Пластиковое
+                </button>
+                <button type="button" class="btn btn-secondary b1 w120  custom-selected-clear"
+                        onclick="z[6]=0; bgswitch();">убрать
+                </button>
             </div>
         </div>
 
@@ -347,11 +363,25 @@
                 </div>
             </div>
             <div class='col-9 col-md-8 custom-selected'>
-                <button type="button" class="btn b2 my-2 <? if ($z[7] == 1) { echo 'custom-selected-border'; }?>" onclick="z[7]=1; bgswitch();">Картон</button>
-                <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 2) { echo 'custom-selected-border'; }?>" onclick="z[7]=2; bgswitch();">Пенокартон 5 мм</button>
-                <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 3) { echo 'custom-selected-border'; }?>" onclick="z[7]=3; bgswitch();">Натяжка вышивки</button>
-                <button type="button" class="btn b2 my-2 <? if ($z[7] == 4) { echo 'custom-selected-border'; }?>" onclick="z[7]=4; bgswitch();">Подрамник</button>
-                <button type="button" class="btn btn-secondary b1 w120 custom-selected-clear" onclick="z[7]=0; bgswitch();">убрать</button>
+                <button type="button" class="btn b2 my-2 <? if ($z[7] == 1) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[7]=1; bgswitch();">Картон
+                </button>
+                <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 2) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[7]=2; bgswitch();">Пенокартон 5 мм
+                </button>
+                <button type="button" class="btn b2 my-2 w176 <? if ($z[7] == 3) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[7]=3; bgswitch();">Натяжка вышивки
+                </button>
+                <button type="button" class="btn b2 my-2 <? if ($z[7] == 4) {
+                    echo 'custom-selected-border';
+                } ?>" onclick="z[7]=4; bgswitch();">Подрамник
+                </button>
+                <button type="button" class="btn btn-secondary b1 w120 custom-selected-clear"
+                        onclick="z[7]=0; bgswitch();">убрать
+                </button>
             </div>
         </div>
 
@@ -457,8 +487,8 @@
 </table>
 
 <script>
-    $(document).ready(function (){
-        $(document).on('click', '.custom-selected .b2', function (){
+    $(document).ready(function () {
+        $(document).on('click', '.custom-selected .b2', function () {
             console.log(123);
             let parent = $(this).parent();
             let butSelected = parent.find('.custom-selected-border');
@@ -466,7 +496,7 @@
             $(this).addClass('custom-selected-border')
         })
 
-        $(document).on('click', '.custom-selected .custom-selected-clear', function (){
+        $(document).on('click', '.custom-selected .custom-selected-clear', function () {
             let parent = $(this).parent();
             let butSelected = parent.find('.custom-selected-border');
             butSelected.removeClass('custom-selected-border');

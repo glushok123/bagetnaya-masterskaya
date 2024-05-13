@@ -3,15 +3,14 @@
 namespace League\ColorExtractor;
 
 
-
 class Palette implements \Countable, \IteratorAggregate
 {
-    /** 
+    /**
      * @var array
      */
     protected $colors = [];
-    
-    /** 
+
+    /**
      * @return int
      */
     #[\ReturnTypeWillChange]
@@ -20,15 +19,15 @@ class Palette implements \Countable, \IteratorAggregate
         return count($this->colors);
     }
 
-    /** 
+    /**
      * @return \Traversable
      */
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->colors);
     }
-    
-    /** 
+
+    /**
      * @return int
      */
     public function getColorCount($color)
@@ -51,11 +50,11 @@ class Palette implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param string   $filename
+     * @param string $filename
      * @param int|null $backgroundColor
      *
      * @return Palette
-     * 
+     *
      * @throws \InvalidArgumentException
      */
     public static function fromFilename($filename, $backgroundColor = null)
@@ -68,7 +67,7 @@ class Palette implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param string   $url
+     * @param string $url
      * @param int|null $backgroundColor
      *
      * @return Palette
@@ -77,7 +76,7 @@ class Palette implements \Countable, \IteratorAggregate
      */
     public static function fromUrl($url, $backgroundColor = null)
     {
-        if (!function_exists('curl_init')){
+        if (!function_exists('curl_init')) {
             return self::fromContents(file_get_contents($url));
         }
 
@@ -100,11 +99,12 @@ class Palette implements \Countable, \IteratorAggregate
      * Create instance with file contents
      *
      * @param string $contents
-     * @param int|null  $backgroundColor
+     * @param int|null $backgroundColor
      *
      * @return Palette
      */
-    public static function fromContents($contents, $backgroundColor = null) {
+    public static function fromContents($contents, $backgroundColor = null)
+    {
         $image = imagecreatefromstring($contents);
         $palette = self::fromGD($image, $backgroundColor);
         imagedestroy($image);
@@ -146,9 +146,9 @@ class Palette implements \Countable, \IteratorAggregate
                 if ($areColorsIndexed) {
                     $colorComponents = imagecolorsforindex($image, $color);
                     $color = ($colorComponents['alpha'] * 16777216) +
-                             ($colorComponents['red'] * 65536) +
-                             ($colorComponents['green'] * 256) +
-                             ($colorComponents['blue']);
+                        ($colorComponents['red'] * 65536) +
+                        ($colorComponents['green'] * 256) +
+                        ($colorComponents['blue']);
                 }
 
                 if ($alpha = $color >> 24) {
@@ -157,9 +157,9 @@ class Palette implements \Countable, \IteratorAggregate
                     }
 
                     $alpha /= 127;
-                    $color = (int) (($color >> 16 & 0xFF) * (1 - $alpha) + $backgroundColorRed * $alpha) * 65536 +
-                             (int) (($color >> 8 & 0xFF) * (1 - $alpha) + $backgroundColorGreen * $alpha) * 256 +
-                             (int) (($color & 0xFF) * (1 - $alpha) + $backgroundColorBlue * $alpha);
+                    $color = (int)(($color >> 16 & 0xFF) * (1 - $alpha) + $backgroundColorRed * $alpha) * 65536 +
+                        (int)(($color >> 8 & 0xFF) * (1 - $alpha) + $backgroundColorGreen * $alpha) * 256 +
+                        (int)(($color & 0xFF) * (1 - $alpha) + $backgroundColorBlue * $alpha);
                 }
 
                 isset($palette->colors[$color]) ?

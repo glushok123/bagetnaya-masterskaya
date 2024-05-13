@@ -10,122 +10,122 @@
 </div>
 
 <style>
-.circle-skidka {
-    cursor: pointer;
-    -webkit-animation: spin 10s linear infinite;
-    -moz-animation: spin 10s linear infinite;
-    animation: spin 10s linear infinite;
-}
-
-@-moz-keyframes spin {
-    100% {
-        -moz-transform: rotate(360deg);
-    }
-}
-
-@-webkit-keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes rotate-circle {
-    to {
-        transform: rotate(1turn);
-    }
-}
-
-/*кнопка звонка*/
-
-.callback-bt {
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 1s ease-in-out;
-    -webkit-animation: hoverWave linear 4s infinite;
-    animation: hoverWave linear 4s infinite;
-}
-
-.callback-bt:hover {
-    background: #fff;
-    border: 2px solid #a21213;
-}
-
-.callback-bt .text-call {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    position: relative;
-}
-
-.callback-bt .text-call:after {
-    content: "\f095";
-    display: block;
-    font-family: fontawesome;
-    color: #fff;
-    font-size: 20px;
-    line-height: 50px;
-    height: 50px;
-    width: 50px;
-    opacity: 1;
-    transition: .3s ease-in-out;
-}
-
-.callback-bt .text-call:hover:after {
-    opacity: 0;
-}
-
-.callback-bt .text-call span {
-    color: #a21213;
-    display: block;
-    left: 50%;
-    top: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    font-size: 7px;
-    line-height: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: .3s ease-in-out;
-    font-family: 'montserrat', Arial, Helvetica, sans-serif;
-}
-
-.callback-bt .text-call:hover span {
-    opacity: 1;
-}
-
-@keyframes hoverWave {
-    0% {
-        box-shadow: 0 8px 10px rgba(162, 18, 19, 0.3), 0 0 0 0 rgba(162, 18, 19, 0.2), 0 0 0 0 rgba(162, 18, 19, 0.2)
+    .circle-skidka {
+        cursor: pointer;
+        -webkit-animation: spin 10s linear infinite;
+        -moz-animation: spin 10s linear infinite;
+        animation: spin 10s linear infinite;
     }
 
-    40% {
-        box-shadow: 0 8px 10px rgba(162, 18, 19, 0.3), 0 0 0 15px rgba(162, 18, 19, 0.2), 0 0 0 0 rgba(162, 18, 19, 0.2)
+    @-moz-keyframes spin {
+        100% {
+            -moz-transform: rotate(360deg);
+        }
     }
 
-    80% {
-        box-shadow: 0 8px 10px rgba(162, 18, 19, 0.3), 0 0 0 30px rgba(162, 18, 19, 0), 0 0 0 26.7px rgba(162, 18, 19, 0.067)
+    @-webkit-keyframes spin {
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
     }
 
-    100% {
-        box-shadow: 0 8px 10px rgba(56, 163, 253, 0.3), 0 0 0 30px rgba(56, 163, 253, 0), 0 0 0 40px rgba(56, 163, 253, 0.0)
+    @keyframes spin {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
     }
-}
 
-/* animations icon */
+    @keyframes rotate-circle {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    /*кнопка звонка*/
+
+    .callback-bt {
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 1s ease-in-out;
+        -webkit-animation: hoverWave linear 4s infinite;
+        animation: hoverWave linear 4s infinite;
+    }
+
+    .callback-bt:hover {
+        background: #fff;
+        border: 2px solid #a21213;
+    }
+
+    .callback-bt .text-call {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .callback-bt .text-call:after {
+        content: "\f095";
+        display: block;
+        font-family: fontawesome;
+        color: #fff;
+        font-size: 20px;
+        line-height: 50px;
+        height: 50px;
+        width: 50px;
+        opacity: 1;
+        transition: .3s ease-in-out;
+    }
+
+    .callback-bt .text-call:hover:after {
+        opacity: 0;
+    }
+
+    .callback-bt .text-call span {
+        color: #a21213;
+        display: block;
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        font-size: 7px;
+        line-height: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: .3s ease-in-out;
+        font-family: 'montserrat', Arial, Helvetica, sans-serif;
+    }
+
+    .callback-bt .text-call:hover span {
+        opacity: 1;
+    }
+
+    @keyframes hoverWave {
+        0% {
+            box-shadow: 0 8px 10px rgba(162, 18, 19, 0.3), 0 0 0 0 rgba(162, 18, 19, 0.2), 0 0 0 0 rgba(162, 18, 19, 0.2)
+        }
+
+        40% {
+            box-shadow: 0 8px 10px rgba(162, 18, 19, 0.3), 0 0 0 15px rgba(162, 18, 19, 0.2), 0 0 0 0 rgba(162, 18, 19, 0.2)
+        }
+
+        80% {
+            box-shadow: 0 8px 10px rgba(162, 18, 19, 0.3), 0 0 0 30px rgba(162, 18, 19, 0), 0 0 0 26.7px rgba(162, 18, 19, 0.067)
+        }
+
+        100% {
+            box-shadow: 0 8px 10px rgba(56, 163, 253, 0.3), 0 0 0 30px rgba(56, 163, 253, 0), 0 0 0 40px rgba(56, 163, 253, 0.0)
+        }
+    }
+
+    /* animations icon */
 
 
 </style>
 
 <script>
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
         $(".phone-valid").mask("+7 (999) 999-99-99");
         toastr.options.timeOut = 5000; // 5s
 
@@ -176,14 +176,14 @@
                 method: 'post',
                 dataType: "json",
                 data: data,
-                success: function(data) {
+                success: function (data) {
                     if (data.success == true) {
                         $('#exampleModal').modal('hide');
                         $('#order-id').text(data.order_id)
                         $('#order-status-model').modal('show');
                     }
                 },
-                error: function(jqXHR, exception) {
+                error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         alert('Not connect. Verify Network.');
                     } else if (jqXHR.status == 404) {
@@ -203,8 +203,8 @@
             });
         }
 
-        $(document).on('click', '#send-order', function() {
+        $(document).on('click', '#send-order', function () {
             sendOrderRequest()
         });
-});
+    });
 </script>

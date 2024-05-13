@@ -1,7 +1,6 @@
 <?
 
 
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 
 $title = empty($title) ? "Багетная мастерская №1 в Москве - качественно и недорого!" : $title;
@@ -31,18 +30,19 @@ $v = 12;
 
         <meta NAME="Description" CONTENT="<? echo $description; ?>">
         <meta NAME="Keywords" CONTENT="<? echo $keywords; ?>">
-        <meta name="geo.placename" content="Климентовский пер., 6, Москва, Россия, 115184" />
-        <meta name="geo.position" content="55.7411820;37.6301270" />
-        <meta name="geo.region" content="RU-" />
+        <meta name="geo.placename" content="Климентовский пер., 6, Москва, Россия, 115184"/>
+        <meta name="geo.position" content="55.7411820;37.6301270"/>
+        <meta name="geo.region" content="RU-"/>
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Багетная мастерская № 1" />
-        <meta property="og:description" content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера." />
-        <meta property="og:url" content="http://bagetnaya-masterskaya.com" />
-        <meta property="og:image" content="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114-precomposed.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114-precomposed.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144-precomposed.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png" />
+        <meta property="og:title" content="Багетная мастерская № 1"/>
+        <meta property="og:description"
+              content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера."/>
+        <meta property="og:url" content="http://bagetnaya-masterskaya.com"/>
+        <meta property="og:image" content="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114-precomposed.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114-precomposed.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144-precomposed.png"/>
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png"/>
 
         <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">
@@ -59,7 +59,8 @@ $v = 12;
         <script src="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/navbars/navbar-1/assets/css/navbar-1.css">
+        <link rel="stylesheet"
+              href="https://unpkg.com/bs-brain@2.0.3/components/navbars/navbar-1/assets/css/navbar-1.css">
 
         <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css">
         <script type="text/javascript" src="/assets/layout/toastify-js"></script>
@@ -70,7 +71,7 @@ $v = 12;
         <link rel="stylesheet" href="/assets/css/main.css?v<?= $v ?>">
         <link rel="stylesheet" href="/assets/css/custom-768.css?v<?= $v ?>">
 
-        <meta name="yandex-verification" content="1e115d792752091b" />
+        <meta name="yandex-verification" content="1e115d792752091b"/>
 
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -85,9 +86,9 @@ $v = 12;
         </script>
 
         <?
-            if ($showMetrika == true){
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/assets/metrika.php';
-            }
+        if ($showMetrika == true) {
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/assets/metrika.php';
+        }
         ?>
 
     </head>
@@ -129,24 +130,75 @@ $v = 12;
     </div-->
 
 
+    <style>
+        @media (min-width: 0px) and (max-width: 1110px) {
+            .mobali-nav {
+                display: block;
+            }
+
+            .desctop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1110px) and (max-width: 5000px) {
+            .mobali-nav {
+                display: none;
+            }
+
+            .desctop-nav {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // make it as accordion for smaller screens
+            if (window.innerWidth > 768) {
+                document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
+                    everyitem.addEventListener('mouseover', function (e) {
+                        let el_link = this.querySelector('a[data-mdb-toggle]');
+                        if (el_link != null) {
+                            let nextEl = el_link.nextElementSibling;
+                            el_link.classList.add('show');
+                            nextEl.classList.add('show');
+                        }
+                    });
+                    everyitem.addEventListener('mouseleave', function (e) {
+                        let el_link = this.querySelector('a[data-mdb-toggle]');
+                        if (el_link != null) {
+                            let nextEl = el_link.nextElementSibling;
+                            el_link.classList.remove('show');
+                            nextEl.classList.remove('show');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 <?
-if (!isset($hideTop)){
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar-desctop.php';
+
+/*
+  if (!isset($hideTop)){
     if (isMobile()) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar.php';
     } else {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/nav-bar-desctop.php';
     }
 }
+*/
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/button-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-feedback.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/modal-game.php';
 
 $u_agent = $_SERVER['HTTP_USER_AGENT'];
-$issafari=false;
+$issafari = false;
 
-if (preg_match('/Safari/i',$u_agent)){
-    $issafari=(!preg_match('/Chrome/i',$u_agent));
+if (preg_match('/Safari/i', $u_agent)) {
+    $issafari = (!preg_match('/Chrome/i', $u_agent));
 }
 
 if ($issafari == true) {
@@ -158,4 +210,5 @@ if ($issafari == true) {
 </style>
    ';
 }
+
 

@@ -34,7 +34,7 @@ $z = ["7233", "840", "38", "0", "0", "0", "0", "0", "0", "300", "200", "0", "0",
 
 if (!empty($_GET['id'])) {
     $ident = $_GET['id'];
-    $ident = str_replace(",", "", (string) $ident);
+    $ident = str_replace(",", "", (string)$ident);
     $ident = str_replace(".", "", $ident);
     $ident = str_replace(" ", "", $ident);
     if (preg_match("/^[\dl]+$/", $ident)) {

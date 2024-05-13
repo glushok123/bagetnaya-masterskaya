@@ -24,7 +24,8 @@ foreach ($data['url'] as $item) {
 
 }
 echo json_encode($ar);
-function page_title($url) {
+function page_title($url)
+{
     $fp = file_get_contents($url);
     if (!$fp)
         return null;
@@ -37,14 +38,15 @@ function page_title($url) {
     return $title;
 }
 
-function parsePrintedArray($s){
-    $lines = explode("\n",$s);
+function parsePrintedArray($s)
+{
+    $lines = explode("\n", $s);
     $a = array();
-    foreach ($lines as $line){
-        if (strpos($line,"=>") === false)
+    foreach ($lines as $line) {
+        if (strpos($line, "=>") === false)
             continue;
-        $parts = explode('=>',$line);
-        $a[trim($parts[0],'[] ')] = trim($parts[1]);
+        $parts = explode('=>', $line);
+        $a[trim($parts[0], '[] ')] = trim($parts[1]);
     }
     return $a;
 }

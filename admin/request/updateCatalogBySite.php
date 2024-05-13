@@ -50,7 +50,7 @@ class UpdateCatalog
     //О том, что мы авторизовались будем судить по наличию формы logout
     public function isAuth($data)
     {
-        return strpos((string) $data, 'Выход') ? true : false;
+        return strpos((string)$data, 'Выход') ? true : false;
     }
 
     /**
@@ -65,7 +65,7 @@ class UpdateCatalog
         fwrite($bite, $out);
         fclose($bite);
 
-        echo ('<b>Загружен ' . $typeDesc . '</b><br>');
+        echo('<b>Загружен ' . $typeDesc . '</b><br>');
         $this->update($nameFile);
     }
 
@@ -88,7 +88,7 @@ class UpdateCatalog
             $count = $count + 1;
 
             $vendor = $item[0];
-            $price = (int) $item[2];
+            $price = (int)$item[2];
             $price = round($price * 5);
             $countBaget = round($item[6]);
 
@@ -111,10 +111,10 @@ class UpdateCatalog
 
         $countWitheStorageIsNotNull = $count - $countWitheStorageIsNull;
 
-        echo ('Колличество строк в файле: <b>' . $count . '</b><br>');
-        echo ('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
-        echo ('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
-        echo ('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
+        echo('Колличество строк в файле: <b>' . $count . '</b><br>');
+        echo('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
+        echo('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
+        echo('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
     }
 
     public function printTextUpdateRows()
@@ -141,6 +141,6 @@ $instance->db_connect();
 $instance->getCatalog($wood_url, 'wood');
 $instance->getCatalog($plastic_url, 'plastic');
 
-echo ('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
-echo ('<hr>');
-echo ($instance->printTextUpdateRows());
+echo('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
+echo('<hr>');
+echo($instance->printTextUpdateRows());

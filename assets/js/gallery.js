@@ -6,10 +6,10 @@ var pos = -1,
     n = 0;
 var isFocus = true;
 window.addEventListener('keydown', handler, false);
-window.onfocus = function() {
+window.onfocus = function () {
     isFocus = true;
 }
-window.onblur = function() {
+window.onblur = function () {
     isFocus = false;
 }
 
@@ -73,7 +73,7 @@ function rotate() {
     if (isFocus) {
         rt();
     }
-    setTimeout(function() {
+    setTimeout(function () {
         rotate();
     }, 4000);
 }
@@ -107,7 +107,7 @@ function handler(event) {
 }
 
 
-setTimeout(function() {
+setTimeout(function () {
     //document.getElementById("gc").innerHTML=document.getElementById("gc").innerHTML = ges;
     rotate();
 }, 10);

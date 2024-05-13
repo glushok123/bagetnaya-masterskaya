@@ -281,17 +281,17 @@
 
         <? if ($z[11] == "0") { ?>
         width = document.body.clientWidth;
-       // height = document.body.clientHeight;
+        // height = document.body.clientHeight;
 
 
         width = document.body.clientWidth - document.getElementById("block2").clientWidth
         height = window.screen.availHeight - 300
 
 
-       // width = $('#block-orient-width').width();
+        // width = $('#block-orient-width').width();
         //height = $('#block-orient-width').height();
 
-       // console.log(width, height)
+        // console.log(width, height)
         if (height == 0) {
             height = 250
         }

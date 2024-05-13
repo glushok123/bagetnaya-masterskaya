@@ -17,7 +17,7 @@ try {
 
     $orderId = $dbh->lastInsertId('id');
 
-    $to      = 'manager@bagetnaya-masterskaya.com';
+    $to = 'manager@bagetnaya-masterskaya.com';
     //$to      = 'glushok19999@gmail.com';
     $subject = 'Заказ № ' . $orderId . ' картины с Багетной мастерской';
     $message = "

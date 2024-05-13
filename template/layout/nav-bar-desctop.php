@@ -1,4 +1,4 @@
-<div class='box-shadow-custom'>
+<div class='box-shadow-custom desctop-nav'>
 
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid ">
@@ -7,7 +7,9 @@
             <?
             if (!isMobile()) {
                 ?>
-                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt="" class='img-brand' style="width: auto; height: 80px;"> </a>
+                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt=""
+                                                                        class='img-brand'
+                                                                        style="width: auto; height: 80px;"> </a>
 
                 <?
             } else {
@@ -205,7 +207,8 @@
         <div class='text-end custom-margin-navbar-2-row'>
             <div class="d-inline">
                 <div class="nav-item d-inline">
-                    <a class="nav-link d-inline" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить картину</a>
+                    <a class="nav-link d-inline" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
+                        картину</a>
                 </div>
             </div>
             <div class="d-inline ">
@@ -240,28 +243,3 @@
     ?>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // make it as accordion for smaller screens
-        if (window.innerWidth > 768) {
-            document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
-                everyitem.addEventListener('mouseover', function (e) {
-                    let el_link = this.querySelector('a[data-mdb-toggle]');
-                    if (el_link != null) {
-                        let nextEl = el_link.nextElementSibling;
-                        el_link.classList.add('show');
-                        nextEl.classList.add('show');
-                    }
-                });
-                everyitem.addEventListener('mouseleave', function (e) {
-                    let el_link = this.querySelector('a[data-mdb-toggle]');
-                    if (el_link != null) {
-                        let nextEl = el_link.nextElementSibling;
-                        el_link.classList.remove('show');
-                        nextEl.classList.remove('show');
-                    }
-                });
-            });
-        }
-    });
-</script>

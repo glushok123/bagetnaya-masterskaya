@@ -9,7 +9,7 @@ if (isset($_POST['my_file_calcfile'])) {
     // cоздадим папку если её нет
     if (!is_dir($uploaddir)) mkdir($uploaddir, 0777);
 
-    $files      = $_FILES; // полученные файлы
+    $files = $_FILES; // полученные файлы
     $done_files = [];
 
     // переместим файлы из временной директории в указанную

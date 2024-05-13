@@ -8,6 +8,6 @@ $stm = $dbh->prepare("
         where id = " . $_POST['id']);
 $stm->execute();
 
-echo ($stm->execute());
-    //echo(json_encode($_POST['description']));
-    //echo 'success';
+echo($stm->execute());
+//echo(json_encode($_POST['description']));
+//echo 'success';

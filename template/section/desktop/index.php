@@ -14,12 +14,13 @@
         </div-->
 
         <style>
-            .grafik-test{
+            .grafik-test {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            .grafik-test div{
+
+            .grafik-test div {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -31,10 +32,12 @@
                 padding: 5px !important;
                 box-shadow: 0px 0px 30px #bebebe;
             }
-            .grafik-test div span{
+
+            .grafik-test div span {
                 border-top: 2px solid white;
             }
-            .grafik-test div.today{
+
+            .grafik-test div.today {
                 background: #ef7f11;
                 color: #fff;
             }
@@ -50,10 +53,11 @@
                         <div class="swiper-wrapper">
                             <!-- Slides -->
                             <? foreach ($elementsSlider1 as $element) { ?>
-                            <div class="swiper-slide parent-hover-show-desc">
-                                <img src="<?=$element['src']?>" alt="<?=$element['desc']?>" class='index-img-top'>
-                                <div class='my-3 text-center desc-hidden'><?=$element['desc']?></div>
-                            </div>
+                                <div class="swiper-slide parent-hover-show-desc">
+                                    <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>"
+                                         class='index-img-top'>
+                                    <div class='my-3 text-center desc-hidden'><?= $element['desc'] ?></div>
+                                </div>
                             <? } ?>
                         </div>
                     </div>
@@ -73,13 +77,20 @@
                 <div class="mt-3">
                     <a href="/baget_online">
                         <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>Конструктор багета <b>online</b></button>
+                                class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
+                            Конструктор багета <b>online</b></button>
                     </a>
                     <br>
-                    <a href="/сatalog-of-finished-works.php"><button class='button button-custom-index button-color-company-golden fix-width-185'>Наши
-                            работы</button></a>
-                    <a href="/actions.html"><button
-                            class='button button-custom-index button-color-company-golden fix-width-185 ml-55'>Акции</button></a>
+                    <a href="/сatalog-of-finished-works.php">
+                        <button class='button button-custom-index button-color-company-golden fix-width-185'>Наши
+                            работы
+                        </button>
+                    </a>
+                    <a href="/actions.html">
+                        <button
+                                class='button button-custom-index button-color-company-golden fix-width-185 ml-55'>Акции
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -94,12 +105,12 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <? foreach ($elementsSlider2 as $element) { ?>
-                <div class="swiper-slide parent-hover-show-desc swiper-slide-2">
-                    <div class='absolute b-0'>
-                        <img src="<?=$element['src']?>" alt="<?=$element['desc']?>" class='index-img-slider-2'>
-                        <div class='my-3 text-center desc-hidden'><?=$element['desc']?></div>
+                    <div class="swiper-slide parent-hover-show-desc swiper-slide-2">
+                        <div class='absolute b-0'>
+                            <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>" class='index-img-slider-2'>
+                            <div class='my-3 text-center desc-hidden'><?= $element['desc'] ?></div>
+                        </div>
                     </div>
-                </div>
                 <? } ?>
             </div>
         </div>
@@ -117,7 +128,8 @@
         </div>
         <div class='row my-5'>
             <div class='col-4'>
-                <video src="/video/output(compress-video-online.com).mp4" width="250px" height="430px" autoplay loop muted controls></video>
+                <video src="/video/output(compress-video-online.com).mp4" width="250px" height="430px" autoplay loop
+                       muted controls></video>
             </div>
             <div class='col-4' style="padding-left: 0px;">
                 <div class='style-text font-16'>
@@ -132,8 +144,9 @@
 
                 <a href="/baget_online">
                     <button class='button button-custom-index button-color-company-red mb-3 color-white'
-                        style='width:100%'>Рассчитать
-                        стоимость багета</button>
+                            style='width:100%'>Рассчитать
+                        стоимость багета
+                    </button>
                 </a>
             </div>
             <div class='col-4' style="padding-left: 40px;">
@@ -155,7 +168,7 @@
         <div class='row  relative'>
 
             <div class='b3-name-black text-center element-animation'>Понадобились услуги недорогой</div>
-            <div class='b3-name text-center element-animation'>багетной мастерской в Москве? </div>
+            <div class='b3-name text-center element-animation'>багетной мастерской в Москве?</div>
             <div class='absolute b3-desc element-animation'>
                 Наши услуги
             </div>
@@ -165,10 +178,14 @@
             <div class='col-3'>
                 <div class='t1-bold'>У вас персональная выставка?</div>
                 <div class='my-5 color-main'>Посмотрите наше предложение по обрамлению работ багетными рамками на
-                    СПЕЦИАЛЬНЫХ УСЛОВИЯХ</div>
+                    СПЕЦИАЛЬНЫХ УСЛОВИЯХ
+                </div>
 
-                <a href=""><button class='button button-custom-index button-color-company-golden fix-width-185'
-                        style='padding:10px;'>Подробнее</button></a>
+                <a href="">
+                    <button class='button button-custom-index button-color-company-golden fix-width-185'
+                            style='padding:10px;'>Подробнее
+                    </button>
+                </a>
             </div>
             <div class='col-6' style='padding-left:50px;'>
                 <div class='style-text '>
@@ -192,7 +209,8 @@
                     <div class='b4-name'>Багетные работы</div>
                     <ul class='style-text font-16'>
                         <li class='my-1'>Обрамление вышивок, плазменных панелей, картин и репродукций, фотографий и
-                            постеров</li>
+                            постеров
+                        </li>
                         <li class='my-1'>Изготовление подрамников для холстов</li>
                         <li class='my-1'>Изготовление фигурного паспарту для акварелей, пастелей и графики</li>
                         <li class='my-1'>Зеркала в багетной раме</li>
@@ -208,7 +226,7 @@
             </div>
             <div class='row my-20 element-animation'>
                 <div class='col element-animation'>
-                    <div class='b4-name'>Широкоформатная печать на холсте </div>
+                    <div class='b4-name'>Широкоформатная печать на холсте</div>
                     <div class='style-text font-16 my-3'>
                         Это лучшая идея для подарка. Можно создать портрет на холсте с фотографии. А если Вы хотите
                         создать домашний уют с помощью картины, обратите внимание на такую услугу, как интерьерная
@@ -238,8 +256,11 @@
                         легким весом, высоким уровнем прочности и стойкостью к негативным факторам окружающей среды.
                     </div>
                     <br><br>
-                    <a href="/сatalog-of-finished-works.php"><button class='button button-custom-index button-color-company-golden '
-                            style='width:100%;'>Узнать подробнее об услугах мастерской</button></a>
+                    <a href="/сatalog-of-finished-works.php">
+                        <button class='button button-custom-index button-color-company-golden '
+                                style='width:100%;'>Узнать подробнее об услугах мастерской
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -260,8 +281,9 @@
                 <img src="/assets/img/index/image_screen_5.webp" alt="" style='width:100%'>
                 <a href="/baget_online">
                     <button class='button button-custom-index button-color-company-red mb-3 color-white mt-5'
-                        style='width:100%'>Рассчитать
-                        стоимость багета</button>
+                            style='width:100%'>Рассчитать
+                        стоимость багета
+                    </button>
                 </a>
             </div>
             <div class='col-12 col-md-6'>
@@ -444,64 +466,63 @@
 </section>
 
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
 ?>
 
 
-
 <style>
-.swiper-1 {
-    width: 413px;
-    height: 380px;
-}
+    .swiper-1 {
+        width: 413px;
+        height: 380px;
+    }
 
-.swiper-2 {
-    width: 100%;
-    height: 500px;
-}
+    .swiper-2 {
+        width: 100%;
+        height: 500px;
+    }
 </style>
 
 <script>
-const swiper = new Swiper('.swiper-1', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
-    autoplay: {
-        delay: 3000,
-    },
-    speed: 800,
-    effect: 'cube',
-    shadowOffset: 20,
-    shadowScale: 0.94,
-    lideShadows: true,
-    shadow: true
-});
+    const swiper = new Swiper('.swiper-1', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        autoplay: {
+            delay: 3000,
+        },
+        speed: 800,
+        effect: 'cube',
+        shadowOffset: 20,
+        shadowScale: 0.94,
+        lideShadows: true,
+        shadow: true
+    });
 
-const swiper2 = new Swiper('.swiper-2', {
-    slidesPerView: 4,
-    loop: true,
-    spaceBetween: 30,
-    //mousewheel: true,
-    autoplay: {
-        delay: 3000,
-    },
-});
+    const swiper2 = new Swiper('.swiper-2', {
+        slidesPerView: 4,
+        loop: true,
+        spaceBetween: 30,
+        //mousewheel: true,
+        autoplay: {
+            delay: 3000,
+        },
+    });
 
-$(document).on('click', '.razdel', function() {
-    let blockClose = $(this).find('.close-block')
-    let blockOpen = $(this).find('.open-block')
-    let section = $(this).parent().parent()
-    let blockContent = section.find('.content')
+    $(document).on('click', '.razdel', function () {
+        let blockClose = $(this).find('.close-block')
+        let blockOpen = $(this).find('.open-block')
+        let section = $(this).parent().parent()
+        let blockContent = section.find('.content')
 
-    if (blockClose.hasClass('hidden')) {
-        blockClose.removeClass('hidden')
-        blockOpen.addClass('hidden')
-        blockContent.addClass('hidden')
-    } else {
-        blockClose.addClass('hidden')
-        blockOpen.removeClass('hidden')
-        blockContent.removeClass('hidden')
-    }
-})
+        if (blockClose.hasClass('hidden')) {
+            blockClose.removeClass('hidden')
+            blockOpen.addClass('hidden')
+            blockContent.addClass('hidden')
+        } else {
+            blockClose.addClass('hidden')
+            blockOpen.removeClass('hidden')
+            blockContent.removeClass('hidden')
+        }
+    })
 </script>

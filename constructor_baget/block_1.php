@@ -3,20 +3,20 @@
         <div class="col-6 ms-auto ">
             <h2 class='c1 element-animation'>Примерить картину к багету</h2>
             <?
-                if ($z[8] != 0) {
-                    [$width, $height] = getimagesize($picname);
-                    echo '	<strong>Обратите внимание</strong><br>
+            if ($z[8] != 0) {
+                [$width, $height] = getimagesize($picname);
+                echo '	<strong>Обратите внимание</strong><br>
                     <br>Печать изображения не входит в стоимость заказа<br>
                     <a onclick="z[8]=0; rePage ();" class="t2 ">Убрать изображение картины</a>';
-                } else {
-                    echo '
+            } else {
+                echo '
                     <form id="fileform" action="/upload.php?id=' . implode("l", $z) . '" method="post" enctype="multipart/form-data">
                         <label class="btn btn-secondary b1">
                             <input type="file" name="filename"  onchange="javascript:this.form.submit();" style="display:none;">
                             Выберите файл
                         </label>
                     </form>';
-                }
+            }
             ?>
         </div>
         <div class="col-6 mx-auto">
@@ -25,7 +25,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                Подбираем  багетную рамку с
+                Подбираем багетную рамку с
                 Искусственным интеллектом
             </button>
 
@@ -33,19 +33,19 @@
         <div class="col-6 mx-auto hidden">
             <h2 class='c1'>Просмотр в интерьере</h2>
             <?
-               
-                if ($z[11] != 0) {
-                    echo '	<a onclick="z[11]=0; rePage ();" class="t2">Убрать изображение интерьера</a>';
-                } else {
-                    echo '	
+
+            if ($z[11] != 0) {
+                echo '	<a onclick="z[11]=0; rePage ();" class="t2">Убрать изображение интерьера</a>';
+            } else {
+                echo '	
                     <form id="fileform2" action="/upload2.php?id=' . implode("l", $z) . '" method="post" enctype="multipart/form-data">
                         <label class="btn btn-secondary b1">
                             <input type="file" name="filename" onchange="javascript:this.form.submit();" style="display:none;">
                             Выберите файл
                         </label>
                     </form>';
-                }
-                
+            }
+
             ?>
         </div>
     </div>
@@ -53,5 +53,5 @@
 </div>
 
 <style>
-    
+
 </style>

@@ -24,7 +24,7 @@ foreach ($xmlwood->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = (int) $item->quantity->countse;
+    $countW[$s] = (int)$item->quantity->countse;
     $price = round($priceW[$s] * 3.5);
     $count = round($countW[$s]);
 
@@ -62,7 +62,7 @@ foreach ($xmlplast->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }*/
 
-    $countW[$s] = (int) $item->quantity->countse;
+    $countW[$s] = (int)$item->quantity->countse;
     $price = round($priceW[$s] * 5);
     $count = round($countW[$s]);
 
@@ -97,7 +97,7 @@ foreach ($xmlalum->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = (int) $item->quantity->countse;
+    $countW[$s] = (int)$item->quantity->countse;
     $price = round($priceW[$s] * 3.5);
     $count = round($countW[$s]);
 
@@ -132,7 +132,7 @@ foreach ($xmlpasp->category->item as $item) {
         $priceW[$s] = $item->price->chop;
     }
 
-    $countW[$s] = (int) $item->quantity->countse;
+    $countW[$s] = (int)$item->quantity->countse;
     $price = round($priceW[$s] * 5);
     $count = round($countW[$s]);
 

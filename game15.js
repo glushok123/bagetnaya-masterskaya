@@ -11,89 +11,90 @@ shuf();
 
 
 function move(target) {
-	if (shufle) {
-		return;
-	}
-	var i1 = target.className.substr(1, 2);
-	var blank = document.getElementById('p16');
-	var i2 = blank.className.substr(1, 2);
-	if ((Math.abs(i1 - i2) == 4) || (i1 - i2 == 1 && i1 != 1 && i1 != 5 && i1 != 9 && i1 != 13) || (i2 - i1 == 1 && i1 != 4 && i1 != 8 && i1 != 12 && i1 != 16)) {
-		blank.className = 'p' + i1;
-		target.className = 'p' + i2;
-	}
-	if (check()) {
-		winwin();
-	}
+    if (shufle) {
+        return;
+    }
+    var i1 = target.className.substr(1, 2);
+    var blank = document.getElementById('p16');
+    var i2 = blank.className.substr(1, 2);
+    if ((Math.abs(i1 - i2) == 4) || (i1 - i2 == 1 && i1 != 1 && i1 != 5 && i1 != 9 && i1 != 13) || (i2 - i1 == 1 && i1 != 4 && i1 != 8 && i1 != 12 && i1 != 16)) {
+        blank.className = 'p' + i1;
+        target.className = 'p' + i2;
+    }
+    if (check()) {
+        winwin();
+    }
 }
 
 function check() {
-	for (var i = 1; i < 17; i++) {
-		if (document.getElementById('p' + i).className != 'p' + i) {
-			return false;
-		}
-	};
-	return true;
+    for (var i = 1; i < 17; i++) {
+        if (document.getElementById('p' + i).className != 'p' + i) {
+            return false;
+        }
+    }
+    ;
+    return true;
 }
 
 function shuf() {
-	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-	var h = 0;
-	var flag = true;
-	var chet = 0;
-	while (flag || h < 50) {
-		h++;
-		var a = Math.floor(Math.random() * 15);
-		var b = Math.floor(Math.random() * 15);
-		var c = arr[a];
-		arr[a] = arr[b];
-		arr[b] = c;
-		setTimeout("document.getElementById('p" + (a + 1) + "').className='p" + arr[a] + "';", h * 50);
-		setTimeout("document.getElementById('p" + (b + 1) + "').className='p" + arr[b] + "';", h * 50);
-		chet = 0;
-		flag = true;
-		for (var i = 0; i < 15; i++) {
-			for (var j = i; j < 15; j++) {
-				if (arr[i] > arr[j]) {
-					chet++;
-				}
-			}
-		}
-		if (Math.round(chet / 2) == chet / 2) {
-			flag = false;
-		}
-	}
-	setTimeout("shufle=false", 2500);
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    var h = 0;
+    var flag = true;
+    var chet = 0;
+    while (flag || h < 50) {
+        h++;
+        var a = Math.floor(Math.random() * 15);
+        var b = Math.floor(Math.random() * 15);
+        var c = arr[a];
+        arr[a] = arr[b];
+        arr[b] = c;
+        setTimeout("document.getElementById('p" + (a + 1) + "').className='p" + arr[a] + "';", h * 50);
+        setTimeout("document.getElementById('p" + (b + 1) + "').className='p" + arr[b] + "';", h * 50);
+        chet = 0;
+        flag = true;
+        for (var i = 0; i < 15; i++) {
+            for (var j = i; j < 15; j++) {
+                if (arr[i] > arr[j]) {
+                    chet++;
+                }
+            }
+        }
+        if (Math.round(chet / 2) == chet / 2) {
+            flag = false;
+        }
+    }
+    setTimeout("shufle=false", 2500);
 }
 
 function winwin() {
-	var req = getXmlHttp();
-	var url = '/game15.php';
+    var req = getXmlHttp();
+    var url = '/game15.php';
 
-	$.ajax({
-		url: '/game15.php',
-		method: 'post',
-		success: function (data) {
-			game15.className = 'game15end';
-			game15.innerHTML = "<div>Промокод: <b>" + data + "</b><br>Действителен 48 часов.<br>Для активизации сообщите промокод менеджеру или используйте в конструкторе багета.</div>";
-			var date = new Date;
-			date.setDate(date.getDate() + 1);
-		},
-	});
+    $.ajax({
+        url: '/game15.php',
+        method: 'post',
+        success: function (data) {
+            game15.className = 'game15end';
+            game15.innerHTML = "<div>Промокод: <b>" + data + "</b><br>Действителен 48 часов.<br>Для активизации сообщите промокод менеджеру или используйте в конструкторе багета.</div>";
+            var date = new Date;
+            date.setDate(date.getDate() + 1);
+        },
+    });
 
-	/*req.onreadystatechange = function () {
-		//if (req.readyState == 4) {
-			//if (req.status == 200) {
-				game15.className = 'game15end';
-				game15.innerHTML = "<div>Промокод: <b>" + req.responseText + "</b><br>Действителен 48 часов.<br>Для активизации сообщите промокод менеджеру или используйте в конструкторе багета.</div>";
-				var date = new Date;
-				date.setDate(date.getDate() + 1);
-				//document.cookie = "skidkod=" + req.responseText + "; path=/; expires=" + date.toUTCString();
-			//} else {
-			//	game15.className = 'game15end';
-			//	game15.innerHTML = "<div>Ошибка</div>";
-			//}
-		//}*/
-	//}
-	//req.open('GET', url, true);
-	//req.send(null);
+    /*req.onreadystatechange = function () {
+        //if (req.readyState == 4) {
+            //if (req.status == 200) {
+                game15.className = 'game15end';
+                game15.innerHTML = "<div>Промокод: <b>" + req.responseText + "</b><br>Действителен 48 часов.<br>Для активизации сообщите промокод менеджеру или используйте в конструкторе багета.</div>";
+                var date = new Date;
+                date.setDate(date.getDate() + 1);
+                //document.cookie = "skidkod=" + req.responseText + "; path=/; expires=" + date.toUTCString();
+            //} else {
+            //	game15.className = 'game15end';
+            //	game15.innerHTML = "<div>Ошибка</div>";
+            //}
+        //}*/
+    //}
+    //req.open('GET', url, true);
+    //req.send(null);
 }

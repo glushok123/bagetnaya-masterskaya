@@ -3,19 +3,25 @@
         <!--<div class="calcblock calchefo">Расчет цены</div>-->
         <div class="calcblock">
             <div class="calcblockinfo">Выберите интересующую вас услугу:</div>
-            <div id="serv21" class="calcservsel" onclick="makeprice('1',1);"><span>Печать<br>на холсте<br>300 г/м2</span></div>
-            <div id="serv22" class="calcservs" onclick="makeprice('2',1);"><span>Печать<br>на матовой<br>200 г/м2</span></div>
-            <div id="serv23" class="calcservs" onclick="makeprice('3',1);"><span>Печать<br>на глянцевой<br>250 г/м2</span></div>
+            <div id="serv21" class="calcservsel" onclick="makeprice('1',1);">
+                <span>Печать<br>на холсте<br>300 г/м2</span></div>
+            <div id="serv22" class="calcservs" onclick="makeprice('2',1);"><span>Печать<br>на матовой<br>200 г/м2</span>
+            </div>
+            <div id="serv23" class="calcservs" onclick="makeprice('3',1);">
+                <span>Печать<br>на глянцевой<br>250 г/м2</span></div>
             <!--div id="serv27" class="calcservs" onclick="makeprice('7',1);"><span>Накатка<br>на пенокартон<br>для студентов</span></div-->
-            <div id="serv24" class="calcservs" onclick="makeprice('4',1);"><span>Накатка<br>на пенокартон<br>5 мм</span></div>
+            <div id="serv24" class="calcservs" onclick="makeprice('4',1);"><span>Накатка<br>на пенокартон<br>5 мм</span>
+            </div>
             <!--div id="serv25" class="calcservs" onclick="makeprice('5',1);"><span>Накатка<br>на пенокартон<br>10 мм</span></div-->
-            <div id="serv26" class="calcservs" onclick="makeprice('6',1);"><span>Натяжка<br>на подрамник<br>50х18 мм</span></div>
+            <div id="serv26" class="calcservs" onclick="makeprice('6',1);">
+                <span>Натяжка<br>на подрамник<br>50х18 мм</span></div>
         </div>
         <div class="calcblock">
             <div class="calcblockinfo">Выберите размеры и количество:</div>
             <form name="form" onsubmit="return false;">
                 <input type="text" id="widinp2" name="wid" onchange="makeprice(0,1);" value="210" autocomplete="off">х
-                <input type="text" id="heiinp2" name="hei" onchange="makeprice(0,1);" value="297" autocomplete="off">мм<br>
+                <input type="text" id="heiinp2" name="hei" onchange="makeprice(0,1);" value="297"
+                       autocomplete="off">мм<br>
                 <input type="text" id="numinp2" name="num" onchange="makeprice(0,1);" value="1" autocomplete="off">шт
             </form>
             <div id="calcsize24" class="calcsizesel" onclick="setPrice2('a4')">А4</div>

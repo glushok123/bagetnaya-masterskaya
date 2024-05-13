@@ -1,14 +1,13 @@
-
 <?
-    $stm = $dbh->prepare("SELECT * FROM category_gallery_works");
-    $stm->execute();
-    $categoryGalleryWorkImages = $stm->fetchAll();
+$stm = $dbh->prepare("SELECT * FROM category_gallery_works");
+$stm->execute();
+$categoryGalleryWorkImages = $stm->fetchAll();
 
-    $categoryGalleryWorks = [];
+$categoryGalleryWorks = [];
 
-    foreach ($categoryGalleryWorkImages as $item) {
-        $categoryGalleryWorks[$item['id']] = $item['name'];
-    }
+foreach ($categoryGalleryWorkImages as $item) {
+    $categoryGalleryWorks[$item['id']] = $item['name'];
+}
 ?>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade row " id="plast" role="tabpanel" aria-labelledby="home-tab">
@@ -46,14 +45,17 @@
                 <div class="row">
                     <br>
                     <div class='col'>
-                        <button type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#ModalAddGalleryWorks">Добавить</button>
+                        <button type="button" class="btn btn-info add" data-bs-toggle="modal"
+                                data-bs-target="#ModalAddGalleryWorks">Добавить
+                        </button>
                     </div>
                     <div class='col'>
-                        <select class="form-select" aria-label="Default select example" style="margin:10px;" id='selectCategoryGalleryWorks'>
+                        <select class="form-select" aria-label="Default select example" style="margin:10px;"
+                                id='selectCategoryGalleryWorks'>
                             <?
-                                foreach ($categoryGalleryWorks as $key => $value) {
+                            foreach ($categoryGalleryWorks as $key => $value) {
                                 echo '<option value="' . $key . '">' . $value . '</option>';
-                                }
+                            }
                             ?>
                         </select>
                     </div>
@@ -61,11 +63,11 @@
                 <div class="" style="width:100%">
                     <table id="gallery-works-tables" class="table table-striped" style="width:100%">
                         <thead>
-                            <tr>
-                                <th>Фото</th>
-                                <th>Категория</th>
-                                <th>Описание</th>
-                            </tr>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Категория</th>
+                            <th>Описание</th>
+                        </tr>
                         </thead>
                         <tbody>
                     </table>

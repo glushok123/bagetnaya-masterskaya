@@ -1,16 +1,20 @@
 <div class='container' id='dashbord-baget'>
     <div class='row text-center justify-content-center'>
 
-        <button type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#ModalAddCatalog">Добавить</button>
+        <button type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#ModalAddCatalog">
+            Добавить
+        </button>
         <div class='container'>
             <div class='row justify-content-center'>
                 <div class='col'>
                     <div class="input-group justify-content-center">
-                        <input type="search" class="form-control rounded" placeholder="Артикул" aria-label="Search" aria-describedby="search-addon" id='searchId' />
+                        <input type="search" class="form-control rounded" placeholder="Артикул" aria-label="Search"
+                               aria-describedby="search-addon" id='searchId'/>
                         <button type="button" class="btn btn-outline-primary">Поиск по артиклу</button>
                     </div>
                     <div class="input-group justify-content-center">
-                        <input type="search" class="form-control rounded" placeholder="Цена" aria-label="Search" aria-describedby="search-addon" id='searchPrice' />
+                        <input type="search" class="form-control rounded" placeholder="Цена" aria-label="Search"
+                               aria-describedby="search-addon" id='searchPrice'/>
                         <button type="button" class="btn btn-outline-primary">Поиск по цене</button>
                     </div>
                 </div>

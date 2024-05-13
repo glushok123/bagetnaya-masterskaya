@@ -14,7 +14,7 @@ try {
 
     $orderId = $dbh->lastInsertId('id');
 
-    $to      = 'manager@bagetnaya-masterskaya.com';
+    $to = 'manager@bagetnaya-masterskaya.com';
     //$to      = 'glushok19999@gmail.com';
     $subject = 'Заявка № ' . $orderId . ' на обратную связь';
     $message = "

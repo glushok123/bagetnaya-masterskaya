@@ -53,7 +53,7 @@ class UpdateCatalog
         $data = file_get_contents($url, false, $context);
         file_put_contents('updateFileXlsx/' . $nameFile, $data);
 
-        echo ('<b>Загружен ' . $typeDesc . '</b><br>');
+        echo('<b>Загружен ' . $typeDesc . '</b><br>');
         $this->update($nameFile);
     }
 
@@ -83,7 +83,7 @@ class UpdateCatalog
         while ($countListTest != $countList) {
             if ($countListTest == 0) {
                 $dataArray = $xls->rows();
-            }else{
+            } else {
                 $dataArray = $xls->rows($countListTest);
             }
             foreach ($dataArray as $row) {
@@ -106,14 +106,14 @@ class UpdateCatalog
         }
 
         foreach ($data as $item) {
-            if (round( (int) $item['count']) == 0) {
+            if (round((int)$item['count']) == 0) {
                 $countWitheStorageIsNull = $countWitheStorageIsNull + 1;
             }
 
             $count = $count + 1;
             $vendor = $item['article'];
-            $price = round(str_replace(',', '', (string) $item['price']));
-            $countBaget = round(str_replace('>', '', (string) $item['count']));
+            $price = round(str_replace(',', '', (string)$item['price']));
+            $countBaget = round(str_replace('>', '', (string)$item['count']));
 
             $multiplier = 5;
 
@@ -149,11 +149,11 @@ class UpdateCatalog
         }
 
         $countWitheStorageIsNotNull = $count - $countWitheStorageIsNull;
-        echo ('<hr>');
-        echo ('Колличество элементов в файле: <b>' . $count . '</b><br>');
-        echo ('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
-        echo ('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
-        echo ('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
+        echo('<hr>');
+        echo('Колличество элементов в файле: <b>' . $count . '</b><br>');
+        echo('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
+        echo('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
+        echo('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
     }
 
     public function printTextUpdateRows()
@@ -176,7 +176,7 @@ class UpdateCatalog
     public function outArray(mixed $array, $var = 'array', $_livel = null): string
     {
         $out = $margin = '';
-        $nr  = "<br>";
+        $nr = "<br>";
         $tab = "\t";
 
         if (is_null($_livel)) {
@@ -210,7 +210,7 @@ class UpdateCatalog
                     } elseif (is_numeric($row)) {
                         $out .= $row;
                     } else {
-                        $out .= "'" . addslashes((string) $row) . "'";
+                        $out .= "'" . addslashes((string)$row) . "'";
                     }
 
                     if ($count > $i) {
@@ -223,7 +223,7 @@ class UpdateCatalog
 
                 $out .= $margin . ')';
             } else {
-                $out .= "'" .  addslashes((string) $array) . "'";
+                $out .= "'" . addslashes((string)$array) . "'";
             }
         }
 
@@ -236,6 +236,6 @@ $instance = new UpdateCatalog();
 $instance->db_connect();
 $instance->getCatalog($url, 'общий каталог Lion');
 
-echo ('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
-echo ('<hr>');
-echo ($instance->printTextUpdateRows());
+echo('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
+echo('<hr>');
+echo($instance->printTextUpdateRows());

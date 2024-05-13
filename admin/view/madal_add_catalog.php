@@ -13,7 +13,7 @@
                             <div class="mb-3">
                                 <label for="type_catalog" class="form-label">Выберите тип:</label>
                                 <select id="type_catalog" name="type_catalog" class="form-select form-control">
-                                    <option value='' selected>Выберите ... </option>
+                                    <option value='' selected>Выберите ...</option>
                                     <option value='plast'>Пластик</option>
                                     <option value='wood'>Дерево</option>
                                     <option value='alum'>Алюминий</option>
@@ -52,7 +52,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="imgConst" class="form-label">Картинка для рамы: </label>
-                                <input class="form-control" type="file" id="imgConst" name="imgConst" accept=".jpg,.jpeg">
+                                <input class="form-control" type="file" id="imgConst" name="imgConst"
+                                       accept=".jpg,.jpeg">
                             </div>
                             <div class="mb-3">
                                 <label for="listImg" class="form-label">Картинка для каталога: </label>
