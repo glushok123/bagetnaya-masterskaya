@@ -66,8 +66,8 @@
                     </div>
                     <div class='col'>
                         <h3 style="margin-bottom: 0px;">БАРРИКАДНАЯ</h3>
-                        <a href="tel:+79779647429" style="color: black;text-decoration: none;">
-                            <h5 style="color: red;text-decoration: none;">Cкоро открытие!</h5>
+                        <a href="tel:+79773147771" style="color: black;text-decoration: none;">
+                            <h5 style="color: red;text-decoration: none;">Открытие 16.05.2024!</h5>
                         </a>
                     </div>
 

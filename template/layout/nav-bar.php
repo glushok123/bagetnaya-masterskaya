@@ -170,8 +170,8 @@
         </div>
         <div class='col-4'>
             <span>БАРРИКАДНАЯ</span>
-            <a href="tel:+79779647429" style="color: black;text-decoration: none;"><br>
-                <span style="color: red;text-decoration: none;">Cкоро открытие!</span>
+            <a href="tel:+79773147771" style="color: black;text-decoration: none;"><br>
+                <span style="color: red;text-decoration: none;">Открытие 16.05.2024!</span>
             </a>
         </div>
     </div>
