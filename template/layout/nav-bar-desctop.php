@@ -220,6 +220,7 @@
                         <div class='my-2 px-3'>
                             <div class='nav-name-metro'>м. Арбат</div>
                             <div class='nav-address my-2'>Москва, м. Арбатская, ул. Арбат д. 1</div>
+                            <div class='nav-phone'>8 (495) 665-25-61</div>
                             <div class='nav-phone'>8 (926) 865-92-95 (WhatsApp)</div>
                             <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
                         </div>
@@ -229,6 +230,7 @@
                         <div class='my-2 px-3'>
                             <div class='nav-name-metro'>м. Новокузнецкая</div>
                             <div class='nav-address my-2'>Москва, м. Новокузнецкая, Климентовский переулок, 6</div>
+                            <div class='nav-phone'>8 (499) 714-80-62</div>
                             <div class='nav-phone'>8 (977) 824-42-12 (WhatsApp)</div>
                             <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
                         </div>

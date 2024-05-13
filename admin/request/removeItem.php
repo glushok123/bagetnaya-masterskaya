@@ -8,7 +8,6 @@ if (isset($_POST["idItem"])) {
 }
 
 $stm = $dbh->prepare("SELECT * FROM catalog_baget where id = '" . $idItem . "'");
-$stm->bindParam(1, $z[0]);
 $stm->execute();
 $data = $stm->fetch();
 
