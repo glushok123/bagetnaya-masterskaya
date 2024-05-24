@@ -115,6 +115,7 @@ if (isset($_GET["pomokod"])) {
                 <option selected disabled></option>
                 <option value="м. Арбатская">м. Арбатская</option>
                 <option value="м. Новокузнецкая">м. Новокузнецкая</option>
+                <option value="м. Баррикадная">м. Баррикадная</option>
 
             </select>
             Комментарий или дополнительные пожелания: <BR><textarea name="reviu"
