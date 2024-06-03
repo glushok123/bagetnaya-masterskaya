@@ -1,12 +1,14 @@
 <?php
-$keyw = "Багетная рама, рамка для картины, купить рамку";
-$titl = "Рамки для картин в Багетной мастерской №1";
-$desc = "Багетные рамы из дерева, пластика и металла для самых разных предметов искусства! Как выбрать и купить рамку в Багетной мастерской №1 – читайте в статье!";
-$gallery = "ramki_dlya_kartin";
-include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
+$keywords = "Багетная рама, рамка для картины, купить рамку";
+$title = "Рамки для картин в Багетной мастерской №1";
+$description = "Багетные рамы из дерева, пластика и металла для самых разных предметов искусства! Как выбрать и купить рамку в Багетной мастерской №1 – читайте в статье!";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » Багетные рамки</div>
+
+<div class="container text-center">
     <h1>БАГЕТНАЯ РАМА – НАЗНАЧЕНИЕ, ИСТОРИЯ, МАТЕРИАЛЫ</h1>
+    <hr>
     <div id="main">
         <p>
             Что появилось раньше: яйцо или курица? Аналогичный вопрос можно задать и относительно живописи и багетных
@@ -83,15 +85,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
         <p>С уважением к Вам, С любовью к Искусству!</p>
         <p>Багетная мастерская №1</p>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+</div>
 
 <?
-include $_SERVER['DOCUMENT_ROOT'] . "/b3.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

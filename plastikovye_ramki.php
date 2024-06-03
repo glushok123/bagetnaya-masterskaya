@@ -1,19 +1,21 @@
 <?php
-$keyw = "Пластиковая рамка, рамка из пластика, пластиковый багет";
-$titl = "Пластиковые рамки для картин в Багетной мастерской №1!";
-$desc = "Заказывайте рамки из пластика за 2 минуты! Сроки, стоимость и наличие пластикового багета в Багетной мастерской №1";
+$keywords = "Пластиковая рамка, рамка из пластика, пластиковый багет";
+$title = "Пластиковые рамки для картин в Багетной мастерской №1!";
+$description = "Заказывайте рамки из пластика за 2 минуты! Сроки, стоимость и наличие пластикового багета в Багетной мастерской №1";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » ПЛАСТИКОВЫЙ БАГЕТ</div>
-    <h1>ПЛАСТИКОВЫЙ БАГЕТ – ПРИМЕНЕНИЕ И ПРОИЗВОДСТВО</h1>
+    <div class="container ">
 
+    <h1>ПЛАСТИКОВЫЙ БАГЕТ – ПРИМЕНЕНИЕ И ПРОИЗВОДСТВО</h1>
+        <hr>
     <div id="main">
         <img src="/img/article/photo_2023-07-03_14-31-57.jpg" align="left" style="
 		object-fit: cover;
   		width: 230px;
   		height: 230px;
-	">
+  		padding: 10px;
+	" width="200px">
         <p>
             Рамки из пластика – это достаточно популярный материал, участвующий в оформлении картин, вышивок,
             репродукций, зеркал. Рамы из такого материала достаточно прочные, и одновременно легкие, что позволяет
@@ -59,7 +61,7 @@ include "header.php";
         <hr>
         <h5>ПЛАСТИКОВЫЕ РАМКИ В НАЛИЧИИ</h5>
         <hr>
-        <img src="/img/article/photo_2023-07-03_14-32-07.jpg" align="right">
+        <img src="/img/article/photo_2023-07-03_14-32-07.jpg" align="right" width="200px">
         <p>
             У Вас стандартный формат картины или грамоты? Вы можете купить в салонах Багетной мастерской №1 уже
             готовые рамы со стеклом, картоном и тросиком для развешивания! В мастерских выставлены на продажу
@@ -77,14 +79,10 @@ include "header.php";
         <h5>С любовью к Искусству! </h5>
         <h5>Команда Багетной мастерской №1</h5>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b1.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

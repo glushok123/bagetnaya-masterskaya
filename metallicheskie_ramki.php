@@ -1,13 +1,13 @@
 <?php
-$keyw = "Алюминиевый багет, металлические рамки, рамка из металла";
-$titl = "Качественные металлические рамки в Багетной мастерской №1! ";
-$desc = "Стильные варианты алюминиевого багета для Ваших картин и постеров здесь! Ширина рамки от 4мм! ";
+$keywords = "Алюминиевый багет, металлические рамки, рамка из металла";
+$title = "Качественные металлические рамки в Багетной мастерской №1! ";
+$description = "Стильные варианты алюминиевого багета для Ваших картин и постеров здесь! Ширина рамки от 4мм! ";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » Алюминиевый багет</div>
+    <div class="container">
     <h1>Качественные металлические рамки в Багетной мастерской №1!</h1>
-
+    <hr>
     <div id="main">
         <hr>
         <h5>АЛЮМИНИЕВЫЙ БАГЕТ – ПРИМЕНЕНИЕ И ПРОИЗВОДСТВО</h5>
@@ -17,7 +17,8 @@ include "header.php";
 		object-fit: cover;
   		width: 230px;
   		height: 230px;
-	">
+  		padding: 10px;
+	" width="200px">
 
         <p>
             Если Вы в поиске современной рамки для Вашего интерьера – рекомендуем обратить внимание на варианты багета
@@ -68,7 +69,7 @@ include "header.php";
         <hr>
         <h5>МЕТАЛЛИЧЕСКИЕ РАМКИ – НАЛИЧИЕ И ГАРАНТИЯ КАЧЕСТВА</h5>
         <hr>
-        <img src="/img/article/photo_2023-07-07_11-51-48.jpg" align="right">
+        <img src="/img/article/photo_2023-07-07_11-51-48.jpg" align="right" width="200px">
         <p>
             Багетная мастерская №1 всегда в ответе за поставку качественной продукции. Со своей стороны мы предоставляем
             гарантию 1 год на любые изделия и заказы, выполненные нашей командой!
@@ -85,14 +86,10 @@ include "header.php";
         <h5>С любовью к Искусству! </h5>
         <h5>Команда Багетной мастерской №1</h5>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+        </div>
 <?
-include "b1.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

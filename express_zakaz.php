@@ -1,16 +1,16 @@
 <?php
-$keyw = "Рамка день в день, рамка срочно, заказать рамку";
-$titl = "Изготовление рамки день в день! Экспресс-заказ от 30 минут в Багетной мастерской №1";
-$desc = "Необходима рамка срочно? Изготовим для Вас оформление картины или рамку день в день в самые короткие сроки!";
+$keywords = "Рамка день в день, рамка срочно, заказать рамку";
+$title = "Изготовление рамки день в день! Экспресс-заказ от 30 минут в Багетной мастерской №1";
+$description = "Необходима рамка срочно? Изготовим для Вас оформление картины или рамку день в день в самые короткие сроки!";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » EXPRESS-ЗАКАЗ: Изготовление рамки день в день</div>
+    <div class="container">
     <h1>EXPRESS-ЗАКАЗ: Изготовление рамки день в день</h1>
-
+        <hr>
     <div id="main">
 
-        <img src="/img/photo_2023-06-13_17-17-31.jpg" align="left">
+        <img src="/img/photo_2023-06-13_17-17-31.jpg" align="left" width="200px" style="padding: 10px">
         <p>
             Нередко возникают ситуации, когда выполненный заказ нужен еще вчера!
             Рамка для грамоты лучшему сотруднику месяца, багет для семейного портрета
@@ -59,14 +59,10 @@ include "header.php";
         <br>
         <h5>Багетная мастерская №1</h5>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b3.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

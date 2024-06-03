@@ -1,17 +1,18 @@
 <?php
-$keyw = "Живопись дома, рамка на заказ, рамка для картины";
-$titl = "Как правильно выбрать рамку для картины?";
-$desc = "Рамки на заказ в Багетной мастерской №1: дизайнерское оформление живописи для дома, офиса и других интерьеров.";
+$keywords = "Живопись дома, рамка на заказ, рамка для картины";
+$title = "Как правильно выбрать рамку для картины?";
+$description = "Рамки на заказ в Багетной мастерской №1: дизайнерское оформление живописи для дома, офиса и других интерьеров.";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » Оформление живописи</div>
-    <h1>Оформление живописи</h1>
+    <div class="container text-center">
 
+    <h1>Оформление живописи</h1>
+        <hr>
     <div id="main">
         <h1>Как правильно выбрать рамку для картины?</h1>
 
-        <img src="/img/IMG_0454.JPG" align="left">
+        <img src="/img/IMG_0454.JPG" align="left" width="200px">
         <p>
             Картины сегодня важный атрибут каждого пространства! Нередко жилые дома или офисы
             украшают классической или современной живописью. И здесь немаловажную роль играет
@@ -35,7 +36,7 @@ include "header.php";
             <li>как именно Вам хотелось бы оформить картину?</li>
         </ul>
 
-        <img src="/img/IMG_7515.JPG" align="right">
+        <img src="/img/IMG_7515.JPG" align="right" width="200px">
 
         <p>
             Несмотря на множество профессиональных мнений о том, какая рама должна быть у
@@ -63,14 +64,10 @@ include "header.php";
             красивой рамки на заказ!
         </p>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b3.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

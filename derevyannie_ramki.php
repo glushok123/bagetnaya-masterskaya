@@ -1,15 +1,15 @@
 <?php
-$keyw = "Деревянная рамка, деревянный багет, рамка из дерева";
-$titl = "Деревянные рамки для картин в Багетной мастерской №1! ";
-$desc = "Выбирайте и заказывайте рамки из дерева для картин в салонах Багетной мастерской №1! Широкий ассортимент и исключительное качество деревянного багета здесь!";
+$keywords = "Деревянная рамка, деревянный багет, рамка из дерева";
+$title = "Деревянные рамки для картин в Багетной мастерской №1! ";
+$description = "Выбирайте и заказывайте рамки из дерева для картин в салонах Багетной мастерской №1! Широкий ассортимент и исключительное качество деревянного багета здесь!";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » ДЕРЕВЯННЫЕ РАМКИ</div>
+    <div class="container">
     <h1>ДЕРЕВЯННЫЕ РАМКИ – ДЛЯ ЧЕГО ИСПОЛЬЗУЮТСЯ И КАК ВЫБРАТЬ</h1>
-
+    <hr>
     <div id="main">
-        <img src="/img/article/photo_2023-06-30_22-46-43.jpg" align="left">
+        <img src="/img/article/photo_2023-06-30_22-46-43.jpg" align="left" width="200px">
         <p>
             Деревянные профили для картин всегда ценились любителями искусства при художественном оформлении.
             За долго до современного производства рамки из дерева для картин вырезались вручную багетными мастерами
@@ -52,7 +52,7 @@ include "header.php";
         <hr>
         <h5>РАМКИ ИЗ ДЕРЕВА В НАЛИЧИИ</h5>
         <hr>
-        <img src="/img/article/photo_2023-06-30_22-46-47.jpg" align="right">
+        <img src="/img/article/photo_2023-06-30_22-46-47.jpg" align="right"  width="200px">
 
         <p>
             Вы в поиске деревянных рамок для картин и не только? В коллекции Багетной мастерской №1 множество деревянных
@@ -66,14 +66,10 @@ include "header.php";
         <h5>С любовью к Искусству! </h5>
         <h5>Команда Багетной мастерской №1</h5>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b1.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

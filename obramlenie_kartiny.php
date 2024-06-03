@@ -1,21 +1,19 @@
 <?php
-$keyw = "Багет для картины, заказать рамку, купить рамку";
-$titl = "Багет для картины – где заказать, цена";
-$desc = "Необходим багет для картины? Заказать рамку по приятной цене в Багетной мастерской №1 легко! Скидка 10% на первый заказ!";
-include "header.php"
+$keywords = "Багет для картины, заказать рамку, купить рамку";
+$title = "Багет для картины – где заказать, цена";
+$description = "Необходим багет для картины? Заказать рамку по приятной цене в Багетной мастерской №1 легко! Скидка 10% на первый заказ!";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
 
-    <div id="crops"><a href="/">Главная</a> » <a href="/bagetnye_raboty/">Багетные работы</a> » <a
-                href="/bagetnye_raboty/obramlenie/">Обрамление</a> » Обрамление картины
-    </div>
+    <div class="container ">
     <h1>В поиске багета для картины? </h1>
+<hr>
     <div id="main">
         <p>
             Багетная мастерская №1 предлагает Вам воспользоваться услугами нашей профессиональной команды!
             Широкий выбор багетных рам различных материалов, стандартные и текстурированные паспарту,
             декоративные канты – здесь Вы точно сможете найти идеальный вариант оформления для Ваших картин!
         </p>
-        <? include "picture.php" ?>
 
         <p>Какие материалы для рам мы используем: </p>
         <ul>
@@ -72,12 +70,12 @@ include "header.php"
             для получения скидки 10% на первый заказ!
         </p>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 
-<? include "b3.php" ?>
+
+<?
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
+?>

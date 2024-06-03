@@ -1,17 +1,18 @@
 <?php
-$keyw = "Объект в рамке, предмет интерьера, украсить интерьер";
-$titl = "Чем украсить интерьер? Оформляйте объекты в рамке с Багетной мастерской №1 !";
-$desc = "Создать предмет интерьера легко! Сухоцветы, ракушки, монеты, украшения или слепки: подскажем наилучший вариант специально для Вас!";
+$keywords = "Объект в рамке, предмет интерьера, украсить интерьер";
+$title = "Чем украсить интерьер? Оформляйте объекты в рамке с Багетной мастерской №1 !";
+$description = "Создать предмет интерьера легко! Сухоцветы, ракушки, монеты, украшения или слепки: подскажем наилучший вариант специально для Вас!";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » Объектное оформление</div>
+    <div class="container text-center">
     <h1>Объектное оформление</h1>
+        <hr>
 
     <div id="main">
         <h1>Объектное оформление как эффектный предмет интерьера</h1>
 
-        <img src="/img/photo_2023-05-15_13-26-09.jpg" align="left">
+        <img src="/img/photo_2023-05-15_13-26-09.jpg" align="left" width="200px">
         <p>
             Чем украсить свой дом? Или офисное пространство? Каждый, кто любит необычные и индивидуальные вещи,
             задавался этим вопросом.
@@ -47,7 +48,7 @@ include "header.php";
         <h5>Как создается оформление объекта в рамке </h5>
 
 
-        <img src="/img/photo_2023-05-15_13-26-27.jpg" align="right">
+        <img src="/img/photo_2023-05-15_13-26-27.jpg" align="right" width="200px">
 
         <p>
             Объектное оформление требует не только богатой фантазии дизайнера, но и высокого профессионализма багетного
@@ -72,15 +73,11 @@ include "header.php";
             свяжутся с Вами и предложат лучшие варианты!
         </p>
     </div>
+    </div>
 
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
 <?
-include "b3.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

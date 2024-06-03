@@ -1,13 +1,13 @@
 <?php
-$keyw = "Как ухаживать за, рамка для картины, багетная рамка";
-$titl = "Уход за рамкой для картины: советы команды Багетной мастерской №1";
-$desc = "Как ухаживать за багетной рамкой? Делится опытом в статье команда Багетной мастерской №1 ";
+$keywords = "Как ухаживать за, рамка для картины, багетная рамка";
+$title = "Уход за рамкой для картины: советы команды Багетной мастерской №1";
+$description = "Как ухаживать за багетной рамкой? Делится опытом в статье команда Багетной мастерской №1 ";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » Алюминиевый багет</div>
+    <div class="container ">
     <h1>Уход за рамкой для картины: советы команды Багетной мастерской №1</h1>
-
+    <hr>
     <div id="main">
         <p>
             Багетные изделия – удовольствие недешевое. Рамы для картин несут не только декоративную функцию,
@@ -100,14 +100,10 @@ include "header.php";
         <h5>С любовью к Искусству! </h5>
         <h5>Команда Багетной мастерской №1</h5>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b1.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

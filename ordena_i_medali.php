@@ -1,13 +1,13 @@
 <?php
-$keyw = "Ордена и медали, награды и ордена, оформить награды";
-$titl = "Где заказать панно для наград и орденов?";
-$desc = "Оформление ценных вещей с профессиональной командой Багетной мастерской №1 ";
+$keywords = "Ордена и медали, награды и ордена, оформить награды";
+$title = "Где заказать панно для наград и орденов?";
+$description = "Оформление ценных вещей с профессиональной командой Багетной мастерской №1 ";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » <a href="/ordena_i_medali.php ">Где заказать панно для наград и
-            орденов?</a></div>
+    <div class="container text-center">
     <h1>Где заказать панно для наград и орденов</h1>
+    <hr>
     <div id="main">
         <p>
             Памятные вещи заслуживают достойного оформления!
@@ -43,16 +43,10 @@ include "header.php";
         </p>
 
     </div>
-
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 
 <?
-include "b3.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

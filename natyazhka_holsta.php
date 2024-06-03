@@ -1,22 +1,21 @@
 <?php
-$keyw = "Подрамник, натяжка холста, холст на подрамнике";
-$titl = "В поисках мастерской, где качественно выполнят работу по натяжке холста?";
-$desc = "Профессиональная натяжка холста на подрамник в Багетной мастерской №1";
-$gallery = "holst_na_podramnike";
-include "header.php";
+$keywords = "Подрамник, натяжка холста, холст на подрамнике";
+$title = "В поисках мастерской, где качественно выполнят работу по натяжке холста?";
+$description = "Профессиональная натяжка холста на подрамник в Багетной мастерской №1";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-
-    <div id="crops"><a href="/">Главная</a> » Натяжка холста</div>
+    <div class="container text-center">
     <h1>Натяжка холста: виды</h1>
+    <hr>
     <div id="main">
-        <? include "gallery.php" ?>
+
 
 
         <hr>
         <h5>В поисках мастерской, где качественно выполнят работу по натяжке холста?</h5>
         <hr>
 
-        <img src="/img/IMG_0575.JPEG" align="left">
+        <img src="/img/IMG_0575.JPEG" align="left" width="200px">
         <p>
             Команда Багетной мастерской №1 готова помочь определиться с наиболее подходящим способом!
             В статье мы расскажем, какие подрамники существуют, а также виды натяжки.
@@ -37,7 +36,7 @@ include "header.php";
 
 
         <ul>
-            <img src="/img/IMG_0574.JPEG" align="right">
+            <img src="/img/IMG_0574.JPEG" align="right" width="200px">
             <li>
                 <b>Стандартная (обычная) натяжка</b> – скоба при таком способе вбивается в торцевую
                 часть свободной от изображения ткани. Такой тип натяжки используется в случае,
@@ -49,7 +48,7 @@ include "header.php";
                 остается белой. Чаще всего используется студийная натяжка при оформлении
                 печатных фотографий на холсте.
             </li>
-            <img src="/img/IMG_0573.JPEG" align="left">
+            <img src="/img/IMG_0573.JPEG" align="left" width="200px">
             <li>
                 <b>Галерейная натяжка</b> – самый распространенный способ натяжки холста,
                 если в последствии картину или фотографию на холсте не планируется
@@ -66,7 +65,7 @@ include "header.php";
         <h5>Как выбрать способ натяжки?</h5>
         <hr>
 
-        <img src="/img/IMG_0576.JPEG" align="right">
+        <img src="/img/IMG_0576.JPEG" align="right" width="200px">
         <p>
             В первую очередь стоит определить необходим ли вообще подрамник.
             Написанные маслом или акрилом полотна всегда натягиваются на деревянный каркас,
@@ -93,14 +92,10 @@ include "header.php";
             выполнить работу качественно и с гарантией!
         </p>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b3.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

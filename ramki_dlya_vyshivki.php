@@ -1,22 +1,14 @@
 <?php
-$keyw = "рамки для вышивки, оформление вышивки, купить рамку";
-$titl = "Где приобрести подходящую рамку для вышивки? ";
-$desc = "Профессиональное оформление вышивок командой Багетной мастерской №1! Подберем и создадим для Вас идеальную рамку!";
+$keywords = "рамки для вышивки, оформление вышивки, купить рамку";
+$title = "Где приобрести подходящую рамку для вышивки? ";
+$description = "Профессиональное оформление вышивок командой Багетной мастерской №1! Подберем и создадим для Вас идеальную рамку!";
 $gallery = "ramki_dlya_vyshivki";
-include "header.php"
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » Рамки для вышивки</div>
+    <div class="container text-center">
     <h1>Багетные рамки для вышивки: элегантно, красиво, эффектно</h1>
+        <hr>
     <div id="main">
-        <!--p class="info">Девушки, занимающиеся рукоделием,
-            прекрасно знают, что недостаточно просто вышить картину
-            гладью или расшить полотно бисером, необходимо еще и
-            соответствующим образом оформить свою работу. В противном
-            случае ткань с нанесенным на нее узором, так и останется
-            обычной тканью, не будет выглядеть эффектно. Чем же украсить
-            работу, чтобы она приобрела достойный внешний вид? Конечно же,
-            красивым обрамлением, подобранным в тон.</p-->
-        <? include "gallery.php" ?>
 
         <p>
             Вышивки гладью или бисером –
@@ -64,14 +56,10 @@ include "header.php"
             купить рамку онлайн!
         </p>
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b3.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>

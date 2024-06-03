@@ -1,17 +1,17 @@
 <?php
-$keyw = "Багетная мастерская, выбрать рамку, дизайнер на дом";
-$titl = "Выездной подбор с Багетной мастерской №1 – выбираем рамки на территории Заказчика!";
-$desc = "Желаете выбрать рамку, не выходя из дома? Команда Багетной мастерской №1 предлагает Вам воспользоваться услугой выезда дизайнера на дом!";
+$keywords = "Багетная мастерская, выбрать рамку, дизайнер на дом";
+$title = "Выездной подбор с Багетной мастерской №1 – выбираем рамки на территории Заказчика!";
+$description = "Желаете выбрать рамку, не выходя из дома? Команда Багетной мастерской №1 предлагает Вам воспользоваться услугой выезда дизайнера на дом!";
 
-include "header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div id="crops"><a href="/">Главная</a> » ВЫЕЗДНОЙ ПОДБОР БАГЕТА</div>
-    <h1>ВЫЕЗДНОЙ ПОДБОР БАГЕТА</h1>
-
-    <div id="main">
+    <div class="container text-center">
+        <h1>ВЫЕЗДНОЙ ПОДБОР БАГЕТА</h1>
+        <hr>
+        <div id="main">
         <h1>Как правильно выбрать рамку для картины?</h1>
 
-        <img src="/img/photo_2023-05-26_12-21-33.jpg" align="left">
+        <img src="/img/photo_2023-05-26_12-21-33.jpg" align="left" width="150px">
         <p>
             Нет возможности приехать с картиной в багетную мастерскую? Наша команда предлагает воспользоваться
             набирающей популярность услугу: выездной подбор багета! Подбор рам для картин всегда кропотливый процесс.
@@ -43,14 +43,9 @@ include "header.php";
         <h5>Багетная мастерская №1</h5>
 
     </div>
-    <div id="side">
-        <h3>Смотрите также</h3>
-        <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
-            багетные рамки</a>
-        <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_foto.html" class="fast1">Рамки для фотографий и постеров</a>
-        <a href="/bagetnye_ramki/bagetnye_ramki_dlya_ikon.html" class="fast1">Багетные рамки для икон</a>
+    </div>
 <?
-include "b3.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
 ?>
