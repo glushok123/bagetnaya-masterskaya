@@ -171,7 +171,7 @@
         <div class='col-4'>
             <span>БАРРИКАДНАЯ</span>
             <a href="tel:+79773147771" style="color: black;text-decoration: none;"><br>
-                <span style="color: red;text-decoration: none;">8(977) 314-77-71</span>
+                <span style="text-decoration: none;">8(977) 314-77-71</span>
             </a>
         </div>
     </div>
