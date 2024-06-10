@@ -147,6 +147,7 @@
                 return false;
             }
 
+
             /*if (! $("#email").val()) {
                 $("#email").addClass('is-invalid');
                 toastr.error('Необходимо заполнить email !');
@@ -168,8 +169,7 @@
             };
 
 
-            $('#feedbackModal').modal('hide');
-            $('#order-status-model').modal('show');
+
 
             $.ajax({
                 url: '/admin/request/saveFeedBackRequest.php',
@@ -178,9 +178,14 @@
                 data: data,
                 success: function (data) {
                     if (data.success == true) {
+                        $('#feedbackModal').modal('hide');
+                        $('#order-status-model').modal('show');
                         $('#exampleModal').modal('hide');
                         $('#order-id').text(data.order_id)
                         $('#order-status-model').modal('show');
+                    }
+                    if (data.success == false) {
+                            alert(data.message)
                     }
                 },
                 error: function (jqXHR, exception) {

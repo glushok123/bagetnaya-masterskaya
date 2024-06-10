@@ -2,6 +2,13 @@
 require_once '../../base/connect.php';
 
 try {
+    if(empty($_POST['comment'])){
+        echo json_encode([
+            'success' => false,
+            'message' => 'необходимо заполнить комментарий',
+        ], JSON_THROW_ON_ERROR);
+        die();
+    }
     $stmt = $dbh->prepare("INSERT INTO feed_back(name, email, phone, comment, created_at) values (?,?,?,?,?)");
 
     $stmt->bindParam(1, $_POST['user_name']);

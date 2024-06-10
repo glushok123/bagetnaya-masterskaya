@@ -50,7 +50,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary" id='send-order'>Отправить заявку</button>
+                <button type="button" class="btn btn-primary" id='send-order'>Отправить заявку </button>
             </div>
         </div>
     </div>
@@ -251,6 +251,7 @@
 
     //валидация данных заказа
     function validation() {
+
         $("#user-name").removeClass('is-invalid');
         $("#phone").removeClass('is-invalid');
         //$("#email").removeClass('is-invalid');
@@ -321,6 +322,6 @@
     }
 
     $(document).on('click', '#send-order', function () {
-        sendOrderRequest()
+      sendOrderRequest()
     });
 </script>
