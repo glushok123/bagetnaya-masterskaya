@@ -22,8 +22,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             вышивки!
         </p>
 
+        <br>
+        <img src="/img/article/IMG_7410.JPG" align="center" style="
+		object-fit: cover;
+  		width: 230px;
+  		height: 230px;
+	">
+        <br>
         <h5>Багетная мастерская №1 предлагает большой выбор материалов:</h5>
-        <ul>
+        <ul style="list-style-type: none;">
             <li>Большой выбор багета из дерева, пластика и алюминия</li>
             <li>Широкая цветовая палитра паспарту, а также текстурированные: бархат, лен, бэвэл и другие варианты</li>
             <li>Декоративные канты (слипы) в пластиковом и деревянном вариантах</li>
@@ -41,7 +48,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <hr>
         <h5>Преимущества заказа рамок для вышивки в Багетной мастерской №1 </h5>
         <hr>
-
+        <img src="/img/article/IMG_8536.JPG" align="center" style="
+		object-fit: cover;
+  		width: 230px;
+  		height: 230px;
+	">
+        <br>
         <p>
             Перед посещением хотите рассчитать примерную
             стоимость будущего оформления? На нашем сайте

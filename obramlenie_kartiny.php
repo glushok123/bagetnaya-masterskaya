@@ -9,6 +9,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <h1>В поиске багета для картины? </h1>
 <hr>
     <div id="main">
+        <img src="/img/article/IMG_5871.JPEG" align="left" style="
+		object-fit: cover;
+  		width: 230px;
+  		height: 230px;
+  		margin: 30px;
+	">
         <p>
             Багетная мастерская №1 предлагает Вам воспользоваться услугами нашей профессиональной команды!
             Широкий выбор багетных рам различных материалов, стандартные и текстурированные паспарту,
@@ -41,6 +47,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </ul>
 
         <h5>Сколько стоит заказать рамку? </h5>
+        <img src="/img/article/IMG_0453.JPG" align="right" style="
+		object-fit: cover;
+  		width: 230px;
+  		height: 230px;
+	">
         <p>
             С большей частью ассортимента Вы можете увидеть в нашем <a href="/baget_online">конструкторе багета</a>.
             Загрузите изображение Вашей картины, выберите понравившиеся раму и паспарту,
