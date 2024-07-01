@@ -285,7 +285,7 @@
 
 
         width = document.body.clientWidth - document.getElementById("block2").clientWidth
-        height = window.screen.availHeight * 0.7
+        height = window.screen.availHeight * 0.65
 
 
         // width = $('#block-orient-width').width();
