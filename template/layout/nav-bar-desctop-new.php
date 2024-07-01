@@ -11,7 +11,7 @@
 
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  btn resize-font gallery-works" href="#!"
+                                        <a class="nav-link  btn resize-font gallery-works" href="/сatalog-of-finished-works"
                                            id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
                                            aria-expanded="false">ГАЛЕРЕЯ РАБОТ</a>
 

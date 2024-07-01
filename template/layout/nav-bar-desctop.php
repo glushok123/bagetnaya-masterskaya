@@ -75,7 +75,7 @@
 
                 <ul class="navbar-nav ms-auto" style="margin-top: 70px;">
                     <li class="nav-item">
-                        <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="navbarDropdown2"
+                        <a class="nav-link "  id="navbarDropdown" role="button" data-bs-toggle="navbarDropdown2"
                            href="/сatalog-of-finished-works.php" aria-expanded="false">
                             Галерея работ
                         </a>
