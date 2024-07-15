@@ -23,8 +23,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                                                               itemprop="email" class="t3">
                             manager@bagetnaya-masterskaya.com</a></p>
                     <p>
-                        <strong>Телефоны: </strong><a href="tel:+74997148062" itemprop="telephone" class="t3">8 (499)
-                            714-80-62</a>, <a href="tel:+79778244212" itemprop="telephone" class="t3">8 (977) 824-42-12
+                        <strong>Телефоны: </strong><!--a href="tel:+74997148062" itemprop="telephone" class="t3">8 (499)
+                            714-80-62</a-->, <a href="tel:+79778244212" itemprop="telephone" class="t3">8 (977) 824-42-12
                             (WhatsApp)</a>
                         <a title="Whatsapp" href="https://wa.me/79778244212"><img src="img/Whatsapp_37229.png"
                                                                                   alt="Написать в Whatsapp"
