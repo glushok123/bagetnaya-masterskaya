@@ -54,6 +54,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         .card:hover {
             background: #E0D2BB;
         }
+        p{
+
+            color: #474A51;
+            font-family: Manrope;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            padding-bottom: 15px;
+
+        }
     </style>
     <div class="container ">
         <div class="row text-center mt-3 mb-5">
