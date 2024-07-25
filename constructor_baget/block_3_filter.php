@@ -138,6 +138,7 @@
                                     fill="#474A51"/>
                         </svg>
                     </span>
+
                     <span class='img-active-block-mobile open-block hidden'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
                             <path
@@ -151,20 +152,28 @@
         <div class='container my-2 content <? if (isMobile()) {
             echo ' hidden';
         } ?>'>
-            <div class='row  justify-contant-center'>
+            <div class='row  justify-contant-center '>
                 <!--div class='col-4 col-lg-3 col-xxl-2'>
                     <div class="p2">
                         <span class='s2 text-nowrap'>Ширина (мм)</span>
                     </div>
                 </div-->
-                <div class='col-4 col-md-4 col-xxl-3'>
-                    <div class="mb-3">
+                <div class='col-3 col-md-3 col-xxl-3'>
+                    <div class="mb-3 mx-auto">
                         <input type="number" class="i1 form-control" id="fwid" name="fwid" aria-describedby="emailHelp"
                                value="<?= $z[9] ?>" onchange="changesize(9);countprice ();">
                         <div id="emailHelp" class="form-text">Ширина (мм)</div>
                     </div>
                 </div>
-                <div class='col-4 col-md-4 col-xxl-3'>
+                <div class='col-1 col-md-1 col-xxl-1 '>
+                    <div class="mb-3 ">
+                        <img alt="Refresh Cw Alt 4 SVG Vector Icon" fetchpriority="high" width="30" height="30"
+                             decoding="async" data-nimg="1" src="/constructor_baget/refresh-cw-alt-4-svgrepo-com.svg"
+                             style="color: transparent; cursor: pointer" class="mx-auto" id="refresh-size">
+                    </div>
+                </div>
+
+                <div class='col-3 col-md-3 col-xxl-3'>
                     <div class="mb-3">
                         <input type="number" class="i1 form-control" id="fhig" name="fhig" aria-describedby="emailHelp"
                                value="<?= $z[10] ?>" onchange="changesize(10);countprice ();">
@@ -501,6 +510,16 @@
             let butSelected = parent.find('.custom-selected-border');
             butSelected.removeClass('custom-selected-border');
         })
+        $(document).on('click', '#refresh-size', function () {
+            let width = $('#fwid').val()
+            let hight = $('#fhig').val()
+
+            $('#fwid').val(hight);
+            $('#fhig').val(width);
+
+            changesize();
+            rePage();
+        })
     })
 </script>
 <? if (isMobile()) { ?>
@@ -521,5 +540,6 @@
                 blockContent.removeClass('hidden')
             }
         })
+
     </script>
 <? } ?>
