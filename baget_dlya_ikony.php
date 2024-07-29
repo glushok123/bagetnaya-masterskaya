@@ -6,9 +6,6 @@ $description = "Как правильно выбрать рамку для ик�
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
     <style>
-        * {
-            font-family: Cormorant Garamond;
-        }
 
         @media screen and (max-width: 1200px) {
             .castom-image {
