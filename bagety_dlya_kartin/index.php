@@ -65,6 +65,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             padding-bottom: 15px;
 
         }
+        * {
+            font-family: Cormorant Garamond;
+        }
     </style>
     <div class="container ">
         <div class="row text-center mt-3 mb-5">
@@ -75,10 +78,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row m-3">
             <div class="col-12 col-md-5 my-auto">
                 <img src="/img/article/IMG_9690.JPEG" style="
-                        object-fit: cover;
-                        width: 100%;
-                        height: auto;
-                        max-height: 300px;
+                      max-width: 100%;
+                      height: auto;
                     ">
                 <br>
                 <div class="fst-italic mx-auto"><b>Оформление Багетной мастерской №1</b></div>
@@ -115,10 +116,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row m-3">
             <div class="col-12 col-md-5 my-auto">
                 <img src="/img/article/IMG_5732.JPEG" style="
-                        object-fit: cover;
-                        width: 100%;
-                        height: auto;
-                        max-height: 300px;
+                      max-width: 100%;
+                      height: auto;
                     ">
                 <br>
 
@@ -189,10 +188,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row mt-5 mb-5">
             <div class="col-12 col-md-5 my-auto">
                 <img src="/img/article/IMG_9043.JPG" style="
-                        object-fit: cover;
-                        width: 100%;
-                        height: auto;
-                        max-height: 300px;
+                      max-width: 100%;
+                      height: auto;
                     ">
                 <br>
             </div>
