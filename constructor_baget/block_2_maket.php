@@ -9,10 +9,15 @@
         <div id='bagcont'>
 
             <?
-            $stmt = $dbh->prepare("SELECT listimg FROM catalog_baget WHERE publicvendor=?");
+            $stmt = $dbh->prepare("SELECT * FROM catalog_baget WHERE publicvendor=?");
             $stmt->bindParam(1, $z[3]);
             $stmt->execute();
             $data = $stmt->fetchAll();
+
+            $stmtBaget = $dbh->prepare("SELECT * FROM catalog_baget WHERE publicvendor=?");
+            $stmtBaget->bindParam(1, $z[0]);
+            $stmtBaget->execute();
+            $dataBaget = $stmtBaget->fetchAll();
             ?>
 
             <div id='bgpass' class='baganim' style="background: url('pi/<?= $data[0]['listimg'] ?>');">
@@ -23,7 +28,7 @@
             if (isset($_COOKIE['catalogfile']) && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $_COOKIE['catalogfile'])) {
                 echo 'background:url(/' . $_COOKIE['catalogfile'] . ') repeat-x';
             } else {
-                echo 'background:url(/bi/' . $z[0] . 't.jpg) repeat-x';
+                echo 'background:url(/bi/' . $dataBaget[0]['imgconst'] . ') repeat-x';
             }
             ?>
                     "></div>
@@ -34,7 +39,7 @@
                 ?>
                     background:url('/<?= $_COOKIE['catalogfile'] ?>') repeat-x;
             <? } else { ?>
-                    background:url('/bi/<?= $z[0] ?>t.jpg') repeat-x;
+                    background:url('/bi/<?= $dataBaget[0]['imgconst'] ?>') repeat-x;
             <? } ?>
                     "></div>
 
@@ -43,7 +48,7 @@
                 <? if (isset($_COOKIE['catalogfile']) && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $_COOKIE['catalogfile'])) { ?>
                         background:url('/<?= $_COOKIE['catalogfile'] ?>') repeat-x;
                 <? } else { ?>
-                        background:url('/bi/<?= $z[0] ?>t.jpg') repeat-x;
+                        background:url('/bi/<?= $dataBaget[0]['imgconst'] ?>') repeat-x;
                 <? } ?>
                         ">
                 </div>
@@ -54,7 +59,7 @@
                 <? if (isset($_COOKIE['catalogfile']) && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $_COOKIE['catalogfile'])) { ?>
                         background:url('/<?= $_COOKIE['catalogfile'] ?>') repeat-x;
                 <? } else { ?>
-                        background:url('/bi/<?= $z[0] ?>t.jpg') repeat-x;
+                        background:url('/bi/<?= $dataBaget[0]['imgconst'] ?>') repeat-x;
                 <? } ?>
                         ">
                 </div>
