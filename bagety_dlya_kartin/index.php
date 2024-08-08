@@ -65,26 +65,26 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             padding-bottom: 15px;
 
         }
-        * {
+        #page {
             font-family: Cormorant Garamond;
         }
     </style>
-    <div class="container ">
+    <div class="container " id="page">
         <div class="row text-center mt-3 mb-5">
             <h1 class="color-main">Багет для картин и фотографий в <br>Багетной мастерской №1</h1>
         </div>
 
 
         <div class="row m-3">
-            <div class="col-12 col-md-5 my-auto">
+            <div class="col-12 col-md-4 my-auto">
                 <img src="/img/article/IMG_9690.JPEG" style="
-                      max-width: 100%;
+                      max-width: 80%;
                       height: auto;
                     ">
                 <br>
                 <div class="fst-italic mx-auto"><b>Оформление Багетной мастерской №1</b></div>
             </div>
-            <div class="col-12 col-md-7 my-auto">
+            <div class="col-12 col-md-8 my-auto">
                 <p class="my-auto">
                     Памятные фотографии и ценные сердцу картины, ценные открытки и детские рисунки… Такие работы
                     особенно важно сохранять!
@@ -114,15 +114,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="row m-3">
-            <div class="col-12 col-md-5 my-auto">
+            <div class="col-12 col-md-4 my-auto">
                 <img src="/img/article/IMG_5732.JPEG" style="
-                      max-width: 100%;
+                        max-width: 80%;
                       height: auto;
                     ">
                 <br>
 
             </div>
-            <div class="col-12 col-md-7">
+            <div class="col-12 col-md-8">
                 <p>
                     В нашем ассортименте Вы можете найти рамы из следующих материалов: дерево, пластик, алюминий. Каждый
                     материал может быть применим для любого типа работ, однако следует учитывать множество факторов,
