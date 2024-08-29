@@ -6,10 +6,12 @@
 
 
             <div class='row'>
-                <div class='col-10'>
+                <div class='col-12' style="padding: 0px !important;">
                     <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt=""
                                                                             class='img-brand'
-                                                                            style="width: 186px; height: auto;"></a>
+                                                                            style="width: 136px; height: auto;"></a>
+                    <a href="https://api.whatsapp.com/send/?phone=79774274477&text=Здравствуйте%2C+у+меня+есть+вопрос"><img src="/admin/assets/whatsapp-logo_icon-icons.com_66175.png" style="width: 25px; height: auto"></a>
+                    <a href="tel:+79774274477" style="color: black; font-size: 14px; text-decoration: none;">+7-977-427-44-77</a>
                 </div>
             </div>
 
@@ -67,6 +69,7 @@
                             Услуги
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">КОМПЛЕКТ ДЛЯ КАРТИНЫ: РАССЧИТАТЬ СТОИМОСТЬ САМОСТОЯТЕЛЬНО</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
                             <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
@@ -94,8 +97,7 @@
                             <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для
                                     картины</a>
                             </li>
-                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Оформление художественных
-                                    выставок</a></li>
+
                             <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
                         </ul>
                     </li>
@@ -145,7 +147,7 @@
 
 
 </div>
-<div class="mobali-nav">
+<!--div class="mobali-nav">
     <div class='row pt-2 px-1 text-center justify-content-center box-shadow-custom ' style="
                     color: #0f0f0f;
                     font-family: Cormorant Garamond;
@@ -175,5 +177,5 @@
             </a>
         </div>
     </div>
-</div>
+</div-->
 

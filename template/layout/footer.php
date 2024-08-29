@@ -17,7 +17,7 @@
 
                         <span class='pl-10'>
                         8 (926) 865-92-95 салон на Арбатскойㅤㅤ
-                    </span>
+                        </span>
                     </div>
 
                     <div class='footer-phone my-1'>
@@ -25,8 +25,17 @@
 
                         <span class='pl-10'>
                         8 (977) 824-42-12 салон на Новокузнецкой
-                    </span>
+                        </span>
                     </div>
+
+                    <div class='footer-phone my-1'>
+                        <? require $_SERVER['DOCUMENT_ROOT'] . '/assets/svg/footer-phone.php'; ?>
+
+                        <span class='pl-10'>
+                        8(977) 314-77-71 салон на Баррикадной
+                        </span>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -17,6 +17,7 @@
 
                                         <ul class="dropdown-menu border-0 shadow bsb-zoomIn"
                                             aria-labelledby="dropdownMenuButton1">
+
                                             <li><a class="dropdown-item"
                                                    href="/сatalog-of-finished-works-by-category.php?category=Акварели,%20пастели%20и%20гравюры">Акварели, пастели и гравюры</a></li>
                                             <li><a class="dropdown-item"
@@ -43,6 +44,7 @@
 
                                         <ul class="dropdown-menu border-0 shadow bsb-zoomIn"
                                             aria-labelledby="accountDropdown">
+                                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">КОМПЛЕКТ ДЛЯ КАРТИНЫ: РАССЧИТАТЬ СТОИМОСТЬ САМОСТОЯТЕЛЬНО</a></li>
                                             <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
                                             <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
                                             <li><a class="dropdown-item"
@@ -77,7 +79,6 @@
                                             <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
                                             <li><a class="dropdown-item"
                                                    href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для картины</a></li>
-                                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Оформление художественных выставок</a></li>
                                             <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
                                         </ul>
                                     </li>

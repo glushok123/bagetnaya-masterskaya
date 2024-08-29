@@ -118,6 +118,7 @@
                             Услуги
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Комплект для картины: рассчитать стоимость</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
                             <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
@@ -145,8 +146,6 @@
                             <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для
                                     картины</a>
                             </li>
-                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Оформление художественных
-                                    выставок</a></li>
                             <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
                         </ul>
                     </li>

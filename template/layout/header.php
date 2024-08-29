@@ -71,6 +71,11 @@ $v = 14;
         <link rel="stylesheet" href="/assets/css/main.css?v<?= $v ?>">
         <link rel="stylesheet" href="/assets/css/custom-768.css?v<?= $v ?>">
 
+        <style>
+            a{
+                text-decoration: none;
+            }
+        </style>
         <meta name="yandex-verification" content="1e115d792752091b"/>
 
         <script>
