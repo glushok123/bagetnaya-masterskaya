@@ -141,7 +141,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 
         <div class="row text-center justify-content-center  mb-5">
-            <a href="/natyazhka_holsta/">
+            <a href="/prices_for_print_and_canvas">
                 <button
                         class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
                     комплект для картины</b></button>
