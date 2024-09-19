@@ -1,389 +1,210 @@
 <?php
-$keywords = "пенокартон печать, печать на пенокартоне, печать на пенокартоне в Москве";
-$title = "Заказать печать на пенокартоне в Москве";
-$description = "Багетная мастерская в Москве предлагает полноцветную печать изображений на пенокартоне.";
+$keywords = "Пенокартон, печать на пенокартоне, накатка на пенокартон";
+$title = "Накатка на пенокартон – что это и как заказать?";
+$description = "Заказать печать на пенокартоне в Багетной мастерской №1 ";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 ?>
-    <div class="container text-center">
-        <style>
-            #calc2 {
-                position: relative;
-                float: left;
-                width: 500px;
-                left: 50%;
-                margin-left: -250px;
+    <style>
+
+        @media screen and (max-width: 1200px) {
+            .castom-image {
+                width: 180px !important;
+                height: 180px !important;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .castom-image {
+                width: 170px !important;
+                height: 170px !important;
+            }
+        }
+
+        @media screen and (max-width: 760px) {
+            .castom-image {
+                width: 130px !important;
+                height: 130px !important;
             }
 
-            #calc-wrap {
-                position: relative;
-                float: left;
-                width: 100%;
+            .card-body button {
+                font-size: 14px;
             }
 
-            .calcblock {
-                position: relative;
-                float: left;
-                width: 100%;
-                margin: 5px 0 5px 0;
-                box-shadow: 0 0 4px 1px #003366;
-                background: #fff;
+            .card-body div.row a {
+                padding-left: 0px;
+                margin-left: 0px;
             }
+        }
 
-            .calchefo {
-                text-align: center;
-                background: #bbddff;
-                font-size: 1.5em;
-                line-height: 2em;
-            }
+        .castom-image {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 170px;
+            object-fit: cover;
+        }
 
-            .calcblockinfo {
-                position: relative;
-                float: left;
-                width: 100%;
-                height: 1.25em;
-                text-align: center;
-                background: #ddeeff;
-                border-bottom: solid 1px #003366;
-            }
+        .card {
+            padding-bottom: 10px;
+            border-radius: 6px;
+            border: 3px solid var(--beige, #E0D2BB);
+            height: 350px !important;
+        }
 
-            #serv1, #serv21 {
-                background: url("/img/serv1_bg.jpg") no-repeat top;
-            }
-            #serv1, #serv21 {
-                background: url("/img/serv1_bg.jpg") no-repeat top;
-            }
+        .card:hover {
+            background: #E0D2BB;
+        }
 
-            #serv2, #serv22 {
-                background: url("/img/serv1_bg.jpg") no-repeat top;
-            }
+        p {
 
-            #serv3, #serv23 {
-                background: url("/img/serv1_bg.jpg") no-repeat top;
-            }
+            color: #474A51;
+            font-family: Manrope;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            padding-bottom: 15px;
 
-            #serv4, #serv24 {
-                background: url("/img/serv2_bg.jpg") no-repeat top;
-            }
+        }
 
-            #serv7, #serv27 {
-                background: url("/img/serv2_bg.jpg") no-repeat top;
-            }
+        .home_design {
+            font-family: Cormorant Garamond;
+        }
+    </style>
 
-            #serv5, #serv25 {
-                background: url("/img/serv2_bg.jpg") no-repeat top;
-            }
+    <div class="container home_design">
+        <div class="row text-center mt-3 mb-5">
+            <h1 class="color-main mb-3">ПЕЧАТЬ И НАКАТКА НА ПЕНОКАРТОН – <br>СОВРЕМЕННОЕ РЕШЕНИЕ ДЛЯ ЭКСПОЗИЦИЙ
+            </h1>
+        </div>
+        <div class="row text-center">
+            <p class="my-auto">Современные выставки требуют современных решений! Если Вы планируете украсить Ваш
+                интерьер или сделать
+                экспозицию, где необходим строгий минимализм – воспользуйтесь услугой печати на пенокартоне! В данной
+                статье рассказываем тонкости данного багетного оформления!</p>
+        </div>
 
-            #serv6, #serv26 {
-                background: url("/img/serv3_bg.jpg") no-repeat top;
-            }
+        <div class="row text-center justify-content-center  mb-5">
+            <a href="/baget_online">
+                <button
+                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
+                    Рассчитать
+                    стоимость багета
+                </button>
+            </a>
+        </div>
 
-            .calcservs, .calcservsel {
-                position: relative;
-                float: left;
-                width: 25%;
-                height: 100px;
-                margin: 5px 0 5px 0;
-                cursor: pointer;
-                text-align: center;
-                color: #0033ff;
-            }
-
-            .calcservs {
-                font-size: 0.875em;
-            }
-
-            .calcservsel {
-                font-size: 0.875em;
-                text-shadow: 0 0 0.5px #0033ff;
-            }
-
-            .calcservs:hover, .calcservsel:hover {
-                color: #990000;
-            }
-
-            .calcservs span, .calcservsel span {
-                margin-top: 50px;
-                display: block;
-            }
-
-            .calcblock form {
-                display: block;
-                position: relative;
-                float: left;
-                height: 80px;
-                margin-top: 17px;
-                width: 40%;
-                text-align: center;
-            }
-
-            .calcblock form input {
-                width: 50px;
-                height: 20px;
-                margin: 2px;
-                padding: 0px;
-            }
-
-            .calcsize, .calcsizesel {
-                position: relative;
-                float: left;
-                width: 12%;
-                height: 80px;
-                margin-top: 5px;
-                cursor: pointer;
-                text-align: center;
-                color: #003366;
-                line-height: 80px;
-                font-size: 1.5em;
-            }
-
-            .calcsizesel {
-                font-weight: bold;
-            }
-            .calcsize:hover, .calcsizesel:hover {
-                color: #990000;
-            }
-
-            #calcsize0, #calcsize20 {
-                background: url("/img/calc_size_0.jpg") no-repeat center;
-            }
-
-            #calcsize1, #calcsize21 {
-                background: url("/img/calc_size_1.jpg") no-repeat center;
-            }
-
-            #calcsize2, #calcsize22 {
-                background: url("/img/calc_size_2.jpg") no-repeat center;
-            }
-
-            #calcsize3, #calcsize23 {
-                background: url("/img/calc_size_3.jpg") no-repeat center;
-            }
-
-            #calcsize4, #calcsize24 {
-                background: url("/img/calc_size_4.jpg") no-repeat center;
-            }
-        </style>
-        <script src="/assets/js/gallery.js"></script>
-        <h1>Печать и накатка на пенокартон </h1>
-        <hr>
-        <div id="main">
-            <? include "gallery.php" ?>
-            <p>Наша багетная мастерская предлагает печать на бумаге и пенокартоне. Пенокартон – один из самых
-                востребованных
-                листовых материалов в рекламной индустрии и интерьерном дизайне. Сырьем для изготовления продукции
-                служит
-                вспененный полиуретан, который с обеих сторон покрывают плотным влагостойким картоном.</p>
-            <p>На сегодняшний день выпускают пенокартон толщиной 0.5 и 1 см. Благодаря своим физико-механическим
-                свойствам
-                пенокартон прекрасно поддается обработке, хорошо держит первоначальную форму. Это исключает деформацию
-                конструкции и ухудшение ее декоративных свойств.</p>
-            <p>Вышеперечисленные качества материала обусловили высокую популярность печати на пенокартоне в Москве.
-                Структура листа является идеально гладкой и ровной, что облегчает нанесение рисунка и обеспечивает
-                эстетичный вид готового изделия. Немаловажное значение имеет и легкий вес материала, благодаря которому
-                даже
-                крупногабаритная конструкция не представляет сложности в перемещении и монтаже. Чтобы закрепить изделие
-                на
-                вертикальной поверхности, достаточно двустороннего скотча! При изготовлении постеров и фотообоев в
-                комплект
-                входит специальный подвес для крепления.</p>
-            <? $cs = 4;
-            include "calc.php" ?>
+        <div class="row m-3">
+            <div class="col-12 col-md-5 my-auto text-center">
+                <img src="/img/article/IMG_2985.JPG" style="
+                      max-width: 80%;
+                      height: auto;
+                    ">
+                <br>
+            </div>
+            <div class="col-12 col-md-7 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
+                <p class="my-auto">
+                    Пенокартон – это плотный и легкий материал, обклеенный с обеих сторон тонким картоном. Данный
+                    материал на рынке представлен в нескольких вариантах толщины: 3 мм, 5 мм, 10 мм. Существует два
+                    способа оформления постеров и фотографий: накатка на пенокартон и печать на пенокартоне. Первый
+                    способ – качественный и долговечный, однако ограничен форматом и выбором материала печати. При
+                    втором же способе Вы можете выбрать подходящий материал для печати практически в неограниченном
+                    формате!
+                </p>
 
 
-            <h2>Выполнение работы</h2>
-            <p>Печать на пенокартоне производится двумя способами. В некоторых случаях используют метод прямого
-                нанесения
-                изображения на поверхность листового материала, используя широкоформатный принтер и специальные чернила.
-                После этого рисунок подвергают УФ-облучению с целью закрепления пигмента. Этот процесс называют
-                полимеризацией, которая является основным секретом прочности и стойкости чернил к истиранию.</p>
-            <p>Также может использоваться технология печати на холсте, фотобумаге или пленке с клеевым составом, после
-                чего
-                готовую картину переносят на пенокартон. В данном случае изображение получается текстурированным,
-                сохраняя
-                первоначальную фактуру подложки.</p>
+            </div>
+        </div>
 
-            <h2>Применение</h2>
-            <p>Полноцветная печать на пенокартоне идеально подходит для изготовления интерьерной рекламы. Постеры из
-                пенокартона привлекают своей выразительностью и реалистичностью. Такие рекламно-информационные материалы
-                уместны повсюду. Их выбирают для оформления офисных пространств и жилых помещений. Конструкция не
-                занимает
-                место на полу легко вписывается в любую обстановку.</p>
 
+        <div class="row m-3">
+            <div class="col-12 col-md-7 my-auto text-end <? if (isMobile()) { ?> text-center <? } ?>">
+                <p class="my-auto">
+                    В своей работе команда Багетной мастерской №1 использует исключительно второй – раздельный способ
+                    оформления работ на пенокартоне. Так, мы можем предложить Вам распечатать фотографию или постер на
+                    разном материале: матовая или глянцевая бумага, а также холст. После этого, используя специальный
+                    PH-нейтральный клей, мы наносим изображение на пенокартон. Мы работаем с высококачественными
+                    материалами, поэтому за итоговый результат Вы можете быть спокойны!
+                </p>
+                <p class="my-auto">
+                    Чтобы рассчитать стоимость самостоятельно, переходите на нашу статью ниже!
+                </p>
+            </div>
+            <div class="col-12 col-md-5 text-center">
+                <img src="/img/article/IMG_9461.JPG" style="
+                          max-width: 80%;
+                      height: auto;
+                    ">
+                <br>
+            </div>
+        </div>
+
+
+        <div class="row text-center justify-content-center  mb-5">
+            <a href="/natyazhka_holsta/">
+                <button
+                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
+                    комплект для картины</b></button>
+            </a>
+        </div>
+
+
+        <div class="row text-center mt-3 mb-5">
+            <h3>ЧТО ОФОРМЛЯЮТ НА ПЕНОКАРТОНЕ</h3>
+            <p class="my-auto">
+                Самые распространенные оформления:<br>
+                - печатные постеры<br>
+                - художественные фотографии<br>
+                - рекламные афиши<br>
+                - географические карты<br>
+                - временные экспозиции
+
+            </p>
+        </div>
+
+
+        <div class="row m-3">
+            <div class="col-12 col-md-5 my-auto text-center">
+                <img src="/img/article/IMG_0955.JPG" style="
+                      max-width: 80%;
+                      height: auto;
+                    ">
+                <br>
+            </div>
+            <div class="col-12 col-md-7 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
+
+                    <h4>ОСОБЕННЫЕ ПЛЮСЫ</h4>
+                <p class="my-auto"> - можно оформить работу без стекла </p>
+                <p class="my-auto">        Качественно наклеенное изображение не требует стекла – отличный вариант для спальни или детской комнаты! </p>
+                <p class="my-auto">       - можно оформить работу без рамы </p>
+                <p class="my-auto">       Существуют специальные крепления для данного материала – Вы более не привязаны к тросику с обратной стороны рамы! </p><br>
+
+                    <h4>ОСОБЕННЫЕ МИНУСЫ</h4>
+                <p class="my-auto">        - пенокартон может искривляться со временем, если он без багетной рамы </p>
+                <p class="my-auto">        - легко повредить: бумажная основа поддается загибам и переломам при неаккуратном использовании </p>
+
+            </div>
+        </div>
+        <div class="row text-center">
+            <p class="my-auto">
+                Если у Вас остались вопросы по теме данной статьи, оставляйте заявку на обратную связь:
+                наши специалисты свяжутся с Вами в самое короткое время!
+            </p>
+        </div>
+
+        <div class="row text-center mt-3 mb-3 justify-content-center">
+            <button
+                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
+                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                Оставить заявку на обратную связь</b></button>
+        </div>
+
+        <div class="row text-center">
+            <h3>С уважением к Вам,</h3>
+            <h3>С любовью к Искусству! </h3>
+            <h3>Команда Багетной мастерской №1</h3>
         </div>
     </div>
-
-
-    <script>
-        function showinfo(id) {
-            if (id == 1) {
-                document.getElementById("info").innerHTML = '<h2>Сколько это стоит?</h2><p>Рассчитать, во что обойдется оформить изображение в багетную рамку можно, воспользовавшись нашим <a href="/baget_online" class="t2">БАГЕТНЫМ КОНСТРУКТОРОМ</a>, там же вы можно посмотреть весь каталог багетных рамок и при желании сразу оформить заказ. </p><p>Узнать цены на обычные услуги нашей багетной мастерской можно в следующем мини-калькуляторе, просто выберите интересующую вас услугу и укажите размеры изображения:</p><div id="calc-wrap"><div id="calc"><div class="calcblock"><div class="calcblockinfo">Выберите интересующую вас услугу:</div><div id="serv1" class="calcservsel" onclick="makeprice(1);"><span>Печать<br>на холсте<br>300 г/м2</span></div> <div id="serv2" class="calcservs" onclick="makeprice(2);"><span>Печать<br>на матовой<br>200 г/м2</span></div> <div id="serv3" class="calcservs" onclick="makeprice(3);"><span>Печать<br>на глянцевой<br>250 г/м2</span></div><div id="serv7" class="calcservs" onclick="makeprice(7);"><span>Накатка<br>на пенокартон<br>для студентов</span></div><div id="serv4" class="calcservs" onclick="makeprice(4);"><span>Накатка<br>на пенокартон<br>5 мм</span></div><div id="serv5" class="calcservs" onclick="makeprice(5);"><span>Накатка<br>на пенокартон<br>10 мм</span></div><div id="serv6" class="calcservs" onclick="makeprice(6);"><span>Натяжка<br>на подрамник<br>50х18 мм</span></div></div><div class="calcblock"><div class="calcblockinfo">Выберите размеры и количество:</div><form name="form" onsubmit="return false;"><input type="text" id="widinp" name="wid" onchange="makeprice(0);" value="210" autocomplete="off">х<input type="text" id="heiinp" name="hei" onchange="makeprice(0);" value="297" autocomplete="off">мм<br><input type="text" id="numinp" name="num" onchange="makeprice(0);" value="1" autocomplete="off">шт</form><div id="calcsize4" class="calcsizesel" onclick="setsize(4);">А4</div><div id="calcsize3" class="calcsize" onclick="setsize(3);">А3</div><div id="calcsize2" class="calcsize" onclick="setsize(2);">А2</div><div id="calcsize1" class="calcsize" onclick="setsize(1);">А1</div><div id="calcsize0" class="calcsize" onclick="setsize(0);">А0</div></div><div class="calcblock calchefo"><strong><span style="color: #f00;" id="price">546</span>&nbsp;руб.</strong></div></div></div><p>Если с самостоятельным подсчетом заказа возникли затруднения, тогда напишите или позвоните нам и наш багетный мастер поможет рассчитать Ваш заказ. Электронная почта, телефон и схема проезда на странице <a href="/#contacts" class="t2">контакты</a>.</p><p>Стоимость доставки Вашего заказа по Москве – 600 рублей. Звоните, пишите, приезжайте - ждем Ваших заказов!</p><div class="infoclose" onclick="hideinfo();"></div>';
-            }
-            if (id == 2) {
-                document.getElementById("info").innerHTML = '<h2>Как сделать и оплатить заказ?</h2>Сделать заказ в нашей Багетной Мастерской №1 можно несколькими способами:<ol><li>Заказ можно оформить в <a href="/baget_online" class="t2">БАГЕТНОМ КОНСТРУКТОРЕ</a>, там же можно расчитать стоимость работ, а так же посмотреть весь каталог багетных рамок.<br>В данном случае наш администратор непременно перезвонит Вам, уточнит параметры заказа и сообщит, когда можно будет подъехать и забрать его (по желанию оформляем доставку).</li><li>Можно приехать по адресу м.Новокузнецкая, Климентовский переулок, дом 6 (<a href="/#contacts" class="t2">схема проезда</a>) и оформить заказ на месте. Если у Вас небольшой заказ, то при наличии багета на складе, мы выполним его в Вашем присутствии за 20-30 минут. Только по предварительной записи по телефонам +7 (495) 951-77-51 или +7 (495) 504-73-04</li><li>Также, для Вашего удобства, у нас работает точка приема заказов по адресу: метро Октябрьская, Калужская площадь, дом 1, компания <a href="http://www.copymaster.biz/#contacts" class="t2" rel="nofollow">КОПИМАСТЕР</a> (100 метров от метро, отдельный вход прямо со стороны Ленинского проспекта)</li></ol><p>Частные лица могут оплачивать заказы наличными деньгами (в том числе банковской картой). Если Вы представитель юридического лица, то мы готовы выставить счет для оплаты по безналичному расчету.</p><div class="infoclose" onclick="hideinfo();"></div>';
-            }
-            if (id == 3) {
-                document.getElementById("info").innerHTML = '<h2>Что мы делаем?</h2><p>Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Варианты багетных рамок можно посмотреть в нашем <a href="/baget_online" class="t2">БАГЕТНОМ КОНСТРУКТОРЕ</a>, там же вы cможете посчитать цену работы и при желании сразу оформить заказ.</p><p>Мы печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений.</p><p>Мы делаем красивые модульные картины для Вашего интерьера.</p><p>Мы накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера.</p><p>А самое главное – мы рядом с м.Новокузнецкая и м.Третьяковская. Схему проезда можно посмотреть на странице <a href="/#contacts" class="t2">контакты</a>.</p><div class="infoclose" onclick="hideinfo();"></div>';
-            }
-            document.getElementById("info").className = 'infoshow';
-            document.getElementById('info_shade').className = 'infoshow';
-        }
-
-        function hideinfo() {
-            document.getElementById("info").className = 'infohide';
-            document.getElementById('info_shade').className = 'infohide';
-        }
-
-        var lastserv = "1";
-        var lastsize = "4";
-        var questresult = '';
-
-        function makeprice(id, ib) {
-            finalprice = 0;
-            if (id == "0") {
-                id = lastserv;
-            }
-            if (ib) {
-                document.getElementById('serv2' + lastserv).className = 'calcservs';
-                lastserv = id;
-                document.getElementById('serv2' + lastserv).className = 'calcservsel';
-                x = Number(document.getElementById('widinp2').value);
-                y = Number(document.getElementById('heiinp2').value);
-                n = Number(document.getElementById('numinp2').value);
-            } else {
-                document.getElementById('serv' + lastserv).className = 'calcservs';
-                lastserv = id;
-                document.getElementById('serv' + lastserv).className = 'calcservsel';
-                x = Number(document.getElementById('widinp').value);
-                y = Number(document.getElementById('heiinp').value);
-                n = Number(document.getElementById('numinp').value);
-            }
-            if (x > 1000 || y > 1000) {
-                if (x >= y) {
-                    z = x;
-                } else {
-                    z = y;
-                }
-            } else {
-                if (x >= y) {
-                    z = y;
-                } else {
-                    z = x;
-                }
-            }
-            s = x * y;
-
-            if (id == "1") {
-                finalprice = s * 0.007;
-            }
-            if (id == "2") {
-                finalprice = x * y * 0.0035;
-            }
-            if (id == "3") {
-                finalprice = x * y * 0.004;
-            }
-            if (id == "4") {
-                finalprice = x * y * 0.004;
-            }
-            if (id == "7") {
-                finalprice = x * y * 0.0016 * 1.3 * 0.9;
-            }
-            if (id == "5") {
-                finalprice = x * y * 0.0025 * 1.3;
-            }
-            if (id == "6") {
-                finalprice = x * y * 0.0035;
-            }
-            finalprice = n * finalprice;
-            finalprice = Math.round(finalprice);
-            if (ib) {
-                document.getElementById('price2').innerHTML = finalprice;
-            } else {
-                document.getElementById('price').innerHTML = finalprice;
-            }
-            return;
-        }
-
-        function setsize(id, ib) {
-
-            if (ib) {
-                document.getElementById('calcsize2' + lastsize).className = 'calcsize';
-                lastsize = id;
-                document.getElementById('calcsize2' + lastsize).className = 'calcsizesel';
-            } else {
-                document.getElementById('calcsize' + lastsize).className = 'calcsize';
-                lastsize = id;
-                document.getElementById('calcsize' + lastsize).className = 'calcsizesel';
-            }
-            if (id == "0") {
-                x = 841;
-                y = 1189;
-            }
-            if (id == "1") {
-                x = 594;
-                y = 841;
-            }
-            if (id == "2") {
-                x = 420;
-                y = 594;
-            }
-            if (id == "3") {
-                x = 297;
-                y = 420;
-            }
-            if (id == "4") {
-                x = 210;
-                y = 297;
-            }
-            if (ib) {
-                document.getElementById('widinp2').value = x;
-                document.getElementById('heiinp2').value = y;
-                makeprice(0, 1);
-            } else {
-                document.getElementById('widinp').value = x;
-                document.getElementById('heiinp').value = y;
-                makeprice(0);
-            }
-        }
-
-        function getXmlHttp() {
-            var xmlhttp;
-            try {
-                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-            } catch (e) {
-                try {
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                } catch (E) {
-                    xmlhttp = false;
-                }
-            }
-            if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-                xmlhttp = new XMLHttpRequest();
-            }
-            return xmlhttp;
-        }
-
-        function quest(id) {
-            var quests = document.getElementsByClassName('quest');
-            var rads = document.getElementsByName('q' + id);
-            for (var i = 0; i < rads.length; i++) {
-                if (rads[i].checked) {
-                    questresult += (i + 1) + 'l';
-                    quests[id - 1].style.display = "none";
-                    quests[id].style.display = "block";
-                    if (id == 8) {
-                        var req = getXmlHttp();
-                        var url = '/sendquest.php?id=' + questresult;
-                        req.open('GET', url, true);
-                        req.send(null);
-                    }
-                }
-            }
-            ;
-        }
-
-    </script>
 <?
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';

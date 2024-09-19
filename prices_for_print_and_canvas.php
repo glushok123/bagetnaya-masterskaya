@@ -147,7 +147,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <div class="row  text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_subframe">подрамик
+                            id="materials_subframe">подрамник
                     </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
