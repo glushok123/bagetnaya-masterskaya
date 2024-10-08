@@ -50,7 +50,7 @@
                     <select id="bagettype" name="bagettype">
                         <option value="plast">Пластик</option>
                         <option value="wood">Дерево</option>
-                        <option value="alum">Аллюминий</option>
+                        <option value="alum">Алюминий</option>
                     </select>
                 </div>
                 <div>
@@ -235,7 +235,7 @@
                         onclick="getcatalog('wood');">Дерево
                 </button>
                 <button type="button" class="bmenu-type btn b2 my-2 clear-baget-conteiner" id='get-catalog-alum'
-                        onclick="getcatalog('alum');">Аллюминий
+                        onclick="getcatalog('alum');">Алюминий
                 </button>
             </div>
         </div>

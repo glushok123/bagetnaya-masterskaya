@@ -182,6 +182,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                             data-block="glass"
                             id="glass_plastic">пластик
                     </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="glass"
+                            id="glass_museum">музейное
+                    </button>
                 </div>
                 <div class="row  p-1 m-2 text-center justify-content-center name-service">
                     Крепление для картины
@@ -335,18 +339,47 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             var glass = {
                 glass_usual: {
                     minPrice: 250,
+                    a4: 250,
+                    a3: 500,
+                    a2: 100,
+                    a1: 1500,
+                    a0: 2500,
                     m: 4400,
                 },
                 glass_anti_glare: {
-                    minPrice: 250,
-                    m: 7500,
+                    minPrice: 1500,
+                    a4: 1500,
+                    a3: 3000,
+                    a2: 6000,
+                    a1: 12500,
+                    a0: 25000,
+                    m: 4400,
                 },
                 glass_matte: {
-                    minPrice: 250,
+                    minPrice: 450,
+                    a4: 450,
+                    a3: 900,
+                    a2: 1600,
+                    a1: 2800,
+                    a0: 5500,
                     m: 30000,
                 },
                 glass_plastic: {
                     minPrice: 250,
+                    a4: 250,
+                    a3: 500,
+                    a2: 1000,
+                    a1: 1500,
+                    a0: 2500,
+                    m: 4400,
+                },
+                glass_museum: {
+                    minPrice: 1500,
+                    a4: 1500,
+                    a3: 3000,
+                    a2: 6000,
+                    a1: 12500,
+                    a0: 25000,
                     m: 4400,
                 },
             };
@@ -356,22 +389,42 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     minPrice: 250,
                     m_before: 4400,
                     m_after: 5500,
+                    a4: 840,
+                    a3: 1190,
+                    a2: 1680,
+                    a1: 2370,
+                    a0: 4490,
                 },
                 materials_foamboard: {
                     minPrice: 250,
                     m_before: 5200,
                     m_after: 9000,
+                    a4: 300,
+                    a3: 650,
+                    a2: 1300,
+                    a1: 2600,
+                    a0: 4500,
                 },
                 materials_paperboard: {
                     minPrice: 250,
                     m_before: 2000,
+                    a4: 250,
+                    a3: 350,
+                    a2: 650,
+                    a1: 1200,
+                    a0: 0,
                 },
                 materials_passepartout: {
                     minPrice: 250,
                     m_before: 4400,
                     m_after: 5500,
                     max_1: 1000,
-                    max_2: 800
+                    max_2: 800,
+                    a4: 1500,
+                    a3: 2300,
+                    a2: 3100,
+                    a1: 3900,
+                    a0: 0,
                 },
             };
 
@@ -518,11 +571,40 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             }
 
             function calcGlass() {
-                price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * glass[activeType].m * countInput.val()
-                if (price < glass[activeType].minPrice) {
-                    price = glass[activeType].minPrice
+                if (activeSize !== null) {
+                    price = glass[activeType][activeSize] * countInput.val();
+                    priceBlock.text(Math.round(price));
+                } else {
+                    sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
+
+
+                    if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
+                        activeSizeNew = 'a4'
+                    }
+
+                    if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
+                        activeSizeNew = 'a3'
+                    }
+
+                    if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
+                        activeSizeNew = 'a2'
+                    }
+
+                    if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
+                        activeSizeNew = 'a1'
+                    }
+
+                    if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
+                        activeSizeNew = 'a0'
+                    }
+
+                    if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
+                        activeSizeNew = 'a0'
+                    }
+
+                    price = glass[activeType][activeSizeNew] * countInput.val();
+                    priceBlock.text(Math.round(price));
                 }
-                priceBlock.text(Math.round(price));
             }
 
             function calcBracing() {

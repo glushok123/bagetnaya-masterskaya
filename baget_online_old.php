@@ -907,7 +907,7 @@ echo '<table width="250px" height="100%" cellpadding="0" cellspacing="0" style="
             <select id="bagettype" name="bagettype">
                 <option value="plast">Пластик</option>
                 <option value="wood">Дерево</option>
-                <option value="alum">Аллюминий</option>
+                <option value="alum">Алюминий</option>
             </select>
         </div>
         <div>
