@@ -505,17 +505,41 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     price = services[activeType][activeSize] * countInput.val();
                     priceBlock.text(price);
                 } else {
-                    price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * services[activeType].m * countInput.val()
-                    if (price < services[activeType].minPrice) {
-                        price = services[activeType].minPrice
+                    sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
+
+
+                    if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
+                        activeSizeNew = 'a4'
                     }
+
+                    if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
+                        activeSizeNew = 'a3'
+                    }
+
+                    if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
+                        activeSizeNew = 'a2'
+                    }
+
+                    if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
+                        activeSizeNew = 'a1'
+                    }
+
+                    if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
+                        activeSizeNew = 'a0'
+                    }
+
+                    if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
+                        activeSizeNew = 'a0'
+                    }
+
+                    price = services[activeType][activeSizeNew] * countInput.val();
                     priceBlock.text(Math.round(price));
                 }
             }
 
             function calcMaterials() {
                 if (activeType === 'materials_subframe') {
-                    let p = 0;
+                    /*let p = 0;
                     if (((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) > 1) {
                         p = materials[activeType].m_after
                     } else {
@@ -527,9 +551,45 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         price = materials[activeType].minPrice
                     }
                     priceBlock.text(Math.round(price));
+                    */
+
+                    if (activeSize !== null) {
+                        price = materials[activeType][activeSize] * countInput.val();
+                        priceBlock.text(price);
+                    } else {
+                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
+
+
+                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
+                            activeSizeNew = 'a4'
+                        }
+
+                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
+                            activeSizeNew = 'a3'
+                        }
+
+                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
+                            activeSizeNew = 'a2'
+                        }
+
+                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
+                            activeSizeNew = 'a1'
+                        }
+
+                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        price = materials[activeType][activeSizeNew] * countInput.val();
+                        priceBlock.text(Math.round(price));
+                    }
                 }
                 if (activeType === 'materials_foamboard') {
-                     p = 0;
+                    /*p = 0;
                     if (((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) > 1.4) {
                         p = materials[activeType].m_after
                     } else {
@@ -541,6 +601,42 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         price = materials[activeType].minPrice
                     }
                     priceBlock.text(Math.round(price));
+
+                     */
+                    if (activeSize !== null) {
+                        price = materials[activeType][activeSize] * countInput.val();
+                        priceBlock.text(price);
+                    } else {
+                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
+
+
+                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
+                            activeSizeNew = 'a4'
+                        }
+
+                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
+                            activeSizeNew = 'a3'
+                        }
+
+                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
+                            activeSizeNew = 'a2'
+                        }
+
+                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
+                            activeSizeNew = 'a1'
+                        }
+
+                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        price = materials[activeType][activeSizeNew] * countInput.val();
+                        priceBlock.text(Math.round(price));
+                    }
                 }
 
                 if (activeType === 'materials_paperboard') {
@@ -548,12 +644,48 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         alert("Максимальный формат листа картона - 1000х900 мм. Пожалуйста, выберете пенокартон или обратитесь к специалисту через обратную связь. Спасибо!")
                     }
 
-                    price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * materials[activeType].m_before * countInput.val()
+                   /* price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * materials[activeType].m_before * countInput.val()
 
                     if (price < materials[activeType].minPrice) {
                         price = materials[activeType].minPrice
                     }
                     priceBlock.text(Math.round(price));
+                    */
+
+                    if (activeSize !== null) {
+                        price = materials[activeType][activeSize] * countInput.val();
+                        priceBlock.text(price);
+                    } else {
+                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
+
+
+                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
+                            activeSizeNew = 'a4'
+                        }
+
+                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
+                            activeSizeNew = 'a3'
+                        }
+
+                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
+                            activeSizeNew = 'a2'
+                        }
+
+                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
+                            activeSizeNew = 'a1'
+                        }
+
+                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        price = materials[activeType][activeSizeNew] * countInput.val();
+                        priceBlock.text(Math.round(price));
+                    }
                 }
 
                 if (activeType === 'materials_passepartout') {
@@ -561,12 +693,49 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         alert("Максимальный формат листа паспарту - 1000х800 мм. Пожалуйста, обратитесь к специалисту через обратную связь. Спасибо!")
                     }
 
-                    price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * materials[activeType].m_before * countInput.val()
+                    /*price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * materials[activeType].m_before * countInput.val()
 
                     if (price < materials[activeType].minPrice) {
                         price = materials[activeType].minPrice
                     }
                     priceBlock.text(Math.round(price));
+
+                     */
+
+                    if (activeSize !== null) {
+                        price = materials[activeType][activeSize] * countInput.val();
+                        priceBlock.text(price);
+                    } else {
+                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
+
+
+                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
+                            activeSizeNew = 'a4'
+                        }
+
+                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
+                            activeSizeNew = 'a3'
+                        }
+
+                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
+                            activeSizeNew = 'a2'
+                        }
+
+                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
+                            activeSizeNew = 'a1'
+                        }
+
+                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
+                            activeSizeNew = 'a0'
+                        }
+
+                        price = materials[activeType][activeSizeNew] * countInput.val();
+                        priceBlock.text(Math.round(price));
+                    }
                 }
             }
 
