@@ -1,58 +1,180 @@
 <?php
-$keywords = "Для иконы, икона в рамке, обрамление";
-$title = "Где заказать индивидуальное обрамление для иконы?";
-$description = "Профессиональное обрамление для иконы в Багетной мастерской №1 одними из лучших мастеров в Москве!";
+$keywords = "Для иконы, киот, багетная рама, оформление икон";
+$title = "Изготовление киотов и багетных рам для икон!";
+$description = "Безупречное качество и профессиональный подход: индивидуальное изготовление рам и киотов для икон и других особенно ценных вещей!";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-    <div class="container text-center">
-        <h1>Рамы и рамки для икон</h1>
-        <hr>
-        <div id="main">
-            <h1>Изготовление рамок для икон</h1>
+    <style>
 
-            <img src="/img/IMG_3742.JPG" align="left" width="150px">
-            <p>
-                Обрамление икон – кропотливый и сложный процесс! Корректно подобранная и
-                изготовленная багетная рама для подобного изделия позволяет не только
-                декоративно ее украсить, но и защитить от воздействия внешних воздействий.
-                Профессиональное оформление в Багетной мастерской №1 – это гарантия получения
-                качественного изделия для Вашей работы!
-            </p>
+        @media screen and (max-width: 1200px) {
+            .castom-image {
+                width: 180px !important;
+                height: 180px !important;
+            }
+        }
 
-            <h4>Как заказать рамку для иконы?</h4>
+        @media screen and (max-width: 900px) {
+            .castom-image {
+                width: 170px !important;
+                height: 170px !important;
+            }
+        }
 
-            <p>
-                Лучше всего принести икону в мастерскую. Здесь непосредственно мастер сможет посмотреть
-                ее и предложить различные варианты, какое обрамление будет именно для Вашей работы наилучшее.
-                Кроме того, дизайнер сможет вживую показать различные варианты рам и паспарту и создать для
-                Вас визуализацию будущего готового изделия. Широкий выбор из дерева и пластика позволяет
-                нам создать оформление в любом дизайне и с любой ценовой политикой.
-            </p>
+        @media screen and (max-width: 760px) {
+            .castom-image {
+                width: 130px !important;
+                height: 130px !important;
+            }
 
-            <img src="/img/IMG_2970.JPG" align="right" width="150px">
-            <p>
-                Если же Вам неудобно приезжать в салон, Вы можете написать нам на почту или WhatsApp.
-                На странице «контакты» Вы можете узнать контактные данные наших багетных салонов! Здесь
-                Вам детально расскажут, как можно оформить Вашу икону. Кроме того, Вам пришлют фотографии
-                образцов и предварительный расчет стоимости.
-            </p>
+            .card-body button {
+                font-size: 14px;
+            }
 
-            <p>
-                Вы также можете воспользоваться нашим конструктором багета
-                для онлайн подбора багетной рамы для иконы и рассчитать конечную
-                стоимость Вашего заказа!
-            </p>
+            .card-body div.row a {
+                padding-left: 0px;
+                margin-left: 0px;
+            }
+        }
 
-            <p>
-                «Багетная мастерская №1» предлагает Вам создать роскошное оформление иконы в рамке из
-                широкого ассортимента багетным рам, паспарту, багетных стекол. В каталоге выполненных
-                работ Вы можете ознакомиться с различными вариантами багета для икон.
+        .castom-image {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 170px;
+            object-fit: cover;
+        }
+
+        .card {
+            padding-bottom: 10px;
+            border-radius: 6px;
+            border: 3px solid var(--beige, #E0D2BB);
+            height: 350px !important;
+        }
+
+        .card:hover {
+            background: #E0D2BB;
+        }
+
+        p {
+
+            color: #474A51;
+            font-family: Manrope;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            padding-bottom: 15px;
+
+        }
+
+        .home_design {
+            font-family: Cormorant Garamond;
+        }
+    </style>
+    <div class="container home_design">
+        <div class="row text-center mt-3 mb-5">
+            <h1 class="color-main mb-5">ОБРАМЛЕНИЕ ИКОН В БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
+            <h4>Обеспечить сохранность, смотреть и гордиться – вот правильный вариант, как следует хранить ордена и
+                медали где бы то ни было: дом ли это, музей или рабочее пространство! Как правильно подобрать раму и что
+                следует учесть при оформлении медалей: рассказываем в статье!</h4>
+        </div>
+
+        <div class="row text-center mt-3 mb-5">
+            <h3>ПРОЦЕСС ПОДГОТОВКИ И ОФОРМЛЕНИЯ </h3>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-12 col-md-4 my-auto text-center">
+                <img src="/img/article/IMG_8853%20(1).jpg" style="
+                      max-width: 80%;
+                      height: auto;
+                    ">
+                <br>
+            </div>
+            <div class="col-12 col-md-8 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
+                <p class="my-auto">
+                    Оформление икон – это процесс особенной важности! С особой аккуратностью и трепетностью команда
+                    Багетной мастерской №1 подходит к данной работе: начиная от подбора материалов для иконы, заканчивая
+                    сборкой подходящего обрамления. Опыт наших специалистов позволяет нам создавать уникальные сочетания
+                    багетных рам, киотов и особых коробов с открывающимися створками для различных изображений святых:
+                    будь то написанное изображение, или ручная вышивка бисером и каменьями.
+                    Для подбора материалов мы рекомендуем обращаться в мастерскую лично с иконой, однако Вы
+                    заблаговременно можете подобрать понравившийся профиль багета в нашем конструкторе багета!
+                </p>
+
+
+            </div>
+        </div>
+        <div class="row text-center justify-content-center my-5">
+            <a href="/baget_online">
+                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
+                    Рассчитать
+                    стоимость багета
+                </button>
+            </a>
+        </div>
+        <div class="row my-5">
+            <p class="my-auto">
+                Выбор материалов в Багетной мастерской №1 максимально широкий, а навыки наших специалистов создавать
+                многосоставные рамы позволит Вам получить подходящее оформление с наивысшим качеством в кратчайшие
+                сроки! Смотрите нашу галерею выполненных работ, чтобы убедиться!
             </p>
         </div>
-    </div>
-<?
 
+
+
+        <div class="row text-center justify-content-center  mb-5">
+            <a href="/сatalog-of-finished-works">
+                <button
+                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
+                    Галерея готовых работ</b></button>
+            </a>
+        </div>
+
+        <div class="row text-center mt-3 mb-5">
+            <h3>РЕКОМЕНДАЦИИ К БАГЕТНОМУ ОФОРМЛЕНИЮ</h3>
+        </div>
+        <div class="row m-3">
+            <div class="col-12 col-md-4 my-auto text-center">
+                <img src="/img/article/IMG_8586.jpg" style="
+                      max-width: 80%;
+                      height: auto;
+                    ">
+                <br>
+            </div>
+            <div class="col-12 col-md-8 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
+                <p class="my-auto">
+                    •	Не торопитесь: тщательно выбирайте мастерскую, специалиста и обрамление: опыт работы с иконами важен для получения наилучшего изделия!<br>
+                    •	Выбирайте оформление иконы очно в мастерской: так вместе со специалистом Вы сможете обсудить нюансы обрамления, а также убедиться в уместности багетного профиля<br>
+                    •	Отдавайте предпочтение безбликовому музейному стеклу: так Ваша работа будет лучше защищена от выцветания<br>
+                    •	Оставайтесь верны себе: несмотря для широкий ассортимент багета и множество предложенных вариантов оформления для иконы: обрамление должно откликаться с Вашими пожеланиями!<br>
+                </p>
+
+
+            </div>
+        </div>
+
+        <div class="row text-center justify-content-center my-5">
+            <p class="my-auto">
+                ·Остались вопросы? Оставляйте заявку на обратную связь, и мы свяжемся с Вами в кратчайшие сроки!
+            </p>
+        </div>
+        <div class="row text-center mt-3 mb-3 justify-content-center">
+
+            <button
+                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
+                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                Оставить заявку на обратную связь</b></button>
+        </div>
+
+
+        <div class="row text-center">
+            <h3>С уважением к Вам,</h3>
+            <h3>С любовью к Искусству! </h3>
+            <h3>Команда Багетной мастерской №1</h3>
+        </div>
+    </div>
+
+<?
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
