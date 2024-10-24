@@ -73,13 +73,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="container home_design">
         <div class="row text-center mt-3 mb-5">
             <h1 class="color-main mb-5">ОБРАМЛЕНИЕ ИКОН В БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
-            <h4>Обеспечить сохранность, смотреть и гордиться – вот правильный вариант, как следует хранить ордена и
-                медали где бы то ни было: дом ли это, музей или рабочее пространство! Как правильно подобрать раму и что
-                следует учесть при оформлении медалей: рассказываем в статье!</h4>
-        </div>
-
-        <div class="row text-center mt-3 mb-5">
-            <h3>ПРОЦЕСС ПОДГОТОВКИ И ОФОРМЛЕНИЯ </h3>
         </div>
 
         <div class="row m-3">
