@@ -15,6 +15,7 @@ $xmlpasp = simplexml_load_file("https://www.neoart.ru/api.php?login=Copymaster&p
 
 echo "######################################### <br>";
 $countInDbWood = 0;
+$changeIndex = [];
 // новое обновление цен дерево
 foreach ($xmlwood->category->item as $item) {
     $s = strval($item->article);
@@ -45,6 +46,21 @@ foreach ($xmlwood->category->item as $item) {
         $stmt->bindParam(5, $s);
         $stmt->execute();
         echo "обновление дерево -> " . $s . "<br>";
+    }elseif(strpos($s, '.QP') || strpos($s, '.QA') || strpos($s, '.QD') || strpos($s, '.IQ') || strpos($s, '.IK')){
+        $artOriginal = $s;
+        $artShort = substr($s, 0, -3);
+
+        $stm = $dbh->prepare('SELECT * FROM catalog_baget where vendor LIKE ?');
+        $stm->execute(array($artShort.'%'));
+        $data = $stm->fetchAll();
+        if ((is_countable($data) ? count($data) : 0) > 0){
+            $stmt = $dbh->prepare("UPDATE catalog_baget SET vendor=? WHERE vendor=?");
+            $stmt->bindParam(1, $artOriginal);
+            $stmt->bindParam(2, $artShort);
+            $stmt->execute();
+
+            $changeIndex[] = [$artShort, $artOriginal];
+        }
     }
 }
 
@@ -83,6 +99,20 @@ foreach ($xmlplast->category->item as $item) {
         $stmt->bindParam(5, $s);
         $stmt->execute();
         echo "обновление пластик -> " . $s . "<br>";
+    }elseif(strpos($s, '.QP') || strpos($s, '.QA') || strpos($s, '.QD') || strpos($s, '.IQ') || strpos($s, '.IK')){
+        $artOriginal = $s;
+        $artShort = substr($s, 0, -3);
+
+        $stm = $dbh->prepare('SELECT * FROM catalog_baget where vendor LIKE ?');
+        $stm->execute(array($artShort.'%'));
+        $data = $stm->fetchAll();
+        if ((is_countable($data) ? count($data) : 0) > 0){
+            $stmt = $dbh->prepare("UPDATE catalog_baget SET vendor=? WHERE vendor=?");
+            $stmt->bindParam(1, $artOriginal);
+            $stmt->bindParam(2, $artShort);
+            $stmt->execute();
+            $changeIndex[] = [$artShort, $artOriginal];
+        }
     }
 }
 
@@ -118,6 +148,20 @@ foreach ($xmlalum->category->item as $item) {
         $stmt->bindParam(5, $s);
         $stmt->execute();
         echo "обновление аллюминия -> " . $s . "<br>";
+    }elseif(strpos($s, '.QP') || strpos($s, '.QA') || strpos($s, '.QD') || strpos($s, '.IQ') || strpos($s, '.IK')){
+        $artOriginal = $s;
+        $artShort = substr($s, 0, -3);
+
+        $stm = $dbh->prepare('SELECT * FROM catalog_baget where vendor LIKE ?');
+        $stm->execute(array($artShort.'%'));
+        $data = $stm->fetchAll();
+        if ((is_countable($data) ? count($data) : 0) > 0){
+            $stmt = $dbh->prepare("UPDATE catalog_baget SET vendor=? WHERE vendor=?");
+            $stmt->bindParam(1, $artOriginal);
+            $stmt->bindParam(2, $artShort);
+            $stmt->execute();
+            $changeIndex[] = [$artShort, $artOriginal];
+        }
     }
 }
 
@@ -154,9 +198,27 @@ foreach ($xmlpasp->category->item as $item) {
         $stmt->bindParam(5, $s);
         $stmt->execute();
         echo "обновление паспарту -> " . $s . "<br>";
+    }elseif(strpos($s, '.QP') || strpos($s, '.QA') || strpos($s, '.QD') || strpos($s, '.IQ') || strpos($s, '.IK')){
+        $artOriginal = $s;
+        $artShort = substr($s, 0, -3);
+
+        $stm = $dbh->prepare('SELECT * FROM catalog_baget where vendor LIKE ?');
+        $stm->execute(array($artShort.'%'));
+        $data = $stm->fetchAll();
+        if ((is_countable($data) ? count($data) : 0) > 0){
+            $stmt = $dbh->prepare("UPDATE catalog_baget SET vendor=? WHERE vendor=?");
+            $stmt->bindParam(1, $artOriginal);
+            $stmt->bindParam(2, $artShort);
+            $stmt->execute();
+            $changeIndex[] = [$artShort, $artOriginal];
+        }
     }
 }
 
+print_r(count($changeIndex));
+print_r('<pre>');
+print_r($changeIndex);
+print_r('</pre>');
 echo "######################################### <br>";
 echo "обновлено паспарту -> " . $countInDbPasp . "<br>";
 echo "обновлено аллюминия -> " . $countInDbAlum . "<br>";
