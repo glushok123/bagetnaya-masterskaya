@@ -1,15 +1,15 @@
 <section>
 
     <div class="container">
-        <div class="holiday-schedule">
-            <h2>График работы на новогодние праздники</h2>
-            <ul>
-                <li><strong>31 декабря</strong>: до 16:00</li>
-                <li><strong>1, 2, 3 января</strong>: выходные дни</li>
-                <li><strong>С 4 января</strong> Новокузнецкая и Баррикадная: работают по графику</li>
-                <li><strong>Арбат</strong>: закрыт на ремонт до 11 января</li>
-            </ul>
+        <div class="name-work-time">График работы</div>
+        <div class="holiday-schedule-inline">
+            <span><strong>31.12:</strong> до 16:00</span> |
+            <span><strong>1–3 января:</strong> выходные</span> |
+            <span><strong>С 4 января:</strong> Новокузнецкая и Баррикадная по графику</span> |
+            <span><strong>Арбат:</strong> закрыт на ремонт до 11.01</span>
         </div>
+
+
         <div class="block-h1 text-center my-4 fade-in">
             <h1 class='color-main'>БАГЕТНАЯ МАСТЕРСКАЯ №1</h1>
             <h1>В МОСКВЕ</h1>
@@ -51,41 +51,32 @@
                 background: #ef7f11;
                 color: #fff;
             }
-            .holiday-schedule {
-                border: 2px solid #0073e6; /* Голубая рамка */
-                border-radius: 12px; /* Скругленные углы */
-                padding: 10px; /* Внутренний отступ */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
-                font-family: 'Roboto', sans-serif; /* Современный шрифт */
-                max-width: 400px; /* Ограничение ширины */
-                margin: 20px auto; /* Центрирование блока */
-                text-align: left; /* Выравнивание текста */
+            .holiday-schedule-inline {
+                margin-top: 5px;
+                font-family: 'Arial', sans-serif; /* Современный и простой шрифт */
+                font-size: 1em; /* Компактный размер текста */
+                color: #333; /* Цвет текста для читабельности */
+                text-align: center; /* Выравнивание по центру */
+                line-height: 1.6; /* Легкий интервал между строками (если текст перенесется) */
+                white-space: nowrap; /* Запрет на перенос текста */
             }
 
-            .holiday-schedule h2 {
-                color: #004080; /* Темно-синий цвет */
-                text-align: center; /* Выравнивание заголовка */
-                font-size: 1.8em; /* Размер заголовка */
-                margin-bottom: 15px; /* Отступ снизу */
+            .holiday-schedule-inline span {
+                margin: 0 5px; /* Отступы между элементами */
             }
 
-            .holiday-schedule ul {
-                list-style: none; /* Убираем маркеры списка */
-                padding: 0; /* Убираем отступы */
+            .holiday-schedule-inline strong {
+                color: #AD1F2D; /* Акцентный цвет для дат */
+            }
+            .name-work-time{
+                margin-top: 10px;
+                text-align: center;
+                color: #AD1F2D;
+                font-size: 20px;
             }
 
-            .holiday-schedule li {
-                color: #333; /* Цвет текста */
-                font-size: 1em; /* Размер текста */
-                margin: 10px 0; /* Отступы между пунктами */
-                padding: 10px;
-                background: rgba(0, 115, 230, 0.1); /* Светло-голубой фон для пунктов */
-                border-radius: 6px; /* Скругление углов пунктов */
-            }
 
-            .holiday-schedule li strong {
-                color: #0073e6; /* Акцентный цвет для ключевых дат */
-            }
+
 
         </style>
 

@@ -1,13 +1,11 @@
 <section>
     <div class="container">
-        <div class="holiday-schedule">
-            <h2>График работы на новогодние праздники</h2>
-            <ul>
-                <li><strong>31 декабря</strong>: до 16:00</li>
-                <li><strong>1, 2, 3 января</strong>: выходные дни</li>
-                <li><strong>С 4 января</strong> Новокузнецкая и Баррикадная: работают по графику</li>
-                <li><strong>Арбат</strong>: закрыт на ремонт до 11 января</li>
-            </ul>
+        <div class="name-work-time">График работы</div>
+        <div class="holiday-schedule-inline">
+            <span><strong>31.12:</strong> до 16:00</span> <br>
+            <span><strong>1–3 января:</strong> выходные</span> <br>
+            <span><strong>С 4 января:</strong> Новокузнецкая и Баррикадная по графику</span><br>
+            <span><strong>Арбат:</strong> закрыт на ремонт до 11.01</span>
         </div>
         <div class="block-h1 text-center my-4 fade-in ">
             <h1 class='color-main '>БАГЕТНАЯ МАСТЕРСКАЯ</h1>
@@ -91,7 +89,29 @@
                 background: #ef7f11;
                 color: #fff;
             }
+            .holiday-schedule-inline {
+                margin-top: 5px;
+                font-family: 'Arial', sans-serif; /* Современный и простой шрифт */
+                font-size: 1em; /* Компактный размер текста */
+                color: #333; /* Цвет текста для читабельности */
+                text-align: center; /* Выравнивание по центру */
+                line-height: 1.6; /* Легкий интервал между строками (если текст перенесется) */
+             /* Запрет на перенос текста */
+            }
 
+            .holiday-schedule-inline span {
+                margin: 0 5px; /* Отступы между элементами */
+            }
+
+            .holiday-schedule-inline strong {
+                color: #AD1F2D; /* Акцентный цвет для дат */
+            }
+            .name-work-time{
+                margin-top: 10px;
+                text-align: center;
+                color: #AD1F2D;
+                font-size: 20px;
+            }
         </style>
         <div class='row pt-3'>
             <div class='block-image '>
