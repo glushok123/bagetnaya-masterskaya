@@ -1,5 +1,15 @@
 <section>
+
     <div class="container">
+        <div class="holiday-schedule">
+            <h2>График работы на новогодние праздники</h2>
+            <ul>
+                <li><strong>31 декабря</strong>: до 16:00</li>
+                <li><strong>1, 2, 3 января</strong>: выходные дни</li>
+                <li><strong>С 4 января</strong> Новокузнецкая и Баррикадная: работают по графику</li>
+                <li><strong>Арбат</strong>: закрыт на ремонт до 11 января</li>
+            </ul>
+        </div>
         <div class="block-h1 text-center my-4 fade-in">
             <h1 class='color-main'>БАГЕТНАЯ МАСТЕРСКАЯ №1</h1>
             <h1>В МОСКВЕ</h1>
@@ -40,6 +50,41 @@
             .grafik-test div.today {
                 background: #ef7f11;
                 color: #fff;
+            }
+            .holiday-schedule {
+                border: 2px solid #0073e6; /* Голубая рамка */
+                border-radius: 12px; /* Скругленные углы */
+                padding: 10px; /* Внутренний отступ */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+                font-family: 'Roboto', sans-serif; /* Современный шрифт */
+                max-width: 400px; /* Ограничение ширины */
+                margin: 20px auto; /* Центрирование блока */
+                text-align: left; /* Выравнивание текста */
+            }
+
+            .holiday-schedule h2 {
+                color: #004080; /* Темно-синий цвет */
+                text-align: center; /* Выравнивание заголовка */
+                font-size: 1.8em; /* Размер заголовка */
+                margin-bottom: 15px; /* Отступ снизу */
+            }
+
+            .holiday-schedule ul {
+                list-style: none; /* Убираем маркеры списка */
+                padding: 0; /* Убираем отступы */
+            }
+
+            .holiday-schedule li {
+                color: #333; /* Цвет текста */
+                font-size: 1em; /* Размер текста */
+                margin: 10px 0; /* Отступы между пунктами */
+                padding: 10px;
+                background: rgba(0, 115, 230, 0.1); /* Светло-голубой фон для пунктов */
+                border-radius: 6px; /* Скругление углов пунктов */
+            }
+
+            .holiday-schedule li strong {
+                color: #0073e6; /* Акцентный цвет для ключевых дат */
             }
 
         </style>
@@ -480,6 +525,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
     .swiper-2 {
         width: 100%;
         height: 500px;
+    }
+
+    .work-time {
+
+        width: 100%;
+        box-sizing: border-box;
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+        max-width: 400px;
     }
 </style>
 
