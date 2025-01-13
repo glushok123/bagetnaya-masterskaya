@@ -1,12 +1,12 @@
 <section>
     <div class="container">
-        <div class="name-work-time">График работы</div>
+        <!--div class="name-work-time">График работы</div>
         <div class="holiday-schedule-inline">
             <span><strong>31.12:</strong> до 16:00</span> <br>
             <span><strong>1–3 января:</strong> выходные</span> <br>
             <span><strong>С 4 января:</strong> Новокузнецкая и Баррикадная по графику</span><br>
             <span><strong>Арбат:</strong> закрыт на ремонт до 11.01</span>
-        </div>
+        </div-->
         <div class="block-h1 text-center my-4 fade-in ">
             <h1 class='color-main '>БАГЕТНАЯ МАСТЕРСКАЯ</h1>
             <h1>№1 В МОСКВЕ</h1>

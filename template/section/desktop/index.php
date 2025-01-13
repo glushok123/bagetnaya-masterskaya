@@ -1,13 +1,13 @@
 <section>
 
     <div class="container">
-        <div class="name-work-time">График работы</div>
+        <!--div class="name-work-time">График работы</div>
         <div class="holiday-schedule-inline">
             <span><strong>31.12:</strong> до 16:00</span> |
             <span><strong>1–3 января:</strong> выходные</span> |
             <span><strong>С 4 января:</strong> Новокузнецкая и Баррикадная по графику</span> |
             <span><strong>Арбат:</strong> закрыт на ремонт до 11.01</span>
-        </div>
+        </div-->
 
 
         <div class="block-h1 text-center my-4 fade-in">
