@@ -210,41 +210,36 @@
                         картину</a>
                 </div>
             </div>
-            <div class="d-inline ">
-                <div class="nav-item d-inline">
-                    <a class="nav-link d-inline" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown">
-                        Адреса багетных мастерских
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                        <div class='my-2 px-3'>
-                            <div class='nav-name-metro'>м. Арбат</div>
-                            <div class='nav-address my-2'>Москва, м. Арбатская, ул. Арбат д. 1</div>
-                            <div class='nav-phone'>8 (495) 665-25-61</div>
-                            <div class='nav-phone'>8 (926) 865-92-95 (WhatsApp)</div>
-                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                        </div>
-                        <div class='px-3'>
-                            <hr>
-                        </div>
-                        <div class='my-2 px-3'>
-                            <div class='nav-name-metro'>м. Новокузнецкая</div>
-                            <div class='nav-address my-2'>Москва, м. Новокузнецкая, Климентовский переулок, 6</div>
-                            <div class='nav-phone'>8 (499) 714-80-62</div>
-                            <div class='nav-phone'>8 (977) 824-42-12 (WhatsApp)</div>
-                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                        </div>
-                        <div class='px-3'>
-                            <hr>
-                        </div>
-                        <div class='my-2 px-3'>
-                            <div class='nav-name-metro'>м. Баррикадная</div>
-                            <div class='nav-address my-2'>Москва, м. Баррикадная, Баррикадная 21/34с3 </div>
-                            <div class='nav-phone'>8(977)314-77-71 (WhatsApp)</div>
-                            <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
-                        </div>
-                    </ul>
-                </div>
+            <div class="d-inline" >
+                <a class="nav-link d-inline " href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    Адреса багетных мастерских
+                </a>
+                <ul class="dropdown-menu test" aria-labelledby="navbarDropdown3" data-bs-auto-close="outside">
+                    <div class='my-2 px-3'>
+                        <div class='nav-name-metro'>м. Арбат</div>
+                        <div class='nav-address my-2'>Москва, м. Арбатская, ул. Арбат д. 1</div>
+                        <div class='nav-phone'>8 (495) 665-25-61</div>
+                        <div class='nav-phone'>8 (926) 865-92-95 (WhatsApp)</div>
+                        <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
+                    </div>
+                    <div class='px-3'><hr></div>
+                    <div class='my-2 px-3'>
+                        <div class='nav-name-metro'>м. Новокузнецкая</div>
+                        <div class='nav-address my-2'>Москва, м. Новокузнецкая, Климентовский переулок, 6</div>
+                        <div class='nav-phone'>8 (499) 714-80-62</div>
+                        <div class='nav-phone'>8 (977) 824-42-12 (WhatsApp)</div>
+                        <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
+                    </div>
+                    <div class='px-3'><hr></div>
+                    <div class='my-2 px-3'>
+                        <div class='nav-name-metro'>м. Баррикадная</div>
+                        <div class='nav-address my-2'>Москва, м. Баррикадная, Баррикадная 21/34с3 </div>
+                        <div class='nav-phone'>8(977)314-77-71 (WhatsApp)</div>
+                        <div class='nav-time-work my-1'>Ежедневно, 9:00 - 21:00</div>
+                    </div>
+                </ul>
             </div>
+
         </div>
         <?
     }
