@@ -69,8 +69,12 @@ if ($_GET['id']) {
         $nameFormat = "Квадрат";
     }
 
+    $zakazkl = '<div><b>Здравствуйте, ' . $name . '! </b></div> <br>';
+    $zakazkl = $zakazkl . '<div><b>Ваш заказ принят, в данный момент специалист проверяет наличие всех материалов. Мы свяжемся с Вами в ближайшее время! </b></div> <br>';
+    $zakazkl = $zakazkl . '<div><b>Детали заказа: </b></div> <br>';
+    $zakazkl = $zakazkl . '<div>Номер заказа: <b>' . $z[15] . '</b></div><br>';
     $zakaz = '<br>Артикул багета (реальный): <b>' . $bart . '</b><br>Артикул багета (с сайта): <b>' . $z[0] . '</b><br>Ширина изображения: <b>' . $z[9] . '</b> мм.<br>Высота изображения: <b>' . $z[10] . '</b> мм.<br>' . 'Формат: <b>' . $nameFormat . '</b><br>';
-    $zakazkl = '</b><br>Артикул багета: <b>' . $z[0] . '</b><br>Ширина изображения: <b>' . $z[9] . '</b> мм.<br>Высота изображения: <b>' . $z[10] . '</b> мм.<br>' . 'Формат: <b>' . $nameFormat . '</b><br>';
+    $zakazkl = $zakazkl . '</b><br>Артикул багета: <b>' . $z[0] . '</b><br>Ширина изображения: <b>' . $z[9] . '</b> мм.<br>Высота изображения: <b>' . $z[10] . '</b> мм.<br>' . 'Формат: <b>' . $nameFormat . '</b><br>';
 
     if ($z[3] <> "0") {
 
@@ -132,7 +136,18 @@ if ($_GET['id']) {
     //manager@bagetnaya-masterskaya.com
     //glushok19999@gmail.com
     if (mail("manager@bagetnaya-masterskaya.com", 'Заказ №' . $z[15] . ' с Багетной мастерской', "IP: $ipaddr<br>Имя:<br><b>$name</b><br>Телефон:<br><b>$phone</b><br>Почта:<br><b>$mail</b><br>Адрес самовывоза:<br><b>" . $_POST['delivery'] . "</b><br>Комментарий:<br><i>$reviu</i><br>Заказ:$zakaz<br>Промокод:$pomokod", "From: Site <site@bagetnaya-masterskaya.com>\r\nReply-To: site@bagetnaya-masterskaya.com\r\nContent-type:text/html; charset = UTF-8\r\n")) {
-        mail($mail, $name . ' вы оформили заказ на сайте Багетной мастерской', "Номер заказа: <b>$z[15]</b><br>$zakazkl", "From: Багетная мастерская №1 <manager@bagetnaya-masterskaya.com>\r\nReply-To: manager@bagetnaya-masterskaya.com\r\nContent-type:text/html; charset = UTF-8\r\n");
+       // mail($mail, $name . ' вы оформили заказ на сайте Багетной мастерской', "Номер заказа: <b>$z[15]</b><br>$zakazkl", "From: Багетная мастерская №1 <manager@bagetnaya-masterskaya.com>\r\nReply-To: manager@bagetnaya-masterskaya.com\r\nContent-type:text/html; charset = UTF-8\r\n");
+
+        $fromName = "Багетная мастерская №1";
+        $fromNameEncoded = "=?UTF-8?B?" . base64_encode($fromName) . "?=";
+        $headers = "From: $fromNameEncoded <manager@bagetnaya-masterskaya.com>\r\n" .
+            "Reply-To: manager@bagetnaya-masterskaya.com\r\n" .
+            "Content-Type: text/html; charset=UTF-8\r\n";
+
+        $subject = $name . ' вы оформили заказ на сайте Багетной мастерской';
+        $message = $zakazkl;
+        mail($mail, $subject, $message, $headers);
+
         echo '<title>Ваш заказ принят</title>
 				</HEAD>
 				<BODY>

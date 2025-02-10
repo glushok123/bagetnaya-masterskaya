@@ -518,7 +518,7 @@
             $('#fhig').val(width);
 
             changesize();
-            rePage();
+           // rePage();
         })
     })
 </script>
