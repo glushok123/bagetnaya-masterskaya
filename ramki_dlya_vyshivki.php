@@ -69,7 +69,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <div class="container">
         <div class="row text-center mt-3 mb-5">
-            <h1 class="color-main">ОФОРМЛЕНИЕ ВЫШИВОК В БАГЕТНЫЕ РАМКИ:</h1>
+            <h1 class="color-main block-h1">ОФОРМЛЕНИЕ ВЫШИВОК В БАГЕТНЫЕ РАМКИ:</h1>
             <h3 class="mt-3">КАК ПОДЧЕРКНУТЬ КРАСОТУ РУЧНОЙ РАБОТЫ</h3>
         </div>
         <div class="list-img">
