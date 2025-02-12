@@ -173,7 +173,7 @@ if (mail("manager@bagetnaya-masterskaya.com", $subjectForManager, $messageForMan
 
     // Выводим страницу успеха
     echo '
-          <div class=" container baget-zakaz-main text-center m-5">
+          <div class=" baget-zakaz-main text-center m-5">
               <div class="baget-zakaz-accept">
                   <h1 style="color:  #AD1F2D; margin-bottom: 20px;">Ваш заказ принят!</h1>
                   <h3>В ближайшее время наш менеджер свяжется с вами.</h3>
