@@ -1,169 +1,272 @@
-<?
-if ($_GET['id']) {
-    $ident = $_GET['id'];
-    //if (preg_match("/^[\dl]+$/", (string) $ident)) {
-    $z = explode('l', (string)$ident);
-    /*} else {
-        $fp = fopen('lo/g.txt', 'a');
-        $towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! ' . $ident . ' ! zakaz bad id';
-        fwrite($fp, $towrite);
-        fwrite($fp, "\r\n");
-        fclose($fp);
-        exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online">');
-    }*/
+<?php
+$keywords    = "Оформление заказа";
+$title       = "Оформление заказа";
+$description = "Оформление заказа";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
+
+// --- Обработка ID заказа ---
+if (isset($_GET['id']) && $_GET['id'] !== '') {
+    $ident = trim((string)$_GET['id']);
+    $z = explode('l', $ident);
 } else {
-    $fp = fopen('lo/g.txt', 'a');
-    $towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! ' . $ident . ' ! zakaz without id';
-    fwrite($fp, $towrite);
-    fwrite($fp, "\r\n");
+    // Логируем отсутствие id
+    $fp = fopen('lo/g.txt', 'ab');
+    $towrite = date("j.m.Y G:i") . ' ! ' . $_SERVER["REMOTE_ADDR"] . ' ! (нет id) ! zakaz without id';
+    fwrite($fp, $towrite . "\r\n");
     fclose($fp);
+
+    // Редирект через meta refresh
     exit('<META HTTP-EQUIV=Refresh Content="0;URL=/baget_online">');
 }
-?>
-<!DOCTYPE HTML>
-<HTML>
 
-<HEAD>
-    <link rel="SHORTCUT ICON" href="/favicon.ico">
-    <? if ($_GET['id']) {
-        echo '<link rel="canonical" href="http://bagetnaya-masterskaya.com/baget_zakaz"/>';
-    } ?>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="content-language" content="ru">
-    <meta name="keywords" content="заказ багета, багет онлайн">
-    <meta name="description" content="">
-    <title>Заказ багета онлайн</title>
-    <link rel="stylesheet" type="text/css" href="/stylobgt.css">
-
-<BODY>
-
-<?
-
+// --- Подсчёт номера заказа ---
 $zak_hist = file('base/zakaz-history.txt');
-$z[15] = 500 + (is_countable($zak_hist) ? count($zak_hist) : 0);
-$ident = implode("l", $z);
-$f_zak_hist = fopen('base/zakaz-history.txt', 'a');
+$z[15] = 500 + count($zak_hist);
+
+// --- Запись в историю ---
+$ident = implode('l', $z);
+$f_zak_hist = fopen('base/zakaz-history.txt', 'ab');
 $towrite = date("j.m.Y G:i") . '-!-' . $_SERVER["REMOTE_ADDR"] . '-!-' . $ident . "\r\n";
 fwrite($f_zak_hist, $towrite);
 fclose($f_zak_hist);
-$pomokod = "не определен";
 
-if (isset($_GET["pomokod"])) {
-    $pomokod = $_GET["pomokod"];
+// --- Проверка / приём промокода ---
+$pomokod = 'Не заполнен'; // По умолчанию «Не заполнен»
+if (!empty($_GET['pomokod'])) {
+    $pomokod = trim((string)$_GET['pomokod']);
 }
+
+// --- Расчёт итоговых размеров ---
+$kartx = $z[9] + 2 * ($z[2] + $z[5]);
+$karty = $z[10] + 2 * ($z[2] + $z[5]);
 ?>
+    <div class="container">
+        <div class="baget-zakaz-main">
+            <div class="baget-zakaz-left justify-content-center text-center">
+                <h1 class="number-order">Заказ №<?= $z[15] ?></h1>
+                <hr>
+            </div>
+            <form id="orderForm" action="baget_accept.php?id=<?= urlencode($ident) ?>&pomokod=<?= urlencode($pomokod) ?>" method="post">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4">
+                    Артикул багета:
+                    <strong><?= $z[0] ?></strong><br>
+                    Ширина изображения:
+                    <strong><?= $z[9] ?></strong> мм.<br>
+                    Высота изображения:
+                    <strong><?= $z[10] ?></strong> мм.<br>
 
-<div class="baget-zakaz-main">
-    <div class="baget-zakaz-left"><?
-        $kartx = $z[9] + 2 * ($z[2] + $z[5]);
-        $karty = $z[10] + 2 * ($z[2] + $z[5]); ?>
-        <div style="width:250px; font-size:150%; text-align:center;">Заказ №<?= $z[15] ?></div>
+                    <?php if ($z[3] !== '0'): ?>
+                        <br>
+                        <img src="/pi/<?= $z[3] ?>.jpg" width="100" height="100" alt="Паспарту">
+                        <br>Артикул паспарту: <strong><?= $z[3] ?></strong><br>
+                        Ширина паспарту: <strong><?= $z[5] ?></strong> мм.<br>
+                    <?php endif; ?>
+
+                    <?php
+                    // Тип стекла
+                    switch ((int)$z[6]) {
+                        case 0:  echo '<br>Стекло: <strong>Нет</strong>';        break;
+                        case 1:  echo '<br>Стекло: <strong>Обычное</strong>';    break;
+                        case 2:  echo '<br>Стекло: <strong>Матовое</strong>';    break;
+                        case 3:  echo '<br>Стекло: <strong>Антиблик</strong>';   break;
+                        case 4:  echo '<br>Стекло: <strong>Пластиковое</strong>';break;
+                    }
+
+                    // Тип задника
+                    switch ((int)$z[7]) {
+                        case 0:  echo '<br>Задник: <strong>Нет</strong>';                break;
+                        case 1:  echo '<br>Задник: <strong>Картон</strong>';             break;
+                        case 2:  echo '<br>Задник: <strong>Пенокартон 5мм</strong>';     break;
+                        case 3:  echo '<br>Задник: <strong>Пенокартон 10мм</strong>';    break;
+                        case 4:  echo '<br>Задник: <strong>Подрамник</strong>';          break;
+                    }
+                    ?>
+
+                    <br>Размер готовой картины, с учетом ширины багета и паспарту:
+                    <br><strong><?= $kartx ?> x <?= $karty ?></strong> мм.<br>
+                    <br><hr>
+                    Цена: <strong style="font-size:120%;"><?= $z[13] ?></strong> р.
+                    <br><hr>
+                    Промокод: <strong style="font-size:120%;"><?= $pomokod ?></strong>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <!-- Форма заказа -->
+
+
+                        <div class="baget-zakaz-right">
+                            <div class="b-1">
+                                <div>Как к вам обращаться:</div>
+                                <input type="text" class="input-1" name="name" style="height:40px;">
+                                <div class="text-danger error-message" id="errorName"></div>
+                            </div>
+
+                            <div class="b-1">
+                                <div>Ваш телефон:</div>
+                                <input type="text" class="input-1" name="phone" style="height:40px;">
+                                <div class="text-danger error-message" id="errorPhone"></div>
+                            </div>
+
+                            <div class="b-1">
+                                <div>Электронная почта:</div>
+                                <input type="email" class="input-1" name="mail" style="height:40px;">
+                                <div class="text-danger error-message" id="errorMail"></div>
+                            </div>
+
+                            <div class="b-1">
+                                <div>Самовывоз из:</div>
+                                <select id="delivery" class="input-1" name="delivery" style="height:40px;">
+                                    <option selected disabled value="">-- Выберите пункт --</option>
+                                    <option value="м. Арбатская">м. Арбатская</option>
+                                    <option value="м. Новокузнецкая">м. Новокузнецкая</option>
+                                    <option value="м. Баррикадная">м. Баррикадная</option>
+                                </select>
+                                <div class="text-danger error-message" id="errorDelivery"></div>
+                            </div>
+
+                            <div class="b-1">
+                                <div>Комментарий или дополнительные пожелания:</div>
+                                <textarea name="reviu" class="input-1" style="height:110px;"></textarea>
+                                <div class="text-danger error-message" id="errorReviu"></div>
+                            </div>
+
+
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Кнопки внутри формы, чтобы при сабмите уходили данные -->
+        <div class="baget-zakaz-buttons mt-4">
+            <input type="submit"
+                   value="Отправить заказ"
+                   class="button button-custom-index button-color-company-red fix-width-425
+                                          mob-fix-width-340 color-white baget-zakaz-send"
+                   style="margin-bottom:0 !important;">
+
+            <a href="/baget_online?id=<?= urlencode($ident) ?>" class="baget-zakaz-back" rel="nofollow">
+                Вернуться к выбору багета
+            </a>
+        </div>
+        </form>
         <hr>
-        <!-- <img src="/bi/<?= $z['0'] ?>.jpg"><br> -->
-        Артикул багета: <strong><?= $z[0] ?></strong><br>Ширина изображения: <strong><?= $z[9] ?></strong> мм.<br>Высота
-        изображения: <strong><?= $z[10] ?></strong> мм.<br>
-        <? if ($z[3] <> "0") {
-            echo '<br><img src="/pi/' . $z[3] . '.jpg" width="100px" height="100px">';
-            echo '<br>Артикул паспарту: <strong>' . $z[3] . '</strong><br>Ширина паспарту: <strong>' . $z[5] . '</strong> мм.<br>';
-        }
-        if ($z[6] == 0) {
-            echo '<br>Стекло: <strong>Нет</strong>';
-        }
-        if ($z[6] == 1) {
-            echo '<br>Стекло: <strong>Обычное</strong>';
-        }
-        if ($z[6] == 2) {
-            echo '<br>Стекло: <strong>Матовое</strong>';
-        }
-        if ($z[6] == 3) {
-            echo '<br>Стекло: <strong>Антиблик</strong>';
-        }
-        if ($z[6] == 4) {
-            echo '<br>Стекло: <strong>Пластиковое</strong>';
-        }
-        if ($z[7] == 0) {
-            echo '<br>Задник: <strong>Нет</strong>';
-        }
-        if ($z[7] == 1) {
-            echo '<br>Задник: <strong>Картон</strong>';
-        }
-        if ($z[7] == 2) {
-            echo '<br>Задник: <strong>Пенокартон 5мм</strong>';
-        }
-        if ($z[7] == 3) {
-            echo '<br>Задник: <strong>Пенокартон 10мм</strong>';
-        }
-        if ($z[7] == 4) {
-            echo '<br>Задник: <strong>Подрамник</strong>';
-        }
-        echo '<br>Размер готовой картины, с учетом ширины багета и паспарту:<br><strong>' . $kartx . 'x' . $karty . '</strong> мм.<br>';
-        echo '<br><hr>Цена: <strong style="font-size:120%;">' . $z[13] . '</strong> р.';
-        echo '<br><hr>Промокод: <strong style="font-size:120%;">' . $pomokod . '</strong> ';
-        ?>
 
+
+        <p class="confirm text-center">
+            Нажимая на кнопку «Отправить заказ», я принимаю
+            <a href="/terms.pdf">Пользовательское соглашение</a> и подтверждаю,
+            что ознакомлен и согласен с
+            <a href="/privacy.pdf">Политикой конфиденциальности</a>
+            данного сайта.
+        </p>
     </div>
-    <form action="baget_accept.php?id=<?= $ident ?>&pomokod=<?= $pomokod ?>" method="post">
-        <div class="baget-zakaz-right">
-            Как к вам обращаться:<br><input type=text name="name" style="width:540px; height:30px; background:#fffaf4;"
-                                            required>
-            Ваш телефон:<br><input type=text name="phone" style="width:540px; height:30px; background:#fffaf4;"
-                                   required>
-            Электронная почта:<br><input type=text name="mail" style="width:540px; height:30px;">
-            Самовывоз из: <br>
-            <select id='delivery' name="delivery" style="width:540px; height:30px;">
-                <option selected disabled></option>
-                <option value="м. Арбатская">м. Арбатская</option>
-                <option value="м. Новокузнецкая">м. Новокузнецкая</option>
-                <option value="м. Баррикадная">м. Баррикадная</option>
 
-            </select>
-            Комментарий или дополнительные пожелания: <BR><textarea name="reviu"
-                                                                    style="width:540px; height:285px;"></textarea>
+    <style>
+        .baget-zakaz-buttons {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
 
-        </div>
+        .baget-zakaz-right {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-        <div class="baget-zakaz-buttons">
-            <a href="/baget_online?id='.$ident.'" class="baget-zakaz-back" rel="nofollow">Вернуться к выбору багета</a>
+        .b-1 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-            <input type="submit" value="Отправить заказ" class="baget-zakaz-send">
-            <hr>
-            <p>Нажимая на кнопку "Отправить заказ", я принимаю <a href="/terms.pdf">Пользовательское соглашение</a> и
-                подтверждаю, что ознакомлен и согласен с <a href="/privacy.pdf">Политикой конфиденциальности</a> данного
-                сайта</p>
-        </div>
+        .input-1 {
+            border-radius: 8px;
+            border: 1px solid #979595;
+            padding: 5px;
+        }
 
-    </form>
-    <?
-    //-------------------------------------------------------------------------------------------------------------------------------
-    echo '</div>';
-    if ($_SERVER["REMOTE_ADDR"] == '127.0.0.1') {
-        exit;
-    }
-    ?>
+        .baget-zakaz-send {
+            padding: 12px 24px;
+            width: auto;
+            box-sizing: border-box;
+        }
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        .number-order {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #AD1F2D;
+        }
 
-        ym(60934651, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true
+        .confirm {
+            margin: 1rem 0 3rem 0;
+        }
+
+        .error-message {
+            font-size: 0.9rem;
+        }
+    </style>
+
+    <!-- Скрипты валидации и маски (предполагается, что jQuery и mask plugin уже подключены) -->
+    <script>
+        $(function() {
+            // Маска телефона
+            $('[name="phone"]').mask('+7 (000) 000-00-00');
+
+            // Валидация полей формы
+            $('#orderForm').on('submit', function(e) {
+                let isValid = true;
+
+                // Сбрасываем старые тексты ошибок
+                $('.error-message').text('');
+
+                const name     = $('[name="name"]').val().trim();
+                const phone    = $('[name="phone"]').val().trim();
+                const mail     = $('[name="mail"]').val().trim();
+                const delivery = $('[name="delivery"]').val();
+                const reviu    = $('[name="reviu"]').val().trim();
+
+                // Проверяем "Как к вам обращаться"
+                if (name === '') {
+                    $('#errorName').text('Введите имя');
+                    isValid = false;
+                }
+
+                // Проверяем телефон
+                if (phone === '') {
+                    $('#errorPhone').text('Введите телефон');
+                    isValid = false;
+                }
+
+                // Проверяем почту
+                if (mail === '') {
+                    $('#errorMail').text('Введите e-mail');
+                    isValid = false;
+                }
+
+                // Проверяем самовывоз
+                if (!delivery) {
+                    $('#errorDelivery').text('Выберите пункт самовывоза');
+                    isValid = false;
+                }
+
+                // Проверяем комментарий/пожелания
+              //  if (reviu === '') {
+              //      $('#errorReviu').text('Заполните комментарий');
+              //      isValid = false;
+              //  }
+
+                if (!isValid) {
+                    e.preventDefault(); // Останавливаем отправку формы при наличии ошибок
+                }
+            });
         });
     </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
 
-</body>
-
-</HTML>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
