@@ -65,6 +65,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             padding-bottom: 15px;
 
         }
+        h3{
+            font-family: Cormorant Garamond;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
     </style>
 
     <div class="container">

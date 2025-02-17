@@ -68,6 +68,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         .show-mobile{
             display: none;
         }
+        h3{
+            font-family: Cormorant Garamond;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
     </style>
     <div class="container">
         <div class="row text-center mt-3 mb-5">
