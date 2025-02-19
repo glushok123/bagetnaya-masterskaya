@@ -73,7 +73,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             </div>
         </div>
 
-        <div class="row text-center justify-content-center  m-5">
+        <div class="row text-center justify-content-center  m-4">
             <a href="/baget_online">
                 <button
                         class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
@@ -309,6 +309,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             font-style: normal;
             font-weight: 500;
             line-height: normal;
+        }
+        .mob-fix-width-340{
+            width: auto;
         }
     </style>
 <?
