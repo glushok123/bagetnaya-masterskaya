@@ -148,7 +148,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     <!-- Подрамник + натяжка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_subframe_tension">Подрамник + Натяжка</button>
+                            id="materials_subframe_tension">Подрамник и натяжка</button>
                     <!-- ПеноКартон -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
@@ -156,7 +156,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     <!-- ПеноКартон + накатка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_foamboard_mount">Пено + Накатка</button>
+                            id="materials_foamboard_mount">Пенокартон и натяжка </button>
                     <!-- Картон -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
@@ -215,13 +215,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                             id="delivery_sad">В пределах Садового</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_ttk">В пределах ТТК</button>
+                            id="delivery_ttk">В пределах <br>ТТК</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
                             id="delivery_mkad">В пределах МКАД</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_lift">С подъёмом</button>
+                            id="delivery_lift">С <br>подъёмом</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
                             id="delivery_outside">За МКАД</button>

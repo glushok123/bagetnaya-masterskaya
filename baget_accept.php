@@ -144,9 +144,12 @@ $zakazkl .= $zakazkl2 . $zakaz3
 
 // Отправка писем
 $ipaddr = $_SERVER["REMOTE_ADDR"];
-$mailHeaders = "From: Site <site@bagetnaya-masterskaya.com>\r\n"
-    . "Reply-To: site@bagetnaya-masterskaya.com\r\n"
-    . "Content-type:text/html; charset=UTF-8\r\n";
+// Отправляем письмо клиенту
+$fromName = "Новый заказ №" . $z[15];
+$fromNameEncoded = "=?UTF-8?B?" . base64_encode($fromName) . "?=";
+$mailHeaders = "From: $fromNameEncoded <manager@bagetnaya-masterskaya.com>\r\n"
+    . "Reply-To: manager@bagetnaya-masterskaya.com\r\n"
+    . "Content-Type: text/html; charset=UTF-8\r\n";
 
 $subjectForManager = 'Заказ №' . $z[15] . ' с Багетной мастерской';
 $messageForManager = "IP: $ipaddr<br>"
