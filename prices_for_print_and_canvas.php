@@ -102,738 +102,555 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row text-center mt-3 mb-5">
             <h1 class="color-main mb-5">КОМПЛЕКТ ДЛЯ КАРТИНЫ: РАССЧИТАТЬ СТОИМОСТЬ САМОСТОЯТЕЛЬНО</h1>
 
-
             <div class="row m-3">
                 <p class="mx-auto">
-                    В Багетной мастерской №1 Вы можете не только заказать оформление картин под ключ, но также
-                    приобрести
-                    подрамник для холста, крепление для рамы, печать постеров и многое другое. В калькуляторе стоимости
-                    Вы
-                    можете выбрать необходимый материал, указать размеры и количество, чтобы увидеть финальную стоимость
-                    продукции!
+                    В Багетной мастерской №1 Вы можете не только заказать оформление картин под ключ, но и подобрать
+                    отдельные материалы для картины, стекло, крепления, а также рассчитать доставку.
+                    Выберите нужную категорию, укажите размеры (если требуется), количество и получите итоговую стоимость!
                 </p>
             </div>
 
+            <!-- Кнопка на другую страницу с расчётом багета под ключ -->
             <div class="row my-5">
                 <a href="/baget_online">
                     <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                        Рассчитать
-                        стоимость багета
+                        Рассчитать стоимость багета
                     </button>
                 </a>
             </div>
 
             <section id="calc-price">
+                <!-- Печать -->
                 <div class="row p-1 m-2 text-center justify-content-center name-service">
                     Услуги печати
                 </div>
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_matte">матовая
-                    </button>
+                            id="service_matte">Матовая</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_canvas">холст
-                    </button>
+                            id="service_glossy">Глянцевая</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_glossy">глянцевая
-                    </button>
+                            id="service_canvas">Холст</button>
                 </div>
-                <div class="row  p-1 m-2 text-center justify-content-center name-service">
+
+                <!-- Материалы -->
+                <div class="row p-1 m-2 text-center justify-content-center name-service">
                     Материалы для картины
                 </div>
-                <div class="row  text-center justify-content-center button-service">
+                <div class="row text-center justify-content-center button-service">
+                    <!-- Подрамник -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_subframe">подрамник
-                    </button>
+                            id="materials_subframe">Подрамник</button>
+                    <!-- Подрамник + натяжка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_foamboard">пенокартон
-                    </button>
+                            id="materials_subframe_tension">Подрамник + Натяжка</button>
+                    <!-- ПеноКартон -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_paperboard">картон
-                    </button>
+                            id="materials_foamboard">Пенокартон</button>
+                    <!-- ПеноКартон + накатка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_passepartout">паспарту
-                    </button>
+                            id="materials_foamboard_mount">Пено + Накатка</button>
+                    <!-- Картон -->
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="materials"
+                            id="materials_paperboard">Картон</button>
+                    <!-- Паспарту -->
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="materials"
+                            id="materials_passepartout">Паспарту</button>
                 </div>
-                <div class="row  p-1 m-2 text-center justify-content-center name-service">
+
+                <!-- Стекло -->
+                <div class="row p-1 m-2 text-center justify-content-center name-service">
                     Багетное стекло
                 </div>
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_usual">обычное
-                    </button>
+                            id="glass_usual">Обычное</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_anti_glare">антиблик
-                    </button>
+                            id="glass_matte">Матовое</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_matte">матовое
-                    </button>
+                            id="glass_anti_glare">Антиблик</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_plastic">пластик
-                    </button>
-                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
-                            data-block="glass"
-                            id="glass_museum">музейное
-                    </button>
+                            id="glass_plastic">Пластик</button>
                 </div>
-                <div class="row  p-1 m-2 text-center justify-content-center name-service">
-                    Крепление для картины
+
+                <!-- Крепления -->
+                <div class="row p-1 m-2 text-center justify-content-center name-service">
+                    Крепления для картины
                 </div>
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_standard">крепление
-                        стандартное
-                    </button>
+                            id="bracing_standard">Стандартное</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_reinforced">крепление
-                        усиленное
-                    </button>
+                            id="bracing_reinforced">Усиленное</button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_clamps">прижимы для
-                        подрамника
-                    </button>
+                            id="bracing_clamps">Прижимы</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="bracing"
+                            id="bracing_mirror">Зеркальное</button>
                 </div>
-                <div class="row  p-1 m-2 text-center justify-content-center name-service">
-                    Внесите размеры и количество
+
+                <!-- Доставка -->
+                <div class="row p-1 m-2 text-center justify-content-center name-service">
+                    Доставка
+                </div>
+                <div class="row text-center justify-content-center button-service">
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="delivery"
+                            id="delivery_sad">В пределах Садового</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="delivery"
+                            id="delivery_ttk">В пределах ТТК</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="delivery"
+                            id="delivery_mkad">В пределах МКАД</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="delivery"
+                            id="delivery_lift">С подъёмом</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="delivery"
+                            id="delivery_outside">За МКАД</button>
+                </div>
+
+                <!-- Внесите размеры и количество -->
+                <div class="row p-1 m-2 text-center justify-content-center name-service">
+                    <div>Укажите размеры (мм) и количество</div>
                     <div class="row">
                         <div class="col-12 col-md-5 col-xxl-5">
-                            <div class="row  justify-content-center ">
+                            <div class="row justify-content-center">
                                 <div class="col-5 col-md-5 col-xxl-3">
                                     <div class="mb-3 mx-auto">
-                                        <input type="number" class="i1 form-control check-change-custom"
+                                        <input type="number" class="form-control check-dimensions"
                                                id="length-input"
-                                               aria-describedby="emailHelp" value="297">
+                                               value="297"
+                                               placeholder="Длина, мм">
                                     </div>
                                 </div>
-
-                                <div class="col-1 col-md-1 col-xxl-1 ">
-                                    <div class="mb-3 color-white">
-                                        X
-                                    </div>
+                                <div class="col-1 col-md-1 col-xxl-1">
+                                    <div class="mb-3 color-white">X</div>
                                 </div>
-
                                 <div class="col-5 col-md-5 col-xxl-3">
                                     <div class="mb-3">
-                                        <input type="number" class="i1 form-control check-change-custom"
+                                        <input type="number" class="form-control check-dimensions"
                                                id="width-input"
-                                               aria-describedby="emailHelp" value="210">
+                                               value="210"
+                                               placeholder="Ширина, мм">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row  justify-content-center ">
+                            <!-- Количество -->
+                            <div class="row justify-content-center">
                                 <div class="col-7 col-md-7 col-xxl-7">
-                                    <div class="mb-3  mx-auto">
-                                        <input type="number" class="i1 form-control check-change-custom-count mx-auto"
+                                    <div class="mb-3 mx-auto">
+                                        <input type="number" class="form-control check-change-count mx-auto"
                                                min="1"
                                                id="count-input"
-                                               aria-describedby="emailHelp" value="1" width="100px"
+                                               value="1"
                                                style="width: 100px;">
                                     </div>
                                 </div>
-
+                            </div>
+                            <!-- Ввод километров, если за МКАД -->
+                            <div class="row justify-content-center" id="distance-block" style="display:none;">
+                                <div class="col-7 col-md-7 col-xxl-7">
+                                    <div class="mb-3 mx-auto">
+                                        <label>Км за МКАД:</label>
+                                        <input type="number" class="form-control check-change-distance mx-auto"
+                                               min="1"
+                                               id="distance-input"
+                                               value="10"
+                                               style="width: 100px;">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Быстрые кнопки формата -->
                         <div class="col-12 col-md-7 col-xxl-7">
                             <div class="row text-center justify-content-center button-service">
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
-                                        id="a4">А4
-                                </button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
-                                        id="a3">А3
-                                </button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
-                                        id="a2">А2
-                                </button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
-                                        id="a1">А1
-                                </button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
-                                        id="a0">А0
-                                </button>
-                            </div
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a4">А4</button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a3">А3</button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a2">А2</button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a1">А1</button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a0">А0</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-        </div>
 
-        <div class="row  p-1 m-2 text-center justify-content-center price-service" id="price-service">
-            Выберите услугу
-        </div>
-        </section>
+                <!-- Итоговая стоимость -->
+                <div class="row p-1 m-2 text-center justify-content-center price-service" id="price-service">
+                    Выберите услугу
+                </div>
+            </section>
 
+            <div class="row m-3">
+                <p class="mx-auto">
+                    После уточнения стоимости рекомендуем Вам оставить заявку на обратную связь, чтобы наши специалисты
+                    помогли объединить заказы и определиться с адресом забора заказа.
+                    Три салона Багетной мастерской №1 в Москве позволяют Вам выбрать наиболее удобный адрес!
+                </p>
+            </div>
+            <div class="row text-center mt-3 mb-3 justify-content-center">
+                <button
+                        class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white"
+                        data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                    Оставить заявку на обратную связь
+                </button>
+            </div>
 
-        <div class="row m-3">
-            <p class="mx-auto">
-
-                В нашем калькуляторе багета Вы можете выбрать подходящую багетную раму и сопутствующие материалы.
-                Здесь
-                же Вы можете отдельно заказать печать на холсте или печать фотографий! Также наш калькулятор
-                позволит
-                Вам заказать только паспарту, или только багетное стекло, если в процессе транспортировки что-то
-                повредилось. В указанную в таблице стоимость входит также работа мастера! Поэтому Вы можете быть
-                уверены, что видите конечную стоимость продукции. Мы строго следим за качеством и стараемся, чтобы
-                Ваши
-                заказы приносили Вам удовольствие! После уточнения стоимости рекомендуем Вам оставить заявку на
-                обратную
-                связь, чтобы наши специалисты помогли объединить заказы и определиться с адресом забора заказа. Три
-                салона Багетной мастерской №1 в Москве позволяют Вам выбрать наиболее удобный адрес!
-
-            </p>
-        </div>
-
-
-        <div class="row text-center mt-3 mb-3 justify-content-center">
-
-            <button
-                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
-                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                Оставить заявку на обратную связь</b></button>
-        </div>
-
-
-        <div class="row text-center">
-            <h3>С уважением к Вам,</h3>
-            <h3>С любовью к Искусству! </h3>
-            <h3>Команда Багетной мастерской №1</h3>
+            <div class="row text-center">
+                <h3>С уважением к Вам,</h3>
+                <h3>С любовью к Искусству!</h3>
+                <h3>Команда Багетной мастерской №1</h3>
+            </div>
         </div>
     </div>
 
     <script>
         $(document).ready(function () {
-            var sizeLengthInput = $('#length-input');
-            var sizeWidthInput = $('#width-input');
-            var countInput = $('#count-input');
-            var priceBlock = $('#price-service');
 
-            var activeType = null;
-            var activeBlock = null;
-            var activeSize = null;
-            var price = null;
-
-            var bracing = {
-                bracing_standard: {
-                    price: 300,
-                },
-                bracing_reinforced: {
-                    price: 500,
-                },
-                bracing_clamps: {
-                    price: 30,
-                }
+            // Храним допустимые размеры для некоторых материалов (ограничения)
+            const LIMITS = {
+                // [maxWidth, maxHeight]
+                materials_subframe: [3000, 3000],           // больше - нельзя
+                materials_subframe_tension: [3000, 3000],
+                materials_foamboard: [1000, 1400],
+                materials_foamboard_mount: [1000, 1400],
+                materials_paperboard: [900, 1000],
+                materials_passepartout: [800, 1000]
             };
 
-            var glass = {
-                glass_usual: {
-                    minPrice: 250,
-                    a4: 250,
-                    a3: 500,
-                    a2: 100,
-                    a1: 1500,
-                    a0: 2500,
-                    m: 4400,
-                },
-                glass_anti_glare: {
-                    minPrice: 1500,
-                    a4: 1500,
-                    a3: 3000,
-                    a2: 6000,
-                    a1: 12500,
-                    a0: 25000,
-                    m: 4400,
-                },
-                glass_matte: {
-                    minPrice: 450,
-                    a4: 450,
-                    a3: 900,
-                    a2: 1600,
-                    a1: 2800,
-                    a0: 5500,
-                    m: 30000,
-                },
-                glass_plastic: {
-                    minPrice: 250,
-                    a4: 250,
-                    a3: 500,
-                    a2: 1000,
-                    a1: 1500,
-                    a0: 2500,
-                    m: 4400,
-                },
-                glass_museum: {
-                    minPrice: 1500,
-                    a4: 1500,
-                    a3: 3000,
-                    a2: 6000,
-                    a1: 12500,
-                    a0: 25000,
-                    m: 4400,
-                },
+            // Печать (за м²) + мин. стоимость
+            const SERVICES = {
+                service_matte:    { priceM2: 4000, min: 250 },
+                service_glossy:   { priceM2: 5400, min: 500 },
+                service_canvas:   { priceM2: 8000, min: 1500 }
             };
 
-            var materials = {
+            // Материалы (за м²) или за погонный метр
+            // Минимальная цена 250₽ везде
+            // Подрамник: 850₽/п.м до 1м², свыше 1м² -> 1100₽/п.м
+            // Подрамник + Натяжка: 1275₽/п.м до 1м², свыше 1м² -> 1650₽/п.м
+            // ПеноКартон: 3500₽/м² (простая листовая)
+            // ПеноКартон + накатка: 5250₽/м²
+            // Картон: 2000₽/м²
+            // Паспарту: 4400₽/м²
+            const MATERIALS = {
                 materials_subframe: {
-                    minPrice: 250,
-                    m_before: 4400,
-                    m_after: 5500,
-                    a4: 840,
-                    a3: 1190,
-                    a2: 1680,
-                    a1: 2370,
-                    a0: 4490,
+                    min: 250,
+                    type: 'subframe', // особая логика
+                    priceBefore1m2: 850,
+                    priceAfter1m2: 1100
+                },
+                materials_subframe_tension: {
+                    min: 250,
+                    type: 'subframe',
+                    priceBefore1m2: 1275,
+                    priceAfter1m2: 1650
                 },
                 materials_foamboard: {
-                    minPrice: 250,
-                    m_before: 5200,
-                    m_after: 9000,
-                    a4: 300,
-                    a3: 650,
-                    a2: 1300,
-                    a1: 2600,
-                    a0: 4500,
+                    min: 250,
+                    type: 'm2',
+                    priceM2: 3500
+                },
+                materials_foamboard_mount: {
+                    min: 250,
+                    type: 'm2',
+                    priceM2: 5250
                 },
                 materials_paperboard: {
-                    minPrice: 250,
-                    m_before: 2000,
-                    a4: 250,
-                    a3: 350,
-                    a2: 650,
-                    a1: 1200,
-                    a0: 0,
+                    min: 250,
+                    type: 'm2',
+                    priceM2: 2000
                 },
                 materials_passepartout: {
-                    minPrice: 250,
-                    m_before: 4400,
-                    m_after: 5500,
-                    max_1: 1000,
-                    max_2: 800,
-                    a4: 1500,
-                    a3: 2300,
-                    a2: 3100,
-                    a1: 3900,
-                    a0: 0,
-                },
-            };
-
-            var services = {
-                service_matte: {
-                    minPrice: 250,
-                    a4: 250,
-                    a3: 500,
-                    a2: 1500,
-                    a1: 3000,
-                    a0: 4000,
-                    m: 4000,
-                },
-                service_canvas: {
-                    minPrice: 1000,
-                    a4: 2000,
-                    a3: 3500,
-                    a2: 4000,
-                    a1: 5000,
-                    a0: 10000,
-                    m: 8000,
-                },
-                service_glossy: {
-                    minPrice: 500,
-                    a4: 500,
-                    a3: 1000,
-                    a2: 3000,
-                    a1: 4000,
-                    a0: 5400,
-                    m: 5400,
+                    min: 250,
+                    type: 'm2',
+                    priceM2: 4400
                 }
             };
 
-            var sizeId = {
-                a4: {
-                    width: 210,
-                    length: 297,
-                },
-                a3: {
-                    width: 297,
-                    length: 420,
-                },
-                a2: {
-                    width: 420,
-                    length: 594,
-                },
-                a1: {
-                    width: 594,
-                    length: 841,
-                },
-                a0: {
-                    width: 841,
-                    length: 1189,
-                }
+            // Багетное стекло (за м²) + минимальная цена 250 ₽
+            const GLASS = {
+                glass_usual:     { priceM2: 4400, min: 250 },
+                glass_matte:     { priceM2: 7500, min: 250 },
+                glass_anti_glare:{ priceM2:30000, min: 250 },
+                glass_plastic:   { priceM2: 4400, min: 250 }
             };
 
+            // Крепления (штучно), размеры не нужны
+            // Добавлен "bracing_mirror": 750₽
+            const BRACING = {
+                bracing_standard:  { priceEach: 300 },
+                bracing_reinforced:{ priceEach: 500 },
+                bracing_clamps:    { priceEach: 30 },
+                bracing_mirror:    { priceEach: 750 }
+            };
+
+            // Доставка: фиксированная, кроме выезда за МКАД (60₽/км)
+            // При выборе доставки – тоже игнорируем поля размеров.
+            const DELIVERY = {
+                delivery_sad:    { price: 800 },
+                delivery_ttk:    { price:1000 },
+                delivery_mkad:   { price:1200 },
+                delivery_lift:   { price:1500 },
+                // Если выбрано outside – 60 * distanceInput.val()
+                delivery_outside:{ pricePerKm:60 }
+            };
+
+            // Стандартные размеры А-форматов (мм)
+            const A_SIZES = {
+                a4: { width:210, length:297 },
+                a3: { width:297, length:420 },
+                a2: { width:420, length:594 },
+                a1: { width:594, length:841 },
+                a0: { width:841, length:1189 }
+            };
+
+            // Текущее активное
+            let activeBlock = null;   // service | materials | glass | bracing | delivery
+            let activeType  = null;   // ключ внутри соответствующего объекта
+            let activeSize  = null;   // a4 | a3 и т.д. (необязательно)
+
+            // DOM-элементы
+            const lengthInput = $('#length-input');
+            const widthInput  = $('#width-input');
+            const countInput  = $('#count-input');
+            const distanceInput = $('#distance-input'); // км за МКАД
+            const priceBlock  = $('#price-service');
+            const distanceBlock = $('#distance-block'); // показать/спрятать для "за МКАД"
+
+            // Обнуление/вывод цены
+            function showPrice(value) {
+                priceBlock.text(value + ' ₽');
+            }
+            function showError(msg) {
+                alert(msg);
+                priceBlock.text('Невозможно рассчитать');
+            }
+
+            // Функция-обёртка для вычислений
             function calc() {
-                switch (activeBlock) {
-                    case 'service':
-                        calcServices();
-                        break;
-                    case 'materials':
-                        calcMaterials();
-                        break;
-                    case 'glass':
-                        calcGlass();
-                        break;
-                    case 'bracing':
-                        calcBracing();
-                        break;
-                    default:
-                        break;
+                // Если ничто не выбрано, выходим
+                if (!activeBlock || !activeType) {
+                    priceBlock.text('Выберите услугу');
+                    return;
+                }
+
+                // Если выбраны "Крепления" или "Доставка" – игнорируем размеры
+                if (activeBlock === 'bracing') {
+                    calculateBracing();
+                    return;
+                }
+                if (activeBlock === 'delivery') {
+                    calculateDelivery();
+                    return;
+                }
+
+                // Для остальных (service, materials, glass) считаем по площади (или периметру).
+                let lengthMm = parseFloat(lengthInput.val()) || 0;
+                let widthMm  = parseFloat(widthInput.val())  || 0;
+                let qty      = parseFloat(countInput.val())  || 1;
+
+                // Проверим на отрицательные/нулевые
+                if (lengthMm <= 0 || widthMm <= 0) {
+                    showError('Укажите корректные размеры!');
+                    return;
+                }
+
+                // Считаем площадь в м²
+                let area = (lengthMm / 1000) * (widthMm / 1000);
+                let perimeter = 2 * ((lengthMm / 1000) + (widthMm / 1000));
+
+                let total = 0;
+
+                if (activeBlock === 'service') {
+                    // Печать
+                    let data = SERVICES[activeType];
+                    total = area * data.priceM2;
+                    if (total < data.min) {
+                        total = data.min;
+                    }
+                    total = total * qty;
+                    showPrice(Math.round(total));
+                }
+                else if (activeBlock === 'materials') {
+                    // Материалы
+                    let data = MATERIALS[activeType];
+                    // Сначала проверяем ограничения по габаритам (если есть)
+                    if (LIMITS[activeType]) {
+                        const maxW = LIMITS[activeType][0];
+                        const maxH = LIMITS[activeType][1];
+                        if (lengthMm > maxH || widthMm > maxW) {
+                            showError('Превышены допустимые габариты! Свяжитесь со специалистом.');
+                            return;
+                        }
+                    }
+
+                    // Подрамник (периметр) или обычный м²
+                    if (data.type === 'subframe') {
+                        // Смотрим, <=1 м² или нет
+                        let pricePerLm = (area <= 1) ? data.priceBefore1m2 : data.priceAfter1m2;
+                        // стоимость = периметр * цена за погонный метр
+                        let subTotal = perimeter * pricePerLm;
+                        // Минимум 250
+                        if (subTotal < data.min) {
+                            subTotal = data.min;
+                        }
+                        total = subTotal * qty;
+                    } else if (data.type === 'm2') {
+                        let subTotal = area * data.priceM2;
+                        if (subTotal < data.min) {
+                            subTotal = data.min;
+                        }
+                        total = subTotal * qty;
+                    }
+                    showPrice(Math.round(total));
+                }
+                else if (activeBlock === 'glass') {
+                    // Стекло
+                    let data = GLASS[activeType];
+                    let subTotal = area * data.priceM2;
+                    if (subTotal < data.min) {
+                        subTotal = data.min;
+                    }
+                    total = subTotal * qty;
+                    showPrice(Math.round(total));
                 }
             }
 
-            function calcServices() {
-                if (activeSize !== null) {
-                    price = services[activeType][activeSize] * countInput.val();
-                    priceBlock.text(price);
+            // Расчёт для креплений
+            function calculateBracing() {
+                let qty = parseFloat(countInput.val()) || 1;
+                let priceEach = BRACING[activeType].priceEach;
+                let total = priceEach * qty;
+                showPrice(total);
+            }
+
+            // Расчёт для доставки
+            function calculateDelivery() {
+                let qty = parseFloat(countInput.val()) || 1;
+                // обычно доставка оплачивается 1 раз, но если нужно умножать на количество,
+                // можно менять логику. Предположим, что пользователь вводит 1 (или нужное число).
+                let data = DELIVERY[activeType];
+                let total = 0;
+                if (activeType === 'delivery_outside') {
+                    let dist = parseFloat(distanceInput.val()) || 0;
+                    total = dist * data.pricePerKm;
                 } else {
-                    sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
-
-
-                    if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
-                        activeSizeNew = 'a4'
-                    }
-
-                    if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
-                        activeSizeNew = 'a3'
-                    }
-
-                    if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
-                        activeSizeNew = 'a2'
-                    }
-
-                    if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
-                        activeSizeNew = 'a1'
-                    }
-
-                    if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
-                        activeSizeNew = 'a0'
-                    }
-
-                    if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
-                        activeSizeNew = 'a0'
-                    }
-
-                    price = services[activeType][activeSizeNew] * countInput.val();
-                    priceBlock.text(Math.round(price));
+                    total = data.price;
                 }
+                total = total * qty;
+                showPrice(total);
             }
 
-            function calcMaterials() {
-                if (activeType === 'materials_subframe') {
-                    /*let p = 0;
-                    if (((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) > 1) {
-                        p = materials[activeType].m_after
-                    } else {
-                        p = materials[activeType].m_before
-                    }
-                    price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * p * countInput.val()
-
-                    if (price < materials[activeType].minPrice) {
-                        price = materials[activeType].minPrice
-                    }
-                    priceBlock.text(Math.round(price));
-                    */
-
-                    if (activeSize !== null) {
-                        price = materials[activeType][activeSize] * countInput.val();
-                        priceBlock.text(price);
-                    } else {
-                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
-
-
-                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
-                            activeSizeNew = 'a4'
-                        }
-
-                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
-                            activeSizeNew = 'a3'
-                        }
-
-                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
-                            activeSizeNew = 'a2'
-                        }
-
-                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
-                            activeSizeNew = 'a1'
-                        }
-
-                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        price = materials[activeType][activeSizeNew] * countInput.val();
-                        priceBlock.text(Math.round(price));
+            // Функция, чтобы проставить активSize, если пользователь вручную ввёл мм
+            function checkIfASize() {
+                // Проверим, совпадает ли с одним из A-форматов
+                let lengthVal = Number(lengthInput.val());
+                let widthVal  = Number(widthInput.val());
+                let found = null;
+                for (let key in A_SIZES) {
+                    if (
+                        (A_SIZES[key].length === lengthVal && A_SIZES[key].width === widthVal) ||
+                        (A_SIZES[key].length === widthVal  && A_SIZES[key].width === lengthVal)
+                    ) {
+                        found = key;
+                        break;
                     }
                 }
-                if (activeType === 'materials_foamboard') {
-                    /*p = 0;
-                    if (((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) > 1.4) {
-                        p = materials[activeType].m_after
-                    } else {
-                        p = materials[activeType].m_before
-                    }
-                    price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * p * countInput.val()
-
-                    if (price < materials[activeType].minPrice) {
-                        price = materials[activeType].minPrice
-                    }
-                    priceBlock.text(Math.round(price));
-
-                     */
-                    if (activeSize !== null) {
-                        price = materials[activeType][activeSize] * countInput.val();
-                        priceBlock.text(price);
-                    } else {
-                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
-
-
-                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
-                            activeSizeNew = 'a4'
-                        }
-
-                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
-                            activeSizeNew = 'a3'
-                        }
-
-                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
-                            activeSizeNew = 'a2'
-                        }
-
-                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
-                            activeSizeNew = 'a1'
-                        }
-
-                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        price = materials[activeType][activeSizeNew] * countInput.val();
-                        priceBlock.text(Math.round(price));
-                    }
-                }
-
-                if (activeType === 'materials_paperboard') {
-                    if (((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) > 0.9) {
-                        alert("Максимальный формат листа картона - 1000х900 мм. Пожалуйста, выберете пенокартон или обратитесь к специалисту через обратную связь. Спасибо!")
-                    }
-
-                   /* price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * materials[activeType].m_before * countInput.val()
-
-                    if (price < materials[activeType].minPrice) {
-                        price = materials[activeType].minPrice
-                    }
-                    priceBlock.text(Math.round(price));
-                    */
-
-                    if (activeSize !== null) {
-                        price = materials[activeType][activeSize] * countInput.val();
-                        priceBlock.text(price);
-                    } else {
-                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
-
-
-                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
-                            activeSizeNew = 'a4'
-                        }
-
-                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
-                            activeSizeNew = 'a3'
-                        }
-
-                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
-                            activeSizeNew = 'a2'
-                        }
-
-                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
-                            activeSizeNew = 'a1'
-                        }
-
-                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        price = materials[activeType][activeSizeNew] * countInput.val();
-                        priceBlock.text(Math.round(price));
-                    }
-                }
-
-                if (activeType === 'materials_passepartout') {
-                    if (((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) > 0.8) {
-                        alert("Максимальный формат листа паспарту - 1000х800 мм. Пожалуйста, обратитесь к специалисту через обратную связь. Спасибо!")
-                    }
-
-                    /*price = ((sizeLengthInput.val() * sizeWidthInput.val()) / 1000000) * materials[activeType].m_before * countInput.val()
-
-                    if (price < materials[activeType].minPrice) {
-                        price = materials[activeType].minPrice
-                    }
-                    priceBlock.text(Math.round(price));
-
-                     */
-
-                    if (activeSize !== null) {
-                        price = materials[activeType][activeSize] * countInput.val();
-                        priceBlock.text(price);
-                    } else {
-                        sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
-
-
-                        if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
-                            activeSizeNew = 'a4'
-                        }
-
-                        if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
-                            activeSizeNew = 'a3'
-                        }
-
-                        if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
-                            activeSizeNew = 'a2'
-                        }
-
-                        if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
-                            activeSizeNew = 'a1'
-                        }
-
-                        if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
-                            activeSizeNew = 'a0'
-                        }
-
-                        price = materials[activeType][activeSizeNew] * countInput.val();
-                        priceBlock.text(Math.round(price));
-                    }
-                }
-            }
-
-            function calcGlass() {
-                if (activeSize !== null) {
-                    price = glass[activeType][activeSize] * countInput.val();
-                    priceBlock.text(Math.round(price));
+                // Обновим "activeSize", снимем/проставим .active на кнопках
+                if (found) {
+                    activeSize = found;
+                    $('.check-size.active').removeClass('active');
+                    $('#' + found).addClass('active');
                 } else {
-                    sizeCustom = sizeLengthInput.val() * sizeWidthInput.val();
-
-
-                    if (sizeCustom < sizeId.a4.width*sizeId.a4.length){
-                        activeSizeNew = 'a4'
-                    }
-
-                    if (sizeId.a4.width*sizeId.a4.length < sizeCustom && sizeCustom < sizeId.a3.width*sizeId.a3.length){
-                        activeSizeNew = 'a3'
-                    }
-
-                    if (sizeId.a3.width*sizeId.a3.length < sizeCustom && sizeCustom < sizeId.a2.width*sizeId.a2.length){
-                        activeSizeNew = 'a2'
-                    }
-
-                    if (sizeId.a2.width*sizeId.a2.length < sizeCustom && sizeCustom < sizeId.a1.width*sizeId.a1.length){
-                        activeSizeNew = 'a1'
-                    }
-
-                    if (sizeId.a1.width*sizeId.a1.length < sizeCustom  && sizeCustom < sizeId.a0.width*sizeId.a0.length){
-                        activeSizeNew = 'a0'
-                    }
-
-                    if (sizeCustom > sizeId.a0.width*sizeId.a0.length){
-                        activeSizeNew = 'a0'
-                    }
-
-                    price = glass[activeType][activeSizeNew] * countInput.val();
-                    priceBlock.text(Math.round(price));
+                    activeSize = null;
+                    $('.check-size.active').removeClass('active');
                 }
             }
 
-            function calcBracing() {
-                price = bracing[activeType].price * countInput.val();
-                priceBlock.text(price);
-            }
-
-            function changeSize() {
-                if (sizeId.a4.width === Number(sizeWidthInput.val()) && sizeId.a4.length === Number(sizeLengthInput.val())) {
-                    activeSize = 'a4'
-                } else if (sizeId.a3.width === Number(sizeWidthInput.val()) && sizeId.a3.length === Number(sizeLengthInput.val())) {
-                    activeSize = 'a3'
-                } else if (sizeId.a2width === Number(sizeWidthInput.val()) && sizeId.a2.length === Number(sizeLengthInput.val())) {
-                    activeSize = 'a2'
-                } else if (sizeId.a1.width === Number(sizeWidthInput.val()) && sizeId.a1.length === Number(sizeLengthInput.val())) {
-                    activeSize = 'a1'
-                } else if (sizeId.a0.width === Number(sizeWidthInput.val()) && sizeId.a0.length === Number(sizeLengthInput.val())) {
-                    activeSize = 'a0'
-                } else {
-                    activeSize = null
-                }
-
-                if (activeSize !== null) {
-                    $('.check-size.active').removeClass('active')
-                    $('#' + activeSize).addClass('active')
-                } else {
-                    $('.check-size.active').removeClass('active')
-                }
-            }
-
+            // События
+            // 1) Клик по типу (service, materials, glass, bracing, delivery)
             $(document).on('click', '.check-type', function () {
-                $('.check-type.active').removeClass('active')
-                $(this).addClass('active')
-                activeType = $(this).attr('id')
-                activeBlock = $(this).data('block')
-                calc()
+                // Снимаем прежнюю активность
+                $('.check-type.active').removeClass('active');
+                $(this).addClass('active');
+
+                activeType  = $(this).attr('id');
+                activeBlock = $(this).data('block');
+
+                // Если выбрали крепления или доставку – скрываем поля для размеров
+                if (activeBlock === 'bracing' || activeBlock === 'delivery') {
+                    // Прячем
+                    $('#length-input').prop('disabled', true);
+                    $('#width-input').prop('disabled', true);
+                    // Прячем кнопки Аx?
+                    $('.check-size').prop('disabled', true);
+                    distanceBlock.hide();
+
+                    if (activeBlock === 'delivery') {
+                        // Если выбран "delivery_outside", показываем поле ввода км
+                        if (activeType === 'delivery_outside') {
+                            distanceBlock.show();
+                        }
+                    }
+                } else {
+                    // Иначе показываем
+                    $('#length-input').prop('disabled', false);
+                    $('#width-input').prop('disabled', false);
+                    $('.check-size').prop('disabled', false);
+                    distanceBlock.hide();
+                }
+
+                calc();
             });
 
+            // 2) Клик по "типовым" размерам (А4, А3, ...)
             $(document).on('click', '.check-size', function () {
-                $('.check-size.active').removeClass('active')
-                $(this).addClass('active')
-                activeSize = $(this).attr('id')
-
-                sizeLengthInput.val(sizeId[activeSize].length)
-                sizeWidthInput.val(sizeId[activeSize].width)
-                calc()
-            })
-
-            $(document).on('change', '.check-change-custom', function () {
-                changeSize()
+                $('.check-size.active').removeClass('active');
+                $(this).addClass('active');
+                activeSize = $(this).attr('id');
+                // Подставим ширину и высоту
+                lengthInput.val(A_SIZES[activeSize].length);
+                widthInput.val(A_SIZES[activeSize].width);
                 calc();
-            })
+            });
 
-            $(document).on('change', '.check-change-custom-count', function () {
+            // 3) Изменение полей (длина, ширина, количество)
+            $(document).on('change', '.check-dimensions', function () {
+                checkIfASize();
                 calc();
-            })
+            });
+            $(document).on('change', '.check-change-count', function () {
+                calc();
+            });
+            $(document).on('change', '.check-change-distance', function(){
+                calc();
+            });
 
-            changeSize();
+            // При загрузке страницы сразу проверим
+            checkIfASize();
+            calc();
         });
     </script>
+
 
 <?
 
