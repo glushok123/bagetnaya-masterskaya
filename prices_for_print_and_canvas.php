@@ -156,7 +156,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     <!-- ПеноКартон + накатка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_foamboard_mount">Пенокартон и натяжка </button>
+                            id="materials_foamboard_mount">Пенокартон и накатка</button>
                     <!-- Картон -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
