@@ -217,7 +217,7 @@
                     СПЕЦИАЛЬНЫХ УСЛОВИЯХ
                 </div>
 
-                <a href="">
+                <a href="/actions">
                     <button class='button button-custom-index button-color-company-golden fix-width-185'
                             style='padding:10px;'>Подробнее
                     </button>
