@@ -122,7 +122,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <section id="calc-price">
                 <!-- Печать -->
                 <div class="row p-1 m-2 text-center justify-content-center name-service">
-                    Услуги печати
+                    услуги печати и росписи
                 </div>
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
@@ -134,6 +134,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
                             id="service_canvas">Холст</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="service"
+                            id="service_art_gel">Прорисовка арт-гелем</button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="service"
+                            id="service_oil_painting">Роспись маслом</button>
                 </div>
 
                 <!-- Материалы -->
@@ -340,7 +346,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             const SERVICES = {
                 service_matte:    { priceM2: 4000, min: 250 },
                 service_glossy:   { priceM2: 5400, min: 500 },
-                service_canvas:   { priceM2: 8000, min: 1500 }
+                service_canvas:   { priceM2: 8000, min: 1500 },
+                service_art_gel:   { priceM2: 5000, min: 500 },
+                service_oil_painting:   { priceM2: 15000, min: 1500 }
             };
 
             // Материалы (за м²) или за погонный метр
