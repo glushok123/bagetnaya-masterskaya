@@ -40,27 +40,86 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         font-family: Cormorant Garamond;
         font-size: 22px;
     }
-    img{
-        max-height: 282px;
+    img {
         border-radius: 10px;
+        max-width: 100%; /* Не шире контейнера */
+        height: auto;    /* Сохранять пропорции */
+    }
+
+    .img-custom {
+        object-fit: contain;
+    }
+
+
+    img {
+        border-radius: 10px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .img-custom {
+        object-fit: contain;
+    }
+
+    .img-1 {
+        max-width: 286px;
+        max-height: 382px;
+    }
+
+    .img-2 {
+        max-width: 396px;
+        max-height: 561px;
+    }
+
+    .img-3 {
+        max-width: 404px;
+        max-height: 461px;
+    }
+
+    @media screen and (max-width: 767px){
+        .img-1 {
+            max-width: 100%;
+            height: auto;
+            max-height: 376px;
+        }
+
+        .img-2 {
+            max-width: 100%;
+            height: auto;
+            max-height: 412px;
+        }
+
+        .img-3 {
+            max-width: 100%;
+            height: auto;
+            max-height: 340px;
+        }
     }
 </style>
 
 <div class="container home_design">
 
     <!-- Блок 1 -->
-    <div class="row text-center">
-        <h2 class="section-title"><span style="font-size: 40px">EXPRESS-ЗАКАЗ:</span><br>СРОЧНОЕ ИЗГОТОВЛЕНИЕ РАМКИ ДЛЯ КАРТИНЫ И ФОТО — ДЕНЬ В ДЕНЬ</h2>
-        <div class="col-sm-4 col-sm-offset-1">
-            <img src="/img/article/telegram-cloud-photo-size-2-5425050076243422565-y%201.png" class="img-responsive">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="section-title text-center">
+                <span style="font-size: 40px">EXPRESS-ЗАКАЗ:</span><br>
+                СРОЧНОЕ ИЗГОТОВЛЕНИЕ РАМКИ ДЛЯ КАРТИНЫ И ФОТО — ДЕНЬ В ДЕНЬ
+            </h2>
         </div>
-        <div class="col-sm-6 text-left section-text my-auto">
+
+        <div class="col-12 col-md-5 text-center">
+            <img src="/img/article/telegram-cloud-photo-size-2-5425050076243422565-y%201.png" class="img-custom img-1">
+        </div>
+
+        <div class="col-12 col-md-7 text-left section-text my-auto">
             <p>Нужна рамка <strong>срочно</strong> для картины или фотографии? В Багетной мастерской №1 вы можете купить рамку и оформить заказ день в день с изготовлением от 30 минут!</p>
             <p>Мы предлагаем как готовые изделия стандартных размеров, так и индивидуальное изготовление в <strong>кратчайшие сроки</strong>!</p>
-            <a href="/baget_online"><button class="highlight-btn">Рассчитать стоимость багета</button></a>
+            <a href="/baget_online">
+                <button class="highlight-btn">Рассчитать стоимость багета</button>
+            </a>
         </div>
     </div>
-
     <!-- Блок 2 -->
     <div class="row text-center">
         <h3 class="section-title">ДЛЯ ЧЕГО УСЛУГА EXPRESS-ЗАКАЗА?</h3>
@@ -83,7 +142,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <p><strong class="garamond">3. Укажите срочность</strong><br>Мы изготовим рамку день в день в течение нескольких часов в зависимости от сложности!</p>
         </div>
         <div class="col-sm-6">
-            <img src="/img/article/image%20707.png" class="img-responsive">
+            <img src="/img/article/image%20707.png" class="img-custom img-2">
         </div>
     </div>
 
@@ -101,7 +160,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="row">
         <h3 class="section-title">ПОЧЕМУ СТОИТ ОБРАТИТЬСЯ ИМЕННО К НАМ?</h3>
         <div class="col-sm-4">
-            <img src="/img/article/telegram-cloud-photo-size-2-5276430906288104718-y%201.png" class="img-responsive">
+            <img src="/img/article/telegram-cloud-photo-size-2-5276430906288104718-y%201.png" class="img-custom img-3">
         </div>
         <div class="col-sm-8 text-left section-text my-auto">
             <p><span class="icon-check">✅</span> скорость – изготовление рамки день в день.</p>
