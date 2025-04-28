@@ -1,3 +1,11 @@
+<?php
+$keywords = "Купить картину, картина для дома, интерьерная картина";
+$title = "Продажа интерьерных картин для дома – оригинальные готовые решения для себя и в подарок!";
+$description = "Купить картину художника, постер или репродукцию – найдите идеальную готовую работу в Багетной мастерской №1!";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
+?>
+
 <style>
     .castom-image {
         /*min-width: 100%;
@@ -34,7 +42,7 @@
     }
 
     form input {
-        width: 90% !important;
+        max-width: 90% !important;
     }
 
     form select {
@@ -50,18 +58,70 @@
     }
 
     p {
-        text-indent: 20px;
+
         /* Отступ первой строки в пикселах */
+    }
+    .section-title {
+        font-family: Cormorant Garamond;
+        color: #a3080d;
+        font-weight: bold;
+        text-align: center;
+        margin: 40px 0 20px;
+        text-transform: uppercase;
+    }
+    .highlight-btn {
+        background-color: #a3080d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        font-size: 16px;
+        border-radius: 4px;
+        margin: 15px 0;
+    }
+    .highlight-btn:hover {
+        background-color: #870000;
+        color: #fff;
+    }
+    .section-text {
+        font-size: 18px;
+        font-family: 'Manrope', sans-serif;
+        color: #474A51;
+    }
+    .garamond {
+        font-family: Cormorant Garamond;
+        font-size: 22px;
+    }
+    img {
+        max-height: 282px;
+        border-radius: 10px;
+    }
+    @media screen and (max-width: 767px) {
+        .section-title {
+            font-size: 24px;
+            margin: 30px 0 15px;
+        }
+        .garamond {
+            font-size: 18px;
+        }
+        .section-text {
+            font-size: 16px;
+        }
+        .highlight-btn {
+            width: 100%;
+            padding: 12px 10px;
+            font-size: 15px;
+        }
+        img {
+            max-height: 200px;
+            margin-bottom: 15px;
+        }
+        .text-left {
+            text-align: center;
+        }
     }
 </style>
 
-<?php
-$keywords = "Купить картину, картина для дома, интерьерная картина";
-$title = "Купить картину художника в Багетной мастерской №1 для дома или офиса";
-$description = "Ищете место, где можно купить картину? Багетная мастерская №1 предлагает Вам ознакомиться с оригинальными картинами современных художников!";
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
-?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
         integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA=="
@@ -73,38 +133,41 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-<div class='container'>
-    <div class="block-h1 text-center my-4 fade-in">
-        <h1 class='color-main'>Ищете место, где можно купить картину художника?</h1>
+<div class='container home_design'>
+    <!-- Блок 1 -->
+    <div class="row ">
+        <h2 class="section-title">КАРТИНЫ ДЛЯ ВАШЕГО ДОМА – КУСОЧЕК<br> ИСКУССТВА В КАЖДОМ ИНТЕРЬЕРЕ!</h2>
+        <div class="col-sm-4 col-sm-offset-1">
+            <img src="/img/article/telegram-cloud-photo-size-2-5425050076243422565-y%201%20(3).png" class="img-responsive">
+        </div>
+        <div class="col-sm-6 text-left section-text my-auto">
+            <p><strong>Ищете картину для дома, которая преобразит пространство и добавит уюта?</strong></p>
+            <p>Багетная мастерская №1 сотрудничает с молодыми художниками, а также постоянно пополняет коллекцию оригинальными постерами и репродукциями!</p>
+            <p><strong>Бесплатная доставка</strong> в пределах МКАД при покупке картины на сайте!</p>
+        </div>
     </div>
-    <p>
-        Багетная мастерская №1
-        сотрудничает с молодыми и талантливыми художниками и предлагает
-        Вам ознакомиться с их оригинальными интерьерными картинами!
-    </p>
 
-    <div class="row text-center justify-content-center">
-        <a href="/baget_online">
-            <button
-                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                Рассчитать
-                стоимость багета
-            </button>
-        </a>
+    <!-- Блок 2 -->
+    <div class="row text-center">
+        <h3 class="section-title">В НАШИХ КОЛЛЕКЦИЯХ ВЫ МОЖЕТЕ КУПИТЬ<br> КАРТИНУ ДЛЯ ЛЮБЫХ ЦЕЛЕЙ:</h3>
+        <div class="col-sm-12 section-text">
+            <p><strong class="garamond">УНИКАЛЬНЫЕ РАБОТЫ</strong><br>авторские картины с душой</p>
+            <p><strong class="garamond">РАЗНООБРАЗИЕ СТИЛЕЙ</strong><br>от абстракции до реализма – постеры, репродукции, объектное оформление</p>
+            <p><strong class="garamond">ИНТЕРЬЕРНЫЕ КАРТИНЫ</strong><br>готовые наборы картин в рамах, а также единичные живописные экземпляры</p>
+        </div>
     </div>
-    <p>
-    <h5 style="color: #6a1a21" class="text-center">Что такое интерьерная картина?</h5> Это изображение, которое
-    дополняет Вашу домашнюю или рабочую среду.
-    Она может помочь создать нужное настроение и атмосферу в комнате, подчеркнуть цветовую гамму, стиль
-    и концепцию дизайна интерьера. Картина для дома или офиса – это простой и недорогой вариант разнообразить интерьер.
-    Также купить картину можно в подарок для близких или использоваться в качестве элементов декора на
-    рабочих местах, в кафе, салонах красоты и других местах.
-    </p>
-    <p>
-    <h5 style="color: #6a1a21" class="text-center">Купить картину очень легко:</h5> просто оформите заказ через сайт,
-    после чего с Вами свяжется менеджер Багетной мастерской №1 и
-    уточнит подробности заказа, адрес доставки и другие детали.
-    </p>
+
+    <!-- Блок 3 -->
+    <div class="row text-center section-text justify-content-center">
+        <p style="color: #a3080d;"><strong>Хотите что-то особенное?</strong> – Вы можете заказать картину по индивидуальным пожеланиям! Наша команда проконсультирует и поможет с поиском художника – оставляйте заявку на обратную связь!</p>
+        <button class="highlight-btn" data-bs-toggle="modal" data-bs-target="#feedbackModal" style="max-width: 422px">Оставить заявку на обратную связь</button>
+    </div>
+
+    <!-- Заключение -->
+    <div class="row text-center section-text" style="margin: 40px 0;">
+        <p>Превратите стены в источник вдохновения – выбирайте свою идеальную картину уже сегодня!</p>
+    </div>
+
     <div class='row g-0' products-block style='margin-right: 25px!important'>
 
         <?
