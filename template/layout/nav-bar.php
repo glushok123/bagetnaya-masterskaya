@@ -96,6 +96,7 @@
                             <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
                             <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для
                                     картины</a>
+                            </li><li><a class="dropdown-item" href="/kartina_na_zakaz.php">Картина на заказ</a>
                             </li>
 
                             <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
