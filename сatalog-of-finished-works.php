@@ -1,8 +1,8 @@
 <?php
 
-$keywords = "багетные работы, работы, багет, паспарту";
-$title = "Багетная мастерская №1 - Наши работы";
-$description = "Работы Багетной мастерской №1";
+$keywords = "Рамка для картины, пример оформления, багетная мастерская";
+$title = "Примеры оформления картин в Багетной мастерской №1";
+$description = "Ищете рамки для картин? Посмотрите примеры оформления разных видов искусства в Багетной мастерской №1 ";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
@@ -52,7 +52,22 @@ $category = [
 ?>
 
 <style>
+    .highlight-btn {
+        background-color: #a3080d;
+        color: white;
+        border: none;
+        padding: 20px 35px;
+        font-size: 16px;
+        border-radius: 4px;
+        margin: 15px 0;
+        max-width: fit-content;
 
+    }
+    .highlight-btn:hover {
+
+        background-color: #870000;
+        color: #fff;
+    }
 
     .castom-image {
         width: 250px !important;
@@ -142,19 +157,9 @@ $category = [
 
 <div class="container">
     <div class="block-h1 text-center my-4 fade-in">
-        <h1 class='color-main' style="text-transform: uppercase;">Наши работы</h1>
+        <h1 class='color-main' style="text-transform: uppercase;">Галерея работ</h1>
         <div class='row style-text text-center pt-3' style="padding-left: 20%; padding-right: 20%">
-            Ищете идеальную раму для картины? Посмотрите примеры оформления разных видов искусства в Багетной мастерской
-            №1! Мы подготовили для Вас каталог с разнообразными вариантами работ.
-        </div>
-        <div class="row my-5">
-            <a href="/baget_online">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Рассчитать
-                    стоимость багета
-                </button>
-            </a>
+            Багетная мастерская №1 – это команда, которой Вы можете доверять! Здесь Вы можете ознакомиться с уникальными примерами оформления готовых работ и с опытом наших специалистов!
         </div>
     </div>
 </div>
@@ -168,24 +173,19 @@ $category = [
 								<div class="card text-center justify-content-center h-100 pt-3 " style="width:95%" href="/">
 									<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><img src="' . $item['imgMain'] . '" class="rounded mx-auto d-block castom-image " alt="..."></a>
 									
-									<div class="card-body relative">
-									    <div class="pb-5">
+									<div class="card-body-new">
+									    <div class="">
 										<a style="
 										text-decoration: none;
 										color: black;
 										"
 										href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><h5 class="card-title">' . $item['name'] . '</h5></a>
 										</div>
-										<div style="position: absolute; bottom: 0px;" class="row text-center mx-auto pt-5 justify-content-center ">
-                                            <a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '" class="mt-5 justify-content-center">
-                                                <button class="button button-custom-index button-color-company-golden mt-5 mx-auto" 
-                                                style="
-                                            padding: 5px;
-                                            padding-right: 10px;
-                                            padding-right: 10px;
-                                            ">Посмотреть работы</button>
+									
+                                            <a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '" class="but-show">
+                   Посмотреть работы
                                             </a>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -193,33 +193,57 @@ $category = [
         }
         ?>
     </div>
+    <div class="pt-5">
+        <div class='row style-text text-center pt-3' style="padding-left: 20%; padding-right: 20%">
+            Каждая картина обретает завершенность в правильном обрамлении. Эти и многие другие работы, которые не вошли в каталог – это работа с вдохновением, трепетным отношением, мастерством. Здесь не просто рамки для картины, а часто настоящие проекты, которые требуют особого умения и внимания. Все типы работ разделены по категориям для Вашего удобства.
+        </div>
+        <div class='row style-text text-center pt-3' style="padding-left: 20%; padding-right: 20%">
+            На нашем сайте Вы можете рассчитать стоимость оформления в конструкторе багета. Если Вам необходим предварительный расчет стоимости сложного заказа, например, спортивной Джерси или наградных медалей, оставляйте заявку на обратную связь!
+        </div>
+
+        <!-- Кнопка -->
+        <div class="row text-center section-text mt-5 mb-4">
+            <button class="highlight-btn mx-auto" data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на обратную связь</button>
+        </div>
+    </div>
 </div>
 
-<div class="pt-5">
-    <div class='row style-text text-center pt-3' style="padding-left: 20%; padding-right: 20%">
-        Багетная мастерская № 1 имеет большой опыт работы в сфере декоративного оформления. Здесь Вы можете увидеть
-        примеры оформления вышивок, икон, гравюр, рамы для живописи и 3d-оформление монет, медалей и спортивных
-        атрибутов.
-    </div>
-    <div class='row style-text text-center pt-3' style="padding-left: 20%; padding-right: 20%">
-        Профессиональная команда дизайнеров и мастеров подберет для Вас индивидуальное оформление картины в раме,
-        отвечающее именно Вашим запросам! Ознакомьтесь с различными вариантами художественного оформления Багетной
-        мастерской № 1 и найдите вдохновение именно для Вашей картины!
-    </div>
-</div>
 
-</div>
+
 
 
 <style>
     .card {
         padding-bottom: 10px;
-        border-radius: 6px;
-        border: 3px solid var(--beige, #E0D2BB);
+        border-radius: 17px;
+        background-color: #F1E8E2;
+        border: none;
     }
 
     .card:hover {
-        background: #E0D2BB;
+        /*background: #E0D2BB;*/
+    }
+    .but-show{
+        position: relative;
+        box-sizing: border-box;
+        padding: 15px 10px;
+        border-radius: 9px;
+        background-color: #D5AEAE;
+        color: black;
+        border: 1px transparent;
+        margin-top: 20px;
+    }
+    .but-show:hover{
+        border: 1px black;
+        color: black;
+    }
+    .card-body-new{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        padding: 10px 10px;
+        height: 100%;
+        justify-content: space-between;
     }
 </style>
 
