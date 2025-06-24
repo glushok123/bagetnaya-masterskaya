@@ -126,6 +126,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             </div>
 
         </div>
+        <!-- Контакт менеджера -->
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="fw-bold mb-1" style="font-size: 22px;">Менеджер-дизайнер</p>
+                <p class="mb-1" style="font-size: 20px;">
+                    <a href="tel:+789774274477" class="text-dark" style="text-decoration: underline;">8 (977) 427-44-77</a>
+                </p>
+                <p style="font-size: 20px;">
+                    <a href="mailto:Manager@bagetnaya-masterskaya.com" class="text-dark" style="text-decoration: underline;">Manager@bagetnaya-masterskaya.com</a>
+                </p>
+            </div>
+        </div>
 
 
         <div class="col-12 col-md-4 text-md-end text-center mt-5 " style="width: 100%">
