@@ -46,10 +46,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             color: #474A51;
         }
 
-        .garamond {
-            font-family: Cormorant Garamond, serif;
-            font-size: 22px;
-        }
+
 
         img {
             border-radius: 10px;

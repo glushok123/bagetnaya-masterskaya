@@ -344,7 +344,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
             // Печать (за м²) + мин. стоимость
             const SERVICES = {
-                service_matte:    { priceM2: 4000, min: 250 },
+                service_matte:    { priceM2: 5200, min: 325 },
                 service_glossy:   { priceM2: 5400, min: 500 },
                 service_canvas:   { priceM2: 8000, min: 1500 },
                 service_art_gel:   { priceM2: 5000, min: 500 },
