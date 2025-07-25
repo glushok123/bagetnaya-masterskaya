@@ -2,13 +2,13 @@
     <footer class="">
         <div class="row">
             <div class="col-12 col-md-7 align-middle">
-                <a class="navbar-brand align-middle" href="/">Багетная мастерская</a>
+                <a class="navbar-brand align-middle" href="/">Багетная мастерская №1</a>
                 <img src="/img/logo 2 (1).svg" alt="" class='img-brand-footer align-middle'>
             </div>
             <div class="col-12 col-md-5">
                 <div class='row
                     <? if (!isMobile()) { ?>
-                        text-end
+
                     <? } ?>
                     mob-pt-15'>
 
