@@ -122,7 +122,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <section id="calc-price">
                 <!-- Печать -->
                 <div class="row p-1 m-2 text-center justify-content-center name-service">
-                    услуги печати и росписи
+                    Услуги печати и росписи
                 </div>
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
