@@ -300,7 +300,7 @@
         maxmainh = height * 0.88;
 
         if (window.innerWidth < 800) {
-            maxmainw = document.body.clientWidth * 0.9;
+            maxmainw = document.body.clientWidth * 0.8;
             maxmainh = height * 0.5;
         }
 

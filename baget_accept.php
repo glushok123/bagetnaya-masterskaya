@@ -135,12 +135,12 @@ $z[19] = $z[20] = $z[21] = $z[11] = $z[8] = "0";
 
 // Дописываем всё в итоговые строки
 $zakaz .= $zakaz2 . $zakaz3
-    . '<br><a href="http://bagetnaya-masterskaya.com/baget_online?id=' . implode("l", $z)
-    . '" rel="nofollow">Ссылка</a>' . $imghref;
+    . '<br><a href="https://bagetnaya-masterskaya.com/baget_online?id=' . implode("l", $z)
+    . '" rel="nofollow" target="_blank">Посмотреть заказ онлайн</a>' . $imghref;
 
 $zakazkl .= $zakazkl2 . $zakaz3
-    . '<br><a href="http://bagetnaya-masterskaya.com/baget_online?id=' . implode("l", $z)
-    . '" rel="nofollow">Ссылка</a>';
+    . '<br><a href="https://bagetnaya-masterskaya.com/baget_online?id=' . implode("l", $z)
+    . '" rel="nofollow" target="_blank">Посмотреть заказ онлайн</a>';
 
 // Отправка писем
 $ipaddr = $_SERVER["REMOTE_ADDR"];
