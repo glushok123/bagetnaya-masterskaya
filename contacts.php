@@ -43,7 +43,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         </div>
                         <p class="mb-3 mt-3"><b>Адрес:</b> Москва, Климентовский переулок, 6</p>
                         <div class="mb-2">
-                            <iframe src="https://yandex.ru/map-widget/v1/?ll=37.626978%2C55.741455&z=16&pt=37.626978,55.741455,pm2rdm" width="100%" height="180" frameborder="0"></iframe>
+                            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2a326da2cf43fb0bf4f1e6cec8c71fc7533891be61426adcc09a64dfe4a27a4&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                         </div>
                         <p class="text-center mx-auto"><a href="tel:+79778244212" class="text-dark " style="text-decoration: underline;">8 (977) 824-42-12</a></p>
                     </td>
@@ -55,7 +55,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         </div>
                         <p class="mb-3 mt-3"><b>Адрес:</b> Москва, ул. Арбат д. 1</p>
                         <div class="mb-2">
-                            <iframe src="https://yandex.ru/map-widget/v1/?ll=37.600849%2C55.752041&z=16&pt=37.600849,55.752041,pm2rdm" width="100%" height="180" frameborder="0"></iframe>
+                            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9d58c19de6ff4c9727e51cd85147f97e3cee2f6f8a2341dde6c5a8b9a10f9967&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                         </div>
                         <p class="text-center mx-auto"><a href="tel:+79268659295" class="text-dark " style="text-decoration: underline;">8 (926) 865-92-95</a></p>
                     </td>
@@ -67,7 +67,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         </div>
                         <p class="mb-3 mt-3"><b>Адрес:</b> Москва, Баррикадная 21/34с3</p>
                         <div class="mb-2">
-                            <iframe src="https://yandex.ru/map-widget/v1/?ll=37.579137%2C55.760506&z=16&pt=37.579137,55.760506,pm2rdm" width="100%" height="180" frameborder="0"></iframe>
+                            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A51496af377eb4bff4770f42fb5eddfd5291dd0ebcf8f2d3664492bcb899f0ff7&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                         </div>
                         <p class="text-center mx-auto"><a href="tel:+79773147771" class="text-dark " style="text-decoration: underline;">8 (977) 314-77-71</a></p>
                     </td>
@@ -86,7 +86,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         Режим работы: 9:00–21:00, ежедневно
                     </div>
                     <p class="mb-2">Адрес: Москва, Климентовский переулок, 6</p>
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=37.626978%2C55.741455&z=16&pt=37.626978,55.741455,pm2rdm" width="100%" height="180" frameborder="0"></iframe>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2a326da2cf43fb0bf4f1e6cec8c71fc7533891be61426adcc09a64dfe4a27a4&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                     <p class="fw-semibold mt-2">8 (977) 824-42-12</p>
                 </div>
 
@@ -96,7 +96,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         Режим работы: 9:00–21:00, ежедневно
                     </div>
                     <p class="mb-2">Адрес: Москва, ул. Арбат д. 1</p>
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=37.600849%2C55.752041&z=16&pt=37.600849,55.752041,pm2rdm" width="100%" height="180" frameborder="0"></iframe>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9d58c19de6ff4c9727e51cd85147f97e3cee2f6f8a2341dde6c5a8b9a10f9967&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                     <p class="fw-semibold mt-2">8 (926) 865-92-95</p>
                 </div>
 
@@ -106,7 +106,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         Режим работы: 9:00–21:00, ежедневно
                     </div>
                     <p class="mb-2">Адрес: Москва, Баррикадная 21/34с3</p>
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=37.579137%2C55.760506&z=16&pt=37.579137,55.760506,pm2rdm" width="100%" height="180" frameborder="0"></iframe>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A51496af377eb4bff4770f42fb5eddfd5291dd0ebcf8f2d3664492bcb899f0ff7&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                     <p class="fw-semibold mt-2">8 (977) 314-77-71</p>
                 </div>
             </div>
