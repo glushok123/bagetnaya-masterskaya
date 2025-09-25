@@ -24,6 +24,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             в шаговой доступности от метро, а также городскими и частными парковками!
         </p>
 
+        <!-- Контакт менеджера -->
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="fw-bold mb-1" style="font-size: 22px;">Менеджер-дизайнер</p>
+                <p class="mb-1" style="font-size: 20px;">
+                    <a href="tel:+789774274477" class="text-dark" style="text-decoration: underline;">8 (977) 427-44-77</a>
+                </p>
+                <p style="font-size: 20px;">
+                    <a href="mailto:Manager@bagetnaya-masterskaya.com" class="text-dark" style="text-decoration: underline;">Manager@bagetnaya-masterskaya.com</a>
+                </p>
+            </div>
+        </div>
+
         <!-- Версия для десктопа -->
         <div class="d-none d-md-block">
             <table class="table border align-middle">
@@ -86,7 +99,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         Режим работы: 9:00–21:00, ежедневно
                     </div>
                     <p class="mb-2">Адрес: Москва, Климентовский переулок, 6</p>
-                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2a326da2cf43fb0bf4f1e6cec8c71fc7533891be61426adcc09a64dfe4a27a4&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2a326da2cf43fb0bf4f1e6cec8c71fc7533891be61426adcc09a64dfe4a27a4&amp;source=constructor"  width="100%" height="300" frameborder="0"></iframe>
                     <p class="fw-semibold mt-2">8 (977) 824-42-12</p>
                 </div>
 
@@ -116,7 +129,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row mt-5 align-items-start">
             <div class="col-2 text-start d-none d-md-block">
                 <!-- Картинка "1" -->
-                <img src="/Group%2048095855%20(1).png" alt="decorative icon" class="img-fluid" style="max-width: 40px;">
+                <!--img src="/Group%2048095855%20(1).png" alt="decorative icon" class="img-fluid" style="max-width: 40px;"-->
             </div>
             <div class="col-12 col-md-8 mb-8 mb-md-0 text-md-start text-center">
                 <p class=" mb-0" style="font-size: 25px">
@@ -126,18 +139,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             </div>
 
         </div>
-        <!-- Контакт менеджера -->
-        <div class="row mt-5 justify-content-center">
-            <div class="col-md-8 text-center">
-                <p class="fw-bold mb-1" style="font-size: 22px;">Менеджер-дизайнер</p>
-                <p class="mb-1" style="font-size: 20px;">
-                    <a href="tel:+789774274477" class="text-dark" style="text-decoration: underline;">8 (977) 427-44-77</a>
-                </p>
-                <p style="font-size: 20px;">
-                    <a href="mailto:Manager@bagetnaya-masterskaya.com" class="text-dark" style="text-decoration: underline;">Manager@bagetnaya-masterskaya.com</a>
-                </p>
-            </div>
-        </div>
+
 
 
         <div class="col-12 col-md-4 text-md-end text-center mt-5 " style="width: 100%">
