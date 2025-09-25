@@ -75,15 +75,7 @@
         font-size: 16px;
     }
 
-    .block-button-fedback {
-        top: 70%;
-        right: 10px;
-    }
 
-    .children-button svg {
-        width: 50px;
-        height: 50px;
-    }
 
     .navbar {
         z-index: 1040;
@@ -117,4 +109,18 @@
         height: 60px;
         opacity: 1;
     }
+    .block-button-fedback {
+        top: 70%;
+        right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+
+
+    .children-button svg {
+        width: 50px;
+        height: 50px;
+    }
+
 }
