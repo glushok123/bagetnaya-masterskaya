@@ -40,7 +40,7 @@ game15.innerHTML = '';
 var style = document.createElement('style');
 // адаптивный размер — можно править 520px/медиа-правила по желанию
 style.innerHTML =
-    ".game15proc{--size:min(90vw,520px);height:var(--size);position:relative}" +
+    ".game15proc{--size:520px;height:var(--size);position:relative}" +
     ".game15proc div{background:url('" + esc(chosen.src) + "');" +
     "background-size:var(--size) var(--size);position:absolute;font:normal 48px/calc(var(--size)/4) Calibri;" +
     "color:#fff;text-shadow:0 0 6px #000;text-align:center;transition:all .5s ease;cursor:pointer;" +

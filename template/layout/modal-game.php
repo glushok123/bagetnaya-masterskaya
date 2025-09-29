@@ -119,5 +119,8 @@
         font-size: 14px !important;
         width: 100%;
     }
+    .modal-dialog{
+        max-width: 650px;
+    }
 </style>
 
