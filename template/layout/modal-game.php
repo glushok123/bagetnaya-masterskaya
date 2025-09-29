@@ -16,9 +16,19 @@
 
                 if ($skidkod) {
                     echo "
-                        <div id='game15' class='game15end row text-center'><div>Ваш код: <b>" . $skidkod . "</b>
-                        <br>Сообщите его менеджеру при оформлении заказа и получите скидку.
-                        <br>Код действителен в течение суток.</div></div>
+                        <div id='game15' class='game15end row text-center'>
+                        <div class='game-head-1'>Скидка 10% Ваша!</div>
+                        <div class='promo mt-2'>Промокод: <b>" . $skidkod . "</b></div>
+                        <div class='text-promo mt-2'>Воспользуйтесь им в течении 24 часов, сделав заказ в конструкторе багета или сообщите менеджеру салона!</div>
+                        <div class='flex-but mt-3'>
+                                            <a href='/baget_online'>
+                        <button
+                                class='button button-custom-index button-color-company-red color-white'>
+                            Конструктор багета <b>online</b></button>
+                    </a>
+                         <button class='button button-custom-index button-color-company-red color-white' data-bs-toggle='modal' data-bs-target='#feedbackModal'>Заявка на обратную связь</button>
+                        </div>
+                        </div>
                     ";
                 } else {
                     echo "
@@ -80,4 +90,34 @@
         }
     }
 </script>
+
+<style>
+    .game-head-1 {
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .promo {
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .text-promo {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .flex-but {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 15px;
+    }
+    .flex-but button{
+        font-size: 14px !important;
+        width: 100%;
+    }
+</style>
 

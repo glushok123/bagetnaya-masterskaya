@@ -6,7 +6,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $kod = strtoupper(base_convert(random_int(4369, 65535), 10, 16));
-$NewDate = Date('Y-m-d H:i:s', strtotime('+2 days'));
+$NewDate = Date('Y-m-d H:i:s', strtotime('+1 days'));
 $stmt = $dbh->prepare("INSERT INTO promo_kods(series_id, sale_procent, active, date_end) values ('" . $kod . "', '10', '1', '" . $NewDate . "')");
 
 $stmt->execute();
