@@ -1,6 +1,7 @@
 <?php
+// URL страницы: https://bagetnaya-masterskaya.com/metallicheskie_ramki/
 $keywords = "Купить рамку, рамка для картины, металлическая рамка";
-$title = "Качественные металлические рамки в Багетной мастерской №1! ";
+$title = "Качественные металлические рамки в Багетной мастерской №1!";
 $description = "Купить рамку для картины из алюминия – высокое качество, современный стиль и надежность!";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
@@ -25,10 +26,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         border-radius: 4px;
         margin: 15px 0;
         max-width: fit-content;
-
     }
     .highlight-btn:hover {
-
         background-color: #870000;
         color: #fff;
     }
@@ -50,29 +49,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         max-width: 100%;
         height: auto;
     }
-    .img-left {
-        display: block;
-        margin-right: auto;
-    }
+    .img-left { display: block; margin-right: auto; }
+    .img-right { display: block; margin-left: auto; }
 
-    .img-right {
-        display: block;
-        margin-left: auto;
-    }
     @media screen and (max-width: 767px) {
-        .mt-5{
-            margin-top: 20px !important;
-        }
-        .section-title {
-            font-size: 24px;
-            margin: 30px 0 15px;
-        }
-        .garamond {
-            font-size: 18px;
-        }
-        .section-text {
-            font-size: 16px;
-        }
+        .mt-5{ margin-top: 20px !important; }
+        .section-title { font-size: 24px; margin: 30px 0 15px; }
+        .garamond { font-size: 18px; }
+        .section-text { font-size: 16px; }
         .highlight-btn {
             width: 100%;
             padding: 12px 10px;
@@ -84,28 +68,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             max-width: calc(100dvw - 80px);
             margin-bottom: 15px;
         }
-        .my-auto {
-            margin: 15px 0 !important;
-        }
-        .text-left {
-            text-align: center;
-        }
-        .img-left,
-        .img-right {
-            margin: 0 auto !important;
-        }
-        .end-block{
-            padding-left: 20px;
-        }
+        .my-auto { margin: 15px 0 !important; }
+        .text-left { text-align: center; }
+        .img-left, .img-right { margin: 0 auto !important; }
+        .end-block{ padding-left: 20px; }
     }
-
 </style>
 
 <div class="container home_design">
 
     <!-- Блок 1 -->
     <div class="row">
-        <h2 class="section-title text-center">МЕТАЛЛИЧЕСКИЕ РАМКИ: <br>СОВРЕМЕННЫЙ СТИЛЬ И НАДЁЖНОСТЬ</h2>
+        <h2 class="section-title text-center">СОВРЕМЕННЫЕ РАМЫ ИЗ МЕТАЛЛА</h2>
 
         <!-- Картинка: после текста на мобилке -->
         <div class="col-sm-4 order-1 order-sm-1">
@@ -114,45 +88,47 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto order-0 order-sm-2">
-            <p>Алюминиевые рамки — это элегантное и практичное решение для оформления картин, фотографий, постеров и зеркал. Они придают работе современный вид, отличаются лёгкостью и долговечностью.</p>
-            <p>В этой статье разберем, из чего делают металлические рамки, где их лучше использовать и почему Багетная мастерская №1 — оптимальный выбор для заказа алюминиевых рам!</p>
+            <p>В поисках идеальной рамы в современном стиле? Качественные металлические рамки в Багетной мастерской №1 – это элегантный и практичный вариант для размещения фотографий, постеров и картин в любом интерьере! В наших салонах Вы можете купить рамку из алюминия для любого формата картины.</p>
+            <p>В данной статье рассказываем об особенностях рам из алюминия, а также почему стоит оформлять работы в Багетной мастерской №1.</p>
         </div>
     </div>
 
-
     <!-- Блок 2 -->
     <div class="row mt-5">
-        <h3 class="section-title">ИЗ ЧЕГО ДЕЛАЮТ РАМКИ?</h3>
+        <h3 class="section-title">АЛЮМИНИЙ – НАДЕЖНОСТЬ И ДОЛГОВЕЧНОСТЬ</h3>
         <div class="col-sm-7 section-text my-auto">
-            <p>Алюминиевые багеты изготавливают из алюминиевых сплавов (чаще всего алюминий + магний или кремний), которые <strong>обеспечивают</strong>:</p>
-            <p>✔ Лёгкость — почти в 3 раза легче стали.</p>
-            <p>✔ Прочность — устойчивы к деформациям.</p>
-            <p>✔ Коррозионную стойкость — не ржавеют, подходят для влажных помещений.</p>
-            <p>✔ Гибкость обработки — можно создавать тонкие и сложные профили.</p>
+            <p>Металлические рамки изготавливают из алюминиевых сплавов. Такой материал имеет ряд преимуществ:</p>
+            <p>- легкость: рамки из алюминия значительно легче дерева</p>
+            <p>- прочность: алюминий не деформируется, в отличие от дерева и полистирола</p>
+            <p>- долговечность: данный материал устойчив к влаге, солнцу и другим факторам</p>
+            <p>Подбирайте идеальный багет для Ваших картин в нашем конструкторе багета!</p>
+            <!-- ДОБАВИТЬ КНОПКУ НА КОНСТРУКТОР -->
+            <a href="/baget_online">
+                <button class="highlight-btn">Открыть конструктор багета</button>
+            </a>
         </div>
         <div class="col-sm-5">
             <img src="/img/article/telegram-cloud-document-2-5305308281655294113 1.png" alt="Алюминиевые профили" class="img-responsive img-right">
         </div>
     </div>
 
-    <!-- Кнопка -->
-    <div class="row text-center section-text mt-5 mb-4">
-        <button class="highlight-btn mx-auto" data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на обратную связь</button>
-    </div>
 
     <!-- Блок 3 -->
     <div class="row">
-        <h3 class="section-title">ВИДЫ ПОКРЫТИЙ МЕТАЛЛИЧЕСКИХ РАМОК:</h3>
+        <h3 class="section-title">РАМКА ДЛЯ КАРТИНЫ ИЗ МЕТАЛЛА: ДЛЯ ЧЕГО ИСПОЛЬЗОВАТЬ</h3>
         <div class="col-sm-8 text-left section-text my-auto">
-            <p><strong>- Анодирование</strong><br>
-                повышает износостойкость, даёт матовый или глянцевый эффект (золото, серебро, бронза, чёрный).</p>
-            <p><strong>- Порошковая окраска</strong><br>
-                позволяет получить любой цвет (включая имитацию дерева или металла).</p>
-            <p><strong>- Ламинирование</strong><br>
-                декоративная плёнка с текстурой (например, под дерево или камень).</p>
-            <a href="/baget_online">
-                <button class="highlight-btn">Рассчитать стоимость багета</button>
-            </a>
+            <p>Металлические рамки идеально подходят для оформления следующих типов работ:</p>
+            <p>- географические карты<br>
+                Такие работы часто используют в офисах и рабочих пространствах. Рамки из металла идеально выполняют свою функцию и поддерживают общий интерьер</p>
+            <p>- фотографии и постеры<br>
+                Для небольших фото купить рамку из алюминия – отличный вариант. Ширина рамок начинается от 7 миллиметров, что позволит сохранить небольшой формат и не «задавить» миниатюру.</p>
+            <p>- масло на холсте<br>
+                Алюминиевый багет имеет специфическую форму, которая часто не позволяет оформить холст на подрамнике. Однако современные производители создали особенный профиль – теперь в Багетной мастерской №1 Вы можете оформить современную интерьерную картину в алюминий!</p>
+
+            <p>Оставляйте заявку на обратную связь для предварительного расчета стоимости!</p>
+            <!-- ДОБАВИТЬ КНОПКУ НА ОБРАТНУЮ СВЯЗЬ -->
+            <button class="highlight-btn" data-bs-toggle="modal" data-bs-target="#feedbackModal">Обратная связь</button>
+
         </div>
         <div class="col-sm-4">
             <img src="/img/article/telegram-cloud-document-2-5305308281655294120%201.png" alt="Примеры алюминиевых рамок" class="img-responsive img-right mb-3">
@@ -160,33 +136,30 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
     </div>
 
-
     <!-- Блок 4 -->
     <div class="row mt-5">
-        <h3 class="section-title">ГДЕ ЛУЧШЕ ИСПОЛЬЗОВАТЬ АЛЮМИНИЕВЫЕ РАМКИ?</h3>
+        <h3 class="section-title">МЕТАЛЛ В ПРОСТРАНСТВЕ: ГДЕ ИСПОЛЬЗОВАТЬ</h3>
         <div class="col-sm-12 section-text my-auto">
-            <p><span class="icon-check">✅</span>Для современного интерьера (лофт, минимализм) — строгие линии и металлический блеск.</p>
-            <p><span class="icon-check">✅</span>Для фотографий и постеров — лёгкие и прочные.</p>
-            <p><span class="icon-check">✅</span>Для офисного оформления — дипломы, сертификаты, реклама.</p>
-            <p><span class="icon-check">✅</span>Для выставок — удобно транспортировать.</p>
-            <p><span class="icon-check">✅</span>Для влажных помещений — не боятся воды.</p>
-            <p class="mt-4"><strong>Не подходят для:</strong></p>
-            <p><span class="text-danger">❌</span>Классических картин в старинном стиле.</p>
-            <p><span class="text-danger">❌</span>Очень тяжёлых работ или зеркал — требуется усиленное крепление.</p>
-            <p><span class="text-danger">❌</span>Картин на высоком подрамнике — из-за сложного профиля.</p>
-        </div>
+            <p>Рамки для картин из алюминия уместны практически в любых интерьерах:</p>
+            <p><span class="icon-check">✅</span>домашний лофт и минимализм: алюминиевый багет достаточно строгий и хорошо перекликается с отделкой, освещением и другими элементами</p>
+            <p><span class="icon-check">✅</span>openspace и современный кабинет: дипломы, сертификаты и мотивационные постеры для сотрудников – отличный вариант для продуктивной деятельности. Алюминиевый багет здесь будет не отвлекающим и подходящим элементом</p>
+            <p><span class="icon-check">✅</span>выставки, экспозиции и форумы: алюминиевый багет отлично переносит сложности транспортировки.</p>
 
+            <p class="mt-4">Алюминий – это стиль, надежность, практичность. Если Вы хотите оформить работы в металлические рамки – команда Багетной мастерской №1 будет рада помочь и создать для Вас уникальные решения. Получайте скидку 10% на сайте, чтобы Ваш будущий заказ был максимально приятным!</p>
+
+            <!-- ДОБАВИТЬ КНОПКУ НА ПЯТНАШКИ -->
+
+                <button class="highlight-btn" data-bs-toggle="modal" data-bs-target="#gameModal">Пятнашки: получить 10% скидку</button>
+
+        </div>
     </div>
 
     <!-- Блок 5 -->
     <div class="row mt-5">
         <h3 class="section-title">ГДЕ КУПИТЬ РАМКУ ИЗ МЕТАЛЛА?</h3>
         <div class="col-sm-7 section-text">
-            <p><strong>1. Изготовим точный размер</strong> — под нестандартные картины.</p>
-            <p><strong>2. Широкий выбор</strong> — разная ширина, форма и страны-производители.</p>
-            <p><strong>3. Качество сборки</strong> — гарантия 1 год на продукцию.</p>
-            <p><strong>4. Дополнительные опции</strong> — антибликовое стекло, крепления, паспарту.</p>
-            <p><strong>5. Профессиональный совет</strong> — подберём рамку под стиль интерьера.</p>
+            <p>Мы подберём оптимальные профили, стекло и крепления под Вашу задачу и стиль интерьера.</p>
+            <p>Получайте скидку 10% на сайте, чтобы Ваш будущий заказ был максимально приятным!</p>
         </div>
         <div class="col-sm-5">
             <img src="/img/article/telegram-cloud-document-2-5305308281655294121%201.png" alt="Рамки в мастерской" class="img-responsive img-right">
@@ -195,9 +168,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <!-- Заключение -->
     <div class="row text-center section-text mt-5 mb-4">
-        <p>Металлические рамки – это стильное, легкое и долговечное решение для оформления картин и фотографий. Они идеально впишутся в современный интерьер и прослужат десятилетиями. Если вам нужно качественное и индивидуальное оформление, <strong>лучше всего обратиться в Багетную мастерскую №1</strong>, где изготовят идеальную рамку для картины по вашим параметрам.</p>
+        <p>Алюминий – это стиль, надежность и практичность. Если Вы хотите оформить работы в металлические рамки – мы будем рады помочь и создать для Вас уникальные решения.</p>
         <button class="highlight-btn mx-auto" data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на обратную связь</button>
     </div>
+
     <div class="row section-text mt-5 mb-4 end-block">
         С уважением к Вам,<br>
         С любовью к Искусству!<br>
