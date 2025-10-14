@@ -58,7 +58,7 @@ $categoryGalleryJson = htmlspecialchars(json_encode($categoryGalleryWorkImages, 
             </div>
 
             <div class="row g-4 align-items-start mt-1">
-                <div class="col-12 col-xl-4">
+                <div class="col-12 col-xl-12">
                     <div class="card shadow-sm h-100">
                         <div class="card-header d-flex flex-wrap align-items-start justify-content-between gap-2">
                             <div>
@@ -104,7 +104,7 @@ $categoryGalleryJson = htmlspecialchars(json_encode($categoryGalleryWorkImages, 
                     </div>
                 </div>
 
-                <div class="col-12 col-xl-8">
+                <div class="col-12 col-xl-12">
                     <div class="card shadow-sm h-100">
                         <div class="card-header">
                             <div class="d-flex flex-column flex-md-row gap-3 align-items-md-center justify-content-between">
@@ -145,20 +145,6 @@ $categoryGalleryJson = htmlspecialchars(json_encode($categoryGalleryWorkImages, 
                 </div>
             </div>
 
-            <div class="mt-4" style="width:100%">
-                <table id="gallery-works-tables" class="table table-striped" style="width:100%">
-                    <thead>
-                    <tr>
-                        <th>Фото</th>
-                        <th>Категория</th>
-                        <th>Описание</th>
-                        <th>Управление</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                </table>
-            </div>
-            </div>
         </div>
     </div>
 </div>
