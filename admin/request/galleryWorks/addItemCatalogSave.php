@@ -44,7 +44,7 @@ foreach ($_FILES as $file) {
 
             move_uploaded_file($file['tmp_name'], $src);
 
-            $info['NamelistImg'] = './img/багетная - фотобанк работ/' . $name . '.' . $ext;
+            $info['NamelistImg'] = '/img/багетная - фотобанк работ/' . $name . '.' . $ext;
         }
     }
 }
@@ -69,7 +69,7 @@ try {
 
     $stmt->execute();
 
-    echo "success";
+    echo json_encode(['status' => 'success'], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 } catch (PDOExecption $e) {
     $dbh->rollback();
     print "Error!: " . $e->getMessage() . "</br>";
