@@ -305,52 +305,167 @@ $(document).ready(function () {
         }
 
         var itemsHtml = galleryCategoriesCache.map(function (category, index) {
-            var visibleChecked = parseInt(category.is_visible) === 1 ? 'checked' : '';
+            var visibleChecked = parseInt(category.is_visible, 10) === 1 ? 'checked' : '';
             var position = index + 1;
             var imageSrc = category.main_image ? category.main_image : '';
 
             if (!imageSrc) {
                 imageSrc = '/assets/img/gallery-category-placeholder.svg';
-            } else if (imageSrc.match(/^https?:/i)) {
-                imageSrc = imageSrc;
-            } else {
+            } else if (!imageSrc.match(/^https?:/i)) {
                 imageSrc = '/' + imageSrc.replace(/^\/+/, '').replace(/^\.\/+/, '');
             }
 
-            var worksCount = category.works_count || 0;
+            var worksCount = parseInt(category.works_count, 10) || 0;
+            var inputId = 'category-main-image-input-' + category.id;
+            var labelId = inputId + '-label';
 
             return '<div class="list-group-item" data-category-id="' + category.id + '">' +
-                '<div class="row g-2 align-items-center">' +
+                '<div class="row g-3 align-items-center">' +
                 '<div class="col-auto"><span class="badge bg-secondary">' + position + '</span></div>' +
-                '<div class="col-md-3">' +
+                '<div class="col-12 col-sm-6 col-lg-4">' +
                 '<label class="form-label mb-1">Название</label>' +
                 '<input type="text" class="form-control form-control-sm category-name-input" value="' + escapeHtml(category.name) + '">' +
                 '<div class="form-text">Слаг: ' + escapeHtml(category.slug || '') + '</div>' +
                 '</div>' +
-                '<div class="col-md-2">' +
-                '<label class="form-label mb-1">Статус</label>' +
+                '<div class="col-6 col-lg-2">' +
+                '<label class="form-label mb-1 d-block">Статус</label>' +
                 '<div class="form-check form-switch">' +
                 '<input class="form-check-input category-visible-toggle" type="checkbox" ' + visibleChecked + '>' +
                 '<label class="form-check-label">' + (visibleChecked ? 'Отображается' : 'Скрыта') + '</label>' +
                 '</div>' +
-                '<div class="small text-muted">Работ: ' + worksCount + '</div>' +
+                '<div class="small text-muted mt-1">Работ: ' + worksCount + '</div>' +
                 '</div>' +
-                '<div class="col-md-2 text-center">' +
+                '<div class="col-6 col-lg-2 text-center">' +
                 '<img src="' + imageSrc + '" class="img-thumbnail category-main-image" alt="Превью" style="max-width:90px; max-height:90px; object-fit:cover;">' +
                 '</div>' +
-                '<div class="col-md-3 d-flex flex-wrap gap-2">' +
-                '<label class="btn btn-outline-secondary btn-sm mb-0 category-upload-image">Изменить фото<input type="file" class="d-none category-main-image-input" accept=".jpg,.jpeg,.png"></label>' +
+                '<div class="col-12 col-sm-6 col-lg-4">' +
+                '<div class="d-flex flex-wrap align-items-center gap-2">' +
+                '<input type="file" class="d-none category-main-image-input" id="' + inputId + '" data-label-id="' + labelId + '" accept=".jpg,.jpeg,.png">' +
+                '<label class="btn btn-outline-secondary btn-sm mb-0 category-upload-image" id="' + labelId + '" for="' + inputId + '">Изменить фото</label>' +
                 '<button type="button" class="btn btn-outline-primary btn-sm category-save">Сохранить</button>' +
                 '</div>' +
-                '<div class="col-md-2 d-flex gap-2 justify-content-end">' +
-                '<button type="button" class="btn btn-outline-secondary btn-sm category-move-up">Вверх</button>' +
-                '<button type="button" class="btn btn-outline-secondary btn-sm category-move-down">Вниз</button>' +
+                '<div class="d-flex gap-2 mt-2">' +
+                '<button type="button" class="btn btn-outline-secondary btn-sm w-100 category-move-up">Вверх</button>' +
+                '<button type="button" class="btn btn-outline-secondary btn-sm w-100 category-move-down">Вниз</button>' +
+                '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
         }).join('');
 
         container.html(itemsHtml);
+    }
+
+    function updateGalleryCategoryStats() {
+        var statsElement = $('#galleryCategoriesStats');
+
+        if (!statsElement.length) {
+            return;
+        }
+
+        if (!galleryCategoriesCache.length) {
+            statsElement.text('Категории пока не созданы');
+            return;
+        }
+
+        var totalCategories = galleryCategoriesCache.length;
+        var visibleCategories = galleryCategoriesCache.filter(function (category) {
+            return parseInt(category.is_visible, 10) === 1;
+        }).length;
+        var totalWorks = galleryCategoriesCache.reduce(function (accumulator, category) {
+            return accumulator + (parseInt(category.works_count, 10) || 0);
+        }, 0);
+
+        statsElement.html(
+            '<span class="me-2">Всего: <strong>' + totalCategories + '</strong></span>' +
+            '<span class="me-2">Видимых: <strong>' + visibleCategories + '</strong></span>' +
+            '<span>Работ: <strong>' + totalWorks + '</strong></span>'
+        );
+    }
+
+    function updateSelectedCategoryInfo(countOverride) {
+        var infoElement = $('#gallerySelectedCategoryInfo');
+
+        if (!infoElement.length) {
+            return;
+        }
+
+        var select = $('#selectCategoryGalleryWorks');
+
+        if (!select.length) {
+            infoElement.text('Всего работ: 0');
+            return;
+        }
+
+        var selectedId = select.val();
+        var worksCount = typeof countOverride === 'number' ? countOverride : null;
+        var categoryName = 'Все категории';
+
+        if (selectedId) {
+            var category = galleryCategoriesCache.find(function (item) {
+                return String(item.id) === String(selectedId);
+            });
+
+            if (category) {
+                categoryName = category.name;
+                if (worksCount === null) {
+                    worksCount = parseInt(category.works_count, 10) || 0;
+                }
+            } else {
+                categoryName = 'Категория #' + selectedId;
+                if (worksCount === null) {
+                    worksCount = 0;
+                }
+            }
+        } else if (worksCount === null) {
+            worksCount = galleryCategoriesCache.reduce(function (accumulator, category) {
+                return accumulator + (parseInt(category.works_count, 10) || 0);
+            }, 0);
+        }
+
+        if (worksCount === null) {
+            worksCount = 0;
+        }
+
+        infoElement.html('<span class="fw-semibold">' + escapeHtml(categoryName) + '</span><span class="ms-2">Работ: ' + worksCount + '</span>');
+    }
+
+    function updateGalleryWorksCounter(data) {
+        var badgeElement = $('#galleryWorksCountBadge');
+
+        if (!badgeElement.length) {
+            updateSelectedCategoryInfo();
+            return;
+        }
+
+        var count = 0;
+
+        if (typeof data === 'number') {
+            count = data;
+        } else if (Array.isArray(data)) {
+            count = data.length;
+        } else if (data && Array.isArray(data.data)) {
+            count = data.data.length;
+        } else if (data && typeof data.count === 'number') {
+            count = data.count;
+        } else {
+            var select = $('#selectCategoryGalleryWorks');
+            var selectedId = select.length ? select.val() : null;
+
+            if (selectedId) {
+                var category = galleryCategoriesCache.find(function (item) {
+                    return String(item.id) === String(selectedId);
+                });
+                count = category ? (parseInt(category.works_count, 10) || 0) : 0;
+            } else {
+                count = galleryCategoriesCache.reduce(function (accumulator, category) {
+                    return accumulator + (parseInt(category.works_count, 10) || 0);
+                }, 0);
+            }
+        }
+
+        badgeElement.text(count);
+        updateSelectedCategoryInfo(count);
     }
 
     function refreshGalleryCategorySelects() {
@@ -370,8 +485,8 @@ $(document).ready(function () {
 
         if (currentValue && filterSelect.find('option[value="' + currentValue + '"]').length) {
             filterSelect.val(currentValue);
-        } else if (galleryCategoriesCache.length) {
-            filterSelect.val(galleryCategoriesCache[0].id);
+        } else if (filterSelect.find('option[value=""]').length) {
+            filterSelect.val('');
         }
 
         var modalSelect = $('#categoryIdGalleryWorks');
@@ -382,6 +497,8 @@ $(document).ready(function () {
             });
             modalSelect.html(modalOptions);
         }
+
+        updateGalleryWorksCounter();
     }
 
     function loadGalleryCategories(keepSelection) {
@@ -393,6 +510,7 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     galleryCategoriesCache = response.data;
                     renderGalleryCategoriesList();
+                    updateGalleryCategoryStats();
                     refreshGalleryCategorySelects();
                     if (!keepSelection) {
                         getGalleryWorksRequest();
@@ -576,9 +694,10 @@ $(document).ready(function () {
         }
 
         renderGalleryCategoriesList();
+        updateGalleryCategoryStats();
         refreshGalleryCategorySelects();
 
-        loadGalleryCategories(true);
+        loadGalleryCategories(false);
     }
 
     // Переключение табов и загрузка контента под таб
@@ -1055,7 +1174,25 @@ $(document).ready(function () {
             processData: false,
             data: formData,
             success: function (data) {
-                if (typeof data === 'string' && data.trim() === 'success') {
+                var response = data;
+
+                if (typeof data === 'string') {
+                    var trimmed = data.trim();
+
+                    if (trimmed === 'success') {
+                        response = {status: 'success'};
+                    } else if (trimmed.length) {
+                        try {
+                            response = JSON.parse(trimmed);
+                        } catch (e) {
+                            response = {status: 'error', message: trimmed};
+                        }
+                    } else {
+                        response = {status: 'error'};
+                    }
+                }
+
+                if (response && response.status === 'success') {
                     toastr.success('Работа добавлена');
                     $('#addItemGalleryWorks')[0].reset();
                     $('#ModalAddGalleryWorks').modal('hide');
@@ -1064,16 +1201,7 @@ $(document).ready(function () {
                     return;
                 }
 
-                if (data && data.status === 'success') {
-                    toastr.success('Работа добавлена');
-                    $('#addItemGalleryWorks')[0].reset();
-                    $('#ModalAddGalleryWorks').modal('hide');
-                    getGalleryWorksRequest();
-                    loadGalleryCategories(true);
-                    return;
-                }
-
-                alert((data && data.message) ? data.message : 'Не удалось добавить работу');
+                alert((response && response.message) ? response.message : 'Не удалось добавить работу');
             },
             error: handleAjaxError
         });
@@ -1435,6 +1563,7 @@ $(document).ready(function () {
             success: function (data) {
                 tableGalleryWorks.fnClearTable();
                 tableGalleryWorks.fnAddData(data);
+                updateGalleryWorksCounter(data);
             },
             error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
@@ -1604,6 +1733,7 @@ $(document).ready(function () {
         changeTypeCatalog()
     }); // Сортировка
     $(document).on('change', '#selectCategoryGalleryWorks', function () {
+        updateGalleryWorksCounter();
         getGalleryWorksRequest();
     }); // Фильтр по категории
     $(document).on('click', '#add-painting-save', function () {
@@ -1624,19 +1754,40 @@ $(document).ready(function () {
     $(document).on('click', '.category-move-down', function () {
         reorderGalleryCategoryRequest($(this).closest('.list-group-item'), 'down');
     }); // Перемещение категории вниз
-    $(document).on('click', '.category-upload-image', function (event) {
-        event.preventDefault();
-        $(this).closest('.list-group-item').find('.category-main-image-input').trigger('click');
-    }); // Выбор изображения для категории
     $(document).on('change', '.category-main-image-input', function () {
-        var label = $(this).closest('.category-upload-image');
-        if (this.files && this.files.length) {
-            label.addClass('btn-success');
-            setTimeout(function () {
-                label.removeClass('btn-success');
-            }, 1500);
+        var input = this;
+        var labelId = $(this).data('label-id');
+        var label = labelId ? $('#' + labelId) : $('[for="' + $(this).attr('id') + '"]');
+
+        if (input.files && input.files.length) {
+            if (label.length) {
+                label.addClass('btn-success');
+                setTimeout(function () {
+                    label.removeClass('btn-success');
+                }, 1500);
+            }
+
+            var preview = $(this).closest('.list-group-item').find('.category-main-image');
+
+            if (preview.length) {
+                var fileReader = new FileReader();
+                var file = input.files[0];
+
+                fileReader.onload = function (event) {
+                    preview.attr('src', event.target.result);
+                };
+
+                fileReader.readAsDataURL(file);
+            }
         }
-    }); // Индикатор выбора изображения
+    }); // Индикатор выбора изображения и предпросмотр
+    $(document).on('change', '.category-visible-toggle', function () {
+        var label = $(this).closest('.form-check').find('.form-check-label');
+
+        if (label.length) {
+            label.text($(this).is(':checked') ? 'Отображается' : 'Скрыта');
+        }
+    }); // Обновление подписи статуса категории
     $(document).on('click', '#refreshGalleryCategories', function () {
         loadGalleryCategories(true);
     }); // Обновление списка категорий
