@@ -7,48 +7,46 @@ $description = "Ищете рамки для картин? Посмотрите 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 
-$category = [
-    [
-        'name' => 'Акварели, пастели и гравюры',
-        'imgMain' => '/img/багетная - фотобанк работ/акварели, пастели и гравюры/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Зеркала и тв-панели',
-        'imgMain' => '/img/багетная - фотобанк работ/зеркала и тв-панели/IMG_4362.JPG',
-    ],
-    [
-        'name' => 'Иконы и вышивки',
-        'imgMain' => '/img/багетная - фотобанк работ/иконы и вышивки/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Ордена и медали, купюры и монеты',
-        'imgMain' => '/img/багетная - фотобанк работ/ордена и медали, купюры и монеты/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Оформление живописи',
-        'imgMain' => '/img/багетная - фотобанк работ/оформление живописи/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Постеры, плакаты и репродукции',
-        'imgMain' => '/img/багетная - фотобанк работ/постеры, плакаты и репродукции/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Сложные работы',
-        'imgMain' => '/img\багетная - фотобанк работ/сложные работы/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Фотографии и графика',
-        'imgMain' => '/img/багетная - фотобанк работ/фотографии и графика/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-    ],
-    [
-        'name' => 'Объектное оформление',
-        'imgMain' => '/img/багетная - фотобанк работ/объектное оформление/C21D3219-DF2A-4588-8FF7-19E3046C04D2.JPG',
-    ],
-    [
-        'name' => 'Футболки и спортивные атрибуты',
-        'imgMain' => '/img/багетная - фотобанк работ/ФУТБОЛКИ И СПОРТИВНЫЕ АТРИБУТЫ/23CA0087-6FB6-4D03-BCA8-E83DDF004619-min.JPG',
-    ],
-]
+$stmt = $dbh->prepare("SELECT id, name, slug, main_image, position FROM category_gallery_works WHERE is_visible = 1 ORDER BY position ASC, id ASC");
+$stmt->execute();
+$category = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$categoryWithoutMainImage = array_filter($category, static function ($item) {
+    return empty($item['main_image']);
+});
+
+$fallbackImages = [];
+
+if (!empty($categoryWithoutMainImage)) {
+    $ids = array_column($categoryWithoutMainImage, 'id');
+    $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+    $imagesStmt = $dbh->prepare(
+        "SELECT category, url_image FROM gallery_work_images WHERE category IN ($placeholders) ORDER BY id DESC"
+    );
+    $imagesStmt->execute($ids);
+
+    while ($row = $imagesStmt->fetch(PDO::FETCH_ASSOC)) {
+        if (!isset($fallbackImages[$row['category']])) {
+            $fallbackImages[$row['category']] = $row['url_image'];
+        }
+    }
+}
+
+function normalizeGalleryImagePath(?string $path): string
+{
+    if (empty($path)) {
+        return '/assets/img/gallery-category-placeholder.svg';
+    }
+
+    if (preg_match('/^https?:/i', $path)) {
+        return $path;
+    }
+
+    $normalized = '/' . ltrim($path, './');
+
+    return $normalized;
+}
 ?>
 
 <style>
@@ -167,29 +165,38 @@ $category = [
 <div class='container'>
     <div class='row g-0 justify-content-center' style="margin-right:10px;">
         <?
-        foreach ($category as $item) {
-            echo '
-							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
-								<div class="card text-center justify-content-center h-100 pt-3 " style="width:95%" href="/">
-									<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><img src="' . $item['imgMain'] . '" class="rounded mx-auto d-block castom-image " alt="..."></a>
-									
-									<div class="card-body-new">
-									    <div class="">
-										<a style="
-										text-decoration: none;
-										color: black;
-										"
-										href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><h5 class="card-title">' . $item['name'] . '</h5></a>
-										</div>
-									
-                                            <a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '" class="but-show">
+        if (empty($category)) {
+            echo '<div class="col-12 text-center py-4">Раздел находится в разработке. Пожалуйста, загляните позже.</div>';
+        } else {
+            foreach ($category as $item) {
+                $imagePath = !empty($item['main_image']) ? $item['main_image'] : ($fallbackImages[$item['id']] ?? null);
+                $imageSrc = normalizeGalleryImagePath($imagePath);
+                $categoryLink = '/сatalog-of-finished-works-by-category.php?category=' . urlencode($item['slug']);
+                $categoryName = htmlspecialchars($item['name']);
+
+                echo '
+                                                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
+                                                                <div class="card text-center justify-content-center h-100 pt-3 " style="width:95%" href="/">
+                                                                        <a href="' . $categoryLink . '"><img src="' . $imageSrc . '" class="rounded mx-auto d-block castom-image " alt="' . $categoryName . '"></a>
+
+                                                                        <div class="card-body-new">
+                                                                            <div class="">
+                                                                                <a style="
+                                                                                text-decoration: none;
+                                                                                color: black;
+                                                                                "
+                                                                                href="' . $categoryLink . '"><h5 class="card-title">' . $categoryName . '</h5></a>
+                                                                                </div>
+
+                                            <a href="' . $categoryLink . '" class="but-show">
                    Посмотреть работы
                                             </a>
-										
-									</div>
-								</div>
-							</div>
-						';
+
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                ';
+            }
         }
         ?>
     </div>
