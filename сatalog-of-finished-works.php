@@ -78,48 +78,27 @@ $desc = "Наши работы";
 include "header.php";
 require_once 'base/connect.php';
 
-$category = [
-	[
-		'name' => 'Акварели, пастели и гравюры',
-		'imgMain' => '/img/багетная - фотобанк работ/акварели, пастели и гравюры/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'Зеркала и тв-панели',
-		'imgMain' => '/img/багетная - фотобанк работ/зеркала и тв-панели/IMG_4362.JPG',
-	],
-	[
-		'name' => 'Иконы и вышивки',
-		'imgMain' => '/img/багетная - фотобанк работ/иконы и вышивки/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'Ордена и медали, купюры и монеты',
-		'imgMain' => '/img/багетная - фотобанк работ/ордена и медали, купюры и монеты/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'Оформление живописи',
-		'imgMain' => '/img/багетная - фотобанк работ/оформление живописи/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'Постеры, плакаты и репродукции',
-		'imgMain' => '/img/багетная - фотобанк работ/постеры, плакаты и репродукции/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'Сложные работы',
-		'imgMain' => '/img\багетная - фотобанк работ/сложные работы/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'Фотографии и графика',
-		'imgMain' => '/img/багетная - фотобанк работ/фотографии и графика/ФОТО ДЛЯ ОБЛОЖКИ.JPG',
-	],
-	[
-		'name' => 'объектное оформление',
-		'imgMain' => '/img/багетная - фотобанк работ/объектное оформление/C21D3219-DF2A-4588-8FF7-19E3046C04D2.JPG',
-	],
-	[
-		'name' => 'Футболки и спортивные атрибуты',
-		'imgMain' => '/img/багетная - фотобанк работ/ФУТБОЛКИ И СПОРТИВНЫЕ АТРИБУТЫ/23CA0087-6FB6-4D03-BCA8-E83DDF004619-min.JPG',
-	],
-]
+$categories = [];
+$firstImages = [];
+
+try {
+        $stmt = $dbh->prepare('SELECT id, name, main_image FROM category_gallery_works WHERE is_hidden = 0 ORDER BY sort_order, id');
+        $stmt->execute();
+        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $imagesStmt = $dbh->prepare('SELECT category, url_image FROM gallery_work_images ORDER BY id ASC');
+        $imagesStmt->execute();
+        foreach ($imagesStmt->fetchAll(PDO::FETCH_ASSOC) as $image) {
+                if (!isset($firstImages[$image['category']])) {
+                        $firstImages[$image['category']] = $image['url_image'];
+                }
+        }
+} catch (PDOException $exception) {
+        $categories = [];
+}
+
+$fallbackSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><rect fill="%23f2f2f2" width="500" height="500"/><text x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23999" font-size="32">Нет изображения</text></svg>';
+$fallbackImage = 'data:image/svg+xml;charset=UTF-8,' . rawurlencode($fallbackSvg);
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -145,23 +124,37 @@ $category = [
 		<hr>
 	</div>
 
-	<div class='row g-0 justify-content-center' style="margin-right:10px;">
-		<?
-			foreach ($category as $item) {
-				echo '
-							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-								<div class="card text-center justify-content-center h-100" style="width:100%" href="/">
-									<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><img src="' . $item['imgMain'] . '" class="rounded mx-auto d-block castom-image " alt="..."></a>
-									
-									<div class="card-body">
-										<a href="/сatalog-of-finished-works-by-category.php?category=' . $item['name'] . '"><h5 class="card-title">' . $item['name'] . '</h5></a>
-									</div>
-								</div>
-							</div>
-						';
-			}
-		?>
-	</div>
+        <div class='row g-0 justify-content-center' style="margin-right:10px;">
+                <?php if (!empty($categories)) : ?>
+                        <?php foreach ($categories as $item) :
+                                $imagePath = $item['main_image'] ?: ($firstImages[$item['id']] ?? '');
+                                if (empty($imagePath)) {
+                                        $imagePath = $fallbackImage;
+                                }
+                                $categoryId = (int) $item['id'];
+                                $categoryName = htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8');
+                                $imageSrc = htmlspecialchars($imagePath, ENT_QUOTES, 'UTF-8');
+                        ?>
+                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="card text-center justify-content-center h-100" style="width:100%">
+                                                <a href="/сatalog-of-finished-works-by-category.php?category=<?php echo $categoryId; ?>">
+                                                        <img src="<?php echo $imageSrc; ?>" class="rounded mx-auto d-block castom-image " alt="<?php echo $categoryName; ?>">
+                                                </a>
+
+                                                <div class="card-body">
+                                                        <a href="/сatalog-of-finished-works-by-category.php?category=<?php echo $categoryId; ?>">
+                                                                <h5 class="card-title"><?php echo $categoryName; ?></h5>
+                                                        </a>
+                                                </div>
+                                        </div>
+                                </div>
+                        <?php endforeach; ?>
+                <?php else : ?>
+                        <div class="col-12 text-center">
+                                <p>Категории не найдены.</p>
+                        </div>
+                <?php endif; ?>
+        </div>
 	<br>
 	<p>
 		Ищете идеальную раму для картины? Посмотрите примеры оформления разных видов искусства в

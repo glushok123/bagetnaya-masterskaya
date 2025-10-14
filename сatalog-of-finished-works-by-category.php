@@ -102,68 +102,37 @@ $desc = "Наши работы";
 include "header.php";
 require_once 'base/connect.php';
 
-$category = [
-	'Акварели, пастели и гравюры' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/акварели, пастели и гравюры/',
-		'id' => 1
-	],
-	'Зеркала и тв-панели' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/зеркала и тв-панели/',
-		'id' => 2
-	],
-	'Иконы и вышивки' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/иконы и вышивки/',
-		'id' => 3
-	],
-	'Ордена и медали, купюры и монеты' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/ордена и медали, купюры и монеты/',
-		'id' => 4
-	],
-	'Оформление живописи' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/оформление живописи/',
-		'id' => 5
-	],
-	'Постеры, плакаты и репродукции' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/постеры, плакаты и репродукции/',
-		'id' => 6
-	],
-	'Сложные работы' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/сложные работы/',
-		'id' => 7
-	],
-	'Фотографии и графика' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/фотографии и графика/',
-		'id' => 8
-	],
-	'объектное оформление' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/объектное оформление/',
-		'id' => 9
-	],
-	'Футболки и спортивные атрибуты' => [
-		'urlFromImages' => './img/багетная - фотобанк работ/ФУТБОЛКИ И СПОРТИВНЫЕ АТРИБУТЫ/',
-		'id' => 10
-	],
-];
+$categoryId = filter_input(INPUT_GET, 'category', FILTER_VALIDATE_INT);
+$categoryInfo = null;
+$works = [];
 
-/*
-	$path = $category[$_GET['category']]['urlFromImages']; // путь к директории с изображениями
-	$extensions = array('png', 'jpg', 'JPG', 'jpeg', 'gif'); // показывать расширения
+if ($categoryId !== null && $categoryId !== false) {
+        try {
+                $categoryStmt = $dbh->prepare('SELECT id, name FROM category_gallery_works WHERE id = :id AND is_hidden = 0');
+                $categoryStmt->bindValue(':id', $categoryId, PDO::PARAM_INT);
+                $categoryStmt->execute();
+                $categoryInfo = $categoryStmt->fetch(PDO::FETCH_ASSOC);
 
-	$directoryIterator = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
-	$iteratorIterator  = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::LEAVES_ONLY);
+                if ($categoryInfo) {
+                        $worksStmt = $dbh->prepare('SELECT id, url_image, description FROM gallery_work_images WHERE category = :category ORDER BY id DESC');
+                        $worksStmt->bindValue(':category', $categoryId, PDO::PARAM_INT);
+                        $worksStmt->execute();
+                        $works = $worksStmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+        } catch (PDOException $exception) {
+                $categoryInfo = null;
+                $works = [];
+        }
+}
 
-	$images = [];
-	foreach ($iteratorIterator as $file) {
-		if (in_array($file->getExtension(), $extensions)) {
-		    
-
-			$images[] = $file->getPathname();
-		}
-	}
-	*/
-$stm = $dbh->prepare("SELECT * FROM gallery_work_images where category = " . $category[$_GET['category']]['id']);
-$stm->execute();
-$works = $stm->fetchAll();
+if (!$categoryInfo) {
+        http_response_code(404);
+        $categoryTitle = 'Категория не найдена';
+        $categoryBreadcrumb = 'Категория не найдена';
+} else {
+        $categoryTitle = $categoryInfo['name'];
+        $categoryBreadcrumb = $categoryInfo['name'];
+}
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -173,33 +142,44 @@ $works = $stm->fetchAll();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 <div id='crops'>
-	<a href='/'>Главная</a> » <a href='/сatalog-of-finished-works.php'>Наши работы</a> » <a href='/сatalog-of-finished-works-by-category.php?category=<? echo $_GET['category']; ?>'><? echo $_GET['category']; ?></a>
+        <a href='/'>Главная</a> » <a href='/сatalog-of-finished-works.php'>Наши работы</a> »
+        <span><?php echo htmlspecialchars($categoryBreadcrumb, ENT_QUOTES, 'UTF-8'); ?></span>
 </div>
 
 <hr>
 
 <div class='container'>
-	<div class='row text-center'>
-		<h3>Наши работы раздела "<? echo $_GET['category']; ?> "</h3>
-		<hr>
-		<a href='/сatalog-of-finished-works.php'>Вернуться к разделам</a>
-	</div>
-	<div class='row g-0'>
-		<?
-			foreach ($works as $item) {
-				echo '
-							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-								<div class="card text-center justify-content-center h-100" style="width:100%" href="/">
-									<a data-fancybox="images"  data-caption="' . $item['description'] . '" href="' . $item['url_image'] . '"  style="text-decoration: none;" class="tekst_sverhu_kartinki" onmouseover="show($(this))" onmouseout="hide($(this))">
-										<img src="' . $item['url_image'] . '" class="rounded mx-auto d-block castom-image " alt="..." >
-										<h5 style="color:black;" display:none" class="tekst_sverhu_kartinki_tekst">' . $item['description'] . '</h5>
-									</a>
-								</div>
-							</div>
-						';
-			}
-		?>
-	</div>
+        <div class='row text-center'>
+                <h3>Наши работы раздела "<?php echo htmlspecialchars($categoryTitle, ENT_QUOTES, 'UTF-8'); ?>"</h3>
+                <hr>
+                <a href='/сatalog-of-finished-works.php'>Вернуться к разделам</a>
+        </div>
+        <div class='row g-0'>
+                <?php if ($categoryInfo && !empty($works)) : ?>
+                        <?php foreach ($works as $item) :
+                                $imageSrc = htmlspecialchars($item['url_image'], ENT_QUOTES, 'UTF-8');
+                                $description = htmlspecialchars($item['description'] ?? '', ENT_QUOTES, 'UTF-8');
+                                $altText = $description !== '' ? $description : htmlspecialchars($categoryTitle, ENT_QUOTES, 'UTF-8');
+                        ?>
+                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="card text-center justify-content-center h-100" style="width:100%" href="/">
+                                                <a data-fancybox="images" data-caption="<?php echo $description; ?>" href="<?php echo $imageSrc; ?>" style="text-decoration: none;" class="tekst_sverhu_kartinki" onmouseover="show($(this))" onmouseout="hide($(this))">
+                                                        <img src="<?php echo $imageSrc; ?>" class="rounded mx-auto d-block castom-image " alt="<?php echo $altText; ?>">
+                                                        <h5 style="color:black;" class="tekst_sverhu_kartinki_tekst"><?php echo $description; ?></h5>
+                                                </a>
+                                        </div>
+                                </div>
+                        <?php endforeach; ?>
+                <?php elseif ($categoryInfo) : ?>
+                        <div class="col-12 text-center">
+                                <p>В этой категории пока нет работ.</p>
+                        </div>
+                <?php else : ?>
+                        <div class="col-12 text-center">
+                                <p>Категория не найдена.</p>
+                        </div>
+                <?php endif; ?>
+        </div>
 </div>
 
 <div id="left">

@@ -1,76 +1,72 @@
 <?php
-
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 require_once '../../../base/connect.php';
 
-$info = $_POST;
-$allow = ['jpg', 'jpeg'];
+header('Content-Type: application/json; charset=utf-8');
 
-if (!isset($_FILES)) {
-    exit;
+$allowExtensions = ['jpg', 'jpeg'];
+$categoryId = isset($_POST['categoryIdGalleryWorks']) ? (int) $_POST['categoryIdGalleryWorks'] : 0;
+$description = isset($_POST['descGalleryWorks']) ? trim((string) $_POST['descGalleryWorks']) : '';
+
+if ($categoryId <= 0) {
+    echo json_encode(['status' => 'error', 'message' => 'Не выбрана категория']);
+    return;
 }
 
-// URL до временной директории.
-$url_path = '/img/багетная - фотобанк работ/';
-
-// Полный путь до временной директории.
-$tmp_path = $_SERVER['DOCUMENT_ROOT'] . $url_path;
-
-if (!is_dir($tmp_path)) {
-    mkdir($tmp_path, 0777, true);
+if (empty($_FILES['imgGalleryWorks']) || empty($_FILES['imgGalleryWorks']['tmp_name'])) {
+    echo json_encode(['status' => 'error', 'message' => 'Не выбрано изображение']);
+    return;
 }
 
-foreach ($_FILES as $file) {
-    $error = '';
-    $ext = mb_strtolower(mb_substr(mb_strrchr((string) @$file['name'], '.'), 1));
-
-    if (!empty($file['error']) || empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
-        $error = 'Не удалось загрузить файл.';
-    } elseif (empty($file['name']) || !is_uploaded_file($file['tmp_name'])) {
-        $error = 'Не удалось загрузить файл.';
-    } elseif (empty($ext) || !in_array($ext, $allow)) {
-        $error = 'Недопустимый тип файла';
-    } else {
-        $img = @getimagesize($file['tmp_name']);
-        if (empty($img[0]) || empty($img[1]) || !in_array($img[2], [1, 2, 3])) {
-            $error = 'Недопустимый тип файла';
-        } else {
-            // Перемещаем файл в директорию с новым именем.
-            $name  = time() . '-' . random_int(1, 9_999_999_999);
-            $src   = $tmp_path . $name . '.' . $ext;
-            $thumb = $tmp_path . $name . '-thumb.' . $ext;
-
-            move_uploaded_file($file['tmp_name'], $src);
-
-            $info['NamelistImg'] = './img/багетная - фотобанк работ/' . $name . '.' . $ext;
-        }
-    }
+$file = $_FILES['imgGalleryWorks'];
+if (!empty($file['error']) || !is_uploaded_file($file['tmp_name'])) {
+    echo json_encode(['status' => 'error', 'message' => 'Не удалось загрузить файл']);
+    return;
 }
 
-$lastid = $dbh->prepare("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'gallery_work_images'");
-$lastid->execute();
-$lastid = $lastid->fetchAll();
+$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+if (!in_array($extension, $allowExtensions, true)) {
+    echo json_encode(['status' => 'error', 'message' => 'Недопустимый тип файла']);
+    return;
+}
 
-$category = $info["categoryIdGalleryWorks"];
-$url_image = $info['NamelistImg'];
-$description = $info['descGalleryWorks'];
+$imageInfo = @getimagesize($file['tmp_name']);
+if (!$imageInfo || !in_array($imageInfo[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF], true)) {
+    echo json_encode(['status' => 'error', 'message' => 'Недопустимый тип файла']);
+    return;
+}
 
-$typeUrl = 1;
+$relativePath = '/img/багетная - фотобанк работ/';
+$absolutePath = rtrim($_SERVER['DOCUMENT_ROOT'], '/') . $relativePath;
+
+if (!is_dir($absolutePath) && !mkdir($absolutePath, 0777, true) && !is_dir($absolutePath)) {
+    echo json_encode(['status' => 'error', 'message' => 'Не удалось создать директорию для загрузки']);
+    return;
+}
+
+$fileName = time() . '-' . random_int(1, 9_999_999_999) . '.' . $extension;
+$targetPath = $absolutePath . $fileName;
+
+if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
+    echo json_encode(['status' => 'error', 'message' => 'Не удалось сохранить файл']);
+    return;
+}
+
+$fileUrl = '.' . $relativePath . $fileName;
 
 try {
-    $stmt = $dbh->prepare("INSERT INTO gallery_work_images(category, url_image, description) values (?,?,?)");
+    $statement = $dbh->prepare('INSERT INTO gallery_work_images (category, url_image, description) VALUES (:category, :url, :description)');
+    $statement->bindValue(':category', $categoryId, PDO::PARAM_INT);
+    $statement->bindValue(':url', $fileUrl, PDO::PARAM_STR);
+    $statement->bindValue(':description', $description, PDO::PARAM_STR);
+    $statement->execute();
 
-    $stmt->bindParam(1, $category);
-    $stmt->bindParam(2, $url_image);
-    $stmt->bindParam(3, $description);
-
-
-    $stmt->execute();
-
-    echo "success";
-} catch (PDOExecption $e) {
-    $dbh->rollback();
-    print "Error!: " . $e->getMessage() . "</br>";
+    echo json_encode(['status' => 'success']);
+} catch (PDOException $exception) {
+    @unlink($targetPath);
+    http_response_code(500);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Не удалось сохранить работу',
+        'error' => $exception->getMessage(),
+    ]);
 }
