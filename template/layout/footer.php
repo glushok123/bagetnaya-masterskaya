@@ -194,6 +194,7 @@
 </script>
 
 <style>
+    /* Цветочки (эмодзи) */
     .trail-flower{
         position: fixed;
         pointer-events: none;
@@ -205,39 +206,78 @@
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
     }
-
     @keyframes floatOut {
         from { opacity: 1; transform: translateY(0) rotate(var(--rot)) scale(var(--scale)); }
         to   { opacity: 0; transform: translateY(-24px) rotate(var(--rot)) scale(var(--scale)); }
+    }
+
+    /* Линия (сегменты) */
+    .trail-segment{
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        will-change: opacity, transform;
+        transform-origin: 0 0;
+        transition: opacity .3s ease;
     }
 
     @media (prefers-reduced-motion: reduce){
         .trail-flower{ animation: none !important; opacity: .85; }
     }
 
+    /* Плавающий переключатель режима (для удобства) */
+    .cursor-mode-toggle{
+        position: fixed;
+        right: 12px;
+        top: 12px;
+        z-index: 10000;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(0,0,0,.6);
+        color: #fff;
+        font: 14px/1 system-ui, Segoe UI, Roboto, Arial, sans-serif;
+        cursor: pointer;
+        user-select: none;
+        backdrop-filter: blur(6px);
+    }
+
 </style>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // Настройки эффекта
         const trailSettings = {
-            emoji: ["✨", "🖼️"], // символы/эмодзи
-            size: { min: 14, max: 28 },            // размер «частиц» в px
-            anim: { min: 600, max: 3000 },         // длительность анимации (мс)
-            maxElements: 60,                        // максимум элементов в DOM
-            minDistance: 10,                        // минимальное движение курсора (px), чтобы обрабатывать кадр
-            inactivityTimeout: 5000,                // очистка после простоя (мс)
+            // РЕЖИМ: 'flowers' или 'line'
+            mode: 'line',
 
-            // НОВОЕ: разрежение следа
-            spacing: 40,    // целевое расстояние между элементами вдоль пути (px)
-            jitter: 12       // случайное поперечное смещение (px) для естественности
+            // Общие
+            maxElements: 120,             // общий лимит узлов в DOM
+            minDistance: 10,              // минимальное движение курсора (px), чтобы обрабатывать кадр
+            inactivityTimeout: 5000,      // очистка после простоя (мс)
+
+            // Цветочки
+            emoji: ["🌸","✨","💫","🌼","🫧","🍀"],
+            size: { min: 14, max: 28 },
+            anim: { min: 600, max: 3000 },
+            spacing: 40,                  // расстояние между «цветочками» вдоль пути (px)
+            jitter: 6,                    // лёгкий поперечный разброс (px)
+
+            // Линия
+            line: {
+                color: "#ad1f2d",           // ОДИН цвет линии
+                thickness: 2,               // толщина (px)
+                maxSegments: 80             // сколько сегментов держать в DOM
+            }
         };
 
         const rnd = (a,b)=> Math.random()*(b-a)+a;
         const pick = arr => arr[Math.floor(Math.random()*arr.length)];
 
-        let pool = []; // текущие элементы
+        // Пулы элементов
+        const pool = [];   // все элементы (для быстрой массовой очистки)
+        const segs = [];   // только сегменты линии (для их постепенного затухания/лимита)
+
         let x = null, y = null, firstMove = true, idleTimer = null;
+        let tx = null, ty = null, firstTouch = true;
 
         function scheduleIdleClear(){
             clearTimeout(idleTimer);
@@ -246,14 +286,12 @@
 
         function clearTrail(){
             if (!pool.length) return;
-            pool.forEach(el => {
-                el.style.animationDuration = "300ms";
-                el.style.opacity = "0";
-            });
+            // быстро дотухаем и чистим всё
+            pool.forEach(el => { el.style.opacity = "0"; });
             setTimeout(() => {
-                pool.forEach(el => el.remove());
-                pool.length = 0;
-            }, 350);
+                pool.splice(0).forEach(el => el.remove());
+                segs.splice(0);
+            }, 300);
         }
 
         function createFlower(cx, cy){
@@ -271,35 +309,80 @@
 
             document.body.appendChild(el);
             pool.push(el);
-
-            // лимитируем количество DOM-узлов
-            if (pool.length > trailSettings.maxElements){
-                const old = pool.shift();
-                old.remove();
-            }
+            trimPoolIfNeeded();
 
             el.addEventListener("animationend", () => {
-                const i = pool.indexOf(el);
-                if (i > -1) pool.splice(i, 1);
+                const pi = pool.indexOf(el);
+                if (pi > -1) pool.splice(pi, 1);
                 el.remove();
             }, { once: true });
         }
 
-        // Раскладывает элементы через равные промежутки «spacing»
-        function sprinkleBetween(x1, y1, x2, y2){
+        function createLineSegment(x1, y1, x2, y2){
+            const el = document.createElement("div");
+            el.className = "trail-segment";
+
+            const dx = x2 - x1, dy = y2 - y1;
+            const len = Math.hypot(dx, dy);
+            const deg = Math.atan2(dy, dx) * 180 / Math.PI;
+
+            el.style.width = len + "px";
+            el.style.height = trailSettings.line.thickness + "px";
+            el.style.left = x1 + "px";
+            el.style.top = y1 + "px";
+            el.style.transform = `rotate(${deg}deg)`;
+            el.style.background = trailSettings.line.color;
+            el.style.borderRadius = (trailSettings.line.thickness/2) + "px";
+            el.style.opacity = "1";
+
+            document.body.appendChild(el);
+            pool.push(el);
+            segs.push(el);
+
+            // Лимит сегментов
+            if (segs.length > trailSettings.line.maxSegments){
+                const old = segs.shift();
+                // удалить и из общего пула
+                const pi = pool.indexOf(old);
+                if (pi > -1) pool.splice(pi, 1);
+                old.remove();
+            }
+            trimPoolIfNeeded();
+
+            // Градиентная прозрачность по истории
+            const N = segs.length;
+            for (let i = 0; i < N; i++){
+                segs[i].style.opacity = ((i+1)/N).toFixed(3);
+            }
+        }
+
+        function trimPoolIfNeeded(){
+            // подстраховка: общий хард-лимит на любые узлы
+            const overflow = pool.length - trailSettings.maxElements;
+            if (overflow > 0){
+                for (let i = 0; i < overflow; i++){
+                    const el = pool.shift();
+                    // если это сегмент — удалить из segs тоже
+                    const si = segs.indexOf(el);
+                    if (si > -1) segs.splice(si, 1);
+                    el.remove();
+                }
+            }
+        }
+
+        // Раскладывает «цветочки» через равные интервалы spacing
+        function sprinkleFlowers(x1, y1, x2, y2){
             const dx = x2 - x1, dy = y2 - y1;
             const dist = Math.hypot(dx, dy);
             const step = Math.max(1, trailSettings.spacing);
 
             if (dist <= step){
-                // короткий шаг — просто поставим в конечной точке
                 createFlower(x2, y2);
                 return;
             }
 
             const steps = Math.floor(dist / step);
-            // единичный перпендикуляр для «разброса»
-            const nx = dist ? (-dy / dist) : 0;
+            const nx = dist ? (-dy / dist) : 0; // перпендикуляр для «разброса»
             const ny = dist ? ( dx / dist) : 0;
 
             for (let i = 1; i <= steps; i++){
@@ -312,31 +395,61 @@
             }
         }
 
-        document.addEventListener("mousemove", e => {
+        function onPointerMove(px, py){
             scheduleIdleClear();
-            if (firstMove){ x = e.clientX; y = e.clientY; firstMove = false; return; }
-            const dx = e.clientX - x, dy = e.clientY - y;
-            if (Math.hypot(dx, dy) >= trailSettings.minDistance){
-                sprinkleBetween(x, y, e.clientX, e.clientY);
-                x = e.clientX; y = e.clientY;
-            }
-        });
+            if (firstMove){ x = px; y = py; firstMove = false; return; }
 
-        // поддержка тач-устройств с тем же разрежением
-        let tx = null, ty = null, firstTouch = true;
+            const dx = px - x, dy = py - y;
+            if (Math.hypot(dx, dy) < trailSettings.minDistance) return;
+
+            if (trailSettings.mode === 'flowers'){
+                sprinkleFlowers(x, y, px, py);
+            } else {
+                // Линия — один сегмент между предыдущей и текущей точкой
+                createLineSegment(x, y, px, py);
+            }
+            x = px; y = py;
+        }
+
+        document.addEventListener("mousemove", e => onPointerMove(e.clientX, e.clientY));
         document.addEventListener("touchmove", e => {
             const t = e.touches[0];
             if (!t) return;
             scheduleIdleClear();
+
             if (firstTouch){ tx = t.clientX; ty = t.clientY; firstTouch = false; return; }
             const dx = t.clientX - tx, dy = t.clientY - ty;
             if (Math.hypot(dx, dy) >= trailSettings.minDistance){
-                sprinkleBetween(tx, ty, t.clientX, t.clientY);
+                if (trailSettings.mode === 'flowers'){
+                    sprinkleFlowers(tx, ty, t.clientX, t.clientY);
+                } else {
+                    createLineSegment(tx, ty, t.clientX, t.clientY);
+                }
                 tx = t.clientX; ty = t.clientY;
             }
         }, { passive: true });
 
-        scheduleIdleClear();
+        // Переключатель режима (UI)
+        const toggle = document.getElementById('cursorModeToggle');
+        function updateToggleLabel(){
+            toggle.textContent = 'Режим: ' + (trailSettings.mode === 'flowers' ? 'Цветочки' : 'Линия');
+        }
+        toggle.addEventListener('click', () => {
+            setMode(trailSettings.mode === 'flowers' ? 'line' : 'flowers');
+        });
+
+        function setMode(mode){
+            if (mode !== 'flowers' && mode !== 'line') return;
+            trailSettings.mode = mode;
+            updateToggleLabel();
+            clearTrail();               // очистим старые элементы при смене режима
+            firstMove = true;           // чтобы новый путь начинался чисто
+            firstTouch = true;
+        }
+        updateToggleLabel();
+
+        // Экспорт в глобальную область — можно менять режим из консоли
+        window.cursorTrail = { setMode, settings: trailSettings };
     });
 </script>
 
