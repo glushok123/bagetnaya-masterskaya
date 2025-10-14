@@ -249,10 +249,18 @@ var languageTables = {
 var spiner = '<div class="container"><div class="row text-center justify-content-center">';
 spiner = spiner + '<div class="spinner-border" role="status"><span class="sr-only"></span></div></div></div>';
 
+function escapeHtml(value) {
+    return $('<div>').text(value === null || value === undefined ? '' : value).html();
+}
+
 $(document).ready(function () {
     var tableGalleryWorks = $('#gallery-works-tables').dataTable({
         "language": languageTables
     });
+
+    let galleryCategories = [];
+
+    loadGalleryCategories();
 
     const searchParams = new URLSearchParams(window.location.search);
 
@@ -303,6 +311,7 @@ $(document).ready(function () {
 
         if (typeCatalog == 'gallery-works') {
             $('#dashbord-baget').hide();
+            loadGalleryCategories();
             getGalleryWorksRequest();
 
             return;
@@ -349,6 +358,521 @@ $(document).ready(function () {
             }
         });
 
+    }
+
+    function loadGalleryCategories() {
+        $.ajax({
+            url: '/admin/request/galleryWorks/getCategories.php',
+            method: 'get',
+            dataType: 'json',
+            success: function (response) {
+                galleryCategories = response.categories || [];
+                updateGalleryCategorySelects();
+                renderGalleryCategoryTable(galleryCategories);
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            }
+        });
+    }
+
+    function updateGalleryCategorySelects() {
+        const filterSelect = $('#selectCategoryGalleryWorks');
+        const modalSelect = $('#categoryIdGalleryWorks');
+        const currentFilter = filterSelect.val();
+        const currentModal = modalSelect.val();
+
+        filterSelect.find('option').not(':first').remove();
+        modalSelect.find('option').not(':first').remove();
+
+        galleryCategories.forEach(function (category) {
+            filterSelect.append($('<option>', {
+                value: category.id,
+                text: category.name
+            }));
+
+            modalSelect.append($('<option>', {
+                value: category.id,
+                text: category.name
+            }));
+        });
+
+        if (currentFilter && filterSelect.find('option[value="' + currentFilter + '"]').length) {
+            filterSelect.val(currentFilter);
+        } else {
+            filterSelect.val('');
+        }
+
+        if (currentModal && modalSelect.find('option[value="' + currentModal + '"]').length) {
+            modalSelect.val(currentModal);
+        } else {
+            modalSelect.prop('selectedIndex', 0);
+        }
+    }
+
+    function renderGalleryCategoryTable(categories) {
+        const tbody = $('#gallery-works-category-table tbody');
+        tbody.empty();
+
+        if (!categories.length) {
+            tbody.append('<tr><td colspan="6" class="text-center text-muted">Категории не найдены</td></tr>');
+            return;
+        }
+
+        categories.forEach(function (category, index) {
+            const row = $('<tr>').attr('data-category-id', category.id);
+
+            row.append($('<td>').text(index + 1));
+
+            const nameCell = $('<td>');
+            nameCell.append($('<input>', {
+                type: 'text',
+                class: 'form-control category-name-input',
+                'data-id': category.id,
+                value: category.name || ''
+            }));
+            nameCell.append($('<small>', {
+                class: 'text-muted',
+                text: 'ID: ' + category.id
+            }));
+            row.append(nameCell);
+
+            const imageCell = $('<td>');
+            const imageWrapper = $('<div>', {
+                class: 'd-flex align-items-center gap-2 flex-wrap'
+            });
+            imageWrapper.append($('<img>', {
+                src: category.display_image,
+                alt: category.name || '',
+                class: 'img-thumbnail',
+                css: { maxWidth: '80px' }
+            }));
+            const uploadLabel = $('<label>', {
+                class: 'btn btn-outline-secondary btn-sm mb-0'
+            }).text('Изменить');
+            uploadLabel.append($('<input>', {
+                type: 'file',
+                class: 'd-none upload-category-image',
+                'data-id': category.id,
+                accept: '.jpg,.jpeg,.png'
+            }));
+            imageWrapper.append(uploadLabel);
+            imageCell.append(imageWrapper);
+            row.append(imageCell);
+
+            const orderCell = $('<td>');
+            const orderGroup = $('<div>', {
+                class: 'btn-group',
+                role: 'group'
+            });
+            orderGroup.append($('<button>', {
+                type: 'button',
+                class: 'btn btn-outline-secondary btn-sm move-category',
+                'data-id': category.id,
+                'data-direction': 'up',
+                disabled: index === 0
+            }).text('↑'));
+            orderGroup.append($('<button>', {
+                type: 'button',
+                class: 'btn btn-outline-secondary btn-sm move-category',
+                'data-id': category.id,
+                'data-direction': 'down',
+                disabled: index === categories.length - 1
+            }).text('↓'));
+            orderCell.append(orderGroup);
+            row.append(orderCell);
+
+            const visibilityCell = $('<td>');
+            const visibilityWrapper = $('<div>', {
+                class: 'form-check form-switch'
+            });
+            const visibilityInput = $('<input>', {
+                class: 'form-check-input toggle-category-visibility',
+                type: 'checkbox',
+                'data-id': category.id
+            });
+            if (parseInt(category.is_hidden) === 0) {
+                visibilityInput.prop('checked', true);
+            }
+            const visibilityLabel = $('<label>', {
+                class: 'form-check-label visibility-label',
+                text: parseInt(category.is_hidden) === 0 ? 'Отображается' : 'Скрыта'
+            });
+            visibilityWrapper.append(visibilityInput, visibilityLabel);
+            visibilityCell.append(visibilityWrapper);
+            row.append(visibilityCell);
+
+            const actionsCell = $('<td>');
+            const actionsWrapper = $('<div>', {
+                class: 'd-flex gap-2 flex-wrap'
+            });
+            actionsWrapper.append($('<button>', {
+                type: 'button',
+                class: 'btn btn-primary btn-sm save-category-name',
+                'data-id': category.id
+            }).text('Сохранить название'));
+            actionsCell.append(actionsWrapper);
+            row.append(actionsCell);
+
+            tbody.append(row);
+        });
+    }
+
+    function createGalleryCategoryRequest() {
+        const form = $('#addGalleryWorksCategoryForm')[0];
+        const nameField = $('#galleryCategoryName');
+        const nameValue = $.trim(nameField.val());
+
+        if (nameValue === '') {
+            nameField.addClass('is-invalid');
+            toastr.error('Укажите название категории');
+            return;
+        }
+
+        nameField.removeClass('is-invalid');
+
+        const formData = new FormData(form);
+        formData.append('isHidden', $('#galleryCategoryIsHidden').is(':checked') ? 1 : 0);
+
+        $('#add-gallery-works-category-save').prop('disabled', true);
+
+        $.ajax({
+            url: '/admin/request/galleryWorks/createCategory.php',
+            method: 'post',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Категория добавлена');
+                    $('#ModalAddGalleryWorksCategory').modal('hide');
+                    form.reset();
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось добавить категорию');
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            },
+            complete: function () {
+                $('#add-gallery-works-category-save').prop('disabled', false);
+            }
+        });
+    }
+
+    function updateGalleryCategoryName(categoryId, name, button) {
+        const trimmedName = $.trim(name);
+        if (trimmedName === '') {
+            toastr.error('Название не может быть пустым');
+            return;
+        }
+
+        if (button) {
+            button.prop('disabled', true);
+        }
+
+        $.ajax({
+            url: '/admin/request/galleryWorks/updateCategoryName.php',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                id: categoryId,
+                name: trimmedName
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Название категории обновлено');
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось обновить категорию');
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            },
+            complete: function () {
+                if (button) {
+                    button.prop('disabled', false);
+                }
+            }
+        });
+    }
+
+    function updateGalleryCategoryVisibility(categoryId, isHidden, checkbox) {
+        $.ajax({
+            url: '/admin/request/galleryWorks/updateCategoryVisibility.php',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                id: categoryId,
+                isHidden: isHidden
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Видимость категории изменена');
+                    const label = checkbox.closest('.form-check').find('.visibility-label');
+                    if (parseInt(isHidden) === 0) {
+                        label.text('Отображается');
+                    } else {
+                        label.text('Скрыта');
+                    }
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось изменить видимость');
+                    checkbox.prop('checked', !checkbox.is(':checked'));
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+                checkbox.prop('checked', !checkbox.is(':checked'));
+            }
+        });
+    }
+
+    function moveGalleryCategory(categoryId, direction, button) {
+        if (button) {
+            button.prop('disabled', true);
+        }
+
+        $.ajax({
+            url: '/admin/request/galleryWorks/updateCategoryOrder.php',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                id: categoryId,
+                direction: direction
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось изменить порядок категорий');
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            },
+            complete: function () {
+                if (button) {
+                    button.prop('disabled', false);
+                }
+            }
+        });
+    }
+
+    function uploadGalleryCategoryImage(categoryId, input) {
+        if (!input.files.length) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('categoryId', categoryId);
+        formData.append('mainImage', input.files[0]);
+
+        const $input = $(input);
+        $input.prop('disabled', true);
+
+        $.ajax({
+            url: '/admin/request/galleryWorks/updateCategoryImage.php',
+            method: 'post',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Главное изображение обновлено');
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось обновить изображение');
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            },
+            complete: function () {
+                $input.prop('disabled', false);
+                $input.val('');
+            }
+        });
+    }
+
+    function updateGalleryWorkCategory(workId, categoryId, select) {
+        $.ajax({
+            url: '/admin/request/galleryWorks/updateGalleryWorkCategory.php',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                id: workId,
+                categoryId: categoryId
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Категория работы обновлена');
+                    loadGalleryCategories();
+                    getGalleryWorksRequest();
+                } else {
+                    toastr.error(response.message || 'Не удалось обновить категорию');
+                    select.val(select.data('previous-value'));
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+                select.val(select.data('previous-value'));
+            }
+        });
+    }
+
+    function deleteGalleryWork(workId, button) {
+        if (!confirm('Удалить изображение из каталога?')) {
+            return;
+        }
+
+        if (button) {
+            button.prop('disabled', true);
+        }
+
+        $.ajax({
+            url: '/admin/request/galleryWorks/deleteGalleryWork.php',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                id: workId
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Изображение удалено');
+                    getGalleryWorksRequest();
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось удалить изображение');
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            },
+            complete: function () {
+                if (button) {
+                    button.prop('disabled', false);
+                }
+            }
+        });
     }
 
     // заявки на картины
@@ -726,7 +1250,29 @@ $(document).ready(function () {
 
     // Добавление новой работы
     function addItemGalleryWorksRequest() {
-        let formData = new FormData($('#addItemGalleryWorks')[0])
+        const formElement = $('#addItemGalleryWorks')[0];
+        const categorySelect = $('#categoryIdGalleryWorks');
+        const imageInput = $('#imgGalleryWorks');
+        const descriptionInput = $('#descGalleryWorks');
+
+        categorySelect.removeClass('is-invalid');
+        imageInput.removeClass('is-invalid');
+
+        if (!categorySelect.val()) {
+            toastr.error('Выберите категорию');
+            categorySelect.addClass('is-invalid');
+            return;
+        }
+
+        if (!imageInput.val()) {
+            toastr.error('Выберите изображение');
+            imageInput.addClass('is-invalid');
+            return;
+        }
+
+        const formData = new FormData(formElement);
+
+        $('#add-gallery-works-save').prop('disabled', true);
 
         $.ajax({
             url: '/admin/request/galleryWorks/addItemCatalogSave.php',
@@ -735,9 +1281,20 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             data: formData,
-            success: function (data) {
-                if (data == 'success') {
-                    alert('Добавлено !');
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Работа добавлена');
+                    $('#ModalAddGalleryWorks').modal('hide');
+                    formElement.reset();
+                    categorySelect.prop('selectedIndex', 0);
+                    if (descriptionInput.length) {
+                        descriptionInput.val('');
+                    }
+                    getGalleryWorksRequest();
+                    loadGalleryCategories();
+                } else {
+                    toastr.error(response.message || 'Не удалось добавить работу');
                 }
             },
             error: function (jqXHR, exception) {
@@ -756,6 +1313,9 @@ $(document).ready(function () {
                 } else {
                     alert('Uncaught Error. ' + jqXHR.responseText);
                 }
+            },
+            complete: function () {
+                $('#add-gallery-works-save').prop('disabled', false);
             }
         });
     }
@@ -1109,14 +1669,15 @@ $(document).ready(function () {
         $.ajax({
             url: '/admin/request/galleryWorks/getJsonListGalleryWorks.php',
             method: 'post',
-            dataType: "json",
+            dataType: 'json',
             data: {
-                categoryId : $('#selectCategoryGalleryWorks').val()
+                categoryId: $('#selectCategoryGalleryWorks').val()
             },
-            async: true,
             success: function (data) {
                 tableGalleryWorks.fnClearTable();
-                tableGalleryWorks.fnAddData(data);
+                if (data && data.rows) {
+                    tableGalleryWorks.fnAddData(data.rows);
+                }
             },
             error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
@@ -1143,13 +1704,17 @@ $(document).ready(function () {
         $.ajax({
             url: '/admin/request/galleryWorks/setDescGalleryWorks.php',
             method: 'post',
+            dataType: 'json',
             data: {
                 description: el.val(),
                 id: el.data('id-works'),
             },
-            success: function (data) {
-                console.log(data)
-                toastr.success('Изменено');
+            success: function (response) {
+                if (response.status === 'success') {
+                    toastr.success('Описание обновлено');
+                } else {
+                    toastr.error(response.message || 'Не удалось обновить описание');
+                }
             },
             error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
@@ -1240,6 +1805,23 @@ $(document).ready(function () {
         });
     }
 
+    $('#ModalAddGalleryWorksCategory').on('hidden.bs.modal', function () {
+        const form = $('#addGalleryWorksCategoryForm')[0];
+        if (form) {
+            form.reset();
+        }
+        $('#galleryCategoryName').removeClass('is-invalid');
+    });
+
+    $('#ModalAddGalleryWorks').on('hidden.bs.modal', function () {
+        const form = $('#addItemGalleryWorks')[0];
+        if (form) {
+            form.reset();
+        }
+        $('#categoryIdGalleryWorks').removeClass('is-invalid');
+        $('#imgGalleryWorks').removeClass('is-invalid');
+    });
+
     /**
      * Список событий
      */
@@ -1286,12 +1868,52 @@ $(document).ready(function () {
         changeTypeCatalog()
     }); // Сортировка
     $(document).on('change', '#selectCategoryGalleryWorks', function () {
-        getGalleryWorksRequest()()
-    }); // Сортировка
+        getGalleryWorksRequest();
+    }); // Фильтрация работ по категории
     $(document).on('click', '#add-painting-save', function () {
         addPaintingCatalogRequest()
     }); // Запрос на добавление новой картины
     $(document).on('change', '.edit-description-gallery-works', function () {
         changeDescGalleryWorks($(this))
     }); // Изменение описания готовой работы
+    $(document).on('click', '#add-gallery-works-category-save', function () {
+        createGalleryCategoryRequest();
+    }); // Добавление новой категории галереи
+    $(document).on('input', '#galleryCategoryName', function () {
+        $(this).removeClass('is-invalid');
+    });
+    $(document).on('change', '#categoryIdGalleryWorks', function () {
+        $(this).removeClass('is-invalid');
+    });
+    $(document).on('change', '#imgGalleryWorks', function () {
+        $(this).removeClass('is-invalid');
+    });
+    $(document).on('click', '.save-category-name', function () {
+        const button = $(this);
+        const input = button.closest('tr').find('.category-name-input');
+        updateGalleryCategoryName(button.data('id'), input.val(), button);
+    });
+    $(document).on('change', '.toggle-category-visibility', function () {
+        const checkbox = $(this);
+        const categoryId = checkbox.data('id');
+        const isHidden = checkbox.is(':checked') ? 0 : 1;
+        updateGalleryCategoryVisibility(categoryId, isHidden, checkbox);
+    });
+    $(document).on('click', '.move-category', function () {
+        const button = $(this);
+        moveGalleryCategory(button.data('id'), button.data('direction'), button);
+    });
+    $(document).on('change', '.upload-category-image', function () {
+        uploadGalleryCategoryImage($(this).data('id'), this);
+    });
+    $(document).on('focus', '.change-gallery-work-category', function () {
+        $(this).data('previous-value', $(this).val());
+    });
+    $(document).on('change', '.change-gallery-work-category', function () {
+        const select = $(this);
+        updateGalleryWorkCategory(select.data('id'), select.val(), select);
+    });
+    $(document).on('click', '.delete-gallery-work', function () {
+        deleteGalleryWork($(this).data('id'), $(this));
+    });
 })

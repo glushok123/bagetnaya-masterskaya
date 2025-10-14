@@ -1,15 +1,3 @@
-
-<?
-    $stm = $dbh->prepare("SELECT * FROM category_gallery_works");
-    $stm->execute();
-    $categoryGalleryWorkImages = $stm->fetchAll();
-
-    $categoryGalleryWorks = [];
-
-    foreach ($categoryGalleryWorkImages as $item) {
-        $categoryGalleryWorks[$item['id']] = $item['name'];
-    }
-?>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade row " id="plast" role="tabpanel" aria-labelledby="home-tab">
 
@@ -43,32 +31,61 @@
     <div class="tab-pane fade row" id="gallery-works" role="tabpanel" aria-labelledby="contact-tab">
         <div class='container'>
             <div class='container'>
-                <div class="row">
-                    <br>
-                    <div class='col'>
-                        <button type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#ModalAddGalleryWorks">Добавить</button>
+                <div class="row align-items-center gy-3">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#ModalAddGalleryWorks">Добавить работу</button>
                     </div>
-                    <div class='col'>
-                        <select class="form-select" aria-label="Default select example" style="margin:10px;" id='selectCategoryGalleryWorks'>
-                            <?
-                                foreach ($categoryGalleryWorks as $key => $value) {
-                                echo '<option value="' . $key . '">' . $value . '</option>';
-                                }
-                            ?>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#ModalAddGalleryWorksCategory" id="open-add-gallery-category">Новая категория</button>
+                    </div>
+                    <div class="col-md-4 ms-auto">
+                        <select class="form-select" id='selectCategoryGalleryWorks'>
+                            <option value="">Все категории</option>
                         </select>
                     </div>
                 </div>
-                <div class="" style="width:100%">
-                    <table id="gallery-works-tables" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Фото</th>
-                                <th>Категория</th>
-                                <th>Описание</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    </table>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Категории</h5>
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle" id="gallery-works-category-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:5%">#</th>
+                                        <th>Название</th>
+                                        <th style="width:20%">Главное изображение</th>
+                                        <th style="width:15%">Порядок</th>
+                                        <th style="width:12%">Видимость</th>
+                                        <th style="width:18%">Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">Данные загружаются...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="gallery-works-tables" class="table table-striped align-middle" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Фото</th>
+                                        <th>Категория</th>
+                                        <th>Описание</th>
+                                        <th>Управление</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
