@@ -1,3 +1,8 @@
+<?php
+$menuCategories = isset($galleryMenuCategories) && is_array($galleryMenuCategories)
+    ? $galleryMenuCategories
+    : [];
+?>
 <div class="container-fluid">
     <br>
 
@@ -17,25 +22,19 @@
 
                                         <ul class="dropdown-menu border-0 shadow bsb-zoomIn"
                                             aria-labelledby="dropdownMenuButton1">
-
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Акварели,%20пастели%20и%20гравюры">Акварели, пастели и гравюры</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Зеркала%20и%20тв-панели">Зеркала и тв-панели</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Иконы%20и%20вышивки">Иконы и вышивки</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Ордена%20и%20медали,%20купюры%20и%20монеты">Ордена и медали, купюры и монеты</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Оформление%20живописи">Оформление живописи</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Постеры,%20плакаты%20и%20репродукции">Постеры, плакаты и репродукции</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Сложные%20работы">Сложные работы</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Фотографии%20и%20графика">Фотографии и графика</a></li>
-                                            <li><a class="dropdown-item"
-                                                   href="/сatalog-of-finished-works-by-category.php?category=Футболки%20и%20спортивные%20атрибуты">Футболки и спортивные атрибуты</a></li>
+                                            <?php if (!empty($menuCategories)): ?>
+                                                <?php foreach ($menuCategories as $menuCategory):
+                                                    $categoryName = htmlspecialchars($menuCategory['name'] ?? '', ENT_QUOTES, 'UTF-8');
+                                                    $categoryParam = !empty($menuCategory['slug'])
+                                                        ? $menuCategory['slug']
+                                                        : ($menuCategory['id'] ?? '');
+                                                    $categoryUrl = '/сatalog-of-finished-works-by-category.php?category=' . rawurlencode((string)$categoryParam);
+                                                    ?>
+                                                    <li><a class="dropdown-item" href="<?= $categoryUrl ?>"><?= $categoryName ?></a></li>
+                                                <?php endforeach; ?>
+                                            <?php else: ?>
+                                                <li><span class="dropdown-item disabled">Категории скоро появятся</span></li>
+                                            <?php endif; ?>
                                         </ul>
                                     </li>
                                      <li class="nav-item dropdown">

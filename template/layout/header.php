@@ -13,6 +13,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/block-bots.php';
 $showMetrika = blockBot();
 
 $v = 25;
+
+if (!isset($galleryMenuCategories) || !is_array($galleryMenuCategories)) {
+    $galleryMenuCategories = [];
+
+    try {
+        $galleryMenuStmt = $dbh->prepare(
+            'SELECT id, name, slug FROM category_gallery_works WHERE is_visible = 1 ORDER BY position ASC, id ASC'
+        );
+        $galleryMenuStmt->execute();
+        $galleryMenuCategories = $galleryMenuStmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+    } catch (Exception $e) {
+        $galleryMenuCategories = [];
+    }
+}
 ?>
     <!doctype html>
     <html lang="ru">
