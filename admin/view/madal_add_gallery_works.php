@@ -1,3 +1,8 @@
+<?
+$categoryStmt = $dbh->prepare("SELECT id, name FROM category_gallery_works ORDER BY position ASC, id ASC");
+$categoryStmt->execute();
+$modalCategories = $categoryStmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!-- Модальное окно -->
 <div class="modal fade" id="ModalAddGalleryWorks" tabindex="-1" aria-labelledby="ModalAddGalleryWorks"
      aria-hidden="true">
@@ -16,16 +21,9 @@
                                 <select id="categoryIdGalleryWorks" name="categoryIdGalleryWorks"
                                         class="form-select form-control">
                                     <option value='' selected>Выберите ...</option>
-                                    <option value='1'>Акварели, пастели и гравюры</option>
-                                    <option value='2'>Зеркала и тв-панели</option>
-                                    <option value='3'>Иконы и вышивки</option>
-                                    <option value='4'>Ордена и медали, купюры и монеты</option>
-                                    <option value='5'>Оформление живописи</option>
-                                    <option value='6'>Постеры, плакаты и репродукции</option>
-                                    <option value='7'>Сложные работы</option>
-                                    <option value='8'>Фотографии и графика</option>
-                                    <option value='9'>объектное оформление</option>
-                                    <option value='10'>Футболки и спортивные атрибуты</option>
+                                    <? foreach ($modalCategories as $category) { ?>
+                                        <option value='<?= $category['id'] ?>'><?= htmlspecialchars($category['name']) ?></option>
+                                    <? } ?>
                                 </select>
                             </div>
                             <div class="mb-3">

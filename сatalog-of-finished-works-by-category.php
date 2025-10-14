@@ -1,59 +1,78 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 
-$keywords = empty($_GET['category']) ? "работы, багет, паспарту" : $_GET['category'] . ", работы, багет, паспарту";
-$title = empty($_GET['category']) ? "Акварели, пастели и гравюры" : $_GET['category'];
-$description = empty($_GET['category']) ? "Наши работы" : $_GET['category'];
+$rawCategoryParam = isset($_GET['category']) ? trim((string)$_GET['category']) : '';
+
+$categoriesStmt = $dbh->prepare("SELECT id, name, slug, is_visible FROM category_gallery_works ORDER BY position ASC, id ASC");
+$categoriesStmt->execute();
+$allCategories = $categoriesStmt->fetchAll(PDO::FETCH_ASSOC);
+
+$visibleCategories = array_values(array_filter($allCategories, static function (array $category) {
+    return (int)$category['is_visible'] === 1;
+}));
+
+$categoryBySlug = [];
+$categoryById = [];
+$categoryByName = [];
+
+foreach ($visibleCategories as $category) {
+    $categoryBySlug[$category['slug']] = $category;
+    $categoryById[(string)$category['id']] = $category;
+    $categoryByName[mb_strtolower($category['name'])] = $category;
+}
+
+$selectedCategory = null;
+
+if ($rawCategoryParam !== '') {
+    if (isset($categoryBySlug[$rawCategoryParam])) {
+        $selectedCategory = $categoryBySlug[$rawCategoryParam];
+    } elseif (isset($categoryById[$rawCategoryParam])) {
+        $selectedCategory = $categoryById[$rawCategoryParam];
+    } else {
+        $normalizedParam = mb_strtolower($rawCategoryParam);
+        if (isset($categoryByName[$normalizedParam])) {
+            $selectedCategory = $categoryByName[$normalizedParam];
+        }
+    }
+}
+
+if ($selectedCategory === null && $rawCategoryParam === '' && !empty($visibleCategories)) {
+    $selectedCategory = $visibleCategories[0];
+    $rawCategoryParam = $selectedCategory['slug'];
+}
+
+if ($selectedCategory === null && $rawCategoryParam !== '') {
+    http_response_code(404);
+}
+
+$keywords = $selectedCategory ? $selectedCategory['name'] . ", работы, багет, паспарту" : "работы, багет, паспарту";
+$title = $selectedCategory['name'] ?? "Готовые работы";
+$description = $selectedCategory['name'] ?? "Наши работы";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
-$category = [
-    'Акварели, пастели и гравюры' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/акварели, пастели и гравюры/',
-        'id' => 1
-    ],
-    'Зеркала и тв-панели' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/зеркала и тв-панели/',
-        'id' => 2
-    ],
-    'Иконы и вышивки' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/иконы и вышивки/',
-        'id' => 3
-    ],
-    'Ордена и медали, купюры и монеты' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/ордена и медали, купюры и монеты/',
-        'id' => 4
-    ],
-    'Оформление живописи' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/оформление живописи/',
-        'id' => 5
-    ],
-    'Постеры, плакаты и репродукции' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/постеры, плакаты и репродукции/',
-        'id' => 6
-    ],
-    'Сложные работы' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/сложные работы/',
-        'id' => 7
-    ],
-    'Фотографии и графика' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/фотографии и графика/',
-        'id' => 8
-    ],
-    'объектное оформление' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/объектное оформление/',
-        'id' => 9
-    ],
-    'Футболки и спортивные атрибуты' => [
-        'urlFromImages' => './img/багетная - фотобанк работ/ФУТБОЛКИ И СПОРТИВНЫЕ АТРИБУТЫ/',
-        'id' => 10
-    ],
-];
+$works = [];
 
-$stm = $dbh->prepare("SELECT * FROM gallery_work_images where category = " . $category[$_GET['category']]['id']);
-$stm->execute();
-$works = $stm->fetchAll();
+if ($selectedCategory !== null) {
+    $worksStmt = $dbh->prepare("SELECT id, url_image, description FROM gallery_work_images WHERE category = :category ORDER BY id DESC");
+    $worksStmt->bindValue(':category', $selectedCategory['id'], PDO::PARAM_INT);
+    $worksStmt->execute();
+    $works = $worksStmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function normalizeGalleryImagePath(?string $path): string
+{
+    if (empty($path)) {
+        return '/assets/img/gallery-category-placeholder.svg';
+    }
+
+    if (preg_match('/^https?:/i', $path)) {
+        return $path;
+    }
+
+    return '/' . ltrim($path, './');
+}
 ?>
-
 
     <style>
         .castom-image {
@@ -167,10 +186,17 @@ $works = $stm->fetchAll();
 
     <hr>
 
+<?php if ($selectedCategory === null): ?>
+    <div class="container py-5">
+        <div class="alert alert-warning text-center" role="alert">
+            Запрошенная категория не найдена. <a href="/сatalog-of-finished-works.php" class="alert-link">Вернуться к каталогу работ</a>.
+        </div>
+    </div>
+<?php else: ?>
     <div class='container'>
         <div class='row text-center'>
             <div class="block-h1 text-center my-4 fade-in">
-                <h1 class='color-main'>Наши работы раздела "<? echo $_GET['category']; ?> "</h1>
+                <h1 class='color-main'>Наши работы раздела "<?= htmlspecialchars($selectedCategory['name']) ?>"</h1>
             </div>
             <hr>
             <div class="row text-center justify-content-center">
@@ -188,22 +214,34 @@ $works = $stm->fetchAll();
             </div>
         </div>
         <div class='row g-0'>
-            <?
-            foreach ($works as $item) {
-                echo '
-							<div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 p-1">
-								<div class="card text-center justify-content-center h-100 pt-2" style="width:100%" href="/">
-									<a data-fancybox="images"  data-caption="' . $item['description'] . '" href="' . $item['url_image'] . '"  style="text-decoration: none;" class="tekst_sverhu_kartinki" onmouseover="show($(this))" onmouseout="hide($(this))">
-										<img src="' . $item['url_image'] . '" class="rounded mx-auto d-block castom-image " alt="..." >
-										<h5 style="color:black;" display:none" class="tekst_sverhu_kartinki_tekst">' . $item['description'] . '</h5>
-									</a>
-								</div>
-							</div>
-						';
-            }
-            ?>
+            <?php if (empty($works)): ?>
+                <div class="col-12 text-center py-4">
+                    В этой категории пока нет опубликованных работ. Загляните позже!
+                </div>
+            <?php else: ?>
+                <?php foreach ($works as $item): ?>
+                    <?php
+                    $imageSrc = normalizeGalleryImagePath($item['url_image'] ?? '');
+                    $workDescription = trim((string)($item['description'] ?? ''));
+                    ?>
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 p-1">
+                        <div class="card text-center justify-content-center h-100 pt-2" style="width:100%" href="/">
+                            <a data-fancybox="images" data-caption="<?= htmlspecialchars($workDescription) ?>"
+                               href="<?= $imageSrc ?>" style="text-decoration: none;" class="tekst_sverhu_kartinki"
+                               onmouseover="show($(this))" onmouseout="hide($(this))">
+                                <img src="<?= $imageSrc ?>" class="rounded mx-auto d-block castom-image "
+                                     alt="<?= htmlspecialchars($selectedCategory['name']) ?>">
+                                <?php if ($workDescription !== ''): ?>
+                                    <h5 style="color:black;" class="tekst_sverhu_kartinki_tekst"><?= htmlspecialchars($workDescription) ?></h5>
+                                <?php endif; ?>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
+<?php endif; ?>
 
     <br><br><br>
 
@@ -230,7 +268,7 @@ $works = $stm->fetchAll();
     </script>
 
 
-<?
+<?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
