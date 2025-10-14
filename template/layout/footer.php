@@ -221,7 +221,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         // Настройки эффекта
         const trailSettings = {
-            emoji: ["🌸","✨","💫","🌼","🫧","🍀"], // символы/эмодзи
+            emoji: ["✨", "🖼️"], // символы/эмодзи
             size: { min: 14, max: 28 },            // размер «частиц» в px
             anim: { min: 600, max: 3000 },         // длительность анимации (мс)
             maxElements: 60,                        // максимум элементов в DOM
