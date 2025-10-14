@@ -144,6 +144,21 @@ $categoryGalleryJson = htmlspecialchars(json_encode($categoryGalleryWorkImages, 
                     </div>
                 </div>
             </div>
+
+            <div class="mt-4" style="width:100%">
+                <table id="gallery-works-tables" class="table table-striped" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Фото</th>
+                        <th>Категория</th>
+                        <th>Описание</th>
+                        <th>Управление</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+            </div>
         </div>
     </div>
 </div>
