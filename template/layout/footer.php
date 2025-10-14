@@ -192,6 +192,154 @@
 
     btnUp.addEventListener();
 </script>
+
+<style>
+    .trail-flower{
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        user-select: none;
+        will-change: transform, opacity;
+        transform-origin: center center;
+        animation-name: floatOut;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes floatOut {
+        from { opacity: 1; transform: translateY(0) rotate(var(--rot)) scale(var(--scale)); }
+        to   { opacity: 0; transform: translateY(-24px) rotate(var(--rot)) scale(var(--scale)); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+        .trail-flower{ animation: none !important; opacity: .85; }
+    }
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Настройки эффекта
+        const trailSettings = {
+            emoji: ["🌸","✨","💫","🌼","🫧","🍀"], // символы/эмодзи
+            size: { min: 14, max: 28 },            // размер «частиц» в px
+            anim: { min: 600, max: 3000 },         // длительность анимации (мс)
+            maxElements: 60,                        // максимум элементов в DOM
+            minDistance: 10,                        // минимальное движение курсора (px), чтобы обрабатывать кадр
+            inactivityTimeout: 5000,                // очистка после простоя (мс)
+
+            // НОВОЕ: разрежение следа
+            spacing: 40,    // целевое расстояние между элементами вдоль пути (px)
+            jitter: 12       // случайное поперечное смещение (px) для естественности
+        };
+
+        const rnd = (a,b)=> Math.random()*(b-a)+a;
+        const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+
+        let pool = []; // текущие элементы
+        let x = null, y = null, firstMove = true, idleTimer = null;
+
+        function scheduleIdleClear(){
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(clearTrail, trailSettings.inactivityTimeout);
+        }
+
+        function clearTrail(){
+            if (!pool.length) return;
+            pool.forEach(el => {
+                el.style.animationDuration = "300ms";
+                el.style.opacity = "0";
+            });
+            setTimeout(() => {
+                pool.forEach(el => el.remove());
+                pool.length = 0;
+            }, 350);
+        }
+
+        function createFlower(cx, cy){
+            const el = document.createElement("span");
+            el.className = "trail-flower";
+            el.textContent = pick(trailSettings.emoji);
+
+            const size = rnd(trailSettings.size.min, trailSettings.size.max);
+            el.style.left = cx + "px";
+            el.style.top  = cy + "px";
+            el.style.fontSize = size + "px";
+            el.style.setProperty("--rot",  rnd(-30, 30).toFixed(2) + "deg");
+            el.style.setProperty("--scale", rnd(0.9, 1.2).toFixed(2));
+            el.style.animationDuration = rnd(trailSettings.anim.min, trailSettings.anim.max) + "ms";
+
+            document.body.appendChild(el);
+            pool.push(el);
+
+            // лимитируем количество DOM-узлов
+            if (pool.length > trailSettings.maxElements){
+                const old = pool.shift();
+                old.remove();
+            }
+
+            el.addEventListener("animationend", () => {
+                const i = pool.indexOf(el);
+                if (i > -1) pool.splice(i, 1);
+                el.remove();
+            }, { once: true });
+        }
+
+        // Раскладывает элементы через равные промежутки «spacing»
+        function sprinkleBetween(x1, y1, x2, y2){
+            const dx = x2 - x1, dy = y2 - y1;
+            const dist = Math.hypot(dx, dy);
+            const step = Math.max(1, trailSettings.spacing);
+
+            if (dist <= step){
+                // короткий шаг — просто поставим в конечной точке
+                createFlower(x2, y2);
+                return;
+            }
+
+            const steps = Math.floor(dist / step);
+            // единичный перпендикуляр для «разброса»
+            const nx = dist ? (-dy / dist) : 0;
+            const ny = dist ? ( dx / dist) : 0;
+
+            for (let i = 1; i <= steps; i++){
+                const t = (i * step) / dist;
+                const jitter = rnd(-trailSettings.jitter, trailSettings.jitter);
+                createFlower(
+                    x1 + dx * t + nx * jitter,
+                    y1 + dy * t + ny * jitter
+                );
+            }
+        }
+
+        document.addEventListener("mousemove", e => {
+            scheduleIdleClear();
+            if (firstMove){ x = e.clientX; y = e.clientY; firstMove = false; return; }
+            const dx = e.clientX - x, dy = e.clientY - y;
+            if (Math.hypot(dx, dy) >= trailSettings.minDistance){
+                sprinkleBetween(x, y, e.clientX, e.clientY);
+                x = e.clientX; y = e.clientY;
+            }
+        });
+
+        // поддержка тач-устройств с тем же разрежением
+        let tx = null, ty = null, firstTouch = true;
+        document.addEventListener("touchmove", e => {
+            const t = e.touches[0];
+            if (!t) return;
+            scheduleIdleClear();
+            if (firstTouch){ tx = t.clientX; ty = t.clientY; firstTouch = false; return; }
+            const dx = t.clientX - tx, dy = t.clientY - ty;
+            if (Math.hypot(dx, dy) >= trailSettings.minDistance){
+                sprinkleBetween(tx, ty, t.clientX, t.clientY);
+                tx = t.clientX; ty = t.clientY;
+            }
+        }, { passive: true });
+
+        scheduleIdleClear();
+    });
+</script>
+
 </body>
 
 </html>
