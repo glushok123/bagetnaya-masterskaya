@@ -2,6 +2,13 @@
 
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/helpers/gallery-categories.php';
+
+$galleryCategories = [];
+
+if (isset($dbh) && $dbh instanceof PDO) {
+    $galleryCategories = loadGalleryCategories($dbh);
+}
 
 $title = empty($title) ? "Багетная мастерская №1 в Москве - качественно и недорого!" : $title;
 $description = empty($description) ? "Понадобились услуги недорогой багетной мастерской в Москве? Наша Багетная Мастерская №1 порадует Вас доступными ценами. Мы - лучшие в качественном оформлении багетными рамками." : $description;;
