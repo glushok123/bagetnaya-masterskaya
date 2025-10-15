@@ -242,31 +242,32 @@
     }
 
 </style>
-
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const trailSettings = {
-            // РЕЖИМ: 'flowers' или 'line'
+            // 'flowers' или 'line'
             mode: 'line',
 
             // Общие
             maxElements: 120,        // лимит DOM-узлов (актуально для "цветочков")
-            minDistance: 4,          // минимальное движение курсора (px), чтобы учитывать кадр
+            minDistance: 4,          // минимальное движение курсора (px) для обновления
             inactivityTimeout: 4000, // очистка после простоя (мс)
 
-            // Цветочки (остались без изменений)
+            // Цветочки
             emoji: ["🌸","✨","💫","🌼","🫧","🍀"],
             size: { min: 14, max: 28 },
             anim: { min: 600, max: 3000 },
             spacing: 40,
             jitter: 6,
 
-            // ЛИНИЯ (CANVAS) — гладкость и быстрое исчезновение
+            // ЛИНИЯ (canvas) — гладко и без изломов
             line: {
                 color: "#ad1f2d",
                 thickness: 2.5,
-                spacing: 4,      // равномерная дискретизация пути (меньше = плавнее)
-                fade: 0.20       // 0.10–0.40: скорость «таянья» следа (больше = быстрее)
+                spacing: 3,          // меньше = плавнее/плотнее дискретизация
+                fade: 0.20,          // 0.10–0.40: скорость «таянья» (меньше = длиннее хвост)
+                tension: 1.0,        // 1.0 = классический Catmull–Rom; 0.8–0.95 сгладит сильнее
+                inputSmoothing: 0.18 // EMA 0..0.35: сглаживание входных точек
             }
         };
 
@@ -319,9 +320,11 @@
             }
         }
 
-        // ========= Линия (CANVAS, гладкая + быстро тает) =========
+        // ========= Линия (CANVAS, Catmull–Rom → Bézier + EMA) =========
         let canvas, ctx, cw = 0, ch = 0, rafStarted = false;
-        const pts = []; // храним только последние точки (достаточно ~50)
+        const pts = [];       // буфер точек
+        let fx = null, fy = null; // фильтрованные координаты (EMA)
+
         function ensureCanvas(){
             if (canvas) return;
             canvas = document.createElement('canvas');
@@ -348,57 +351,84 @@
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // рисуем в CSS-пикселях
         }
         function fadeCanvas(){
-            // Плавное исчезание старых штрихов
+            // Плавно "стираем" предыдущие штрихи
             ctx.save();
             ctx.globalCompositeOperation = 'destination-out';
             ctx.fillStyle = `rgba(0,0,0,${trailSettings.line.fade})`;
             ctx.fillRect(0, 0, cw, ch);
             ctx.restore();
         }
-        function drawSmoothSegment(){
-            if (pts.length < 2) return;
+        function drawCRLastSegment(){
+            const n = pts.length;
+            if (n < 2) return;
 
             ctx.strokeStyle = trailSettings.line.color;
             ctx.lineWidth = trailSettings.line.thickness;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
 
-            ctx.beginPath();
-            if (pts.length === 2){
-                const p0 = pts[0], p1 = pts[1];
-                ctx.moveTo(p0.x, p0.y);
-                ctx.lineTo(p1.x, p1.y);
-            } else {
-                const n = pts.length;
-                const p0 = pts[n-3], p1 = pts[n-2], p2 = pts[n-1];
-                const m1x = (p0.x + p1.x) / 2, m1y = (p0.y + p1.y) / 2;
-                const m2x = (p1.x + p2.x) / 2, m2y = (p1.y + p2.y) / 2;
-                ctx.moveTo(m1x, m1y);
-                ctx.quadraticCurveTo(p1.x, p1.y, m2x, m2y);
+            if (n === 2){
+                ctx.beginPath();
+                ctx.moveTo(pts[0].x, pts[0].y);
+                ctx.lineTo(pts[1].x, pts[1].y);
+                ctx.stroke();
+                return;
             }
-            ctx.stroke();
 
-            // Сдерживаем рост массива (нам достаточно истории на пару сегментов)
-            if (pts.length > 50) pts.splice(0, pts.length - 50);
+            if (n >= 4){
+                // сегмент p1 -> p2 с опорой на p0,p1,p2,p3
+                const p0 = pts[n-4], p1 = pts[n-3], p2 = pts[n-2], p3 = pts[n-1];
+                const k = (trailSettings.line.tension ?? 1) / 6; // классический CR
+
+                const c1x = p1.x + (p2.x - p0.x) * k;
+                const c1y = p1.y + (p2.y - p0.y) * k;
+                const c2x = p2.x - (p3.x - p1.x) * k;
+                const c2y = p2.y - (p3.y - p1.y) * k;
+
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.bezierCurveTo(c1x, c1y, c2x, c2y, p2.x, p2.y);
+                ctx.stroke();
+            } else {
+                // n === 3 — аккуратный квадратичный участок
+                const p0 = pts[0], p1 = pts[1], p2 = pts[2];
+                const m0x = (p0.x + p1.x)/2, m0y = (p0.y + p1.y)/2;
+                const m1x = (p1.x + p2.x)/2, m1y = (p1.y + p2.y)/2;
+                ctx.beginPath();
+                ctx.moveTo(m0x, m0y);
+                ctx.quadraticCurveTo(p1.x, p1.y, m1x, m1y);
+                ctx.stroke();
+            }
         }
         function addLinePointsBetween(x1, y1, x2, y2){
             const dx = x2 - x1, dy = y2 - y1;
-            const dist = Math.hypot(dx, dy);
+            const dist = Math.hypot(dx, dy) || 0.0001;
             const step = Math.max(1, trailSettings.line.spacing);
             const steps = Math.max(1, Math.floor(dist / step));
+
             for (let i = 1; i <= steps; i++){
                 const t = (i * step) / dist;
-                pts.push({ x: x1 + dx * t, y: y1 + dy * t });
-                drawSmoothSegment();
+                let sx = x1 + dx * t;
+                let sy = y1 + dy * t;
+
+                // EMA: сглаживаем входные точки, чтобы убрать мелкие «ламаности»
+                const a = Math.max(0, Math.min(1, trailSettings.line.inputSmoothing ?? 0));
+                if (fx == null){ fx = sx; fy = sy; }
+                else { fx += (sx - fx) * a; fy += (sy - fy) * a; }
+
+                pts.push({ x: fx, y: fy });
+                if (pts.length > 240) pts.splice(0, pts.length - 240);
+                drawCRLastSegment();
             }
         }
         function clearLine(){
             if (!ctx) return;
             ctx.clearRect(0, 0, cw, ch);
             pts.length = 0;
+            fx = fy = null;
         }
         function loop(){
-            // Постоянный fade, чтобы линия «таяла»
+            // Постоянный fade, чтобы хвост «таял»
             if (ctx && canvas && canvas.style.display !== 'none'){
                 fadeCanvas();
             }
@@ -415,7 +445,6 @@
                 if (trailSettings.mode === 'line') {
                     clearLine();
                 } else {
-                    // «цветочки»
                     pool.forEach(el => el.style.opacity = '0');
                     setTimeout(() => { pool.splice(0).forEach(el => el.remove()); }, 250);
                 }
@@ -433,7 +462,6 @@
                 canvas.style.display = 'block';
                 addLinePointsBetween(x, y, px, py);
             } else {
-                // «цветочки»
                 sprinkleFlowers(x, y, px, py);
             }
             x = px; y = py;
@@ -458,7 +486,7 @@
             }
         }, { passive: true });
 
-        // ========= Переключатель режима (если у тебя есть #cursorModeToggle) =========
+        // ========= Переключатель режима (если есть #cursorModeToggle) =========
         const toggle = document.getElementById('cursorModeToggle');
         function updateToggleLabel(){
             if (!toggle) return;
@@ -477,10 +505,16 @@
             toggle.addEventListener('click', () => setMode(trailSettings.mode === 'flowers' ? 'line' : 'flowers'));
             updateToggleLabel();
         }
+
         // Экспорт в консоль
-        window.cursorTrail = { setMode, settings: trailSettings, clear: () => { trailSettings.mode==='line'?clearLine():pool.splice(0).forEach(el=>el.remove()); } };
+        window.cursorTrail = {
+            setMode,
+            settings: trailSettings,
+            clear: () => { trailSettings.mode==='line' ? clearLine() : pool.splice(0).forEach(el=>el.remove()); }
+        };
     });
 </script>
+
 
 
 </body>
