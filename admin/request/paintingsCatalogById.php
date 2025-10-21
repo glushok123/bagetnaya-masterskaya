@@ -10,7 +10,7 @@ $text = '
     <div class="container">
         <div class="container">
             <div class="row text-center justify-content-center">
-                <button type="button" class="btn btn-success" style="max-width: 200px!important; margin:20px 20px 20px 20px">Добавить</button>
+                <button type="button" class="btn btn-success" style="max-width: 200px!important; margin:20px 20px 20px 20px" data-bs-toggle="modal" data-bs-target="#ModalAddPainting">Добавить</button>
                 <hr>
             </div>
             <div class="row g-0 " products-block style="margin-right: 25px!important">';
@@ -25,11 +25,13 @@ foreach ($data as $item) {
     $textImageBody = '';
     $textImageFooter = '';
 
-    if ($item['active'] == 1) {
-        $item['active'] = 'да';
-    } else {
-        $item['active'] = 'нет';
-    }
+    $activeValue = (int)$item['active'] === 1 ? 1 : 0;
+    $activeText = $activeValue === 1 ? 'да' : 'нет';
+
+    $name = htmlspecialchars($item['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    $avtor = htmlspecialchars($item['avtor'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    $sizes = htmlspecialchars($item['sizes'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    $price = htmlspecialchars($item['price_one'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
     foreach ($images as $image) {
         if ($countImage == 0) {
@@ -76,19 +78,28 @@ foreach ($data as $item) {
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex align-items-stretch">
                 <div class="card text-center h-100" style="width:100%" href="/">
                     ' . $textImage . '
-                    <div class="card-body">
-                        <h5 class="card-title name">' . $item['name'] . '</h5>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title name">' . $name . '</h5>
                         <hr>
                         <h5 class="card-text avtor">ID: ' . $item['id'] . '</h5>
-                        <h5 class="card-text avtor">Автор: ' . $item['avtor'] . '</h5>
-                        <h5 class="card-text size">' . $item['sizes'] . ' мм</h5>
-                        <h5 class="card-text price">' . $item['price_one'] . ' ₽</h5>
-                        <h5 class="card-text active">Активна: ' . $item['active'] . '</h5>
-                        <button class="btn btn-primary" add-in-cart>Изменить</button>
+                        <h5 class="card-text avtor">Автор: ' . $avtor . '</h5>
+                        <h5 class="card-text size">' . $sizes . ' мм</h5>
+                        <h5 class="card-text price">' . $price . ' ₽</h5>
+                        <h5 class="card-text active">Активна: ' . $activeText . '</h5>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-primary btn-edit-painting"
+                                    data-id="' . $item['id'] . '"
+                                    data-name="' . $name . '"
+                                    data-avtor="' . $avtor . '"
+                                    data-size="' . $sizes . '"
+                                    data-price="' . $price . '"
+                                    data-active="' . $activeValue . '">Изменить</button>
+                            <button class="btn btn-outline-danger btn-delete-painting" data-id="' . $item['id'] . '">Удалить</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        
+
         ';
 }
 $text = $text . '</div></div></div>';

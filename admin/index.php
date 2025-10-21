@@ -42,6 +42,8 @@ if (!isset($_SESSION['user_logged_in'])) {
 ?>
 <? require_once 'view/madal_add_painting.php'; // Модальное окно добавления картины
 ?>
+<? require_once 'view/madal_edit_painting.php'; // Модальное окно редактирования картины
+?>
 <? require_once 'view/madal_add_gallery_works.php'; // Модальное окно добавления галлерее работ
 ?>
 

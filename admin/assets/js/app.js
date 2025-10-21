@@ -292,6 +292,13 @@ $(document).ready(function () {
         return $('<textarea/>').html(text || '').text();
     }
 
+    var editPaintingModalElement = document.getElementById('ModalEditPainting');
+    var editPaintingModal = null;
+
+    if (editPaintingModalElement) {
+        editPaintingModal = new bootstrap.Modal(editPaintingModalElement);
+    }
+
     function renderGalleryCategoriesList() {
         var container = $('#gallery-categories-list');
 
@@ -1518,6 +1525,118 @@ $(document).ready(function () {
         });
     }
 
+    function resetPaintingEditValidation() {
+        $('#edit_painting_name').removeClass('is-invalid');
+        $('#edit_painting_avtor').removeClass('is-invalid');
+        $('#edit_painting_size').removeClass('is-invalid');
+        $('#edit_painting_price').removeClass('is-invalid');
+    }
+
+    function openEditPaintingModal(button) {
+        if (!editPaintingModal) {
+            return;
+        }
+
+        resetPaintingEditValidation();
+
+        $('#edit_painting_id').val(button.data('id'));
+        $('#edit_painting_name').val(button.data('name'));
+        $('#edit_painting_avtor').val(button.data('avtor'));
+        $('#edit_painting_size').val(button.data('size'));
+        $('#edit_painting_price').val(button.data('price'));
+        $('#edit_painting_active').val(String(button.data('active')));
+
+        editPaintingModal.show();
+    }
+
+    function updatePaintingRequest() {
+        var form = $('#editPaintingForm');
+
+        if (!form.length) {
+            return;
+        }
+
+        resetPaintingEditValidation();
+
+        var id = $('#edit_painting_id').val();
+        var name = $('#edit_painting_name').val().trim();
+        var avtor = $('#edit_painting_avtor').val().trim();
+        var size = $('#edit_painting_size').val().trim();
+        var price = $('#edit_painting_price').val().trim();
+        var active = $('#edit_painting_active').val();
+
+        var hasError = false;
+
+        if (name === '') {
+            $('#edit_painting_name').addClass('is-invalid');
+            hasError = true;
+        }
+
+        if (avtor === '') {
+            $('#edit_painting_avtor').addClass('is-invalid');
+            hasError = true;
+        }
+
+        if (size === '') {
+            $('#edit_painting_size').addClass('is-invalid');
+            hasError = true;
+        }
+
+        if (price === '') {
+            $('#edit_painting_price').addClass('is-invalid');
+            hasError = true;
+        }
+
+        if (!id || hasError) {
+            return;
+        }
+
+        $.ajax({
+            url: '/admin/request/updatePaintingCatalog.php',
+            method: 'post',
+            data: {
+                painting_id: id,
+                painting_name: name,
+                painting_avtor: avtor,
+                painting_size: size,
+                painting_price: price,
+                painting_active: active
+            },
+            success: function (data) {
+                if (data === 'success') {
+                    if (editPaintingModal) {
+                        editPaintingModal.hide();
+                    }
+
+                    toastr.success('Изменено');
+                    getPaintingsRequest();
+                } else {
+                    alert('Не удалось сохранить изменения.');
+                }
+            },
+            error: handleAjaxError
+        });
+    }
+
+    function deletePaintingRequest(id) {
+        $.ajax({
+            url: '/admin/request/deletePainting.php',
+            method: 'post',
+            data: {
+                id: id
+            },
+            success: function (data) {
+                if (data === 'success') {
+                    toastr.success('Удалено');
+                    getPaintingsRequest();
+                } else {
+                    alert('Не удалось удалить картину.');
+                }
+            },
+            error: handleAjaxError
+        });
+    }
+
     // заявки на картины
     function getOrdersPaintingsRequest() {
         console.log(123)
@@ -1739,6 +1858,23 @@ $(document).ready(function () {
     $(document).on('click', '#add-painting-save', function () {
         addPaintingCatalogRequest()
     }); // Запрос на добавление новой картины
+    $(document).on('click', '.btn-edit-painting', function () {
+        openEditPaintingModal($(this));
+    }); // Открытие модального окна для редактирования картины
+    $(document).on('click', '#save-painting-changes', function () {
+        updatePaintingRequest();
+    }); // Сохранение изменений картины
+    $(document).on('click', '.btn-delete-painting', function () {
+        var id = $(this).data('id');
+
+        if (!id) {
+            return;
+        }
+
+        if (confirm('Удалить картину?')) {
+            deletePaintingRequest(id);
+        }
+    }); // Удаление картины
     $(document).on('change', '.edit-description-gallery-works', function () {
         changeDescGalleryWorks($(this))
     }); // Изменение описания готовой работы
