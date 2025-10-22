@@ -49,7 +49,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
 </body>
 
-<link rel="stylesheet" href="assets/css/app.css">
-<script src="assets/js/app.js?v2"></script>
+<link rel="stylesheet" href="assets/css/app.css?v3">
+<script src="assets/js/app.js?v3"></script>
 
 </html>
