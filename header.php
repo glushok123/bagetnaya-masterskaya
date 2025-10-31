@@ -160,6 +160,7 @@ if (isset($dbh) && $dbh instanceof PDO) {
                                    href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для картины</a></li>
                             <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Оформление художественных выставок</a></li>
                             <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
+                            <li><a class="dropdown-item" href="/kupit_kartinu/">Купить интерьерную картину</a></li>
                         </ul>
                     </span>
                 <button type="button" class="btn resize-font"><a href="/contacts.php"

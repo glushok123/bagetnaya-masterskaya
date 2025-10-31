@@ -90,6 +90,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                             </li>
 
                             <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
+                            <li><a class="dropdown-item" href="/kupit_kartinu/">Купить интерьерную картину</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
