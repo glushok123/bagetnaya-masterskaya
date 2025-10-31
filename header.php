@@ -254,7 +254,7 @@ if (isset($dbh) && $dbh instanceof PDO) {
             <div>Посмотрите примеры рам для картин,<br> выполненных нашей командой!</div>
         </div>
         <div class="head_side_buttons head_side_buttons_right">
-            <a href="/картины багетной мастерской.php">Купить картину</a>
+            <a href="/картины багетной мастерской.php">Картины и репродукции</a>
             <div>Купить готовую интерьерную картину<br>в интерьер или в подарок</div>
         </div>
         <div class="head_side_buttons head_side_buttons_left">

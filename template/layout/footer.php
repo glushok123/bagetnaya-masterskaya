@@ -56,8 +56,7 @@
                                     и
                                     доставка</a></div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
-                                                                href="/картины%20багетной%20мастерской.php">Купить
-                                    картину</a></div>
+                                                                href="/картины%20багетной%20мастерской.php">Картины и репродукции</a></div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
                                                                 href="/сatalog-of-finished-works.php">Галерея работ</a>
                             </div>

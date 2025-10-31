@@ -189,7 +189,7 @@ $kol = count($urls);
     <br>
     <div class='row'>
         <div class='col'>
-            <a href="https://vk.com/market-210965475?section=album_1" class="knopka">Купить картину</a>
+            <a href="https://vk.com/market-210965475?section=album_1" class="knopka">Картины и репродукции</a>
         </div>
         <div class='col'>
             <a href="https://vk.com/@bagetnaya1" class="knopka">Читать статьи</a>
@@ -203,7 +203,7 @@ $kol = count($urls);
 <div class='container-knopka' id='mob-knopka'>
     <br>
     <div>
-        <a href="https://vk.com/market-210965475?section=album_1" class="knopka">Купить картину</a>
+        <a href="https://vk.com/market-210965475?section=album_1" class="knopka">Картины и репродукции</a>
     </div>
     <br><br>
     <div>

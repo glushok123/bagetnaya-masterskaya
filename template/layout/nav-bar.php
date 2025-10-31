@@ -101,8 +101,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
 
 
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
-                            картину</a>
+                        <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Картины и репродукции</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>

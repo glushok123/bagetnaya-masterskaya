@@ -10,8 +10,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     .castom-image {
         /*min-width: 100%;
         min-width: 80%;*/
-        height: 250px;
-        width: 250px;
+
+        width: 450px;
+        height: 450px;
         object-fit: cover;
     }
 
@@ -92,7 +93,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         font-size: 22px;
     }
     img {
-        max-height: 282px;
+
         border-radius: 10px;
     }
     @media screen and (max-width: 767px) {
@@ -231,7 +232,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 				';
 
             echo('
-					<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex align-items-stretch pt-1" >
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 d-flex align-items-stretch pt-1" >
 						<div class="m-1 card text-center justify-content-center h-100" style="width:100%; border-color: #6a1a21" href="/">
 							' . $textImage . '
 							<div class="card-body">

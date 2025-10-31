@@ -153,8 +153,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                         ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
-                                картину</a>
+                            <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Картины и репродукци</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>
@@ -198,8 +197,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
         <div class='text-end custom-margin-navbar-2-row'>
             <div class="d-inline">
                 <div class="nav-item d-inline">
-                    <a class="nav-link d-inline" aria-current="page" href="/картины%20багетной%20мастерской.php">Купить
-                        картину</a>
+                    <a class="nav-link d-inline" aria-current="page" href="/картины%20багетной%20мастерской.php">Картины и репродукции</a>
                 </div>
             </div>
             <div class="d-inline" >
