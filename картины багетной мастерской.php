@@ -135,38 +135,37 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 <div class='container home_design'>
-    <!-- Блок 1 -->
-    <div class="row ">
-        <h2 class="section-title">КАРТИНЫ ДЛЯ ВАШЕГО ДОМА – КУСОЧЕК<br> ИСКУССТВА В КАЖДОМ ИНТЕРЬЕРЕ!</h2>
-        <div class="col-sm-4 col-sm-offset-1">
-            <img src="/img/article/telegram-cloud-photo-size-2-5425050076243422565-y%201%20(3).png" class="img-responsive">
+    <div class="container">
+        <div class="row text-center mt-3 mb-4">
+            <h1 class="color-main block-h1">ПРОДАЖА ИНТЕРЬЕРНЫХ КАРТИН – ОРИГИНАЛЫ И РЕПРОДУКЦИИ</h1>
         </div>
-        <div class="col-sm-6 text-left section-text my-auto">
-            <p><strong>Ищете картину для дома, которая преобразит пространство и добавит уюта?</strong></p>
-            <p>Багетная мастерская №1 сотрудничает с молодыми художниками, а также постоянно пополняет коллекцию оригинальными постерами и репродукциями!</p>
-            <p><strong>Бесплатная доставка</strong> в пределах МКАД при покупке картины на сайте!</p>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-lg-10">
+                <p class="element-animation<? if (isMobile()) { ?> text-center<? } ?>">
+                    Купить картину художника или приобрести репродукцию – команда Багетной мастерской №1 предлагает Вам ознакомиться с ассортиментом разных картин, которые ищут своего счастливого обладателя! Все картины представлены в салонах наших мастерских, а некоторые из них доступны к повтору! Заказывайте онлайн с доставкой в подарок в пределах МКАД!
+                </p>
+            </div>
         </div>
-    </div>
 
-    <!-- Блок 2 -->
-    <div class="row text-center">
-        <h3 class="section-title">В НАШИХ КОЛЛЕКЦИЯХ ВЫ МОЖЕТЕ КУПИТЬ<br> КАРТИНУ ДЛЯ ЛЮБЫХ ЦЕЛЕЙ:</h3>
-        <div class="col-sm-12 section-text">
-            <p><strong class="garamond">УНИКАЛЬНЫЕ РАБОТЫ</strong><br>авторские картины с душой</p>
-            <p><strong class="garamond">РАЗНООБРАЗИЕ СТИЛЕЙ</strong><br>от абстракции до реализма – постеры, репродукции, объектное оформление</p>
-            <p><strong class="garamond">ИНТЕРЬЕРНЫЕ КАРТИНЫ</strong><br>готовые наборы картин в рамах, а также единичные живописные экземпляры</p>
+        <div class="row text-center m-2">
+            <h2 class="section-title">КАРТИНА ДЛЯ ДОМА ИЛИ В ПОДАРОК</h2>
         </div>
-    </div>
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-lg-10 text-center text-lg-start">
+                <p>
+                    Каждую картину Вы можете приобрести очно в салонах Багетной мастерской №1 или заказать с доставкой! Готовая картина – это идеальный вариант для подарка любителю искусства, а также великолепное решение для дома или офисного пространства. Не откладывайте на потом, приобретайте репродукции и оригиналы художников уже сегодня!
+                </p>
+            </div>
+        </div>
 
-    <!-- Блок 3 -->
-    <div class="row text-center section-text justify-content-center">
-        <p style="color: #a3080d;"><strong>Хотите что-то особенное?</strong> – Вы можете заказать картину по индивидуальным пожеланиям! Наша команда проконсультирует и поможет с поиском художника – оставляйте заявку на обратную связь!</p>
-        <button class="highlight-btn" data-bs-toggle="modal" data-bs-target="#feedbackModal" style="max-width: 422px">Оставить заявку на обратную связь</button>
-    </div>
-
-    <!-- Заключение -->
-    <div class="row text-center section-text" style="margin: 40px 0;">
-        <p>Превратите стены в источник вдохновения – выбирайте свою идеальную картину уже сегодня!</p>
+        <div class="row text-center justify-content-center mt-3 mb-5">
+            <button
+                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
+                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                Получить консультацию
+            </button>
+        </div>
     </div>
 
     <div class='row g-0' products-block style='margin-right: 25px!important'>
