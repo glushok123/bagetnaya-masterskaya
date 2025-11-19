@@ -99,6 +99,7 @@ class UpdateCatalog
                 $data[$row[0]] = [
                     'article' => $row[0],
                     'price' => $row[2],
+                    'priceTop' => $row[7],
                     'count' => $row[4],
                 ];
             }
@@ -113,9 +114,11 @@ class UpdateCatalog
             $count = $count + 1;
             $vendor = $item['article'];
             $price = round(str_replace(',', '', (string)$item['price']));
+            $priceTop = round(str_replace(',', '', (string)$item['priceTop']));
             $countBaget = round(str_replace('>', '', (string)$item['count']));
 
             $multiplier = 5;
+            if(!empty($priceTop)) $price = $priceTop;
 
             $stm = $this->dbh->prepare("SELECT * FROM catalog_baget where vendor=?");
             $stm->bindParam(1, $vendor);

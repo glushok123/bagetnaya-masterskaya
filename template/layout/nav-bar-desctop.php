@@ -110,35 +110,36 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Комплект для картины: рассчитать стоимость</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
-                            <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
-                            <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
-                            <li><a class="dropdown-item" href="/bagety_dlya_kartin/">Багеты для картин</a></li>
                             <li><a class="dropdown-item" href="/home_designer.php">Выездной подбор багета</a></li>
+                            <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
+                            <li><a class="dropdown-item" href="/kartina_na_zakaz.php">Картина на заказ</a></li>
+                            <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
+                            <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
+                            <li><a class="dropdown-item" href="/designation_references.php">Оформление живописи</a></li>
+                            <li><a class="dropdown-item" href="/zerkala_v_bagete/">Зеркала в багете</a></li>
+                            <li><a class="dropdown-item" href="/bagetnye_raboty/televizor_v_bagete.html">Рамка для дисплея</a></li>
                             <li><a class="dropdown-item" href="/ordena_i_medali/">Панно для наград и орденов</a></li>
+                            <li><a class="dropdown-item" href="/formation_football.php">Оформление футболок</a></li>
+                            <li><a class="dropdown-item" href="/object_forming.php">Объектное оформление</a></li>
+                            <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
+                            <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
+                            <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
+
+                            <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
+                            <li><a class="dropdown-item" href="/bagety_dlya_kartin/">Багеты для картин</a></li>
                             <li><a class="dropdown-item" href="/pechat_na_holste/">Печать на холсте</a></li>
                             <li><a class="dropdown-item" href="/pechat_na_penokartone/">Печать на пенокартоне</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_kartin/">Рамки для картин</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_ikon/">Рамки для икон</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_vyshivki/">Рамки для вышивки</a></li>
-                            <li><a class="dropdown-item" href="/designation_references.php">Оформление живописи</a></li>
-                            <li><a class="dropdown-item" href="/zerkala_v_bagete/">Зеркала в багете</a></li>
-                            <li><a class="dropdown-item" href="/formation_football.php">Оформление футболок</a></li>
-                            <li><a class="dropdown-item" href="/object_forming.php">Объектное оформление</a></li>
                             <li><a class="dropdown-item" href="/natyazhka_holsta/">Натяжка холста</a></li>
                             <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij/">печать постеров,
                                     фотографий и репродукций</a></li>
                             <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
-                            <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
                             <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
-                            <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
-                            <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
-                            <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
                             <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для
                                     картины</a>
                             </li>
-                            <li><a class="dropdown-item" href="/kartina_na_zakaz.php">Картина на заказ</a>
-                            </li>
-                            <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
                             <li><a class="dropdown-item" href="/kupit_kartinu/">Купить интерьерную картину</a></li>
                         </ul>
                     </li>
