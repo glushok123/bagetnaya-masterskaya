@@ -241,6 +241,12 @@
     }
 
 </style>
+
+<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+<script>
+    new Snow();
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const trailSettings = {
@@ -532,6 +538,8 @@
         webvisor:true
     });
 </script>
+
+
 <noscript>
     <div>
         <img src="https://mc.yandex.ru/watch/60934651" style="position:absolute; left:-9999px;" alt="">
