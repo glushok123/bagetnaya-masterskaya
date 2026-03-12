@@ -21,7 +21,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                     <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt=""
                                                                             class='img-brand'
                                                                             style="width: 136px; height: auto;"></a>
-                    <a href="https://api.whatsapp.com/send/?phone=79774274477&text=Здравствуйте%2C+у+меня+есть+вопрос"><img src="/admin/assets/whatsapp-logo_icon-icons.com_66175.png" style="width: 25px; height: auto"></a>
+                    <!--a href="https://api.whatsapp.com/send/?phone=79774274477&text=Здравствуйте%2C+у+меня+есть+вопрос"><img src="/admin/assets/whatsapp-logo_icon-icons.com_66175.png" style="width: 25px; height: auto"></a-->
                     <a href="tel:+79774274477" style="color: black; font-size: 14px; text-decoration: none;">+7-977-427-44-77</a>
                 </div>
             </div>

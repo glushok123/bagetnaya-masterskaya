@@ -71,9 +71,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <div class="section-text mt-4">
             <p>Перевод по номеру карты:</p>
-            <p id="number-copy" class="card-number">2204 4502 4204 6818</p>
+            <p id="number-copy" class="card-number">2204 3207 0606 7453</p>
             <p><small>(Нажмите на номер для копирования)</small></p>
-            <img src="/assets/qrCode.jpg" alt="QR-код для оплаты" class="qr-img">
+            <!--img src="/assets/qrCode.jpg" alt="QR-код для оплаты" class="qr-img"-->
 
             <!--p><strong>Здесь Вы можете внести предоплату по оформленному заказу!</strong></p>
             <p>Предварительно необходимо связаться с менеджером! В случае, если возникли вопросы по внесению средств, пожалуйста, оставьте заявку на обратную связь!</p-->
@@ -107,7 +107,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <script>
         $(document).on('click', '#number-copy', function () {
-            navigator.clipboard.writeText('2204 4502 4204 6818');
+            navigator.clipboard.writeText('2204 3207 0606 7453');
 
             Toastify({
                 text: "Номер скопирован в буфер обмена",
