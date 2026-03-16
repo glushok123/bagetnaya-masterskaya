@@ -1,7 +1,7 @@
 <?php
-$keywords = "уход за рамкой, багетная рамка, чистка багета, как чистить багет, как ухаживать за рамой";
-$title = "Как ухаживать за багетной рамкой — советы от Багетной мастерской №1";
-$description = "Простые советы по уходу за багетными рамками и стеклом: как продлить срок службы, избежать пыли, солнца и влаги.";
+$keywords = "Как ухаживать за, рамка для картины, багетная мастерская";
+$title = "Продлеваем жизнь искусству! Или как ухаживать за рамкой для картины";
+$description = "Рекомендации команды Багетной мастерской №1 по уходу за багетными изделиями";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
@@ -16,6 +16,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         text-transform: uppercase;
         font-size: 50px;
     }
+
     .highlight-btn {
         background-color: #a3080d;
         color: white;
@@ -27,29 +28,35 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         max-width: fit-content;
 
     }
+
     .highlight-btn:hover {
 
         background-color: #870000;
         color: #fff;
     }
+
     .icon-check {
         color: #00a651;
         margin-right: 6px;
     }
+
     .section-text {
         font-size: 30px;
         font-family: 'Manrope', sans-serif;
         color: #474A51;
     }
-    .garamond{
+
+    .garamond {
         font-family: Cormorant Garamond, serif;
-        font-size:32px;
+        font-size: 32px;
     }
+
     img {
         border-radius: 10px;
         max-width: 100%;
         height: auto;
     }
+
     .img-left {
         display: block;
         margin-right: auto;
@@ -59,42 +66,52 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         display: block;
         margin-left: auto;
     }
+
     @media screen and (max-width: 767px) {
-        .mt-5{
+        .mt-5 {
             margin-top: 20px !important;
         }
+
         .section-title {
             font-size: 24px;
             margin: 30px 0 15px;
         }
+
         .garamond {
             font-size: 18px;
         }
+
         .section-text {
             font-size: 16px;
         }
+
         .highlight-btn {
             width: 100%;
             padding: 12px 10px;
             font-size: 15px;
             max-width: calc(100% - 20px);
         }
+
         img {
             max-height: 100%;
             max-width: calc(100dvw - 80px);
             margin-bottom: 15px;
         }
+
         .my-auto {
             margin: 15px 0 !important;
         }
+
         .text-left {
             text-align: center;
         }
+
         .img-left,
         .img-right {
             margin: 0 auto !important;
         }
-        .end-block{
+
+        .end-block {
             padding-left: 20px;
         }
     }
@@ -106,8 +123,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <!-- Блок 1 -->
     <div class="row">
-        <h2 class="section-title text-center">Как ухаживать за багетной рамкой
-            и декоративными элементами: рекомендации по сохранению красоты!</h2>
+        <h2 class="section-title text-center">КАК УХАЖИВАТЬ ЗА РАМКОЙ: РЕКОМЕНДАЦИИ</h2>
 
         <!-- Картинка: после текста на мобилке -->
         <div class="col-sm-4 order-1 order-sm-1">
@@ -116,36 +132,33 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto order-0 order-sm-2">
-            <p>Багетные рамы и декоративные элементы, такие как багетные стекла, придают интерьеру изысканность, но требуют бережного ухода, чтобы сохранить их первоначальный вид. </p>
-            <p>В этой статье команда Багетной мастерской №1 делится простыми и эффективными способами ухода за рамками для картин и другими декоративными деталями.  </p>
+            <p>Любые изделия, будь то декоративные подсвечники, фоторамки и прочие интерьерные атрибуты, требуют к себе
+                особенного внимания! Для сохранения первоначального вида необходимо следовать нескольким несложным
+                правилам, которые команда Багетной мастерской №1 собрала для Вас в данной статье! </p>
+
             <div class="row text-center section-text mt-2 mb-4">
-                <button class="highlight-btn " data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на обратную связь</button>
+                <button class="highlight-btn " data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на
+                    обратную связь
+                </button>
             </div>
         </div>
     </div>
 
     <!-- Блок 2 -->
     <div class="row mt-5">
-        <h3 class="section-title">Регулярная очистка от пыли</h3>
-        <div class="my-auto section-text text-center" style="width: 100%;">Пыль — главный враг декоративных изделий. <br> <span class="bold">Чтобы она не скапливалась:</span></div>
-        <div class="col-sm-7 section-text my-auto">
-            <p><span style="color: #AD1F2D;" class="garamond">Для деревянных и пластиковых рам</span> используйте мягкую кисть (например,
-                для макияжа или художественную) или микрофибровую салфетку. </p>
-            <p><span style="color: #AD1F2D;" class="garamond">Для золоченых и лакированных рам</span> избегайте влаги — достаточно сухой чистки
-                или специальных средств для позолоты. </p>
-        </div>
-        <div class="col-sm-5">
-            <img src="/img/article/бм%20пост%205.1%201.png" alt="Алюминиевые профили" class="img-responsive img-right">
-        </div>
-    </div>
-    <div class="row mt-5">
+        <h3 class="section-title">ПЫЛЬ: ГЛАВНЫЙ ВРАГ</h3>
         <div class="col-sm-5">
             <img src="/img/article/бм%20пост%205.1%201.png" alt="Алюминиевые профили" class="img-responsive img-right">
         </div>
         <div class="col-sm-7 section-text my-auto">
-            <p><span style="color: #AD1F2D;" class="garamond">Для тканевых или резных элементов</span> подойдет пылесос с насадкой-щеткой
-                на минимальной мощности.  </p>
-            <p><span style="color: #AD1F2D;" class="garamond">При очищении музейных стекол</span> не используйте растворы для очищения зеркал и окон – достаточно просто смахнуть накопившуюся пыль! </p>
+            <p>Рамки для картины – великолепное украшение в любом пространстве, однако очистку картин от пыли нередко
+                игнорируют. Что следует делать, чтобы пыль не скапливалась: </p>
+            <p>- Регулярно очищайте рамы от пыли салфеткой из микрофибры или мягкой кистью </p>
+            <p>- Не используйте влажные способы очистки для рам с ручным золочением – только сухая уборка</p>
+            <p>- Обычные стекла на картинах и зеркала можно протирать классическими средствами для мойки зеркал и
+                мягкими салфетками </p>
+            <p>- Музейные стекла не следует очищать специальными средствами: достаточно просто смахивать пыль мягкими
+                кистями!</p>
         </div>
 
     </div>
@@ -155,15 +168,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto">
-            <h3 class="section-title text-center">Бережная влажная очистка</h3>
-            <p>Если пыль въелась или появились загрязнения: </p>
-            <p>- <strong>Деревянные рамки</strong> для картин можно протереть слегка влажной тканью с каплей мягкого мыла, затем сразу вытереть насухо. </p>
-            <p>- <strong>Позолоченные и старинные рамы</strong> лучше чистить специальными составами для позолоты или сухой салфеткой. Вода может повредить покрытие.  </p>
-            <p>- <strong>Металлические алюминиевые рамы</strong> очищайте мягкой тканью.  </p>
-            <p>- Не используйте способы влажной очистки
-                для багетных стекол.</p>
+            <h3 class="section-title text-center">КОГДА НУЖНА ВЛАЖНАЯ УБОРКА</h3>
+            <p>В случае, если сухой очистки недостаточно, чтобы убрать уже въевшиеся загрязнения, можно прибегнуть к
+                влажной очистке изделий:</p>
+            <p>1. Пластиковые рамки для картин не боятся влаги: спокойно используйте влажные ткани для очистки </p>
+            <p>2. Деревянные рамы обязательно следует вытереть насухо после влажной очистки. Если деревянная рама с
+                ручным покрытием или золочением – лучше от влажной очистки отказаться.</p>
+            <p>3. Алюминиевые рамы можно очищать слегка влажными тканями, после чего следует хорошо обработать сухой
+                тканью. </p>
+
             <div class="row text-center section-text mt-2 mb-4">
-                <button class="highlight-btn " data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на обратную связь</button>
+                <button class="highlight-btn " data-bs-toggle="modal" data-bs-target="#feedbackModal">Оставить заявку на
+                    обратную связь
+                </button>
             </div>
         </div>
 
@@ -176,15 +193,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="row mt-5">
 
         <div class="col-sm-4">
-            <img src="/img/article/telegram-cloud-photo-size-2-5253468606669387553-y 1.png" alt="Алюминиевые рамки" class="img-responsive img-left">
+            <img src="/img/article/telegram-cloud-photo-size-2-5253468606669387553-y 1.png" alt="Алюминиевые рамки"
+                 class="img-responsive img-left">
         </div>
 
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto">
-            <h3 class="section-title text-center">Защита от солнца и влаги</h3>
-            <p>- <strong>Избегайте прямых солнечных лучей </strong> покрытия и пленки выцветают, а дерево рассыхается.</p>
-            <p>- <strong>Используйте художественное или музейное стекло для картин</strong>— это защитит и изображение, и багетную раму.</p>
-            <p>- <strong>Не размещайте рамы в сырых помещениях</strong> это может привести к деформации и плесени.</p>
+            <h3 class="section-title text-center">ЗАЩИТА ОТ СОЛНЦА</h3>
+            <p>Прямые солнечные лучи негативно влияют на багетные изделия вне зависимости от материала! Поэтому не
+                следует размещать картины непосредственно напротив окон с солнечной стороны: покрытия и пленки
+                пластиковых и алюминиевых рам выцветают, а деревянные рамы рассыхаются и теряют привлекательный
+                вид. </p>
             <a href="/baget_online">
                 <button class="highlight-btn">Рассчитать стоимость багета</button>
             </a>
@@ -196,17 +215,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="row mt-5">
 
 
-
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto">
-            <h3 class="section-title text-center">Хранение и транспортировка  </h3>
-            <p>Если нужно убрать раму на время:  </p>
-            <p>- Заверните в мягкую ткань или пузырчатую пленку.  </p>
-            <p>- Храните в сухом месте, избегая перепадов температур.  </p>
-            <p>- Для перевозки используйте картонные уголки, чтобы защитить углы.  </p>
+            <h3 class="section-title text-center">ХРАНЕНИЕ И ТРАНСПОРТИРОВКА </h3>
+            <p>Переезд или планирование выставки – следует всегда быть готовым к возможной транспортировке картин или
+                временному хранению! </p>
+            <p>Советы для временного хранения:</p>
+            <p>- оберните картины в рамах в мягкую ткань или поролон </p>
+            <p>- храните картины в вертикальном положении (чтобы в последствии ничего не упало на работу)</p>
+            <p>- храните в месте, где нет влаги и перепадов температур </p>
+            <p>При самостоятельной транспортировке на небольшие расстояния лучше использовать специальные картонные
+                уголки и поролон. При необходимости доставки транспортной компанией обязательно используйте
+                дополнительную услугу обрешетки! Надеемся, наша статья о том, как ухаживать за багетными изделиями
+                оказалась для Вас полезной!</p>
         </div>
         <div class="col-sm-4">
-            <img src="/img/article/telegram-cloud-photo-size-2-5253468606669387555-y 1.png" alt="Алюминиевые рамки" class="img-responsive img-left">
+            <img src="/img/article/telegram-cloud-photo-size-2-5253468606669387555-y 1.png" alt="Алюминиевые рамки"
+                 class="img-responsive img-left">
         </div>
 
     </div>
