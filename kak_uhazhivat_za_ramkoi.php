@@ -165,7 +165,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="row mt-5">
         <h3 class=" text-center p-3">ПЫЛЬ: ГЛАВНЫЙ ВРАГ</h3>
         <div class="col-sm-5">
-            <img src="/img/article/бм%20пост%205.1%201.png" alt="Алюминиевые профили" class="img-responsive img-right">
+            <img src="/img/article/бм%20пост%205.1%201.png" alt="Алюминиевые профили" class="img-responsive img-left">
         </div>
         <div class="col-sm-7 section-text my-auto">
             <p>Рамки для картины – великолепное украшение в любом пространстве, однако очистку картин от пыли нередко
