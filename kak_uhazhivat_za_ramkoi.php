@@ -67,6 +67,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         margin-left: auto;
     }
 
+    p {
+
+        color: #474A51;
+        font-family: Manrope;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        padding-bottom: 15px;
+
+    }
+
+    h3 {
+        font-family: Cormorant Garamond;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
     @media screen and (max-width: 767px) {
         .mt-5 {
             margin-top: 20px !important;
@@ -146,7 +163,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <!-- Блок 2 -->
     <div class="row mt-5">
-        <h3 class="section-title">ПЫЛЬ: ГЛАВНЫЙ ВРАГ</h3>
+        <h3 class=" text-center p-3">ПЫЛЬ: ГЛАВНЫЙ ВРАГ</h3>
         <div class="col-sm-5">
             <img src="/img/article/бм%20пост%205.1%201.png" alt="Алюминиевые профили" class="img-responsive img-right">
         </div>
@@ -168,7 +185,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto">
-            <h3 class="section-title text-center">КОГДА НУЖНА ВЛАЖНАЯ УБОРКА</h3>
+            <h3  class=" text-center p-3">КОГДА НУЖНА ВЛАЖНАЯ УБОРКА</h3>
             <p>В случае, если сухой очистки недостаточно, чтобы убрать уже въевшиеся загрязнения, можно прибегнуть к
                 влажной очистке изделий:</p>
             <p>1. Пластиковые рамки для картин не боятся влаги: спокойно используйте влажные ткани для очистки </p>
@@ -199,7 +216,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto">
-            <h3 class="section-title text-center">ЗАЩИТА ОТ СОЛНЦА</h3>
+            <h3 class=" text-center p-3">ЗАЩИТА ОТ СОЛНЦА</h3>
             <p>Прямые солнечные лучи негативно влияют на багетные изделия вне зависимости от материала! Поэтому не
                 следует размещать картины непосредственно напротив окон с солнечной стороны: покрытия и пленки
                 пластиковых и алюминиевых рам выцветают, а деревянные рамы рассыхаются и теряют привлекательный
@@ -213,11 +230,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     </div>
 
     <div class="row mt-5">
-
-
         <!-- Текст: перед картинкой на мобилке -->
         <div class="col-sm-8 text-left section-text my-auto">
-            <h3 class="section-title text-center">ХРАНЕНИЕ И ТРАНСПОРТИРОВКА </h3>
+            <h3  class=" text-center p-3">ХРАНЕНИЕ И ТРАНСПОРТИРОВКА </h3>
             <p>Переезд или планирование выставки – следует всегда быть готовым к возможной транспортировке картин или
                 временному хранению! </p>
             <p>Советы для временного хранения:</p>

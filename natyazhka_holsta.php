@@ -68,7 +68,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             существуют, их преимущества и различия.
         </div>
 
-        <div class="row text-center m-4">
+        <!--div class="row text-center m-4">
             <h3>ЧТО ТАКОЕ ПОДРАМНИК ДЛЯ КАРТИНЫ?</h3>
         </div>
         <div class="text-center m-3 font-20">
@@ -84,10 +84,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
                     Рассчитать стоимость </b></button>
             </a>
-        </div>
+        </div-->
 
         <div class="row text-center m-4">
-            <h3>ВИДЫ НАТЯЖКИ ХОЛСТА</h3>
+            <h3>НАТЯЖКА ХОЛСТА: ВИДЫ</h3>
         </div>
 
         <div class="row m-3 flex-4">
@@ -108,11 +108,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <p class="block-p-1">Стандартная или обычная натяжка – это способ фиксации холста на деревянный каркас,
                     при котором скоба фиксирует холст в торце подрамника. Данный способ самый распространенный и
                     применяется для тех картин, которые в дальнейшем будут обрамлены в багетную раму .</p>
-                <p class="block-p-1" style="padding: 0; margin: 0;"><span
+                <!--p class="block-p-1" style="padding: 0; margin: 0;"><span
                             style="color: #AD1F2D; margin: 0; padding: 5px;">Особенности:</span></p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Края холста видны сбоку. </p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Подходит для картин на подрамнике с рамкой. </p>
-                <p class="block-p-1" style="padding: 0; margin: 0;">- Простота исполнения и доступность.</p>
+                <p class="block-p-1" style="padding: 0; margin: 0;">- Простота исполнения и доступность.</p-->
 
             </div>
         </div>
@@ -136,13 +136,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     торце подрамника, а фиксация скобами происходит на оборотной стороне подрамника. Такой способ
                     натяжки используется в случаях, если картину планируется разместить в интерьере без обрамления или в
                     багетный L-профиль. </p>
-                <p class="block-p-1" style="padding: 0; margin: 0;"><span
+                <!--p class="block-p-1" style="padding: 0; margin: 0;"><span
                             style="color: #AD1F2D; margin: 0; padding: 5px;">Особенности:</span></p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Изображение переходит на боковые стороны.</p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Холст на подрамнике выглядит завершенным и без
                     рамы.</p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Идеально для современных интерьеров и
-                    выставок.</p>
+                    выставок.</p-->
 
             </div>
         </div>
@@ -167,12 +167,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     изображение остается полностью на лицевой стороне подрамника, торцевую сторону подрамника огибает
                     белая часть холста, а фиксация происходит на оборотной стороне. Такой метод фиксации холста на
                     подрамник используется реже вышеупомянутых.</p>
-                <p class="block-p-1" style="padding: 0; margin: 0;"><span
+                <!--p class="block-p-1" style="padding: 0; margin: 0;"><span
                             style="color: #AD1F2D; margin: 0; padding: 5px;">Особенности:</span></p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Края холста остаются чистыми. </p>
                 <p class="block-p-1" style="padding: 0; margin: 0;">- Подходит для холстов с тонкой рамой или без
                     неё.</p>
-                <p class="block-p-1" style="padding: 0; margin: 0;">- Универсальность и эстетичность.</p>
+                <p class="block-p-1" style="padding: 0; margin: 0;">- Универсальность и эстетичность.</p-->
 
             </div>
         </div>
