@@ -70,9 +70,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="section-text mt-4">
-            <p>Перевод по номеру карты:</p>
+            <hr>
+            <h3 class="color-main">Для информации о внесении предоплаты, пожалуйста, свяжитесь с менеджером</h3>
+            <hr>
+            <!--p>Перевод по номеру карты:</p>
             <p id="number-copy" class="card-number">2204 3207 0606 7453</p>
-            <p><small>(Нажмите на номер для копирования)</small></p>
+            <p><small>(Нажмите на номер для копирования)</small></p-->
             <!--img src="/assets/qrCode.jpg" alt="QR-код для оплаты" class="qr-img"-->
 
             <!--p><strong>Здесь Вы можете внести предоплату по оформленному заказу!</strong></p>
