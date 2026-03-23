@@ -1,7 +1,7 @@
 <?php
-$keywords = "Подрамник для холста, печать фотографий, печать на холсте, рассчитать стоимость";
-$title = "Рассчитайте стоимость печати фотографий или подрамник для холста в 2 клика!";
-$description = "В Багетной мастерской №1 Вы можете не только заказать оформление картин под ключ, но также приобрести подрамник для холста, крепление для рамы, печать фото и многое другое!";
+$keywords = "Печать фото, круглая рамка, паспарту, прорисовка";
+$title = "Комплект для картины в Багетной мастерской №1: услуги и стоимость";
+$description = "Печать фото, багетные стекла для прямоугольных и круглых рамок, фигурные и классические паспарту, а также услуги по прорисовке с профессиональной командой!";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
@@ -100,13 +100,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     </style>
     <div class="container home_design">
         <div class="row text-center mt-3 mb-5">
-            <h1 class="color-main mb-5">КОМПЛЕКТ ДЛЯ КАРТИНЫ: РАССЧИТАТЬ СТОИМОСТЬ САМОСТОЯТЕЛЬНО</h1>
+            <h1 class="color-main mb-5">КОМПЛЕКТ ДЛЯ КАРТИНЫ: УСЛУГИ И СТОИМОСТЬ</h1>
 
             <div class="row m-3">
                 <p class="mx-auto">
-                    В Багетной мастерской №1 Вы можете не только заказать оформление картин под ключ, но и подобрать
-                    отдельные материалы для картины, стекло, крепления, а также рассчитать доставку.
-                    Выберите нужную категорию, укажите размеры (если требуется), количество и получите итоговую стоимость!
+                    Команда Багетной мастерской №1 оказывает не только комплекс услуг по оформлению картин и других
+                    работ в багетные рамы, но также готова помочь Вам подобрать и приобрести необходимые составляющие
+                    для самостоятельного оформления: печать фото, багетные стекла для прямоугольных и круглых рамок,
+                    фигурные и классические паспарту, а также услуги по прорисовке картин маслом или фактурным гелем!
+                    Также Вы можете выбрать необходимый тип крепления, рассчитать стоимость доставки в пределах Москвы и
+                    МО. После предварительный расчетов оставьте заявку на обратную связь с менеджером для уточнения
+                    сроков и других деталей Вашего заказа! Салоны Багетной мастерской №1 в самом центре столицы позволят
+                    Вам получить заказ быстро и комфортно!
                 </p>
             </div>
 
@@ -127,19 +132,24 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_matte">Матовая</button>
+                            id="service_matte">Матовая
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_glossy">Глянцевая</button>
+                            id="service_glossy">Глянцевая
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_canvas">Холст</button>
+                            id="service_canvas">Холст
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_art_gel">Прорисовка арт-гелем</button>
+                            id="service_art_gel">Прорисовка арт-гелем
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="service"
-                            id="service_oil_painting">Роспись маслом</button>
+                            id="service_oil_painting">Роспись маслом
+                    </button>
                 </div>
 
                 <!-- Материалы -->
@@ -150,27 +160,33 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     <!-- Подрамник -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_subframe">Подрамник</button>
+                            id="materials_subframe">Подрамник
+                    </button>
                     <!-- Подрамник + натяжка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_subframe_tension">Подрамник и натяжка</button>
+                            id="materials_subframe_tension">Подрамник и натяжка
+                    </button>
                     <!-- ПеноКартон -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_foamboard">Пенокартон</button>
+                            id="materials_foamboard">Пенокартон
+                    </button>
                     <!-- ПеноКартон + накатка -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_foamboard_mount">Пенокартон и накатка</button>
+                            id="materials_foamboard_mount">Пенокартон и накатка
+                    </button>
                     <!-- Картон -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_paperboard">Картон</button>
+                            id="materials_paperboard">Картон
+                    </button>
                     <!-- Паспарту -->
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="materials"
-                            id="materials_passepartout">Паспарту</button>
+                            id="materials_passepartout">Паспарту
+                    </button>
                 </div>
 
                 <!-- Стекло -->
@@ -180,16 +196,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_usual">Обычное</button>
+                            id="glass_usual">Обычное
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_matte">Матовое</button>
+                            id="glass_matte">Матовое
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_anti_glare">Антиблик</button>
+                            id="glass_anti_glare">Антиблик
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_plastic">Пластик</button>
+                            id="glass_plastic">Пластик
+                    </button>
                 </div>
 
                 <!-- Крепления -->
@@ -199,16 +219,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_standard">Стандартное</button>
+                            id="bracing_standard">Стандартное
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_reinforced">Усиленное</button>
+                            id="bracing_reinforced">Усиленное
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_clamps">Прижимы</button>
+                            id="bracing_clamps">Прижимы
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="bracing"
-                            id="bracing_mirror">Зеркальное</button>
+                            id="bracing_mirror">Зеркальное
+                    </button>
                 </div>
 
                 <!-- Доставка -->
@@ -218,19 +242,24 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_sad">В пределах Садового</button>
+                            id="delivery_sad">В пределах Садового
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_ttk">В пределах <br>ТТК</button>
+                            id="delivery_ttk">В пределах <br>ТТК
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_mkad">В пределах МКАД</button>
+                            id="delivery_mkad">В пределах МКАД
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_lift">С <br>подъёмом</button>
+                            id="delivery_lift">С <br>подъёмом
+                    </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="delivery"
-                            id="delivery_outside">За МКАД</button>
+                            id="delivery_outside">За МКАД
+                    </button>
                 </div>
 
                 <!-- Внесите размеры и количество -->
@@ -289,11 +318,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         <!-- Быстрые кнопки формата -->
                         <div class="col-12 col-md-7 col-xxl-7">
                             <div class="row text-center justify-content-center button-service">
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a4">А4</button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a3">А3</button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a2">А2</button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a1">А1</button>
-                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size" id="a0">А0</button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
+                                        id="a4">А4
+                                </button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
+                                        id="a3">А3
+                                </button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
+                                        id="a2">А2
+                                </button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
+                                        id="a1">А1
+                                </button>
+                                <button class="button button-custom-index button-color-company-golden fix-width-90 check-size"
+                                        id="a0">А0
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -344,11 +383,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
             // Печать (за м²) + мин. стоимость
             const SERVICES = {
-                service_matte:    { priceM2: 5200, min: 2500 },
-                service_glossy:   { priceM2: 5400, min: 2500 },
-                service_canvas:   { priceM2: 8000, min: 2500 },
-                service_art_gel:   { priceM2: 5000, min: 2500 },
-                service_oil_painting:   { priceM2: 15000, min: 2500 }
+                service_matte: {priceM2: 5200, min: 2500},
+                service_glossy: {priceM2: 5400, min: 2500},
+                service_canvas: {priceM2: 8000, min: 2500},
+                service_art_gel: {priceM2: 5000, min: 2500},
+                service_oil_painting: {priceM2: 15000, min: 2500}
             };
 
             // Материалы (за м²) или за погонный метр
@@ -396,58 +435,59 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
             // Багетное стекло (за м²) + минимальная цена 250 ₽
             const GLASS = {
-                glass_usual:     { priceM2: 4400, min: 250 },
-                glass_matte:     { priceM2: 7500, min: 250 },
-                glass_anti_glare:{ priceM2:30000, min: 250 },
-                glass_plastic:   { priceM2: 4400, min: 250 }
+                glass_usual: {priceM2: 4400, min: 250},
+                glass_matte: {priceM2: 7500, min: 250},
+                glass_anti_glare: {priceM2: 30000, min: 250},
+                glass_plastic: {priceM2: 4400, min: 250}
             };
 
             // Крепления (штучно), размеры не нужны
             // Добавлен "bracing_mirror": 750₽
             const BRACING = {
-                bracing_standard:  { priceEach: 300 },
-                bracing_reinforced:{ priceEach: 500 },
-                bracing_clamps:    { priceEach: 30 },
-                bracing_mirror:    { priceEach: 750 }
+                bracing_standard: {priceEach: 300},
+                bracing_reinforced: {priceEach: 500},
+                bracing_clamps: {priceEach: 30},
+                bracing_mirror: {priceEach: 750}
             };
 
             // Доставка: фиксированная, кроме выезда за МКАД (60₽/км)
             // При выборе доставки – тоже игнорируем поля размеров.
             const DELIVERY = {
-                delivery_sad:    { price: 800 },
-                delivery_ttk:    { price:1000 },
-                delivery_mkad:   { price:1200 },
-                delivery_lift:   { price:1500 },
+                delivery_sad: {price: 800},
+                delivery_ttk: {price: 1000},
+                delivery_mkad: {price: 1200},
+                delivery_lift: {price: 1500},
                 // Если выбрано outside – 60 * distanceInput.val()
-                delivery_outside:{ pricePerKm:60 }
+                delivery_outside: {pricePerKm: 60}
             };
 
             // Стандартные размеры А-форматов (мм)
             const A_SIZES = {
-                a4: { width:210, length:297 },
-                a3: { width:297, length:420 },
-                a2: { width:420, length:594 },
-                a1: { width:594, length:841 },
-                a0: { width:841, length:1189 }
+                a4: {width: 210, length: 297},
+                a3: {width: 297, length: 420},
+                a2: {width: 420, length: 594},
+                a1: {width: 594, length: 841},
+                a0: {width: 841, length: 1189}
             };
 
             // Текущее активное
             let activeBlock = null;   // service | materials | glass | bracing | delivery
-            let activeType  = null;   // ключ внутри соответствующего объекта
-            let activeSize  = null;   // a4 | a3 и т.д. (необязательно)
+            let activeType = null;   // ключ внутри соответствующего объекта
+            let activeSize = null;   // a4 | a3 и т.д. (необязательно)
 
             // DOM-элементы
             const lengthInput = $('#length-input');
-            const widthInput  = $('#width-input');
-            const countInput  = $('#count-input');
+            const widthInput = $('#width-input');
+            const countInput = $('#count-input');
             const distanceInput = $('#distance-input'); // км за МКАД
-            const priceBlock  = $('#price-service');
+            const priceBlock = $('#price-service');
             const distanceBlock = $('#distance-block'); // показать/спрятать для "за МКАД"
 
             // Обнуление/вывод цены
             function showPrice(value) {
                 priceBlock.text(value + ' ₽');
             }
+
             function showError(msg) {
                 alert(msg);
                 priceBlock.text('Невозможно рассчитать');
@@ -473,8 +513,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
                 // Для остальных (service, materials, glass) считаем по площади (или периметру).
                 let lengthMm = parseFloat(lengthInput.val()) || 0;
-                let widthMm  = parseFloat(widthInput.val())  || 0;
-                let qty      = parseFloat(countInput.val())  || 1;
+                let widthMm = parseFloat(widthInput.val()) || 0;
+                let qty = parseFloat(countInput.val()) || 1;
 
                 // Проверим на отрицательные/нулевые
                 if (lengthMm <= 0 || widthMm <= 0) {
@@ -497,8 +537,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     }
                     total = total * qty;
                     showPrice(Math.round(total));
-                }
-                else if (activeBlock === 'materials') {
+                } else if (activeBlock === 'materials') {
                     // Материалы
                     let data = MATERIALS[activeType];
                     // Сначала проверяем ограничения по габаритам (если есть)
@@ -530,8 +569,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         total = subTotal * qty;
                     }
                     showPrice(Math.round(total));
-                }
-                else if (activeBlock === 'glass') {
+                } else if (activeBlock === 'glass') {
                     // Стекло
                     let data = GLASS[activeType];
                     let subTotal = area * data.priceM2;
@@ -572,12 +610,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             function checkIfASize() {
                 // Проверим, совпадает ли с одним из A-форматов
                 let lengthVal = Number(lengthInput.val());
-                let widthVal  = Number(widthInput.val());
+                let widthVal = Number(widthInput.val());
                 let found = null;
                 for (let key in A_SIZES) {
                     if (
                         (A_SIZES[key].length === lengthVal && A_SIZES[key].width === widthVal) ||
-                        (A_SIZES[key].length === widthVal  && A_SIZES[key].width === lengthVal)
+                        (A_SIZES[key].length === widthVal && A_SIZES[key].width === lengthVal)
                     ) {
                         found = key;
                         break;
@@ -601,7 +639,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 $('.check-type.active').removeClass('active');
                 $(this).addClass('active');
 
-                activeType  = $(this).attr('id');
+                activeType = $(this).attr('id');
                 activeBlock = $(this).data('block');
 
                 // Если выбрали крепления или доставку – скрываем поля для размеров
@@ -649,7 +687,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             $(document).on('change', '.check-change-count', function () {
                 calc();
             });
-            $(document).on('change', '.check-change-distance', function(){
+            $(document).on('change', '.check-change-distance', function () {
                 calc();
             });
 
