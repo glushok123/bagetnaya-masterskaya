@@ -212,10 +212,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
-                            id="glass_frame_glass">Багетное стекло
-                    </button>
-                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
-                            data-block="glass"
                             id="glass_mirror_4mm">Зеркало 4 мм
                     </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
@@ -243,7 +239,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="round_materials"
-                            id="round_materials_glass_usual">Обычное стекло
+                            id="round_materials_glass_usual">Обычное <br>стекло
                     </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="round_materials"
@@ -251,7 +247,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     </button>
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="round_materials"
-                            id="round_materials_glass_matte">Матовое стекло
+                            id="round_materials_glass_matte">Матовое <br>стекло
                     </button>
                 </div>
 
@@ -502,7 +498,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 round_materials_glass_museum: {
                     min: 500,
                     type: 'glass_m2',
-                    priceM2: 7500*2
+                    priceM2: 35000
                 },
                 round_materials_glass_matte: {
                     min: 500,

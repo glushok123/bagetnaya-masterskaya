@@ -34,9 +34,9 @@
 
                         <div class="form-check text-start">
                             <input class="form-check-input text-start" type="radio" name="email" id="exampleRadios2"
-                                   value="Напишите мне в telegram">
+                                   value="Напишите мне в MAX">
                             <label class="form-check-label text-start" for="exampleRadios2">
-                                Напишите мне в telegram
+                                Напишите мне в MAX
                             </label>
                         </div>
 
