@@ -191,7 +191,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
                 <!-- Стекло -->
                 <div class="row p-1 m-2 text-center justify-content-center name-service">
-                    Багетное стекло
+                    Багетное стекло и зеркала
                 </div>
                 <div class="row text-center justify-content-center button-service">
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
@@ -209,6 +209,49 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
                             data-block="glass"
                             id="glass_plastic">Пластик
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="glass"
+                            id="glass_frame_glass">Багетное стекло
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="glass"
+                            id="glass_mirror_4mm">Зеркало 4 мм
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="glass"
+                            id="glass_mirror_facet_4mm">Зеркало с фацетом 4 мм
+                    </button>
+                </div>
+
+                <!-- Круглые материалы -->
+                <div class="row p-1 m-2 text-center justify-content-center name-service">
+                    Круглые материалы для картины
+                </div>
+                <div class="row text-center justify-content-center button-service">
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="round_materials"
+                            id="round_materials_oval_subframe">Овальный подрамник
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="round_materials"
+                            id="round_materials_oval_backboard">Овальный задник
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="round_materials"
+                            id="round_materials_oval_passepartout">Овальное паспарту
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="round_materials"
+                            id="round_materials_glass_usual">Обычное стекло
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="round_materials"
+                            id="round_materials_glass_museum">Музейное стекло
+                    </button>
+                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
+                            data-block="round_materials"
+                            id="round_materials_glass_matte">Матовое стекло
                     </button>
                 </div>
 
@@ -256,10 +299,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                             data-block="delivery"
                             id="delivery_lift">С <br>подъёмом
                     </button>
-                    <button class="button button-custom-index button-color-company-golden fix-width-185 check-type"
-                            data-block="delivery"
-                            id="delivery_outside">За МКАД
-                    </button>
+                </div>
+                <div class="row text-center justify-content-center">
+                    <p class="mx-auto mb-0">Стоимость доставки за МКАД уточняйте у менеджера.</p>
                 </div>
 
                 <!-- Внесите размеры и количество -->
@@ -296,19 +338,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                                                min="1"
                                                id="count-input"
                                                value="1"
-                                               style="width: 100px;">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Ввод километров, если за МКАД -->
-                            <div class="row justify-content-center" id="distance-block" style="display:none;">
-                                <div class="col-7 col-md-7 col-xxl-7">
-                                    <div class="mb-3 mx-auto">
-                                        <label>Км за МКАД:</label>
-                                        <input type="number" class="form-control check-change-distance mx-auto"
-                                               min="1"
-                                               id="distance-input"
-                                               value="10"
                                                style="width: 100px;">
                                     </div>
                                 </div>
@@ -378,14 +407,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 materials_foamboard: [1000, 1400],
                 materials_foamboard_mount: [1000, 1400],
                 materials_paperboard: [900, 1000],
-                materials_passepartout: [800, 1000]
+                materials_passepartout: [800, 1000],
+                round_materials_oval_subframe: [3000, 3000],
+                round_materials_oval_backboard: [900, 1000],
+                round_materials_oval_passepartout: [800, 1000]
             };
 
             // Печать (за м²) + мин. стоимость
             const SERVICES = {
-                service_matte: {priceM2: 5200, min: 2500},
-                service_glossy: {priceM2: 5400, min: 2500},
-                service_canvas: {priceM2: 8000, min: 2500},
+                service_matte: {priceM2: 10400, min: 10400},
+                service_glossy: {priceM2: 10400, min: 10400},
+                service_canvas: {priceM2: 16000, min: 16000},
                 service_art_gel: {priceM2: 5000, min: 2500},
                 service_oil_painting: {priceM2: 15000, min: 2500}
             };
@@ -438,7 +470,48 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 glass_usual: {priceM2: 4400, min: 250},
                 glass_matte: {priceM2: 7500, min: 250},
                 glass_anti_glare: {priceM2: 30000, min: 250},
-                glass_plastic: {priceM2: 4400, min: 250}
+                glass_plastic: {priceM2: 4400, min: 250},
+                glass_frame_glass: {priceEach: 1},
+                glass_mirror_4mm: {priceEach: 1},
+                glass_mirror_facet_4mm: {priceEach: 1}
+            };
+
+            // Круглые материалы для картины
+            const ROUND_MATERIALS = {
+                round_materials_oval_subframe: {
+                    min: 500,
+                    type: 'subframe',
+                    priceBefore1m2: 1275*2,
+                    priceAfter1m2: 1650*2
+                },
+                round_materials_oval_backboard: {
+                    min: 500,
+                    type: 'm2',
+                    priceM2: 2000*2
+                },
+                round_materials_oval_passepartout: {
+                    min: 500,
+                    type: 'm2',
+                    priceM2: 4400*2
+                },
+                round_materials_glass_usual: {
+                    min: 500,
+                    type: 'glass_m2',
+                    priceM2: 4400*2
+                },
+                round_materials_glass_museum: {
+                    min: 500,
+                    type: 'glass_m2',
+                    priceM2: 7500*2
+                },
+                round_materials_glass_matte: {
+                    min: 500,
+                    type: 'glass_m2',
+                    priceM2: 7500*2
+                },
+                round_materials_frame_glass: {priceEach: 1},
+                round_materials_mirror_4mm: {priceEach: 1},
+                round_materials_mirror_facet_4mm: {priceEach: 1}
             };
 
             // Крепления (штучно), размеры не нужны
@@ -450,15 +523,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 bracing_mirror: {priceEach: 750}
             };
 
-            // Доставка: фиксированная, кроме выезда за МКАД (60₽/км)
+            // Доставка: фиксированная
             // При выборе доставки – тоже игнорируем поля размеров.
             const DELIVERY = {
                 delivery_sad: {price: 800},
                 delivery_ttk: {price: 1000},
                 delivery_mkad: {price: 1200},
-                delivery_lift: {price: 1500},
-                // Если выбрано outside – 60 * distanceInput.val()
-                delivery_outside: {pricePerKm: 60}
+                delivery_lift: {price: 1500}
             };
 
             // Стандартные размеры А-форматов (мм)
@@ -471,7 +542,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             };
 
             // Текущее активное
-            let activeBlock = null;   // service | materials | glass | bracing | delivery
+            let activeBlock = null;   // service | materials | glass | round_materials | bracing | delivery
             let activeType = null;   // ключ внутри соответствующего объекта
             let activeSize = null;   // a4 | a3 и т.д. (необязательно)
 
@@ -479,9 +550,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             const lengthInput = $('#length-input');
             const widthInput = $('#width-input');
             const countInput = $('#count-input');
-            const distanceInput = $('#distance-input'); // км за МКАД
             const priceBlock = $('#price-service');
-            const distanceBlock = $('#distance-block'); // показать/спрятать для "за МКАД"
 
             // Обнуление/вывод цены
             function showPrice(value) {
@@ -508,6 +577,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 }
                 if (activeBlock === 'delivery') {
                     calculateDelivery();
+                    return;
+                }
+                if (activeBlock === 'round_materials') {
+                    calculateRoundMaterials();
                     return;
                 }
 
@@ -572,6 +645,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 } else if (activeBlock === 'glass') {
                     // Стекло
                     let data = GLASS[activeType];
+                    if (data.priceEach !== undefined) {
+                        total = data.priceEach * qty;
+                        showPrice(Math.round(total));
+                        return;
+                    }
+
                     let subTotal = area * data.priceM2;
                     if (subTotal < data.min) {
                         subTotal = data.min;
@@ -592,18 +671,59 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             // Расчёт для доставки
             function calculateDelivery() {
                 let qty = parseFloat(countInput.val()) || 1;
-                // обычно доставка оплачивается 1 раз, но если нужно умножать на количество,
-                // можно менять логику. Предположим, что пользователь вводит 1 (или нужное число).
                 let data = DELIVERY[activeType];
-                let total = 0;
-                if (activeType === 'delivery_outside') {
-                    let dist = parseFloat(distanceInput.val()) || 0;
-                    total = dist * data.pricePerKm;
-                } else {
-                    total = data.price;
-                }
+                let total = data.price;
                 total = total * qty;
                 showPrice(total);
+            }
+
+            // Расчёт для круглых материалов
+            function calculateRoundMaterials() {
+                let lengthMm = parseFloat(lengthInput.val()) || 0;
+                let widthMm = parseFloat(widthInput.val()) || 0;
+                let qty = parseFloat(countInput.val()) || 1;
+                let data = ROUND_MATERIALS[activeType];
+
+                if (data.priceEach !== undefined) {
+                    let total = data.priceEach * qty;
+                    showPrice(total);
+                    return;
+                }
+
+                if (lengthMm <= 0 || widthMm <= 0) {
+                    showError('Укажите корректные размеры!');
+                    return;
+                }
+
+                if (LIMITS[activeType]) {
+                    const maxW = LIMITS[activeType][0];
+                    const maxH = LIMITS[activeType][1];
+                    if (lengthMm > maxH || widthMm > maxW) {
+                        showError('Превышены допустимые габариты! Свяжитесь со специалистом.');
+                        return;
+                    }
+                }
+
+                let area = (lengthMm / 1000) * (widthMm / 1000);
+                let perimeter = 2 * ((lengthMm / 1000) + (widthMm / 1000));
+                let total = 0;
+
+                if (data.type === 'subframe') {
+                    let pricePerLm = (area <= 1) ? data.priceBefore1m2 : data.priceAfter1m2;
+                    let subTotal = perimeter * pricePerLm;
+                    if (subTotal < data.min) {
+                        subTotal = data.min;
+                    }
+                    total = subTotal * qty;
+                } else if (data.type === 'm2' || data.type === 'glass_m2') {
+                    let subTotal = area * data.priceM2;
+                    if (subTotal < data.min) {
+                        subTotal = data.min;
+                    }
+                    total = subTotal * qty;
+                }
+
+                showPrice(Math.round(total));
             }
 
             // Функция, чтобы проставить активSize, если пользователь вручную ввёл мм
@@ -649,20 +769,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     $('#width-input').prop('disabled', true);
                     // Прячем кнопки Аx?
                     $('.check-size').prop('disabled', true);
-                    distanceBlock.hide();
-
-                    if (activeBlock === 'delivery') {
-                        // Если выбран "delivery_outside", показываем поле ввода км
-                        if (activeType === 'delivery_outside') {
-                            distanceBlock.show();
-                        }
-                    }
                 } else {
                     // Иначе показываем
                     $('#length-input').prop('disabled', false);
                     $('#width-input').prop('disabled', false);
                     $('.check-size').prop('disabled', false);
-                    distanceBlock.hide();
                 }
 
                 calc();
@@ -685,9 +796,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 calc();
             });
             $(document).on('change', '.check-change-count', function () {
-                calc();
-            });
-            $(document).on('change', '.check-change-distance', function () {
                 calc();
             });
 
