@@ -468,8 +468,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 glass_anti_glare: {priceM2: 30000, min: 250},
                 glass_plastic: {priceM2: 4400, min: 250},
                 glass_frame_glass: {priceEach: 1},
-                glass_mirror_4mm: {priceEach: 1},
-                glass_mirror_facet_4mm: {priceEach: 1}
+                glass_mirror_4mm: {priceM2: 8500, min: 250},
+                glass_mirror_facet_4mm: {priceM2: 15000, min: 250}
             };
 
             // Круглые материалы для картины
