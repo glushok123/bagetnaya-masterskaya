@@ -138,7 +138,7 @@
 <section>
     <div class='container my-5'>
         <div class='row  relative'>
-            <div class='b3-name text-center pt-5 element-animation'>БАГЕТНАЯ МАСТЕРСКАЯ №1</div>
+            <div class='b3-name text-center pt-5 element-animation'>Багетная мастерская 1</div>
             <div class='b3-name  color-black element-animation'>– это команда профессионалов, которые любят свое дело!
             </div>
             <div class='absolute b3-desc element-animation'>
@@ -160,7 +160,7 @@
             выбрать ту, которая будет соответствовать вашему запросу и пожеланию.
         </div>
         <div class='style-text font-16 element-animation' style='color: #AD1F2D;'>
-            Одной из таких мастерских в Москве является «Багетная мастерская №1», которая предлагает свои
+            Одной из таких мастерских в Москве является «Багетная мастерская 1», которая предлагает свои
             услуги: изготовление багетной рамы индивидуального формата для фотографий, картин, плакатов, вышивок
             и мозаик, карт и прочего.
         </div>

@@ -2,7 +2,7 @@
     <footer class="">
         <div class="row">
             <div class="col-12 col-md-7 align-middle">
-                <a class="navbar-brand align-middle" href="/">Багетная мастерская №1</a>
+                <a class="navbar-brand align-middle" href="/">Багетная мастерская 1</a>
                 <img src="/img/logo 2 (1).svg" alt="" class='img-brand-footer align-middle'>
             </div>
             <div class="col-12 col-md-5">
@@ -85,7 +85,7 @@
 
         <div class='row'>
             <div class='col-6'>
-                <div class='footer-a footer-name-company'><a href="/">© 2013 Багетная мастерская №1</a></div>
+                <div class='footer-a footer-name-company'><a href="/">© 2013 Багетная мастерская 1</a></div>
                 <div class='footer-a footer-site-map my-2'><a href="/sitemap.html">Карта сайта</a></div>
             </div>
             <div class='col-6 text-end'>

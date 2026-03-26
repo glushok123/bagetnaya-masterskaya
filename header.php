@@ -22,7 +22,7 @@ if (isset($dbh) && $dbh instanceof PDO) {
 
     <link rel="image_src" href="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Багетная мастерская № 1"/>
+    <meta property="og:title" content="Багетная мастерская 1"/>
     <meta property="og:description"
           content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера."/>
     <meta property="og:url" content="http://bagetnaya-masterskaya.com"/>

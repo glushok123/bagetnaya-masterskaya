@@ -164,7 +164,7 @@ $messageForManager = "IP: $ipaddr<br>"
 // Если письмо менеджеру отправилось
 if (mail("manager@bagetnaya-masterskaya.com", $subjectForManager, $messageForManager, $mailHeaders)) {
     // Отправляем письмо клиенту
-    $fromName = "Багетная мастерская №1";
+    $fromName = "Багетная мастерская 1";
     $fromNameEncoded = "=?UTF-8?B?" . base64_encode($fromName) . "?=";
     $headersClient = "From: $fromNameEncoded <manager@bagetnaya-masterskaya.com>\r\n"
         . "Reply-To: manager@bagetnaya-masterskaya.com\r\n"

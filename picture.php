@@ -6,7 +6,7 @@ if ($align == "right") {
 }
 $file = $_SERVER['REQUEST_URI'];
 $imgcat = 'bagetnaya_masterskaya';
-$altitle = 'Багетная мастерская №1, примеры работ';
+$altitle = 'Багетная мастерская 1, примеры работ';
 if (strripos((string)$file, 'bagetnye_ramki/')) {
     $imgcat = 'bagetnye_ramki';
     $altitle = 'Багетные рамки';

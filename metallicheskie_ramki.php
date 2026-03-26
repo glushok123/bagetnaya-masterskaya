@@ -178,7 +178,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="row section-text mt-5 mb-4 end-block">
         С уважением к Вам,<br>
         С любовью к Искусству!<br>
-        Багетная мастерская №1
+        Багетная мастерская 1
     </div>
 </div>
 

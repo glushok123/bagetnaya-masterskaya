@@ -437,9 +437,9 @@ if ($imgcat != 'none') {
 
     for ($i = 0; $i < 4; $i++) {
         if ($imgcat == 'modulnye-kartiny') {
-            echo '<a href="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '-l.jpg" id="thumb' . ($i + 1) . '" class="highslide" title="Модульная картина, артикул M-0' . $rand[$i] . '" onclick="return hs.expand(this, config' . ($i + 1) . ')"><img src="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '.jpg" alt="Багетная мастерская №1, примеры работ"></a>';
+            echo '<a href="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '-l.jpg" id="thumb' . ($i + 1) . '" class="highslide" title="Модульная картина, артикул M-0' . $rand[$i] . '" onclick="return hs.expand(this, config' . ($i + 1) . ')"><img src="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '.jpg" alt="Багетная мастерская 1, примеры работ"></a>';
         } else {
-            echo '<a href="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '-l.jpg" id="thumb' . ($i + 1) . '" class="highslide" title="Примеры работ" onclick="return hs.expand(this, config' . ($i + 1) . ')"><img src="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '.jpg" alt="Багетная мастерская №1, примеры работ"></a>';
+            echo '<a href="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '-l.jpg" id="thumb' . ($i + 1) . '" class="highslide" title="Примеры работ" onclick="return hs.expand(this, config' . ($i + 1) . ')"><img src="/' . $imgcat . '/' . $imgcat . '-' . $rand[$i] . '.jpg" alt="Багетная мастерская 1, примеры работ"></a>';
         }
     }
 
@@ -467,14 +467,14 @@ echo '<div id="left">' . $menu1 . '<br>' . $menu11 . $menu111 . $menu2 . $menu22
 if (($_SERVER["REMOTE_ADDR"] == '127.0.0.1')) {
     echo '
 			<div id="botm">
-				© 2013 Багетная мастерская №1
+				© 2013 Багетная мастерская 1
 				<a href="/kontakty.html" class="botmhref">Контакты</a>&nbsp;<a href="/dostavka.html" class="botmhref">Доставка</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a>
 			</div>
 			';
 } else {
     echo '
 			<div id="botm">
-				© 2013 Багетная мастерская №1
+				© 2013 Багетная мастерская 1
 
 				<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
 				<div class="yashare-auto-init" style="display:inline; margin:0px 0px 0px 30px;" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div>

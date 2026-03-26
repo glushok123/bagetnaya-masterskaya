@@ -10,7 +10,7 @@ include "header.php"
     <h1>Контакты</h1>
     <div id="main">
         <div style="text-align:left;" itemscope itemtype="http://schema.org/LocalBusiness">
-            <p><strong itemprop="name">Багетная мастерская №1</strong></p>
+            <p><strong itemprop="name">Багетная мастерская 1</strong></p>
             <p><strong>Время работы: </strong>
                 <time itemprop="openingHours" datetime="Mo-Su 9:00−21:00">9:00 - 21:00, ежедневно</time>
             </p>

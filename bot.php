@@ -558,7 +558,7 @@ echo '<div id="left">' . $menu1 . '<br>' . $menu11 . $menu111 . $menu2 . $menu22
 <div id="info_shade" class="infohide" onclick="hideinfo();"></div>
 <div id="info" class="infohide"></div>
 <div id="botm">
-    © 2013 Багетная мастерская №1
+    © 2013 Багетная мастерская 1
     <a href="/kontakty.html" class="botmhref">Контакты</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a><br><a
             href="/privacy.pdf" class="botmhref">Политика конфиденциальности</a><br><a href="/terms.pdf"
                                                                                        class="botmhref">Пользовательское

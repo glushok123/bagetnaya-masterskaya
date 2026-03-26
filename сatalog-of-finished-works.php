@@ -157,7 +157,7 @@ function normalizeGalleryImagePath(?string $path): string
     <div class="block-h1 text-center my-4 fade-in">
         <h1 class='color-main' style="text-transform: uppercase;">Галерея работ</h1>
         <div class='row style-text text-center pt-3' style="padding-left: 20%; padding-right: 20%">
-            Багетная мастерская №1 – это команда, которой Вы можете доверять! Здесь Вы можете ознакомиться с уникальными примерами оформления готовых работ и с опытом наших специалистов!
+            Багетная мастерская 1 – это команда, которой Вы можете доверять! Здесь Вы можете ознакомиться с уникальными примерами оформления готовых работ и с опытом наших специалистов!
         </div>
     </div>
 </div>

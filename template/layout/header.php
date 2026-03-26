@@ -10,8 +10,8 @@ if (isset($dbh) && $dbh instanceof PDO) {
     $galleryCategories = loadGalleryCategories($dbh);
 }
 
-$title = empty($title) ? "Багетная мастерская №1 в Москве - качественно и недорого!" : $title;
-$description = empty($description) ? "Понадобились услуги недорогой багетной мастерской в Москве? Наша Багетная Мастерская №1 порадует Вас доступными ценами. Мы - лучшие в качественном оформлении багетными рамками." : $description;;
+$title = empty($title) ? "Багетная мастерская 1 в Москве - качественно и недорого!" : $title;
+$description = empty($description) ? "Понадобились услуги недорогой багетной мастерской в Москве? Наша Багетная мастерская 1 порадует Вас доступными ценами. Мы - лучшие в качественном оформлении багетными рамками." : $description;;
 $keywords = empty($keywords) ? "Багетная мастерская, рамки для картин, оформление в багет, багетная рама, обрамление" : $keywords;;
 header("Cache-Control: max-age=2592000");
 
@@ -41,7 +41,7 @@ $v = 25;
         <meta name="geo.position" content="55.7411820;37.6301270"/>
         <meta name="geo.region" content="RU-"/>
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Багетная мастерская № 1"/>
+        <meta property="og:title" content="Багетная мастерская 1"/>
         <meta property="og:description"
               content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера."/>
         <meta property="og:url" content="http://bagetnaya-masterskaya.com"/>
@@ -137,7 +137,7 @@ $v = 25;
 
     <!--div class="container pt-1">
         <div class="row text-center p-3" style="background: #AD1F2D; color: white; border-radius: 25px;">
-            <h2>21.12.2023 Багетная мастерская №1 работает до 16.00</h2>
+            <h2>21.12.2023 Багетная мастерская 1 работает до 16.00</h2>
         </div>
     </div-->
 

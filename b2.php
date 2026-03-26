@@ -601,13 +601,13 @@ echo '<div id="left">' . $menu1 . '<br>' . $menu11 . $menu111 . $menu2 . $menu22
 if (($_SERVER["REMOTE_ADDR"] == '127.0.0.1')) {
     echo '
 			<div id="botm">
-				© 2013 Багетная мастерская №1
+				© 2013 Багетная мастерская 1
 				<a href="/#contacts" class="botmhref">Контакты</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a>
 			</div>
 			'; //<a href="/dostavka.html" class="botmhref">Доставка</a>&nbsp;
 } else {
     echo '<div id="botm">
-				© 2013 Багетная мастерская №1
+				© 2013 Багетная мастерская 1
 				<a href="/kontakty.html" class="botmhref">Контакты</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a><br><a href="/privacy.pdf" class="botmhref">Политика конфиденциальности</a><br><a href="/terms.pdf" class="botmhref">Пользовательское соглашение</a></div>
 		';
 }
