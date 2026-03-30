@@ -11,7 +11,7 @@
 
 
         <div class="block-h1 text-center my-4 fade-in">
-            <h1 class='color-main'>Багетная мастерская 1</h1>
+            <h1 class='color-main'>БАГЕТНАЯ МАСТЕРСКАЯ 1</h1>
             <h1>В МОСКВЕ</h1>
         </div>
 

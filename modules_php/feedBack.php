@@ -248,6 +248,7 @@
 <script>
     $("#phone").mask("+7 (999) 999-99-99");
     toastr.options.timeOut = 5000; // 5s
+    let isSubmitting = false;
 
     //валидация данных заказа
     function validation() {
@@ -275,21 +276,31 @@
         }*/
     }
 
+    function setSubmitState(isDisabled) {
+        const $button = $('#send-order');
+        $button.prop('disabled', isDisabled);
+        $button.toggleClass('disabled', isDisabled);
+    }
+
     //Отправить запрос обратной связи
     function sendOrderRequest() {
+        if (isSubmitting) {
+            return;
+        }
+
         if (validation() == false) {
             return;
         }
 
-        data = {
+        isSubmitting = true;
+        setSubmitState(true);
+
+        const data = {
             user_name: $("#user-name").val(),
             phone: $("#phone").val(),
             email: $('input[name="email"]:checked').val(), //$("#email").val(),
             comment: $("#comment").val(),
         };
-
-        $('#exampleModal').modal('hide');
-        $('#order-status-model').modal('show');
 
         $.ajax({
             url: '/admin/request/saveFeedBackRequest.php',
@@ -298,7 +309,12 @@
             data: data,
             success: function (data) {
                 if (data.success == true) {
-                    $('#order-id').text(data.order_id)
+                    $('#exampleModal').modal('hide');
+                    $('#order-id').text(data.order_id);
+                    $('#order-status-model').modal('show');
+                }
+                if (data.success == false) {
+                    alert(data.message);
                 }
             },
             error: function (jqXHR, exception) {
@@ -317,11 +333,15 @@
                 } else {
                     alert('Uncaught Error. ' + jqXHR.responseText);
                 }
+            },
+            complete: function () {
+                isSubmitting = false;
+                setSubmitState(false);
             }
         });
     }
 
-    $(document).on('click', '#send-order', function () {
-      sendOrderRequest()
+    $(document).off('click.feedbackSend', '#send-order').on('click.feedbackSend', '#send-order', function () {
+        sendOrderRequest();
     });
 </script>
