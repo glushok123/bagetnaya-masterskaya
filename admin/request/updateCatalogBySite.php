@@ -99,7 +99,7 @@ class UpdateCatalog
 
             if ((is_countable($data) ? count($data) : 0) > 0) {
                 $countInDb = $countInDb + 1;
-                $stmt = $this->dbh->prepare("UPDATE catalog_baget SET price=?,storage=? WHERE vendor=?");
+                $stmt = $this->dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ? WHERE vendor = ?");
                 $stmt->bindParam(1, $price);
                 $stmt->bindParam(2, $countBaget);
                 $stmt->bindParam(3, $vendor);

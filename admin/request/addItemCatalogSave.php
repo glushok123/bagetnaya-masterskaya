@@ -70,11 +70,12 @@ $width = $info["width"];
 $widthwithout = $info['quarter'];
 $price = $info["price"];
 $color = $info["color"];
+$fixedPrice = isset($info['fixed_price']) ? 1 : 0;
 
 $storage = 30;
 
 try {
-    $stmt = $dbh->prepare("INSERT INTO catalog_baget(type, publicvendor, vendor, width, widthwithout, price, storage, listimg, imgconst, color) values (?,?,?,?,?,?,?,?,?,?)");
+    $stmt = $dbh->prepare("INSERT INTO catalog_baget(type, publicvendor, vendor, width, widthwithout, price, storage, listimg, imgconst, color, fixed_price) values (?,?,?,?,?,?,?,?,?,?,?)");
 
     $stmt->bindParam(1, $type);
     $stmt->bindParam(2, $publicvendor);
@@ -86,6 +87,7 @@ try {
     $stmt->bindParam(8, $info["NamelistImg"]);
     $stmt->bindParam(9, $info["NameimgConst"]);
     $stmt->bindParam(10, $color);
+    $stmt->bindParam(11, $fixedPrice);
 
     $stmt->execute();
 

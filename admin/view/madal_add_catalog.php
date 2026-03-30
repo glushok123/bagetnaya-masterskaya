@@ -50,6 +50,10 @@
                                 <label for="article_supplier" class="form-label">Цвет: </label>
                                 <input type="text" class="form-control" id="color" name="color">
                             </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fixed_price" name="fixed_price" value="1">
+                                <label class="form-check-label" for="fixed_price">Fixed price</label>
+                            </div>
                             <div class="mb-3">
                                 <label for="imgConst" class="form-label">Картинка для рамы: </label>
                                 <input class="form-control" type="file" id="imgConst" name="imgConst"

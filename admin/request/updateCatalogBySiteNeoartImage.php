@@ -50,7 +50,7 @@ foreach ($json[104]['ELEMENTS'] as $guid => $element) {
             $price = round($element['PRICES']['BASE'] * 5);
             $count = isset($element['QUANTITY']['COUNT_SE']) ? round($element['QUANTITY']['COUNT_SE']) : 0;
 
-            $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
+            $stmt = $dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
             $stmt->bindParam(1, $price);
             $stmt->bindParam(2, $count);
             $stmt->bindParam(3, $date_update);
@@ -176,7 +176,7 @@ foreach ($xmlpasp->category->item as $item) {
 
     if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbPasp = $countInDbPasp + 1;
-        $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
+        $stmt = $dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
         $stmt->bindParam(1, $price);
         $stmt->bindParam(2, $count);
         $stmt->bindParam(3, $date_update);

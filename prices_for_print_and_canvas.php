@@ -413,7 +413,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             const SERVICES = {
                 service_matte: {priceM2: 10400, min: 10400},
                 service_glossy: {priceM2: 10400, min: 10400},
-                service_canvas: {priceM2: 16000, min: 16000},
+                service_canvas: {priceM2: 16000, min: 0},
                 service_art_gel: {priceM2: 5000, min: 2500},
                 service_oil_painting: {priceM2: 15000, min: 2500}
             };

@@ -57,6 +57,7 @@ $text = '<div class="container"><div class="row text-center justify-content-cent
 foreach ($data as $item) {
     $src = $item['type'] == 'pasp' ? 'pi' : 'bi';
     $color = $item['storage'] == 0 ? ' red' : ' green';
+    $fixedPriceChecked = !empty($item['fixed_price']) ? 'checked' : '';
 
     $text = $text .
         '
@@ -69,6 +70,10 @@ foreach ($data as $item) {
                             (<span class="blue">' . $item['company'] . '</span> - 
                             <span class="blue">' . $item['date_update'] . '</span>)
                             <hr>
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input fixed-price" type="checkbox" role="switch" ' . $fixedPriceChecked . ' disabled>
+                                <label class="form-check-label">Fixed price</label>
+                            </div>
                             <p class="card-title blue">Цена: <span class="price">' . $item['price'] . '</span></p>
                             <p class="card-title">Ширина: <span class="width">' . $item['width'] . '</span></p>
                             <p class="card-title">Без четверти: <span class="widthwithout">' . $item['widthwithout'] . '</span></p>

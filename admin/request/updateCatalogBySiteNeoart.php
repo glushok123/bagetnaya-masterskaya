@@ -38,7 +38,7 @@ foreach ($xmlwood->category->item as $item) {
 
     if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbWood += 1;
-        $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
+        $stmt = $dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
         $stmt->bindParam(1, $price);
         $stmt->bindParam(2, $count);
         $stmt->bindParam(3, $date_update);
@@ -91,7 +91,7 @@ foreach ($xmlplast->category->item as $item) {
 
     if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbPlast += 1;
-        $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
+        $stmt = $dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
         $stmt->bindParam(1, $price);
         $stmt->bindParam(2, $count);
         $stmt->bindParam(3, $date_update);
@@ -140,7 +140,7 @@ foreach ($xmlalum->category->item as $item) {
 
     if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbAlum += 1;
-        $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
+        $stmt = $dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
         $stmt->bindParam(1, $price);
         $stmt->bindParam(2, $count);
         $stmt->bindParam(3, $date_update);
@@ -190,7 +190,7 @@ foreach ($xmlpasp->category->item as $item) {
 
     if ((is_countable($data) ? count($data) : 0) > 0) {
         $countInDbPasp = $countInDbPasp + 1;
-        $stmt = $dbh->prepare("UPDATE catalog_baget SET price=?,storage=?,date_update=?,company=? WHERE vendor=?");
+        $stmt = $dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
         $stmt->bindParam(1, $price);
         $stmt->bindParam(2, $count);
         $stmt->bindParam(3, $date_update);
