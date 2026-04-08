@@ -929,6 +929,7 @@ $(document).ready(function () {
         let widthwithoutItem = card.find('.widthwithout');
         let storageItem = card.find('.storage');
         let colorItem = card.find('.color');
+        let fixedPriceItem = card.find('.fixed-price');
 
         let price = priceItem.text()
         let width = widthItem.text()
@@ -941,6 +942,7 @@ $(document).ready(function () {
         widthwithoutItem.replaceWith('<input type="text" class="input-change-sm widthwithout" value="' + widthwithout + '">');
         storageItem.replaceWith('<input type="text" class="input-change-sm storage" value="' + storage + '">');
         colorItem.replaceWith('<input type="text" class="input-change color" value="' + color + '">');
+        fixedPriceItem.prop('disabled', false);
 
         el.text("Сохранить");
         el.removeClass("change");
@@ -956,18 +958,21 @@ $(document).ready(function () {
         let widthwithoutItem = card.find('.widthwithout');
         let storageItem = card.find('.storage');
         let colorItem = card.find('.color');
+        let fixedPriceItem = card.find('.fixed-price');
 
         let price = priceItem.val()
         let width = widthItem.val()
         let widthwithout = widthwithoutItem.val()
         let storage = storageItem.val()
         let color = colorItem.val()
+        let fixedPrice = fixedPriceItem.is(':checked') ? 1 : 0;
 
         priceItem.replaceWith('<span class="price">' + price + '</span>');
         widthItem.replaceWith('<span class="width">' + width + '</span>');
         widthwithoutItem.replaceWith('<span class="widthwithout">' + widthwithout + '</span>');
         storageItem.replaceWith('<span class="storage">' + storage + '</span>');
         colorItem.replaceWith('<span class="color">' + color + '</span>');
+        fixedPriceItem.prop('disabled', true);
 
         info = {
             price: price,
@@ -975,6 +980,7 @@ $(document).ready(function () {
             widthwithout: widthwithout,
             storage: storage,
             color: color,
+            fixed_price: fixedPrice,
             id: idItem,
         }
 
