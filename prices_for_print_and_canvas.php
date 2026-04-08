@@ -411,27 +411,27 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
             // Печать (за м²) + мин. стоимость
             const SERVICES = {
-                service_matte: {priceM2: 10400, min: 10400},
-                service_glossy: {priceM2: 10400, min: 10400},
+                service_matte: {priceM2: 10400, min: 0},
+                service_glossy: {priceM2: 10400, min: 0},
                 service_canvas: {priceM2: 16000, min: 0},
-                service_art_gel: {priceM2: 5000, min: 2500},
-                service_oil_painting: {priceM2: 15000, min: 2500}
+                service_art_gel: {priceM2: 5000, min: 0},
+                service_oil_painting: {priceM2: 15000, min: 0}
             };
 
             // Материалы (за м²) или за погонный метр
             // Минимальная цена 250₽ везде
-            // Подрамник: 850₽/п.м до 1м², свыше 1м² -> 1100₽/п.м
+            // Подрамник: 1000₽/п.м до 1м², свыше 1м² -> 1500₽/п.м (+50%)
             // Подрамник + Натяжка: 1275₽/п.м до 1м², свыше 1м² -> 1650₽/п.м
-            // ПеноКартон: 3500₽/м² (простая листовая)
-            // ПеноКартон + накатка: 5250₽/м²
+            // ПеноКартон: 3800₽/м² (простая листовая)
+            // ПеноКартон + накатка: 5500₽/м²
             // Картон: 2000₽/м²
-            // Паспарту: 4400₽/м²
+            // Паспарту: 4500₽/м²
             const MATERIALS = {
                 materials_subframe: {
                     min: 250,
                     type: 'subframe', // особая логика
-                    priceBefore1m2: 850,
-                    priceAfter1m2: 1100
+                    priceBefore1m2: 1000,
+                    priceAfter1m2: 1500
                 },
                 materials_subframe_tension: {
                     min: 250,
@@ -442,12 +442,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 materials_foamboard: {
                     min: 250,
                     type: 'm2',
-                    priceM2: 3500
+                    priceM2: 3800
                 },
                 materials_foamboard_mount: {
                     min: 250,
                     type: 'm2',
-                    priceM2: 5250
+                    priceM2: 5500
                 },
                 materials_paperboard: {
                     min: 250,
@@ -457,7 +457,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 materials_passepartout: {
                     min: 250,
                     type: 'm2',
-                    priceM2: 4400
+                    priceM2: 4500
                 }
             };
 
@@ -605,7 +605,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         total = data.min;
                     }
                     total = total * qty;
-                    showPrice(Math.round(total));
+                    showPrice(Math.ceil(total));
                 } else if (activeBlock === 'materials') {
                     // Материалы
                     let data = MATERIALS[activeType];
@@ -637,13 +637,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         }
                         total = subTotal * qty;
                     }
-                    showPrice(Math.round(total));
+                    showPrice(Math.ceil(total));
                 } else if (activeBlock === 'glass') {
                     // Стекло
                     let data = GLASS[activeType];
                     if (data.priceEach !== undefined) {
                         total = data.priceEach * qty;
-                        showPrice(Math.round(total));
+                        showPrice(Math.ceil(total));
                         return;
                     }
 
@@ -652,7 +652,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                         subTotal = data.min;
                     }
                     total = subTotal * qty;
-                    showPrice(Math.round(total));
+                    showPrice(Math.ceil(total));
                 }
             }
 
@@ -719,7 +719,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     total = subTotal * qty;
                 }
 
-                showPrice(Math.round(total));
+                showPrice(Math.ceil(total));
             }
 
             // Функция, чтобы проставить активSize, если пользователь вручную ввёл мм

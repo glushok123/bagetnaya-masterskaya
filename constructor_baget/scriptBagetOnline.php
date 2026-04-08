@@ -552,13 +552,13 @@
         price7 = 0;
 
         if (z[6] == 1) {
-            price3 = s * 2000;
+            price3 = s * 2500;
         }
         if (z[6] == 2) {
             price3 = s * 4500;
         }
         if (z[6] == 3) {
-            price3 = s * 21250;
+            price3 = s * 25000;
         }
         if (z[6] == 4) {
             price3 = s * 2200;
@@ -566,16 +566,16 @@
         price3 = Math.floor(price3);
 
         if (z[7] == 1) {
-            price4 = s * 875;
+            price4 = s * 1000;
         }
         if (z[7] == 2) {
-            price4 = s * 2571;
+            price4 = s * 2800;
         }
         if (z[7] == 3) {
             price4 = (z[9] + z[10]) * 0.9;
         }
         if (z[7] == 4) {
-            price4 = (z[9] + z[10]) * 1.1;
+            price4 = (z[9] + z[10]) * 1.6;
         }
         price4 = Math.floor(price4);
 
