@@ -48,27 +48,80 @@ class UpdateCatalog
         $localPath = $dir . '/' . $nameFile;
 
         $this->log("Скачивание файла...");
+        $this->log("&nbsp;&nbsp;allow_url_fopen=<b>" . (ini_get('allow_url_fopen') ? 'On' : 'Off') . "</b>, "
+            . "cURL=<b>" . (function_exists('curl_init') ? 'есть' : 'НЕТ') . "</b>, "
+            . "OpenSSL=<b>" . (extension_loaded('openssl') ? 'есть' : 'НЕТ') . "</b>");
+
         $downloadStart = microtime(true);
-        $context = stream_context_create([
-            'http'  => ['method' => 'GET', 'timeout' => 60],
-            'https' => ['method' => 'GET', 'timeout' => 60],
-            'ssl'   => ['verify_peer' => false, 'verify_peer_name' => false],
-        ]);
-        $data = @file_get_contents($url, false, $context);
+        $data          = false;
+        $downloadInfo  = '';
+
+        // 1) Пробуем cURL (на хостингах работает чаще всего)
+        if (function_exists('curl_init')) {
+            $ch = curl_init($url);
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_CONNECTTIMEOUT => 30,
+                CURLOPT_TIMEOUT        => 120,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => 0,
+                CURLOPT_USERAGENT      => 'Mozilla/5.0 (compatible; BagetCatalogUpdater/1.0)',
+            ]);
+            $data     = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $curlErr  = curl_error($ch);
+            curl_close($ch);
+
+            $downloadInfo = "cURL: HTTP <b>{$httpCode}</b>";
+            if ($data === false || $data === '') {
+                $data = false;
+                $this->log("<b style='color:red'>cURL не смог скачать файл: " . htmlspecialchars($curlErr) . " (HTTP {$httpCode})</b>");
+            } else {
+                $this->log("✅ {$downloadInfo}");
+            }
+        }
+
+        // 2) Fallback на file_get_contents
+        if ($data === false) {
+            $this->log("&nbsp;&nbsp;Пробую file_get_contents как fallback...");
+            if (!ini_get('allow_url_fopen')) {
+                $this->log("<b style='color:red'>allow_url_fopen=Off — file_get_contents для URL не работает на этом сервере.</b>");
+            } else {
+                $context = stream_context_create([
+                    'http'  => ['method' => 'GET', 'timeout' => 60, 'user_agent' => 'BagetCatalogUpdater/1.0'],
+                    'https' => ['method' => 'GET', 'timeout' => 60, 'user_agent' => 'BagetCatalogUpdater/1.0'],
+                    'ssl'   => ['verify_peer' => false, 'verify_peer_name' => false],
+                ]);
+                $data = @file_get_contents($url, false, $context);
+                if ($data === false) {
+                    $err = error_get_last();
+                    $this->log("<b style='color:red'>file_get_contents fail: " . htmlspecialchars($err['message'] ?? 'unknown') . "</b>");
+                }
+            }
+        }
+
         $downloadTime = round(microtime(true) - $downloadStart, 2);
 
-        if ($data === false) {
-            $this->log("<b style='color:red'>ОШИБКА: не удалось скачать файл по URL.</b>");
+        if ($data === false || $data === '') {
+            $this->log("<b style='color:red'>❌ ОШИБКА: не удалось скачать файл по URL ни одним способом.</b>");
+            $this->log("Возможные причины: allow_url_fopen=Off, отсутствует cURL/OpenSSL, прокси/firewall блокирует исходящий https.");
             return;
         }
+
         $size = strlen($data);
         $this->log("Скачано: <b>" . number_format($size) . "</b> байт за <b>{$downloadTime}</b> сек.");
 
         if ($size < 1024) {
             $this->log("<b style='color:orange'>ВНИМАНИЕ: файл подозрительно мал (&lt; 1 КБ). Возможно URL отдал ошибку.</b>");
+            $this->log("Первые 500 байт ответа: <pre>" . htmlspecialchars(substr($data, 0, 500)) . "</pre>");
         }
 
-        file_put_contents($localPath, $data);
+        $written = @file_put_contents($localPath, $data);
+        if ($written === false) {
+            $this->log("<b style='color:red'>ОШИБКА записи в {$localPath}. Проверь права на папку updateFileXlsx/.</b>");
+            return;
+        }
         $this->log("Файл сохранён: <code>" . htmlspecialchars($localPath) . "</code>");
 
         $this->update($nameFile);
