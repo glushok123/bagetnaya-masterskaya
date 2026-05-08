@@ -9,10 +9,11 @@ ini_set('display_startup_errors', '1');
     Источник: общий XLS-фид Lion → парсинг → обновление price/storage в catalog_baget.
 */
 
-require_once("SimpleXLS.php");
+require_once("SimpleXLSX.php");
 require_once '../../base/connect.php';
 
-$url = "http://frame.ru/upload/medialibrary/2f3/LionArtService.xls"; // общий XLS-фид
+// Новый формат выгрузки Lion — XLSX (старый .xls больше не обновляется)
+$url = "https://frame.ru/upload/medialibrary/2f3/LionArtService.xlsx";
 
 class UpdateCatalog
 {
@@ -39,7 +40,7 @@ class UpdateCatalog
         $this->log("=== Старт обработки: <b>" . htmlspecialchars($typeDesc) . "</b> ===");
         $this->log("URL источника: <code>" . htmlspecialchars($url) . "</code>");
 
-        $nameFile = $typeDesc . '-' . time() . '-' . random_int(1, 9_999_999_999) . ".xls";
+        $nameFile = $typeDesc . '-' . time() . '-' . random_int(1, 9_999_999_999) . ".xlsx";
         $dir = __DIR__ . '/updateFileXlsx';
         if (!is_dir($dir)) {
             @mkdir($dir, 0777, true);
@@ -49,7 +50,9 @@ class UpdateCatalog
         $this->log("Скачивание файла...");
         $downloadStart = microtime(true);
         $context = stream_context_create([
-            'http' => ['method' => 'GET', 'timeout' => 60],
+            'http'  => ['method' => 'GET', 'timeout' => 60],
+            'https' => ['method' => 'GET', 'timeout' => 60],
+            'ssl'   => ['verify_peer' => false, 'verify_peer_name' => false],
         ]);
         $data = @file_get_contents($url, false, $context);
         $downloadTime = round(microtime(true) - $downloadStart, 2);
@@ -80,15 +83,15 @@ class UpdateCatalog
     public function update(string $file): void
     {
         $parseStart = microtime(true);
-        $xls = SimpleXLS::parseFile(__DIR__ . '/updateFileXlsx/' . $file);
+        $xls = SimpleXLSX::parseFile(__DIR__ . '/updateFileXlsx/' . $file);
         if ($xls === false) {
-            $this->log("<b style='color:red'>ОШИБКА парсинга XLS: " . htmlspecialchars(SimpleXLS::parseError()) . "</b>");
+            $this->log("<b style='color:red'>ОШИБКА парсинга XLSX: " . htmlspecialchars(SimpleXLSX::parseError()) . "</b>");
             return;
         }
         $parseTime = round(microtime(true) - $parseStart, 2);
 
-        $countList = is_array($xls->sheets) ? count($xls->sheets) : 0;
-        $this->log("Парсинг XLS: <b>{$parseTime}</b> сек. Листов: <b>{$countList}</b>");
+        $countList = $xls->sheetsCount();
+        $this->log("Парсинг XLSX: <b>{$parseTime}</b> сек. Листов: <b>{$countList}</b>");
 
         $count = 0;
         $countInDb = 0;
@@ -101,26 +104,65 @@ class UpdateCatalog
         for ($sheetIdx = 0; $sheetIdx < $countList; $sheetIdx++) {
             $rows = $xls->rows($sheetIdx);
             $sheetRows = is_array($rows) ? count($rows) : 0;
-            $this->log("Лист #{$sheetIdx}: строк <b>{$sheetRows}</b>");
+            $sheetName = method_exists($xls, 'sheetName') ? $xls->sheetName($sheetIdx) : '';
+            $this->log("Лист #{$sheetIdx} <i>" . htmlspecialchars((string)$sheetName) . "</i>: строк <b>{$sheetRows}</b>");
 
+            // === ДАМП первых 10 непустых строк ===
+            $this->log("&nbsp;&nbsp;<b>🔍 Дамп первых 10 строк (col0..col9):</b>");
+            $dumpHtml = "<table border='1' cellpadding='3' cellspacing='0' style='font-size:11px;background:#fff'>";
+            $dumpHtml .= "<tr style='background:#eee'><th>#</th>";
+            $maxCols = 10;
+            for ($c = 0; $c < $maxCols; $c++) {
+                $mark = ($c === 0) ? ' (артикул?)' : (($c === 2) ? ' (price?)' : (($c === 4) ? ' (count?)' : ''));
+                $dumpHtml .= "<th>col{$c}{$mark}</th>";
+            }
+            $dumpHtml .= "</tr>";
+            $dumped = 0;
+            foreach ($rows as $rowIdx => $row) {
+                if ($dumped >= 10) break;
+                if (!is_array($row)) continue;
+                $allEmpty = true;
+                foreach ($row as $v) { if ($v !== null && $v !== '') { $allEmpty = false; break; } }
+                if ($allEmpty) continue;
+                $dumpHtml .= "<tr><td>{$rowIdx}</td>";
+                for ($c = 0; $c < $maxCols; $c++) {
+                    $val = $row[$c] ?? '';
+                    $dumpHtml .= "<td>" . htmlspecialchars((string)$val) . "</td>";
+                }
+                $dumpHtml .= "</tr>";
+                $dumped++;
+            }
+            $dumpHtml .= "</table>";
+            $this->log($dumpHtml);
+
+            // Структура нового XLSX (заголовки в строке 4):
+            //   col0 = Артикул
+            //   col2 = Статус закупок (текст)
+            //   col4 = Цена (руб./ед.)         ← обычная цена
+            //   col5 = Ширина багета (мм)
+            //   col6 = ЛИОН-Москва              ← остаток на складе Москва (используем только его)
+            //   col7 = ЛИОН-Санкт-Петербург    ← НЕ используем
+            //   col8 = Цена ЧОП                 ← если есть, приоритетнее
+            //   col10 = Номенклатура (название)
             $kept = 0;
             foreach ($rows as $row) {
-                if (
-                    $row[0] == null ||
-                    $row[2] == null ||
-                    $row[4] == null ||
-                    $row[0] == 'Артикул'
-                ) {
+                $article   = isset($row[0]) ? trim((string)$row[0]) : '';
+                $priceCell = $row[4] ?? null;
+                $priceChop = $row[8] ?? null;
+                $stockMsk  = $row[6] ?? null;
+
+                // Пропускаем заголовки и служебные строки-разделители (где col4 не число)
+                if ($article === '' || $article === 'Артикул' || !is_numeric($priceCell)) {
                     $countSkippedRows++;
                     continue;
                 }
 
-                $article = trim((string)$row[0]);
                 $rawData[$article] = [
-                    'article'  => $article,
-                    'price'    => $row[2],
-                    'priceTop' => $row[7] ?? null,
-                    'count'    => $row[4],
+                    'article'   => $article,
+                    'price'     => $priceCell,
+                    'priceChop' => is_numeric($priceChop) ? $priceChop : null,
+                    'count'     => is_numeric($stockMsk) ? $stockMsk : 0,
+                    'status'    => trim((string)($row[2] ?? '')),
                 ];
                 $kept++;
             }
@@ -134,20 +176,34 @@ class UpdateCatalog
         $sumPriceAfter  = 0;
         $minPriceAfter  = PHP_INT_MAX;
         $maxPriceAfter  = 0;
+        $countDiscontinued = 0;
+        $countByChop  = 0; // обновлено по Цене ЧОП ×4
+        $countByBase  = 0; // обновлено по обычной Цене ×6
 
         foreach ($rawData as $item) {
             if (round((int)$item['count']) == 0) {
                 $countWitheStorageIsNull++;
             }
+            if (mb_stripos($item['status'] ?? '', 'снято') !== false) {
+                $countDiscontinued++;
+            }
             $count++;
 
-            $vendor      = $item['article'];
-            $priceRaw    = (int)round((float)str_replace(',', '', (string)$item['price']));
-            $priceTopRaw = (int)round((float)str_replace(',', '', (string)$item['priceTop']));
-            $countBaget  = (int)round((float)str_replace('>', '', (string)$item['count']));
+            $vendor     = $item['article'];
+            $priceBase  = (float)str_replace(',', '.', (string)$item['price']);
+            $priceChop  = $item['priceChop'] !== null
+                ? (float)str_replace(',', '.', (string)$item['priceChop'])
+                : 0.0;
+            $countBaget = (int)round((float)$item['count']);
 
-            // Если задан priceTop — он приоритетнее
-            $price = !empty($priceTopRaw) ? $priceTopRaw : $priceRaw;
+            $hasChop = ($priceChop > 0);
+            if ($hasChop) {
+                $price       = (int)round($priceChop);
+                $priceSource = 'ЧОП(col8)';
+            } else {
+                $price       = (int)round($priceBase);
+                $priceSource = 'Цена(col4)';
+            }
             $sumPriceBefore += $price;
 
             try {
@@ -167,20 +223,30 @@ class UpdateCatalog
             }
 
             $type = $row['type'] ?? 'unknown';
-            $multiplier = match ($type) {
-                'alum'         => 6,
-                'pasp', 'wood' => 3.5,
-                'plast'        => 5,
-                default        => 5,
-            };
-            $key = isset($this->typeBreakdown[$type]) ? $type : 'unknown';
+            $key  = isset($this->typeBreakdown[$type]) ? $type : 'unknown';
             $this->typeBreakdown[$key]++;
+
+            // Множитель: зависит от типа в БД и наличия Цены ЧОП
+            //   alum:  ЧОП ×4   | без ЧОП ×6
+            //   wood:  ЧОП ×3.5 | без ЧОП ×3.5
+            //   plast: ЧОП ×3.5 | без ЧОП ×5
+            //   pasp:  ЧОП ×3.5 | без ЧОП ×3.5 (как дерево)
+            //   default: как alum
+            $multiplier = match ($type) {
+                'wood'  => 3.5,
+                'pasp'  => 3.5,
+                'plast' => $hasChop ? 3.5 : 5,
+                'alum'  => $hasChop ? 4   : 6,
+                default => $hasChop ? 4   : 6,
+            };
 
             $finalPrice = (int)round($price * $multiplier);
             $sumPriceAfter += $finalPrice;
             if ($finalPrice < $minPriceAfter) $minPriceAfter = $finalPrice;
             if ($finalPrice > $maxPriceAfter) $maxPriceAfter = $finalPrice;
             $countInDb++;
+            if ($hasChop) $countByChop++;
+            else          $countByBase++;
 
             $date_update = date('Y-m-d H:i:s');
             $company = 'lion';
@@ -198,8 +264,12 @@ class UpdateCatalog
                 if ($stmt->rowCount() > 0) {
                     $countActuallyUpdated++;
                 }
-                $fixedNote = ((int)$row['fixed_price'] === 1) ? " <i>[fixed_price=1, цена не менялась]</i>" : '';
-                $this->textUpdateRows .= "<br>обновление -> <b>{$vendor}</b> [{$type}, ×{$multiplier}] -> Цена: <b>{$finalPrice}</b> -> Кол-во: <b>{$countBaget}</b>{$fixedNote}";
+                $fixedNote  = ((int)$row['fixed_price'] === 1) ? " <i>[fixed_price=1, цена не менялась]</i>" : '';
+                $statusNote = !empty($item['status']) ? " <i style='color:#888'>[{$item['status']}]</i>" : '';
+                $this->textUpdateRows .= "<br>обновление -> <b>{$vendor}</b> [{$type}, ×{$multiplier}]"
+                    . " -> источник: <b>{$priceSource}</b> исходная: <b>{$price}</b>"
+                    . " -> Цена: <b>{$finalPrice}</b>"
+                    . " -> Остаток (Мск): <b>{$countBaget}</b>{$statusNote}{$fixedNote}";
                 $this->countUpdateRows++;
             } catch (PDOException $e) {
                 $this->log("<b style='color:red'>SQL UPDATE ошибка для vendor={$vendor}: " . htmlspecialchars($e->getMessage()) . "</b>");
@@ -217,8 +287,10 @@ class UpdateCatalog
         $this->log("Совпадений с БД: <b>{$countInDb}</b>");
         $this->log("Реально изменили строки в БД (rowCount&gt;0): <b>{$countActuallyUpdated}</b>");
         $this->log("Не найдено в БД: <b>" . ($count - $countInDb) . "</b>");
-        $this->log("Не в наличии (count=0): <b>{$countWitheStorageIsNull}</b>");
-        $this->log("В наличии: <b>{$countWitheStorageIsNotNull}</b>");
+        $this->log("Не в наличии в Мск (count=0): <b>{$countWitheStorageIsNull}</b>");
+        $this->log("В наличии в Мск: <b>{$countWitheStorageIsNotNull}</b>");
+        $this->log("Со статусом «Снято с поставок» (среди обработанных): <b>{$countDiscontinued}</b>");
+        $this->log("Источник цены: <b>ЧОП</b>: {$countByChop} | <b>обычная</b>: {$countByBase}");
         $this->log("Средняя цена до множителя: <b>{$avgBefore}</b>");
         $this->log("Средняя цена после: <b>{$avgAfter}</b> (мин: <b>{$minPriceAfter}</b>, макс: <b>{$maxPriceAfter}</b>)");
         $this->log("Распределение совпадений по типам:");

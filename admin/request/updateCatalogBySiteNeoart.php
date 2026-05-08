@@ -104,13 +104,18 @@ foreach ($catalogs as $cat) {
             continue;
         }
 
-        // Выбор цены
+        // Выбор цены: фиксируем поле, откуда взяли, и саму исходную цену
         if ($cat['priceField'] === 'base') {
-            $rawPrice = (float)$item->price->base;
+            $rawPrice    = (float)$item->price->base;
+            $priceSource = 'base (forced)';
         } else {
-            $rawPrice = isset($item->price->chop)
-                ? (float)$item->price->chop
-                : (float)$item->price->base;
+            if (isset($item->price->chop)) {
+                $rawPrice    = (float)$item->price->chop;
+                $priceSource = 'chop';
+            } else {
+                $rawPrice    = (float)$item->price->base;
+                $priceSource = 'base (no chop)';
+            }
         }
 
         $price = (int)round($rawPrice * $cat['multiplier']);
@@ -142,7 +147,10 @@ foreach ($catalogs as $cat) {
                 if ($stmt->rowCount() > 0) {
                     $stat['rowCountUpdated']++;
                 }
-                echo "обновление {$cat['name']} -> <b>{$s}</b> (цена {$price}, кол-во {$count})<br>";
+                echo "обновление {$cat['name']} -> <b>{$s}</b>"
+                    . " (исходная: <b>{$rawPrice}</b> <i>[{$priceSource}]</i>"
+                    . " ×{$cat['multiplier']} = <b>{$price}</b>,"
+                    . " кол-во {$count})<br>";
             } catch (PDOException $e) {
                 echo "<b style='color:red'>SQL UPDATE ошибка для vendor={$s}: " . htmlspecialchars($e->getMessage()) . "</b><br>";
                 $stat['sqlErrors']++;
@@ -190,7 +198,9 @@ foreach ($catalogs as $cat) {
                     if ($stmt->rowCount() > 0) {
                         $stat['rowCountUpdated']++;
                     }
-                    echo "🔄 переименован <b>{$artShort}</b> -> <b>{$artOriginal}</b> + обновление (цена {$price}, кол-во {$count})<br>";
+                    echo "🔄 переименован <b>{$artShort}</b> -> <b>{$artOriginal}</b>"
+                        . " + обновление (исходная: <b>{$rawPrice}</b> <i>[{$priceSource}]</i>"
+                        . " ×{$cat['multiplier']} = <b>{$price}</b>, кол-во {$count})<br>";
                     continue;
                 }
             } catch (PDOException $e) {
