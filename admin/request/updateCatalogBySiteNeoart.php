@@ -51,6 +51,143 @@ $catalogs = [
 
 $qpSuffixes = ['.QP', '.QA', '.QD', '.IQ', '.IK'];
 
+// Захардкоженные IP-резервы на случай блокировки DNS у хостера
+// (если IP сменится — обновить вручную: nslookup www.neoart.ru)
+$fallbackIPs = [
+    'www.neoart.ru' => ['92.42.208.82'],
+];
+
+// Кеш-директория для последних успешных XML
+$cacheDir = __DIR__ . '/updateFileXlsx/_neoart_cache';
+if (!is_dir($cacheDir)) {
+    @mkdir($cacheDir, 0777, true);
+}
+
+/**
+ * Скачивает URL через cURL с ретраями. Возвращает [$body, $httpCode, $errStr].
+ */
+function neoart_curl_download(string $url, array $resolveMap = [], int $attempts = 3, int $sleepSec = 3): array
+{
+    $body = false; $httpCode = 0; $err = '';
+    for ($i = 1; $i <= $attempts; $i++) {
+        $ch = curl_init($url);
+        $opts = [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_CONNECTTIMEOUT => 60,
+            CURLOPT_TIMEOUT        => 180,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_USERAGENT      => 'Mozilla/5.0 (compatible; BagetCatalogUpdater/1.0)',
+        ];
+        if (!empty($resolveMap)) {
+            $opts[CURLOPT_RESOLVE] = $resolveMap;
+        }
+        curl_setopt_array($ch, $opts);
+        $body     = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $err      = curl_error($ch);
+        curl_close($ch);
+        if ($body !== false && $body !== '' && $httpCode >= 200 && $httpCode < 400) {
+            if ($i > 1) echo "&nbsp;&nbsp;&nbsp;&nbsp;удалось с попытки <b>{$i}</b><br>";
+            return [$body, $httpCode, $err];
+        }
+        if ($i < $attempts) {
+            echo "&nbsp;&nbsp;&nbsp;&nbsp;попытка {$i}/{$attempts} не удалась (HTTP {$httpCode}, " . htmlspecialchars($err) . "), пауза {$sleepSec}с...<br>";
+            @ob_flush(); @flush();
+            sleep($sleepSec);
+        }
+    }
+    return [$body, $httpCode, $err];
+}
+
+/**
+ * Загрузить и распарсить XML по URL. Возвращает [SimpleXMLElement|false, $sourceLabel].
+ * Стратегия: cURL → cURL с CURLOPT_RESOLVE по IP → file_get_contents → кеш.
+ */
+function neoart_load_xml(string $url, array $fallbackIPs, string $cacheDir, string $cacheKey): array
+{
+    $parsed = parse_url($url);
+    $host = $parsed['host'] ?? '';
+    $port = $parsed['port'] ?? (($parsed['scheme'] ?? 'https') === 'https' ? 443 : 80);
+
+    $resolved = $host !== '' ? @gethostbyname($host) : '';
+    $dnsOk = ($resolved !== $host && $resolved !== '' && filter_var($resolved, FILTER_VALIDATE_IP));
+    echo "&nbsp;&nbsp;DNS {$host} -> " . ($dnsOk ? "<b>{$resolved}</b>" : "<b style='color:red'>не резолвится</b>") . "<br>";
+
+    $body = false; $source = '';
+
+    // 1) cURL через системный DNS
+    if (function_exists('curl_init')) {
+        [$b, $code, $err] = neoart_curl_download($url);
+        if ($b !== false && $b !== '') {
+            $body = $b; $source = "cURL (sys DNS, HTTP {$code})";
+            echo "✅ {$source}<br>";
+        } else {
+            echo "<b style='color:red'>cURL (sys DNS): " . htmlspecialchars($err) . " (HTTP {$code})</b><br>";
+        }
+    }
+
+    // 2) cURL c CURLOPT_RESOLVE
+    if ($body === false && function_exists('curl_init') && !empty($fallbackIPs[$host])) {
+        foreach ($fallbackIPs[$host] as $ip) {
+            echo "&nbsp;&nbsp;Fallback cURL через IP <b>{$ip}</b>...<br>";
+            [$b, $code, $err] = neoart_curl_download($url, ["{$host}:{$port}:{$ip}"]);
+            if ($b !== false && $b !== '') {
+                $body = $b; $source = "cURL via IP {$ip} (HTTP {$code})";
+                echo "✅ {$source}<br>";
+                break;
+            }
+            echo "<b style='color:red'>не вышло через {$ip}: " . htmlspecialchars($err) . " (HTTP {$code})</b><br>";
+        }
+    }
+
+    // 3) file_get_contents
+    if ($body === false && ini_get('allow_url_fopen')) {
+        echo "&nbsp;&nbsp;Пробую file_get_contents...<br>";
+        $ctx = stream_context_create([
+            'http' => ['timeout' => 60, 'user_agent' => 'BagetCatalogUpdater/1.0'],
+            'https'=> ['timeout' => 60, 'user_agent' => 'BagetCatalogUpdater/1.0'],
+            'ssl'  => ['verify_peer' => false, 'verify_peer_name' => false],
+        ]);
+        $b = @file_get_contents($url, false, $ctx);
+        if ($b !== false && $b !== '') {
+            $body = $b; $source = 'file_get_contents';
+            echo "✅ file_get_contents OK<br>";
+        }
+    }
+
+    $cacheFile = $cacheDir . '/' . $cacheKey . '.xml';
+
+    if ($body !== false && $body !== '') {
+        $xml = @simplexml_load_string($body);
+        if ($xml !== false) {
+            // успех — сохраняем в кеш
+            @file_put_contents($cacheFile, $body);
+            echo "&nbsp;&nbsp;кеш обновлён: <code>" . htmlspecialchars($cacheFile) . "</code><br>";
+            return [$xml, $source];
+        }
+        echo "<b style='color:red'>скачано, но XML не распарсился (первые 300 байт):</b><pre>" . htmlspecialchars(substr($body, 0, 300)) . "</pre>";
+    }
+
+    // 4) кеш
+    if (is_file($cacheFile)) {
+        $age = time() - filemtime($cacheFile);
+        $ageStr = round($age / 3600, 1) . 'ч';
+        echo "<b style='color:orange'>⚠ Использую КЕШ ({$cacheKey}.xml, возраст: {$ageStr})</b><br>";
+        $b = file_get_contents($cacheFile);
+        $xml = @simplexml_load_string($b);
+        if ($xml !== false) {
+            return [$xml, "cache (age {$ageStr})"];
+        }
+        echo "<b style='color:red'>Кеш есть, но битый.</b><br>";
+    } else {
+        echo "<b style='color:red'>Кеша {$cacheKey} нет.</b><br>";
+    }
+
+    return [false, ''];
+}
+
 // === Стартовый блок ===
 echo "<style>body{font-family:monospace;font-size:13px;line-height:1.5}pre{background:#f4f4f4;padding:6px;border:1px solid #ddd}code{background:#f4f4f4;padding:1px 4px}table{border-collapse:collapse;margin-top:8px}th,td{padding:4px 10px}</style>";
 echo "<h2>🚀 Старт обновления каталогов Neoart</h2>";
@@ -72,15 +209,15 @@ foreach ($catalogs as $cat) {
 
     echo "Загрузка XML...<br>";
     $loadStart = microtime(true);
-    $xml = @simplexml_load_file($url);
+    [$xml, $xmlSource] = neoart_load_xml($url, $fallbackIPs, $cacheDir, "catalog_{$cat['id']}");
     $loadTime = round(microtime(true) - $loadStart, 2);
 
     if ($xml === false) {
-        echo "<b style='color:red'>❌ Ошибка загрузки/парсинга XML</b><br>";
+        echo "<b style='color:red'>❌ Ошибка загрузки XML и кеш недоступен</b><br>";
         $globalStats[$cat['name']] = ['error' => true];
         continue;
     }
-    echo "✅ XML загружен за <b>{$loadTime}</b> сек.<br>";
+    echo "✅ XML получен за <b>{$loadTime}</b> сек. (источник: <b>" . htmlspecialchars($xmlSource) . "</b>)<br>";
 
     $items      = $xml->category->item ?? [];
     $totalItems = is_countable($items) ? count($items) : 0;

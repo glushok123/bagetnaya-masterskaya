@@ -32,29 +32,45 @@ class UpdateCatalog
     }
 
     /**
-     * Скачивает URL через cURL. Возвращает [$body, $httpCode, $errStr].
+     * Скачивает URL через cURL с ретраями. Возвращает [$body, $httpCode, $errStr].
      * $resolveMap — массив строк для CURLOPT_RESOLVE, например ["frame.ru:443:92.53.96.188"].
      */
-    private function curlDownload(string $url, array $resolveMap = []): array
+    private function curlDownload(string $url, array $resolveMap = [], int $attempts = 3, int $sleepSec = 3): array
     {
-        $ch = curl_init($url);
-        $opts = [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_CONNECTTIMEOUT => 30,
-            CURLOPT_TIMEOUT        => 120,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => 0,
-            CURLOPT_USERAGENT      => 'Mozilla/5.0 (compatible; BagetCatalogUpdater/1.0)',
-        ];
-        if (!empty($resolveMap)) {
-            $opts[CURLOPT_RESOLVE] = $resolveMap;
+        $body     = false;
+        $httpCode = 0;
+        $err      = '';
+        for ($i = 1; $i <= $attempts; $i++) {
+            $ch = curl_init($url);
+            $opts = [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_CONNECTTIMEOUT => 60,
+                CURLOPT_TIMEOUT        => 180,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => 0,
+                CURLOPT_USERAGENT      => 'Mozilla/5.0 (compatible; BagetCatalogUpdater/1.0)',
+            ];
+            if (!empty($resolveMap)) {
+                $opts[CURLOPT_RESOLVE] = $resolveMap;
+            }
+            curl_setopt_array($ch, $opts);
+            $body     = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $err      = curl_error($ch);
+            curl_close($ch);
+
+            if ($body !== false && $body !== '' && $httpCode >= 200 && $httpCode < 400) {
+                if ($i > 1) {
+                    $this->log("&nbsp;&nbsp;&nbsp;&nbsp;удалось с попытки <b>{$i}</b>");
+                }
+                return [$body, $httpCode, $err];
+            }
+            if ($i < $attempts) {
+                $this->log("&nbsp;&nbsp;&nbsp;&nbsp;попытка {$i}/{$attempts} не удалась (HTTP {$httpCode}, " . htmlspecialchars($err) . "), пауза {$sleepSec}с...");
+                sleep($sleepSec);
+            }
         }
-        curl_setopt_array($ch, $opts);
-        $body     = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $err      = curl_error($ch);
-        curl_close($ch);
         return [$body, $httpCode, $err];
     }
 
@@ -143,8 +159,20 @@ class UpdateCatalog
 
         $downloadTime = round(microtime(true) - $downloadStart, 2);
 
+        // Если ничего не вышло — пробуем кеш
+        $cacheFile = $dir . '/lion-last.xlsx';
+        if (($data === false || $data === '') && is_file($cacheFile)) {
+            $age = round((time() - filemtime($cacheFile)) / 3600, 1);
+            $this->log("<b style='color:orange'>⚠ Использую КЕШ lion-last.xlsx (возраст: {$age}ч)</b>");
+            // Парсим прямо кешированный файл, не пересохраняя
+            $this->update('lion-last.xlsx');
+            $totalTime = round(microtime(true) - $startTime, 2);
+            $this->log("=== Завершено за <b>{$totalTime}</b> сек. (из кеша) ===");
+            return;
+        }
+
         if ($data === false || $data === '') {
-            $this->log("<b style='color:red'>❌ ОШИБКА: не удалось скачать файл по URL ни одним способом.</b>");
+            $this->log("<b style='color:red'>❌ ОШИБКА: не удалось скачать файл и кеша нет.</b>");
             $this->log("Если DNS-резолв {$host} не работает — обратись к хостеру или обнови захардкоженный IP в \$fallbackIPs.");
             return;
         }
@@ -163,6 +191,9 @@ class UpdateCatalog
             return;
         }
         $this->log("Файл сохранён: <code>" . htmlspecialchars($localPath) . "</code>");
+
+        // Обновляем кеш последнего удачного файла (используется при следующем провале скачивания)
+        @file_put_contents($dir . '/lion-last.xlsx', $data);
 
         $this->update($nameFile);
 
