@@ -1,247 +1,264 @@
 <?
-ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
+ini_set('max_execution_time', '300'); // 300 сек = 5 мин
+ini_set('error_reporting', (string)E_ALL);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+
 /*
-    Здесь только обновление с lion
+    Обновление каталога по выгрузке Lion (XLS).
+    Источник: общий XLS-фид Lion → парсинг → обновление price/storage в catalog_baget.
 */
 
-
 require_once("SimpleXLS.php");
-
 require_once '../../base/connect.php';
 
-$url = "http://frame.ru/upload/medialibrary/2f3/LionArtService.xls"; //общий
+$url = "http://frame.ru/upload/medialibrary/2f3/LionArtService.xls"; // общий XLS-фид
 
 class UpdateCatalog
 {
-    public $ch; //инициализация
-    public $host = 'localhost'; // адрес сервера 
-    public $database = 'a0458868_bagetnaya'; // имя базы данных
-    //public $user = 'root'; // имя пользователя
-    public $user = 'a0458868_bagetnaya'; // имя пользователя
-    //public $password = ''; // пароль
-    public $password = '1226591Qwer'; // пароль
-    public $dbh; //название подключения к БД
-    public $textUpdateRows = '';
-    public $countUpdateRows = 0;
+    public PDO $dbh;
+    public string $textUpdateRows = '';
+    public int $countUpdateRows = 0;
+    public array $notFoundVendors = [];
+    public array $typeBreakdown = [
+        'alum' => 0, 'wood' => 0, 'pasp' => 0, 'plast' => 0, 'unknown' => 0,
+    ];
 
-    /**
-     * Подключение к БД
-     */
-    public function db_connect()
+    public function __construct(PDO $dbh)
     {
-        try {
-            $this->dbh = new PDO("mysql:host=$this->host;dbname=a0458868_bagetnaya", $this->user, $this->password);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        $this->dbh = $dbh;
+        $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
-     * Получение каталога
+     * Скачивание и обработка XLS по URL.
      */
-    public function getCatalog($url, $typeDesc)
+    public function getCatalog(string $url, string $typeDesc): void
     {
+        $startTime = microtime(true);
+        $this->log("=== Старт обработки: <b>" . htmlspecialchars($typeDesc) . "</b> ===");
+        $this->log("URL источника: <code>" . htmlspecialchars($url) . "</code>");
+
         $nameFile = $typeDesc . '-' . time() . '-' . random_int(1, 9_999_999_999) . ".xls";
+        $dir = __DIR__ . '/updateFileXlsx';
+        if (!is_dir($dir)) {
+            @mkdir($dir, 0777, true);
+        }
+        $localPath = $dir . '/' . $nameFile;
 
-        $context = stream_context_create(array(
-            'https' => array(
-                'method' => 'POST',
-                'header' => 'Content-Type: application/json',
-            )
-        ));
+        $this->log("Скачивание файла...");
+        $downloadStart = microtime(true);
+        $context = stream_context_create([
+            'http' => ['method' => 'GET', 'timeout' => 60],
+        ]);
+        $data = @file_get_contents($url, false, $context);
+        $downloadTime = round(microtime(true) - $downloadStart, 2);
 
-        $data = file_get_contents($url, false, $context);
-        file_put_contents('updateFileXlsx/' . $nameFile, $data);
+        if ($data === false) {
+            $this->log("<b style='color:red'>ОШИБКА: не удалось скачать файл по URL.</b>");
+            return;
+        }
+        $size = strlen($data);
+        $this->log("Скачано: <b>" . number_format($size) . "</b> байт за <b>{$downloadTime}</b> сек.");
 
-        echo('<b>Загружен ' . $typeDesc . '</b><br>');
+        if ($size < 1024) {
+            $this->log("<b style='color:orange'>ВНИМАНИЕ: файл подозрительно мал (&lt; 1 КБ). Возможно URL отдал ошибку.</b>");
+        }
+
+        file_put_contents($localPath, $data);
+        $this->log("Файл сохранён: <code>" . htmlspecialchars($localPath) . "</code>");
+
         $this->update($nameFile);
+
+        $totalTime = round(microtime(true) - $startTime, 2);
+        $this->log("=== Завершено за <b>{$totalTime}</b> сек. ===");
     }
 
     /**
-     * обновление каталога
+     * Парсинг XLS и обновление БД.
      */
-    public function update($file)
+    public function update(string $file): void
     {
-        $xls = SimpleXLS::parseFile('updateFileXlsx/' . $file);
+        $parseStart = microtime(true);
+        $xls = SimpleXLS::parseFile(__DIR__ . '/updateFileXlsx/' . $file);
+        if ($xls === false) {
+            $this->log("<b style='color:red'>ОШИБКА парсинга XLS: " . htmlspecialchars(SimpleXLS::parseError()) . "</b>");
+            return;
+        }
+        $parseTime = round(microtime(true) - $parseStart, 2);
+
+        $countList = is_array($xls->sheets) ? count($xls->sheets) : 0;
+        $this->log("Парсинг XLS: <b>{$parseTime}</b> сек. Листов: <b>{$countList}</b>");
 
         $count = 0;
         $countInDb = 0;
+        $countActuallyUpdated = 0;
         $countWitheStorageIsNull = 0;
-        $tables = [];
-        $data = [];
-
-        $countList = 0;
-        $countListTest = 0;
-
-
-        foreach ($xls->sheets as $worksheet) {
-            $tables[] = $worksheet;
-            $countList = $countList + 1;
-        }
+        $countSkippedRows = 0;
+        $rawData = [];
 
         // Цикл по листам Excel-файла
-        while ($countListTest != $countList) {
-            if ($countListTest == 0) {
-                $dataArray = $xls->rows();
-            } else {
-                $dataArray = $xls->rows($countListTest);
-            }
-            foreach ($dataArray as $row) {
+        for ($sheetIdx = 0; $sheetIdx < $countList; $sheetIdx++) {
+            $rows = $xls->rows($sheetIdx);
+            $sheetRows = is_array($rows) ? count($rows) : 0;
+            $this->log("Лист #{$sheetIdx}: строк <b>{$sheetRows}</b>");
+
+            $kept = 0;
+            foreach ($rows as $row) {
                 if (
                     $row[0] == null ||
                     $row[2] == null ||
                     $row[4] == null ||
                     $row[0] == 'Артикул'
                 ) {
+                    $countSkippedRows++;
                     continue;
                 }
 
-                $data[$row[0]] = [
-                    'article' => $row[0],
-                    'price' => $row[2],
-                    'priceTop' => $row[7],
-                    'count' => $row[4],
+                $article = trim((string)$row[0]);
+                $rawData[$article] = [
+                    'article'  => $article,
+                    'price'    => $row[2],
+                    'priceTop' => $row[7] ?? null,
+                    'count'    => $row[4],
                 ];
+                $kept++;
             }
-            $countListTest = $countListTest + 1;
+            $this->log("&nbsp;&nbsp;-> принято к обработке: <b>{$kept}</b>");
         }
 
-        foreach ($data as $item) {
+        $totalRecords = count($rawData);
+        $this->log("Всего уникальных записей после фильтра: <b>{$totalRecords}</b> (пропущено пустых/заголовков: <b>{$countSkippedRows}</b>)");
+
+        $sumPriceBefore = 0;
+        $sumPriceAfter  = 0;
+        $minPriceAfter  = PHP_INT_MAX;
+        $maxPriceAfter  = 0;
+
+        foreach ($rawData as $item) {
             if (round((int)$item['count']) == 0) {
-                $countWitheStorageIsNull = $countWitheStorageIsNull + 1;
+                $countWitheStorageIsNull++;
+            }
+            $count++;
+
+            $vendor      = $item['article'];
+            $priceRaw    = (int)round((float)str_replace(',', '', (string)$item['price']));
+            $priceTopRaw = (int)round((float)str_replace(',', '', (string)$item['priceTop']));
+            $countBaget  = (int)round((float)str_replace('>', '', (string)$item['count']));
+
+            // Если задан priceTop — он приоритетнее
+            $price = !empty($priceTopRaw) ? $priceTopRaw : $priceRaw;
+            $sumPriceBefore += $price;
+
+            try {
+                $stm = $this->dbh->prepare("SELECT type, fixed_price FROM catalog_baget WHERE vendor = ?");
+                $stm->execute([$vendor]);
+                $row = $stm->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                $this->log("<b style='color:red'>SQL SELECT ошибка для vendor={$vendor}: " . htmlspecialchars($e->getMessage()) . "</b>");
+                continue;
             }
 
-            $count = $count + 1;
-            $vendor = $item['article'];
-            $price = round(str_replace(',', '', (string)$item['price']));
-            $priceTop = round(str_replace(',', '', (string)$item['priceTop']));
-            $countBaget = round(str_replace('>', '', (string)$item['count']));
+            if (!$row) {
+                if (count($this->notFoundVendors) < 50) {
+                    $this->notFoundVendors[] = $vendor;
+                }
+                continue;
+            }
 
-            $multiplier = 5;
-            if(!empty($priceTop)) $price = $priceTop;
+            $type = $row['type'] ?? 'unknown';
+            $multiplier = match ($type) {
+                'alum'         => 6,
+                'pasp', 'wood' => 3.5,
+                'plast'        => 5,
+                default        => 5,
+            };
+            $key = isset($this->typeBreakdown[$type]) ? $type : 'unknown';
+            $this->typeBreakdown[$key]++;
 
-            $stm = $this->dbh->prepare("SELECT * FROM catalog_baget where vendor=?");
-            $stm->bindParam(1, $vendor);
-            $stm->execute();
-            $data = $stm->fetchAll();
+            $finalPrice = (int)round($price * $multiplier);
+            $sumPriceAfter += $finalPrice;
+            if ($finalPrice < $minPriceAfter) $minPriceAfter = $finalPrice;
+            if ($finalPrice > $maxPriceAfter) $maxPriceAfter = $finalPrice;
+            $countInDb++;
+
             $date_update = date('Y-m-d H:i:s');
             $company = 'lion';
 
-            if (count($data) > 0) {
-                if ($data[0]['type'] == 'alum') {
-                    $multiplier = 5;
+            try {
+                $stmt = $this->dbh->prepare(
+                    "UPDATE catalog_baget
+                        SET price = IF(fixed_price = 1, price, ?),
+                            storage = ?,
+                            date_update = ?,
+                            company = ?
+                      WHERE vendor = ?"
+                );
+                $stmt->execute([$finalPrice, $countBaget, $date_update, $company, $vendor]);
+                if ($stmt->rowCount() > 0) {
+                    $countActuallyUpdated++;
                 }
-                if ($data[0]['type'] == 'pasp' || $data[0]['type'] == 'wood') {
-                    $multiplier = 3.5;
-                }
-
-                if ($data[0]['type'] == 'plast') {
-                    $multiplier = 5;
-                }
-
-                $price = round($price * $multiplier);
-
-                $countInDb = $countInDb + 1;
-                $stmt = $this->dbh->prepare("UPDATE catalog_baget SET price = IF(fixed_price = 1, price, ?), storage = ?, date_update = ?, company = ? WHERE vendor = ?");
-                $stmt->bindParam(1, $price);
-                $stmt->bindParam(2, $countBaget);
-                $stmt->bindParam(3, $date_update);
-                $stmt->bindParam(4, $company);
-                $stmt->bindParam(5, $vendor);
-                $stmt->execute();
-                $this->textUpdateRows = $this->textUpdateRows . "<br> обновление -> <b>" . $vendor . "</b> -> Цена: <b>" . $price . "</b> -> Количество: <b>" . $countBaget . '</b>';
-                $this->countUpdateRows = $this->countUpdateRows + 1;
+                $fixedNote = ((int)$row['fixed_price'] === 1) ? " <i>[fixed_price=1, цена не менялась]</i>" : '';
+                $this->textUpdateRows .= "<br>обновление -> <b>{$vendor}</b> [{$type}, ×{$multiplier}] -> Цена: <b>{$finalPrice}</b> -> Кол-во: <b>{$countBaget}</b>{$fixedNote}";
+                $this->countUpdateRows++;
+            } catch (PDOException $e) {
+                $this->log("<b style='color:red'>SQL UPDATE ошибка для vendor={$vendor}: " . htmlspecialchars($e->getMessage()) . "</b>");
             }
         }
 
         $countWitheStorageIsNotNull = $count - $countWitheStorageIsNull;
-        echo('<hr>');
-        echo('Колличество элементов в файле: <b>' . $count . '</b><br>');
-        echo('Колличество совпадений с Базой Данных: <b>' . $countInDb . '</b><br>');
-        echo('Колличество в файле не в наличии: <b>' . $countWitheStorageIsNull . '</b><br>');
-        echo('Колличество в файле в наличии: <b>' . $countWitheStorageIsNotNull . '</b><br><hr>');
+        $avgBefore = $count > 0 ? round($sumPriceBefore / $count) : 0;
+        $avgAfter  = $countInDb > 0 ? round($sumPriceAfter / $countInDb) : 0;
+        if ($countInDb === 0) $minPriceAfter = 0;
+
+        $this->log('<hr>');
+        $this->log("📊 <b>Статистика обработки</b>");
+        $this->log("Записей в файле: <b>{$count}</b>");
+        $this->log("Совпадений с БД: <b>{$countInDb}</b>");
+        $this->log("Реально изменили строки в БД (rowCount&gt;0): <b>{$countActuallyUpdated}</b>");
+        $this->log("Не найдено в БД: <b>" . ($count - $countInDb) . "</b>");
+        $this->log("Не в наличии (count=0): <b>{$countWitheStorageIsNull}</b>");
+        $this->log("В наличии: <b>{$countWitheStorageIsNotNull}</b>");
+        $this->log("Средняя цена до множителя: <b>{$avgBefore}</b>");
+        $this->log("Средняя цена после: <b>{$avgAfter}</b> (мин: <b>{$minPriceAfter}</b>, макс: <b>{$maxPriceAfter}</b>)");
+        $this->log("Распределение совпадений по типам:");
+        $this->log("<pre>" . htmlspecialchars(print_r($this->typeBreakdown, true)) . "</pre>");
+
+        if (!empty($this->notFoundVendors)) {
+            $shown = count($this->notFoundVendors);
+            $this->log("Примеры артикулов из файла, которых НЕТ в БД (показаны первые <b>{$shown}</b>):");
+            $this->log("<pre>" . htmlspecialchars(implode(', ', $this->notFoundVendors)) . "</pre>");
+        }
+        $this->log('<hr>');
     }
 
-    public function printTextUpdateRows()
+    public function printTextUpdateRows(): string
     {
         return $this->textUpdateRows;
     }
 
-    public function printCountUpdateRows()
+    public function printCountUpdateRows(): int
     {
         return $this->countUpdateRows;
     }
 
-    /**
-     * Красивый вывод массива
-     *
-     * @param string $var
-     * @param null $_livel
-     * @return string
-     */
-    public function outArray(mixed $array, $var = 'array', $_livel = null): string
+    private function log(string $msg): void
     {
-        $out = $margin = '';
-        $nr = "<br>";
-        $tab = "\t";
-
-        if (is_null($_livel)) {
-            $out .= '$' . $var . ' = ';
-            if (!empty($array)) {
-                $out .= $this->outArray($array, $var, 0);
-            }
-            $out .= ';';
-        } else {
-            for ($n = 1; $n <= $_livel; $n++) {
-                $margin .= $tab;
-            }
-            $_livel++;
-
-            if (is_array($array)) {
-                $i = 1;
-                $count = count($array);
-                $out .= 'array(' . $nr;
-                foreach ($array as $key => $row) {
-                    $out .= $margin . $tab;
-                    if (is_numeric($key)) {
-                        $out .= $key . ' => ';
-                    } else {
-                        $out .= "'" . $key . "' => ";
-                    }
-
-                    if (is_array($row)) {
-                        $out .= $this->outArray($row, $var, $_livel);
-                    } elseif (is_null($row)) {
-                        $out .= 'null';
-                    } elseif (is_numeric($row)) {
-                        $out .= $row;
-                    } else {
-                        $out .= "'" . addslashes((string)$row) . "'";
-                    }
-
-                    if ($count > $i) {
-                        $out .= ',';
-                    }
-
-                    $out .= $nr;
-                    $i++;
-                }
-
-                $out .= $margin . ')';
-            } else {
-                $out .= "'" . addslashes((string)$array) . "'";
-            }
-        }
-
-        return $out;
+        echo $msg . "<br>\n";
+        @ob_flush();
+        @flush();
     }
 }
 
-$instance = new UpdateCatalog();
+echo "<style>body{font-family:monospace;font-size:13px;line-height:1.5}pre{background:#f4f4f4;padding:6px;border:1px solid #ddd}code{background:#f4f4f4;padding:1px 4px}</style>";
 
-$instance->db_connect();
+if (!isset($dbh) || !($dbh instanceof PDO)) {
+    echo "<b style='color:red'>ОШИБКА: подключение к БД не установлено (\$dbh).</b>";
+    exit;
+}
+
+$instance = new UpdateCatalog($dbh);
 $instance->getCatalog($url, 'общий каталог Lion');
 
-echo('В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> багета');
-echo('<hr>');
-echo($instance->printTextUpdateRows());
+echo 'В БД обновлено <b>' . $instance->printCountUpdateRows() . '</b> позиций<hr>';
+echo $instance->printTextUpdateRows();
