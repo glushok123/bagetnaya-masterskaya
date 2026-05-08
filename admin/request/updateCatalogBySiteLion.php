@@ -32,6 +32,33 @@ class UpdateCatalog
     }
 
     /**
+     * Скачивает URL через cURL. Возвращает [$body, $httpCode, $errStr].
+     * $resolveMap — массив строк для CURLOPT_RESOLVE, например ["frame.ru:443:92.53.96.188"].
+     */
+    private function curlDownload(string $url, array $resolveMap = []): array
+    {
+        $ch = curl_init($url);
+        $opts = [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_CONNECTTIMEOUT => 30,
+            CURLOPT_TIMEOUT        => 120,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_USERAGENT      => 'Mozilla/5.0 (compatible; BagetCatalogUpdater/1.0)',
+        ];
+        if (!empty($resolveMap)) {
+            $opts[CURLOPT_RESOLVE] = $resolveMap;
+        }
+        curl_setopt_array($ch, $opts);
+        $body     = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $err      = curl_error($ch);
+        curl_close($ch);
+        return [$body, $httpCode, $err];
+    }
+
+    /**
      * Скачивание и обработка XLS по URL.
      */
     public function getCatalog(string $url, string $typeDesc): void
@@ -52,41 +79,54 @@ class UpdateCatalog
             . "cURL=<b>" . (function_exists('curl_init') ? 'есть' : 'НЕТ') . "</b>, "
             . "OpenSSL=<b>" . (extension_loaded('openssl') ? 'есть' : 'НЕТ') . "</b>");
 
+        // Диагностика DNS — отдельно, потому что на некоторых хостингах не резолвится frame.ru
+        $parsed   = parse_url($url);
+        $host     = $parsed['host'] ?? '';
+        $port     = $parsed['port'] ?? (($parsed['scheme'] ?? 'https') === 'https' ? 443 : 80);
+        $resolved = $host !== '' ? @gethostbyname($host) : '';
+        $dnsOk    = ($resolved !== $host && $resolved !== '' && filter_var($resolved, FILTER_VALIDATE_IP));
+        $this->log("&nbsp;&nbsp;DNS {$host} -> " . ($dnsOk ? "<b>{$resolved}</b>" : "<b style='color:red'>не резолвится</b>"));
+
+        // Захардкоженные IP-резервы на случай блокировки DNS у хостера
+        // (если IP сменился — обновить вручную; узнать актуальный: nslookup frame.ru)
+        $fallbackIPs = [
+            'frame.ru' => ['92.53.96.188'],
+        ];
+
         $downloadStart = microtime(true);
         $data          = false;
-        $downloadInfo  = '';
 
-        // 1) Пробуем cURL (на хостингах работает чаще всего)
+        // 1) Обычный cURL через системный DNS
         if (function_exists('curl_init')) {
-            $ch = curl_init($url);
-            curl_setopt_array($ch, [
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_CONNECTTIMEOUT => 30,
-                CURLOPT_TIMEOUT        => 120,
-                CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => 0,
-                CURLOPT_USERAGENT      => 'Mozilla/5.0 (compatible; BagetCatalogUpdater/1.0)',
-            ]);
-            $data     = curl_exec($ch);
-            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            $curlErr  = curl_error($ch);
-            curl_close($ch);
-
-            $downloadInfo = "cURL: HTTP <b>{$httpCode}</b>";
+            [$data, $httpCode, $curlErr] = $this->curlDownload($url);
             if ($data === false || $data === '') {
+                $this->log("<b style='color:red'>cURL (системный DNS): " . htmlspecialchars($curlErr) . " (HTTP {$httpCode})</b>");
                 $data = false;
-                $this->log("<b style='color:red'>cURL не смог скачать файл: " . htmlspecialchars($curlErr) . " (HTTP {$httpCode})</b>");
             } else {
-                $this->log("✅ {$downloadInfo}");
+                $this->log("✅ cURL: HTTP <b>{$httpCode}</b>");
             }
         }
 
-        // 2) Fallback на file_get_contents
+        // 2) Fallback: cURL с CURLOPT_RESOLVE (обход системного DNS по захардкоженному IP)
+        if ($data === false && function_exists('curl_init') && !empty($fallbackIPs[$host])) {
+            foreach ($fallbackIPs[$host] as $ip) {
+                $resolveOpt = ["{$host}:{$port}:{$ip}"];
+                $this->log("&nbsp;&nbsp;Fallback cURL через IP <b>{$ip}</b> (CURLOPT_RESOLVE)...");
+                [$data, $httpCode, $curlErr] = $this->curlDownload($url, $resolveOpt);
+                if ($data !== false && $data !== '') {
+                    $this->log("✅ cURL via IP {$ip}: HTTP <b>{$httpCode}</b>");
+                    break;
+                }
+                $this->log("<b style='color:red'>не вышло через {$ip}: " . htmlspecialchars($curlErr) . " (HTTP {$httpCode})</b>");
+                $data = false;
+            }
+        }
+
+        // 3) Fallback на file_get_contents
         if ($data === false) {
-            $this->log("&nbsp;&nbsp;Пробую file_get_contents как fallback...");
+            $this->log("&nbsp;&nbsp;Пробую file_get_contents как последний fallback...");
             if (!ini_get('allow_url_fopen')) {
-                $this->log("<b style='color:red'>allow_url_fopen=Off — file_get_contents для URL не работает на этом сервере.</b>");
+                $this->log("<b style='color:red'>allow_url_fopen=Off — file_get_contents для URL не работает.</b>");
             } else {
                 $context = stream_context_create([
                     'http'  => ['method' => 'GET', 'timeout' => 60, 'user_agent' => 'BagetCatalogUpdater/1.0'],
@@ -105,7 +145,7 @@ class UpdateCatalog
 
         if ($data === false || $data === '') {
             $this->log("<b style='color:red'>❌ ОШИБКА: не удалось скачать файл по URL ни одним способом.</b>");
-            $this->log("Возможные причины: allow_url_fopen=Off, отсутствует cURL/OpenSSL, прокси/firewall блокирует исходящий https.");
+            $this->log("Если DNS-резолв {$host} не работает — обратись к хостеру или обнови захардкоженный IP в \$fallbackIPs.");
             return;
         }
 
