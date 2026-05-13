@@ -32,6 +32,24 @@ class UpdateCatalog
     }
 
     /**
+     * Достаёт число из ячейки, где могут встретиться ">100", "> 50", "100+", "1,5".
+     * Возвращает float (0.0 если число извлечь не удалось).
+     */
+    private function parseNumeric(mixed $val): float
+    {
+        if ($val === null || $val === '') return 0.0;
+        if (is_numeric($val)) return (float)$val;
+
+        $s = (string)$val;
+        // запятая как десятичный разделитель → точка
+        $s = str_replace(',', '.', $s);
+        // оставляем только цифры, точку и знак минуса
+        $cleaned = preg_replace('/[^0-9.\-]/', '', $s);
+        if ($cleaned === '' || $cleaned === '.' || $cleaned === '-') return 0.0;
+        return (float)$cleaned;
+    }
+
+    /**
      * Скачивает URL через cURL с ретраями. Возвращает [$body, $httpCode, $errStr].
      * $resolveMap — массив строк для CURLOPT_RESOLVE, например ["frame.ru:443:92.53.96.188"].
      */
@@ -281,11 +299,14 @@ class UpdateCatalog
                     continue;
                 }
 
+                // Остаток может быть в форме ">100", "> 50", "100+", "1,5" — нормализуем
+                $stockNum = $this->parseNumeric($stockMsk);
+
                 $rawData[$article] = [
                     'article'   => $article,
                     'price'     => $priceCell,
                     'priceChop' => is_numeric($priceChop) ? $priceChop : null,
-                    'count'     => is_numeric($stockMsk) ? $stockMsk : 0,
+                    'count'     => $stockNum,
                     'status'    => trim((string)($row[2] ?? '')),
                 ];
                 $kept++;
