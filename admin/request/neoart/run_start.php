@@ -7,7 +7,7 @@ $catalog = $_POST['catalog'] ?? '';
 $cfg = neoart_config();
 if (!isset($cfg['catalogs'][$catalog])) {
     http_response_code(400);
-    echo json_encode(['error' => 'Неизвестный каталог']);
+    echo json_encode(['error' => 'Неизвестный каталог'], JSON_UNESCAPED_UNICODE);
     exit;
 }
 $catCfg = $cfg['catalogs'][$catalog];
@@ -61,5 +61,5 @@ try {
     echo json_encode(['run_id' => $runId, 'total' => count($vendors), 'new' => $new, 'existing' => $have, 'vendors' => $vendors], JSON_UNESCAPED_UNICODE);
 } catch (Throwable $ex) {
     http_response_code(500);
-    echo json_encode(['error' => $ex->getMessage()]);
+    echo json_encode(['error' => $ex->getMessage()], JSON_UNESCAPED_UNICODE);
 }
