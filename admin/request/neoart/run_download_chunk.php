@@ -16,7 +16,7 @@ $imgUrlBase = "{$cfg['api_base']}?{$cfg['api_auth']}&action=image&catalog={$cat[
 $now = date('Y-m-d H:i:s');
 
 // весь список артикулов run (id по возрастанию) — берём окно
-$all = $dbh->prepare("SELECT id, vendor FROM neoart_item WHERE run_id=? AND catalog=? ORDER BY id ASC");
+$all = $dbh->prepare("SELECT id, vendor, download_error FROM neoart_item WHERE run_id=? AND catalog=? ORDER BY id ASC");
 $all->execute([$runId, $catalog]);
 $rows = $all->fetchAll(PDO::FETCH_ASSOC);
 $total = count($rows);
@@ -55,7 +55,9 @@ foreach ($handles as [$ch, $r, $file]) {
     } else {
         $msg = "HTTP $code";
         $updErr->execute([$msg, $now, $r['id']]);
-        $logStmt->execute([$runId, $r['vendor'], $msg, $now]);
+        if (empty($r['download_error'])) {
+            $logStmt->execute([$runId, $r['vendor'], $msg, $now]);
+        }
         $failed++;
     }
     curl_multi_remove_handle($mh, $ch); curl_close($ch);
@@ -64,9 +66,13 @@ curl_multi_close($mh);
 
 $nextOffset = $offset + $size;
 $done = min($nextOffset, $total);
-// накопительно обновляем счётчики run
-$dbh->prepare("UPDATE neoart_import_run SET downloaded=downloaded+?, failed=failed+? WHERE id=?")
-    ->execute([$ok, $failed, $runId]);
+// счётчики run пересчитываем из состояния позиций (идемпотентно — устойчиво к повторным вызовам/возобновлению)
+$dbh->prepare(
+    "UPDATE neoart_import_run r SET
+       downloaded=(SELECT COUNT(*) FROM neoart_item WHERE run_id=r.id AND raw_img IS NOT NULL),
+       failed=(SELECT COUNT(*) FROM neoart_item WHERE run_id=r.id AND download_error IS NOT NULL AND raw_img IS NULL)
+     WHERE r.id=?"
+)->execute([$runId]);
 if ($done >= $total) {
     $dbh->prepare("UPDATE neoart_import_run SET status='done', finished_at=? WHERE id=?")->execute([$now, $runId]);
 }
