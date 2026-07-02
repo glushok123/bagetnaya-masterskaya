@@ -5,7 +5,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/helpers/NeoartCutter.php';
 header('Content-Type: application/json; charset=utf-8');
 
 $catalog = $_POST['catalog'] ?? '';
-$offset  = max(0, (int)($_POST['offset'] ?? 0));
 $size    = min(20, max(1, (int)($_POST['size'] ?? 8)));
 $cfg = neoart_config();
 if (!isset($cfg['catalogs'][$catalog])) { http_response_code(400); echo json_encode(['error' => 'bad catalog'], JSON_UNESCAPED_UNICODE); exit; }
@@ -13,13 +12,17 @@ if (!isset($cfg['catalogs'][$catalog])) { http_response_code(400); echo json_enc
 $paths = neoart_paths($catalog);
 $now = date('Y-m-d H:i:s');
 
-$all = $dbh->prepare("SELECT id,vendor,raw_img FROM neoart_item
-                      WHERE catalog=? AND raw_img IS NOT NULL AND cut_status IN('none','error')
-                      ORDER BY id ASC");
-$all->execute([$catalog]);
-$rows = $all->fetchAll(PDO::FETCH_ASSOC);
-$total = count($rows);
-$batch = array_slice($rows, $offset, $size);
+$totalStmt = $dbh->prepare("SELECT COUNT(*) FROM neoart_item WHERE catalog=? AND raw_img IS NOT NULL");
+$totalStmt->execute([$catalog]);
+$total = (int)$totalStmt->fetchColumn();
+
+$batchStmt = $dbh->prepare("SELECT id,vendor,raw_img FROM neoart_item
+                      WHERE catalog=:catalog AND raw_img IS NOT NULL AND cut_status='none'
+                      ORDER BY id ASC LIMIT :size");
+$batchStmt->bindValue(':catalog', $catalog, PDO::PARAM_STR);
+$batchStmt->bindValue(':size', $size, PDO::PARAM_INT);
+$batchStmt->execute();
+$batch = $batchStmt->fetchAll(PDO::FETCH_ASSOC);
 
 $cutter = new NeoartCutter();
 $upd = $dbh->prepare("UPDATE neoart_item SET listimg=?, imgconst=?, cut_status=?, cut_flags=?, updated_at=? WHERE id=?");
@@ -41,6 +44,8 @@ foreach ($batch as $r) {
         $upd->execute([$base, $base, $res['status'], implode(',', $res['flags']) ?: null, $now, $r['id']]);
     }
 }
-$nextOffset = $offset + $size;
-$done = min($nextOffset, $total);
-echo json_encode(['done' => $done, 'total' => $total, 'ok' => $ok, 'flagged' => $flagged, 'err' => $err, 'next_offset' => $nextOffset], JSON_UNESCAPED_UNICODE);
+$doneStmt = $dbh->prepare("SELECT COUNT(*) FROM neoart_item WHERE catalog=? AND raw_img IS NOT NULL AND cut_status <> 'none'");
+$doneStmt->execute([$catalog]);
+$done = (int)$doneStmt->fetchColumn();
+
+echo json_encode(['done' => $done, 'total' => $total, 'ok' => $ok, 'flagged' => $flagged, 'err' => $err, 'next_offset' => $done], JSON_UNESCAPED_UNICODE);

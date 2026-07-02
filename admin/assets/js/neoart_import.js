@@ -61,9 +61,13 @@
                 $('#neoartErrorsCount').text(items.length);
                 if (!items.length) { $('#neoartErrorsCard').addClass('d-none'); return; }
                 $('#neoartErrorsCard').removeClass('d-none');
-                $('#neoartErrors').html(items.map(e =>
-                    '<div class="small"><b>' + (e.vendor || '—') + '</b> [' + e.stage + '] ' + e.message + '</div>'
-                ).join(''));
+                const $box = $('#neoartErrors').empty();
+                items.forEach(e => {
+                    $('<div class="small">')
+                      .append($('<b>').text(e.vendor || '—'))
+                      .append(document.createTextNode(' [' + e.stage + '] ' + (e.message || '')))
+                      .appendTo($box);
+                });
             });
         },
 
