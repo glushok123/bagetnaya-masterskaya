@@ -52,7 +52,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 </body>
 
 <link rel="stylesheet" href="assets/css/app.css?v3">
-<script src="assets/js/app.js?v3"></script>
+<script src="assets/js/app.js?v4"></script>
 <script src="assets/js/neoart_import.js?v1"></script>
 
 </html>

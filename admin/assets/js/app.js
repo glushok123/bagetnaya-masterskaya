@@ -759,6 +759,16 @@ $(document).ready(function () {
             return;
         }
 
+        if (typeCatalog == 'neoart-import') {
+            $('#dashbord-baget').hide();
+            if (window.NeoartUI) {
+                NeoartUI.loadErrors();
+                NeoartUI.loadGrid();
+            }
+
+            return;
+        }
+
         $('#' + typeCatalog).html(spiner);
         $('#dashbord-baget').show();
         $('#searchId').val('');
