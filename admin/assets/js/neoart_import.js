@@ -45,13 +45,35 @@
             }).fail(() => toastr.error('run_start сбой'));
         },
 
-        loadErrors: function () { /* реализуется в Task 6/7 (панель ошибок) */ },
+        startCut: function () {
+            const cat = NeoartUI.catalog();
+            $('#neoartCutLabel').text('Нарезка: старт…');
+            NeoartUI.poll('cut_chunk.php', { catalog: cat, size: 8 },
+                '#neoartCutBar', '#neoartCutLabel', 'Нарезано', (res) => {
+                    toastr.success('Нарезка завершена (флагов: ' + (res.flagged || 0) + ')');
+                    NeoartUI.loadGrid && NeoartUI.loadGrid();
+                });
+        },
+
+        loadErrors: function () {
+            $.post(R + 'errors_list.php', { catalog: NeoartUI.catalog() }).done((res) => {
+                const items = (res && res.items) || [];
+                $('#neoartErrorsCount').text(items.length);
+                if (!items.length) { $('#neoartErrorsCard').addClass('d-none'); return; }
+                $('#neoartErrorsCard').removeClass('d-none');
+                $('#neoartErrors').html(items.map(e =>
+                    '<div class="small"><b>' + (e.vendor || '—') + '</b> [' + e.stage + '] ' + e.message + '</div>'
+                ).join(''));
+            });
+        },
+
         loadGrid: function () { /* реализуется в Task 7 */ },
     };
 
     $(function () {
         $('#neoartRunDownload').on('click', NeoartUI.startDownload);
-        // #neoartRunCut — Task 6; #neoartRefreshGrid/#neoartFilters/#neoartSearch — Task 7
+        $('#neoartRunCut').on('click', NeoartUI.startCut);
+        // #neoartRefreshGrid/#neoartFilters/#neoartSearch — Task 7
     });
 
     window.NeoartUI = NeoartUI;
