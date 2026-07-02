@@ -1,3 +1,4 @@
+/experiment/
 /img/
 /pics/
 /pi/
@@ -24,3 +25,9 @@ sitemap.xml
 admin/config/config.php
 /vendor
 /analiz_colors_img/test_img
+
+# Neoart Import Studio — staging media (не коммитим картинки/кеш)
+/neoart_import/raw/
+/neoart_import/listimg/
+/neoart_import/imgconst/
+/neoart_import/_cache/
