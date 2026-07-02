@@ -200,14 +200,24 @@ class NeoartCutter
     public function cropListimg(string $rawPath, array $rect, string $out): bool
     {
         $src = @imagecreatefromjpeg($rawPath); if (!$src) return false;
-        $ok = $this->writeCover($src, (int)$rect['x'], (int)$rect['y'], (int)$rect['w'], (int)$rect['h'], $out);
+        $W = imagesx($src); $H = imagesy($src);
+        $x = max(0, min((int)($rect['x'] ?? 0), $W - 1));
+        $y = max(0, min((int)($rect['y'] ?? 0), $H - 1));
+        $w = max(1, min((int)($rect['w'] ?? 0), $W - $x));
+        $h = max(1, min((int)($rect['h'] ?? 0), $H - $y));
+        $ok = $this->writeCover($src, $x, $y, $w, $h, $out);
         imagedestroy($src); return $ok;
     }
 
     public function cropImgconst(string $rawPath, array $rect, string $out): bool
     {
         $src = @imagecreatefromjpeg($rawPath); if (!$src) return false;
-        $ok = $this->writeCrop($src, (int)$rect['x'], (int)$rect['y'], (int)$rect['w'], (int)$rect['h'], $out, 0, 0);
+        $W = imagesx($src); $H = imagesy($src);
+        $x = max(0, min((int)($rect['x'] ?? 0), $W - 1));
+        $y = max(0, min((int)($rect['y'] ?? 0), $H - 1));
+        $w = max(1, min((int)($rect['w'] ?? 0), $W - $x));
+        $h = max(1, min((int)($rect['h'] ?? 0), $H - $y));
+        $ok = $this->writeCrop($src, $x, $y, $w, $h, $out, 0, 0);
         imagedestroy($src); return $ok;
     }
 }
