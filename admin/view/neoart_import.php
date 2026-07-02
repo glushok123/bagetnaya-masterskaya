@@ -41,6 +41,7 @@
         <button class="btn btn-sm btn-outline-success" data-filter="ready">Готовы</button>
         <button class="btn btn-sm btn-outline-secondary" data-filter="in_catalog">Уже в каталоге</button>
         <input class="form-control form-control-sm w-auto" id="neoartSearch" placeholder="поиск по артикулу">
+        <button class="btn btn-sm btn-success ms-auto" id="neoartApproveSelected">Одобрить выбранные</button>
     </div>
 
     <div class="row g-3" id="neoartGrid"></div>

@@ -194,6 +194,17 @@
                 NeoartUI.openEdit(NeoartUI._edit.id); NeoartUI.loadGrid();
             });
         },
+
+        approve: function (ids) {
+            $.post(R + 'item_approve.php', { ids: ids.join(',') }).done((res) => {
+                const results = (res && res.results) || [];
+                const ok = results.filter(r => r.ok).length;
+                const bad = results.filter(r => !r.ok);
+                if (ok) toastr.success('Опубликовано: ' + ok);
+                bad.forEach(b => toastr.error('id ' + b.id + ': ' + b.error));
+                NeoartUI.loadGrid();
+            }).fail(() => toastr.error('approve сбой'));
+        },
     };
 
     $(function () {
@@ -217,6 +228,21 @@
         $('#neoartUpRaw').on('change', function () { NeoartUI.upload('raw', this); });
         $('#neoartUpList').on('change', function () { NeoartUI.upload('listimg', this); });
         $('#neoartUpConst').on('change', function () { NeoartUI.upload('imgconst', this); });
+
+        $('#neoartGrid').on('click', '.neoart-approve', function () {
+            NeoartUI.approve([$(this).closest('.neoart-card').data('id')]);
+        });
+        $('#neoartGrid').on('click', '.neoart-reject', function () {
+            const id = $(this).closest('.neoart-card').data('id');
+            $.post(R + 'item_reject.php', { id: id }).done(() => { toastr.info('Отклонён'); NeoartUI.loadGrid(); });
+        });
+        $('#neoartApproveSelected').on('click', function () {
+            const ids = $('#neoartGrid .neoart-select:checked').map(function () {
+                return $(this).closest('.neoart-card').data('id');
+            }).get();
+            if (!ids.length) { toastr.warning('Ничего не выбрано'); return; }
+            NeoartUI.approve(ids);
+        });
     });
 
     window.NeoartUI = NeoartUI;
