@@ -20,6 +20,7 @@ $log = $dbh->prepare("INSERT INTO neoart_import_log(vendor,stage,message,created
 
 foreach ($ids as $id) {
     $sel->execute([$id]); $it = $sel->fetch(PDO::FETCH_ASSOC);
+    $biListPath = null; $biConstPath = null;
     try {
         if (!$it) throw new RuntimeException('not found');
         if ($it['in_catalog'] == 1) throw new RuntimeException('уже в каталоге');
@@ -39,8 +40,10 @@ foreach ($ids as $id) {
         $safe = neoart_safe_name($it['vendor']);
         $listName = $publicvendor . $safe . '.jpg';
         $constName = $publicvendor . 't' . $safe . '.jpg';
-        if (!copy($listSrc, "$biDir/$listName")) throw new RuntimeException('копия listimg');
-        if (!copy($constSrc, "$biDir/$constName")) throw new RuntimeException('копия imgconst');
+        $biListPath = "$biDir/$listName";
+        $biConstPath = "$biDir/$constName";
+        if (!copy($listSrc, $biListPath)) throw new RuntimeException('копия listimg');
+        if (!copy($constSrc, $biConstPath)) throw new RuntimeException('копия imgconst');
 
         $dbh->beginTransaction();
         $ins->execute([$it['catalog'], $publicvendor, $it['vendor'], (int)$it['width_mm'], (int)$it['widthwithout_mm'],
@@ -51,6 +54,9 @@ foreach ($ids as $id) {
         $results[] = ['id' => $id, 'ok' => 1, 'publicvendor' => $publicvendor];
     } catch (Throwable $ex) {
         if ($dbh->inTransaction()) $dbh->rollBack();
+        foreach ([$biListPath, $biConstPath] as $orphan) {
+            if ($orphan && is_file($orphan)) { @unlink($orphan); }
+        }
         if ($it) $log->execute([$it['vendor'], $ex->getMessage(), $now]);
         $results[] = ['id' => $id, 'ok' => 0, 'error' => $ex->getMessage()];
     }
