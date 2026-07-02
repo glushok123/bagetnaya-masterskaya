@@ -147,4 +147,7 @@ $categoryGalleryJson = htmlspecialchars(json_encode($categoryGalleryWorkImages, 
 
         </div>
     </div>
+    <div class="tab-pane fade" id="neoart-import" role="tabpanel" aria-labelledby="neoart-import-tab">
+        <? require_once 'view/neoart_import.php'; ?>
+    </div>
 </div>

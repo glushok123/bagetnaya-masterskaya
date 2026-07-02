@@ -65,6 +65,12 @@
            aria-selected="false" data-type='static' style='color:#00ff37'>ОБНОВИТЬ КАТАЛОГ(Lion)</a>
     </li>
     <li class="nav-item" role="presentation">
+        <button class="nav-link" id="neoart-import-tab" data-bs-toggle="tab" data-bs-target="#neoart-import"
+                type="button" role="tab" aria-controls="contact" aria-selected="false"
+                data-type='neoart-import' style='color:#0d6efd'>Импорт Neoart
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
         <a href="auth/logout.php" class="nav-link red" type="button" role="tab" aria-controls="contact"
            aria-selected="false" data-type='static'>Выход</a>
     </li>

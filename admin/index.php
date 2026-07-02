@@ -26,6 +26,8 @@ if (!isset($_SESSION['user_logged_in'])) {
     <script src="https://cdn.datatables.net/plug-ins/1.13.1/i18n/ru.json"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.js"></script>
 </head>
 
 <body>
@@ -51,5 +53,6 @@ if (!isset($_SESSION['user_logged_in'])) {
 
 <link rel="stylesheet" href="assets/css/app.css?v3">
 <script src="assets/js/app.js?v3"></script>
+<script src="assets/js/neoart_import.js?v1"></script>
 
 </html>
