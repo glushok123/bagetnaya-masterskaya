@@ -45,3 +45,33 @@
 
     <div class="row g-3" id="neoartGrid"></div>
 </div>
+
+<div class="modal fade" id="neoartEditModal" tabindex="-1">
+  <div class="modal-dialog modal-xl"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Редактор: <span id="neoartEditVendor"></span></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <div class="row g-3">
+        <div class="col-lg-7">
+          <div class="btn-group btn-group-sm mb-2">
+            <button class="btn btn-outline-primary active" id="neoartModeList">Каталог (listimg)</button>
+            <button class="btn btn-outline-primary" id="neoartModeConst">Конструктор (imgconst)</button>
+          </div>
+          <div style="max-height:60vh"><img id="neoartCropImg" style="max-width:100%"></div>
+          <div class="mt-2 d-flex gap-2">
+            <button class="btn btn-success btn-sm" id="neoartCropSave">Сохранить кроп</button>
+            <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить raw<input type="file" hidden id="neoartUpRaw" accept=".jpg,.jpeg"></label>
+            <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить listimg<input type="file" hidden id="neoartUpList" accept=".jpg,.jpeg"></label>
+            <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить imgconst<input type="file" hidden id="neoartUpConst" accept=".jpg,.jpeg"></label>
+            <button class="btn btn-outline-warning btn-sm" id="neoartResetCut">Авто-нарезка заново</button>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="mb-2"><div class="small text-muted">Превью listimg (150×100)</div><img id="neoartPrevList" style="border:1px solid #ddd"></div>
+          <div class="mb-2"><div class="small text-muted">Превью imgconst (repeat-x)</div><div id="neoartPrevConst" style="width:100%;height:80px;border:1px solid #ddd"></div></div>
+          <div id="neoartEditInfo" class="small"></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</div>

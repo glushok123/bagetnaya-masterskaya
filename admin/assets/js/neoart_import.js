@@ -123,6 +123,77 @@
                     $('#neoartGrid').html(items.map(NeoartUI.cardHtml).join('') || '<div class="text-muted">Пусто</div>');
                 });
         },
+
+        _edit: { id: null, item: null, cropper: null, mode: 'listimg' },
+
+        openEdit: function (id) {
+            $.post(R + 'item_get.php', { id: id }).done((res) => {
+                const it = res.item; NeoartUI._edit.id = id; NeoartUI._edit.item = it;
+                $('#neoartEditVendor').text(it.vendor);
+                $('#neoartPrevList').attr('src', it.listimg_url || '');
+                $('#neoartPrevConst').css('background', it.imgconst_url ? 'url(' + it.imgconst_url + ') repeat-x' : '');
+                const esc = NeoartUI.esc;
+                $('#neoartEditInfo').html(
+                    'Ширина ' + esc(it.width_mm) + ' / без чт ' + esc(it.widthwithout_mm) + ' мм<br>' +
+                    'Цена ' + esc(it.price_final) + '₽ · остаток ' + esc(it.storage) + '<br>' +
+                    'Секция: ' + esc(it.section_name || '—') + '<br>' +
+                    'Флаги: ' + esc(it.cut_flags || '—')
+                );
+                new bootstrap.Modal(document.getElementById('neoartEditModal')).show();
+                NeoartUI.setMode('listimg', it.raw_url);
+            });
+        },
+
+        setMode: function (mode, rawUrl) {
+            NeoartUI._edit.mode = mode;
+            $('#neoartModeList').toggleClass('active', mode === 'listimg');
+            $('#neoartModeConst').toggleClass('active', mode === 'imgconst');
+            const img = document.getElementById('neoartCropImg');
+            img.src = rawUrl || NeoartUI._edit.item.raw_url;
+            if (NeoartUI._edit.cropper) NeoartUI._edit.cropper.destroy();
+            img.onload = () => {
+                NeoartUI._edit.cropper = new Cropper(img, {
+                    viewMode: 1, autoCropArea: 0.5,
+                    aspectRatio: mode === 'listimg' ? 150 / 100 : NaN,
+                });
+            };
+            if (img.complete) img.onload();
+        },
+
+        saveCrop: function () {
+            const c = NeoartUI._edit.cropper; if (!c) return;
+            const d = c.getData(true); // координаты в пикселях оригинала
+            $.post(R + 'item_save_crop.php', {
+                id: NeoartUI._edit.id, which: NeoartUI._edit.mode,
+                x: d.x, y: d.y, w: d.width, h: d.height,
+            }).done((res) => {
+                if (res.error) { toastr.error(res.error); return; }
+                toastr.success('Сохранено');
+                if (NeoartUI._edit.mode === 'listimg') $('#neoartPrevList').attr('src', res.url);
+                else $('#neoartPrevConst').css('background', 'url(' + res.url + ') repeat-x');
+                NeoartUI.loadGrid();
+            });
+        },
+
+        upload: function (which, fileInput) {
+            const fd = new FormData(); fd.append('id', NeoartUI._edit.id); fd.append('which', which); fd.append('file', fileInput.files[0]);
+            $.ajax({ url: R + 'item_upload.php', method: 'POST', data: fd, processData: false, contentType: false })
+                .done((res) => {
+                    if (res.error) { toastr.error(res.error); return; }
+                    toastr.success('Загружено');
+                    if (which === 'raw') NeoartUI.setMode(NeoartUI._edit.mode, res.url);
+                    else if (which === 'listimg') $('#neoartPrevList').attr('src', res.url);
+                    else $('#neoartPrevConst').css('background', 'url(' + res.url + ') repeat-x');
+                    NeoartUI.loadGrid();
+                });
+        },
+
+        resetCut: function () {
+            $.post(R + 'item_reset.php', { id: NeoartUI._edit.id }).done((res) => {
+                toastr.info('Пере-нарезано: ' + res.cut_status + ' ' + (res.cut_flags || ''));
+                NeoartUI.openEdit(NeoartUI._edit.id); NeoartUI.loadGrid();
+            });
+        },
     };
 
     $(function () {
@@ -135,6 +206,17 @@
         });
         let t; $('#neoartSearch').on('input', function () { clearTimeout(t); t = setTimeout(NeoartUI.loadGrid, 300); });
         $('#neoartCatalog').on('change', NeoartUI.loadGrid);
+
+        $('#neoartGrid').on('click', '.neoart-edit', function () {
+            NeoartUI.openEdit($(this).closest('.neoart-card').data('id'));
+        });
+        $('#neoartModeList').on('click', () => NeoartUI.setMode('listimg'));
+        $('#neoartModeConst').on('click', () => NeoartUI.setMode('imgconst'));
+        $('#neoartCropSave').on('click', NeoartUI.saveCrop);
+        $('#neoartResetCut').on('click', NeoartUI.resetCut);
+        $('#neoartUpRaw').on('change', function () { NeoartUI.upload('raw', this); });
+        $('#neoartUpList').on('change', function () { NeoartUI.upload('listimg', this); });
+        $('#neoartUpConst').on('change', function () { NeoartUI.upload('imgconst', this); });
     });
 
     window.NeoartUI = NeoartUI;
