@@ -45,31 +45,55 @@
 </div>
 
 <div class="modal fade" id="neoartEditModal" tabindex="-1">
-  <div class="modal-dialog modal-xl"><div class="modal-content">
-    <div class="modal-header"><h5 class="modal-title">Редактор: <span id="neoartEditVendor"></span></h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-    <div class="modal-body">
-      <div class="row g-3">
-        <div class="col-lg-7">
-          <div class="btn-group btn-group-sm mb-2">
-            <button class="btn btn-outline-primary active" id="neoartModeList">Каталог (listimg)</button>
-            <button class="btn btn-outline-primary" id="neoartModeConst">Конструктор (imgconst)</button>
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Товар: <span id="neoartEditVendor"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <div class="btn-group btn-group-sm mb-2 neoart-mode-tabs">
+              <button class="btn btn-outline-primary active" id="neoartModeList">Картинка для каталога</button>
+              <button class="btn btn-outline-primary" id="neoartModeConst">Картинка для конструктора</button>
+            </div>
+            <div class="neoart-crop-wrap"><img id="neoartCropImg" alt=""></div>
+            <div class="mt-2 d-flex gap-2 flex-wrap">
+              <button class="btn btn-success btn-sm" id="neoartCropSave">Сохранить обрезку</button>
+              <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить свою картинку каталога<input type="file" hidden id="neoartUpList" accept=".jpg,.jpeg"></label>
+              <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить свою для конструктора<input type="file" hidden id="neoartUpConst" accept=".jpg,.jpeg"></label>
+              <label class="btn btn-outline-secondary btn-sm mb-0">Заменить исходное фото<input type="file" hidden id="neoartUpRaw" accept=".jpg,.jpeg"></label>
+              <button class="btn btn-outline-warning btn-sm" id="neoartResetCut">Пересобрать автоматически</button>
+            </div>
           </div>
-          <div style="max-height:60vh"><img id="neoartCropImg" style="max-width:100%"></div>
-          <div class="mt-2 d-flex gap-2">
-            <button class="btn btn-success btn-sm" id="neoartCropSave">Сохранить кроп</button>
-            <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить raw<input type="file" hidden id="neoartUpRaw" accept=".jpg,.jpeg"></label>
-            <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить listimg<input type="file" hidden id="neoartUpList" accept=".jpg,.jpeg"></label>
-            <label class="btn btn-outline-secondary btn-sm mb-0">Загрузить imgconst<input type="file" hidden id="neoartUpConst" accept=".jpg,.jpeg"></label>
-            <button class="btn btn-outline-warning btn-sm" id="neoartResetCut">Авто-нарезка заново</button>
+          <div class="col-lg-5">
+            <div class="neoart-side mb-3">
+              <h6 id="neoartPrevTitle">Как будет в каталоге</h6>
+              <div id="neoartPrevCatalog">
+                <div class="neoart-cat-mock"><img id="neoartPrevList" alt=""><div class="cm-body"><div class="small fw-semibold" id="neoartPrevArt">Арт. —</div><div class="small text-muted" id="neoartPrevPrice">—</div></div></div>
+              </div>
+              <div id="neoartPrevConstruct" class="d-none">
+                <div class="neoart-frame-preview" id="neoartFramePrev">
+                  <div class="nf nf-top"></div><div class="nf nf-bottom"></div><div class="nf nf-left"></div><div class="nf nf-right"></div><div class="nf-center"></div>
+                </div>
+              </div>
+            </div>
+            <div class="neoart-side">
+              <h6>Параметры</h6>
+              <div class="row g-2">
+                <div class="col-6"><label class="form-label small mb-0">Ширина, мм</label><input type="number" min="0" class="form-control form-control-sm" id="neoartFWidth"></div>
+                <div class="col-6"><label class="form-label small mb-0">Без четверти, мм</label><input type="number" min="0" class="form-control form-control-sm" id="neoartFWidthWo"></div>
+                <div class="col-6"><label class="form-label small mb-0">Цена, ₽</label><input type="number" min="0" class="form-control form-control-sm" id="neoartFPrice"></div>
+                <div class="col-6"><label class="form-label small mb-0">Остаток</label><input type="number" min="0" class="form-control form-control-sm" id="neoartFStorage"></div>
+                <div class="col-12"><label class="form-label small mb-0">Секция</label><input type="text" class="form-control form-control-sm" id="neoartFSection"></div>
+                <div class="col-12 small text-muted">Флаги: <span id="neoartFFlags">—</span></div>
+              </div>
+              <button class="btn btn-primary btn-sm mt-3 w-100" id="neoartSaveFields">Сохранить</button>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="mb-2"><div class="small text-muted">Превью listimg (150×100)</div><img id="neoartPrevList" style="border:1px solid #ddd"></div>
-          <div class="mb-2"><div class="small text-muted">Превью imgconst (repeat-x)</div><div id="neoartPrevConst" style="width:100%;height:80px;border:1px solid #ddd"></div></div>
-          <div id="neoartEditInfo" class="small"></div>
         </div>
       </div>
     </div>
-  </div></div>
+  </div>
 </div>
