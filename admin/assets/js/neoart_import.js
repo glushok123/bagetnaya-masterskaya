@@ -31,6 +31,7 @@
         },
 
         startDownload: function () {
+            $('#neoartDlWrap').removeClass('d-none');
             const cat = NeoartUI.catalog();
             $('#neoartDlLabel').text('Скачивание: подготовка фида…');
             $.post(R + 'run_start.php', { catalog: cat }).done((res) => {
@@ -46,6 +47,7 @@
         },
 
         startCut: function () {
+            $('#neoartCutWrap').removeClass('d-none');
             const cat = NeoartUI.catalog();
             $('#neoartCutLabel').text('Нарезка: старт…');
             NeoartUI.poll('cut_chunk.php', { catalog: cat, size: 8 },
@@ -84,36 +86,26 @@
 
         cardHtml: function (it) {
             const esc = NeoartUI.esc;
-            const badge = it.in_catalog == 1
-                ? '<span class="badge bg-secondary">в каталоге ' + esc(it.catalog_publicvendor || '') + '</span>'
-                : (it.cut_status === 'auto_flagged' || it.cut_status === 'error'
-                    ? '<span class="badge bg-warning text-dark">правка: ' + esc(it.cut_flags || '') + '</span>'
-                    : (it.review_status === 'published'
-                        ? '<span class="badge bg-success">опубликован</span>'
-                        : '<span class="badge bg-primary">готов</span>'));
-            const img = (u, h) => u ? '<img src="' + esc(u) + '" style="height:' + h + 'px;border:1px solid #ddd">' : '<span class="text-muted small">нет</span>';
-            const cw = 'width:100%;height:70px;background:url(' + esc(it.imgconst_url || '') + ') repeat-x;border:1px solid #ddd';
+            let badge;
+            if (it.in_catalog == 1) badge = '<span class="neoart-badge nb-cat">в каталоге ' + esc(it.catalog_publicvendor || '') + '</span>';
+            else if (it.review_status === 'published') badge = '<span class="neoart-badge nb-pub">опубликован</span>';
+            else if (it.cut_status === 'auto_flagged' || it.cut_status === 'error') badge = '<span class="neoart-badge nb-flag">правка</span>';
+            else badge = '<span class="neoart-badge nb-ready">готов</span>';
+            const listUrl = it.listimg_url ? esc(it.listimg_url) : '';
+            const constBg = it.imgconst_url ? 'background-image:url(' + esc(it.imgconst_url) + ')' : '';
             const canApprove = it.in_catalog != 1 && it.listimg_url && it.imgconst_url && it.review_status !== 'published';
             return '' +
-              '<div class="col-6 col-md-4 col-xl-3"><div class="card neoart-card h-100" data-id="' + it.id + '">' +
-                '<div class="card-body p-2">' +
-                  '<div class="d-flex justify-content-between align-items-center mb-1">' +
-                    '<div class="form-check"><input class="form-check-input neoart-select" type="checkbox" ' + (canApprove ? '' : 'disabled') + '></div>' +
-                    '<div class="small"><b>' + esc(it.vendor) + '</b></div>' + badge +
-                  '</div>' +
-                  '<div class="row g-1 mb-1">' +
-                    '<div class="col-6 text-center"><div class="small text-muted">каталог</div>' + img(it.listimg_url, 60) + '</div>' +
-                    '<div class="col-6 text-center"><div class="small text-muted">исходник</div>' + img(it.raw_url, 60) + '</div>' +
-                  '</div>' +
-                  '<div class="small text-muted">конструктор (repeat-x):</div><div style="' + cw + '"></div>' +
-                  '<div class="small mt-1">Ш ' + it.width_mm + ' / без чт ' + it.widthwithout_mm + ' мм · ' + it.price_final + '₽ · ост ' + it.storage + '</div>' +
-                  '<div class="d-flex gap-1 mt-2">' +
-                    '<button class="btn btn-sm btn-outline-primary neoart-edit">Править</button>' +
-                    '<button class="btn btn-sm btn-success neoart-approve" ' + (canApprove ? '' : 'disabled') + '>Одобрить</button>' +
-                    '<button class="btn btn-sm btn-outline-danger neoart-reject">✕</button>' +
-                  '</div>' +
+              '<div class="neoart-card" data-id="' + esc(it.id) + '">' +
+                '<div class="nc-head"><span class="nc-vendor">' + esc(it.vendor) + '</span>' + badge + '</div>' +
+                (listUrl ? '<img class="neoart-thumb" src="' + listUrl + '" alt="">' : '<div class="neoart-thumb"></div>') +
+                '<div class="nc-const" style="' + constBg + '"></div>' +
+                '<div class="nc-params">Ш ' + esc(it.width_mm) + ' / без чт ' + esc(it.widthwithout_mm) + ' мм<br>' + esc(it.price_final) + ' ₽ · остаток ' + esc(it.storage) + '</div>' +
+                '<div class="nc-actions">' +
+                  '<div class="form-check me-1"><input class="form-check-input neoart-select" type="checkbox" ' + (canApprove ? '' : 'disabled') + '></div>' +
+                  '<button class="btn btn-sm btn-success neoart-approve" ' + (canApprove ? '' : 'disabled') + '>Одобрить</button>' +
+                  '<button class="btn btn-sm btn-outline-danger neoart-reject">✕</button>' +
                 '</div>' +
-              '</div></div>';
+              '</div>';
         },
 
         loadGrid: function () {
@@ -218,9 +210,12 @@
         let t; $('#neoartSearch').on('input', function () { clearTimeout(t); t = setTimeout(NeoartUI.loadGrid, 300); });
         $('#neoartCatalog').on('change', NeoartUI.loadGrid);
 
-        $('#neoartGrid').on('click', '.neoart-edit', function () {
-            NeoartUI.openEdit($(this).closest('.neoart-card').data('id'));
+        $('#neoartGrid').on('click', '.neoart-card', function (e) {
+            if ($(e.target).closest('.neoart-approve, .neoart-reject, .neoart-select').length) return;
+            NeoartUI.openEdit($(this).data('id'));
         });
+        $('#neoartGrid').on('click', '.neoart-approve, .neoart-reject', function (e) { e.stopPropagation(); });
+        $('#neoartGrid').on('click', '.neoart-select', function (e) { e.stopPropagation(); });
         $('#neoartModeList').on('click', () => NeoartUI.setMode('listimg'));
         $('#neoartModeConst').on('click', () => NeoartUI.setMode('imgconst'));
         $('#neoartCropSave').on('click', NeoartUI.saveCrop);
