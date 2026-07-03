@@ -289,7 +289,8 @@
         $('#neoartCatalog').on('change', NeoartUI.loadGrid);
 
         $('#neoartGrid').on('click', '.neoart-card', function (e) {
-            if ($(e.target).closest('.neoart-approve, .neoart-reject, .neoart-select').length) return;
+            // клики в зоне действий (чекбокс+обёртка, «Одобрить», «✕») не открывают карточку
+            if ($(e.target).closest('.nc-actions').length) return;
             NeoartUI.openEdit($(this).data('id'));
         });
         $('#neoartGrid').on('click', '.neoart-approve, .neoart-reject', function (e) { e.stopPropagation(); });
