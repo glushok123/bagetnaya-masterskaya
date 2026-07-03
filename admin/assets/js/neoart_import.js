@@ -129,9 +129,14 @@
                 $('#neoartFPrice').val(it.price_final); $('#neoartFStorage').val(it.storage);
                 $('#neoartFSection').val(it.section_name || '');
                 $('#neoartFFlags').text(it.cut_flags || '—');
-                const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('neoartEditModal'));
+                const modalEl = document.getElementById('neoartEditModal');
+                const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                // Cropper нужно строить, когда модалка уже полностью открыта (иначе контейнер меряется
+                // во время анимации и обрезка получается крошечной). Ждём shown.bs.modal.
+                const start = () => NeoartUI.setMode('listimg');
+                if (modalEl.classList.contains('show')) { start(); }
+                else { modalEl.addEventListener('shown.bs.modal', start, { once: true }); }
                 modal.show();
-                NeoartUI.setMode('listimg');
             });
         },
 
@@ -151,7 +156,8 @@
                 if (NeoartUI._edit.cropper) return;           // страховка от повторной инициализации
                 NeoartUI._edit.cropper = new Cropper(img, {
                     viewMode: 1, autoCropArea: 0.6, background: false,
-                    aspectRatio: mode === 'listimg' ? 150 / 100 : NaN,
+                    aspectRatio: NaN,                 // свободная обрезка (ширина/высота независимо)
+                    rotatable: true,
                     crop: function () { NeoartUI.updatePreview(); },
                 });
             };
@@ -159,15 +165,36 @@
             img.src = src;
         },
 
+        // Рисуем src-canvas по принципу cover в canvas w×h (как режет сервер для каталога).
+        _coverCanvas: function (src, w, h) {
+            const out = document.createElement('canvas'); out.width = w; out.height = h;
+            const ctx = out.getContext('2d');
+            const scale = Math.max(w / src.width, h / src.height);
+            const sw = w / scale, sh = h / scale;
+            ctx.drawImage(src, (src.width - sw) / 2, (src.height - sh) / 2, sw, sh, 0, 0, w, h);
+            return out;
+        },
+
+        // Сохранение обрезки — целиком на клиенте (учитывает поворот и свободную обрезку),
+        // готовую картинку заливаем через item_upload. Каталог приводим к 150×100 (cover).
         saveCrop: function () {
             const c = NeoartUI._edit.cropper; if (!c) return;
-            const d = c.getData(true);
-            $.post(R + 'item_save_crop.php', { id: NeoartUI._edit.id, which: NeoartUI._edit.mode, x: d.x, y: d.y, w: d.width, h: d.height })
-                .done((res) => {
-                    if (res.error) { toastr.error(res.error); return; }
-                    toastr.success('Обрезка сохранена');
-                    NeoartUI.loadGrid();
-                });
+            const mode = NeoartUI._edit.mode;
+            let canvas = c.getCroppedCanvas({ imageSmoothingQuality: 'high' });
+            if (!canvas) { toastr.error('Не выбрана область обрезки'); return; }
+            if (mode === 'listimg') canvas = NeoartUI._coverCanvas(canvas, 150, 100);
+            canvas.toBlob(function (blob) {
+                if (!blob) { toastr.error('Не удалось подготовить картинку'); return; }
+                const fd = new FormData();
+                fd.append('id', NeoartUI._edit.id); fd.append('which', mode); fd.append('file', blob, 'crop.jpg');
+                $.ajax({ url: R + 'item_upload.php', method: 'POST', data: fd, processData: false, contentType: false })
+                    .done((res) => {
+                        if (res.error) { toastr.error(res.error); return; }
+                        toastr.success('Обрезка сохранена');
+                        NeoartUI.loadGrid();
+                    })
+                    .fail(() => toastr.error('Не удалось сохранить обрезку'));
+            }, 'image/jpeg', 0.9);
         },
 
         saveFields: function () {
@@ -218,8 +245,10 @@
         _renderPreview: function () {
             const c = NeoartUI._edit.cropper; if (!c) return;
             if (NeoartUI._edit.mode === 'listimg') {
-                const canvas = c.getCroppedCanvas({ width: 150, height: 100, imageSmoothingQuality: 'high' });
-                if (canvas) $('#neoartPrevList').attr('src', canvas.toDataURL('image/jpeg', 0.85));
+                const natural = c.getCroppedCanvas({ imageSmoothingQuality: 'high' });
+                if (!natural) return;
+                const cov = NeoartUI._coverCanvas(natural, 150, 100);   // тот же cover, что при сохранении
+                $('#neoartPrevList').attr('src', cov.toDataURL('image/jpeg', 0.85));
             } else {
                 const canvas = c.getCroppedCanvas({ imageSmoothingQuality: 'high' });
                 if (!canvas) return;
@@ -267,6 +296,8 @@
         $('#neoartGrid').on('click', '.neoart-select', function (e) { e.stopPropagation(); });
         $('#neoartModeList').on('click', () => NeoartUI.setMode('listimg'));
         $('#neoartModeConst').on('click', () => NeoartUI.setMode('imgconst'));
+        $('#neoartRotL').on('click', () => { if (NeoartUI._edit.cropper) NeoartUI._edit.cropper.rotate(-90); });
+        $('#neoartRotR').on('click', () => { if (NeoartUI._edit.cropper) NeoartUI._edit.cropper.rotate(90); });
         $('#neoartCropSave').on('click', NeoartUI.saveCrop);
         $('#neoartResetCut').on('click', NeoartUI.resetCut);
         $('#neoartSaveFields').on('click', NeoartUI.saveFields);

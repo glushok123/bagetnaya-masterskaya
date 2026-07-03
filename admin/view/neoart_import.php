@@ -54,9 +54,15 @@
       <div class="modal-body">
         <div class="row g-3">
           <div class="col-lg-7">
-            <div class="btn-group btn-group-sm mb-2 neoart-mode-tabs">
-              <button class="btn btn-outline-primary active" id="neoartModeList">Картинка для каталога</button>
-              <button class="btn btn-outline-primary" id="neoartModeConst">Картинка для конструктора</button>
+            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+              <div class="btn-group btn-group-sm neoart-mode-tabs">
+                <button class="btn btn-outline-primary active" id="neoartModeList">Картинка для каталога</button>
+                <button class="btn btn-outline-primary" id="neoartModeConst">Картинка для конструктора</button>
+              </div>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-secondary" id="neoartRotL" title="Повернуть влево">⟲&nbsp;−90°</button>
+                <button class="btn btn-outline-secondary" id="neoartRotR" title="Повернуть вправо">⟳&nbsp;+90°</button>
+              </div>
             </div>
             <div class="neoart-crop-wrap"><img id="neoartCropImg" alt=""></div>
             <div class="mt-2 d-flex gap-2 flex-wrap">
