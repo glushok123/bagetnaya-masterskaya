@@ -20,8 +20,14 @@ $base = neoart_safe_name($it['vendor']) . '.jpg';
 $dest = "{$p[$which]}/$base";
 if (!move_uploaded_file($_FILES['file']['tmp_name'], $dest)) { http_response_code(500); echo json_encode(['error' => 'save failed'], JSON_UNESCAPED_UNICODE); exit; }
 
-$col = $which === 'raw' ? 'raw_img' : $which;
-$extra = $which === 'raw' ? '' : ", cut_status='manual'";
-$dbh->prepare("UPDATE neoart_item SET $col=?$extra, updated_at=? WHERE id=?")
-    ->execute([$base, date('Y-m-d H:i:s'), $id]);
+$now = date('Y-m-d H:i:s');
+if ($which === 'raw') {
+    $dbh->prepare("UPDATE neoart_item SET raw_img=?, updated_at=? WHERE id=?")->execute([$base, $now, $id]);
+} else {
+    // $which ∈ {listimg,imgconst} (whitelisted) → имя колонки безопасно
+    $cropCol = $which . '_crop';
+    $crop = isset($_POST['crop']) ? substr((string)$_POST['crop'], 0, 2000) : null;
+    $dbh->prepare("UPDATE neoart_item SET $which=?, cut_status='manual', $cropCol=?, updated_at=? WHERE id=?")
+        ->execute([$base, $crop, $now, $id]);
+}
 echo json_encode(['ok' => 1, 'url' => $p[$which . '_url'] . '/' . $base . '?t=' . time()], JSON_UNESCAPED_UNICODE);

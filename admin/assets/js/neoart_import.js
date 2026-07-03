@@ -116,12 +116,21 @@
                 });
         },
 
-        _edit: { id: null, item: null, cropper: null, mode: 'listimg' },
+        _edit: { id: null, item: null, cropper: null, mode: 'listimg', cropData: {} },
+
+        _parseCrop: function (s) { if (!s) return null; try { return JSON.parse(s); } catch (e) { return null; } },
 
         openEdit: function (id) {
             $.post(R + 'item_get.php', { id: id }).done((res) => {
                 const it = res.item; const esc = NeoartUI.esc;
+                // сбросить прошлый Cropper (чтобы обрезка соседнего товара не «утекла» в этот)
+                if (NeoartUI._edit.cropper) { NeoartUI._edit.cropper.destroy(); NeoartUI._edit.cropper = null; }
                 NeoartUI._edit.id = id; NeoartUI._edit.item = it;
+                // восстановить сохранённые обрезки режимов (из БД), чтобы позиция не сбрасывалась
+                NeoartUI._edit.cropData = {
+                    listimg: NeoartUI._parseCrop(it.listimg_crop),
+                    imgconst: NeoartUI._parseCrop(it.imgconst_crop),
+                };
                 $('#neoartEditVendor').text(it.vendor);
                 $('#neoartPrevArt').text('Арт. ' + (it.catalog_publicvendor || it.vendor));
                 $('#neoartPrevPrice').text((it.price_final || 0) + ' ₽');
@@ -142,6 +151,10 @@
 
         // Один Cropper. destroy() перед пересозданием; обработчик load вешается один раз.
         setMode: function (mode) {
+            // запомнить обрезку уходящего режима, чтобы при возврате не сбрасывалась
+            if (NeoartUI._edit.cropper && NeoartUI._edit.mode) {
+                try { NeoartUI._edit.cropData[NeoartUI._edit.mode] = NeoartUI._edit.cropper.getData(); } catch (e) {}
+            }
             NeoartUI._edit.mode = mode;
             $('#neoartModeList').toggleClass('active', mode === 'listimg');
             $('#neoartModeConst').toggleClass('active', mode === 'imgconst');
@@ -152,12 +165,18 @@
             if (NeoartUI._edit.cropper) { NeoartUI._edit.cropper.destroy(); NeoartUI._edit.cropper = null; }
             const img = document.getElementById('neoartCropImg');
             const src = NeoartUI._edit.item.raw_url + '?t=' + Date.now(); // t: заставить load даже из кэша
+            const saved = NeoartUI._edit.cropData[mode];
             const build = () => {
                 if (NeoartUI._edit.cropper) return;           // страховка от повторной инициализации
                 NeoartUI._edit.cropper = new Cropper(img, {
                     viewMode: 1, autoCropArea: 0.6, background: false,
                     aspectRatio: NaN,                 // свободная обрезка (ширина/высота независимо)
                     rotatable: true,
+                    dragMode: 'move',                 // при зуме можно двигать картинку (пан), рамку — за края/центр
+                    ready: function () {
+                        // вернуть сохранённую позицию обрезки этого режима
+                        if (saved) { try { NeoartUI._edit.cropper.setData(saved); } catch (e) {} }
+                    },
                     crop: function () { NeoartUI.updatePreview(); },
                 });
             };
@@ -180,6 +199,8 @@
         saveCrop: function () {
             const c = NeoartUI._edit.cropper; if (!c) return;
             const mode = NeoartUI._edit.mode;
+            const cropData = c.getData();
+            NeoartUI._edit.cropData[mode] = cropData;   // запомнить позицию
             let canvas = c.getCroppedCanvas({ imageSmoothingQuality: 'high' });
             if (!canvas) { toastr.error('Не выбрана область обрезки'); return; }
             if (mode === 'listimg') canvas = NeoartUI._coverCanvas(canvas, 150, 100);
@@ -187,6 +208,7 @@
                 if (!blob) { toastr.error('Не удалось подготовить картинку'); return; }
                 const fd = new FormData();
                 fd.append('id', NeoartUI._edit.id); fd.append('which', mode); fd.append('file', blob, 'crop.jpg');
+                fd.append('crop', JSON.stringify(cropData));   // сохранить геометрию обрезки в БД
                 $.ajax({ url: R + 'item_upload.php', method: 'POST', data: fd, processData: false, contentType: false })
                     .done((res) => {
                         if (res.error) { toastr.error(res.error); return; }
@@ -244,6 +266,7 @@
         },
         _renderPreview: function () {
             const c = NeoartUI._edit.cropper; if (!c) return;
+            try { NeoartUI._edit.cropData[NeoartUI._edit.mode] = c.getData(); } catch (e) {}  // помнить позицию при движении
             if (NeoartUI._edit.mode === 'listimg') {
                 const natural = c.getCroppedCanvas({ imageSmoothingQuality: 'high' });
                 if (!natural) return;

@@ -54,3 +54,8 @@ CREATE TABLE IF NOT EXISTS `neoart_import_log` (
   `created_at` DATETIME NULL,
   KEY `idx_run` (`run_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Редизайн (2026-07-03): сохранение геометрии обрезки для каталога/конструктора
+ALTER TABLE `neoart_item`
+  ADD COLUMN `listimg_crop`  TEXT NULL,
+  ADD COLUMN `imgconst_crop` TEXT NULL;
