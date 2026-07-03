@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_logged_in'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.js"></script>
-    <link rel="stylesheet" href="assets/css/neoart_import.css?v1">
+    <link rel="stylesheet" href="assets/css/neoart_import.css?v2">
 </head>
 
 <body>

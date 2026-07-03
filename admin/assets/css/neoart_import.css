@@ -41,11 +41,13 @@
 .neoart-cat-mock img { width: 100%; aspect-ratio: 3/2; object-fit: contain; background:#f6f7f9; display:block; }
 .neoart-cat-mock .cm-body { padding: 8px 10px; text-align: center; }
 
-/* Живая рамка конструктора: 4 полосы repeat-x, боковые повёрнуты */
+/* Живая рамка конструктора: 4 полосы repeat-x, боковые повёрнуты, углы срезаны под 45° (митра) */
 .neoart-frame-preview { position: relative; width: 260px; height: 190px; margin: auto; background: #fff; box-shadow: inset 0 0 0 1px #eee; }
 .neoart-frame-preview .nf { position: absolute; background-repeat: repeat-x; background-size: auto 100%; }
-.neoart-frame-preview .nf-top    { top: 0; left: 0; width: 260px; height: var(--nf-t, 30px); }
-.neoart-frame-preview .nf-bottom { bottom: 0; left: 0; width: 260px; height: var(--nf-t, 30px); transform: rotate(180deg); }
-.neoart-frame-preview .nf-left   { top: 0; left: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top left; transform: translateX(var(--nf-t, 30px)) rotate(90deg); }
-.neoart-frame-preview .nf-right  { top: 0; right: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top right; transform: translateX(calc(-1 * var(--nf-t, 30px))) rotate(-90deg); }
+/* верх/низ: полная кромка — снаружи, срез внутрь под 45° */
+.neoart-frame-preview .nf-top    { top: 0; left: 0; width: 260px; height: var(--nf-t, 30px); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
+.neoart-frame-preview .nf-bottom { bottom: 0; left: 0; width: 260px; height: var(--nf-t, 30px); transform: rotate(180deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
+/* лево/право повёрнуты на 90°, поэтому трапеция зеркальная — полная кромка снаружи рамы */
+.neoart-frame-preview .nf-left   { top: 0; left: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top left; transform: translateX(var(--nf-t, 30px)) rotate(90deg); clip-path: polygon(var(--nf-t, 30px) 0, calc(100% - var(--nf-t, 30px)) 0, 100% 100%, 0 100%); }
+.neoart-frame-preview .nf-right  { top: 0; right: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top right; transform: translateX(calc(-1 * var(--nf-t, 30px))) rotate(-90deg); clip-path: polygon(var(--nf-t, 30px) 0, calc(100% - var(--nf-t, 30px)) 0, 100% 100%, 0 100%); }
 .neoart-frame-preview .nf-center { position:absolute; inset: var(--nf-t,30px); background:#fbfbfc; }
