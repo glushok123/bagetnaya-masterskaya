@@ -206,8 +206,35 @@
             });
         },
 
-        // Заглушка — Task 4 заменит на живой предпросмотр.
-        updatePreview: function () {},
+        _previewTimer: null,
+        updatePreview: function () {
+            // троттлинг: Cropper шлёт crop часто
+            if (NeoartUI._previewTimer) return;
+            NeoartUI._previewTimer = setTimeout(function () {
+                NeoartUI._previewTimer = null;
+                NeoartUI._renderPreview();
+            }, 100);
+        },
+        _renderPreview: function () {
+            const c = NeoartUI._edit.cropper; if (!c) return;
+            if (NeoartUI._edit.mode === 'listimg') {
+                const canvas = c.getCroppedCanvas({ width: 150, height: 100, imageSmoothingQuality: 'high' });
+                if (canvas) $('#neoartPrevList').attr('src', canvas.toDataURL('image/jpeg', 0.85));
+            } else {
+                const canvas = c.getCroppedCanvas({ imageSmoothingQuality: 'high' });
+                if (!canvas) return;
+                const url = canvas.toDataURL('image/jpeg', 0.85);
+                // толщина рамки в превью пропорциональна высоте полосы (в разумных пределах)
+                const bw = canvas.width || 1;
+                const t = Math.max(18, Math.min(46, Math.round((canvas.height / bw) * 260)));
+                const fp = document.getElementById('neoartFramePrev');
+                fp.style.setProperty('--nf-t', t + 'px');
+                ['nf-top', 'nf-bottom', 'nf-left', 'nf-right'].forEach(function (cls) {
+                    const el = fp.querySelector('.' + cls);
+                    if (el) el.style.backgroundImage = 'url(' + url + ')';
+                });
+            }
+        },
 
         approve: function (ids) {
             $.post(R + 'item_approve.php', { ids: ids.join(',') }).done((res) => {
