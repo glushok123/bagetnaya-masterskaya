@@ -47,7 +47,7 @@
 /* верх/низ: полная кромка — снаружи, срез внутрь под 45° */
 .neoart-frame-preview .nf-top    { top: 0; left: 0; width: 260px; height: var(--nf-t, 30px); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
 .neoart-frame-preview .nf-bottom { bottom: 0; left: 0; width: 260px; height: var(--nf-t, 30px); transform: rotate(180deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
-/* лево/право повёрнуты на 90°, поэтому трапеция зеркальная — полная кромка снаружи рамы */
-.neoart-frame-preview .nf-left   { top: 0; left: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top left; transform: translateX(var(--nf-t, 30px)) rotate(90deg); clip-path: polygon(var(--nf-t, 30px) 0, calc(100% - var(--nf-t, 30px)) 0, 100% 100%, 0 100%); }
-.neoart-frame-preview .nf-right  { top: 0; right: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top right; transform: translateX(calc(-1 * var(--nf-t, 30px))) rotate(-90deg); clip-path: polygon(var(--nf-t, 30px) 0, calc(100% - var(--nf-t, 30px)) 0, 100% 100%, 0 100%); }
+/* лево/право повёрнуты на 90° так, чтобы внешняя кромка профиля смотрела НАРУЖУ рамы (как верх/низ); trans­lateY(190px) = высота рамки */
+.neoart-frame-preview .nf-left   { top: 0; left: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top left; transform: translateY(190px) rotate(-90deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
+.neoart-frame-preview .nf-right  { top: 0; right: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top right; transform: translateY(190px) rotate(90deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
 .neoart-frame-preview .nf-center { position:absolute; inset: var(--nf-t,30px); background:#fbfbfc; }
