@@ -133,7 +133,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row article-block align-items-center">
             <div class="col-12 col-md-4">
                 <img src="/img/article/baget_kartina_1.jpg" class="article-img hug-right" alt="Фотография в деревянном багете">
-                <img src="/img/article/baget_kartina_2.jpg" class="article-img hug-right" alt="Фигурная рама для фотографии">
             </div>
             <div class="col-12 col-md-8">
                 <p>
@@ -153,7 +152,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <!-- Блок 2: фото СЛЕВА, текст СПРАВА -->
         <div class="row article-block align-items-center">
             <div class="col-12 col-md-4">
-                <img src="/img/article/baget_kartina_3.jpg" class="article-img hug-right" alt="Круглая рама для фото">
+                <img src="/img/article/baget_kartina_2.jpg" class="article-img hug-right" alt="Фигурная рама для фотографии">
             </div>
             <div class="col-12 col-md-8">
                 <p style="text-indent: 0; margin-bottom: 8px;"><b>Назначение рам:</b></p>
@@ -226,8 +225,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 </p>
             </div>
             <div class="col-12 col-md-4">
-                <img src="/img/article/baget_kartina_4.jpg" class="article-img hug-left" alt="Картина в багетной раме">
-                <img src="/img/article/baget_kartina_5.jpg" class="article-img hug-left" alt="Пейзаж в багетной раме">
+                <img src="/img/article/baget_kartina_3.jpg" class="article-img hug-left" alt="Картина в багетной раме">
+                <img src="/img/article/baget_kartina_4.jpg" class="article-img hug-left" alt="Пейзаж в багетной раме">
             </div>
         </div>
 
