@@ -1,279 +1,262 @@
 <?php
-$keywords = "Багет для картины, рамка для фото, выбрать рамку, рамка на заказ";
-$title = "Как оформить заказ и на что обратить внимание в процессе подбора багета для картины и рамки для фото?  ";
-$description = "Подбираем багет для картины с командой Багетной мастерской №1!";
+$keywords = "Багет для картин, рамка для фото, заказать рамку";
+$title = "Оформление в багет фотографий и картин в Багетной мастерской №1";
+$description = "Обрамить изделие в красивую раму на заказ в Багетной мастерской №1, доверяйте профессионалам.";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
     <style>
-
-        @media screen and (max-width: 1200px) {
-            .castom-image {
-                width: 180px !important;
-                height: 180px !important;
-            }
+        .article-block {
+            margin-bottom: 25px;
         }
 
-        @media screen and (max-width: 900px) {
-            .castom-image {
-                width: 170px !important;
-                height: 170px !important;
-            }
-        }
-
-        @media screen and (max-width: 760px) {
-            .castom-image {
-                width: 130px !important;
-                height: 130px !important;
-            }
-
-            .card-body button {
-                font-size: 14px;
-            }
-
-            .card-body div.row a {
-                padding-left: 0px;
-                margin-left: 0px;
-            }
-        }
-
-        .castom-image {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 170px;
-            object-fit: cover;
-        }
-
-        .card {
-            padding-bottom: 10px;
-            border-radius: 6px;
-            border: 3px solid var(--beige, #E0D2BB);
-            height: 350px !important;
-        }
-
-        .card:hover {
-            background: #E0D2BB;
-        }
-
-        p {
-
+        .article-block p {
             color: #474A51;
             font-family: Manrope;
             font-size: 20px;
-            font-style: normal;
             font-weight: 400;
-            padding-bottom: 15px;
-
+            text-align: justify;
+            text-indent: 30px;
         }
 
-        #page {
-            font-family: Cormorant Garamond;
+        .article-img {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
         }
-        h3 {
-            font-family: Cormorant Garamond, sans-serif;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
+
+        .hug-right {
+            margin-left: auto;
+            margin-right: 0;
         }
-        h4 {
-            font-family: Cormorant Garamond, sans-serif;
-            font-style: normal;
+
+        .hug-left {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .dash-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 8px 0 0;
+            color: #474A51;
+            font-family: Manrope;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .dash-list li {
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        .dash-list li::before {
+            content: "– ";
+        }
+
+        /* финальная строка красным по центру */
+        .final-note {
+            color: #AD1F2D;
+            font-family: Manrope;
+            font-size: 20px;
             font-weight: 500;
-            line-height: normal;
+            text-align: center;
+            max-width: 1000px;
+            margin: 10px auto 0;
+        }
+
+        /* линия-разделитель с кнопкой по центру */
+        .btn-divider {
+            position: relative;
+            text-align: center;
+            margin: 15px 0 30px;
+        }
+
+        .btn-divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            border-top: 1px solid #e0d9d0;
+            z-index: 0;
+        }
+
+        .btn-divider a {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1.color-main,
+        h2.color-main {
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .article-block p,
+            .dash-list,
+            .final-note {
+                font-size: 16px;
+            }
+
+            .article-block p,
+            .dash-list li {
+                text-align: left;
+                text-indent: 0;
+            }
+
+            .article-img {
+                max-width: 260px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            h1.color-main,
+            h2.color-main {
+                font-size: 24px;
+            }
         }
     </style>
-    <div class="container " id="page">
-        <div class="row text-center mt-3 mb-5">
-            <h1 class="color-main">ПОДБИРАЕМ БАГЕТ ДЛЯ КАРТИНЫ: <br>РЕКОМЕНДАЦИИ КОМАНДЫ</h1>
+
+    <div class="container home_design">
+
+        <!-- H1 -->
+        <div class="row text-center mt-3 mb-4">
+            <h1 class="color-main">Оформление в багет для картин и фотографий в<br>Багетной мастерской №1</h1>
         </div>
 
-
-        <div class="row m-3">
-            <div class="col-12 col-md-4 my-auto">
-                <img src="/img/article/IMG_9690.JPEG" style="
-                      max-width: 80%;
-                      height: auto;
-                    ">
-                <br>
-                <div class="fst-italic mx-auto"><b>Оформление Багетной мастерской №1</b></div>
+        <!-- Блок 1: фото СЛЕВА (2 шт.), текст СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="/img/article/baget_kartina_1.jpg" class="article-img hug-right" alt="Фотография в деревянном багете">
+                <img src="/img/article/baget_kartina_2.jpg" class="article-img hug-right" alt="Фигурная рама для фотографии">
             </div>
-            <div class="col-12 col-md-8 my-auto">
-                <p class="my-auto">
-                    Опытные специалисты, художники и просто увлеченные искусством люди часто сталкиваются с
-                    необходимостью подбирать оформление для написанных или приобретенных картин. Багетное обрамление –
-                    это не просто рамка для фото, а настоящий увлекательный процесс, в результате которого Вы можете
-                    получить настоящее произведение искусства! В данной статье команда Багетной мастерской №1
-                    сформировала несколько простых подсказок, как подобрать подходящее оформление для Вашей работы!
+            <div class="col-12 col-md-8">
+                <p>
+                    Багет для картин: что это такое, для чего он нужен и как выбрать подходящую раму – ответы
+                    на эти вопросы подготовила команда Багетной мастерской №1!
+                </p>
+                <p>
+                    Картина, вышивка, эстамп, плакат, художественная фотография, постер, офорт и другие
+                    художественные произведения – это искусство, которым принято украшать пространства. Если
+                    произведение выполнено на бумаге, то без повреждения повесить его будет невозможно, и
+                    сохранить на долгое время также не получится. Для того, чтобы разместить фото или картину
+                    на поверхности понадобится заказать рамку.
                 </p>
             </div>
         </div>
 
-
-        <div class="row text-center mt-5 mb-3">
-            <h3>РАМКА НА ЗАКАЗ: С ЧЕГО НАЧАТЬ</h3>
-            <h4>Первое и самое важное – определите стиль картины! Условно можно разделить все виды прикладного искусства
-                на следующие направления: </h4>
-            <p>
-                1. Классическая живопись – часто это масло, акрил, темпера, иконопись, гобелены
-            </p>
-            <p>
-                Здесь уместно золото, резьба и рамы с лепниной – выбрать рамку можно как из полистирола, так и из
-                дерева. Алюминиевых рам в подобной стилистике не изготавливают.
-            </p>
-            <p>
-                2. Современное искусство – обычно это постер, афиша, фотография, детские рисунки и скетчи
-            </p>
-            <p>
-                Выбор современных, минималистичных рам среди дерева, пластика и металла очень обширный! Для подобных
-                работ выбирайте лаконичные широкие или узкие рамки для фото и других типов работ, а также нестандартные
-                угловатые профили, например – профиль кэнвэс или парус! Необходима консультация? Оставляйте заявку на
-                обратную связь – с Вами свяжутся наши спецаилисты!
-            </p>
+        <!-- Блок 2: фото СЛЕВА, текст СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="/img/article/baget_kartina_3.jpg" class="article-img hug-right" alt="Круглая рама для фото">
+            </div>
+            <div class="col-12 col-md-8">
+                <p style="text-indent: 0; margin-bottom: 8px;"><b>Назначение рам:</b></p>
+                <ul class="dash-list">
+                    <li>Утилитарная функция рамы – защита произведения от пыли, грязи и солнечных лучей.</li>
+                    <li>Декоративная функция – украшения пространства.</li>
+                    <li>Эстетическая функция – подчеркнуть глубину произведения.</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="row text-center justify-content-center  mb-5">
+        <!-- Кнопка: Рассчитать стоимость багета -->
+        <div class="row text-center justify-content-center mt-3 mb-5">
             <a href="/baget_online">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Рассчитать стоимость багета</b></button>
+                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
+                    Рассчитать стоимость багета
+                </button>
             </a>
         </div>
 
-        <div class="row text-center mt-5 mb-3">
-            <h3>ПОДБОР МАТЕРИАЛОВ: РАМА, СТЕКЛО, ПАСПАРТУ</h3>
-        </div>
-        <div class="row m-3">
-
-            <div class="col-12 col-md-4 my-auto">
-                <img src="/img/article/IMG_5732.JPEG" style="
-                        max-width: 80%;
-                      height: auto;
-                    ">
-                <br>
-
-            </div>
-            <div class="col-12 col-md-8">
-                <h4>Стекло и другие вспомогательные материалы</h4>
+        <!-- Полноширинный текст -->
+        <div class="row article-block">
+            <div class="col-12">
                 <p>
-                    Перед тем, как выбрать рамку, определимся с типом стекла и оборотной части! Взгляните еще раз на Ваш
-                    предмет искусства:
+                    Рамка для фото или картины может располагаться на вертикальной или горизонтальной
+                    поверхности. Для рам до размера 24*30 – есть ножки для того, чтобы ее расположить стоя. Для
+                    рам большего размера как правило ножки не предусмотрены, но иногда мы можем изготовить
+                    ножки на заказ если позволяют технические характеристики багета, а именно размер работы и
+                    ширина багета. На все остальные рамы предусмотрена фурнитура которая позволит расположить
+                    картину на стене. Для расположения картины на стене в качестве фурнитуры используются
+                    подвесные пластины, D-кольца или зубчатые пластины. Если размер картины позволяет делать
+                    одну точку подвески – используется так же стальной трос, который подбирается мастером по
+                    весу картины.
                 </p>
-                <p>
-                    - У Вас холст или гобелен? Тип задника чаще всего необходим подрамник. Необходимо ли стекло? Чаще –
-                    нет (и не рекомендуем), однако это опционально и конечное решение остается за Вами!
-                </p>
-                <p>
-                    - У Вас акварель, пастель или любая другая работа на бумаге? Если да – обязательно используйте
-                    остекление – в салонах Багетной мастерской №1 Вы можете выбрать подходящее багетное стекло: обычное
-                    (художественное), матовое, пластиковое (или акриловое), и конечно музейное (безбликовое) с защитой
-                    от ультрафиолета!
-                </p>
-                <p>
-                    - деревянный багет – это самый универсальный материал, подходящий наибольшему числу фотографий и
-                    картин – его диапазон стоимости и вариантов дизайна очень широкий!
-                </p>
-                <p>
-                    Подробнее о каждом виде материала багета Вы можете прочитать в наших статьях:
-                </p>
-            </div>
-        </div>
-        <div class="row m-3">
-            <h4>Багетная рама – несущая конструкция </h4>
-            <p>
-                Выбирая багет для картины, важно соблюдать не только эстетическую сторону, но и практическую! Если у Вас
-                большой формат работы (например, карта мира) – следует отдавать предпочтение мощным и надежным рамам:
-                например из дерева или российского алюминия. Если Вы планируете оформить семейные фотографии небольшого
-                формата – можно использовать абсолютно любой материал для рамок на заказ!
-            </p>
-        </div>
-        <div class="row m-3">
-            <h4>Паспарту – декоративный цветной картон и не только </h4>
-            <p>
-                Паспарту – это вспомогательный элемент в оформлении, который дарит картинам легкость, воздушность, свободу. Паспарту бывает как из картона, так и из ткани, бархата, льна, дерева и многих других материалов. Однако всегда ли он нужен? Нет! Современные варианты оформления картин не предусматривают обязательное использование паспарту.
-            </p>
-            <p>
-                Когда паспарту обязателен? Для пастельных работ, для ветхих и поврежденных работ.
-            </p>
-            <p>
-                Когда с паспарту желателен? Для нежных акварелей, гравюр, фотографий.
-            </p>
-            <p>
-                Когда паспарту не нужен? Для холстов на подрамниках, а также широкоформатных работ
-            </p>
-
-        </div>
-        <div class="row text-center justify-content-center  mb-5">
-            <div class="col-12 col-md-4">
-                <a href="/derevyannie_ramki">
-                    <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                        деревянные рамки</b></button>
-                </a>
-            </div>
-            <div class="col-12 col-md-4">
-                <a href="/plastikovye_ramki">
-                    <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                        пластиковые рамки</b></button>
-                </a>
-            </div>
-            <div class="col-12 col-md-4">
-                <a href="/metallicheskie_ramki">
-                    <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                        металлические рамки</b></button>
-                </a>
             </div>
         </div>
 
-        <div class="row text-center mt-3 mb-3 justify-content-center">
-            <p>
-                Команда Багетной мастерской №1 обожает искусство и всегда готова помочь Вам подобрать идеальный вариант оформления картин, икон, медалей, футболок и много другого! Оставляйте заявку на обратную связь, и мы подготовим для Вас идеальное обрамление!
-            </p>
-            <button
-                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
+        <!-- Кнопка: Оставить заявку на обратную связь -->
+        <div class="row text-center justify-content-center mt-3 mb-5">
+            <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white"
                     data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                Оставить заявку на обратную связь</b></button>
+                Оставить заявку на обратную связь
+            </button>
         </div>
 
-        <!--div class="row text-center mt-5 mb-5">
-            <h3>КАК ЗАКАЗАТЬ БАГЕТ?</h3>
-            <p class="my-auto">Команда Багетной мастерской №1 предлагает несколько вариантов оформления заказа рамки для
-                фото или картины:</p>
-        </div>
-
-        <div class="row mt-5 mb-5">
-            <div class="col-12 col-md-5 my-auto">
-                <img src="/img/article/IMG_9043.JPG" style="
-                      max-width: 100%;
-                      height: auto;
-                    ">
-                <br>
-            </div>
-            <div class="col-12 col-md-7 <? if (isMobile()) { ?> text-center <? } ?>">
+        <!-- Блок 3: текст СЛЕВА, 2 фото СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-8">
                 <p>
-                    - приходите в гости!<br>
-                    Сеть Багетных мастерских №1 в Москве предлагает 3 удобных для посещения адреса! Все салоны обладают
-                    широким ассортиментом багета и сопутствующих материалов. А также наши специалисты с удовольствием
-                    помогут Вам с подбором оформления!
+                    Багет для картин будет отличаться от готовой рамы не только индивидуально изготовленным
+                    размером рамы, а также в таких деталях как задник. Задник может быть съёмный на гибких
+                    лепестках или поворотных лепестках, а также задник может быть зашит и законсервирован, что
+                    позволит сохранить работу от пыли, изменения влажности и других влияний окружающей среды.
                 </p>
                 <p>
-                    - выездной подбор багета<br> Если Вам неудобно приехать, мы приедем к Вам! Дизайнер с собой привозит
-                    от 50 образцов багета и паспарту: такая услуга позволяет подобрать багет для картины непосредственно
-                    в интерьере!
+                    Если на вашей работе или фотографии есть важные записи на оборотной стороне, мы также
+                    поможем сохранить ее в визуальном доступе, задник может быть закрыт стеклом или
+                    плексигласом, а также листом паспарту с индивидуально вырезанным окошком под памятную
+                    запись или другое. Рамка для фото, заказанная индивидуально может быть и с различными
+                    видами стекла.
                 </p>
                 <p>
-                    - online-конструктор багета<br> При желании самостоятельно подобрать оформление Вашей фотографии или
-                    картины и сразу увидеть конечную стоимость заказа <br>– переходите к наш конструктор багета!
+                    Для старых фотографий лучше заказать рамку с музейным (антибликовым) стеклом с защитой от
+                    УФ-лучей, которое поможет сохранить памятные фотографии на долго. Для работ с большими
+                    цветовыми пятнами или противоположно мелкими элементами, которые хочется завуалировать и
+                    при этом оставить работу без яркого блика – подойдет матовое стекло. Во всех остальных
+                    случаях обычное художественное стекло 2 мм толщины. Если рамка для фото будет висеть в
+                    детской комнате или в пространстве где предполагаются динамичные события – лучше
+                    использовать плексиглас. Это тонкий пластик, который при падении не даст осколков.
                 </p>
             </div>
-        </div-->
-
-        <div class="row text-center">
-            <h3>С уважением к Вам,</h3>
-            <h3>С любовью к Искусству! </h3>
-            <h3>Команда Багетной мастерской №1</h3>
+            <div class="col-12 col-md-4">
+                <img src="/img/article/baget_kartina_4.jpg" class="article-img hug-left" alt="Картина в багетной раме">
+                <img src="/img/article/baget_kartina_5.jpg" class="article-img hug-left" alt="Пейзаж в багетной раме">
+            </div>
         </div>
+
+        <!-- Разделитель с кнопкой: Как подобрать багет для картины -->
+        <div class="btn-divider">
+            <a href="/baget_for_karini">
+                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 color-white">
+                    Как подобрать багет для картины
+                </button>
+            </a>
+        </div>
+
+        <!-- Финальная строка -->
+        <div class="row">
+            <p class="final-note">
+                Обрамить изделие, заказать рамку в Багетной мастерской №1, это увлекательный процесс, который
+                позволит вам окунуться в мир разнообразия вариантов настенного декора.
+            </p>
+        </div>
+
+        <!-- Подпись -->
+        <div class="row text-center mt-3 mb-5">
+            <p class="fst-italic">
+                С уважением к Вам,<br>
+                С любовью к Искусству!<br>
+                Команда Багетной мастерской №1
+            </p>
+        </div>
+
     </div>
 
 <?
