@@ -1,178 +1,251 @@
 <?php
-$keywords = "Рамка для медалей, медали и ордена, оформить медали";
-$title = "Рамки для медалей: достойное оформление Ваших наград!";
-$description = "Оформление медалей и орденов с профессиональной командой Багетной мастерской №1 ";
+$keywords = "Рамка для медалей, ордена и медали, оформить медали";
+$title = "Оформить медали, сохранить память на долгие годы";
+$description = "Ордена и медали в раме, как лучше оформить советы и рекомендации от Багетной мастерской №1";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
     <style>
-
-        @media screen and (max-width: 1200px) {
-            .castom-image {
-                width: 180px !important;
-                height: 180px !important;
-            }
+        .article-block {
+            margin-bottom: 25px;
         }
 
-        @media screen and (max-width: 900px) {
-            .castom-image {
-                width: 170px !important;
-                height: 170px !important;
-            }
-        }
-
-        @media screen and (max-width: 760px) {
-            .castom-image {
-                width: 130px !important;
-                height: 130px !important;
-            }
-
-            .card-body button {
-                font-size: 14px;
-            }
-
-            .card-body div.row a {
-                padding-left: 0px;
-                margin-left: 0px;
-            }
-        }
-
-        .castom-image {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 170px;
-            object-fit: cover;
-        }
-
-        .card {
-            padding-bottom: 10px;
-            border-radius: 6px;
-            border: 3px solid var(--beige, #E0D2BB);
-            height: 350px !important;
-        }
-
-        .card:hover {
-            background: #E0D2BB;
-        }
-
-        p {
-
+        .article-block p {
             color: #474A51;
             font-family: Manrope;
             font-size: 20px;
-            font-style: normal;
             font-weight: 400;
-            padding-bottom: 15px;
-
+            text-align: justify;
+            text-indent: 30px;
         }
 
-        .home_design {
-            font-family: Cormorant Garamond;
+        .article-img {
+            display: block;
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+
+        .hug-right {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .hug-left {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .center-img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h3.color-main {
+            font-family: Cormorant Garamond, 'Times New Roman', serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .num-list {
+            padding-left: 22px;
+            margin: 0;
+            color: #474A51;
+            font-family: Manrope;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .num-list li {
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        /* большой финальный текст */
+        .big-note p {
+            font-size: 24px;
+            text-indent: 0;
+        }
+
+        h1.color-main,
+        h2.color-main {
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .article-block p,
+            .num-list {
+                font-size: 16px;
+            }
+
+            .article-block p,
+            .num-list li {
+                text-align: left;
+                text-indent: 0;
+            }
+
+            .big-note p {
+                font-size: 18px;
+            }
+
+            .article-img {
+                max-width: 260px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            h1.color-main,
+            h2.color-main {
+                font-size: 24px;
+            }
+
+            h3.color-main {
+                font-size: 20px;
+            }
         }
     </style>
+
     <div class="container home_design">
-        <div class="row text-center mt-3 mb-5">
-            <h1 class="color-main mb-5">Рамки для медалей: достойное оформление ваших наград </h1>
-            <h4>Медали и ордена — это не просто знаки отличия, а символы ваших достижений, памяти и гордости. Чтобы они
-                сохранились на долгие годы и выглядели презентабельно, важно правильно их оформить. В Багетной
-                мастерской №1 вы можете заказать рамку для медалей, которая подчеркнёт их значимость и станет стильным
-                элементом интерьера. </h4>
+
+        <!-- H1 -->
+        <div class="row text-center mt-3 mb-4">
+            <h1 class="color-main">Рамка для медалей: сохранить память на долгие<br>годы</h1>
         </div>
 
-        <div class="row text-center mt-3 mb-5">
-            <h3>Почему стоит оформить медали в панно? </h3>
-        </div>
-
-        <div class="row m-3">
-            <div class="col-12 col-md-5 my-auto text-center">
-                <img src="/img/article/IMG_9880.JPEG" style="
-                      max-width: 80%;
-                      height: auto;
-                    ">
-                <br>
-            </div>
-            <div class="col-12 col-md-7 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
-                <p class="my-auto">
-                    1. Сохранность — специальное оформление защищает награды от пыли, влаги и повреждений
+        <!-- Вступление -->
+        <div class="row article-block">
+            <div class="col-12">
+                <p>
+                    Наша страна имеет длинную и насыщенную историю, которую создают люди. Многообразие
+                    отраслей, структур, подразделений, направлений, которые ежедневно занимаются общественно
+                    значимой деятельностью.
                 </p>
-                <p class="my-auto">
-                    2. Эстетика — красиво расположенные медали и ордена в багетной раме смотрятся торжественно и благородно.
+                <p>
+                    Важнейшие подвиги, события и открытия, достижения отмечают памятными медалями, значками,
+                    орденами, дипломами и грамотами. Если диплом или грамоту чаще удостаивают местом на стене,
+                    то ордена и медали как правила остаются в коробочках и ящичках. История остается в
+                    глубинах комнат.
                 </p>
-                <p class="my-auto">
-                    3. Удобство — панно можно повесить на стену или поставить на полку, чтобы награды всегда были на виду.
-                </p>
-                <p class="my-auto">
-
-                </p>
-
             </div>
         </div>
 
-        <div class="row text-center justify-content-center  mb-5">
-            <a href="/сatalog-of-finished-works">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    смотреть галерею работ</b></button>
+        <!-- Кнопка: Рассчитать стоимость багета -->
+        <div class="row text-center justify-content-center mt-3 mb-4">
+            <a href="/baget_online">
+                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
+                    Рассчитать стоимость багета
+                </button>
             </a>
         </div>
 
-
-        <div class="row text-center mt-3 mb-5">
-            <h3>Как оформить медали: варианты дизайна </h3>
-        </div>
-
-
-        <div class="row m-3">
-            <div class="col-12 col-md-7 my-auto text-end <? if (isMobile()) { ?> text-center <? } ?>">
-                <p class="my-auto">
-                    1. Классическое оформление<br>
-                    Используются деревянные или пластиковые рамы с бархатным или тканевым фоном. Такой вариант подходит для парадного размещения наград.
-
-                </p>
-                <p class="my-auto">
-                    2. Современный стиль<br>
-                    Минималистичные рамки с подсветкой. Идеально для интерьеров в стиле хай-тек или лофт.
-
-                </p>
-                <p class="my-auto">
-                    3. Тематическое оформление <br>
-                    Если медали связаны с определённым событием (например, военная служба или спортивные достижения), можно добавить гравировку, фотографии или символику.
-
-                </p>
+        <!-- Два примера оформления медалей -->
+        <div class="row article-block justify-content-center align-items-center">
+            <div class="col-12 col-md-5">
+                <img src="/img/article/medali_1.jpg" class="article-img center-img" alt="Медаль в багетной раме с паспарту">
             </div>
-            <div class="col-12 col-md-5 text-center">
-                <img src="/img/article/IMG_3762.JPG" style="
-                          max-width: 80%;
-                      height: auto;
-                    ">
-                <br>
+            <div class="col-12 col-md-5">
+                <img src="/img/article/medali_2.jpg" class="article-img center-img" alt="Медаль на ленте в раме со стеклом">
             </div>
         </div>
 
-        <div class="row text-center mt-3 mb-5">
-            <h3>Где заказать панно наград и других ценных вещей? </h3>
+        <!-- Кнопка: Оставить заявку на обратную связь -->
+        <div class="row text-center justify-content-center mt-3 mb-5">
+            <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white"
+                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                Оставить заявку на обратную связь
+            </button>
         </div>
 
-        <div class="row text-center mt-3 mb-5">
-            <p>Команда Багетной мастерской №1 готова создавать для Вас самые различные индивидуальные панно для медалей и орденов. Мы используем качественные материалы и предлагаем различные варианты дизайна!
-                Создайте достойное обрамление для ваших наград — пусть они украшают ваш дом и напоминают о важных моментах жизни!
+        <!-- Полноширинный текст -->
+        <div class="row article-block">
+            <div class="col-12">
+                <p>
+                    Сохранить память, продлить жизнь выдающимся событиям поможет рамка для медалей и оформление
+                    в багет. Как и живописное произведение, графику или артефакт, ордена и медали могут быть
+                    оформлены таким образом, что с легкостью впишутся в ваш интерьер, будь то офис или жилое
+                    помещение.
+                </p>
+                <p>
+                    Особенность оформления медалей состоит в том, чтобы создать объемный короб с открывающейся
+                    рамкой. Нужный объем создается благодаря компоновке нескольких багетных рамок, с
+                    использованием паспарту. Нужный эффект достигается с помощью компоновки медалей, орденов и
+                    удостоверений к ним, а также шевронов и других наградных аксессуаров.
+                </p>
+            </div>
+        </div>
+
+        <!-- Блок с советами: фото СЛЕВА, заголовок + нумерованный список СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="/img/article/medali_3.jpg" class="article-img hug-right" alt="Ордена и медали с фотографией в раме-коллаже">
+            </div>
+            <div class="col-12 col-md-8">
+                <h3 class="color-main">Ордена и медали в раме – как лучше оформить: советы и рекомендации от Багетной мастерской №1:</h3>
+                <ol class="num-list">
+                    <li>Выбирайте багет, подходящий под интерьер по цвету или материалу, чтобы он гармонично вписывался в ваш интерьер;</li>
+                    <li>Выбирайте паспарту светлее по тону, чем металл, из которого изготовлены ордена и медали;</li>
+                    <li>Оформить медали лучше в раму со стеклом обычным художественным или антибликовым (музейным), чтобы были видны все мелкие детали;</li>
+                    <li>Придайте композиции законченность, используя несколько медалей разных размеров и форм. Это добавит динамики и интереса к вашему оформлению;</li>
+                    <li>Обратите внимание на освещение: размещение рамки с медалями в хорошо освещенном месте позволит не только подчеркнуть их красоту, но и будет способствовать сохранению их первоначального вида;</li>
+                    <li>Если ордена и медали имеют значимую историю, дополните оформление текстовыми вставками, например, кратким описанием достижения или именем награжденного. Это придаст композиции индивидуальность и станет прекрасным дополнением к визуальному восприятию;</li>
+                    <li>Не забывайте о размере рамки. Рамка для медалей должна гармонично сочетаться с другими элементами интерьера и не затмевать саму награду;</li>
+                    <li>Если у вас есть множество медалей и наград, рассмотрите возможность создания коллажа. Так вы сможете представить сразу несколько достижений и рассказать целую историю, которая будет радовать глаз и напоминать о важных моментах в вашей жизни.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Кнопка: Рамки для картин -->
+        <div class="row text-center justify-content-center mt-3 mb-5">
+            <a href="/ramki_dlya_kartin">
+                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
+                    Рамки для картин
+                </button>
+            </a>
+        </div>
+
+        <!-- Блок: текст СЛЕВА, фото СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-8">
+                <p>
+                    Наша Багетная мастерская №1 предлагает вам уникальные решения для оформления медалей и
+                    наград. Мы поможем вам выбрать подходящие материалы, цвета и формы, исходя из ваших
+                    предпочтений и стиля интерьера. С помощью наших мастеров вы сможете не просто оформить
+                    медали, а получить настоящее произведение искусства, которое будет вдохновлять и радовать
+                    вас и ваших близких.
+                </p>
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="/img/article/medali_4.jpg" class="article-img hug-left" alt="Орден и удостоверение в раме на бархате">
+            </div>
+        </div>
+
+        <!-- Блок: фото СЛЕВА, крупный текст СПРАВА -->
+        <div class="row article-block big-note align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="/img/article/medali_5.jpg" class="article-img hug-right" alt="Памятный знак в багетной раме">
+            </div>
+            <div class="col-12 col-md-8">
+                <p>
+                    Помните, что каждый орден и каждая медаль – это не просто предмет, а символ ваших
+                    достижений и упорства. Давайте вместе сохранять эту память.
+                </p>
+            </div>
+        </div>
+
+        <!-- Подпись -->
+        <div class="row text-center mt-2 mb-5">
+            <p class="fst-italic">
+                С уважением к Вам,<br>
+                С любовью к Искусству!<br>
+                Багетная мастерская №1
             </p>
         </div>
 
-        <div class="row text-center mt-3 mb-3 justify-content-center">
-
-            <button
-                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
-                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                Оставить заявку на обратную связь</b></button>
-        </div>
-
-
-        <div class="row text-center">
-            <h3>С уважением к Вам,</h3>
-            <h3>С любовью к Искусству! </h3>
-            <h3>Команда Багетной мастерской №1</h3>
-        </div>
     </div>
 
 <?
