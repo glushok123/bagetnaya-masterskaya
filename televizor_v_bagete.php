@@ -1,168 +1,190 @@
 <?php
-$keywords = "Телевизор в рамке, рамка для экрана, рамка для дисплея";
-$title = "Стильное оформление техники: багетные рамки для телевизоров и экранов!";
-$description = "Профессиональное обрамление ТВ-панелей в Багетной мастерской №1! Оперативный выезд на подбор, замер и изготовление рамки для телевизоров!";
+$keywords = "Телевизор в рамке, рамка для экрана, рамка для дисплея, рамка для телевизора";
+$title = "Багетные рамы для телевизоров, стильное решение для классического интерьера";
+$description = "Рамка для телевизора- профессиональное оформление, выполнение работы под ключ командой Багетной мастерской №1";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
     <style>
-
-        @media screen and (max-width: 1200px) {
-            .castom-image {
-                width: 180px !important;
-                height: 180px !important;
-            }
+        .article-block {
+            margin-bottom: 25px;
         }
 
-        @media screen and (max-width: 900px) {
-            .castom-image {
-                width: 170px !important;
-                height: 170px !important;
-            }
-        }
-
-        @media screen and (max-width: 760px) {
-            .castom-image {
-                width: 130px !important;
-                height: 130px !important;
-            }
-
-            .card-body button {
-                font-size: 14px;
-            }
-
-            .card-body div.row a {
-                padding-left: 0px;
-                margin-left: 0px;
-            }
-        }
-
-        .castom-image {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 170px;
-            object-fit: cover;
-        }
-
-        .card {
-            padding-bottom: 10px;
-            border-radius: 6px;
-            border: 3px solid var(--beige, #E0D2BB);
-            height: 350px !important;
-        }
-
-        .card:hover {
-            background: #E0D2BB;
-        }
-
-        p {
-
+        .article-block p {
             color: #474A51;
             font-family: Manrope;
             font-size: 20px;
-            font-style: normal;
             font-weight: 400;
-            padding-bottom: 15px;
-
+            text-align: justify;
+            text-indent: 30px;
         }
 
-        .home_design {
-            font-family: Cormorant Garamond;
+        .article-img {
+            display: block;
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+
+        .hug-right {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .hug-left {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .center-img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1.color-main,
+        h2.color-main {
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .article-block p {
+                font-size: 16px;
+                text-align: left;
+                text-indent: 0;
+            }
+
+            .article-img {
+                max-width: 260px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            h1.color-main,
+            h2.color-main {
+                font-size: 24px;
+            }
         }
     </style>
+
     <div class="container home_design">
-        <div class="row text-center mt-3 mb-5">
-            <h1 class="color-main mb-5">
-                РАМКА ДЛЯ ДИСПЛЕЯ: СТИЛЬНОЕ БАГЕТНОЕ ОФОРМЛЕНИЕ
-            </h1>
+
+        <!-- H1 -->
+        <div class="row text-center mt-3 mb-4">
+            <h1 class="color-main">Багетные рамы для телевизоров: стильное<br>решение для классического интерьера</h1>
         </div>
 
-        <div class="row m-3">
-            <div class="col-12 col-md-4 my-auto text-center">
-                <img src="/img/article/photo_2025-11-17_13-55-24.jpg" style="
-                      max-width: 80%;
-                      height: auto;
-                    ">
-                <br>
-            </div>
-            <div class="col-12 col-md-8 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
-                <p class="my-auto">
-                    Интерьерные решения – это не только про эстетику и красоту в помещении, но также практичные приемы,
-                    которые связывают в единое целое разные объекты. К таким решениям можно отнести багетное обрамление
-                    – рамки для экранов телевизора, как и для картин, являются связующим звеном между слишком лаконичным
-                    экраном и, например, интерьером в стиле бохо или прованс!
+        <!-- Вступление -->
+        <div class="row article-block">
+            <div class="col-12">
+                <p>
+                    Современный мир, который нас окружает, состоит из мониторов, дисплеев и экранов. Монитор
+                    компьютера или телевизионная панель являются связующим информационным звеном между нами и
+                    внешним миром. Не смотря на всю современность и обиходность дисплеев иногда они совершенно
+                    не вписываются в задуманный интерьер.
                 </p>
-
-
+                <p>
+                    Для объединения экранов и пространства отличным инструментом выступает рамка для дисплея,
+                    рамка для экрана и рамка для телевизора. Экранная техника отлично обрамляется в багет.
+                    Чтобы стилистика интерьера читалась и в таких деталях, как рамка для телевизора,
+                    понадобится грамотный подбор багета. Дизайнеры, менеджеры и мастера команды Багетной
+                    мастерской №1 подберут и рассчитают нужный вариант рам исходя из эстетических и
+                    технических характеристик вашего интерьера и изделия.
+                </p>
             </div>
         </div>
-        <div class="row text-center justify-content-center my-5">
+
+        <!-- Кнопка: Рассчитать стоимость багета -->
+        <div class="row text-center justify-content-center mt-3 mb-4">
             <a href="/baget_online">
                 <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                    Рассчитать
-                    стоимость багета
+                    Рассчитать стоимость багета
                 </button>
             </a>
         </div>
 
-
-        <div class="row text-center mt-3 mb-5">
-            <h3>Телевизор в рамке: красота и практичность: </h3>
-        </div>
-        <div class="row m-3">
-            <div class="col-12 col-md-8 my-auto <? if (isMobile()) { ?> text-center <? } ?>">
+        <!-- Полноширинный текст -->
+        <div class="row article-block">
+            <div class="col-12">
                 <p>
-                    В каких случаях рама для ТВ-панели уместна?
+                    Вам будут предложены рамы из полистирола, дерева и алюминия, а если среди готовых образцов
+                    не будет подходящего варианта, мы сможем сделать раму по вашему индивидуальному запросу.
+                    Такие рамы изготавливаются с нуля и только для Вас, начиная с подбора дерева: дуб, бук или
+                    сосна, а также разработки макета и покрытия и окрашивания рамы. Второй такой рамы вы не
+                    найдете! Индивидуальный дизайн и покраска, которая может включать элементы золочения и
+                    состаривания, украсят Ваш интерьер и подчеркнут его эксклюзивность.
                 </p>
-                <p>1. Эстетичный вид: в некоторых интерьерах обрамленные телевизоры лучше вписываются в общий стиль </p>
-                <p>2. Защитная функция: багетная рама скрывает технические края экрана, а также защищает от возможных повреждений</p>
-                <p>3. Индивидуальный проект: команда Багетной мастерской №1 создает стильные решения любой сложности!</p>
-                <p>Необходимо подобрать уникальный вариант именно для Вашего интерьера! Оставляйте заявку на обратную связь, чтобы получить консультацию специалиста!</p>
-
             </div>
-            <div class="col-12 col-md-4 my-auto text-center">
-                <img src="/img/article/photo_2025-11-17_13-55-29.jpg" style="
-                      max-width: 80%;
-                      height: auto;
-                    ">
-                <br>
-            </div>
-
         </div>
 
-        <div class="row text-center mt-3 mb-3 justify-content-center">
+        <!-- Два фото: изготовление на станке + готовая рама на ТВ -->
+        <div class="row article-block justify-content-center align-items-center">
+            <div class="col-12 col-md-6">
+                <img src="/img/article/tv_baget_1.jpg" class="article-img center-img" alt="Изготовление багетной рамы для телевизора на станке">
+            </div>
+            <div class="col-12 col-md-6">
+                <img src="/img/article/tv_baget_2.jpg" class="article-img center-img" alt="Телевизор в багетной раме в интерьере спальни">
+            </div>
+        </div>
 
-            <button
-                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'
+        <!-- Кнопка: Оставить заявку на обратную связь -->
+        <div class="row text-center justify-content-center mt-3 mb-5">
+            <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white"
                     data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                Оставить заявку на обратную связь</b></button>
+                Оставить заявку на обратную связь
+            </button>
         </div>
 
-
-        <div class="row text-center mt-3 mb-5">
-            <h3>Как выбрать рамку для дисплея? </h3>
+        <!-- H2 -->
+        <div class="row text-center mt-3 mb-4">
+            <h2 class="color-main">
+                Рамка для телевизора – профессиональное оформление, выполнение<br>
+                работы под ключ командой Багетной мастерской №1
+            </h2>
         </div>
-        <div class="row m-3">
 
-            <div class="my-auto <? if (isMobile()) { ?> text-center <? } ?>">
-                <p>1. Определите стиль Вашего интерьера: выбор багетных рамок огромное количество! </p>
-                <p>2. Сделайте предварительный замер телевизора: эти данные помогут уточнить предварительную стоимость работ </p>
-                <p>3. Обращайтесь к профессионалам: обрамление телевизоров – трудоемкий и кропотливый процесс, в течение которого необходимо учесть множество нюансов! </p>
-                <p>Воспользуйтесь нашей услугой выездного подбора багета, в рамках которого специалист приезжает с образцами, самостоятельно снимает замеры и выполняет расчет стоимости при Вас!</p>
-
+        <!-- Блок: фото СЛЕВА, текст СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="/img/article/tv_baget_3.jpg" class="article-img hug-right" alt="Телевизор в золотой багетной раме на мраморной стене">
+            </div>
+            <div class="col-12 col-md-8">
+                <p>
+                    Рамка для телевизора требует тщательной подготовки. Перед изготовлением рамы понадобятся
+                    очень точные параметры: длина, ширина, диагональ, толщина экрана, расположение кнопок и
+                    других элементов.
+                </p>
+                <p>
+                    Для того чтобы замеры были точными, команда Багетной мастерской №1 предлагает услуги по
+                    выездному подбору багета и замерам, а также монтаж готовой рамы на вашем объекте!
+                </p>
+                <p>
+                    Мы понимаем важность каждой детали, поэтому наш подход к каждому клиенту индивидуален. Мы
+                    готовы предложить решения, которые соответствуют не только вашим эстетическим
+                    предпочтениям, но и техническим требованиям.
+                </p>
             </div>
         </div>
 
-        <div class="row text-center justify-content-center my-5">
-            <a href="/home_designer">
+        <!-- Кнопка: Как подобрать багет для картины -->
+        <div class="row text-center justify-content-center mt-3 mb-4">
+            <a href="/baget_for_karini">
                 <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                    Выездной подбор багета
+                    Как подобрать багет для картины
                 </button>
             </a>
         </div>
 
-        <h3    class="text-center">Создавайте красоту дома или в офисе вместе с командой Багетной мастерской №1 и превращайте ТВ-панели в произведения искусства!</h3>
-
+        <!-- Подпись -->
+        <div class="row text-center mb-5">
+            <p class="fst-italic">
+                С уважением к Вам,<br>
+                С любовью к Искусству!<br>
+                Багетная мастерская №1
+            </p>
+        </div>
 
     </div>
 
