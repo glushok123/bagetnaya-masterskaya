@@ -1,171 +1,197 @@
 <?php
-$keywords = "Портрет на заказ, прорисовка, картина на заказ, картина маслом, купить картину";
-$title = "Картины на заказ в Багетной мастерской №1! ";
-$description = "Профессиональная прорисовка картин маслом и арт-гелем в салонах Багетной мастерской №1!";
+$keywords = "Портрет на заказ, прорисовка, картины на заказ, картина маслом, картины купить";
+$title = "Картины и репродукции на заказ в Багетной мастерской №1";
+$description = "Прорисовка картин, создание жикле, профессиональный подход к созданию картин для вашего интерьера";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
-<style>
-    .section-title {
-        font-family: Cormorant Garamond;
-        color: #a3080d;
-        font-weight: bold;
-        text-align: center;
-        margin: 40px 0 20px;
-        text-transform: uppercase;
-    }
-
-    .highlight-btn {
-        background-color: #a3080d;
-        color: white;
-        border: none;
-        padding: 10px 25px;
-        font-size: 16px;
-        border-radius: 4px;
-        margin: 15px 0;
-    }
-
-    .highlight-btn:hover {
-        background-color: #870000;
-        color: #fff;
-    }
-
-    .icon-check {
-        color: #00a651;
-        margin-right: 6px;
-    }
-
-    .section-text {
-        font-size: 18px;
-        font-family: 'Manrope', sans-serif;
-        color: #474A51;
-    }
-
-    .garamond {
-        font-family: Cormorant Garamond, serif;
-        font-size: 22px;
-    }
-
-    img {
-        border-radius: 10px;
-        max-width: 100%;
-        height: auto;
-    }
-
-    @media screen and (max-width: 767px) {
-        .section-title {
-            font-size: 24px;
-            margin: 30px 0 15px;
+    <style>
+        .article-block {
+            margin-bottom: 25px;
         }
 
-        .garamond {
-            font-size: 18px;
+        .article-block p {
+            color: #474A51;
+            font-family: Manrope;
+            font-size: 20px;
+            font-weight: 400;
+            text-align: justify;
+            text-indent: 30px;
         }
 
-        .section-text {
-            font-size: 16px;
-        }
-
-        .highlight-btn {
+        .article-img {
+            display: block;
             width: 100%;
-            padding: 12px 10px;
-            font-size: 15px;
+            max-width: 300px;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
         }
 
-        img {
-            max-height: 200px;
-            margin-bottom: 15px;
+        .hug-right {
+            margin-left: auto;
+            margin-right: 0;
         }
 
-        .my-auto {
-            margin: 15px 0 !important;
+        .hug-left {
+            margin-left: 0;
+            margin-right: auto;
         }
 
-        .text-left {
-            text-align: center;
+        .center-img {
+            margin-left: auto;
+            margin-right: auto;
         }
-    }
 
-</style>
+        h1.color-main,
+        h2.color-main {
+            text-transform: uppercase;
+        }
 
-<div class="container home_design">
+        @media screen and (max-width: 767px) {
 
-    <!-- Блок 1 -->
-    <div class="row text-center">
-        <h2 class="section-title">ДЕКОРАТИВНАЯ ПРОРИСОВКА КАРТИН В БАГЕТНОЙ<br>МАСТЕРСКОЙ №1</h2>
-        <div class="col-sm-4 col-sm-offset-1">
-            <img src="/img/article/telegram-cloud-document-2-5201835754921162974%201.png" class="img-responsive">
+            .article-block p {
+                font-size: 16px;
+                text-align: left;
+                text-indent: 0;
+            }
+
+            .article-img {
+                max-width: 260px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            h1.color-main,
+            h2.color-main {
+                font-size: 24px;
+            }
+        }
+    </style>
+
+    <div class="container home_design">
+
+        <!-- H1 -->
+        <div class="row text-center mt-3 mb-4">
+            <h1 class="color-main">Картины и репродукции на заказ в Багетной<br>мастерской №1</h1>
         </div>
-        <div class="col-sm-6 text-left section-text my-auto">
-            <p>Живопись – это великолепное украшение как для частых интерьеров, так и для рабочих пространств. Однако
-                картины на заказ часто дорогие, а время из написания слишком велико! Современные технологии позволяют
-                получить в кратчайшие сроки живописную работу, где сочетаются цифровая печать и ручная доработка маслом
-                или арт-гелем! В данной статье рассказываем, как заказать репродукцию или портрет на заказ в Багетной
-                мастерской №1!</p>
-            <a href="/baget_online">
-                <button class="highlight-btn">Рассчитать стоимость багета</button>
+
+        <!-- Верхний блок: фото — текст — фото -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-3">
+                <img src="/img/article/prorisovka_1.jpg" class="article-img center-img" alt="Историческая картина в багетной раме">
+            </div>
+            <div class="col-12 col-md-6">
+                <p>
+                    Многообразие художников и сюжетов позволяют найти сюжет для каждого зрителя. Однако часто
+                    сталкиваемся с тем, что есть картина автора, которая заинтересовала Вас и вы хотели бы ей
+                    обладать, но по ряду причин это становится невозможным.
+                </p>
+                <p>
+                    Для решения таких задач в Багетной мастерской №1 есть опция – художественной или
+                    декоративной прорисовки.
+                </p>
+            </div>
+            <div class="col-12 col-md-3">
+                <img src="/img/article/prorisovka_2.jpg" class="article-img center-img" alt="Репродукция морского боя в раме">
+            </div>
+        </div>
+
+        <!-- Полноширинный текст -->
+        <div class="row article-block">
+            <div class="col-12">
+                <p>
+                    Портрет на заказ или картина маслом – любой из видов живописи может быть сделан специально
+                    для Вас в кратчайшие сроки и по приятной цене.
+                </p>
+                <p>
+                    Что же такое прорисовка? Прорисовка в контексте создания картины, это художественная
+                    доработка изображения, напечатанного на холсте. Картины на заказ печатаются на холсте,
+                    затем художник масляными красками или арт-гелем добавляет глубины и объема печатному
+                    изображению. В мире искусства такая техника переноса изображения носит название – жикле.
+                    Таким образом создаются качественные репродукции, но не только за счет красочного
+                    нанесенного слоя, но и за счет качественного исходника файла для печати. Оцифровка и
+                    цветокоррекция – это подготовительные и важные этапы в создании качественного жикле.
+                </p>
+            </div>
+        </div>
+
+        <!-- Кнопка: Оставить заявку на обратную связь -->
+        <div class="row text-center justify-content-center mt-3 mb-5">
+            <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white"
+                    data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                Оставить заявку на обратную связь
+            </button>
+        </div>
+
+        <!-- Блок: фото СЛЕВА, текст СПРАВА -->
+        <div class="row article-block align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="/img/article/prorisovka_3.jpg" class="article-img hug-right" alt="Картина с прорисовкой в багетной раме">
+            </div>
+            <div class="col-12 col-md-8">
+                <p>
+                    Багетная мастерская №1 работает с подготовленными файлами для печати, мы можем их
+                    кадрировать, в нужный размер, далее происходит печать работы, натяжки ее на необходимый
+                    подрамник стандартный прямоугольный или круглый и овальный.
+                </p>
+                <p>
+                    Прорисовка работы в зависимости от выбранного материала. Для тонкой лессировочной живописи
+                    лучше выбирать масло, так как объемные мазки будут создавать эффект искусственности, не
+                    натуральности мазка, а масляная краска, нанесённая тонким слоем, создаст нужную глубину и
+                    реалистичность вашей картины.
+                </p>
+                <p>
+                    Для работ, написанных в технике импасто отличным будет применение прозрачного арт-геля,
+                    который создает объем так похожий на мазки масляной или акриловой живописи. При
+                    необходимости и для достижения большего эффекта картина маслом может быть с кракелюрам – это
+                    тонкий слой состаренного лака имитирующий натуральные трещины.
+                </p>
+            </div>
+        </div>
+
+        <!-- H2 -->
+        <div class="row text-center mt-3 mb-4">
+            <h2 class="color-main">Прорисовка картин, создание жикле, профессиональный подход<br>к созданию картин для вашего интерьера</h2>
+        </div>
+
+        <!-- Полноширинный текст -->
+        <div class="row article-block">
+            <div class="col-12">
+                <p>
+                    Когда в интерьер нужно купить картины, команда Багетной мастерской №1 всегда готова к
+                    реализации ваших идей, от просто оформления в раму, до создания индивидуального
+                    произведения искусства или же очень особенной рамы для него.
+                </p>
+                <p>
+                    Картины на заказ, багеты на заказ, индивидуальное изготовление рам любых форм и подрамников
+                    к ним – нужно решить сложную оформительскую задачу, Вам к нам, ждем вас для воплощения
+                    самых смелых решений!
+                </p>
+            </div>
+        </div>
+
+        <!-- Кнопка: Как подобрать багет для картины -->
+        <div class="row text-center justify-content-center mt-3 mb-4">
+            <a href="/baget_for_karini">
+                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
+                    Как подобрать багет для картины
+                </button>
             </a>
         </div>
+
+        <!-- Подпись -->
+        <div class="row text-center mb-5">
+            <p class="fst-italic">
+                С уважением к Вам,<br>
+                С любовью к Искусству!<br>
+                Багетная мастерская №1
+            </p>
+        </div>
+
     </div>
 
-    <!-- Блок 2 -->
-    <div class="row">
-        <h3 class="section-title">ЧТО ТАКОЕ – ПРОРИСОВКА?</h3>
-        <p>Создание живописных репродукций можно разбить на несколько этапов: </p>
-        <div class="col-sm-12 section-text">
-            <p><strong class="garamond">1. Подбор и печать изображения</strong><br>Если Вам нравится определенное изображение – отправляйте файл менеджеру! Также можем предложить Вам помощь в подборе картин. Изображение печатается на натуральном специализированном холсте</p>
-            <p><strong class="garamond">2. Предварительные багетные работы</strong><br>Печатный холст натягивается на специальную основу – подрамник, а также при необходимости подбирается обрамление </p>
-            <p><strong class="garamond">3. Ручная доработка</strong><br>На данном этапе наш художник прорабатывает картину маслом или арт-гелем, в зависимости от Ваших целей и пожеланий. </p>
-            <p>Данный вид работы занимает больше времени на изготовление, однако результат впечатляет своим объемом и фактурой! Смотрите примеры прорисовки в нашей галерее работ! </p>
-            <a href="/%d1%81atalog-of-finished-works">
-                <button class="highlight-btn">Галерея готовых работ</button>
-            </a>
-        </div>
-    </div>
-
-    <!-- Блок 3 -->
-    <div class="row">
-        <h3 class="section-title">КАК ЗАКАЗАТЬ КАРТИНУ </h3>
-        <div class="col-sm-8 section-text">
-            <p>Вы планируете купить картину с эффектом рукописной живописи? Команда Багетной мастерской №1 готова помочь!</p>
-            <ul>
-                <li>- напишите нам в любом удобном для Вас мессенджере или посетите любой удобный наш салон </li>
-                <li>- согласуйте изображение и последующее оформление, если оно необходимо </li>
-                <li>- согласуйте тип проработки: масло или арт-гель. </li>
-            </ul>
-
-            <p style="color: #a3080d;">Ознакомиться со стоимостью услуги прорисовки и другими видами багетных услуг Вы можете здесь</p>
-            <a class="highlight-btn" href="/prices_for_print_and_canvas">Рассчитать стоимость</a>
-        </div>
-        <div class="col-sm-4 mx-auto">
-            <img src="/img/article/telegram-cloud-document-2-5201835754921162994%201.png"
-                 class="img-responsive mx-auto">
-        </div>
-    </div>
-
-    <!-- Блок 4 -->
-    <div class="row ">
-        <h3 class="section-title">ПРОРИСОВКА: ДОСТОИНСТВА УСЛУГИ</h3>
-        <div class="col-sm-4 col-sm-offset-1">
-            <img src="/img/article/telegram-cloud-document-2-5201835754921163000%201.png" class="img-responsive">
-        </div>
-        <div class="col-sm-6 text-left section-text my-auto">
-            <p><span class="icon-check">✅</span> быстрый результат, в сравнении с живописью на заказ.</p>
-            <p><span class="icon-check">✅</span> экономия средств</p>
-            <p><span class="icon-check">✅</span> эффект настоящего произведения искусства!</p>
-            <a href="/baget_online">
-                <button class="highlight-btn">Рассчитать стоимость багета</button>
-            </a>
-        </div>
-    </div>
-
-    <!-- Заключение -->
-    <div class="row text-center section-text" style="margin: 40px 0;">
-        <p>Оформляйте заказ на художественную доработку картин в Багетной мастерской №1 и получите великолепное произведение искусства для Ваших интерьеров или подарка ценителям прекрасного!</p>
-    </div>
-</div>
-
-<?php
+<?
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/vk.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/footer.php';
