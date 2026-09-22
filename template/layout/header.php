@@ -66,7 +66,8 @@ $v = 25;
               href="/assets/fonts/Manrope/xn7gYHE41ni1AdIRggOxSuXd.woff2">
         <link rel="preload" as="font" type="font/woff2" crossorigin
               href="/assets/fonts/Manrope/xn7gYHE41ni1AdIRggexSg.woff2">
-        <link rel="stylesheet" href="/assets/fonts/manrope.css?v<?= $v ?>">
+        <?php /* @font-face встроены прямо в head: файл ~1.9 КБ, так не тратим отдельный блокирующий запрос */ ?>
+        <style><?php readfile($_SERVER['DOCUMENT_ROOT'] . '/assets/fonts/manrope.css'); ?></style>
 
         <script src="/assets/layout/jquery.min.js"></script>
         <script src="/assets/layout/jquery.mask.min.js"></script>
