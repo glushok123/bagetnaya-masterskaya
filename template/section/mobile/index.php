@@ -591,6 +591,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lazyVideos.forEach(function (v) { vio.observe(v); });
     }
 
+        /* на мобильном обычный сдвиг вместо 3D-куба: cube-эффект тяжело считается на слабых телефонах */
         const swiper = new Swiper('.swiper-1', {
             // Optional parameters
             direction: 'horizontal',
@@ -598,12 +599,7 @@ document.addEventListener('DOMContentLoaded', function () {
             autoplay: {
                 delay: 3000,
             },
-            speed: 800,
-            effect: 'cube',
-            shadowOffset: 20,
-            shadowScale: 0.94,
-            lideShadows: true,
-            shadow: true
+            speed: 800
         });
 
         const swiper2 = new Swiper('.swiper-2', {
