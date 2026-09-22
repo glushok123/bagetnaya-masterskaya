@@ -18,7 +18,9 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
 
             <div class='row'>
                 <div class='col-12' style="padding: 0px !important;">
-                    <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt=""
+                    <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG"
+                                                                            alt="Багетная мастерская №1"
+                                                                            width="560" height="166"
                                                                             class='img-brand'
                                                                             style="width: 136px; height: auto;"></a>
                     <!--a href="https://api.whatsapp.com/send/?phone=79774274477&text=Здравствуйте%2C+у+меня+есть+вопрос"><img src="/admin/assets/whatsapp-logo_icon-icons.com_66175.png" style="width: 25px; height: auto"></a-->
@@ -122,8 +124,11 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                                 <input type="hidden" name="searchid" value="3468587"/>
                                 <input type="hidden" name="l10n" value="ru"/>
                                 <input type="hidden" name="reqenc" value=""/>
-                                <span class="fa fa-search form-control-feedback" id="searchsubmit" data-search="body"
-                                      type='submit'></span>
+                                <span class="form-control-feedback" id="searchsubmit" data-search="body"
+                                      type='submit' aria-label="Найти"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="17" height="17" viewBox="0 0 16 16" fill="currentColor"
+                                        aria-hidden="true" style="vertical-align:middle"><path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.099M12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg></span>
                                 <input type="text" name="text" class="search-form__input form-control"
                                        placeholder="Поиск по сайту.." autocomplete="off" itemprop="query-input">
                             </div>

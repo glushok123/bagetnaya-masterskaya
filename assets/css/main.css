@@ -521,3 +521,19 @@ html, body {
 
     }
 }
+
+/* --- a11y: телефоны салонов в шапке (раньше были h5 — ломали порядок заголовков и контраст) --- */
+.shop-phone {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+    color: #666;
+    text-decoration: none;
+}
+
+/* --- a11y (target-size): ссылка-обёртка должна принимать размер вложенной кнопки --- */
+a:has(> button.button) {
+    display: inline-block;
+}

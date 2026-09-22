@@ -120,9 +120,10 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
-                        <? foreach ($elementsSlider1 as $element) { ?>
+                        <? foreach ($elementsSlider1 as $i => $element) { ?>
                             <div class="swiper-slide parent-hover-show-desc ">
-                                <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>" class='index-img-top'>
+                                <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>" class='index-img-top' width="400" height="380"
+                                     <?= $i === 0 ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"' ?>>
                                 <div class='my-3 text-center desc-hidden'><?= $element['desc'] ?></div>
                             </div>
                         <? } ?>
@@ -147,7 +148,7 @@
         </div>
 
         <div class='row'>
-            <img src="/assets/img/index/image_screen_3.webp" alt="" style='padding:20px;'>
+            <img src="/assets/img/index/image_screen_3.webp" alt="" style='padding:20px;' width="374" height="274" loading="lazy" decoding="async">
         </div>
 
         <div class='style-text font-16 element-animation'>
@@ -226,7 +227,7 @@
                     </div>
                 </div>
                 <div class='col-12 element-animation'>
-                    <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4'>
+                    <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
                 </div>
                 <div class='col-12 element-animation'>
                     <div class='style-text font-16 my-3'>
@@ -253,7 +254,7 @@
                     </div>
                 </div>
                 <div class='col-12'>
-                    <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4'>
+                    <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
                 </div>
             </div>
             <div class='row my-20 element-animation'>
@@ -272,7 +273,7 @@
 
                 </div>
                 <div class='col-12'>
-                    <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4'>
+                    <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
                 </div>
                 <div class='col-12'>
                     <br><br>
@@ -482,7 +483,7 @@
             </div>
             <div class='col-12'>
 
-                <img src="/assets/img/index/image_screen_5.webp" alt="" style='width:100%'>
+                <img src="/assets/img/index/image_screen_5.webp" alt="" style='width:100%' width="412" height="489" loading="lazy" decoding="async">
 
             </div>
         </div>

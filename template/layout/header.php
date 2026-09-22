@@ -51,11 +51,17 @@ $v = 25;
         <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144-precomposed.png"/>
         <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144-precomposed.png"/>
 
+        <?php /* Ранняя загрузка LCP-картинки: страница задаёт $preloadImage до подключения header.php */ ?>
+        <?php if (!empty($preloadImage)) { ?>
+            <link rel="preload" as="image" href="<?= $preloadImage ?>" fetchpriority="high">
+        <?php } ?>
+
         <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-              integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-              crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <?php /* Font Awesome убран: из всей библиотеки использовалась одна иконка поиска — заменена на inline-SVG */ ?>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
 
@@ -66,8 +72,7 @@ $v = 25;
         <script src="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.css" rel="stylesheet">
 
-        <link rel="stylesheet"
-              href="https://unpkg.com/bs-brain@2.0.3/components/navbars/navbar-1/assets/css/navbar-1.css">
+        <?php /* navbar-1.css (unpkg) убран: его bsb-* классы есть только в nav-bar-desctop-new.php, который нигде не подключается */ ?>
 
         <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css">
         <script type="text/javascript" src="/assets/layout/toastify-js"></script>
@@ -223,4 +228,5 @@ if ($issafari == true) {
    ';
 }
 
-
+?>
+<main id="main-content">

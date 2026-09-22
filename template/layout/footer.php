@@ -1,3 +1,4 @@
+</main>
 <? if (!isset($hideTop)) { ?>
     <footer class="">
         <div class="row">
@@ -244,9 +245,7 @@
 
 <!--link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script-->
-<script>
-    new Snow();
-</script>
+<!-- снегопад отключён: загрузчик Snow.min.js закомментирован выше, вызов new Snow() давал ReferenceError в консоли -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const trailSettings = {

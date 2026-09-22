@@ -18,7 +18,9 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
             <?
             if (!isMobile()) {
                 ?>
-                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG" alt=""
+                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG"
+                                                                        alt="Багетная мастерская №1"
+                                                                        width="560" height="166"
                                                                         class='img-brand'
                                                                         style="width: auto; height: 80px;"> </a>
 
@@ -65,20 +67,20 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                     <div class='col'>
                         <h3 style="margin-bottom: 0px;">НОВОКУЗНЕЦКАЯ</h3>
                         <a href="tel:+79778244212" style="color: black;text-decoration: none;">
-                            <h5 style="color: #808080;text-decoration: none;">8(977) 824-42-12</h5>
+                            <span class="shop-phone">8(977) 824-42-12</span>
                         </a>
                     </div>
                     <div class='col'>
                         <h3 style="margin-bottom: 0px;">АРБАТСКАЯ</h3>
                         <a href="tel:+79268659295" style="color: black;text-decoration: none;">
-                            <h5 style="color: #808080;text-decoration: none;">8(926) 865-92-95</h5>
+                            <span class="shop-phone">8(926) 865-92-95</span>
                         </a>
 
                     </div>
                     <div class='col'>
                         <h3 style="margin-bottom: 0px;">БАРРИКАДНАЯ</h3>
                         <a href="tel:+79773147771" style="color: black;text-decoration: none;">
-                            <h5 style="color: #808080;text-decoration: none;">8(977) 314-77-71</h5>
+                            <span class="shop-phone">8(977) 314-77-71</span>
                         </a>
                     </div>
 
@@ -178,8 +180,11 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                                 <input type="hidden" name="searchid" value="3468587"/>
                                 <input type="hidden" name="l10n" value="ru"/>
                                 <input type="hidden" name="reqenc" value=""/>
-                                <span class="fa fa-search form-control-feedback" id="searchsubmit" data-search="body"
-                                      type='submit'></span>
+                                <span class="form-control-feedback" id="searchsubmit" data-search="body"
+                                      type='submit' aria-label="Найти"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="17" height="17" viewBox="0 0 16 16" fill="currentColor"
+                                        aria-hidden="true" style="vertical-align:middle"><path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.099M12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg></span>
                                 <input type="text" name="text" class="search-form__input form-control"
                                        placeholder="Поиск по сайту.." autocomplete="off" itemprop="query-input">
                             </div>
