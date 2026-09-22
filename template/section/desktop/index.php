@@ -92,7 +92,7 @@
                                 <div class="swiper-slide parent-hover-show-desc">
                                     <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>"
                                          class='index-img-top' width="400" height="380"
-                                     <?= $i === 0 ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"' ?>>
+                                     <?= $i === 0 ? 'fetchpriority="high"' : ($i === 1 ? 'decoding="async"' : 'loading="lazy" decoding="async"') ?>>
                                     <div class='my-3 text-center desc-hidden'><?= $element['desc'] ?></div>
                                 </div>
                             <? } ?>
@@ -527,29 +527,33 @@ document.addEventListener('DOMContentLoaded', function () {
         lazyVideos.forEach(function (v) { vio.observe(v); });
     }
 
-        const swiper = new Swiper('.swiper-1', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-            autoplay: {
-                delay: 3000,
-            },
-            speed: 800,
-            effect: 'cube',
-            shadowOffset: 20,
-            shadowScale: 0.94,
-            lideShadows: true,
-            shadow: true
-        });
+        /* слайдеры запускаем после полной загрузки: иначе autoplay меняет кадр
+           ещё во время замера и LCP считается по второму слайду */
+        window.addEventListener('load', function () {
+            const swiper = new Swiper('.swiper-1', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                },
+                speed: 800,
+                effect: 'cube',
+                shadowOffset: 20,
+                shadowScale: 0.94,
+                lideShadows: true,
+                shadow: true
+            });
 
-        const swiper2 = new Swiper('.swiper-2', {
-            slidesPerView: 4,
-            loop: true,
-            spaceBetween: 30,
-            //mousewheel: true,
-            autoplay: {
-                delay: 3000,
-            },
+            const swiper2 = new Swiper('.swiper-2', {
+                slidesPerView: 4,
+                loop: true,
+                spaceBetween: 30,
+                //mousewheel: true,
+                autoplay: {
+                    delay: 3000,
+                },
+            });
         });
 
         $(document).on('click', '.razdel', function () {
