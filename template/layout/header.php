@@ -59,18 +59,21 @@ $v = 25;
         <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">
         <?php /* Font Awesome убран: из всей библиотеки использовалась одна иконка поиска — заменена на inline-SVG */ ?>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
+        <?php /* Manrope переведён на свой хост (вариативный woff2): убирает 2 внешних соединения и сдвиг вёрстки при подмене шрифта */ ?>
+        <link rel="preconnect" href="https://mc.yandex.ru">
+        <link rel="preload" as="font" type="font/woff2" crossorigin
+              href="/assets/fonts/Manrope/xn7gYHE41ni1AdIRggOxSuXd.woff2">
+        <link rel="preload" as="font" type="font/woff2" crossorigin
+              href="/assets/fonts/Manrope/xn7gYHE41ni1AdIRggexSg.woff2">
+        <link rel="stylesheet" href="/assets/fonts/manrope.css?v<?= $v ?>">
 
         <script src="/assets/layout/jquery.min.js"></script>
         <script src="/assets/layout/jquery.mask.min.js"></script>
         <script src="/assets/layout/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/swiper@10.2.0/swiper-bundle.min.css" rel="stylesheet">
+        <?php /* Swiper переведён на свой хост: убирает внешнее соединение с jsdelivr из критического пути */ ?>
+        <script src="/assets/layout/swiper-bundle.min.js"></script>
+        <link href="/assets/layout/swiper-bundle.min.css" rel="stylesheet">
 
         <?php /* navbar-1.css (unpkg) убран: его bsb-* классы есть только в nav-bar-desctop-new.php, который нигде не подключается */ ?>
 

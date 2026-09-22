@@ -148,7 +148,7 @@
         </div>
 
         <div class='row'>
-            <img src="/assets/img/index/image_screen_3.webp" alt="" style='padding:20px;' width="374" height="274" loading="lazy" decoding="async">
+            <img src="/assets/img/index/image_screen_3.webp" alt="" style='padding:20px;' loading="lazy" decoding="async">
         </div>
 
         <div class='style-text font-16 element-animation'>
@@ -227,7 +227,7 @@
                     </div>
                 </div>
                 <div class='col-12 element-animation'>
-                    <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
+                    <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4' loading="lazy" decoding="async">
                 </div>
                 <div class='col-12 element-animation'>
                     <div class='style-text font-16 my-3'>
@@ -254,7 +254,7 @@
                     </div>
                 </div>
                 <div class='col-12'>
-                    <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
+                    <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4' loading="lazy" decoding="async">
                 </div>
             </div>
             <div class='row my-20 element-animation'>
@@ -273,7 +273,7 @@
 
                 </div>
                 <div class='col-12'>
-                    <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
+                    <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4' loading="lazy" decoding="async">
                 </div>
                 <div class='col-12'>
                     <br><br>

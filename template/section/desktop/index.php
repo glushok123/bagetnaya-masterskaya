@@ -192,7 +192,7 @@
                     услуги: изготовление багетной рамы индивидуального формата для фотографий, картин, плакатов, вышивок
                     и мозаик, карт и прочего.
                 </div>
-                <img src="/assets/img/index/image_screen_3.webp" alt="" width="374" height="274" loading="lazy" decoding="async">
+                <img src="/assets/img/index/image_screen_3.webp" alt="" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -240,7 +240,7 @@
         <div class='mx-5 px-150 element-animation'>
             <div class='row my-20'>
                 <div class='col'>
-                    <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
+                    <img src="/assets/img/index/image_screen_4.webp" alt="" class='img-b4' loading="lazy" decoding="async">
                 </div>
                 <div class='col element-animation'>
                     <div class='b4-name'>Багетные работы</div>
@@ -274,12 +274,12 @@
                     </div>
                 </div>
                 <div class='col'>
-                    <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
+                    <img src="/assets/img/index/image_screen_4 (1).webp" alt="" class='img-b4' loading="lazy" decoding="async">
                 </div>
             </div>
             <div class='row my-20 element-animation'>
                 <div class='col'>
-                    <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4' width="407" height="462" loading="lazy" decoding="async">
+                    <img src="/assets/img/index/image_screen_4 (2).webp" alt="" class='img-b4' loading="lazy" decoding="async">
                 </div>
                 <div class='col element-animation'>
                     <div class='b4-name'>Накатка на пенокартон</div>
