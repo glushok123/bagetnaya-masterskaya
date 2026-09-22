@@ -125,7 +125,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                                 <input type="hidden" name="l10n" value="ru"/>
                                 <input type="hidden" name="reqenc" value=""/>
                                 <span class="form-control-feedback" id="searchsubmit" data-search="body"
-                                      type='submit' aria-label="Найти"><svg xmlns="http://www.w3.org/2000/svg"
+                                      type='submit' role="button" aria-label="Найти"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="17" height="17" viewBox="0 0 16 16" fill="currentColor"
                                         aria-hidden="true" style="vertical-align:middle"><path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.099M12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg></span>
