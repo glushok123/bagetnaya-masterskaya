@@ -54,13 +54,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 быть уверены: здесь Вам окажут самый профессиональный подход в сфере декоративного обрамления!
             </div>
             <div class="pt-4">
-                <a href="/baget_online">
-                    <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                        Рассчитать
-                        стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать
+                        стоимость багета</a>
             </div>
         </div>
     </div>
@@ -127,13 +122,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 </li>
             </ul>
             <div class="pt-4">
-                <a href="/baget_online">
-                    <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                        Рассчитать
-                        стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать
+                        стоимость багета</a>
             </div>
         </div>
     </div>

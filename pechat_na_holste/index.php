@@ -100,13 +100,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 
         <div class="row text-center justify-content-center  mb-5">
-            <a href="/baget_online">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Рассчитать
-                    стоимость багета
-                </button>
-            </a>
+            <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать
+                    стоимость багета</a>
         </div>
 
         <div class="row m-3">
@@ -131,11 +126,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 
         <div class="row text-center justify-content-center  mb-5">
-            <a href="/natyazhka_holsta/">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    натяжка холста</b></button>
-            </a>
+            <a href="/natyazhka_holsta/" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">натяжка холста</a>
         </div>
 
 

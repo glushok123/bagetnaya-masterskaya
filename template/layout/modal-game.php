@@ -21,11 +21,7 @@
                         <div class='promo mt-2'>Промокод: <b>" . $skidkod . "</b></div>
                         <div class='text-promo mt-2'>Воспользуйтесь им в течении 24 часов, сделав заказ в конструкторе багета или сообщите менеджеру салона!</div>
                         <div class='flex-but mt-3'>
-                                            <a href='/baget_online'>
-                        <button
-                                class='button button-custom-index button-color-company-red color-white'>
-                            Конструктор багета <b>online</b></button>
-                    </a>
+                                            <a href='/baget_online' class='button button-custom-index button-color-company-red color-white'>Конструктор багета <b>online</b></a>
                          <button class='button button-custom-index button-color-company-red color-white' data-bs-toggle='modal' data-bs-target='#feedbackModal'>Заявка на обратную связь</button>
                         </div>
                         </div>

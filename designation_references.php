@@ -112,11 +112,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <p class="mt-3">Читайте подробнее о картинах на подрамниках и видах натяжки в нашей статье!</p>
         </div>
         <div class="row text-center justify-content-center  mb-5">
-            <a href="/natyazhka_holsta/">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Натяжка холстов</b></button>
-            </a>
+            <a href="/natyazhka_holsta/" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Натяжка холстов</a>
         </div>
 
         <div class="row text-center mt-3 mb-5">
@@ -140,11 +136,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     вид пространства будет сбалансирован. В противном случае картина станет акцентным элементом
                     интерьера!</p>
                 <div class="row text-center justify-content-center mt-3 mb-5">
-                    <a href="/baget_online">
-                        <button
-                                class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                            Рассчитать стоимость багета</b></button>
-                    </a>
+                    <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать стоимость багета</a>
                 </div>
             </div>
             <div class="flex-image hide-mobile">

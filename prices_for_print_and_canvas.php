@@ -117,11 +117,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
             <!-- Кнопка на другую страницу с расчётом багета под ключ -->
             <div class="row my-5">
-                <a href="/baget_online">
-                    <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                        Рассчитать стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать стоимость багета</a>
             </div>
 
             <section id="calc-price">

@@ -129,11 +129,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             багета Вы можете самостоятельно подобрать к картине подходящую раму!</p>
 
         <div class="row text-center justify-content-center mt-3 mb-5">
-            <a href="/baget_online">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Рассчитать стоимость багета</b></button>
-            </a>
+            <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать стоимость багета</a>
         </div>
 
         <div class="row text-center mt-3 mb-5">
@@ -199,14 +195,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                                            href="/сatalog-of-finished-works-by-category.php?category=Акварели, пастели и гравюры"><h5 class="card-title">Акварели, пастели и гравюры</h5></a>
                                     </div>
                                     <div style="position: absolute; bottom: 0px;" class="row text-center mx-auto pt-5 justify-content-center ">
-                                        <a href="/сatalog-of-finished-works-by-category.php?category=Акварели, пастели и гравюры" class="mt-5 justify-content-center">
-                                            <button class="button button-custom-index button-color-company-golden mt-5 mx-auto"
-                                                    style="
+                                        <a href="/сatalog-of-finished-works-by-category.php?category=Акварели, пастели и гравюры" class="mt-5 justify-content-center button button-custom-index button-color-company-golden mt-5 mx-auto" style="
                                             padding: 5px;
                                             padding-right: 10px;
                                             padding-right: 10px;
-                                            ">Посмотреть работы</button>
-                                        </a>
+                                            ">Посмотреть работы</a>
                                     </div>
                                 </div>
                             </div>
@@ -226,25 +219,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                                            href="/сatalog-of-finished-works-by-category.php?category=Зеркала и тв-панели"><h5 class="card-title">Зеркала и тв-панели</h5></a>
                                     </div>
                                     <div style="position: absolute; bottom: 0px;" class="row text-center mx-auto pt-5 justify-content-center ">
-                                        <a href="/сatalog-of-finished-works-by-category.php?category=Зеркала и тв-панели" class="mt-5 justify-content-center">
-                                            <button class="button button-custom-index button-color-company-golden mt-5 mx-auto"
-                                                    style="
+                                        <a href="/сatalog-of-finished-works-by-category.php?category=Зеркала и тв-панели" class="mt-5 justify-content-center button button-custom-index button-color-company-golden mt-5 mx-auto" style="
                                             padding: 5px;
                                             padding-right: 10px;
                                             padding-right: 10px;
-                                            ">Посмотреть работы</button>
-                                        </a>
+                                            ">Посмотреть работы</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row text-center justify-content-center mt-3 mb-5">
-                        <a href="/сatalog-of-finished-works">
-                            <button
-                                    class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                                посмотреть больше работ</b></button>
-                        </a>
+                        <a href="/сatalog-of-finished-works" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">посмотреть больше работ</a>
                     </div>
                 </div>
 

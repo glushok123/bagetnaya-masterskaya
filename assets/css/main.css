@@ -533,7 +533,21 @@ html, body {
     text-decoration: none;
 }
 
-/* --- a11y (target-size): ссылка-обёртка должна принимать размер вложенной кнопки --- */
-a:has(> button.button) {
+/* --- a11y (target-size): раньше кнопка <button> лежала внутри <a>, и оба элемента
+       считались отдельными перекрывающимися целями. Теперь это одна ссылка,
+       оформленная как кнопка — ниже возвращаем ей вид нативной <button>. --- */
+a.button,
+a.highlight-btn,
+a.btn {
     display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* цвет как у нативной <button>, а не синий цвет ссылки.
+   :where() обнуляет специфичность, поэтому .color-white и прочие классы перебивают его */
+a:where(.button, .highlight-btn) {
+    color: #212529;
 }

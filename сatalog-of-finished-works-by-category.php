@@ -200,13 +200,8 @@ function normalizeGalleryImagePath(?string $path): string
             </div>
             <hr>
             <div class="row text-center justify-content-center">
-                <a href="/baget_online">
-                    <button
-                            class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                        Рассчитать
-                        стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать
+                        стоимость багета</a>
                 <a href="/сatalog-of-finished-works.php">
                     Вернуться к разделам
                 </a>

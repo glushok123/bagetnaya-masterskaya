@@ -96,9 +96,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <p>Доставка за МКАД рассчитывается индивидуально. Уточнить стоимость доставки Вы можете у менеджера, или рассчитать ее самостоятельно!</p>
         </div>
 
-        <a href="/prices_for_print_and_canvas">
-            <button class="highlight-btn">Комплект для картины</button>
-        </a>
+        <a href="/prices_for_print_and_canvas" class="highlight-btn">Комплект для картины</a>
 
         <div class="end-text">
             С уважением к Вам,<br>

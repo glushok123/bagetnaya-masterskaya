@@ -98,11 +98,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Кнопка: Рассчитать стоимость багета -->
         <div class="row text-center justify-content-center mt-3 mb-4">
-            <a href="/baget_online">
-                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                    Рассчитать стоимость багета
-                </button>
-            </a>
+            <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать стоимость багета</a>
         </div>
 
         <!-- Полноширинный текст -->
@@ -170,11 +166,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Кнопка: Как подобрать багет для картины -->
         <div class="row text-center justify-content-center mt-3 mb-4">
-            <a href="/baget_for_karini">
-                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                    Как подобрать багет для картины
-                </button>
-            </a>
+            <a href="/baget_for_karini" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Как подобрать багет для картины</a>
         </div>
 
         <!-- Подпись -->

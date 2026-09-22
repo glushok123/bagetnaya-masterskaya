@@ -112,22 +112,11 @@
                     разных направлений и людей, которые ценят прекрасное.
                 </div>
                 <div class="mt-3">
-                    <a href="/baget_online">
-                        <button
-                                class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                            Конструктор багета <b>online</b></button>
-                    </a>
+                    <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Конструктор багета <b>online</b></a>
                     <br>
-                    <a href="/сatalog-of-finished-works.php">
-                        <button class='button button-custom-index button-color-company-golden fix-width-185'>Наши
-                            работы
-                        </button>
-                    </a>
-                    <a href="/actions.html">
-                        <button
-                                class='button button-custom-index button-color-company-golden fix-width-185 ml-55'>Акции
-                        </button>
-                    </a>
+                    <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden fix-width-185">Наши
+                            работы</a>
+                    <a href="/actions.html" class="button button-custom-index button-color-company-golden fix-width-185 ml-55">Акции</a>
                 </div>
             </div>
         </div>
@@ -179,12 +168,8 @@
                     выбрать ту, которая будет соответствовать вашему запросу и пожеланию.
                 </div>
 
-                <a href="/baget_online">
-                    <button class='button button-custom-index button-color-company-red mb-3 color-white'
-                            style='width:100%'>Рассчитать
-                        стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red mb-3 color-white" style="width:100%">Рассчитать
+                        стоимость багета</a>
             </div>
             <div class='col-4' style="padding-left: 40px;">
                 <div class='style-text font-16'>
@@ -218,11 +203,7 @@
                     СПЕЦИАЛЬНЫХ УСЛОВИЯХ
                 </div>
 
-                <a href="/actions">
-                    <button class='button button-custom-index button-color-company-golden fix-width-185'
-                            style='padding:10px;'>Подробнее
-                    </button>
-                </a>
+                <a href="/actions" class="button button-custom-index button-color-company-golden fix-width-185" style="padding:10px;">Подробнее</a>
             </div>
             <div class='col-6' style='padding-left:50px;'>
                 <div class='style-text '>
@@ -293,11 +274,7 @@
                         легким весом, высоким уровнем прочности и стойкостью к негативным факторам окружающей среды.
                     </div>
                     <br><br>
-                    <a href="/сatalog-of-finished-works.php">
-                        <button class='button button-custom-index button-color-company-golden '
-                                style='width:100%;'>Узнать подробнее об услугах мастерской
-                        </button>
-                    </a>
+                    <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden" style="width:100%;">Узнать подробнее об услугах мастерской</a>
                 </div>
             </div>
         </div>
@@ -316,12 +293,8 @@
         <div class='row my-5'>
             <div class='col-12 col-md-6 pr-50'>
                 <img src="/assets/img/index/image_screen_5.webp" alt="" style='width:100%' width="412" height="489" loading="lazy" decoding="async">
-                <a href="/baget_online">
-                    <button class='button button-custom-index button-color-company-red mb-3 color-white mt-5'
-                            style='width:100%'>Рассчитать
-                        стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red mb-3 color-white mt-5" style="width:100%">Рассчитать
+                        стоимость багета</a>
             </div>
             <div class='col-12 col-md-6'>
                 <div class='mb-5'>

@@ -110,11 +110,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Кнопка: Рассчитать стоимость багета -->
         <div class="row text-center justify-content-center mt-3 mb-5">
-            <a href="/baget_online">
-                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">
-                    Рассчитать стоимость багета
-                </button>
-            </a>
+            <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать стоимость багета</a>
         </div>
 
         <!-- Блок 2: фото СЛЕВА, текст СПРАВА -->
@@ -198,11 +194,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Разделитель с кнопкой: Рамки для картин -->
         <div class="btn-divider">
-            <a href="/ramki_dlya_kartin">
-                <button class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 color-white">
-                    Рамки для картин
-                </button>
-            </a>
+            <a href="/ramki_dlya_kartin" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 color-white">Рамки для картин</a>
         </div>
 
         <!-- Подпись -->

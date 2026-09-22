@@ -47,11 +47,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="row text-center justify-content-center mt-3 mb-5">
-            <a href="/сatalog-of-finished-works">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Галерея работ</b></button>
-            </a>
+            <a href="/сatalog-of-finished-works" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Галерея работ</a>
         </div>
 
         <div class="row text-center m-2">
@@ -89,11 +85,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="row text-center justify-content-center mt-3 mb-5">
-            <a href="/baget_online">
-                <button
-                        class='button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white'>
-                    Рассчитать стоимость багета</b></button>
-            </a>
+            <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать стоимость багета</a>
         </div>
 
         <div class="row text-center m-2">

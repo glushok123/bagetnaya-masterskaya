@@ -103,9 +103,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <p>- долговечность: данный материал устойчив к влаге, солнцу и другим факторам</p>
             <p>Подбирайте идеальный багет для Ваших картин в нашем конструкторе багета!</p>
             <!-- ДОБАВИТЬ КНОПКУ НА КОНСТРУКТОР -->
-            <a href="/baget_online">
-                <button class="highlight-btn">Открыть конструктор багета</button>
-            </a>
+            <a href="/baget_online" class="highlight-btn">Открыть конструктор багета</a>
         </div>
         <div class="col-sm-5">
             <img src="/img/article/telegram-cloud-document-2-5305308281655294113 1.png" alt="Алюминиевые профили" class="img-responsive img-right">

@@ -273,9 +273,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     </div>
 
     <div class="row text-center justify-content-center mt-3 mb-5">
-        <a href="/baget_online">
-            <button class="highlight-btn">Рассчитать стоимость багета</button>
-        </a>
+        <a href="/baget_online" class="highlight-btn">Рассчитать стоимость багета</a>
     </div>
 
     <div class="block-2-flex mt-5">
@@ -290,9 +288,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
             <p class="color-main">- дуб, бук, ясень и береза</p>
             <p>Рамы из этих материалов изготавливаются индивидуально: разные формы и размеры – от миниатюрных круглых
                 рамок до багетных рам «как в Третьяковской галерее»!</p>
-            <a href="/baget_for_karini">
-                <button class="highlight-btn">Как подобрать багет для картины</button>
-            </a>
+            <a href="/baget_for_karini" class="highlight-btn">Как подобрать багет для картины</a>
         </div>
     </div>
 

@@ -137,9 +137,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     окружающих факторов. В данной статье рассказываем, как происходит процесс обрамления в Багетной
                     мастерской №1 и как купить рамку для Вашего предмета искусства!</p>
 
-                <a href="/baget_online">
-                    <button class="highlight-btn">Рассчитать стоимость багета</button>
-                </a>
+                <a href="/baget_online" class="highlight-btn">Рассчитать стоимость багета</a>
             </div>
         </div>
 
@@ -188,9 +186,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     вариант под стиль изображения и интерьера.</p>
                 <p>В случае, если Вам не удалось найти подходящее готовое решение, Вы можете воспользоваться услугой
                     express-заказа! Подробнее читайте в статье:</p>
-                <a href="/express_zakaz.php">
-                    <button class="highlight-btn">Express-заказ</button>
-                </a>
+                <a href="/express_zakaz.php" class="highlight-btn">Express-заказ</a>
             </div>
             <div class="col-sm-4">
                 <img src="/img/article/image%20707.png" class="img-responsive"
@@ -203,9 +199,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row text-center section-text" style="margin: 40px 0;">
             <p>В наших салонах также представлено некоторое количество готовых изделий, поэтому Вы можете купить рамку по очень приятной стоимости!</p>
 
-            <a href="/сatalog-of-finished-works">
-                <button class="highlight-btn">Галерея готовых работ</button>
-            </a>
+            <a href="/сatalog-of-finished-works" class="highlight-btn">Галерея готовых работ</a>
 
             <p>Создавайте красоту вместе с нашей командой!</p>
         </div>

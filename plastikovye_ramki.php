@@ -150,7 +150,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                 <p><span class="icon-check">✅</span><strong>Где:</strong> ванные комнаты, кухни – рамки из полистирола не боятся влаги, а также за ними легко ухаживать</p>
                 <p><span class="icon-check">✅</span><strong>Когда:</strong> для временного оформления, или для неколлекционных работ</p>
                 <p>Антикварные и коллекционные работы следует оформлять в деревянные профили, которые наиболее подходят для музейного обрамления. Пластиковые рамки, несмотря на их достоинства, не обладают необходимыми характеристиками и престижностью.</p>
-                <a href="/baget_online"><button class="highlight-btn">Рассчитать стоимость багета</button></a>
+                <a href="/baget_online" class="highlight-btn">Рассчитать стоимость багета</a>
             </div>
             <div class="col-sm-6">
                 <img src="/img/article/telegram-cloud-document-2-5285175076994442912 1.png" alt="Где использовать пластиковые рамки" class="img-responsive img-right">

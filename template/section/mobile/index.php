@@ -25,28 +25,14 @@
                 разных направлений и людей, которые ценят прекрасное.
             </div>
             <div class="mt-3">
-                <a href="/baget_online">
-                    <button
-                            class='button button-custom-index button-color-company-red mob-fix-width-100-p mb-3 color-white'>
-                        Конструктор багета <b>online</b></button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red mob-fix-width-100-p mb-3 color-white">Конструктор багета <b>online</b></a>
                 <div class='row'>
                     <div class='col'>
-                        <a href="/сatalog-of-finished-works.php">
-                            <button
-                                    class='button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap'>
-                                Наши
-                                работы
-                            </button>
-                        </a>
+                        <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap">Наши
+                                работы</a>
                     </div>
                     <div class='col'>
-                        <a href="/actions.html">
-                            <button
-                                    class='button button-custom-index button-color-company-golden mob-fix-width-100-p '>
-                                Акции
-                            </button>
-                        </a>
+                        <a href="/actions.html" class="button button-custom-index button-color-company-golden mob-fix-width-100-p">Акции</a>
                     </div>
                 </div>
 
@@ -167,12 +153,8 @@
         </div>
 
 
-        <a href="/baget_online">
-            <button class='button button-custom-index button-color-company-red mb-3 color-white'
-                    style='width:100%'>Рассчитать
-                стоимость багета
-            </button>
-        </a>
+        <a href="/baget_online" class="button button-custom-index button-color-company-red mb-3 color-white" style="width:100%">Рассчитать
+                стоимость багета</a>
 
         <div class='row mt-5'>
             <video src="/video/output(compress-video-online.com).mp4" width="240px" height="400px" autoplay loop muted
@@ -277,11 +259,7 @@
                 </div>
                 <div class='col-12'>
                     <br><br>
-                    <a href="/сatalog-of-finished-works.php">
-                        <button class='button button-custom-index button-color-company-golden '
-                                style='width:100%;'>Узнать подробнее об услугах мастерской
-                        </button>
-                    </a>
+                    <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden" style="width:100%;">Узнать подробнее об услугах мастерской</a>
                 </div>
             </div>
         </div>
@@ -473,12 +451,8 @@
 
             </div>
             <div class='col-12'>
-                <a href="/baget_online">
-                    <button class='button button-custom-index button-color-company-red mb-3 color-white my-5'
-                            style='width:100%'>Рассчитать
-                        стоимость багета
-                    </button>
-                </a>
+                <a href="/baget_online" class="button button-custom-index button-color-company-red mb-3 color-white my-5" style="width:100%">Рассчитать
+                        стоимость багета</a>
 
             </div>
             <div class='col-12'>
@@ -499,32 +473,17 @@
         <br>
         <div class='row text-center '>
             <div class='col-6 ' style='padding-right:4px;'>
-                <a href="https://vk.com/market-210965475?section=album_1">
-                    <button
-                            class='button button-custom-index button-color-company-grafit  '
-                            style='width:100%; font-size: 18px; element-animation'>Купить
-                        картину
-                    </button>
-                </a>
+                <a href="https://vk.com/market-210965475?section=album_1" class="button button-custom-index button-color-company-grafit" style="width:100%; font-size: 18px; element-animation">Купить
+                        картину</a>
             </div>
             <div class='col-6' style='padding-left:4px;'>
-                <a href="https://vk.com/@bagetnaya1">
-                    <button
-                            class='button button-custom-index button-color-company-grafit  '
-                            style='width:100%; font-size: 18px; element-animation'>Читать
-                        статьи
-                    </button>
-                </a>
+                <a href="https://vk.com/@bagetnaya1" class="button button-custom-index button-color-company-grafit" style="width:100%; font-size: 18px; element-animation">Читать
+                        статьи</a>
 
             </div>
             <div class='col-6 mt-2' style='padding-right:4px;'>
-                <a href="https://vk.com/bagetnaya1">
-                    <button
-                            class='button button-custom-index button-color-company-grafit '
-                            style='width:100%; font-size: 18px; element-animation'>Смотреть
-                        ленту
-                    </button>
-                </a>
+                <a href="https://vk.com/bagetnaya1" class="button button-custom-index button-color-company-grafit" style="width:100%; font-size: 18px; element-animation">Смотреть
+                        ленту</a>
 
             </div>
         </div>
