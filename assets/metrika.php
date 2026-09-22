@@ -20,10 +20,12 @@
             a.parentNode.insertBefore(k, a);
         }
 
-        ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function (ev) {
+        /* только намеренные действия: mousemove и scroll срабатывают сами по себе
+           (эмуляция, инерция прокрутки) и будят скрипт ещё во время отрисовки */
+        ['pointerdown', 'touchstart', 'click', 'keydown', 'wheel'].forEach(function (ev) {
             e.addEventListener(ev, load, {once: true, passive: true});
         });
-        setTimeout(load, 3000);
+        setTimeout(load, 3500);
     })
     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
