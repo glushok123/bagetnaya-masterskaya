@@ -348,8 +348,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 </div>
 
 <script>
-    $("#phone").mask("(999) 999-99-99");
-    toastr.options.timeOut = 5000; // 5s
+    // в ready, потому что jquery.mask и toastr подключены с defer
+    $(function () {
+        $("#phone").mask("(999) 999-99-99");
+        toastr.options.timeOut = 5000; // 5s
+    });
 
     //Показать модальное окно для оформления заказа
     function showModalAddInCart(painting) {

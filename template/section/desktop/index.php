@@ -133,7 +133,8 @@
                 <? foreach ($elementsSlider2 as $element) { ?>
                     <div class="swiper-slide parent-hover-show-desc swiper-slide-2">
                         <div class='absolute b-0'>
-                            <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>" class='index-img-slider-2'>
+                            <img src="<?= $element['src'] ?>" alt="<?= $element['desc'] ?>" class='index-img-slider-2'
+                                 loading="lazy" decoding="async">
                             <div class='my-3 text-center desc-hidden'><?= $element['desc'] ?></div>
                         </div>
                     </div>
@@ -154,8 +155,9 @@
         </div>
         <div class='row my-5'>
             <div class='col-4'>
-                <video src="/video/output(compress-video-online.com).mp4" width="250px" height="430px" autoplay loop
-                       muted controls></video>
+                <?php /* 2 МБ видео ниже первого экрана: грузим и запускаем только при прокрутке к нему */ ?>
+                <video data-src="/video/output(compress-video-online.com).mp4" width="250" height="430" loop
+                       muted playsinline controls preload="none" class="lazy-video"></video>
             </div>
             <div class='col-4' style="padding-left: 0px;">
                 <div class='style-text font-16'>
@@ -510,6 +512,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    /* ленивый старт видео: подставляем src и запускаем, когда блок близко к экрану */
+    var lazyVideos = document.querySelectorAll('video.lazy-video');
+    if (lazyVideos.length) {
+        var vio = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                var v = e.target;
+                v.src = v.dataset.src;
+                v.play().catch(function () {});
+                obs.unobserve(v);
+            });
+        }, {rootMargin: '200px'});
+        lazyVideos.forEach(function (v) { vio.observe(v); });
+    }
 
         const swiper = new Swiper('.swiper-1', {
             // Optional parameters

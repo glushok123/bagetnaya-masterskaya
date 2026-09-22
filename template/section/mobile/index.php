@@ -157,8 +157,9 @@
                 стоимость багета</a>
 
         <div class='row mt-5'>
-            <video src="/video/output(compress-video-online.com).mp4" width="240px" height="400px" autoplay loop muted
-                   controls></video>
+            <?php /* 2 МБ видео ниже первого экрана: грузим и запускаем только при прокрутке к нему */ ?>
+            <video data-src="/video/output(compress-video-online.com).mp4" width="240" height="400" loop muted
+                   playsinline controls preload="none" class="lazy-video"></video>
         </div>
     </div>
 </section>
@@ -575,6 +576,20 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    /* ленивый старт видео: подставляем src и запускаем, когда блок близко к экрану */
+    var lazyVideos = document.querySelectorAll('video.lazy-video');
+    if (lazyVideos.length) {
+        var vio = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                var v = e.target;
+                v.src = v.dataset.src;
+                v.play().catch(function () {});
+                obs.unobserve(v);
+            });
+        }, {rootMargin: '200px'});
+        lazyVideos.forEach(function (v) { vio.observe(v); });
+    }
 
         const swiper = new Swiper('.swiper-1', {
             // Optional parameters

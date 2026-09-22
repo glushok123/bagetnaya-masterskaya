@@ -246,8 +246,11 @@
 </style>
 
 <script>
-    $("#phone").mask("+7 (999) 999-99-99");
-    toastr.options.timeOut = 5000; // 5s
+    // в ready, потому что jquery.mask и toastr подключены с defer
+    $(function () {
+        $("#phone").mask("+7 (999) 999-99-99");
+        toastr.options.timeOut = 5000; // 5s
+    });
     let isSubmitting = false;
 
     //валидация данных заказа

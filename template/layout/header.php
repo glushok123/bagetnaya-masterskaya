@@ -70,7 +70,9 @@ $v = 26;
         <style><?php readfile($_SERVER['DOCUMENT_ROOT'] . '/assets/fonts/manrope.css'); ?></style>
 
         <script src="/assets/layout/jquery.min.js"></script>
-        <script src="/assets/layout/jquery.mask.min.js"></script>
+        <?php /* mask/toastr/toastify нужны только в обработчиках, поэтому defer:
+                 освобождают первую волну загрузки для LCP-картинки */ ?>
+        <script src="/assets/layout/jquery.mask.min.js" defer></script>
         <script src="/assets/layout/bootstrap/js/bootstrap.bundle.min.js" defer></script>
 
         <?php /* Swiper переведён на свой хост: убирает внешнее соединение с jsdelivr из критического пути */ ?>
@@ -81,11 +83,11 @@ $v = 26;
 
         <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css" media="print" onload="this.media='all'">
         <noscript><link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css"></noscript>
-        <script type="text/javascript" src="/assets/layout/toastify-js"></script>
+        <script type="text/javascript" src="/assets/layout/toastify-js" defer></script>
 
         <link href="/assets/layout/toastr.css" rel="stylesheet" media="print" onload="this.media='all'"/>
         <noscript><link href="/assets/layout/toastr.css" rel="stylesheet"/></noscript>
-        <script src="/assets/layout/toastr.js"></script>
+        <script src="/assets/layout/toastr.js" defer></script>
 
         <link rel="stylesheet" href="/assets/css/main.css?v<?= $v ?>">
         <link rel="stylesheet" href="/assets/css/custom-768.css?v<?= $v ?>">
