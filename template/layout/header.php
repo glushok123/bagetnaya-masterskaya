@@ -57,7 +57,8 @@ $v = 25;
         <?php } ?>
 
         <link rel="stylesheet" href="/assets/layout/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css">
+        <link rel="stylesheet" href="/assets/layout/jquery.fancybox.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="/assets/layout/jquery.fancybox.css"></noscript>
         <?php /* Font Awesome убран: из всей библиотеки использовалась одна иконка поиска — заменена на inline-SVG */ ?>
         <?php /* Manrope переведён на свой хост (вариативный woff2): убирает 2 внешних соединения и сдвиг вёрстки при подмене шрифта */ ?>
         <link rel="preconnect" href="https://mc.yandex.ru">
@@ -69,18 +70,20 @@ $v = 25;
 
         <script src="/assets/layout/jquery.min.js"></script>
         <script src="/assets/layout/jquery.mask.min.js"></script>
-        <script src="/assets/layout/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/layout/bootstrap/js/bootstrap.bundle.min.js" defer></script>
 
         <?php /* Swiper переведён на свой хост: убирает внешнее соединение с jsdelivr из критического пути */ ?>
-        <script src="/assets/layout/swiper-bundle.min.js"></script>
+        <script src="/assets/layout/swiper-bundle.min.js" defer></script>
         <link href="/assets/layout/swiper-bundle.min.css" rel="stylesheet">
 
         <?php /* navbar-1.css (unpkg) убран: его bsb-* классы есть только в nav-bar-desctop-new.php, который нигде не подключается */ ?>
 
-        <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" type="text/css" href="/assets/layout/toastify.min.css"></noscript>
         <script type="text/javascript" src="/assets/layout/toastify-js"></script>
 
-        <link href="/assets/layout/toastr.css" rel="stylesheet"/>
+        <link href="/assets/layout/toastr.css" rel="stylesheet" media="print" onload="this.media='all'"/>
+        <noscript><link href="/assets/layout/toastr.css" rel="stylesheet"/></noscript>
         <script src="/assets/layout/toastr.js"></script>
 
         <link rel="stylesheet" href="/assets/css/main.css?v<?= $v ?>">

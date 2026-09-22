@@ -536,45 +536,48 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/section/desktop/sm.php';
 </style>
 
 <script>
-    const swiper = new Swiper('.swiper-1', {
-        // Optional parameters
-        direction: 'horizontal',
-        loop: true,
-        autoplay: {
-            delay: 3000,
-        },
-        speed: 800,
-        effect: 'cube',
-        shadowOffset: 20,
-        shadowScale: 0.94,
-        lideShadows: true,
-        shadow: true
-    });
+document.addEventListener('DOMContentLoaded', function () {
 
-    const swiper2 = new Swiper('.swiper-2', {
-        slidesPerView: 4,
-        loop: true,
-        spaceBetween: 30,
-        //mousewheel: true,
-        autoplay: {
-            delay: 3000,
-        },
-    });
+        const swiper = new Swiper('.swiper-1', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+            speed: 800,
+            effect: 'cube',
+            shadowOffset: 20,
+            shadowScale: 0.94,
+            lideShadows: true,
+            shadow: true
+        });
 
-    $(document).on('click', '.razdel', function () {
-        let blockClose = $(this).find('.close-block')
-        let blockOpen = $(this).find('.open-block')
-        let section = $(this).parent().parent()
-        let blockContent = section.find('.content')
+        const swiper2 = new Swiper('.swiper-2', {
+            slidesPerView: 4,
+            loop: true,
+            spaceBetween: 30,
+            //mousewheel: true,
+            autoplay: {
+                delay: 3000,
+            },
+        });
 
-        if (blockClose.hasClass('hidden')) {
-            blockClose.removeClass('hidden')
-            blockOpen.addClass('hidden')
-            blockContent.addClass('hidden')
-        } else {
-            blockClose.addClass('hidden')
-            blockOpen.removeClass('hidden')
-            blockContent.removeClass('hidden')
-        }
-    })
+        $(document).on('click', '.razdel', function () {
+            let blockClose = $(this).find('.close-block')
+            let blockOpen = $(this).find('.open-block')
+            let section = $(this).parent().parent()
+            let blockContent = section.find('.content')
+
+            if (blockClose.hasClass('hidden')) {
+                blockClose.removeClass('hidden')
+                blockOpen.addClass('hidden')
+                blockContent.addClass('hidden')
+            } else {
+                blockClose.addClass('hidden')
+                blockOpen.removeClass('hidden')
+                blockContent.removeClass('hidden')
+            }
+        })
+});
 </script>

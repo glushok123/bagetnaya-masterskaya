@@ -1,7 +1,12 @@
 <script>
     <? echo 'var z=[' . $z[0] . ',' . $z[1] . ',' . $z[2] . ',' . $z[3] . ',' . $z[4] . ',' . $z[5] . ',' . $z[6] . ',' . $z[7] . ',' . $z[8] . ',' . $z[9] . ',' . $z[10] . ',' . $z[11] . ',' . $z[12] . ',' . $z[13] . ',' . $z[14] . ',' . $z[15] . ',' . $z[16] . ',' . $z[17] . ',' . $z[18] . ',' . $z[19] . ',' . $z[20] . ',' . $z[21] . ',' . $z[22] . '], mainw=' . $mainw . ', mainh=' . $mainh; ?>
 
-    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    // Объявление остаётся глобальным (myModal используется ниже по клику),
+    // а создание объекта отложено — чтобы bootstrap.bundle.js можно было грузить с defer
+    var myModal;
+    document.addEventListener('DOMContentLoaded', function () {
+        myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    });
     var curTimerId = 0;
     cursw6 = 0,
         cursw7 = 0,
