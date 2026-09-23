@@ -551,3 +551,17 @@ a.btn {
 a:where(.button, .highlight-btn) {
     color: #212529;
 }
+
+/* при наведении ссылка-кнопка сохраняет свой цвет текста: иначе Bootstrap-овский
+   a:hover красит его в синий — на графитовом фоне красной кнопки текст пропадал */
+a.button:hover,
+a.button:focus {
+    color: #212529;
+}
+
+a.button.color-white:hover,
+a.button.color-white:focus,
+a.highlight-btn:hover,
+a.highlight-btn:focus {
+    color: #fff;
+}

@@ -47,6 +47,10 @@ if ($selectedCategory === null && $rawCategoryParam !== '') {
 
 $keywords = $selectedCategory ? $selectedCategory['name'] . ", работы, багет, паспарту" : "работы, багет, паспарту";
 $title = $selectedCategory['name'] ?? "Готовые работы";
+// одна категория открывается по slug, id и названию — основным считаем адрес со slug
+if ($selectedCategory !== null) {
+    $canonical = '/' . rawurlencode('сatalog-of-finished-works-by-category.php') . '?category=' . rawurlencode($selectedCategory['slug']);
+}
 $description = $selectedCategory['name'] ?? "Наши работы";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
