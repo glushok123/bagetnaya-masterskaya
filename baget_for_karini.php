@@ -118,10 +118,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <div class="container home_design">
         <!-- Заголовок -->
         <div class="row">
-            <h2 class="section-title text-center">
+            <h1 class="section-title text-center h2">
                 КАК ПРАВИЛЬНО ПОДОБРАТЬ БАГЕТ ДЛЯ КАРТИНЫ: <br>
                 РЕКОМЕНДАЦИИ КОМАНДЫ БАГЕТНОЙ МАСТЕРСКОЙ №1
-            </h2>
+            </h1>
         </div>
 
         <!-- Блок 1 -->

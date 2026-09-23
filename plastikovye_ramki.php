@@ -103,7 +103,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Блок 1 -->
         <div class="row">
-            <h2 class="section-title text-center">ПЛАСТИКОВЫЕ РАМКИ: <br>ДОЛГОВЕЧНОСТЬ, СТИЛЬ И ОПЕРАТИВНОЕ ИЗГОТОВЛЕНИЕ!</h2>
+            <h1 class="section-title text-center h2">ПЛАСТИКОВЫЕ РАМКИ: <br>ДОЛГОВЕЧНОСТЬ, СТИЛЬ И ОПЕРАТИВНОЕ ИЗГОТОВЛЕНИЕ!</h1>
 
             <!-- Картинка: снизу на мобильных -->
             <div class="col-sm-4 order-1 order-sm-1">

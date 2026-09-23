@@ -79,7 +79,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <!-- Блок 1 -->
     <div class="row">
-        <h2 class="section-title text-center">СОВРЕМЕННЫЕ РАМЫ ИЗ МЕТАЛЛА</h2>
+        <h1 class="section-title text-center h2">СОВРЕМЕННЫЕ РАМЫ ИЗ МЕТАЛЛА</h1>
 
         <!-- Картинка: после текста на мобилке -->
         <div class="col-sm-4 order-1 order-sm-1">

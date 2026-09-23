@@ -101,7 +101,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
     <!-- Блок 1 -->
     <div class="row">
-        <h2 class="section-title text-center">РАМКИ ДЛЯ КАРТИНЫ ИЗ ДЕРЕВА:<br>НЕИЗМЕННАЯ КЛАССИКА</h2>
+        <h1 class="section-title text-center h2">РАМКИ ДЛЯ КАРТИНЫ ИЗ ДЕРЕВА:<br>НЕИЗМЕННАЯ КЛАССИКА</h1>
 
         <!-- Картинка: будет после текста на мобилке -->
         <div class="col-sm-4 order-1 order-sm-1">
