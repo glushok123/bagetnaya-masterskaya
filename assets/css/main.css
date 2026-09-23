@@ -444,14 +444,9 @@ html, body {
     cursor: pointer;
 }
 
-.fade-in {
-    -webkit-animation-duration: 3s;
-    animation-duration: 3s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-}
+/* .fade-in стоит на главных заголовках первого экрана. Раньше они 3 секунды
+   проявлялись из прозрачности — экран долго был «пустым», и сильно проседал
+   Speed Index. Теперь заголовок виден сразу; класс в разметке оставлен. */
 
 @-webkit-keyframes fadeIn {
     0% {
