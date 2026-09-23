@@ -18,7 +18,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
 
             <div class='row'>
                 <div class='col-12' style="padding: 0px !important;">
-                    <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG"
+                    <a class="navbar-brand" href="/"><img src="/assets/img/logo.PNG"
                                                                             alt="Багетная мастерская №1"
                                                                             width="560" height="166"
                                                                             class='img-brand'

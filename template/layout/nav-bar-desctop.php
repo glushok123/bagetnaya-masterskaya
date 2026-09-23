@@ -18,7 +18,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
             <?
             if (!isMobile()) {
                 ?>
-                <a class="navbar-brand element-animation" href="/"><img src="/assets/img/logo.PNG"
+                <a class="navbar-brand" href="/"><img src="/assets/img/logo.PNG"
                                                                         alt="Багетная мастерская №1"
                                                                         width="560" height="166"
                                                                         class='img-brand'
@@ -29,7 +29,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                 ?>
                 <div class='row'>
                     <div class='col-9'>
-                        <a class="navbar-brand element-animation" href="/">Багетная мастерская </a>
+                        <a class="navbar-brand" href="/">Багетная мастерская </a>
                     </div>
                     <div class='col-3'>
                         <img src="/img/logo 2.svg" alt="" class='img-brand'>
