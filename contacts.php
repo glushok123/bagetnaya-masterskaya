@@ -3,6 +3,7 @@ $keywords = "багетная мастерская";
 $title = "Контакты и адреса салонов Багетной мастерской №1";
 $description = "В шаговой доступности от метро и городских и частных парковок!";
 // $gallery="bagety_dlya_kartin";
+$organizationSchema = true;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 ?>
 

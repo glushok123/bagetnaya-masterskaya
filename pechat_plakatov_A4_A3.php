@@ -5,7 +5,7 @@ $desc = "Багетная мастерская 1 в Москве выполня�
 include "header.php"
 ?>
 
-    <div id="crops"><a href="/">Главная</a> » <a href="/bagetnye_raboty">Багетные работы</a> » Печать плакатов А4 и А3
+    <div id="crops"><a href="/">Главная</a> » <a href="/bagetnye_raboty/">Багетные работы</a> » Печать плакатов А4 и А3
     </div>
     <h1>Дешёвая печать плакатов А4 и А3 в Москве</h1>
     <div id="main">

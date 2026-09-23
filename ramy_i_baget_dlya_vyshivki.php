@@ -120,8 +120,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         <div class="row text-center mt-3 mb-5">
             <div class="block-h1 text-center my-4 fade-in">
 
-                <h2 class='color-main'>КАК ОФОРМИТЬ ВЫШИВКУ</h2>
-                <h2 style="text-transform: uppercase;">В БАГЕТНОЙ МАСТЕРСКОЙ №1</h2>
+                <h1 class="h2"><span class='color-main d-block mb-2'>КАК ОФОРМИТЬ ВЫШИВКУ</span><span class="d-block" style="text-transform: uppercase;">В БАГЕТНОЙ МАСТЕРСКОЙ №1</span></h1>
             </div>
         </div>
 

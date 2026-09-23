@@ -103,7 +103,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 <div class="container mt-5">
     <div class="row ">
         <div class="col-12 col-md-6">
-            <h1 class='color-main' style="text-transform: uppercase;">Какие багетные работы Мы оказываем?</h1>
+            <h2 class="h1 color-main" style="text-transform: uppercase;">Какие багетные работы Мы оказываем?</h2>
         </div>
         <div class="col-12 col-md-6">
             <ul class='style-text font-16'>

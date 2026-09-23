@@ -6,7 +6,7 @@ $gallery = "pechat_na_holste";
 include "header.php";
 ?>
 
-    <div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste">Печать на холсте</a> » Печать репродукций на
+    <div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste/">Печать на холсте</a> » Печать репродукций на
         холсте
     </div>
     <h1>Репродукции на холсте с оправой в багет</h1>
@@ -44,7 +44,7 @@ include "header.php";
     </div>
     <div id="side">
         <h3>Смотрите также</h3>
-        <a href="/katalog_reprodukciy/" class="fast1" style="background:#a21213;">Посмотреть каталог</a>
+        <a href="/картины%20багетной%20мастерской" class="fast1" style="background:#a21213;">Посмотреть каталог</a>
         <a href="/bagety_dlya_kartin/oformit_kartinu_v_baget.html" class="fast2">Оформление картин и репродукций в
             багетные рамки</a>
         <a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html" class="fast1">Оформление вышивок в багет</a>

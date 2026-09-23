@@ -235,8 +235,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 <div class="container home_design">
 
     <div class="row text-center mt-3 mb-5">
-        <h1 class="color-main block-h1">РАМКИ НА ЗАКАЗ ЛЮБОЙ ФОРМЫ</h1>
-        <h1 class="block-h1">В БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
+        <h1 class="block-h1"><span class="color-main d-block mb-2">РАМКИ НА ЗАКАЗ ЛЮБОЙ ФОРМЫ</span><span class="d-block">В БАГЕТНОЙ МАСТЕРСКОЙ №1</span></h1>
     </div>
 
     <div class="block-1-flex desctop">

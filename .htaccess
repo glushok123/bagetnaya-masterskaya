@@ -1,24 +1,52 @@
 RewriteEngine On
+RewriteBase /
+
+# Схема для абсолютных редиректов. Apache стоит за openresty и сам видит только http,
+# поэтому относительная цель в R=301 превращалась в http://… и давала лишний хоп.
+# Настоящая схема приходит в X-Forwarded-Proto.
+RewriteRule ^ - [E=PROTO:http]
+RewriteCond %{HTTPS} on [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} =https
+RewriteRule ^ - [E=PROTO:https]
+
+# www -> основной домен без www, сразу на https (одним хопом)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-RewriteEngine On
-RewriteBase /
+# /index, /index.php, /раздел/index(.php) -> сам раздел: иначе это копии страниц
+RewriteCond %{REQUEST_URI} !^/admin/
+RewriteCond %{THE_REQUEST} ^(?:GET|HEAD)\ /((?:[^\s?]*/)?)index(?:\.php)?[\s?] [NC]
+RewriteRule ^ %{ENV:PROTO}://%{HTTP_HOST}/%1 [R=301,L]
+
+# каталог без слеша -> со слешем (раньше это делал mod_dir, но через http://)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ %{ENV:PROTO}://%{HTTP_HOST}/$1/ [R=301,L]
+
+# лишний слеш у страницы-файла -> без слеша.
+# Два раздела ниже живут именно со слешем (правила внизу добавляют его) —
+# без исключения тут получался бесконечный цикл 301.
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} /(.*)/$
-RewriteRule ^ /%1 [R=301,L] <-- added slash here too, don't forget it
-#RewriteCond %{HTTP_HOST} (.*)
-#RewriteCond %{REQUEST_URI} /$ [NC]
-#RewriteRule ^(.*)(/)$ $1 [L,R=301]
+RewriteCond %{REQUEST_URI} !^/bagetnye_raboty/(obramlenie|oformlenie_v_baget)/$
+RewriteCond %{REQUEST_URI} ^/(.*)/$
+RewriteRule ^ %{ENV:PROTO}://%{HTTP_HOST}/%1 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php [L]
 
-RewriteCond %{THE_REQUEST} ^(?:GET)\ /.*\.php\ HTTP.*$ [NC]
-RewriteRule ^(.*)\.php$ $1 [R=301,L]
+# /page.php -> /page; если одноимённый каталог есть — сразу в /page/, без второго хопа
+RewriteCond %{THE_REQUEST} ^(?:GET|HEAD)\ /.*\.php\ HTTP.*$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/$1 -d
+RewriteRule ^(.*)\.php$ %{ENV:PROTO}://%{HTTP_HOST}/$1/ [R=301,L]
+RewriteCond %{THE_REQUEST} ^(?:GET|HEAD)\ /.*\.php\ HTTP.*$ [NC]
+RewriteRule ^(.*)\.php$ %{ENV:PROTO}://%{HTTP_HOST}/$1 [R=301,L]
 
 
 
@@ -66,10 +94,9 @@ Options +FollowSymLinks -MultiViews
 
 RewriteRule ^bagety_dlya_kartin/oformit_kartinu_v_baget.html$ - [L,R=404]
 
-RewriteRule ^baget_online/$ baget_online [R=301,L]
+RewriteRule ^baget_online/$ %{ENV:PROTO}://%{HTTP_HOST}/baget_online [R=301,L]
 RewriteRule ^baget_online$ baget_online.php
 
-RewriteRule ^/$ index [R=301,L]
 RewriteRule ^index$ template/index.php
 
 RewriteRule ^baget_zakaz_clearchek$ baget_zakaz_clearchek.php
@@ -81,7 +108,7 @@ RewriteRule ^baget_zakaz$ baget_zakaz.php
 RewriteRule ^sitemap.html$ sitemap.php
 RewriteRule ^dostavka.html$ dostavka.php
 RewriteRule ^requisites.html$ requisites.php
-RewriteRule ^kontakty.html$ / [R=301,L]
+RewriteRule ^kontakty.html$ %{ENV:PROTO}://%{HTTP_HOST}/contacts [R=301,L]
 RewriteRule ^actions.html$ actions.php
 RewriteRule ^ourteam.html$ ourteam.php
 
@@ -96,11 +123,11 @@ RewriteRule ^pechat_na_holste/shirokoformatnaya_pechat_na_holste.html$ shirokofo
 RewriteRule ^pechat_na_holste/pechat_reprodukciy_na_holste.html$ pechat_reprodukciy_na_holste.php
 
 RewriteRule ^pechat_na_holste/interyernaya_pechat_na_holste.html$ interyernaya_pechat_na_holste.php
-RewriteRule ^pechat_na_holste/pechat_posterov_na_holste.html$ pechat_na_holste/fotopechat_posterov_na_holste.html [R=301,L]
+RewriteRule ^pechat_na_holste/pechat_posterov_na_holste.html$ %{ENV:PROTO}://%{HTTP_HOST}/pechat_na_holste/fotopechat_posterov_na_holste.html [R=301,L]
 RewriteRule ^pechat_na_holste/fotopechat_posterov_na_holste.html$ fotopechat_posterov_na_holste.php
 RewriteRule ^pechat_na_holste/pechat_ikon_na_holste.html$ pechat_ikon_na_holste.php
 RewriteRule ^pechat_na_holste/pechat_portreta_na_holste.html$ pechat_portreta_na_holste.php
-RewriteRule ^pechat_na_holste/pechat_izobrazheniy_na_holste.html$ pechat_na_holste/pechat_na_holste_s_imitatsiey_zhivopisi.html [R=301,L]
+RewriteRule ^pechat_na_holste/pechat_izobrazheniy_na_holste.html$ %{ENV:PROTO}://%{HTTP_HOST}/pechat_na_holste/pechat_na_holste_s_imitatsiey_zhivopisi.html [R=301,L]
 RewriteRule ^pechat_na_holste/pechat_na_holste_s_imitatsiey_zhivopisi.html$ pechat_na_holste_s_imitatsiey_zhivopisi.php
 RewriteRule ^pechat_na_holste/pechat_na_holste_s_podramnikom.html$ pechat_na_holste_s_podramnikom.php
 
@@ -109,14 +136,14 @@ RewriteRule ^bagetnye_raboty/izgotovlenie_bageta$ izgotovlenie_bageta.php
 RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_bagetov_dlya_kartin.html$ izgotovlenie_bagetov_dlya_kartin.php
 RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_zerkal_v_bagete.html$ izgotovlenie_zerkal_v_bagete.php
 RewriteRule ^bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_ramki_iz_bageta.html$ izgotovlenie_ramki_iz_bageta.php
-RewriteRule ^bagetnye_raboty/oformlenie_v_baget$ bagetnye_raboty/oformlenie_v_baget/ [R=301,L]
+RewriteRule ^bagetnye_raboty/oformlenie_v_baget$ %{ENV:PROTO}://%{HTTP_HOST}/bagetnye_raboty/oformlenie_v_baget/ [R=301,L]
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/$ oformlenie_v_baget.php
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_vyshivki_v_baget.html$ oformlenie_vyshivki_v_baget.php
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_kartin_v_baget.html$ oformlenie_kartin_v_baget.php
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_fotografiy_v_baget.html$ oformlenie_fotografiy_v_baget.php
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_ikon_v_baget.html$ oformlenie_ikon_v_baget.php
 RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_papirusa_v_baget.html$ oformlenie_papirusa_v_baget.php
-RewriteRule ^bagetnye_raboty/obramlenie$ bagetnye_raboty/obramlenie/ [R=301,L]
+RewriteRule ^bagetnye_raboty/obramlenie$ %{ENV:PROTO}://%{HTTP_HOST}/bagetnye_raboty/obramlenie/ [R=301,L]
 RewriteRule ^bagetnye_raboty/obramlenie/$ obramlenie.php
 RewriteRule ^bagetnye_raboty/obramlenie/obramlenie_dlya_foto.html$ obramlenie_dlya_foto.php
 RewriteRule ^bagetnye_raboty/obramlenie/obramlenie_fotografiy.html$ obramlenie_fotografiy.php
@@ -129,24 +156,24 @@ RewriteRule ^bagetnye_raboty/pechat_plakatov_A4_A3.html$ pechat_plakatov_A4_A3.p
 RewriteRule ^bagetnye_raboty/pechat_posterov.html$ pechat_posterov.php
 RewriteRule ^bagetnye_raboty/stilizacija_pod_zhivopis.html$ stilizacija_pod_zhivopis.php
 
-RewriteRule ^natyazhka_holsta$ natyazhka_holsta/ [R=301,L]
+RewriteRule ^natyazhka_holsta$ %{ENV:PROTO}://%{HTTP_HOST}/natyazhka_holsta/ [R=301,L]
 RewriteRule ^natyazhka_holsta/$ natyazhka_holsta.php
 RewriteRule ^natyazhka_holsta/natyazhka_na_podramnik.html$ natyazhka_na_podramnik.php
 RewriteRule ^natyazhka_holsta/holst_na_podramnike.html$ holst_na_podramnike.php
-RewriteRule ^natyazhka_holsta/natyazhka_kartiny_na_podramnik.html$ natyazhka_holsta/kartina_na_podramnike.html [R=301,L]
+RewriteRule ^natyazhka_holsta/natyazhka_kartiny_na_podramnik.html$ %{ENV:PROTO}://%{HTTP_HOST}/natyazhka_holsta/kartina_na_podramnike.html [R=301,L]
 RewriteRule ^natyazhka_holsta/kartina_na_podramnike.html$ kartina_na_podramnike.php
 
-RewriteRule ^nakatka_na_penokarton$ nakatka_na_penokarton/ [R=301,L]
+RewriteRule ^nakatka_na_penokarton$ %{ENV:PROTO}://%{HTTP_HOST}/nakatka_na_penokarton/ [R=301,L]
 RewriteRule ^nakatka_na_penokarton/$ nakatka_na_penokarton.php
-RewriteRule ^nakatka_na_penokarton/nakatka_izobrazheniy.html$ nakatka_na_penokarton/penokarton_5_10.html [R=301,L]
+RewriteRule ^nakatka_na_penokarton/nakatka_izobrazheniy.html$ %{ENV:PROTO}://%{HTTP_HOST}/nakatka_na_penokarton/penokarton_5_10.html [R=301,L]
 RewriteRule ^nakatka_na_penokarton/penokarton_5_10.html$ penokarton_5_10.php
-RewriteRule ^nakatka_na_penokarton/nakatka_fotografiy.html$ nakatka_na_penokarton/kupit_penokarton.html [R=301,L]
+RewriteRule ^nakatka_na_penokarton/nakatka_fotografiy.html$ %{ENV:PROTO}://%{HTTP_HOST}/nakatka_na_penokarton/kupit_penokarton.html [R=301,L]
 RewriteRule ^nakatka_na_penokarton/kupit_penokarton.html$ kupit_penokarton.php
 
-RewriteRule ^pechat_na_penokartone$ pechat_na_penokartone/ [R=301,L]
+RewriteRule ^pechat_na_penokartone$ %{ENV:PROTO}://%{HTTP_HOST}/pechat_na_penokartone/ [R=301,L]
 RewriteRule ^pechat_na_penokartone/$ pechat_na_penokartone.php
 
-RewriteRule ^ramki_dlya_ikon$ ramki_dlya_ikon/ [R=301,L]
+RewriteRule ^ramki_dlya_ikon$ %{ENV:PROTO}://%{HTTP_HOST}/ramki_dlya_ikon/ [R=301,L]
 RewriteRule ^ramki_dlya_ikon/$ ramki_dlya_ikon.php
 RewriteRule ^ramki_dlya_ikon/ramki_dlya_vyshityh_ikon.html$ ramki_dlya_vyshityh_ikon.php
 RewriteRule ^ramki_dlya_ikon/derevyannye_ramki_dlya_ikon.html$ derevyannye_ramki_dlya_ikon.php
@@ -154,7 +181,7 @@ RewriteRule ^ramki_dlya_ikon/ramka_dlya_ikony_iz_bisera.html$ ramka_dlya_ikony_i
 RewriteRule ^ramki_dlya_ikon/ramka_pod_ikonu.html$ ramka_pod_ikonu.php
 RewriteRule ^ramki_dlya_ikon/ramki_dlya_ikon_vyshityh_biserom.html$ ramki_dlya_ikon_vyshityh_biserom.php
 
-RewriteRule ^ramki_dlya_kartin$ ramki_dlya_kartin/ [R=301,L]
+RewriteRule ^ramki_dlya_kartin$ %{ENV:PROTO}://%{HTTP_HOST}/ramki_dlya_kartin/ [R=301,L]
 RewriteRule ^ramki_dlya_kartin/$ ramki_dlya_kartin.php
 RewriteRule ^ramki_dlya_kartin/bolshie_aluminievye_ramki_dlya_kartin.html$ bolshie_aluminievye_ramki_dlya_kartin.php
 RewriteRule ^ramki_dlya_kartin/ramki_dlya_vyshityh_kartin.html$ ramki_dlya_vyshityh_kartin.php
@@ -169,17 +196,17 @@ RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_ikon.html$ bagetnye_ramki_dlya_i
 RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_kartin.html$ bagetnye_ramki_dlya_kartin.php
 RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_foto.html$ bagetnye_ramki_dlya_foto.php
 
-RewriteRule ^ramki_dlya_vyshivki$ ramki_dlya_vyshivki/ [R=301,L]
-RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_vyshivki.html$ bagetnye_ramki/ramki_dlya_vyshivki/ [R=301,L]
+RewriteRule ^ramki_dlya_vyshivki$ %{ENV:PROTO}://%{HTTP_HOST}/ramki_dlya_vyshivki/ [R=301,L]
+RewriteRule ^bagetnye_ramki/bagetnye_ramki_dlya_vyshivki.html$ %{ENV:PROTO}://%{HTTP_HOST}/ramki_dlya_vyshivki/ [R=301,L]
 RewriteRule ^ramki_dlya_vyshivki/$ ramki_dlya_vyshivki.php
 RewriteRule ^ramki_dlya_vyshivki/ramy_i_baget_dlya_vyshivki.html$ ramy_i_baget_dlya_vyshivki.php
 RewriteRule ^ramki_dlya_vyshivki/kak_oformit_vyshivku.html$ kak_oformit_vyshivku.php
 RewriteRule ^ramki_dlya_vyshivki/oformlenie_vyshivki.html$ oformlenie_vyshivki.php
 
-RewriteRule ^baget_dlya_ikony$ baget_dlya_ikony/ [R=301,L]
+RewriteRule ^baget_dlya_ikony$ %{ENV:PROTO}://%{HTTP_HOST}/baget_dlya_ikony/ [R=301,L]
 RewriteRule ^baget_dlya_ikony/$ baget_dlya_ikony.php
 
-RewriteRule ^bagety_dlya_kartin$ bagety_dlya_kartin/index.php [R=301,L]
+RewriteRule ^bagety_dlya_kartin$ %{ENV:PROTO}://%{HTTP_HOST}/bagety_dlya_kartin/ [R=301,L]
 
 RewriteRule ^bagety_dlya_kartin/bagety_dlya_kartin_cena.html$ bagety_dlya_kartin_cena.php
 RewriteRule ^bagety_dlya_kartin/zakazat_baget.html$ zakazat_baget.php
@@ -187,12 +214,12 @@ RewriteRule ^bagety_dlya_kartin/derevyannye_bagety_dlya_kartin.html$ derevyannye
 RewriteRule ^bagety_dlya_kartin/plastikovyi_baget_dlya_kartin.html$ plastikovyi_baget_dlya_kartin.php
 #RewriteRule ^bagety_dlya_kartin/oformit_kartinu_v_baget.html$ oformit_kartinu_v_baget.php
 
-RewriteRule ^zerkala_v_bagete$ zerkala_v_bagete/ [R=301,L]
+RewriteRule ^zerkala_v_bagete$ %{ENV:PROTO}://%{HTTP_HOST}/zerkala_v_bagete/ [R=301,L]
 RewriteRule ^zerkala_v_bagete/$ zerkala_v_bagete.php
 
 RewriteRule ^zerkala_v_bagete/zerkalo_v_rame.html$ zerkalo_v_rame.php
 
-RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_zerkal_v_baget.html$ zerkala_v_bagete/oformlenie_zerkal_v_baget.html [R=301,L]
+RewriteRule ^bagetnye_raboty/oformlenie_v_baget/oformlenie_zerkal_v_baget.html$ %{ENV:PROTO}://%{HTTP_HOST}/zerkala_v_bagete/oformlenie_zerkal_v_baget.html [R=301,L]
 RewriteRule ^zerkala_v_bagete/oformlenie_zerkal_v_baget.html$ oformlenie_zerkal_v_baget.php
 RewriteRule ^pechat_kartin_posterov_reprodukcij/$ pechat_kartin_posterov_reprodukcij.php
 
@@ -203,7 +230,7 @@ RewriteRule ^metallicheskie_ramki/$ metallicheskie_ramki.php
 RewriteRule ^prices_for_print_and_canvas/$ prices_for_print_and_canvas.php
 
 #НОВАЯ АРХИТЕКТУРА
-RewriteRule ^search$  /template/search.php [R=301,L]
+RewriteRule ^search$ %{ENV:PROTO}://%{HTTP_HOST}/template/search [R=301,L]
 RewriteRule ^search/$ /template/search.php
 
 

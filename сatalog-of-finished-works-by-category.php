@@ -189,7 +189,7 @@ function normalizeGalleryImagePath(?string $path): string
 <?php if ($selectedCategory === null): ?>
     <div class="container py-5">
         <div class="alert alert-warning text-center" role="alert">
-            Запрошенная категория не найдена. <a href="/сatalog-of-finished-works.php" class="alert-link">Вернуться к каталогу работ</a>.
+            Запрошенная категория не найдена. <a href="/сatalog-of-finished-works" class="alert-link">Вернуться к каталогу работ</a>.
         </div>
     </div>
 <?php else: ?>
@@ -202,7 +202,7 @@ function normalizeGalleryImagePath(?string $path): string
             <div class="row text-center justify-content-center">
                 <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Рассчитать
                         стоимость багета</a>
-                <a href="/сatalog-of-finished-works.php">
+                <a href="/сatalog-of-finished-works">
                     Вернуться к разделам
                 </a>
 

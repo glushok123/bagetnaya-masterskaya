@@ -50,16 +50,16 @@
                         </div>
                         <div class='mt-4'>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
-                                                                href="/сatalog-of-finished-works.php">Работы</a></div>
+                                                                href="/сatalog-of-finished-works">Работы</a></div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer' href="/actions.html">Акции</a>
                             </div>
-                            <div class='div-nav-link-footer'><a class='nav-link-footer' href="/oplata_uslug.php">Оплата
+                            <div class='div-nav-link-footer'><a class='nav-link-footer' href="/oplata_uslug">Оплата
                                     и
                                     доставка</a></div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
-                                                                href="/картины%20багетной%20мастерской.php">Картины и репродукции</a></div>
+                                                                href="/картины%20багетной%20мастерской">Картины и репродукции</a></div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
-                                                                href="/сatalog-of-finished-works.php">Галерея работ</a>
+                                                                href="/сatalog-of-finished-works">Галерея работ</a>
                             </div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer' href="/baget_online">Рассчитать
                                     стоимость багета</a></div>
@@ -71,10 +71,10 @@
                         </div>
                         <div class='mt-4'>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
-                                                                href="/contacts.php">Контакты</a>
+                                                                href="/contacts">Контакты</a>
                             </div>
                             <div class='div-nav-link-footer'><a class='nav-link-footer'
-                                                                href="/oplata_uslug.php">Реквизиты</a></div>
+                                                                href="/oplata_uslug">Реквизиты</a></div>
                         </div>
                     </div>
                 </div>

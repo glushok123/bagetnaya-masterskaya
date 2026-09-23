@@ -102,10 +102,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
     <!-- Блок 1 -->
     <div class="row">
         <div class="col-12">
-            <h2 class="section-title text-center">
+            <h1 class="section-title text-center h2">
                 <span style="font-size: 40px">ЭКСПРЕСС-ЗАКАЗ</span><br>
                 ИЗГОТОВЛЕНИЕ РАМКИ ДЕНЬ В ДЕНЬ
-            </h2>
+            </h1>
         </div>
 
         <div class="col-12 col-md-5 text-center">

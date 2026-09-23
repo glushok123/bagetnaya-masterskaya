@@ -151,7 +151,7 @@ if (strripos((string)$file, 'bagetnye_raboty/')) {
     $menu1 .= '<a href="/bagetnye_raboty/" class="lm mark"> Багетные работы</a> ';
 
     if (strripos((string)$file, 'izgotovlenie_bageta/')) {
-        $menu11 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/" class="sublm mark" > Изготовление багета</a> ';
+        $menu11 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta" class="sublm mark" > Изготовление багета</a> ';
 
         if (strripos((string)$file, 'izgotovlenie_bagetov_dlya_kartin')) {
             $menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_bagetov_dlya_kartin.html" class="ssublm mark" > Изготовление багетов для картин</a> ';
@@ -171,7 +171,7 @@ if (strripos((string)$file, 'bagetnye_raboty/')) {
             $menu111 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_ramki_iz_bageta.html" class="ssublm unmark" > Изготовление рамки из багета</a> ';
         }
     } else {
-        $menu11 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta/" class="sublm unmark" > Изготовление багета</a> ';
+        $menu11 .= '<a href="/bagetnye_raboty/izgotovlenie_bageta" class="sublm unmark" > Изготовление багета</a> ';
     }
 
     if (strripos((string)$file, 'oformlenie_v_baget/')) {
@@ -330,9 +330,9 @@ if (strripos((string)$file, 'nakatka_na_penokarton/')) {
 }
 
 if (strripos((string)$file, 'pechat_na_penokartone/')) {
-    $menu1 .= '<a href="/pechat_na_penokartone/" class="lm mark"> Печать на пенокартоне</a> ';
+    $menu1 .= '<a href="/pechat_na_penokartone" class="lm mark"> Печать на пенокартоне</a> ';
 } else {
-    $menu1 .= '<a href="/pechat_na_penokartone/" class="lm unmark"> Печать на пенокартоне</a> ';
+    $menu1 .= '<a href="/pechat_na_penokartone" class="lm unmark"> Печать на пенокартоне</a> ';
 }
 
 
@@ -476,9 +476,9 @@ if (strripos((string)$file, 'ramki_dlya_vyshivki/')) {
 }
 
 if (strripos((string)$file, 'baget_dlya_ikony/')) {
-    $menu2 .= '<a href="/baget_dlya_ikony/" class="lm mark"> Багет для иконы</a> ';
+    $menu2 .= '<a href="/baget_dlya_ikony" class="lm mark"> Багет для иконы</a> ';
 } else {
-    $menu2 .= '<a href="/baget_dlya_ikony/" class="lm unmark"> Багет для иконы</a> ';
+    $menu2 .= '<a href="/baget_dlya_ikony" class="lm unmark"> Багет для иконы</a> ';
 }
 
 if (strripos((string)$file, 'bagety_dlya_kartin/')) {
@@ -540,8 +540,8 @@ if (strripos((string)$file, 'zerkala_v_bagete/')) {
     }
 } else {
     $menu2 .= '<a href="/zerkala_v_bagete/" class="lm unmark"> Зеркала в багете</a> ';
-    $menu2 .= '<a href="/ordena_i_medali/" class="lm unmark"> Панно для наград и орденов</a> ';
-    $menu2 .= '<a href="/pechat_kartin_posterov_reprodukcij/" class="lm unmark"> Печать фотографий, постеров и репродукций</a> ';
+    $menu2 .= '<a href="/ordena_i_medali" class="lm unmark"> Панно для наград и орденов</a> ';
+    $menu2 .= '<a href="/pechat_kartin_posterov_reprodukcij" class="lm unmark"> Печать фотографий, постеров и репродукций</a> ';
 }
 
 if ($menu11) {
@@ -559,7 +559,7 @@ echo '<div id="left">' . $menu1 . '<br>' . $menu11 . $menu111 . $menu2 . $menu22
 <div id="info" class="infohide"></div>
 <div id="botm">
     © 2013 Багетная мастерская 1
-    <a href="/kontakty.html" class="botmhref">Контакты</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a><br><a
+    <a href="/contacts" class="botmhref">Контакты</a>&nbsp;<a href="/sitemap.html" class="botmhref">Карта сайта</a><br><a
             href="/privacy.pdf" class="botmhref">Политика конфиденциальности</a><br><a href="/terms.pdf"
                                                                                        class="botmhref">Пользовательское
         соглашение</a>

@@ -239,7 +239,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="row text-center justify-content-center mt-3 mb-5 flex-but">
-            <a href="/bagetnye_raboty" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Багетные работы</a>
+            <a href="/bagetnye_raboty/" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Багетные работы</a>
             <a href="/home_designer" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Выездной подбор</a>
             <a href="/prices_for_print_and_canvas" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Комплект для картины</a>
         </div>

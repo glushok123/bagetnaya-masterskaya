@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/default/connect.php';
 require_once __DIR__ . '/template/helpers/gallery-categories.php';
+require_once __DIR__ . '/template/helpers/canonical.php';
+$canonicalUrl = canonicalUrl($canonical ?? null);
 
 $galleryCategories = [];
 
@@ -18,18 +20,18 @@ if (isset($dbh) && $dbh instanceof PDO) {
     <META NAME="Keywords" CONTENT="<? echo $keyw; ?>">
     <link rel="SHORTCUT ICON" href="/favicon.ico">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <link rel="canonical" href="<? echo $url; ?>"/>
+    <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>"/>
 
-    <link rel="image_src" href="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
+    <link rel="image_src" href="https://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Багетная мастерская 1"/>
+    <meta property="og:title" content="<?= htmlspecialchars(trim((string)$titl)) ?>"/>
     <meta property="og:description"
           content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера."/>
-    <meta property="og:url" content="http://bagetnaya-masterskaya.com"/>
-    <meta property="og:image" content="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
+    <meta property="og:url" content="<?= htmlspecialchars($canonicalUrl) ?>"/>
+    <meta property="og:image" content="https://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
     <meta name="geo.placename" content="Климентовский пер., 6, Москва, Россия, 115184"/>
     <meta name="geo.position" content="55.7411820;37.6301270"/>
-    <meta name="geo.region" content="RU-"/>
+    <meta name="geo.region" content="RU-MOW"/>
     <meta name="yandex-verification" content="495a973ffa1b3033"/>
     <meta name="yandex-verification" content="1e115d792752091b"/>
 
@@ -111,7 +113,7 @@ if (isset($dbh) && $dbh instanceof PDO) {
 
                     <span class="dropdown" style='z-index:999999999999999999999999999999;'>
                         
-                            <a href="/сatalog-of-finished-works.php"><button class="btn resize-font gallery-works"
+                            <a href="/сatalog-of-finished-works"><button class="btn resize-font gallery-works"
                                                                              type="button" id="dropdownMenuButton1"
                                                                              data-bs-toggle="dropdown"
                                                                              aria-expanded="false">ГАЛЕРЕЯ РАБОТ</button></a>
@@ -133,37 +135,37 @@ if (isset($dbh) && $dbh instanceof PDO) {
                             УСЛУГИ
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
+                            <li><a class="dropdown-item" href="/bagetnye_raboty/">багетные работы</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
-                            <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
+                            <li><a class="dropdown-item" href="/baget_dlya_ikony">Багет для иконы</a></li>
                             <li><a class="dropdown-item" href="/bagety_dlya_kartin/">Багеты для картин</a></li>
-                            <li><a class="dropdown-item" href="/home_designer.php">Выездной подбор багета</a></li>
-                            <li><a class="dropdown-item" href="/ordena_i_medali/">Панно для наград и орденов</a></li>
+                            <li><a class="dropdown-item" href="/home_designer">Выездной подбор багета</a></li>
+                            <li><a class="dropdown-item" href="/ordena_i_medali">Панно для наград и орденов</a></li>
                             <li><a class="dropdown-item" href="/pechat_na_holste/">Печать на холсте</a></li>
-                            <li><a class="dropdown-item" href="/pechat_na_penokartone/">Печать на пенокартоне</a></li>
+                            <li><a class="dropdown-item" href="/pechat_na_penokartone">Печать на пенокартоне</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_kartin/">Рамки для картин</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_ikon/">Рамки для икон</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_vyshivki/">Рамки для вышивки</a></li>
-                            <li><a class="dropdown-item" href="/designation_references.php">Оформление живописи</a></li>
+                            <li><a class="dropdown-item" href="/designation_references">Оформление живописи</a></li>
                             <li><a class="dropdown-item" href="/zerkala_v_bagete/">Зеркала в багете</a></li>
-                            <li><a class="dropdown-item" href="/formation_football.php">Оформление футболок</a></li>
-                            <li><a class="dropdown-item" href="/object_forming.php">Объектное оформление</a></li>
+                            <li><a class="dropdown-item" href="/formation_football">Оформление футболок</a></li>
+                            <li><a class="dropdown-item" href="/object_forming">Объектное оформление</a></li>
                             <li><a class="dropdown-item" href="/natyazhka_holsta/">Натяжка холста</a></li>
-                            <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij/">печать постеров, фотографий и репродукций</a></li>
+                            <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij">печать постеров, фотографий и репродукций</a></li>
                             <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
-                            <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
-                            <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
-                            <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
-                            <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
-                            <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
+                            <li><a class="dropdown-item" href="/express_zakaz">EXPRESS-ЗАКАЗ</a></li>
+                            <li><a class="dropdown-item" href="/obramlenie_kartiny">Обрамление картины</a></li>
+                            <li><a class="dropdown-item" href="/derevyannie_ramki">Деревянные рамки</a></li>
+                            <li><a class="dropdown-item" href="/plastikovye_ramki">Пластиковые рамки</a></li>
+                            <li><a class="dropdown-item" href="/metallicheskie_ramki">Металлические рамки</a></li>
                             <li><a class="dropdown-item"
-                                   href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для картины</a></li>
-                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Оформление художественных выставок</a></li>
-                            <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
+                                   href="/kak_uhazhivat_za_ramkoi">Уход за рамкой для картины</a></li>
+                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas">Оформление художественных выставок</a></li>
+                            <li><a class="dropdown-item" href="/baget_for_karini">Подбор багета для картины</a></li>
                             <li><a class="dropdown-item" href="/kupit_kartinu/">Купить интерьерную картину</a></li>
                         </ul>
                     </span>
-                <button type="button" class="btn resize-font"><a href="/contacts.php"
+                <button type="button" class="btn resize-font"><a href="/contacts"
                                                                  style="text-decoration: none;color:black;">КОНТАКТЫ</a>
                 </button>
             </div>
@@ -178,10 +180,10 @@ if (isset($dbh) && $dbh instanceof PDO) {
                 <span class="span-contact resize-font">8 (977) 824-42-12 салон на Новокузнецкой</span>
             </div>
             <div class="border-top-red margin-top margin-right">
-                <button type="button" class="btn resize-font"><a href="/oplata_uslug.php"
+                <button type="button" class="btn resize-font"><a href="/oplata_uslug"
                                                                  style="text-decoration: none;color:black;">ОПЛАТА И
                         ДОСТАВКА</a></button>
-                <button type="button" class="btn resize-font"><a href="/картины%20багетной%20мастерской.php"
+                <button type="button" class="btn resize-font"><a href="/картины%20багетной%20мастерской"
                                                                  style="text-decoration: none;color:black;">КУПИТЬ
                         КАРТИНУ</a></button>
             </div>
@@ -251,11 +253,11 @@ if (isset($dbh) && $dbh instanceof PDO) {
         <div class="head_center_button_wrapper"></div>
         <a href="/baget_online" class="head_center_button">РАССЧИТАТЬ<BR>СТОИМОСТЬ<BR>БАГЕТА</a>
         <div class="head_side_buttons head_side_buttons_left">
-            <a href="/сatalog-of-finished-works.php">Каталог готовых работ</a>
+            <a href="/сatalog-of-finished-works">Каталог готовых работ</a>
             <div>Посмотрите примеры рам для картин,<br> выполненных нашей командой!</div>
         </div>
         <div class="head_side_buttons head_side_buttons_right">
-            <a href="/картины багетной мастерской.php">Картины и репродукции</a>
+            <a href="/картины%20багетной%20мастерской">Картины и репродукции</a>
             <div>Купить готовую интерьерную картину<br>в интерьер или в подарок</div>
         </div>
         <div class="head_side_buttons head_side_buttons_left">

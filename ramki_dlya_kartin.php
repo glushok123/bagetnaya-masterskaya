@@ -110,8 +110,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="row text-center mt-3 mb-5">
-            <h1 class="mb-3">КАК ВЫБРАТЬ БАГЕТНУЮ РАМУ
-            </h1>
+            <h2 class="h1 mb-3">КАК ВЫБРАТЬ БАГЕТНУЮ РАМУ
+            </h2>
         </div>
         <div class="row text-center">
             <p class="my-auto">Чтобы оформление Вашей работы получилось красивым и гармоничным, мы рекомендуем
@@ -129,8 +129,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
         </div>
 
         <div class="row text-center mt-3 mb-5">
-            <h1 class="mb-3">СПОСОБЫ ОФОРМЛЕНИЯ ЗАКАЗА
-            </h1>
+            <h2 class="h1 mb-3">СПОСОБЫ ОФОРМЛЕНИЯ ЗАКАЗА
+            </h2>
         </div>
 
         <div class="row m-3">
@@ -174,7 +174,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
 
         <div class="row text-center mt-3 mb-5">
-            <h1>ГОТОВЫЕ ИЗДЕЛИЯ В БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
+            <h2 class="h1">ГОТОВЫЕ ИЗДЕЛИЯ В БАГЕТНОЙ МАСТЕРСКОЙ №1</h2>
 
         </div>
         <div class="row text-center">

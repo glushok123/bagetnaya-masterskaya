@@ -6,7 +6,7 @@ $gallery = "pechat_na_holste";
 include $_SERVER['DOCUMENT_ROOT'] . "/header.php";
 ?>
 
-    <div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste">Печать на холсте</a> » Печать фото на холсте
+    <div id="crops"><a href="/">Главная</a> » <a href="/pechat_na_holste/">Печать на холсте</a> » Печать фото на холсте
     </div>
     <h1>Печать фотографий на холсте - идея подарка на любой случай</h1>
     <div id="main">

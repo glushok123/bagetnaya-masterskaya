@@ -89,7 +89,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                 <ul class="navbar-nav ms-auto" style="margin-top: 70px;">
                     <li class="nav-item">
                         <a class="nav-link "  id="navbarDropdown" role="button" data-bs-toggle="navbarDropdown2"
-                           href="/сatalog-of-finished-works.php" aria-expanded="false">
+                           href="/сatalog-of-finished-works" aria-expanded="false">
                             Галерея работ
                         </a>
 
@@ -110,46 +110,46 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                             Услуги
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas/">Комплект для картины: рассчитать стоимость</a></li>
-                            <li><a class="dropdown-item" href="/bagetnye_raboty.php">багетные работы</a></li>
-                            <li><a class="dropdown-item" href="/home_designer.php">Выездной подбор багета</a></li>
-                            <li><a class="dropdown-item" href="/express_zakaz.php">EXPRESS-ЗАКАЗ</a></li>
-                            <li><a class="dropdown-item" href="/kartina_na_zakaz.php">Картина на заказ</a></li>
-                            <li><a class="dropdown-item" href="/baget_for_karini.php">Подбор багета для картины</a></li>
-                            <li><a class="dropdown-item" href="/baget_dlya_ikony/">Багет для иконы</a></li>
-                            <li><a class="dropdown-item" href="/designation_references.php">Оформление живописи</a></li>
+                            <li><a class="dropdown-item" href="/prices_for_print_and_canvas">Комплект для картины: рассчитать стоимость</a></li>
+                            <li><a class="dropdown-item" href="/bagetnye_raboty/">багетные работы</a></li>
+                            <li><a class="dropdown-item" href="/home_designer">Выездной подбор багета</a></li>
+                            <li><a class="dropdown-item" href="/express_zakaz">EXPRESS-ЗАКАЗ</a></li>
+                            <li><a class="dropdown-item" href="/kartina_na_zakaz">Картина на заказ</a></li>
+                            <li><a class="dropdown-item" href="/baget_for_karini">Подбор багета для картины</a></li>
+                            <li><a class="dropdown-item" href="/baget_dlya_ikony">Багет для иконы</a></li>
+                            <li><a class="dropdown-item" href="/designation_references">Оформление живописи</a></li>
                             <li><a class="dropdown-item" href="/zerkala_v_bagete/">Зеркала в багете</a></li>
                             <li><a class="dropdown-item" href="/bagetnye_raboty/televizor_v_bagete.html">Рамка для дисплея</a></li>
-                            <li><a class="dropdown-item" href="/ordena_i_medali/">Панно для наград и орденов</a></li>
-                            <li><a class="dropdown-item" href="/formation_football.php">Оформление футболок</a></li>
-                            <li><a class="dropdown-item" href="/object_forming.php">Объектное оформление</a></li>
-                            <li><a class="dropdown-item" href="/derevyannie_ramki.php">Деревянные рамки</a></li>
-                            <li><a class="dropdown-item" href="/plastikovye_ramki.php">Пластиковые рамки</a></li>
-                            <li><a class="dropdown-item" href="/metallicheskie_ramki.php">Металлические рамки</a></li>
+                            <li><a class="dropdown-item" href="/ordena_i_medali">Панно для наград и орденов</a></li>
+                            <li><a class="dropdown-item" href="/formation_football">Оформление футболок</a></li>
+                            <li><a class="dropdown-item" href="/object_forming">Объектное оформление</a></li>
+                            <li><a class="dropdown-item" href="/derevyannie_ramki">Деревянные рамки</a></li>
+                            <li><a class="dropdown-item" href="/plastikovye_ramki">Пластиковые рамки</a></li>
+                            <li><a class="dropdown-item" href="/metallicheskie_ramki">Металлические рамки</a></li>
 
                             <li><a class="dropdown-item" href="/bagetnye_ramki/">Багетные рамки</a></li>
                             <li><a class="dropdown-item" href="/bagety_dlya_kartin/">Багеты для картин</a></li>
                             <li><a class="dropdown-item" href="/pechat_na_holste/">Печать на холсте</a></li>
-                            <li><a class="dropdown-item" href="/pechat_na_penokartone/">Печать на пенокартоне</a></li>
+                            <li><a class="dropdown-item" href="/pechat_na_penokartone">Печать на пенокартоне</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_kartin/">Рамки для картин</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_ikon/">Рамки для икон</a></li>
                             <li><a class="dropdown-item" href="/ramki_dlya_vyshivki/">Рамки для вышивки</a></li>
                             <li><a class="dropdown-item" href="/natyazhka_holsta/">Натяжка холста</a></li>
-                            <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij/">печать постеров,
+                            <li><a class="dropdown-item" href="/pechat_kartin_posterov_reprodukcij">печать постеров,
                                     фотографий и репродукций</a></li>
                             <li><a class="dropdown-item" href="/nakatka_na_penokarton/">накатка на пенокартон</a></li>
-                            <li><a class="dropdown-item" href="/obramlenie_kartiny.php">Обрамление картины</a></li>
-                            <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi.php">Уход за рамкой для
+                            <li><a class="dropdown-item" href="/obramlenie_kartiny">Обрамление картины</a></li>
+                            <li><a class="dropdown-item" href="/kak_uhazhivat_za_ramkoi">Уход за рамкой для
                                     картины</a>
                             </li>
                             <li><a class="dropdown-item" href="/kupit_kartinu/">Купить интерьерную картину</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/contacts.php">Контакты</a>
+                        <a class="nav-link" aria-current="page" href="/contacts">Контакты</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/oplata_uslug.php">Оплата и доставка</a>
+                        <a class="nav-link" aria-current="page" href="/oplata_uslug">Оплата и доставка</a>
                     </li>
 
                     <?
@@ -157,10 +157,10 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
                         ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской.php">Картины и репродукци</a>
+                            <a class="nav-link" aria-current="page" href="/картины%20багетной%20мастерской">Картины и репродукци</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/contacts.php">Адреса багетных мастерских</a>
+                            <a class="nav-link" aria-current="page" href="/contacts">Адреса багетных мастерских</a>
                         </li>
 
                         <?
@@ -204,7 +204,7 @@ if (!isset($galleryCategories) || !is_array($galleryCategories)) {
         <div class='text-end custom-margin-navbar-2-row'>
             <div class="d-inline">
                 <div class="nav-item d-inline">
-                    <a class="nav-link d-inline" aria-current="page" href="/картины%20багетной%20мастерской.php">Картины и репродукции</a>
+                    <a class="nav-link d-inline" aria-current="page" href="/картины%20багетной%20мастерской">Картины и репродукции</a>
                 </div>
             </div>
             <div class="d-inline" >

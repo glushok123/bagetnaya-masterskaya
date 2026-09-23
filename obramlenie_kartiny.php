@@ -122,7 +122,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 
         <!-- Блок 1 -->
         <div class="row text-center">
-            <h2 class="section-title">БАГЕТ ДЛЯ КАРТИНЫ:<br>ВЫБИРАЕМ РАМЫ В БАГЕТНОЙ МАСТЕРСКОЙ №1</h2>
+            <h1 class="section-title h2">БАГЕТ ДЛЯ КАРТИНЫ:<br>ВЫБИРАЕМ РАМЫ В БАГЕТНОЙ МАСТЕРСКОЙ №1</h1>
             <div class="col-sm-4 col-sm-offset-1">
                 <img src="/img/article/telegram-cloud-photo-size-2-5425050076243422565-y%201%20(2).png"
                      class="img-responsive">
@@ -186,7 +186,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
                     вариант под стиль изображения и интерьера.</p>
                 <p>В случае, если Вам не удалось найти подходящее готовое решение, Вы можете воспользоваться услугой
                     express-заказа! Подробнее читайте в статье:</p>
-                <a href="/express_zakaz.php" class="highlight-btn">Express-заказ</a>
+                <a href="/express_zakaz" class="highlight-btn">Express-заказ</a>
             </div>
             <div class="col-sm-4">
                 <img src="/img/article/image%20707.png" class="img-responsive"

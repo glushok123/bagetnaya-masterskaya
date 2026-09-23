@@ -11,8 +11,8 @@
 
 
         <div class="block-h1 text-center my-4 fade-in">
-            <h1 class='color-main'>БАГЕТНАЯ МАСТЕРСКАЯ 1</h1>
-            <h1>В МОСКВЕ</h1>
+            <?php /* один h1 на страницу: раньше было два, поисковик видел размытый заголовок */ ?>
+            <h1><span class='color-main d-block mb-2'>БАГЕТНАЯ МАСТЕРСКАЯ 1</span><span class='d-block'>В МОСКВЕ</span></h1>
         </div>
 
         <!--div class="row">
@@ -114,7 +114,7 @@
                 <div class="mt-3">
                     <a href="/baget_online" class="button button-custom-index button-color-company-red fix-width-425 mob-fix-width-340 mb-3 color-white">Конструктор багета <b>online</b></a>
                     <br>
-                    <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden fix-width-185">Наши
+                    <a href="/сatalog-of-finished-works" class="button button-custom-index button-color-company-golden fix-width-185">Наши
                             работы</a>
                     <a href="/actions.html" class="button button-custom-index button-color-company-golden fix-width-185 ml-55">Акции</a>
                 </div>
@@ -276,7 +276,7 @@
                         легким весом, высоким уровнем прочности и стойкостью к негативным факторам окружающей среды.
                     </div>
                     <br><br>
-                    <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden" style="width:100%;">Узнать подробнее об услугах мастерской</a>
+                    <a href="/сatalog-of-finished-works" class="button button-custom-index button-color-company-golden" style="width:100%;">Узнать подробнее об услугах мастерской</a>
                 </div>
             </div>
         </div>

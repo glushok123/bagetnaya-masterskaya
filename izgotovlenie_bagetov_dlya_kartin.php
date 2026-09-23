@@ -6,7 +6,7 @@ include "header.php"
 ?>
 
     <div id="crops"><a href="/">Главная</a> » <a href="/bagetnye_raboty/">Багетные работы</a> » <a
-                href="/bagetnye_raboty/izgotovlenie_bageta/">Изготовление багета</a> » Изготовление багетов для картин
+                href="/bagetnye_raboty/izgotovlenie_bageta">Изготовление багета</a> » Изготовление багетов для картин
     </div>
     <h1>Оперативное изготовление багетов для картин.</h1>
     <div id="main">

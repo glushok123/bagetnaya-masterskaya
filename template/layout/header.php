@@ -3,6 +3,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/helpers/gallery-categories.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/template/helpers/canonical.php';
 
 $galleryCategories = [];
 
@@ -31,21 +32,21 @@ $v = 26;
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="content-language" content="ru">
 
-        <title>
-            <? echo $title; ?>
-        </title>
+        <title><? echo $title; ?></title>
 
         <meta NAME="Description" CONTENT="<? echo $description; ?>">
         <meta NAME="Keywords" CONTENT="<? echo $keywords; ?>">
+        <?php $canonicalUrl = canonicalUrl($canonical ?? null); ?>
+        <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>">
         <meta name="geo.placename" content="Климентовский пер., 6, Москва, Россия, 115184"/>
         <meta name="geo.position" content="55.7411820;37.6301270"/>
-        <meta name="geo.region" content="RU-"/>
+        <meta name="geo.region" content="RU-MOW"/>
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Багетная мастерская 1"/>
+        <meta property="og:title" content="<?= htmlspecialchars(trim($title)) ?>"/>
         <meta property="og:description"
               content="Мы оформляем в багетные рамки постеры, фотографии, изображения, вышивки и многое другое. Печатаем на холсте, на глянцевой и матовой бумаге любые форматы изображений. Делаем красивые модульные картины для Вашего интерьера. Накатываем на пенокартон, делаем натяжку на подрамник, предоставляем услуги дизайнера."/>
-        <meta property="og:url" content="http://bagetnaya-masterskaya.com"/>
-        <meta property="og:image" content="http://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
+        <meta property="og:url" content="<?= htmlspecialchars($canonicalUrl) ?>"/>
+        <meta property="og:image" content="https://bagetnaya-masterskaya.com/img/bagetnaya_masterskaya.jpg"/>
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114-precomposed.png"/>
         <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114-precomposed.png"/>
         <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144-precomposed.png"/>
@@ -98,6 +99,7 @@ $v = 26;
             }
         </style>
         <meta name="yandex-verification" content="1e115d792752091b"/>
+        <?php if (!empty($organizationSchema)) require $_SERVER['DOCUMENT_ROOT'] . '/template/helpers/organization-schema.php'; ?>
 
         <script>
             window.dataLayer = window.dataLayer || [];

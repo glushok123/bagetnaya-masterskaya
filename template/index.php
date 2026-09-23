@@ -1,6 +1,8 @@
 <?php
 // LCP главной — первый слайд верхнего слайдера; грузим его как можно раньше
 $preloadImage = '/assets/img/index/swiper-1/IMG_3263.webp';
+// адреса и часы салонов в микроразметке — для сниппета и связи с Картами
+$organizationSchema = true;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/template/layout/header.php';
 

@@ -5,7 +5,7 @@ $desc = "Вам потребовалась печать больших пост�
 include "header.php"
 ?>
 
-    <div id="crops"><a href="/">Главная</a> » <a href="/bagetnye_raboty">Багетные работы</a> » Печать больших постеров
+    <div id="crops"><a href="/">Главная</a> » <a href="/bagetnye_raboty/">Багетные работы</a> » Печать больших постеров
     </div>
     <h1>Печать больших постеров на заказ. Недорого!</h1>
     <div id="main">

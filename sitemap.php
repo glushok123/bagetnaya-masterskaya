@@ -14,10 +14,9 @@ include "header.php"
                 <ul>
 
                     <li><a href="/baget_online">Конструктор багета</a></li>
-                    <li><a href="/kontakty.html">Контакты</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
                     <li><a href="/actions.html">Акции</a></li>
                     <!--<li><a href="/dostavka.html">Доставка</a></li>-->
-                    <li><a href="/vakansii.html">Вакансии</a></li>
                     <li><a href="/sitemap.html">Карта сайта</a></li>
 
                     <li><a href="/pechat_na_holste/">Печать на холсте</a>
@@ -45,7 +44,7 @@ include "header.php"
                     </li>
                     <li><a href="/bagetnye_raboty/">Багетные работы</a>
                         <ul>
-                            <li><a href="/bagetnye_raboty/izgotovlenie_bageta/">Изготовление багета</a>
+                            <li><a href="/bagetnye_raboty/izgotovlenie_bageta">Изготовление багета</a>
                                 <ul>
                                     <li>
                                         <a href="/bagetnye_raboty/izgotovlenie_bageta/izgotovlenie_bagetov_dlya_kartin.html">Изготовление
@@ -67,7 +66,7 @@ include "header.php"
                                     <li>
                                         <a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_fotografiy_v_baget.html">Оформление
                                             фотографий в багет</a></li>
-                                    <li><a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_zerkal_v_baget.html">Оформление
+                                    <li><a href="/zerkala_v_bagete/oformlenie_zerkal_v_baget.html">Оформление
                                             зеркал в багет</a></li>
                                     <li><a href="/bagetnye_raboty/oformlenie_v_baget/oformlenie_ikon_v_baget.html">Оформление
                                             икон в багет</a></li>
@@ -100,7 +99,7 @@ include "header.php"
                             <li><a href="/nakatka_na_penokarton/kupit_penokarton.html">Купить пенокартон</a></li>
                         </ul>
                     </li>
-                    <li><a href="/pechat_na_penokartone/">Печать на пенокартоне</a></li>
+                    <li><a href="/pechat_na_penokartone">Печать на пенокартоне</a></li>
                     <li><a href="natyazhka_holsta/">Натяжка холста</a>
                         <ul>
                             <li><a href="/natyazhka_holsta/natyazhka_na_podramnik.html">Натяжка на подрамник</a></li>
@@ -157,7 +156,7 @@ include "header.php"
                             <li><a href="/ramki_dlya_vyshivki/oformlenie_vyshivki.html">Оформление вышивки</a></li>
                         </ul>
                     </li>
-                    <li><a href="/baget_dlya_ikony/">Багет для иконы</a></li>
+                    <li><a href="/baget_dlya_ikony">Багет для иконы</a></li>
                     <li><a href="/bagety_dlya_kartin/">Багеты для картин</a>
                         <ul>
                             <li><a href="/bagety_dlya_kartin/bagety_dlya_kartin_cena.html">Стоимость багета для

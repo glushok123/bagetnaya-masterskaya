@@ -8,8 +8,8 @@
             <span><strong>Арбат:</strong> закрыт на ремонт до 11.01</span>
         </div-->
         <div class="block-h1 text-center my-4 fade-in ">
-            <h1 class='color-main '>БАГЕТНАЯ МАСТЕРСКАЯ</h1>
-            <h1>№1 В МОСКВЕ</h1>
+            <?php /* один h1 на страницу: раньше было два, поисковик видел размытый заголовок */ ?>
+            <h1><span class='color-main d-block mb-2'>БАГЕТНАЯ МАСТЕРСКАЯ</span><span class='d-block'>№1 В МОСКВЕ</span></h1>
         </div>
 
         <div class='row pt-2 text-center'>
@@ -28,7 +28,7 @@
                 <a href="/baget_online" class="button button-custom-index button-color-company-red mob-fix-width-100-p mb-3 color-white">Конструктор багета <b>online</b></a>
                 <div class='row'>
                     <div class='col'>
-                        <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap">Наши
+                        <a href="/сatalog-of-finished-works" class="button button-custom-index button-color-company-golden mob-fix-width-100-p text-nowrap">Наши
                                 работы</a>
                     </div>
                     <div class='col'>
@@ -260,7 +260,7 @@
                 </div>
                 <div class='col-12'>
                     <br><br>
-                    <a href="/сatalog-of-finished-works.php" class="button button-custom-index button-color-company-golden" style="width:100%;">Узнать подробнее об услугах мастерской</a>
+                    <a href="/сatalog-of-finished-works" class="button button-custom-index button-color-company-golden" style="width:100%;">Узнать подробнее об услугах мастерской</a>
                 </div>
             </div>
         </div>
@@ -505,18 +505,18 @@
             <span class='mx-3'><a href="/natyazhka_holsta/" class="url text-nowrap"> Натяжка холста</a></span>
             <span class='mx-3'><a href="/nakatka_na_penokarton/" class="url text-nowrap"> Накатка на
                     пенокартон</a></span>
-            <span class='mx-3'><a href="/pechat_na_penokartone/" class="url text-nowrap"> Печать на
+            <span class='mx-3'><a href="/pechat_na_penokartone" class="url text-nowrap"> Печать на
                     пенокартоне</a></span>
             <span class='mx-3'><a href="/ramki_dlya_ikon/" class="url text-nowrap"> Рамки для икон</a></span>
             <span class='mx-3'><a href="/ramki_dlya_kartin/" class="url text-nowrap"> Рамки для картин</a></span>
             <span class='mx-3'><a href="/bagetnye_ramki/" class="url text-nowrap"> Багетные рамки</a></span>
             <span class='mx-3'><a href="/ramki_dlya_vyshivki/" class="url text-nowrap"> Рамки для вышивки</a></span>
-            <span class='mx-3'><a href="/baget_dlya_ikony/" class="url text-nowrap"> Багет для иконы</a></span>
+            <span class='mx-3'><a href="/baget_dlya_ikony" class="url text-nowrap"> Багет для иконы</a></span>
             <span class='mx-3'><a href="/bagety_dlya_kartin/" class="url text-nowrap"> Багеты для картин</a></span>
             <span class='mx-3'><a href="/zerkala_v_bagete/" class="url text-nowrap"> Зеркала в багете</a></span>
-            <span class='mx-3'><a href="/ordena_i_medali/" class="url text-nowrap"> Панно для наград и
+            <span class='mx-3'><a href="/ordena_i_medali" class="url text-nowrap"> Панно для наград и
                     орденов</a></span>
-            <span class='mx-3'><a href="/pechat_kartin_posterov_reprodukcij/" class="url text-nowrap"> Печать
+            <span class='mx-3'><a href="/pechat_kartin_posterov_reprodukcij" class="url text-nowrap"> Печать
                     фотографий, постеров и репродукций</a> </span>
         </div>
     </div>

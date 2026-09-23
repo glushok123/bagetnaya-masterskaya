@@ -5,13 +5,17 @@ Disallow: /baget_zakaz
 Disallow: /baget_accept
 Disallow: /base
 Disallow: /doc
-Disallow: /*?
-Disallow: /oplata_uslug.php*?
-Disallow: /pay_success.php*?
-Disallow: /oplata_uslug.php
-Disallow: /pay_success.php
+Disallow: /admin
+Disallow: /template/
+Disallow: /search
+Disallow: /oplata_uslug
+Disallow: /pay_success
 Disallow: /404
-Disallow: /404.php
-Host: bagetnaya-masterskaya.com
-Sitemap: https://bagetnaya-masterskaya.com/sitemap.xml
+# Адреса с параметрами — дубли страниц. Исключение — категории галереи работ:
+# у каждой свой набор фотографий, их нужно индексировать.
+Disallow: /*?
+Allow: /*atalog-of-finished-works-by-category.php?category=
 Clean-param: id *
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&etext&from&frommarket&ysclid
+
+Sitemap: https://bagetnaya-masterskaya.com/sitemap.xml
