@@ -122,7 +122,9 @@ body.adm {
 }
 
 .adm-main { min-width: 0; padding: 28px 32px 120px; }
-.adm-view { max-width: 1680px; margin: 0 auto; animation: ga-rise .22s ease both; }
+/* Только прозрачность: анимация transform сделала бы раздел «контейнером» для position: fixed,
+   и плавающая панель выбора прилипала бы к низу страницы */
+.adm-view { max-width: 1680px; margin: 0 auto; animation: ga-fade .22s ease both; }
 
 /* Мобильная шапка вместо боковой панели */
 .adm-topbar { display: none; }

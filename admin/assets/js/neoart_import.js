@@ -98,7 +98,8 @@
             return '' +
               '<div class="neoart-card" data-id="' + esc(it.id) + '">' +
                 '<div class="nc-head"><span class="nc-vendor">' + esc(it.vendor) + '</span>' + badge + '</div>' +
-                (listUrl ? '<img class="neoart-thumb" src="' + listUrl + '" alt="" loading="lazy">' : '<div class="neoart-thumb"></div>') +
+                // Фоном, как полоса конструктора ниже: <img loading="lazy"> в части браузеров не прогружался
+                '<div class="neoart-thumb"' + (listUrl ? ' style="background-image:url(' + listUrl + ')"' : '') + '></div>' +
                 '<div class="nc-const" style="' + constBg + '"></div>' +
                 '<div class="nc-params">Ш ' + esc(it.width_mm) + ' / без чт ' + esc(it.widthwithout_mm) + ' мм<br><b>' + esc(it.price_final) + ' ₽</b> · остаток ' + esc(it.storage) + '</div>' +
                 '<div class="nc-actions">' +
