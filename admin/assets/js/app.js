@@ -311,9 +311,10 @@ $(document).ready(function () {
             return;
         }
 
+        var lastIndex = galleryCategoriesCache.length - 1;
+
         var itemsHtml = galleryCategoriesCache.map(function (category, index) {
-            var visibleChecked = parseInt(category.is_visible, 10) === 1 ? 'checked' : '';
-            var position = index + 1;
+            var isVisible = parseInt(category.is_visible, 10) === 1;
             var imageSrc = category.main_image ? category.main_image : '';
 
             if (!imageSrc) {
@@ -326,36 +327,33 @@ $(document).ready(function () {
             var inputId = 'category-main-image-input-' + category.id;
             var labelId = inputId + '-label';
 
-            return '<div class="list-group-item" data-category-id="' + category.id + '">' +
-                '<div class="row g-3 align-items-center">' +
-                '<div class="col-auto"><span class="badge bg-secondary">' + position + '</span></div>' +
-                '<div class="col-12 col-sm-6 col-lg-4">' +
-                '<label class="form-label mb-1">Название</label>' +
-                '<input type="text" class="form-control form-control-sm category-name-input" value="' + escapeHtml(category.name) + '">' +
-                '<div class="form-text">Слаг: ' + escapeHtml(category.slug || '') + '</div>' +
+            return '<div class="list-group-item gc-item' + (isVisible ? '' : ' gc-hidden') + '" data-category-id="' + category.id + '">' +
+                '<div class="gc-order">' +
+                '<button type="button" class="gc-arrow category-move-up" title="Выше"' + (index === 0 ? ' disabled' : '') + '>&#9650;</button>' +
+                '<span class="gc-pos">' + (index + 1) + '</span>' +
+                '<button type="button" class="gc-arrow category-move-down" title="Ниже"' + (index === lastIndex ? ' disabled' : '') + '>&#9660;</button>' +
                 '</div>' +
-                '<div class="col-6 col-lg-2">' +
-                '<label class="form-label mb-1 d-block">Статус</label>' +
-                '<div class="form-check form-switch">' +
-                '<input class="form-check-input category-visible-toggle" type="checkbox" ' + visibleChecked + '>' +
-                '<label class="form-check-label">' + (visibleChecked ? 'Отображается' : 'Скрыта') + '</label>' +
-                '</div>' +
-                '<div class="small text-muted mt-1">Работ: ' + worksCount + '</div>' +
-                '</div>' +
-                '<div class="col-6 col-lg-2 text-center">' +
-                '<img src="' + imageSrc + '" class="img-thumbnail category-main-image" alt="Превью" style="max-width:90px; max-height:90px; object-fit:cover;">' +
-                '</div>' +
-                '<div class="col-12 col-sm-6 col-lg-4">' +
-                '<div class="d-flex flex-wrap align-items-center gap-2">' +
+                '<div class="gc-thumb">' +
+                '<img src="' + imageSrc + '" class="category-main-image" alt="Превью">' +
                 '<input type="file" class="d-none category-main-image-input" id="' + inputId + '" data-label-id="' + labelId + '" accept=".jpg,.jpeg,.png">' +
-                '<label class="btn btn-outline-secondary btn-sm mb-0 category-upload-image" id="' + labelId + '" for="' + inputId + '">Изменить фото</label>' +
-                '<button type="button" class="btn btn-outline-primary btn-sm category-save">Сохранить</button>' +
+                '<label class="gc-thumb-edit category-upload-image" id="' + labelId + '" for="' + inputId + '" title="Заменить фото">Заменить фото</label>' +
                 '</div>' +
-                '<div class="d-flex gap-2 mt-2">' +
-                '<button type="button" class="btn btn-outline-secondary btn-sm w-100 category-move-up">Вверх</button>' +
-                '<button type="button" class="btn btn-outline-secondary btn-sm w-100 category-move-down">Вниз</button>' +
+                '<div class="gc-main">' +
+                '<input type="text" class="form-control category-name-input" value="' + escapeHtml(category.name) + '" placeholder="Название категории">' +
+                '<div class="gc-meta">' +
+                '<span class="gc-count">Работ: <b>' + worksCount + '</b></span>' +
+                '<span class="gc-slug">/' + escapeHtml(category.slug || '') + '</span>' +
                 '</div>' +
                 '</div>' +
+                '<div class="gc-status">' +
+                '<div class="form-check form-switch mb-0">' +
+                '<input class="form-check-input category-visible-toggle" type="checkbox" id="gc-visible-' + category.id + '"' + (isVisible ? ' checked' : '') + '>' +
+                '<label class="form-check-label" for="gc-visible-' + category.id + '">' + (isVisible ? 'Отображается' : 'Скрыта') + '</label>' +
+                '</div>' +
+                '</div>' +
+                '<div class="gc-actions">' +
+                '<button type="button" class="btn btn-sm btn-outline-primary category-save">Сохранить</button>' +
+                '<button type="button" class="btn btn-sm btn-outline-danger category-delete" title="Удалить категорию">Удалить</button>' +
                 '</div>' +
                 '</div>';
         }).join('');
@@ -630,6 +628,95 @@ $(document).ready(function () {
                 }
             },
             error: handleAjaxError
+        });
+    }
+
+    var deleteCategoryModalElement = document.getElementById('ModalDeleteGalleryCategory');
+    var deleteCategoryModal = deleteCategoryModalElement ? new bootstrap.Modal(deleteCategoryModalElement) : null;
+    var categoryPendingDeleteId = null;
+
+    function updateDeleteCategoryControls() {
+        var hasWorks = !$('#deleteCategoryWorksBlock').hasClass('d-none');
+        var deletingWorks = hasWorks && $('#deleteModeDelete').is(':checked');
+
+        $('#deleteCategoryTarget').prop('disabled', deletingWorks || $('#deleteModeMove').is(':disabled'));
+        $('#confirmDeleteGalleryCategory').text(deletingWorks ? 'Удалить вместе с работами' : 'Удалить категорию');
+    }
+
+    function openDeleteGalleryCategoryModal(item) {
+        var id = item.data('category-id');
+        var category = galleryCategoriesCache.find(function (entry) {
+            return String(entry.id) === String(id);
+        });
+
+        if (!category || !deleteCategoryModal) {
+            return;
+        }
+
+        var worksCount = parseInt(category.works_count, 10) || 0;
+        var options = '';
+
+        galleryCategoriesCache.forEach(function (entry) {
+            if (String(entry.id) !== String(id)) {
+                options += '<option value="' + entry.id + '">' + escapeHtml(entry.name) + '</option>';
+            }
+        });
+
+        var hasTargets = options !== '';
+
+        categoryPendingDeleteId = id;
+        $('#deleteCategoryName').text(category.name);
+        $('#deleteCategoryWorksCount').text(worksCount);
+        $('#deleteCategoryTarget').html(options);
+        $('#deleteModeMove').prop('disabled', !hasTargets).prop('checked', hasTargets);
+        $('#deleteModeDelete').prop('checked', !hasTargets);
+        $('#deleteCategoryWorksBlock').toggleClass('d-none', worksCount === 0);
+        updateDeleteCategoryControls();
+        deleteCategoryModal.show();
+    }
+
+    function deleteGalleryCategoryRequest(id, mode, targetId) {
+        var button = $('#confirmDeleteGalleryCategory');
+        button.prop('disabled', true);
+
+        $.ajax({
+            url: '/admin/request/galleryWorks/deleteCategory.php',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                id: id,
+                mode: mode,
+                target_id: targetId
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    var message = 'Категория удалена';
+
+                    if (response.moved) {
+                        message += ', перенесено работ: ' + response.moved;
+                    }
+                    if (response.deleted_works) {
+                        message += ', удалено работ: ' + response.deleted_works;
+                    }
+
+                    categoryPendingDeleteId = null;
+                    deleteCategoryModal.hide();
+                    toastr.success(message);
+                    loadGalleryCategories(false);
+                } else {
+                    alert(response.message || 'Не удалось удалить категорию');
+                }
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.responseJSON && jqXHR.responseJSON.message) {
+                    alert(jqXHR.responseJSON.message);
+                } else {
+                    handleAjaxError(jqXHR, exception);
+                }
+            },
+            complete: function () {
+                button.prop('disabled', false);
+            }
         });
     }
 
@@ -1943,6 +2030,43 @@ $(document).ready(function () {
     $(document).on('click', '#refreshGalleryCategories', function () {
         loadGalleryCategories(true);
     }); // Обновление списка категорий
+    $(document).on('click', '.category-delete', function () {
+        openDeleteGalleryCategoryModal($(this).closest('.list-group-item'));
+    }); // Открыть окно удаления категории
+    $(document).on('change', 'input[name="deleteCategoryMode"]', function () {
+        updateDeleteCategoryControls();
+    }); // Переключение: перенести работы / удалить вместе с работами
+    $(document).on('click', '#confirmDeleteGalleryCategory', function () {
+        if (categoryPendingDeleteId === null) {
+            return;
+        }
+
+        var hasWorks = !$('#deleteCategoryWorksBlock').hasClass('d-none');
+        var mode = hasWorks && $('#deleteModeDelete').is(':checked') ? 'delete' : 'move';
+
+        if (mode === 'delete' && !confirm('Работы категории будут удалены безвозвратно. Продолжить?')) {
+            return;
+        }
+
+        deleteGalleryCategoryRequest(categoryPendingDeleteId, mode, hasWorks && mode === 'move' ? $('#deleteCategoryTarget').val() : 0);
+    }); // Подтверждение удаления категории
+    $(document).on('input', '.category-name-input', function () {
+        $(this).closest('.list-group-item').find('.category-save').removeClass('btn-outline-primary').addClass('btn-primary');
+    }); // Подсветка несохранённых изменений
+    $(document).on('change', '.category-main-image-input', function () {
+        $(this).closest('.list-group-item').find('.category-save').removeClass('btn-outline-primary').addClass('btn-primary');
+    }); // Новое фото — тоже несохранённое изменение
+    $(document).on('keydown', '.category-name-input', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            saveGalleryCategoryRequest($(this).closest('.list-group-item'));
+        }
+    }); // Enter в названии — сохранить
+    $(document).on('change', '.category-visible-toggle', function () {
+        var item = $(this).closest('.list-group-item');
+        item.toggleClass('gc-hidden', !$(this).is(':checked'));
+        saveGalleryCategoryRequest(item);
+    }); // Статус сохраняется сразу
     $(document).on('click', '.gallery-work-delete', function () {
         deleteGalleryWorkRequest($(this).data('id'));
     }); // Удаление изображения работы
