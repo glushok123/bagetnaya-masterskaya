@@ -1,4 +1,5 @@
 <?php
+if (PHP_SAPI !== 'cli') { http_response_code(403); exit; } // только из консоли
 /**
  * CLI: прогоняет NeoartCutter по выборке raw-фото эксперимента и собирает
  * два монтажа (imgconst / listimg) для визуального сравнения с cut.py.

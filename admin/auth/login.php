@@ -3,8 +3,7 @@
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/config/config.php';
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Content-Type: application/json; charset=utf-8');
 
 function client_ip()
 {
@@ -29,69 +28,74 @@ function client_ip()
     return $ipaddress;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $login = $_POST["login"];
-    $passwd = $_POST["passwd"];
-
-    $db = getDbInstance();
-    $error_login = $db->query("SELECT COUNT(*) FROM user_accaunt WHERE (login = '$login' OR email = '$login') AND  passwd = '$passwd' GROUP BY (login) ");
-    if ((is_countable($error_login) ? count($error_login) : 0) != 1) {
-        $json = '{
-            "status":"error",
-            "mes":"Не верный логин или пароль !"
-        }';
-        echo $json;
-    } else {
-        $info_user = $db->query("SELECT * FROM user_accaunt WHERE login = '$login' OR email = '$login'  ");
-
-        $_SESSION['user_logged_in'] = TRUE;
-        $_SESSION['login'] = $info_user[0]['login'];
-        $_SESSION['email'] = $info_user[0]['email'];
-        $_SESSION['type_user'] = $info_user[0]['type_user'];
-        $_SESSION['id_user'] = $info_user[0]['id'];
-        $_SESSION['type'] = $info_user[0]['type'];
-        $_SESSION['IP'] = client_ip();
-        $id = $info_user[0]['id'];
-
-        $agent = $_SERVER['HTTP_USER_AGENT'];
-        preg_match("/(MSIE|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", (string)$agent, $bInfo);
-        $browserInfo = [];
-        $browserInfo['name'] = ($bInfo[1] == "Version") ? "Safari" : $bInfo[1];
-        $browserInfo['version'] = $bInfo[2];
-        $datat = date('Y-m-d H:i:s');
-        $ip = client_ip();
-
-        $series_id = randomString(16);
-        $remember_token = getSecureRandomToken();
-        $encryted_remember_token = password_hash((string)$remember_token, PASSWORD_DEFAULT);
-        $expiry_time = date('Y-m-d H:i:s', strtotime(' + 60 days'));
-        $expires = strtotime($expiry_time);
-
-        $db->query("INSERT INTO user_accaunt_session
-            ( `id_user`, `date_in`, `device`,`ip`,`series_id`,`remember_token`,`expires`)
-            VALUES
-            (
-                '" . $info_user[0]['id'] . "',
-                '" . $datat . "',
-                '" . $browserInfo['name'] . "/" . $browserInfo['version'] . "/" . gethostbyaddr($_SERVER['REMOTE_ADDR']) . "',
-                '" . $ip . "',
-                '" . $series_id . "',
-                '" . $encryted_remember_token . "',
-                '" . $expiry_time . "'
-            )");
-
-        setcookie('series_id', (string)$series_id, ['expires' => $expires, 'path' => "/"]);
-        setcookie('remember_token', (string)$remember_token, ['expires' => $expires, 'path' => "/"]);
-
-        $update_remember = ['series_id' => $series_id, 'remember_token' => $encryted_remember_token, 'expires' => $expiry_time];
-
-        $db->where('id', $id);
-        $db->update("user_accaunt", $update_remember);
-
-        $json = '{
-            "status":"success"
-        }';
-
-        echo $json;
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    exit;
 }
+
+$login = trim((string)($_POST['login'] ?? ''));
+$passwd = (string)($_POST['passwd'] ?? '');
+
+$db = getDbInstance();
+$user = null;
+
+if ($login !== '' && $passwd !== '') {
+    // Только подготовленные запросы: логин и пароль не попадают в текст SQL
+    $db->where('(login = ? OR email = ?)', [$login, $login]);
+    $user = $db->getOne('user_accaunt');
+}
+
+$stored = $user ? (string)$user['passwd'] : '';
+$valid = $user && (
+    (str_starts_with($stored, '$2y$') && password_verify($passwd, $stored))
+    || hash_equals($stored, $passwd)
+);
+
+if (!$valid) {
+    usleep(600000); // притормаживаем подбор пароля
+    echo json_encode(['status' => 'error', 'mes' => 'Неверный логин или пароль'], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+session_regenerate_id(true);
+
+$_SESSION['user_logged_in'] = TRUE;
+$_SESSION['login'] = $user['login'];
+$_SESSION['email'] = $user['email'];
+$_SESSION['type_user'] = $user['type_user'];
+$_SESSION['id_user'] = $user['id'];
+$_SESSION['type'] = $user['type'];
+$_SESSION['IP'] = client_ip();
+
+$agent = (string)($_SERVER['HTTP_USER_AGENT'] ?? '');
+preg_match("/(MSIE|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", $agent, $bInfo);
+$browserName = isset($bInfo[1]) ? ($bInfo[1] == "Version" ? "Safari" : $bInfo[1]) : 'unknown';
+$browserVersion = $bInfo[2] ?? '';
+
+$series_id = randomString(16);
+$remember_token = getSecureRandomToken();
+$encryted_remember_token = password_hash((string)$remember_token, PASSWORD_DEFAULT);
+$expiry_time = date('Y-m-d H:i:s', strtotime(' + 60 days'));
+$expires = strtotime($expiry_time);
+
+// insert() из MysqliDb падает на PHP 8 — пишем подготовленным запросом
+$db->rawQuery(
+    'INSERT INTO user_accaunt_session (id_user, date_in, device, ip, series_id, remember_token, expires) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [
+        $user['id'],
+        date('Y-m-d H:i:s'),
+        mb_substr($browserName . '/' . $browserVersion . '/' . gethostbyaddr($_SERVER['REMOTE_ADDR']), 0, 250),
+        client_ip(),
+        $series_id,
+        $encryted_remember_token,
+        $expiry_time,
+    ]
+);
+
+setcookie('series_id', (string)$series_id, ['expires' => $expires, 'path' => "/", 'httponly' => true, 'samesite' => 'Lax']);
+setcookie('remember_token', (string)$remember_token, ['expires' => $expires, 'path' => "/", 'httponly' => true, 'samesite' => 'Lax']);
+
+$db->where('id', $user['id']);
+$db->update("user_accaunt", ['series_id' => $series_id, 'remember_token' => $encryted_remember_token, 'expires' => $expiry_time]);
+
+echo json_encode(['status' => 'success'], JSON_UNESCAPED_UNICODE);

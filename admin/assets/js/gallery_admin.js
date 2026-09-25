@@ -44,8 +44,6 @@
     var uploadStats = {total: 0, done: 0, failed: 0};
     var sortable = null;
     var lastSortEndAt = 0;
-    var modalStack = [];
-    var confirmResolve = null;
     var editor = {work: null, file: null, previewUrl: null};
 
     var ui = {
@@ -74,15 +72,13 @@
         newCatFileLabel: byId('gaNewCatFileLabel'),
         newCatCancel: byId('gaNewCatCancel'),
         deleteModal: byId('gaDeleteModal'),
-        confirmModal: byId('gaConfirmModal'),
         workModal: byId('gaWorkModal'),
         workImg: byId('gaWorkImg'),
         workFile: byId('gaWorkFile'),
         workFileHint: byId('gaWorkFileHint'),
         workCategory: byId('gaWorkCategory'),
         workDesc: byId('gaWorkDesc'),
-        workSave: byId('gaWorkSave'),
-        toasts: byId('gaToasts')
+        workSave: byId('gaWorkSave')
     };
 
     // ---------- Утилиты ----------
@@ -134,75 +130,12 @@
         return count + ' ' + plural(count, 'работа', 'работы', 'работ');
     }
 
-    function notify(type, message) {
-        var toast = document.createElement('div');
-
-        toast.className = 'ga-toast ga-toast--' + type;
-        toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
-        toast.innerHTML = '<span class="ga-toast-dot" aria-hidden="true"></span><span></span>';
-        toast.lastChild.textContent = message;
-        ui.toasts.appendChild(toast);
-
-        while (ui.toasts.children.length > 4) {
-            ui.toasts.removeChild(ui.toasts.firstChild);
-        }
-
-        setTimeout(function () {
-            toast.classList.add('is-leaving');
-            setTimeout(function () {
-                toast.remove();
-            }, 220);
-        }, type === 'error' ? 6000 : 3000);
-    }
-
-    function showError(error) {
-        notify('error', error && error.message ? error.message : 'Что-то пошло не так');
-    }
-
-    function toFormData(data) {
-        if (data instanceof FormData) {
-            return data;
-        }
-
-        var form = new FormData();
-
-        Object.keys(data || {}).forEach(function (key) {
-            var value = data[key];
-
-            if (Array.isArray(value)) {
-                value.forEach(function (item) {
-                    form.append(key + '[]', item);
-                });
-            } else if (value !== undefined && value !== null) {
-                form.append(key, value);
-            }
-        });
-
-        return form;
-    }
+    var notify = AdminUI.notify;
+    var showError = AdminUI.showError;
+    var confirmDialog = AdminUI.confirm;
 
     function api(endpoint, data) {
-        return fetch(API + endpoint, {
-            method: 'POST',
-            body: toFormData(data),
-            credentials: 'same-origin'
-        }).then(function (response) {
-            return response.text().then(function (text) {
-                var json;
-
-                try {
-                    json = JSON.parse(text);
-                } catch (e) {
-                    throw new Error('Неожиданный ответ сервера: ' + text.slice(0, 200));
-                }
-
-                if (json.status && json.status !== 'success') {
-                    throw new Error(json.message || 'Ошибка сервера');
-                }
-
-                return json;
-            });
-        });
+        return AdminUI.api(API + endpoint, data);
     }
 
     function findCategory(id) {
@@ -242,93 +175,14 @@
         }).join('');
     }
 
-    // ---------- Модальные окна и подтверждение ----------
-
     function openModal(modal, focusEl) {
-        if (modalStack.indexOf(modal) !== -1) {
-            return;
-        }
-
-        modal.hidden = false;
-        modal._returnFocus = document.activeElement;
-        modalStack.push(modal);
-        document.body.style.overflow = 'hidden';
-
-        var target = focusEl || modal.querySelector('.ga-modal-card button, .ga-modal-card input, .ga-modal-card select');
-
-        if (target) {
-            setTimeout(function () {
-                target.focus();
-            }, 30);
-        }
-    }
-
-    function closeModal(modal) {
-        var index = modalStack.indexOf(modal);
-
-        if (index === -1) {
-            return;
-        }
-
-        modalStack.splice(index, 1);
-        modal.hidden = true;
-
-        if (!modalStack.length) {
-            document.body.style.overflow = '';
-        }
-
-        if (modal === ui.confirmModal && confirmResolve) {
-            var resolve = confirmResolve;
-            confirmResolve = null;
-            resolve(false);
-        }
-
-        if (modal === ui.workModal) {
-            resetEditor();
-        }
-
-        if (modal._returnFocus && document.contains(modal._returnFocus)) {
-            modal._returnFocus.focus();
-        }
-    }
-
-    // Подтверждение любого удаления: Promise<boolean>
-    function confirmDialog(options) {
-        if (confirmResolve) {
-            closeModal(ui.confirmModal);
-        }
-
-        byId('gaConfirmTitle').textContent = options.title;
-        byId('gaConfirmText').innerHTML = options.html;
-        byId('gaConfirmOk').textContent = options.ok || 'Удалить';
-
-        // Фокус на «Отмене»: случайный Enter ничего не удалит
-        openModal(ui.confirmModal, ui.confirmModal.querySelector('[data-ga-close].ga-btn'));
-
-        return new Promise(function (resolve) {
-            confirmResolve = resolve;
+        AdminUI.openModal(modal, {
+            focus: focusEl,
+            onClose: modal === ui.workModal ? resetEditor : null
         });
     }
 
-    byId('gaConfirmOk').addEventListener('click', function () {
-        var resolve = confirmResolve;
-
-        confirmResolve = null;
-        closeModal(ui.confirmModal);
-
-        if (resolve) {
-            resolve(true);
-        }
-    });
-
-    document.addEventListener('click', function (event) {
-        var closer = event.target.closest('[data-ga-close]');
-        var modal = closer && closer.closest('.ga-modal');
-
-        if (modal) {
-            closeModal(modal);
-        }
-    });
+    var closeModal = AdminUI.closeModal;
 
     // ---------- Загрузка данных ----------
 
@@ -1382,17 +1236,9 @@
     });
 
     document.addEventListener('keydown', function (event) {
-        if (modalStack.length) {
-            if (event.key === 'Escape') {
-                event.preventDefault();
-                closeModal(modalStack[modalStack.length - 1]);
-            }
-            return;
-        }
+        var view = root.closest('[data-view]');
 
-        var tabPane = root.closest('.tab-pane');
-
-        if (tabPane && !tabPane.classList.contains('active')) {
+        if (AdminUI.hasOpenModal() || (view && view.hidden)) {
             return;
         }
         if (event.target.closest('input, textarea, select')) {
@@ -1536,5 +1382,4 @@
     renderHead();
     renderSelectTargets();
     renderToolbar();
-    refresh();
 })();

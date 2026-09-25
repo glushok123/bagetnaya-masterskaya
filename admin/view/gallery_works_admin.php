@@ -3,7 +3,6 @@
         <aside class="ga-side">
             <div class="ga-side-head">
                 <div>
-                    <div class="ga-eyebrow">Каталог работ</div>
                     <div class="ga-title">Категории</div>
                     <div class="ga-sub" id="gaStats">Загрузка…</div>
                 </div>
@@ -102,19 +101,6 @@
     </div>
 </div>
 
-<!-- Подтверждение действия -->
-<div class="ga-modal" id="gaConfirmModal" hidden role="alertdialog" aria-modal="true" aria-labelledby="gaConfirmTitle" aria-describedby="gaConfirmText">
-    <div class="ga-modal-backdrop" data-ga-close></div>
-    <div class="ga-modal-card ga-modal-card--narrow">
-        <h3 class="ga-modal-title" id="gaConfirmTitle"></h3>
-        <p class="ga-modal-text" id="gaConfirmText"></p>
-        <div class="ga-modal-actions">
-            <button type="button" class="ga-btn ga-btn--ghost" data-ga-close>Отмена</button>
-            <button type="button" class="ga-btn ga-btn--danger" id="gaConfirmOk">Удалить</button>
-        </div>
-    </div>
-</div>
-
 <!-- Редактирование работы -->
 <div class="ga-modal" id="gaWorkModal" hidden role="dialog" aria-modal="true" aria-labelledby="gaWorkTitle">
     <div class="ga-modal-backdrop" data-ga-close></div>
@@ -151,4 +137,3 @@
     </div>
 </div>
 
-<div class="ga-toasts" id="gaToasts" aria-live="polite"></div>

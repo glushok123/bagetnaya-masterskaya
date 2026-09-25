@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../_auth.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 header('Content-Type: application/json; charset=utf-8');
 $catalog = $_POST['catalog'] ?? '';

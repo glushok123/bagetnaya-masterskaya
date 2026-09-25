@@ -1,53 +1,68 @@
-/* Neoart Import Studio — современный вид */
-#neoartImportApp { max-width: 1280px; }
-.neoart-toolbar {
-  background: #fff; border: 1px solid #e6e8ec; border-radius: 14px;
-  padding: 16px 18px; box-shadow: 0 2px 10px rgba(20,30,50,.05); margin-bottom: 18px;
+/* Импорт Neoart — в общем стиле админки */
+.neoart-toolbar { margin-bottom: 16px; }
+.neoart-steps { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; }
+.neoart-catalog { width: 200px; }
+.neoart-step-num {
+    display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(255, 255, 255, .16); font-size: 12px; font-weight: 600;
 }
-.neoart-toolbar .form-select, .neoart-toolbar .btn { border-radius: 10px; }
-.neoart-steps .btn { font-weight: 600; }
-.neoart-filters .btn { border-radius: 999px; padding: 5px 16px; }
-.neoart-search { max-width: 240px; border-radius: 999px; }
+.ga-btn--ghost .neoart-step-num { background: var(--soft); }
+.neoart-progress { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
 
-/* Сетка карточек */
-#neoartGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+.neoart-errors { margin-bottom: 16px; }
+.neoart-errors-list { max-height: 180px; overflow: auto; padding: 10px 20px 14px; font-size: 12.5px; color: var(--ink-2); }
+.neoart-error { padding: 2px 0; }
+.neoart-error b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* Сетка позиций */
+#neoartGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 .neoart-card {
-  border: 1px solid #e6e8ec; border-radius: 14px; background: #fff; overflow: hidden;
-  cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; display: flex; flex-direction: column;
+    display: flex; flex-direction: column; overflow: hidden;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-1);
+    cursor: pointer; transition: transform .15s ease, box-shadow .15s ease;
 }
-.neoart-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(20,30,50,.10); }
-.neoart-card .nc-head { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px 0; }
-.neoart-card .nc-vendor { font-weight: 700; font-size: .9rem; color: #1f2733; }
-.neoart-thumb { width: 100%; aspect-ratio: 3/2; object-fit: contain; background: #f6f7f9; margin-top: 8px; }
-.neoart-card .nc-const { height: 26px; background-repeat: repeat-x; background-size: auto 100%; border-top: 1px solid #eee; }
-.neoart-card .nc-params { padding: 8px 12px; font-size: .8rem; color: #566; }
-.neoart-card .nc-actions { padding: 8px 12px 12px; display: flex; gap: 6px; align-items: center; }
-.neoart-badge { font-size: .68rem; padding: 3px 8px; border-radius: 999px; font-weight: 600; }
-.nb-ready { background: #e7f6ec; color: #1a7f3d; }
-.nb-flag  { background: #fff4e0; color: #a86200; }
-.nb-cat   { background: #eef0f3; color: #566; }
-.nb-pub   { background: #e6efff; color: #1657c8; }
+.neoart-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+.neoart-card .nc-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 14px 0; }
+.neoart-card .nc-vendor { font-weight: 600; font-size: 13.5px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.neoart-thumb { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: contain; background: #f7f4ee; margin-top: 10px; }
+.neoart-card .nc-const { height: 26px; background-repeat: repeat-x; background-size: auto 100%; border-top: 1px solid var(--line); }
+.neoart-card .nc-params { padding: 10px 14px; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.neoart-card .nc-params b { color: var(--ink); font-weight: 600; }
+.neoart-card .nc-actions { display: flex; align-items: center; gap: 8px; margin-top: auto; padding: 10px 14px 12px; border-top: 1px solid #f0ebe2; }
+.neoart-card .nc-actions .neoart-reject { margin-left: auto; }
 
-/* Модалка редактора */
-#neoartEditModal .modal-body { background: #f7f8fa; }
-.neoart-crop-wrap { max-height: 60vh; background: #fff; border: 1px solid #e6e8ec; border-radius: 12px; overflow: hidden; }
+.neoart-badge { padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.nb-ready { background: var(--green-soft); color: var(--green); }
+.nb-flag { background: var(--amber-soft); color: var(--amber); }
+.nb-cat { background: var(--soft); color: var(--muted); }
+.nb-pub { background: #e8eef7; color: #2d5a8c; }
+
+/* Редактор */
+.neoart-editor-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 20px; margin-top: 16px; }
+.neoart-editor-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.neoart-rotate { display: flex; gap: 6px; }
+.neoart-crop-wrap { max-height: 60vh; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .neoart-crop-wrap img { display: block; max-width: 100%; }
-.neoart-mode-tabs .btn { border-radius: 10px; font-weight: 600; }
-.neoart-side { background: #fff; border: 1px solid #e6e8ec; border-radius: 12px; padding: 14px; }
-.neoart-side h6 { font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; color: #8a94a6; margin-bottom: 10px; }
+.neoart-editor-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.neoart-editor-side { display: flex; flex-direction: column; gap: 14px; }
+.neoart-side { display: flex; flex-direction: column; gap: 12px; padding: 16px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.neoart-fields { gap: 10px; }
 
-/* Мок карточки каталога в превью */
-.neoart-cat-mock { width: 170px; margin: auto; border: 1px solid #e6e8ec; border-radius: 12px; overflow: hidden; background:#fff; }
-.neoart-cat-mock img { width: 100%; aspect-ratio: 3/2; object-fit: contain; background:#f6f7f9; display:block; }
-.neoart-cat-mock .cm-body { padding: 8px 10px; text-align: center; }
+/* Как будет в каталоге */
+.neoart-cat-mock { width: 170px; margin: auto; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+.neoart-cat-mock img { width: 100%; aspect-ratio: 3 / 2; object-fit: contain; background: #f7f4ee; display: block; }
+.neoart-cat-mock .cm-body { padding: 8px 10px; text-align: center; font-size: 13px; }
 
 /* Живая рамка конструктора: 4 полосы repeat-x, боковые повёрнуты, углы срезаны под 45° (митра) */
 .neoart-frame-preview { position: relative; width: 260px; height: 190px; margin: auto; background: #fff; box-shadow: inset 0 0 0 1px #eee; }
 .neoart-frame-preview .nf { position: absolute; background-repeat: repeat-x; background-size: auto 100%; }
-/* верх/низ: полная кромка — снаружи, срез внутрь под 45° */
-.neoart-frame-preview .nf-top    { top: 0; left: 0; width: 260px; height: var(--nf-t, 30px); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
+.neoart-frame-preview .nf-top { top: 0; left: 0; width: 260px; height: var(--nf-t, 30px); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
 .neoart-frame-preview .nf-bottom { bottom: 0; left: 0; width: 260px; height: var(--nf-t, 30px); transform: rotate(180deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
-/* лево/право повёрнуты на 90° так, чтобы внешняя кромка профиля смотрела НАРУЖУ рамы (как верх/низ); trans­lateY(190px) = высота рамки */
-.neoart-frame-preview .nf-left   { top: 0; left: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top left; transform: translateY(190px) rotate(-90deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
-.neoart-frame-preview .nf-right  { top: 0; right: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top right; transform: translateY(190px) rotate(90deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
-.neoart-frame-preview .nf-center { position:absolute; inset: var(--nf-t,30px); background:#fbfbfc; }
+.neoart-frame-preview .nf-left { top: 0; left: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top left; transform: translateY(190px) rotate(-90deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
+.neoart-frame-preview .nf-right { top: 0; right: 0; width: 190px; height: var(--nf-t, 30px); transform-origin: top right; transform: translateY(190px) rotate(90deg); clip-path: polygon(0 0, 100% 0, calc(100% - var(--nf-t, 30px)) 100%, var(--nf-t, 30px) 100%); }
+.neoart-frame-preview .nf-center { position: absolute; inset: var(--nf-t, 30px); background: #fbfbfc; }
+
+@media (max-width: 991px) {
+    .neoart-catalog { width: 100%; }
+    .neoart-editor-grid { grid-template-columns: 1fr; }
+}

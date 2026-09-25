@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../_auth.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/base/connect.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/config/neoartConfig.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/helpers/NeoartCutter.php';
