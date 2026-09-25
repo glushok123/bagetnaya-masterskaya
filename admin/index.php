@@ -29,6 +29,10 @@ if (!isset($_SESSION['user_logged_in'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.js"></script>
     <link rel="stylesheet" href="assets/css/neoart_import.css?v3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Golos+Text:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="assets/css/gallery_admin.css?v2">
 </head>
 
 <body>
@@ -53,7 +57,9 @@ if (!isset($_SESSION['user_logged_in'])) {
 </body>
 
 <link rel="stylesheet" href="assets/css/app.css?v3">
-<script src="assets/js/app.js?v5"></script>
+<script src="assets/js/app.js?v6"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="assets/js/gallery_admin.js?v2"></script>
 <script src="assets/js/neoart_import.js?v7"></script>
 
 </html>

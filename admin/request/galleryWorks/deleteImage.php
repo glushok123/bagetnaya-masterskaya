@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/_auth.php';
 require_once '../../../base/connect.php';
 
 $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;

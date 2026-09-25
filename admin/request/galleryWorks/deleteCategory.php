@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/_auth.php';
 require_once '../../../base/connect.php';
 
 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,15 +21,6 @@ function removeUploadedFile(?string $path): void
     if (is_file($filePath)) {
         @unlink($filePath);
     }
-}
-
-// Удаление необратимо — только для авторизованного администратора
-if (!isset($_SESSION['user_logged_in'])) {
-    http_response_code(403);
-    jsonResponse([
-        'status' => 'error',
-        'message' => 'Нет доступа. Войдите в админку заново.',
-    ]);
 }
 
 $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;

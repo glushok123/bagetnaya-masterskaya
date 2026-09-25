@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/_auth.php';
 require_once '../../../base/connect.php';
 
 $categoryIdFilter = !empty($_POST['categoryId']) ? (int)$_POST['categoryId'] : null;

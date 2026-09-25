@@ -833,8 +833,10 @@ $(document).ready(function () {
 
         if (typeCatalog == 'gallery-works') {
             $('#dashbord-baget').hide();
-            getGalleryWorksRequest();
-            loadGalleryCategories(true);
+
+            if (window.GalleryAdmin) {
+                window.GalleryAdmin.refresh();
+            }
 
             return;
         }

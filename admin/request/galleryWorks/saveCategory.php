@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/_auth.php';
 require_once '../../../base/connect.php';
 
 $allowExtensions = ['jpg', 'jpeg', 'png'];
@@ -87,8 +88,12 @@ if ($id) {
     }
 }
 
-$slug = slugifyCategory($name);
-$slug = ensureUniqueSlug($dbh, $slug, $id);
+if ($currentCategory && $currentCategory['name'] === $name && (string)$currentCategory['slug'] !== '') {
+    // Название не менялось — сохраняем слаг, чтобы не менялся адрес страницы категории на сайте.
+    $slug = (string)$currentCategory['slug'];
+} else {
+    $slug = ensureUniqueSlug($dbh, slugifyCategory($name), $id);
+}
 
 $currentImage = $currentCategory['main_image'] ?? null;
 
